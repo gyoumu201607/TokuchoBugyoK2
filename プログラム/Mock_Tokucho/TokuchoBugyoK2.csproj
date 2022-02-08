@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0AA1DAEB-7746-4D4F-8B66-55281FA32BFE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TokuchoBugyoK2</RootNamespace>
+    <AssemblyName>TokuchoBugyoK2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\deploy_app\江幡様環境_デプロイモジュール_20220126\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://HPNJPH8451DXGA/TokuchoBugyoK2/</InstallUrl>
+    <ProductName>TokuchoBugyoK2</ProductName>
+    <PublisherName>Construction Research Institute</PublisherName>
+    <MinimumRequiredVersion>2.0.0.61</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>app.htm</WebPage>
+    <ApplicationRevision>61</ApplicationRevision>
+    <ApplicationVersion>2.0.0.61</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
+    <BootstrapperComponentsUrl>http://HPNJPH8451DXGA/TokuchoBugyoK2/</BootstrapperComponentsUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>98E559008F9EF4A99209AEB55ED6ADCFA8218F62</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TokuchoBugyoK2_1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resource\Image\BugyouIcon_UT.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.C1Excel.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.C1Zip.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.Bitmap.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Command.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1DX.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Input.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Ribbon.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1SuperTooltip.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.Calendar.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomDateTimePicker.Designer.cs">
+      <DependentUpon>CustomDateTimePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDateTimePicker1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomDateTimePicker1.Designer.cs">
+      <DependentUpon>CustomDateTimePicker1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CYomiTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entry_keikaku_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry_keikaku_Detail.Designer.cs">
+      <DependentUpon>Entry_keikaku_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entry_keikaku_Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry_keikaku_Search.Designer.cs">
+      <DependentUpon>Entry_keikaku_Search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entry_Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry_Search.Designer.cs">
+      <DependentUpon>Entry_Search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entry_Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry_Input.Designer.cs">
+      <DependentUpon>Entry_Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWork.Designer.cs">
+      <DependentUpon>FormWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalMethod.cs" />
+    <Compile Include="ImeLanguage.cs" />
+    <Compile Include="Jibun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jibun.Designer.cs">
+      <DependentUpon>Jibun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jibun_Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jibun_Input.Designer.cs">
+      <DependentUpon>Jibun_Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Madoguchi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Madoguchi.Designer.cs">
+      <DependentUpon>Madoguchi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Madoguchi_Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Madoguchi_Input.Designer.cs">
+      <DependentUpon>Madoguchi_Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMadoguchiBatch.cs" />
+    <Compile Include="Popup_Bunrui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Bunrui.Designer.cs">
+      <DependentUpon>Popup_Bunrui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_BushoRireki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_BushoRireki.Designer.cs">
+      <DependentUpon>Popup_BushoRireki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_Download.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Download.Designer.cs">
+      <DependentUpon>Popup_Download.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_FileError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_FileError.Designer.cs">
+      <DependentUpon>Popup_FileError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_Hachusha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Hachusha.Designer.cs">
+      <DependentUpon>Popup_Hachusha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_HinmokuTorikomi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_HinmokuTorikomi.Designer.cs">
+      <DependentUpon>Popup_HinmokuTorikomi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_Keikaku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Keikaku.Designer.cs">
+      <DependentUpon>Popup_Keikaku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_KoujiJimusyo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_KoujiJimusyo.Designer.cs">
+      <DependentUpon>Popup_KoujiJimusyo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_KoujiJimusyo1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_KoujiJimusyo1.Designer.cs">
+      <DependentUpon>Popup_KoujiJimusyo1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_Kyougou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Kyougou.Designer.cs">
+      <DependentUpon>Popup_Kyougou.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_Anken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Anken.Designer.cs">
+      <DependentUpon>Popup_Anken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_ChousainList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_ChousainList.Designer.cs">
+      <DependentUpon>Popup_ChousainList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Loading.Designer.cs">
+      <DependentUpon>Popup_Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_miharujutaku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_miharujutaku.Designer.cs">
+      <DependentUpon>Popup_miharujutaku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_MojiChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_MojiChange.Designer.cs">
+      <DependentUpon>Popup_MojiChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_Sekoujouken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Sekoujouken.Designer.cs">
+      <DependentUpon>Popup_Sekoujouken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_tantousya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_tantousya.Designer.cs">
+      <DependentUpon>Popup_tantousya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_Yubin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_Yubin.Designer.cs">
+      <DependentUpon>Popup_Yubin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabOuenUketsuke.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabOuenUketsuke.Designer.cs">
+      <DependentUpon>TabOuenUketsuke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabTantouBusho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabTantouBusho.Designer.cs">
+      <DependentUpon>TabTantouBusho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tanka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tanka.Designer.cs">
+      <DependentUpon>tanka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_KanriNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_KanriNo.Designer.cs">
+      <DependentUpon>Popup_KanriNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_TokuchoNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_TokuchoNo.Designer.cs">
+      <DependentUpon>Popup_TokuchoNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_TanpinTantousya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_TanpinTantousya.Designer.cs">
+      <DependentUpon>Popup_TanpinTantousya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_ShukeiHyou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_ShukeiHyou.Designer.cs">
+      <DependentUpon>Popup_ShukeiHyou.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_HoukokuSho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_HoukokuSho.Designer.cs">
+      <DependentUpon>Popup_HoukokuSho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_GyouTsuika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_GyouTsuika.Designer.cs">
+      <DependentUpon>Popup_GyouTsuika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShibuBikoManager.cs" />
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="test_entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test_entry.Designer.cs">
+      <DependentUpon>test_entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TokuchoBugyoKDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TokuchoBugyoKDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tokuchoyaro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tokuchoyaro.Designer.cs">
+      <DependentUpon>Tokuchoyaro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tokumei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tokumei.Designer.cs">
+      <DependentUpon>Tokumei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tokumei_Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tokumei_Input.Designer.cs">
+      <DependentUpon>Tokumei_Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TopMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopMenu.Designer.cs">
+      <DependentUpon>TopMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Content Include="BugyouIcon_UT.ico" />
+    <Content Include="Resource\Asc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Desc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\ActionDelete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\ActionDeleteDisabled.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\blank.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\blank2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\BugyouIcon_UT.ico" />
+    <Content Include="Resource\Image\DeleteRow.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\excel_icon_s.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\file_presentation1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\BugyouIcon3.ico" />
+    <Content Include="Resource\Image\greenT1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\header_blank.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\new.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\selectRow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\shin_aka.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\shin_ao.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\shin_dokuro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\shin_kiiro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\shin_midori.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\SortIconDefalt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="CustomDateTimePicker.resx">
+      <DependentUpon>CustomDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entry_keikaku_Detail.resx">
+      <DependentUpon>Entry_keikaku_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entry_keikaku_Search.resx">
+      <DependentUpon>Entry_keikaku_Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entry_Search.resx">
+      <DependentUpon>Entry_Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entry_Input.resx">
+      <DependentUpon>Entry_Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWork.resx">
+      <DependentUpon>FormWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jibun.resx">
+      <DependentUpon>Jibun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jibun_Input.resx">
+      <DependentUpon>Jibun_Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Madoguchi.resx">
+      <DependentUpon>Madoguchi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Madoguchi_Input.resx">
+      <DependentUpon>Madoguchi_Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Bunrui.resx">
+      <DependentUpon>Popup_Bunrui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_BushoRireki.resx">
+      <DependentUpon>Popup_BushoRireki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Download.resx">
+      <DependentUpon>Popup_Download.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_FileError.resx">
+      <DependentUpon>Popup_FileError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Hachusha.resx">
+      <DependentUpon>Popup_Hachusha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_HinmokuTorikomi.resx">
+      <DependentUpon>Popup_HinmokuTorikomi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_KoujiJimusyo.resx">
+      <DependentUpon>Popup_KoujiJimusyo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_KoujiJimusyo1.resx">
+      <DependentUpon>Popup_KoujiJimusyo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Kyougou.resx">
+      <DependentUpon>Popup_Kyougou.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Anken.resx">
+      <DependentUpon>Popup_Anken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_ChousainList.resx">
+      <DependentUpon>Popup_ChousainList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Keikaku.resx">
+      <DependentUpon>Popup_Keikaku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Loading.resx">
+      <DependentUpon>Popup_Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_miharujutaku.resx">
+      <DependentUpon>Popup_miharujutaku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_MojiChange.resx">
+      <DependentUpon>Popup_MojiChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Sekoujouken.resx">
+      <DependentUpon>Popup_Sekoujouken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_tantousya.resx">
+      <DependentUpon>Popup_tantousya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_Yubin.resx">
+      <DependentUpon>Popup_Yubin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TabOuenUketsuke.resx">
+      <DependentUpon>TabOuenUketsuke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabTantouBusho.resx">
+      <DependentUpon>TabTantouBusho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tanka.resx">
+      <DependentUpon>tanka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_KanriNo.resx">
+      <DependentUpon>Popup_KanriNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_TokuchoNo.resx">
+      <DependentUpon>Popup_TokuchoNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_TanpinTantousya.resx">
+      <DependentUpon>Popup_TanpinTantousya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_ShukeiHyou.resx">
+      <DependentUpon>Popup_ShukeiHyou.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_HoukokuSho.resx">
+      <DependentUpon>Popup_HoukokuSho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_GyouTsuika.resx">
+      <DependentUpon>Popup_GyouTsuika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test_entry.resx">
+      <DependentUpon>test_entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tokuchoyaro.resx">
+      <DependentUpon>Tokuchoyaro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tokumei.resx">
+      <DependentUpon>Tokumei.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tokumei_Input.resx">
+      <DependentUpon>Tokumei_Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopMenu.resx">
+      <DependentUpon>TopMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Mock_Tokucho_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\MoneyData.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="Resource\Image\UndeleteRow.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\kan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\OnegaiIcon35px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\PDF\入札方式の説明.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\PDF\発注者区分の説明.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resource\Work\Work">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TokuchoBugyoK2_1_TemporaryKey.pfx" />
+    <None Include="TokuchoBugyoK2_TemporaryKey.pfx" />
+    <None Include="TokuchoBugyoKDataSet.xsc">
+      <DependentUpon>TokuchoBugyoKDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TokuchoBugyoKDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>TokuchoBugyoKDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TokuchoBugyoKDataSet.xss">
+      <DependentUpon>TokuchoBugyoKDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\Image\file_presentation1_g.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\folder_gray_s.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\folder_yellow_s.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\Icon1.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 および x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
