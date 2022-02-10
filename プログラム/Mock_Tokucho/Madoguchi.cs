@@ -1099,7 +1099,11 @@ namespace TokuchoBugyoK2
                     c1FlexGrid1[r + 1, 2] = "1";
                     // 
                     c1FlexGrid1[r + 1, i + 2] = ListData.Rows[startrow + r][i];
-
+                    // 59でループを抜ける
+                    if (i == 59)
+                    {
+                        break;    
+                    }
                 }
                 // 備考
                 if (r == 0)

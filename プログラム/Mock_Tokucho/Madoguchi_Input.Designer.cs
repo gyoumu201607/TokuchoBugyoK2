@@ -62,6 +62,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label147 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnCopyMadoguchiHoukokuJisshibi = new System.Windows.Forms.Button();
+            this.btnCopyMadoguchiShimekiribi = new System.Windows.Forms.Button();
+            this.btnCopyMadoguchiTourokubi = new System.Windows.Forms.Button();
             this.item1_MadoguchiShiryouHolder = new System.Windows.Forms.TextBox();
             this.item1_MadoguchiHoukokuShoFolder = new System.Windows.Forms.TextBox();
             this.item1_MadoguchiShukeiHyoFolder = new System.Windows.Forms.TextBox();
@@ -515,9 +518,6 @@
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
             this.shibuBikouTableAdapter = new TokuchoBugyoK2.TokuchoBugyoKDataSetTableAdapters.ShibuBikouTableAdapter();
-            this.btnCopyMadoguchiTourokubi = new System.Windows.Forms.Button();
-            this.btnCopyMadoguchiShimekiribi = new System.Windows.Forms.Button();
-            this.btnCopyMadoguchiHoukokuJisshibi = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -1176,6 +1176,54 @@
             this.groupBox9.Size = new System.Drawing.Size(1814, 1010);
             this.groupBox9.TabIndex = 16;
             this.groupBox9.TabStop = false;
+            // 
+            // btnCopyMadoguchiHoukokuJisshibi
+            // 
+            this.btnCopyMadoguchiHoukokuJisshibi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopyMadoguchiHoukokuJisshibi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.btnCopyMadoguchiHoukokuJisshibi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopyMadoguchiHoukokuJisshibi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCopyMadoguchiHoukokuJisshibi.ForeColor = System.Drawing.Color.White;
+            this.btnCopyMadoguchiHoukokuJisshibi.Location = new System.Drawing.Point(294, 751);
+            this.btnCopyMadoguchiHoukokuJisshibi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCopyMadoguchiHoukokuJisshibi.Name = "btnCopyMadoguchiHoukokuJisshibi";
+            this.btnCopyMadoguchiHoukokuJisshibi.Size = new System.Drawing.Size(105, 28);
+            this.btnCopyMadoguchiHoukokuJisshibi.TabIndex = 41;
+            this.btnCopyMadoguchiHoukokuJisshibi.Text = "日付コピー";
+            this.btnCopyMadoguchiHoukokuJisshibi.UseVisualStyleBackColor = false;
+            this.btnCopyMadoguchiHoukokuJisshibi.Click += new System.EventHandler(this.btnCopyMadoguchiHoukokuJisshibi_Click);
+            // 
+            // btnCopyMadoguchiShimekiribi
+            // 
+            this.btnCopyMadoguchiShimekiribi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopyMadoguchiShimekiribi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.btnCopyMadoguchiShimekiribi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopyMadoguchiShimekiribi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCopyMadoguchiShimekiribi.ForeColor = System.Drawing.Color.White;
+            this.btnCopyMadoguchiShimekiribi.Location = new System.Drawing.Point(294, 712);
+            this.btnCopyMadoguchiShimekiribi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCopyMadoguchiShimekiribi.Name = "btnCopyMadoguchiShimekiribi";
+            this.btnCopyMadoguchiShimekiribi.Size = new System.Drawing.Size(105, 28);
+            this.btnCopyMadoguchiShimekiribi.TabIndex = 39;
+            this.btnCopyMadoguchiShimekiribi.Text = "日付コピー";
+            this.btnCopyMadoguchiShimekiribi.UseVisualStyleBackColor = false;
+            this.btnCopyMadoguchiShimekiribi.Click += new System.EventHandler(this.btnCopyMadoguchiShimekiribi_Click);
+            // 
+            // btnCopyMadoguchiTourokubi
+            // 
+            this.btnCopyMadoguchiTourokubi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopyMadoguchiTourokubi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.btnCopyMadoguchiTourokubi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopyMadoguchiTourokubi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCopyMadoguchiTourokubi.ForeColor = System.Drawing.Color.White;
+            this.btnCopyMadoguchiTourokubi.Location = new System.Drawing.Point(294, 667);
+            this.btnCopyMadoguchiTourokubi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCopyMadoguchiTourokubi.Name = "btnCopyMadoguchiTourokubi";
+            this.btnCopyMadoguchiTourokubi.Size = new System.Drawing.Size(105, 28);
+            this.btnCopyMadoguchiTourokubi.TabIndex = 36;
+            this.btnCopyMadoguchiTourokubi.Text = "日付コピー";
+            this.btnCopyMadoguchiTourokubi.UseVisualStyleBackColor = false;
+            this.btnCopyMadoguchiTourokubi.Click += new System.EventHandler(this.btnCopyMadoguchiTourokubi_Click);
             // 
             // item1_MadoguchiShiryouHolder
             // 
@@ -4030,7 +4078,7 @@
             // 
             this.item4_Mail_icon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.item4_Mail_icon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.item4_Mail_icon.Location = new System.Drawing.Point(-161, 1441);
+            this.item4_Mail_icon.Location = new System.Drawing.Point(-170, 1466);
             this.item4_Mail_icon.Margin = new System.Windows.Forms.Padding(5);
             this.item4_Mail_icon.Name = "item4_Mail_icon";
             this.item4_Mail_icon.Size = new System.Drawing.Size(30, 30);
@@ -7168,7 +7216,7 @@
             this.tableLayoutPanel56.ColumnCount = 2;
             this.tableLayoutPanel56.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel56.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel56.Location = new System.Drawing.Point(-107, 10166);
+            this.tableLayoutPanel56.Location = new System.Drawing.Point(-111, 10479);
             this.tableLayoutPanel56.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel56.Name = "tableLayoutPanel56";
             this.tableLayoutPanel56.RowCount = 3;
@@ -7289,54 +7337,6 @@
             // shibuBikouTableAdapter
             // 
             this.shibuBikouTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnCopyMadoguchiTourokubi
-            // 
-            this.btnCopyMadoguchiTourokubi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyMadoguchiTourokubi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.btnCopyMadoguchiTourokubi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopyMadoguchiTourokubi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnCopyMadoguchiTourokubi.ForeColor = System.Drawing.Color.White;
-            this.btnCopyMadoguchiTourokubi.Location = new System.Drawing.Point(294, 667);
-            this.btnCopyMadoguchiTourokubi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCopyMadoguchiTourokubi.Name = "btnCopyMadoguchiTourokubi";
-            this.btnCopyMadoguchiTourokubi.Size = new System.Drawing.Size(105, 28);
-            this.btnCopyMadoguchiTourokubi.TabIndex = 36;
-            this.btnCopyMadoguchiTourokubi.Text = "日付コピー";
-            this.btnCopyMadoguchiTourokubi.UseVisualStyleBackColor = false;
-            this.btnCopyMadoguchiTourokubi.Click += new System.EventHandler(this.btnCopyMadoguchiTourokubi_Click);
-            // 
-            // btnCopyMadoguchiShimekiribi
-            // 
-            this.btnCopyMadoguchiShimekiribi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyMadoguchiShimekiribi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.btnCopyMadoguchiShimekiribi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopyMadoguchiShimekiribi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnCopyMadoguchiShimekiribi.ForeColor = System.Drawing.Color.White;
-            this.btnCopyMadoguchiShimekiribi.Location = new System.Drawing.Point(294, 712);
-            this.btnCopyMadoguchiShimekiribi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCopyMadoguchiShimekiribi.Name = "btnCopyMadoguchiShimekiribi";
-            this.btnCopyMadoguchiShimekiribi.Size = new System.Drawing.Size(105, 28);
-            this.btnCopyMadoguchiShimekiribi.TabIndex = 39;
-            this.btnCopyMadoguchiShimekiribi.Text = "日付コピー";
-            this.btnCopyMadoguchiShimekiribi.UseVisualStyleBackColor = false;
-            this.btnCopyMadoguchiShimekiribi.Click += new System.EventHandler(this.btnCopyMadoguchiShimekiribi_Click);
-            // 
-            // btnCopyMadoguchiHoukokuJisshibi
-            // 
-            this.btnCopyMadoguchiHoukokuJisshibi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyMadoguchiHoukokuJisshibi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.btnCopyMadoguchiHoukokuJisshibi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopyMadoguchiHoukokuJisshibi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnCopyMadoguchiHoukokuJisshibi.ForeColor = System.Drawing.Color.White;
-            this.btnCopyMadoguchiHoukokuJisshibi.Location = new System.Drawing.Point(294, 751);
-            this.btnCopyMadoguchiHoukokuJisshibi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCopyMadoguchiHoukokuJisshibi.Name = "btnCopyMadoguchiHoukokuJisshibi";
-            this.btnCopyMadoguchiHoukokuJisshibi.Size = new System.Drawing.Size(105, 28);
-            this.btnCopyMadoguchiHoukokuJisshibi.TabIndex = 41;
-            this.btnCopyMadoguchiHoukokuJisshibi.Text = "日付コピー";
-            this.btnCopyMadoguchiHoukokuJisshibi.UseVisualStyleBackColor = false;
-            this.btnCopyMadoguchiHoukokuJisshibi.Click += new System.EventHandler(this.btnCopyMadoguchiHoukokuJisshibi_Click);
             // 
             // Madoguchi_Input
             // 
