@@ -51,6 +51,11 @@ namespace TokuchoBugyoK2
         // 変更伝票がどのボタンから遷移したかのフラグ
         public int ChangeFlag = 0;
 
+        // VIPS 20220221 課題管理表No.1273(967) ADD 計画番号コピー制御用
+        // この業務を元に新規登録ボタン                ：1
+        // この案件番号の枝番で受託番号を作成するボタン：2
+        public string CopyMode = "";
+
         public Entry_Input()
         {
             InitializeComponent();
@@ -602,8 +607,10 @@ namespace TokuchoBugyoK2
                 item2_4_2_12_1.Enabled = false;
 
                 //契約
-                button11.Enabled = false;
-                button11.BackColor = Color.DimGray;
+                // VIPS 20220221 課題管理表No.1271(965) DEL チェック用帳票出力・内容確認ボタンを起案後も使用可とする
+                // チェック用帳票出力・内容確認ボタンは常時使用可とするためコメントアウト
+                //button11.Enabled = false;
+                //button11.BackColor = Color.DimGray;
                 button14.Enabled = false;
                 button14.BackColor = Color.DimGray;
                 button15.Enabled = true;
@@ -1494,10 +1501,11 @@ namespace TokuchoBugyoK2
         {
             if (MessageBox.Show(GlobalMethod.GetMessage("I10701", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                //if (ErrorFLG(1) && KianError(0))
-                if (!ErrorFLG(2))
+                // VIPS 20220221 課題管理表No.1271(965) ADD チェック用帳票出力・内容確認ボタンを起案後も使用可とする
+                //起案済みの場合は帳票出力のみ実行する
+                if (item3_1_2.Checked && mode != "change" && mode != "insert" && mode != "keikaku")
                 {
-                    Execute_SQL(2);
+                    ErrorMessage.Text = "";
                     string[] result = GlobalMethod.InsertReportWork(2, UserInfos[0], new string[] { AnkenID, Header1.Text, "1", "0" });
 
                     // result
@@ -1529,9 +1537,46 @@ namespace TokuchoBugyoK2
                         set_error(GlobalMethod.GetMessage("E00091", ""));
                     }
                 }
+                else
+                {
+                    //if (ErrorFLG(1) && KianError(0))
+                    if (!ErrorFLG(2))
+                    {
+                        Execute_SQL(2);
+                        string[] result = GlobalMethod.InsertReportWork(2, UserInfos[0], new string[] { AnkenID, Header1.Text, "1", "0" });
+
+                        // result
+                        // 成否判定 0:正常 1：エラー
+                        // メッセージ（主にエラー用）
+                        // ファイル物理パス（C:\Work\xxxx\0000000111_エントリーシート.xlsx）
+                        // ダウンロード時のファイル名（エントリーシート.xlsx）
+                        if (result != null && result.Length >= 4)
+                        {
+                            if (result[0].Trim() == "1")
+                            {
+                                set_error(result[1]);
+                            }
+                            else
+                            {
+                                Popup_Download form = new Popup_Download();
+                                form.TopLevel = false;
+                                this.Controls.Add(form);
+                                form.ExcelName = Path.GetFileName(result[3]);
+                                form.TotalFilePath = result[2];
+                                form.Dock = DockStyle.Bottom;
+                                form.Show();
+                                form.BringToFront();
+                            }
+                        }
+                        else
+                        {
+                            // エラーが発生しました
+                            set_error(GlobalMethod.GetMessage("E00091", ""));
+                        }
+                    }
+                }
             }
         }
-
 
         // 赤伝作成・出力
         private void button20_Click(object sender, EventArgs e)
@@ -12365,8 +12410,15 @@ namespace TokuchoBugyoK2
                 item1_2_KoukiNendo.SelectedValue = AnkenData_H.Rows[0][56].ToString();
                 item1_3.SelectedValue = AnkenData_H.Rows[0][2].ToString();
                 item1_4.Text = AnkenData_H.Rows[0][3].ToString();
-                
                 beforeKeikakuBangou = AnkenData_H.Rows[0][3].ToString(); // 計画番号
+
+                // VIPS 20220221 課題管理表No.1273(967) ADD 計画番号コピー制御用
+                // この業務を元に新規登録ボタンから遷移してきたときは空にする
+                if (CopyMode == "1") 
+                {
+                    item1_4.Text = "";
+                    beforeKeikakuBangou = "";
+                }
 
                 item1_5.Text = AnkenData_H.Rows[0][4].ToString();
                 item1_6.Text = AnkenData_H.Rows[0][5].ToString();
@@ -13644,6 +13696,7 @@ namespace TokuchoBugyoK2
             form.mode = "insert";
             form.AnkenID = AnkenID;
             form.UserInfos = this.UserInfos;
+            form.CopyMode = "1";
             ownerflg = false;
             form.Show(this.Owner);
             this.Close();
@@ -13666,6 +13719,7 @@ namespace TokuchoBugyoK2
             form.AnkenID = AnkenID;
             form.AnkenbaBangou = item1_8.Text;
             form.UserInfos = this.UserInfos;
+            form.CopyMode = "2";
             ownerflg = false;
             //form.Show(this);
             //this.Hide();
@@ -14637,5 +14691,6 @@ namespace TokuchoBugyoK2
 
             return keijogakuKei;
         }
+
     }
 }

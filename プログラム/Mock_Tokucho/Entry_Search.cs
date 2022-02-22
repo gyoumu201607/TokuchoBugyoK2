@@ -566,24 +566,26 @@ namespace TokuchoBugyoK2
             String where = "";
             //コンボボックスデータ取得
             DataTable nendoCombodt = GlobalMethod.getData(discript, value, table, where);
-            DataRow nendodr;
-            if (nendoCombodt != null)
-            {
-                nendodr = nendoCombodt.NewRow();
-                nendoCombodt.Rows.InsertAt(nendodr, 0);
-            }
+            // VIPS 20220221 課題管理表No.1279(973) DEL プルダウンの空白が不要
+            //DataRow nendodr;
+            //if (nendoCombodt != null)
+            //{
+            //    nendodr = nendoCombodt.NewRow();
+            //    nendoCombodt.Rows.InsertAt(nendodr, 0);
+            //}
             src_1.DataSource = nendoCombodt;
             src_1.DisplayMember = "Discript";
             src_1.ValueMember = "Value";
 
             DataTable koukiCombodt = GlobalMethod.getData(discript, value, table, where);
-            DataRow koukinendodr;
-            // 空行追加
-            if (koukiCombodt != null)
-            {
-                koukinendodr = koukiCombodt.NewRow();
-                koukiCombodt.Rows.InsertAt(koukinendodr, 0);
-            }
+            // VIPS 20220221 課題管理表No.1279(973) DEL プルダウンの空白が不要
+            //DataRow koukinendodr;
+            //// 空行追加
+            //if (koukiCombodt != null)
+            //{
+            //    koukinendodr = koukiCombodt.NewRow();
+            //    koukiCombodt.Rows.InsertAt(koukinendodr, 0);
+            //}
             item1_KoukiNendo.DataSource = koukiCombodt;
             item1_KoukiNendo.DisplayMember = "Discript";
             item1_KoukiNendo.ValueMember = "Value";
@@ -2006,7 +2008,9 @@ namespace TokuchoBugyoK2
                                 }
                                 else
                                 {
-                                    report_data[25] = "2";
+                                    // SE 20220217 No.1278 設定値の誤りを修正
+                                    //report_data[25] = "2";    // CHG 20220217
+                                    report_data[25] = "0";      // CHG 20220217
                                 }
                                 report_data[26] = src_28.Text; // 表示件数
                                 report_data[27] = item1_KoukiNendo.SelectedValue.ToString();

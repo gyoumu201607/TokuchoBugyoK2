@@ -487,6 +487,8 @@ namespace TokuchoBugyoK2
                         else if (src_ShuFuku.SelectedValue.ToString() == "4")
                         {
                             cmd.CommandText += "AND ((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "' AND (" +
+                                                // SE 20220217 No.1272 窓口部所の空白リストの出力漏れ対応
+                                                "(ISNULL(HinmokuChousainCD, '') = '') OR " +    // ADD 20220217
                                                 "(HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR " +
                                                 "(HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> '') )) " +
                                                 " OR ( (ISNULL(HinmokuChousainCD, '') = '' AND HinmokuRyakuBushoCD = '" + UserInfos[2] + "') " +
