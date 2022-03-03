@@ -9804,6 +9804,9 @@ namespace TokuchoBugyoK2
                                     set_error(resultMessage);
                                 }
 
+                                // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
+                                GaroonBtn_Click(sender, e);
+
                                 // 編集ロック開放
                                 // Lockテーブル更新
                                 using (var conn = new SqlConnection(connStr))
@@ -10320,6 +10323,9 @@ namespace TokuchoBugyoK2
 
                     // 調査品目の更新
                     chousaHinmokuUpdate();
+
+                    // VIPS　20220228　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
+                    GaroonBtn_Click(sender, e);
 
                     //writeHistory("【開始】調査品目明細の更新を終了します。 ID= " + MadoguchiID);
 

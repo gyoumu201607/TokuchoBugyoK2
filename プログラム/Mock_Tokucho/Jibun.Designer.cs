@@ -107,7 +107,6 @@
             this.item_Memo = new System.Windows.Forms.TextBox();
             this.item_BushoBikou = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button_Update = new System.Windows.Forms.Button();
             this.item_tyouhyouInsatu = new System.Windows.Forms.ComboBox();
             this.BtnClear = new System.Windows.Forms.Button();
             this.BtnSearch = new System.Windows.Forms.Button();
@@ -1351,7 +1350,6 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel3.Controls.Add(this.button_Update, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.item_tyouhyouInsatu, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.BtnClear, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.BtnSearch, 0, 0);
@@ -1365,24 +1363,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1350, 60);
             this.tableLayoutPanel3.TabIndex = 31;
-            // 
-            // button_Update
-            // 
-            this.button_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.button_Update.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_Update.FlatAppearance.BorderSize = 0;
-            this.button_Update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button_Update.ForeColor = System.Drawing.Color.White;
-            this.button_Update.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Update.Location = new System.Drawing.Point(410, 10);
-            this.button_Update.Margin = new System.Windows.Forms.Padding(10);
-            this.button_Update.Name = "button_Update";
-            this.button_Update.Size = new System.Drawing.Size(180, 40);
-            this.button_Update.TabIndex = 33;
-            this.button_Update.Text = "更新";
-            this.button_Update.UseVisualStyleBackColor = false;
-            this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
             // 
             // item_tyouhyouInsatu
             // 
@@ -1690,7 +1670,6 @@
         private System.Windows.Forms.Label label_DateFrom;
         private System.Windows.Forms.Label label_DateTo;
         private System.Windows.Forms.Label Grid_Num;
-        private System.Windows.Forms.Button button_Update;
         private System.Windows.Forms.ComboBox item_tyouhyouInsatu;
         private System.Windows.Forms.Button BtnClear;
         private System.Windows.Forms.Button btnGridSize;

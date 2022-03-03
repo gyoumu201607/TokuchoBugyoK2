@@ -124,10 +124,8 @@
             this.BtnClear = new System.Windows.Forms.Button();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.BtnInsert = new System.Windows.Forms.Button();
-            this.BtnMadoguchiIkkatsu = new System.Windows.Forms.Button();
             this.item_KanrityouhyouInsatu = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.BtnTorikomiKekka = new System.Windows.Forms.Button();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
@@ -1576,10 +1574,8 @@
             this.tableLayoutPanel3.Controls.Add(this.BtnClear, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.BtnSearch, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.BtnInsert, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.BtnMadoguchiIkkatsu, 6, 0);
             this.tableLayoutPanel3.Controls.Add(this.item_KanrityouhyouInsatu, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.label29, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.BtnTorikomiKekka, 7, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 193);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -1662,27 +1658,6 @@
             this.BtnInsert.UseVisualStyleBackColor = false;
             this.BtnInsert.Click += new System.EventHandler(this.BtnInsert_Click);
             // 
-            // BtnMadoguchiIkkatsu
-            // 
-            this.BtnMadoguchiIkkatsu.AutoSize = true;
-            this.BtnMadoguchiIkkatsu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.BtnMadoguchiIkkatsu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtnMadoguchiIkkatsu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnMadoguchiIkkatsu.FlatAppearance.BorderSize = 0;
-            this.BtnMadoguchiIkkatsu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMadoguchiIkkatsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.BtnMadoguchiIkkatsu.ForeColor = System.Drawing.Color.White;
-            this.BtnMadoguchiIkkatsu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnMadoguchiIkkatsu.Location = new System.Drawing.Point(1210, 10);
-            this.BtnMadoguchiIkkatsu.Margin = new System.Windows.Forms.Padding(10);
-            this.BtnMadoguchiIkkatsu.Name = "BtnMadoguchiIkkatsu";
-            this.BtnMadoguchiIkkatsu.Size = new System.Drawing.Size(230, 40);
-            this.BtnMadoguchiIkkatsu.TabIndex = 4;
-            this.BtnMadoguchiIkkatsu.Text = "ミハル一括登録";
-            this.BtnMadoguchiIkkatsu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnMadoguchiIkkatsu.UseVisualStyleBackColor = false;
-            this.BtnMadoguchiIkkatsu.Click += new System.EventHandler(this.BtnMadoguchiIkkatsu_Click);
-            // 
             // item_KanrityouhyouInsatu
             // 
             this.item_KanrityouhyouInsatu.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1714,26 +1689,6 @@
             this.label29.Size = new System.Drawing.Size(112, 37);
             this.label29.TabIndex = 0;
             this.label29.Text = "管理帳票印刷";
-            // 
-            // BtnTorikomiKekka
-            // 
-            this.BtnTorikomiKekka.AutoSize = true;
-            this.BtnTorikomiKekka.BackColor = System.Drawing.Color.DarkGray;
-            this.BtnTorikomiKekka.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtnTorikomiKekka.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnTorikomiKekka.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnTorikomiKekka.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.BtnTorikomiKekka.ForeColor = System.Drawing.Color.White;
-            this.BtnTorikomiKekka.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnTorikomiKekka.Location = new System.Drawing.Point(1460, 10);
-            this.BtnTorikomiKekka.Margin = new System.Windows.Forms.Padding(10);
-            this.BtnTorikomiKekka.Name = "BtnTorikomiKekka";
-            this.BtnTorikomiKekka.Size = new System.Drawing.Size(200, 40);
-            this.BtnTorikomiKekka.TabIndex = 5;
-            this.BtnTorikomiKekka.Text = "ミハル一括登録取込結果";
-            this.BtnTorikomiKekka.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnTorikomiKekka.UseVisualStyleBackColor = false;
-            this.BtnTorikomiKekka.Click += new System.EventHandler(this.BtnTorikomiKekka_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -1911,7 +1866,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button BtnClear;
         private System.Windows.Forms.Button BtnSearch;
-        private System.Windows.Forms.Button BtnMadoguchiIkkatsu;
         private System.Windows.Forms.ComboBox item_KanrityouhyouInsatu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label label1;
@@ -1967,7 +1921,6 @@
         private System.Windows.Forms.Label label_DateTo;
         private System.Windows.Forms.Button BtnReport;
         private System.Windows.Forms.Button BtnInsert;
-        private System.Windows.Forms.Button BtnTorikomiKekka;
         private System.Windows.Forms.Button btnGridSize;
     }
 }

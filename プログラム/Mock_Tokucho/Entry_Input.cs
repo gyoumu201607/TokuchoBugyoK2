@@ -1603,7 +1603,8 @@ namespace TokuchoBugyoK2
                         this.Controls.Add(form);
 
                         String fileName = Path.GetFileName(result[3]);
-                        fileName = fileName.Replace(".xlsx", "(赤伝).xlsx");
+                        // VIPS 20220303 課題管理表No.1262(955) DEL 帳票出力EXEで出力ファイル名を設定しているため削除
+                        //fileName = fileName.Replace(".xlsx", "(赤伝).xlsx");
                         form.ExcelName = fileName;
                         form.TotalFilePath = result[2];
                         form.Dock = DockStyle.Bottom;
@@ -1657,7 +1658,8 @@ namespace TokuchoBugyoK2
                         form.TopLevel = false;
                         this.Controls.Add(form);
                         String fileName = Path.GetFileName(result[3]);
-                        fileName = fileName.Replace(".xlsx", "(黒伝・中止).xlsx");
+                        // VIPS 20220303 課題管理表No.1262(955) DEL 帳票出力EXEで出力ファイル名を設定しているため削除
+                        //fileName = fileName.Replace(".xlsx", "(黒伝・中止).xlsx");
                         form.ExcelName = fileName;
                         //form.ExcelName = Path.GetFileName(result[3]) + "(黒伝・中止)";
                         form.TotalFilePath = result[2];

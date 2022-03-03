@@ -69,7 +69,7 @@ namespace TokuchoBugyoK2
 
             for (int i = 3; i < c1FlexGrid1.Cols.Count; i++)
             {
-                if(i != 6)
+                if (i != 6)
                 {
                     cr = c1FlexGrid1.GetCellRange(0, i);
                     cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
@@ -472,14 +472,14 @@ namespace TokuchoBugyoK2
                   ",mj.MadoguchiGyoumuMeishou " + //業務名称
                   ",mj.MadoguchiKoujiKenmei " + //工事件名
                   ",sb.ShibuBikou ";  //部所備考
-                    //",(select TOP 1 ShibuBikou from ShibuBikou where ShibuBikouBushoKanriboBushoCD = " + UserInfos[2] + " and MadoguchiID = mj.MadoguchiID and ShinDeleteFlag = 0 ";
-                    //  ",(select TOP 1 ShibuBikou from ShibuBikou where ShibuBikouBushoKanriboBushoCD = mjmc.MadoguchiL1ChousaBushoCD and MadoguchiID = mj.MadoguchiID and ShinDeleteFlag = 0 ";
-                    ////部所備考
-                    //if (item_BushoBikou.Text != "")
-                    //{
-                    //    cmd.CommandText += "AND ShibuBikou LIKE '%" + GlobalMethod.ChangeSqlText(item_BushoBikou.Text, 1) + "%' ESCAPE '\\' ";
-                    //}
-                    //cmd.CommandText += ") ";
+                                      //",(select TOP 1 ShibuBikou from ShibuBikou where ShibuBikouBushoKanriboBushoCD = " + UserInfos[2] + " and MadoguchiID = mj.MadoguchiID and ShinDeleteFlag = 0 ";
+                                      //  ",(select TOP 1 ShibuBikou from ShibuBikou where ShibuBikouBushoKanriboBushoCD = mjmc.MadoguchiL1ChousaBushoCD and MadoguchiID = mj.MadoguchiID and ShinDeleteFlag = 0 ";
+                                      ////部所備考
+                                      //if (item_BushoBikou.Text != "")
+                                      //{
+                                      //    cmd.CommandText += "AND ShibuBikou LIKE '%" + GlobalMethod.ChangeSqlText(item_BushoBikou.Text, 1) + "%' ESCAPE '\\' ";
+                                      //}
+                                      //cmd.CommandText += ") ";
 
                 cmd.CommandText += ",mjmc.MadoguchiL1Memo " + //メモ 24
                   ",mj.MadoguchiChousaHinmoku " + //調査品目
@@ -767,7 +767,7 @@ namespace TokuchoBugyoK2
                     //if (!String.IsNullOrEmpty(item_TantouJoukyo.Text) && (tantoushaJoukyo < 60 || tantoushaJoukyo <= 70))
                     if (tantoushaJoukyo <= 60 || tantoushaJoukyo == 70 || tantoushaJoukyo == 80)
                     {
-                            cmd.CommandText += "AND mjmc.MadoguchiL1ChousaShinchoku = " + tantoushaJoukyo + " ";
+                        cmd.CommandText += "AND mjmc.MadoguchiL1ChousaShinchoku = " + tantoushaJoukyo + " ";
                     }
 
                     //担当者状況が依頼・担当者済の場合
@@ -1669,305 +1669,306 @@ namespace TokuchoBugyoK2
             }
         }
 
-        private void button_Update_Click(object sender, EventArgs e)
-        {
-            string methodName = "button_Update_Click";
+        // VIPS　20220301　課題管理表No1274(968)　DEL　「更新」処理追加　対応
+        //private void button_Update_Click(object sender, EventArgs e)
+        //{
+        //    string methodName = "button_Update_Click";
 
-            //更新ボタン押下処理
-            set_error("", 0);
+        //    //更新ボタン押下処理
+        //    set_error("", 0);
 
-            var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-            using (var conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                var cmd = conn.CreateCommand();
-                SqlTransaction transaction = conn.BeginTransaction();
-                cmd.Transaction = transaction;
-                int updCount = 0;
-                try
-                {
-                    for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
-                    {
-                        //画面の担当者状況
-                        string gamenShinchoku = "";
-                        if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][14].ToString()))
-                        {
+        //    var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+        //    using (var conn = new SqlConnection(connStr))
+        //    {
+        //        conn.Open();
+        //        var cmd = conn.CreateCommand();
+        //        SqlTransaction transaction = conn.BeginTransaction();
+        //        cmd.Transaction = transaction;
+        //        int updCount = 0;
+        //        try
+        //        {
+        //            for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
+        //            {
+        //                //画面の担当者状況
+        //                string gamenShinchoku = "";
+        //                if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][14].ToString()))
+        //                {
 
-                            gamenShinchoku = c1FlexGrid1.Rows[i][14].ToString();
-                        }
+        //                    gamenShinchoku = c1FlexGrid1.Rows[i][14].ToString();
+        //                }
 
-                        //画面のメモ
-                        string gamenMemo = "";
-                        if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][25].ToString()))
-                        {
-                            gamenMemo = c1FlexGrid1.Rows[i][25].ToString();
-                        }
-
-
-                        //MadoguchiL1ChousaCDがない場合
-                        string chousaId = "";
-                        if (String.IsNullOrEmpty(c1FlexGrid1.Rows[i][30].ToString()))
-                        {
-                            //メモも進捗も更新できないので次の行へ
-                            continue;
-                        }
-                        else
-                        {
-                            chousaId = c1FlexGrid1.Rows[i][30].ToString();
-                        }
-
-                        //差分フラグ
-                        Boolean sabun = false;
-
-                        //各行の14（担当者状況）と25（メモ）カラム目取得する
-                        DataTable dt = new DataTable();
-                        cmd.CommandText = "SELECT ISNULL(MadoguchiL1ChousaShinchoku,'') AS MadoguchiL1ChousaShinchoku, ISNULL(MadoguchiL1Memo,'') AS MadoguchiL1Memo " +
-                            "FROM MadoguchiJouhouMadoguchiL1Chou " +
-                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
-                            "AND MadoguchiL1ChousaCD = " + chousaId + " ";
-
-                        var sda = new SqlDataAdapter(cmd);
-                        sda.Fill(dt);
-                        string shinchokuData = dt.Rows[0][0].ToString();
-                        string memoData = dt.Rows[0][1].ToString();
-                        //画面の担当者状況とデータの担当者状況の値が違う
-                        //if (!String.IsNullOrEmpty(shinchokuData) && !gamenShinchoku.Equals(shinchokuData)) 
-                        if (!gamenShinchoku.Equals(shinchokuData))
-                        {
-                            sabun = true;
-                        }
-
-                        //画面のメモとデータのメモの値が違う
-                        //if (!String.IsNullOrEmpty(memoData) && !gamenMemo.Equals(memoData))
-                        if (!gamenMemo.Equals(memoData))
-                        {
-                            sabun = true;
-                        }
-
-                        if (sabun)
-                        {
-                            //各行の14（担当者状況）と25（メモ）カラム目 差分があるとき更新する
-                            cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET " +
-                                "MadoguchiL1ChousaShinchoku = " + gamenShinchoku + " " +
-                                ",MadoguchiL1Memo = N'" + gamenMemo + "' " +
-                                ",MadoguchiL1AsteriaKoushinFlag = 1 " +
-                                ",MadoguchiL1UpdateDate = SYSDATETIME() " +
-                                ",MadoguchiL1UpdateUser = N'" + UserInfos[0] + "' " +
-                                ",MadoguchiL1UpdateProgram = '" + pgmName + methodName + "' " +
-                                "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
-                                "AND MadoguchiL1ChousaCD = " + c1FlexGrid1.Rows[i][30].ToString() + " ";
-
-                            cmd.ExecuteNonQuery();
-
-                            //窓口情報の進捗
-                            Boolean itijikenFlg = false;
-                            string shinchoku = "10";
-                            //中止以外の担当部所のデータを拾う
-                            DataTable dt2 = new DataTable();
-                            //cmd.CommandText = "SELECT MadoguchiL1ChousaShinchoku " +
-                            cmd.CommandText = "SELECT min(MadoguchiL1ChousaShinchoku) " +
-                                "FROM MadoguchiJouhouMadoguchiL1Chou " +
-                                //"WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
-                                "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " ";
-                                //"AND MadoguchiL1ChousaShinchoku <> 80 ";
-
-                            var sda2 = new SqlDataAdapter(cmd);
-                            sda2.Fill(dt2);
-
-                            for (int j = 0; j < dt2.Rows.Count; j++)
-                            {
-                                shinchoku = dt2.Rows[0][0].ToString();
-                            }
-
-                            //for (int j = 0; j < dt.Rows.Count; j++)
-                            //{
-                            //    //取得した進捗
-                            //    shinchoku = int.Parse(dt.Rows[j][0].ToString());
-
-                            //    //一次検査の場合
-                            //    if (shinchoku == 60)
-                            //    {
-                            //        itijikenFlg = true;
-                            //    }
-
-                            //    //1行目
-                            //    if (j == 0)
-                            //    {
-                            //        //一次検査の場合
-                            //        if (shinchoku == 60)
-                            //        {
-                            //            //一時的に二次検済にする
-                            //            shinchoku = 70;
-                            //        }
-
-                            //        //一次検済以外はこのまま
-                            //    }
-                            //    //2行目以降
-                            //    else
-                            //    {
-                            //        //一次検査でないかつshinchokuが取得したshinchokuより大きい場合
-                            //        if (shinchoku != 60 && shinchoku > int.Parse(dt.Rows[j][0].ToString()))
-                            //        {
-                            //            shinchoku = int.Parse(dt.Rows[j][0].ToString());
-                            //        }
-                            //    }//行数if
-
-                            //}//進捗for end
-
-                            ////一次検査があり、
-                            //if (itijikenFlg)
-                            //{
-                            //    //shinchokuが二次検済より前の場合
-                            //    if (shinchoku <= 50)
-                            //    {
-                            //        //特になし
-                            //    }
-                            //    else
-                            //    {
-                            //        //一次検査にする
-                            //        shinchoku = 60;
-                            //    }
-                            //}
-
-                            ////窓口情報の進捗状況を更新
-                            //cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
-                            //"MadoguchiShinchokuJoukyou = " + shinchoku + " " +
-                            //",MadoguchiUpdateDate = SYSDATETIME()" +
-                            //",MadoguchiUpdateUser = N'" + UserInfos[0] + "' " +
-                            //",MadoguchiUpdateProgram = '" + pgmName + methodName + "' " +
-                            //"WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
-                            //"AND MadoguchiHoukokuzumi <> 1 " +
-                            ////"AND MadoguchiL1ChousaShinchoku <> 80 ";
-                            //"AND MadoguchiShinchokuJoukyou <> 80 ";
-
-                            // 窓口情報の進捗状況を更新・・・担当部所の最小の進捗で更新
-                            cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
-                            "MadoguchiShinchokuJoukyou = " + shinchoku + " " +
-                            ",MadoguchiUpdateDate = SYSDATETIME()" +
-                            ",MadoguchiUpdateUser = N'" + UserInfos[0] + "' " +
-                            ",MadoguchiUpdateProgram = '" + pgmName + methodName + "' " +
-                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " ";
-                            cmd.ExecuteNonQuery();
-
-                            
-                            // 調査品目の進捗状況を更新・・・Gridで変更した進捗に更新
-                            cmd.CommandText = "UPDATE ChousaHinmoku SET " +
-                            "ChousaShinchokuJoukyou = " + gamenShinchoku + " " +
-                            ",ChousaUpdateDate = SYSDATETIME()" +
-                            ",ChousaUpdateUser = N'" + UserInfos[0] + "' " +
-                            ",ChousaUpdateProgram = '" + pgmName + methodName + "' " +
-                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
-                            "AND HinmokuChousainCD = " + c1FlexGrid1.Rows[i][12].ToString();
-
-                            cmd.ExecuteNonQuery();
-
-                            // ここでコミットしておかないと連携が動かない
-                            transaction.Commit();
-
-                            // 皇帝まもる連携
-                            GlobalMethod.KouteiTantouBushoRenkei(c1FlexGrid1.Rows[i][29].ToString(), UserInfos[0], UserInfos[2]);
-
-                            transaction = conn.BeginTransaction();
-                            cmd.Transaction = transaction;
-
-                            cmd.CommandText = "INSERT INTO T_HISTORY(" +
-                            "H_DATE_KEY " +
-                            ",H_NO_KEY " +
-                            ",H_OPERATE_DT " +
-                            ",H_OPERATE_USER_ID " +
-                            ",H_OPERATE_USER_MEI " +
-                            ",H_OPERATE_USER_BUSHO_CD " +
-                            ",H_OPERATE_USER_BUSHO_MEI " +
-                            ",H_OPERATE_NAIYO " +
-                            ",H_ProgramName " +
-                            ",H_TOKUCHOBANGOU " +
-                            ",MadoguchiID " +
-                            ",HistoryBeforeTantoubushoCD " +
-                            ",HistoryBeforeTantoushaCD " +
-                            ",HistoryAfterTantoubushoCD " +
-                            ",HistoryAfterTantoushaCD " +
-                            ")VALUES(" +
-                            "SYSDATETIME() " +
-                            ", " + GlobalMethod.getSaiban("HistoryID") + " " +
-                            ",SYSDATETIME() " +
-                            ",'" + UserInfos[0] + "' " +
-                            ",N'" + UserInfos[1] + "' " +
-                            ",'" + UserInfos[2] + "' " +
-                            ",N'" + UserInfos[3] + "' " +
-                            ",'自分大臣で更新を行いました。進捗状況:" + gamenShinchoku + "' " +
-                            ",'" + pgmName + methodName + "' " +
-                            ",'" + c1FlexGrid1.Rows[i][4].ToString() + "' " + // 特調番号
-                            "," + c1FlexGrid1.Rows[i][29].ToString() + " " + // MadoguchiID
-                            ",NULL " +
-                            ",NULL " +
-                            ",NULL " +
-                            ",NULL " +
-                            ")";
-                        cmd.ExecuteNonQuery();
+        //                //画面のメモ
+        //                string gamenMemo = "";
+        //                if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][25].ToString()))
+        //                {
+        //                    gamenMemo = c1FlexGrid1.Rows[i][25].ToString();
+        //                }
 
 
-                            updCount++;
-                        }//差分フラグtrue if end
+        //                //MadoguchiL1ChousaCDがない場合
+        //                string chousaId = "";
+        //                if (String.IsNullOrEmpty(c1FlexGrid1.Rows[i][30].ToString()))
+        //                {
+        //                    //メモも進捗も更新できないので次の行へ
+        //                    continue;
+        //                }
+        //                else
+        //                {
+        //                    chousaId = c1FlexGrid1.Rows[i][30].ToString();
+        //                }
 
-                    }//Grid for end
+        //                //差分フラグ
+        //                Boolean sabun = false;
 
-                    //コミット
-                    transaction.Commit();
+        //                //各行の14（担当者状況）と25（メモ）カラム目取得する
+        //                DataTable dt = new DataTable();
+        //                cmd.CommandText = "SELECT ISNULL(MadoguchiL1ChousaShinchoku,'') AS MadoguchiL1ChousaShinchoku, ISNULL(MadoguchiL1Memo,'') AS MadoguchiL1Memo " +
+        //                    "FROM MadoguchiJouhouMadoguchiL1Chou " +
+        //                    "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+        //                    "AND MadoguchiL1ChousaCD = " + chousaId + " ";
 
-                    //更新データ0件の場合
-                    if (updCount == 0)
-                    {
-                        //データの更新はありませんでした。
-                        set_error(GlobalMethod.GetMessage("I40002", ""));
-                    }
-                    else
-                    {
-                        //データを更新しました。
-                        set_error(GlobalMethod.GetMessage("I40001", ""));
-                        //履歴登録
-                        //cmd.CommandText = "INSERT INTO T_HISTORY(" +
-                        //    "H_DATE_KEY " +
-                        //    ",H_NO_KEY " +
-                        //    ",H_OPERATE_DT " +
-                        //    ",H_OPERATE_USER_ID " +
-                        //    ",H_OPERATE_USER_MEI " +
-                        //    ",H_OPERATE_USER_BUSHO_CD " +
-                        //    ",H_OPERATE_USER_BUSHO_MEI " +
-                        //    ",H_OPERATE_NAIYO " +
-                        //    ",H_ProgramName " +
-                        //    ",MadoguchiID " +
-                        //    ",HistoryBeforeTantoubushoCD " +
-                        //    ",HistoryBeforeTantoushaCD " +
-                        //    ",HistoryAfterTantoubushoCD " +
-                        //    ",HistoryAfterTantoushaCD " +
-                        //    ")VALUES(" +
-                        //    "SYSDATETIME() " +
-                        //    ", " + GlobalMethod.getSaiban("HistoryID") + " " +
-                        //    ",SYSDATETIME() " +
-                        //    ",'" + UserInfos[0] + "' " +
-                        //    ",N'" + UserInfos[1] + "' " +
-                        //    ",'" + UserInfos[2] + "' " +
-                        //    ",N'" + UserInfos[3] + "' " +
-                        //    ",'自分大臣で更新を行いました。' " +
-                        //    ",'" + pgmName + methodName + "' " +
-                        //    ",NULL " +
-                        //    ",NULL " +
-                        //    ",NULL " +
-                        //    ",NULL " +
-                        //    ",NULL " +
-                        //    ")";
-                    }
+        //                var sda = new SqlDataAdapter(cmd);
+        //                sda.Fill(dt);
+        //                string shinchokuData = dt.Rows[0][0].ToString();
+        //                string memoData = dt.Rows[0][1].ToString();
+        //                //画面の担当者状況とデータの担当者状況の値が違う
+        //                //if (!String.IsNullOrEmpty(shinchokuData) && !gamenShinchoku.Equals(shinchokuData)) 
+        //                if (!gamenShinchoku.Equals(shinchokuData))
+        //                {
+        //                    sabun = true;
+        //                }
+
+        //                //画面のメモとデータのメモの値が違う
+        //                //if (!String.IsNullOrEmpty(memoData) && !gamenMemo.Equals(memoData))
+        //                if (!gamenMemo.Equals(memoData))
+        //                {
+        //                    sabun = true;
+        //                }
+
+        //                if (sabun)
+        //                {
+        //                    //各行の14（担当者状況）と25（メモ）カラム目 差分があるとき更新する
+        //                    cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET " +
+        //                        "MadoguchiL1ChousaShinchoku = " + gamenShinchoku + " " +
+        //                        ",MadoguchiL1Memo = N'" + gamenMemo + "' " +
+        //                        ",MadoguchiL1AsteriaKoushinFlag = 1 " +
+        //                        ",MadoguchiL1UpdateDate = SYSDATETIME() " +
+        //                        ",MadoguchiL1UpdateUser = N'" + UserInfos[0] + "' " +
+        //                        ",MadoguchiL1UpdateProgram = '" + pgmName + methodName + "' " +
+        //                        "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+        //                        "AND MadoguchiL1ChousaCD = " + c1FlexGrid1.Rows[i][30].ToString() + " ";
+
+        //                    cmd.ExecuteNonQuery();
+
+        //                    //窓口情報の進捗
+        //                    Boolean itijikenFlg = false;
+        //                    string shinchoku = "10";
+        //                    //中止以外の担当部所のデータを拾う
+        //                    DataTable dt2 = new DataTable();
+        //                    //cmd.CommandText = "SELECT MadoguchiL1ChousaShinchoku " +
+        //                    cmd.CommandText = "SELECT min(MadoguchiL1ChousaShinchoku) " +
+        //                        "FROM MadoguchiJouhouMadoguchiL1Chou " +
+        //                        //"WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+        //                        "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " ";
+        //                        //"AND MadoguchiL1ChousaShinchoku <> 80 ";
+
+        //                    var sda2 = new SqlDataAdapter(cmd);
+        //                    sda2.Fill(dt2);
+
+        //                    for (int j = 0; j < dt2.Rows.Count; j++)
+        //                    {
+        //                        shinchoku = dt2.Rows[0][0].ToString();
+        //                    }
+
+        //                    //for (int j = 0; j < dt.Rows.Count; j++)
+        //                    //{
+        //                    //    //取得した進捗
+        //                    //    shinchoku = int.Parse(dt.Rows[j][0].ToString());
+
+        //                    //    //一次検査の場合
+        //                    //    if (shinchoku == 60)
+        //                    //    {
+        //                    //        itijikenFlg = true;
+        //                    //    }
+
+        //                    //    //1行目
+        //                    //    if (j == 0)
+        //                    //    {
+        //                    //        //一次検査の場合
+        //                    //        if (shinchoku == 60)
+        //                    //        {
+        //                    //            //一時的に二次検済にする
+        //                    //            shinchoku = 70;
+        //                    //        }
+
+        //                    //        //一次検済以外はこのまま
+        //                    //    }
+        //                    //    //2行目以降
+        //                    //    else
+        //                    //    {
+        //                    //        //一次検査でないかつshinchokuが取得したshinchokuより大きい場合
+        //                    //        if (shinchoku != 60 && shinchoku > int.Parse(dt.Rows[j][0].ToString()))
+        //                    //        {
+        //                    //            shinchoku = int.Parse(dt.Rows[j][0].ToString());
+        //                    //        }
+        //                    //    }//行数if
+
+        //                    //}//進捗for end
+
+        //                    ////一次検査があり、
+        //                    //if (itijikenFlg)
+        //                    //{
+        //                    //    //shinchokuが二次検済より前の場合
+        //                    //    if (shinchoku <= 50)
+        //                    //    {
+        //                    //        //特になし
+        //                    //    }
+        //                    //    else
+        //                    //    {
+        //                    //        //一次検査にする
+        //                    //        shinchoku = 60;
+        //                    //    }
+        //                    //}
+
+        //                    ////窓口情報の進捗状況を更新
+        //                    //cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
+        //                    //"MadoguchiShinchokuJoukyou = " + shinchoku + " " +
+        //                    //",MadoguchiUpdateDate = SYSDATETIME()" +
+        //                    //",MadoguchiUpdateUser = N'" + UserInfos[0] + "' " +
+        //                    //",MadoguchiUpdateProgram = '" + pgmName + methodName + "' " +
+        //                    //"WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+        //                    //"AND MadoguchiHoukokuzumi <> 1 " +
+        //                    ////"AND MadoguchiL1ChousaShinchoku <> 80 ";
+        //                    //"AND MadoguchiShinchokuJoukyou <> 80 ";
+
+        //                    // 窓口情報の進捗状況を更新・・・担当部所の最小の進捗で更新
+        //                    cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
+        //                    "MadoguchiShinchokuJoukyou = " + shinchoku + " " +
+        //                    ",MadoguchiUpdateDate = SYSDATETIME()" +
+        //                    ",MadoguchiUpdateUser = N'" + UserInfos[0] + "' " +
+        //                    ",MadoguchiUpdateProgram = '" + pgmName + methodName + "' " +
+        //                    "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " ";
+        //                    cmd.ExecuteNonQuery();
 
 
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    throw;
-                }
-                conn.Close();
-            }
-        }
+        //                    // 調査品目の進捗状況を更新・・・Gridで変更した進捗に更新
+        //                    cmd.CommandText = "UPDATE ChousaHinmoku SET " +
+        //                    "ChousaShinchokuJoukyou = " + gamenShinchoku + " " +
+        //                    ",ChousaUpdateDate = SYSDATETIME()" +
+        //                    ",ChousaUpdateUser = N'" + UserInfos[0] + "' " +
+        //                    ",ChousaUpdateProgram = '" + pgmName + methodName + "' " +
+        //                    "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+        //                    "AND HinmokuChousainCD = " + c1FlexGrid1.Rows[i][12].ToString();
+
+        //                    cmd.ExecuteNonQuery();
+
+        //                    // ここでコミットしておかないと連携が動かない
+        //                    transaction.Commit();
+
+        //                    // 皇帝まもる連携
+        //                    GlobalMethod.KouteiTantouBushoRenkei(c1FlexGrid1.Rows[i][29].ToString(), UserInfos[0], UserInfos[2]);
+
+        //                    transaction = conn.BeginTransaction();
+        //                    cmd.Transaction = transaction;
+
+        //                    cmd.CommandText = "INSERT INTO T_HISTORY(" +
+        //                    "H_DATE_KEY " +
+        //                    ",H_NO_KEY " +
+        //                    ",H_OPERATE_DT " +
+        //                    ",H_OPERATE_USER_ID " +
+        //                    ",H_OPERATE_USER_MEI " +
+        //                    ",H_OPERATE_USER_BUSHO_CD " +
+        //                    ",H_OPERATE_USER_BUSHO_MEI " +
+        //                    ",H_OPERATE_NAIYO " +
+        //                    ",H_ProgramName " +
+        //                    ",H_TOKUCHOBANGOU " +
+        //                    ",MadoguchiID " +
+        //                    ",HistoryBeforeTantoubushoCD " +
+        //                    ",HistoryBeforeTantoushaCD " +
+        //                    ",HistoryAfterTantoubushoCD " +
+        //                    ",HistoryAfterTantoushaCD " +
+        //                    ")VALUES(" +
+        //                    "SYSDATETIME() " +
+        //                    ", " + GlobalMethod.getSaiban("HistoryID") + " " +
+        //                    ",SYSDATETIME() " +
+        //                    ",'" + UserInfos[0] + "' " +
+        //                    ",N'" + UserInfos[1] + "' " +
+        //                    ",'" + UserInfos[2] + "' " +
+        //                    ",N'" + UserInfos[3] + "' " +
+        //                    ",'自分大臣で更新を行いました。進捗状況:" + gamenShinchoku + "' " +
+        //                    ",'" + pgmName + methodName + "' " +
+        //                    ",'" + c1FlexGrid1.Rows[i][4].ToString() + "' " + // 特調番号
+        //                    "," + c1FlexGrid1.Rows[i][29].ToString() + " " + // MadoguchiID
+        //                    ",NULL " +
+        //                    ",NULL " +
+        //                    ",NULL " +
+        //                    ",NULL " +
+        //                    ")";
+        //                cmd.ExecuteNonQuery();
+
+
+        //                    updCount++;
+        //                }//差分フラグtrue if end
+
+        //            }//Grid for end
+
+        //            //コミット
+        //            transaction.Commit();
+
+        //            //更新データ0件の場合
+        //            if (updCount == 0)
+        //            {
+        //                //データの更新はありませんでした。
+        //                set_error(GlobalMethod.GetMessage("I40002", ""));
+        //            }
+        //            else
+        //            {
+        //                //データを更新しました。
+        //                set_error(GlobalMethod.GetMessage("I40001", ""));
+        //                //履歴登録
+        //                //cmd.CommandText = "INSERT INTO T_HISTORY(" +
+        //                //    "H_DATE_KEY " +
+        //                //    ",H_NO_KEY " +
+        //                //    ",H_OPERATE_DT " +
+        //                //    ",H_OPERATE_USER_ID " +
+        //                //    ",H_OPERATE_USER_MEI " +
+        //                //    ",H_OPERATE_USER_BUSHO_CD " +
+        //                //    ",H_OPERATE_USER_BUSHO_MEI " +
+        //                //    ",H_OPERATE_NAIYO " +
+        //                //    ",H_ProgramName " +
+        //                //    ",MadoguchiID " +
+        //                //    ",HistoryBeforeTantoubushoCD " +
+        //                //    ",HistoryBeforeTantoushaCD " +
+        //                //    ",HistoryAfterTantoubushoCD " +
+        //                //    ",HistoryAfterTantoushaCD " +
+        //                //    ")VALUES(" +
+        //                //    "SYSDATETIME() " +
+        //                //    ", " + GlobalMethod.getSaiban("HistoryID") + " " +
+        //                //    ",SYSDATETIME() " +
+        //                //    ",'" + UserInfos[0] + "' " +
+        //                //    ",N'" + UserInfos[1] + "' " +
+        //                //    ",'" + UserInfos[2] + "' " +
+        //                //    ",N'" + UserInfos[3] + "' " +
+        //                //    ",'自分大臣で更新を行いました。' " +
+        //                //    ",'" + pgmName + methodName + "' " +
+        //                //    ",NULL " +
+        //                //    ",NULL " +
+        //                //    ",NULL " +
+        //                //    ",NULL " +
+        //                //    ",NULL " +
+        //                //    ")";
+        //            }
+
+
+        //        }
+        //        catch
+        //        {
+        //            transaction.Rollback();
+        //            throw;
+        //        }
+        //        conn.Close();
+        //    }
+        //}
 
         //指定した締切日までの未提出分データを表示させる
         private void button_Miteishutu_Click(object sender, EventArgs e)
@@ -2224,6 +2225,198 @@ namespace TokuchoBugyoK2
                     }
 
                 }
+            }// 14:担当者状況変更end
+
+            // VIPS　20220301　課題管理表No1274(968)　ADD　「更新」処理追加　対応start
+            string methodName = "c1FlexGrid1_AfterEdit";
+
+            //更新ボタン押下処理
+            set_error("", 0);
+
+            var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+            using (var conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                var cmd = conn.CreateCommand();
+                SqlTransaction transaction = conn.BeginTransaction();
+                cmd.Transaction = transaction;
+                int updCount = 0;
+                try
+                {
+                    int i = e.Row;
+
+                    //画面の担当者状況
+                    string gamenShinchoku = "";
+                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][14].ToString()))
+                    {
+                        gamenShinchoku = c1FlexGrid1.Rows[i][14].ToString();
+                    }
+
+                    //画面のメモ
+                    string gamenMemo = "";
+                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][25].ToString()))
+                    {
+                        gamenMemo = c1FlexGrid1.Rows[i][25].ToString();
+                    }
+
+                    //MadoguchiL1ChousaCDがない場合
+                    //メモも進捗も更新できないので、更新処理なし、「//更新データ0件の場合」の処理へ
+
+                    string chousaId = "";
+
+                    //MadoguchiL1ChousaCDがある場合、以下の処理
+                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][30].ToString()))
+                    {
+                        chousaId = c1FlexGrid1.Rows[i][30].ToString();
+                        //差分フラグ
+                        Boolean sabun = false;
+
+                        //各行の14（担当者状況）と25（メモ）カラム目取得する
+                        DataTable dt = new DataTable();
+                        cmd.CommandText = "SELECT ISNULL(MadoguchiL1ChousaShinchoku,'') AS MadoguchiL1ChousaShinchoku, ISNULL(MadoguchiL1Memo,'') AS MadoguchiL1Memo " +
+                            "FROM MadoguchiJouhouMadoguchiL1Chou " +
+                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+                            "AND MadoguchiL1ChousaCD = " + chousaId + " ";
+
+                        var sda = new SqlDataAdapter(cmd);
+                        sda.Fill(dt);
+                        string shinchokuData = dt.Rows[0][0].ToString();
+                        string memoData = dt.Rows[0][1].ToString();
+                        //画面の担当者状況とデータの担当者状況の値が違う
+                        if (!gamenShinchoku.Equals(shinchokuData))
+                        {
+                            sabun = true;
+                        }
+
+                        //画面のメモとデータのメモの値が違う
+                        if (!gamenMemo.Equals(memoData))
+                        {
+                            sabun = true;
+                        }
+
+                        if (sabun)
+                        {
+                            //各行の14（担当者状況）と25（メモ）カラム目 差分があるとき更新する
+                            cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET " +
+                                "MadoguchiL1ChousaShinchoku = " + gamenShinchoku + " " +
+                                ",MadoguchiL1Memo = N'" + gamenMemo + "' " +
+                                ",MadoguchiL1AsteriaKoushinFlag = 1 " +
+                                ",MadoguchiL1UpdateDate = SYSDATETIME() " +
+                                ",MadoguchiL1UpdateUser = N'" + UserInfos[0] + "' " +
+                                ",MadoguchiL1UpdateProgram = '" + pgmName + methodName + "' " +
+                                "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+                                "AND MadoguchiL1ChousaCD = " + c1FlexGrid1.Rows[i][30].ToString() + " ";
+
+                            cmd.ExecuteNonQuery();
+
+                            //窓口情報の進捗
+                            string shinchoku = "10";
+                            //中止以外の担当部所のデータを拾う
+                            DataTable dt2 = new DataTable();
+                            cmd.CommandText = "SELECT min(MadoguchiL1ChousaShinchoku) " +
+                                "FROM MadoguchiJouhouMadoguchiL1Chou " +
+                                "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " ";
+
+                            var sda2 = new SqlDataAdapter(cmd);
+                            sda2.Fill(dt2);
+
+                            for (int j = 0; j < dt2.Rows.Count; j++)
+                            {
+                                shinchoku = dt2.Rows[0][0].ToString();
+                            }
+
+                            // 窓口情報の進捗状況を更新・・・担当部所の最小の進捗で更新
+                            cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
+                            "MadoguchiShinchokuJoukyou = " + shinchoku + " " +
+                            ",MadoguchiUpdateDate = SYSDATETIME()" +
+                            ",MadoguchiUpdateUser = N'" + UserInfos[0] + "' " +
+                            ",MadoguchiUpdateProgram = '" + pgmName + methodName + "' " +
+                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " ";
+                            cmd.ExecuteNonQuery();
+
+                            // 調査品目の進捗状況を更新・・・Gridで変更した進捗に更新
+                            cmd.CommandText = "UPDATE ChousaHinmoku SET " +
+                            "ChousaShinchokuJoukyou = " + gamenShinchoku + " " +
+                            ",ChousaUpdateDate = SYSDATETIME()" +
+                            ",ChousaUpdateUser = N'" + UserInfos[0] + "' " +
+                            ",ChousaUpdateProgram = '" + pgmName + methodName + "' " +
+                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+                            "AND HinmokuChousainCD = " + c1FlexGrid1.Rows[i][12].ToString();
+
+                            cmd.ExecuteNonQuery();
+
+                            // ここでコミットしておかないと連携が動かない
+                            transaction.Commit();
+
+                            // 皇帝まもる連携
+                            GlobalMethod.KouteiTantouBushoRenkei(c1FlexGrid1.Rows[i][29].ToString(), UserInfos[0], UserInfos[2]);
+
+                            transaction = conn.BeginTransaction();
+                            cmd.Transaction = transaction;
+
+                            cmd.CommandText = "INSERT INTO T_HISTORY(" +
+                            "H_DATE_KEY " +
+                            ",H_NO_KEY " +
+                            ",H_OPERATE_DT " +
+                            ",H_OPERATE_USER_ID " +
+                            ",H_OPERATE_USER_MEI " +
+                            ",H_OPERATE_USER_BUSHO_CD " +
+                            ",H_OPERATE_USER_BUSHO_MEI " +
+                            ",H_OPERATE_NAIYO " +
+                            ",H_ProgramName " +
+                            ",H_TOKUCHOBANGOU " +
+                            ",MadoguchiID " +
+                            ",HistoryBeforeTantoubushoCD " +
+                            ",HistoryBeforeTantoushaCD " +
+                            ",HistoryAfterTantoubushoCD " +
+                            ",HistoryAfterTantoushaCD " +
+                            ")VALUES(" +
+                            "SYSDATETIME() " +
+                            ", " + GlobalMethod.getSaiban("HistoryID") + " " +
+                            ",SYSDATETIME() " +
+                            ",'" + UserInfos[0] + "' " +
+                            ",N'" + UserInfos[1] + "' " +
+                            ",'" + UserInfos[2] + "' " +
+                            ",N'" + UserInfos[3] + "' " +
+                            ",'自分大臣で更新を行いました。進捗状況:" + gamenShinchoku + "' " +
+                            ",'" + pgmName + methodName + "' " +
+                            ",'" + c1FlexGrid1.Rows[i][4].ToString() + "' " + // 特調番号
+                            "," + c1FlexGrid1.Rows[i][29].ToString() + " " + // MadoguchiID
+                            ",NULL " +
+                            ",NULL " +
+                            ",NULL " +
+                            ",NULL " +
+                            ")";
+                            cmd.ExecuteNonQuery();
+
+                            updCount++;
+                        }//差分フラグtrue if end
+
+
+                        //コミット
+                        transaction.Commit();
+                    }
+
+                    //更新データ0件の場合
+                    if (updCount == 0)
+                    {
+                        //データの更新はありませんでした。
+                        set_error(GlobalMethod.GetMessage("I40002", ""));
+                    }
+                    else
+                    {
+                        //データを更新しました。
+                        set_error(GlobalMethod.GetMessage("I40001", ""));
+                    }
+
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                conn.Close();
+                // VIPS　20220301　課題管理表No1274(968)　ADD　「更新」処理追加　対応end
             }
         }
 

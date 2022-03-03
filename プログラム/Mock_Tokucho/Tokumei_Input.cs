@@ -4237,8 +4237,12 @@ namespace TokuchoBugyoK2
                         c1FlexGrid4.Cols.Move(2, ZentaiJunColIndex);
                         c1FlexGrid4.Cols.Move(1, ColumnSortColIndex);
                     }
+
+                    // VIPS　20220228　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
+                    GaroonBtn_Click(sender, e);
                 }
             }
+
         }
 
         //調査品目Gridソート時
@@ -4746,6 +4750,9 @@ namespace TokuchoBugyoK2
                                 {
                                     set_error(resultMessage);
                                 }
+
+                                // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
+                                GaroonBtn_Click(sender, e);
 
                             //// 編集ロック開放
                             //// Lockテーブル更新

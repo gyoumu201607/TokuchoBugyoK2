@@ -2737,51 +2737,52 @@ namespace TokuchoBugyoK2
             }
         }
 
-        // 窓口ミハル一覧から新規登録
-        private void BtnMadoguchiIkkatsu_Click(object sender, EventArgs e)
-        {
-            // 例外発生フラグ 0:発生なし 1:発生
-            exceptionFlg = 0;
+        // VIPS　20220228　課題管理表No1259(949)　DEL　「窓口ミハル一括登録」ボタン非表示  対応
+        //// 窓口ミハル一覧から新規登録
+        //private void BtnMadoguchiIkkatsu_Click(object sender, EventArgs e)
+        //{
+        //    // 例外発生フラグ 0:発生なし 1:発生
+        //    exceptionFlg = 0;
 
-            // 採番の値をクリア
-            saibanMadoguchiID = "";
+        //    // 採番の値をクリア
+        //    saibanMadoguchiID = "";
 
-            tokuchoBangou = "";
+        //    tokuchoBangou = "";
 
 
-            Popup_Loading Loading = new Popup_Loading();
-            Loading.StartPosition = FormStartPosition.CenterScreen;
-            Loading.Show();
+        //    Popup_Loading Loading = new Popup_Loading();
+        //    Loading.StartPosition = FormStartPosition.CenterScreen;
+        //    Loading.Show();
 
-            errorId = 0;
-            readCount = 0;
-            errorUser = UserInfos[0] + "_" + DateTime.Today.ToString("yyyyMMdd");
-            set_error("", 0);
+        //    errorId = 0;
+        //    readCount = 0;
+        //    errorUser = UserInfos[0] + "_" + DateTime.Today.ToString("yyyyMMdd");
+        //    set_error("", 0);
 
-            //ファイル
-            OpenFileDialog Dialog1 = new OpenFileDialog();
-            Dialog1.InitialDirectory = @"C:";
-            Dialog1.Title = "インポートするファイルを選択してください。";
+        //    //ファイル
+        //    OpenFileDialog Dialog1 = new OpenFileDialog();
+        //    Dialog1.InitialDirectory = @"C:";
+        //    Dialog1.Title = "インポートするファイルを選択してください。";
 
-            if (Dialog1.ShowDialog() == DialogResult.OK)
-            {
-                get_excel(Dialog1.FileName);
-            }
-            else
-            {
-                // E70039:ファイルが読み込まれていません。
-                set_error(GlobalMethod.GetMessage("E70039", ""));
-            }
+        //    if (Dialog1.ShowDialog() == DialogResult.OK)
+        //    {
+        //        get_excel(Dialog1.FileName);
+        //    }
+        //    else
+        //    {
+        //        // E70039:ファイルが読み込まれていません。
+        //        set_error(GlobalMethod.GetMessage("E70039", ""));
+        //    }
 
-            Dialog1.Dispose();
-            Loading.Close();
+        //    Dialog1.Dispose();
+        //    Loading.Close();
 
-            // バックグラウンドとなっているExcelプロセスをKILL
-            excelProcessKill();
+        //    // バックグラウンドとなっているExcelプロセスをKILL
+        //    excelProcessKill();
 
-            // データを取り直す ikkatsuFlg:1 一括フラグ:1 を渡すと画面のエラーメッセージをクリアしない
-            get_data("1");
-        }
+        //    // データを取り直す ikkatsuFlg:1 一括フラグ:1 を渡すと画面のエラーメッセージをクリアしない
+        //    get_data("1");
+        //}
 
 
         private void get_excel(string fileName)
@@ -2950,8 +2951,9 @@ namespace TokuchoBugyoK2
                         // 登録更新処理
                         if (registrationMadoguchi(fileName, wb, ws))
                         {
+                            // VIPS　20220228　課題管理表No1259(949)　DEL　「窓口ミハル一括登録取込み結果」ボタン非表示  対応
                             //BtnTorikomiKekka.Enabled = false; // Enabledを切るとC#の使用でForeColorが変更できないので背景のみ変更する
-                            BtnTorikomiKekka.BackColor = Color.DarkGray;
+                            //BtnTorikomiKekka.BackColor = Color.DarkGray;
 
                             // E70038:取込が完了しました。
                             set_error(GlobalMethod.GetMessage("E70038", ""));
@@ -2961,10 +2963,11 @@ namespace TokuchoBugyoK2
                             // 例外発生フラグ 0:発生なし 1:発生
                             if (exceptionFlg == 0)
                             {
+                                // VIPS　20220228　課題管理表No1259(949)　DEL　「窓口ミハル一括登録取込み結果」ボタン非表示  対応
                                 // E70037:取込ファイルにエラーがありました。
                                 set_error(GlobalMethod.GetMessage("E70037", ""));
                                 //BtnTorikomiKekka.Enabled = true;
-                                BtnTorikomiKekka.BackColor = Color.FromArgb(42, 78, 122);
+                                //BtnTorikomiKekka.BackColor = Color.FromArgb(42, 78, 122);
                             }
                             else
                             {
@@ -2977,8 +2980,9 @@ namespace TokuchoBugyoK2
                     {
                         // E70037:取込ファイルにエラーがありました。
                         set_error(GlobalMethod.GetMessage("E70037", ""));
+                        // VIPS　20220228　課題管理表No1259(949)　DEL　「窓口ミハル一括登録取込み結果」ボタン非表示  対応
                         //BtnTorikomiKekka.Enabled = true;
-                        BtnTorikomiKekka.BackColor = Color.FromArgb(42, 78, 122);
+                        //BtnTorikomiKekka.BackColor = Color.FromArgb(42, 78, 122);
                     }
                 }
                 finally
@@ -5356,22 +5360,23 @@ namespace TokuchoBugyoK2
             return wb;
         }
 
-        // 窓口ミハル一括取込結果一覧
-        private void BtnTorikomiKekka_Click(object sender, EventArgs e)
-        {
-            set_error("", 0);
-            if(BtnTorikomiKekka.BackColor == Color.FromArgb(42, 78, 122))
-            {
-                Popup_FileError form = new Popup_FileError(errorUser, readCount);
-                // 調査品目のエラーがあれば
-                if (chousahinmokuErrorId > 0)
-                {
-                    form.chousaHinmokuErrorCnt = chousahinmokuErrorId.ToString();
-                    form.FileReadErrorTokuchoBangou = saibanMadoguchiID;
-                }
-                form.ShowDialog();
-            }
-        }
+        // VIPS　20220228　課題管理表No1259(949)　DEL　「窓口ミハル一括登録取り込み結果」ボタン非表示  対応
+        //// 窓口ミハル一括取込結果一覧
+        //private void BtnTorikomiKekka_Click(object sender, EventArgs e)
+        //{
+        //    set_error("", 0);
+        //    if(BtnTorikomiKekka.BackColor == Color.FromArgb(42, 78, 122))
+        //    {
+        //        Popup_FileError form = new Popup_FileError(errorUser, readCount);
+        //        // 調査品目のエラーがあれば
+        //        if (chousahinmokuErrorId > 0)
+        //        {
+        //            form.chousaHinmokuErrorCnt = chousahinmokuErrorId.ToString();
+        //            form.FileReadErrorTokuchoBangou = saibanMadoguchiID;
+        //        }
+        //        form.ShowDialog();
+        //    }
+        //}
 
         // バックグラウンドとなっているExcleのプロセスをKillする
         private void excelProcessKill()
