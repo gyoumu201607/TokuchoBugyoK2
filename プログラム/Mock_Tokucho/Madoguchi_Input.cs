@@ -6194,7 +6194,9 @@ namespace TokuchoBugyoK2
                         // 支⇒本の場合、協力先部所は窓口部所を初期設定
                         //if (chousaKubunShibuhon == 1)
                         //{
-                            cmd.CommandText += ", '" + bushoShibuMei + "'"
+                            // VIPS　20220307　課題管理表No1264(958)　UPDATE　「協力先部所」の初期値を「調査統括部」に変更
+                            //cmd.CommandText += ", '" + bushoShibuMei + "'"
+                            cmd.CommandText += ", '調査統括部'"
                                             + ", '" + BushoShozokuChouCD + "'"
                                             ;
                         //}
