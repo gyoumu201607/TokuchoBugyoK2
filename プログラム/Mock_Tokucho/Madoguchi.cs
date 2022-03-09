@@ -3822,6 +3822,14 @@ namespace TokuchoBugyoK2
                         // 28:発注者名・課名
                         //chousagaiyouSQLData[0, 28] = ankenHachuushaKaMei;
                         chousagaiyouSQLData[0, 28] = (string)w_rgnName[15, 2].Text;
+                        // SE 20220309 No.1286 桁あふれ対処漏れの修正 
+                        // 最大文字数まで取得                                                                // ADD 20220309
+                        len = 150;                                                                          // ADD 20220309
+                        col = 28;                                                                           // ADD 20220309
+                        if (chousagaiyouSQLData[0, col].Length > len)                                       // ADD 20220309
+                        {                                                                                   // ADD 20220309
+                            chousagaiyouSQLData[0, col] = chousagaiyouSQLData[0, col].Substring(0, len);    // ADD 20220309
+                        }                                                                                   // ADD 20220309
                         if(chousagaiyouSQLData[0, 28] == "")
                         {
                             chousagaiyouSQLData[0, 28] = ankenHachuushaKaMei;
