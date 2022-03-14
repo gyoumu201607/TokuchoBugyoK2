@@ -1567,8 +1567,11 @@ namespace TokuchoBugyoK2
                 MadoguchiHoukokuzumi = MadoguchiData.Rows[0][41].ToString();
                 // 窓口担当者CD
                 item1_MadoguchiTantoushaCD.Text = MadoguchiData.Rows[0][7].ToString();
-                //Garoon連携
+                //締切日
                 item1_MadoguchiShimekiribi.Text = MadoguchiData.Rows[0][31].ToString();
+                // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携の値を取得
+                //Garoon連携
+                item1_GaroonRenkei.Checked = bool_str(MadoguchiData.Rows[0][46].ToString());
             }
 
             //担当部所タブ
@@ -4768,7 +4771,8 @@ namespace TokuchoBugyoK2
                                 // ProUpdateHinmokuRenkei.Call(&p_MadoguchiID,&TabCode,&pRes)
 
                                 String resultMessage = "";
-                                GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Tokumei", UserInfos[0], out resultMessage);
+                                Boolean hinmokuRenkeiResult = true;
+                                hinmokuRenkeiResult = GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Tokumei", UserInfos[0], out resultMessage);
 
                                 // メッセージがあれば画面に表示
                                 if (resultMessage != "")
@@ -4778,8 +4782,8 @@ namespace TokuchoBugyoK2
 
                             // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック、Garoon連携対象チェック
                             //Garoon連携対象である場合、かつ、下記SQLの処理が正常終了した場合、Garoon連携処理を行う
-                            if (item1_GaroonRenkei.Checked == true && GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Tokumei", UserInfos[0], out resultMessage) == true)
-                                {
+                            if (item1_GaroonRenkei.Checked == true && hinmokuRenkeiResult == true)
+                            {
                                     // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
                                     GaroonBtn_Click(sender, e);
                                 }

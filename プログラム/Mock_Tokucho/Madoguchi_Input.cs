@@ -9801,7 +9801,8 @@ namespace TokuchoBugyoK2
                                 // ProUpdateHinmokuRenkei.Call(&p_MadoguchiID,&TabCode,&pRes)
 
                                 String resultMessage = "";
-                                GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Madoguchi", UserInfos[0], out resultMessage);
+                                Boolean hinmokuRenkeiResult = true;
+                                hinmokuRenkeiResult = GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Madoguchi", UserInfos[0], out resultMessage);
 
                                 // メッセージがあれば画面に表示
                                 if (resultMessage != "") {
@@ -9810,7 +9811,7 @@ namespace TokuchoBugyoK2
 
                                 // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック、Garoon連携対象チェック
                                 //Garoon連携対象である場合、かつ、下記SQLの処理が正常終了した場合、Garoon連携処理を行う
-                                if (item1_GaroonRenkei.Checked == true && GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Madoguchi", UserInfos[0], out resultMessage) == true)
+                                if (item1_GaroonRenkei.Checked == true && hinmokuRenkeiResult == true)
                                 {
                                     // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
                                     GaroonBtn_Click(sender, e);
