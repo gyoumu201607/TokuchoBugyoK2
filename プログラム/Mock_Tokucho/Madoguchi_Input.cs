@@ -96,6 +96,8 @@ namespace TokuchoBugyoK2
         private string jutakubangouChangeFlg = "0"; // 0:受託番号未変更 1:受託番号変更
         private string tabChousahinmokuFlg = "0"; // 0:調査品目明細を開いたことが無い 1:調査品目明細を開いたことがある
         private string tabChangeFlg = "0"; // 0:タブ移動してない 1:タブ移動した
+        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+        private string globalErrorFlg = "0"; // 0:正常 1:エラー
 
         public string mode = "";
         public string MadoguchiID = "";
@@ -9806,8 +9808,13 @@ namespace TokuchoBugyoK2
                                     set_error(resultMessage);
                                 }
 
-                                // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
-                                GaroonBtn_Click(sender, e);
+                                // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック、Garoon連携対象チェック
+                                //Garoon連携対象である場合、かつ、下記SQLの処理が正常終了した場合、Garoon連携処理を行う
+                                if (item1_GaroonRenkei.Checked == true && GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Madoguchi", UserInfos[0], out resultMessage) == true)
+                                {
+                                    // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
+                                    GaroonBtn_Click(sender, e);
+                                }
 
                                 // 編集ロック開放
                                 // Lockテーブル更新
@@ -10326,8 +10333,12 @@ namespace TokuchoBugyoK2
                     // 調査品目の更新
                     chousaHinmokuUpdate();
 
-                    // VIPS　20220228　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
-                    GaroonBtn_Click(sender, e);
+                    // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック、Garoon連携対象チェック
+                    //Garoon連携対象である場合、かつ、更新処理でエラーが出ていない場合に連携処理を行う。
+                    if (item1_GaroonRenkei.Checked == true && globalErrorFlg == "0")
+                    {
+                        GaroonBtn_Click(sender, e);
+                    }
 
                     //writeHistory("【開始】調査品目明細の更新を終了します。 ID= " + MadoguchiID);
 
@@ -11262,6 +11273,8 @@ namespace TokuchoBugyoK2
             int errmessage4 = 0; // E10010:必須入力項目が未入力です。赤背景の項目を入力して下さい。
             int cnt = 0;
             Boolean errorFlg = false;
+            // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+            globalErrorFlg = "0";
             string sysDateTimeStr = "";
 
             string insertQuery = "Insert Into ChousaHinmoku( " +
@@ -11466,6 +11479,8 @@ namespace TokuchoBugyoK2
                     {
                         errmessage1 = 1;
                         errorFlg = true;
+                        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+                        globalErrorFlg = "1";
                         // ピンク背景
                         //c1FlexGrid4.GetCellRange(i, 6).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                         //c1FlexGrid4.GetCellRange(i, 7).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
@@ -11539,6 +11554,8 @@ namespace TokuchoBugyoK2
                                     {
                                         errmessage1 = 1;
                                         errorFlg = true;
+                                        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+                                        globalErrorFlg = "1";
                                         // ピンク背景
                                         //c1FlexGrid4.GetCellRange(j, 6).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                                         //c1FlexGrid4.GetCellRange(j, 7).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
@@ -11590,6 +11607,8 @@ namespace TokuchoBugyoK2
                     {
                         errmessage2 = 1;
                         errorFlg = true;
+                        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+                        globalErrorFlg = "1";
                         // ピンク背景
                         //c1FlexGrid4.GetCellRange(i, 34).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                         c1FlexGrid4.GetCellRange(i, TikuWariCodeColIndex).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
@@ -11615,6 +11634,8 @@ namespace TokuchoBugyoK2
                     {
                         errmessage2 = 1;
                         errorFlg = true;
+                        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+                        globalErrorFlg = "1";
                         // ピンク背景
                         //c1FlexGrid4.GetCellRange(i, 35).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                         c1FlexGrid4.GetCellRange(i, TikuCodeColIndex).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
@@ -11641,6 +11662,8 @@ namespace TokuchoBugyoK2
                     {
                         errmessage3 = 1;
                         errorFlg = true;
+                        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+                        globalErrorFlg = "1";
                         // ピンク背景
                         //c1FlexGrid4.GetCellRange(i, 13).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                         c1FlexGrid4.GetCellRange(i, KakakuColIndex).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
@@ -11665,6 +11688,8 @@ namespace TokuchoBugyoK2
                     {
                         errmessage4 = 1;
                         errorFlg = true;
+                        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+                        globalErrorFlg = "1";
                         // ピンク背景
                         c1FlexGrid4.GetCellRange(i, ChousaZaiKouIndex).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                         // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
@@ -11684,6 +11709,8 @@ namespace TokuchoBugyoK2
                     {
                         errmessage4 = 1;
                         errorFlg = true;
+                        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+                        globalErrorFlg = "1";
                         // ピンク背景
                         c1FlexGrid4.GetCellRange(i, ChousaZentaiJunIndex).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                         // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
@@ -11703,6 +11730,8 @@ namespace TokuchoBugyoK2
                     {
                         errmessage4 = 1;
                         errorFlg = true;
+                        // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携直前の更新処理が正常終了チェック
+                        globalErrorFlg = "1";
                         // ピンク背景
                         c1FlexGrid4.GetCellRange(i, ChousaKobetsuJunIndex).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                         // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
@@ -13437,7 +13466,8 @@ namespace TokuchoBugyoK2
         {
             string methodName = ".GaroonBtn_Click";
 
-            set_error("", 0);
+            // VIPS　20220314　課題管理表No1293（987）　ADD　Garoon連携以前の処理メッセージを残す
+            //set_error("", 0);
             // I20003:Garoonとの連携を行います。
             if (MessageBox.Show(GlobalMethod.GetMessage("I20003", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
