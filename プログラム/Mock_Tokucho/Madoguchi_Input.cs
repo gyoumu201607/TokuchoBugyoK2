@@ -2642,8 +2642,11 @@ namespace TokuchoBugyoK2
                     }
                     else
                     {
-                        item6_TanpinJutakuDate.Text = "";
-                        item6_TanpinJutakuDate.CustomFormat = " ";
+                        // VIPS　20220316　課題管理表No1168(868)　CHANGE　単品入力タブの受託日(依頼日)初期値を調査概要タブの登録日に変更
+                        //item6_TanpinJutakuDate.Text = "";
+                        //item6_TanpinJutakuDate.CustomFormat = " ";
+                        item6_TanpinJutakuDate.Text = MadoguchiData.Rows[0][29].ToString();
+                        item6_TanpinJutakuDate.CustomFormat = "";
                     }
                     if (DT_Tanpin.Rows[0][1] != null && DT_Tanpin.Rows[0][1].ToString() != "")
                     {

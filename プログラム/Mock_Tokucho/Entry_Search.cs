@@ -1614,7 +1614,9 @@ namespace TokuchoBugyoK2
             src_1.SelectedValue = GlobalMethod.GetTodayNendo();
             //set_combo_shibu(src_1.SelectedValue.ToString());
 
-            item1_KoukiNendo.SelectedValue = GlobalMethod.GetTodayNendo();
+            // VIPS　20220316　課題管理表No1287(981)　CHANGE　工期開始年度に現年度が出ていたので、＋1年を初期表示に変更
+            //item1_KoukiNendo.SelectedValue = GlobalMethod.GetTodayNendo();
+            item1_KoukiNendo.SelectedValue = (int.Parse(GlobalMethod.GetTodayNendo()) + 1).ToString();
             set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
 
             item1_1_Tounendo.Checked = false;

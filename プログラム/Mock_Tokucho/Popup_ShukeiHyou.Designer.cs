@@ -74,6 +74,8 @@
             this.button_end = new System.Windows.Forms.Button();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
+            this.radioButton_Save = new System.Windows.Forms.RadioButton();
+            this.radioButton_DL = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -666,16 +668,20 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.ColumnCount = 4;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel7.Controls.Add(this.btnFileExport, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.button_end, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(366, 639);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel7.Controls.Add(this.radioButton_DL, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.radioButton_Save, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btnFileExport, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.button_end, 3, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(265, 639);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(215, 39);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(316, 39);
             this.tableLayoutPanel7.TabIndex = 19;
             // 
             // btnFileExport
@@ -686,7 +692,7 @@
             this.btnFileExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFileExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnFileExport.ForeColor = System.Drawing.Color.White;
-            this.btnFileExport.Location = new System.Drawing.Point(15, 5);
+            this.btnFileExport.Location = new System.Drawing.Point(117, 5);
             this.btnFileExport.Margin = new System.Windows.Forms.Padding(5);
             this.btnFileExport.Name = "btnFileExport";
             this.btnFileExport.Size = new System.Drawing.Size(120, 29);
@@ -702,7 +708,7 @@
             this.button_end.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_end.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button_end.ForeColor = System.Drawing.Color.White;
-            this.button_end.Location = new System.Drawing.Point(145, 5);
+            this.button_end.Location = new System.Drawing.Point(247, 5);
             this.button_end.Margin = new System.Windows.Forms.Padding(5);
             this.button_end.Name = "button_end";
             this.button_end.Size = new System.Drawing.Size(65, 29);
@@ -738,6 +744,33 @@
             this.ErrorMessage.Name = "ErrorMessage";
             this.ErrorMessage.Size = new System.Drawing.Size(574, 13);
             this.ErrorMessage.TabIndex = 2;
+            // 
+            // radioButton_Save
+            // 
+            this.radioButton_Save.AutoSize = true;
+            this.radioButton_Save.Checked = true;
+            this.radioButton_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_Save.Location = new System.Drawing.Point(3, 3);
+            this.radioButton_Save.Name = "radioButton_Save";
+            this.radioButton_Save.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.radioButton_Save.Size = new System.Drawing.Size(54, 29);
+            this.radioButton_Save.TabIndex = 13;
+            this.radioButton_Save.TabStop = true;
+            this.radioButton_Save.Text = "保存";
+            this.radioButton_Save.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_DL
+            // 
+            this.radioButton_DL.AutoSize = true;
+            this.radioButton_DL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_DL.Location = new System.Drawing.Point(63, 3);
+            this.radioButton_DL.Name = "radioButton_DL";
+            this.radioButton_DL.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.radioButton_DL.Size = new System.Drawing.Size(46, 29);
+            this.radioButton_DL.TabIndex = 14;
+            this.radioButton_DL.Text = "ＤＬ";
+            this.radioButton_DL.UseVisualStyleBackColor = true;
+            this.radioButton_DL.CheckedChanged += new System.EventHandler(this.radioButton_DL_CheckedChanged);
             // 
             // Popup_ShukeiHyou
             // 
@@ -776,6 +809,7 @@
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.item1_ShukeiFolder_icon)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ErrorBox.ResumeLayout(false);
             this.ErrorBox.PerformLayout();
             this.ResumeLayout(false);
@@ -830,5 +864,7 @@
         private System.Windows.Forms.TextBox item1_KojinCD;
         private System.Windows.Forms.TableLayoutPanel ErrorBox;
         private System.Windows.Forms.Label ErrorMessage;
+        private System.Windows.Forms.RadioButton radioButton_Save;
+        private System.Windows.Forms.RadioButton radioButton_DL;
     }
 }

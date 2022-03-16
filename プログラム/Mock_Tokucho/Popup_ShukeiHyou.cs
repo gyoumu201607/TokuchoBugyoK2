@@ -34,6 +34,10 @@ namespace TokuchoBugyoK2
         private Boolean Busho_Ikkatu = false;
         private Boolean Hinmoku_All = false;
 
+        // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
+        Popup_Download download_form = null;
+        private Boolean existFolder = false;
+
         public Popup_ShukeiHyou()
         {
             InitializeComponent();
@@ -124,6 +128,14 @@ namespace TokuchoBugyoK2
                     getFileName();
                 }
 
+            }
+
+            // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
+            // 自分大臣以外の時、保存を初期選択として変更不可にする
+            if (PrintGamen != "Jibun")
+            {
+                radioButton_DL.Enabled = false;
+                radioButton_Save.Checked = true;
             }
 
         }
@@ -523,12 +535,16 @@ namespace TokuchoBugyoK2
             {
                 item1_ShukeiFolder_icon.Image = Image.FromFile("Resource/Image/folder_yellow_s.png");
                 set_error("", 0);
+                // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
+                existFolder = true;
             }
             else
             {
                 item1_ShukeiFolder_icon.Image = Image.FromFile("Resource/Image/folder_gray_s.png");
                 set_error("", 0);
                 set_error(GlobalMethod.GetMessage("E20331", ""));
+                // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
+                existFolder = false;
             }
         }
 
@@ -777,64 +793,89 @@ namespace TokuchoBugyoK2
                     {
                         set_error("", 0);
 
-                        // 成功時は、ファイルをフォルダにコピーする
-                        try
+                        // VIPS　20220316　課題管理表No1263(957)　ADD　保存、DL選択の分岐を追加	
+                        // 直接フォルダに保存するかDLダイアログを表示するか
+                        if (radioButton_Save.Checked)
                         {
-                            System.IO.File.Copy(result[2],item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text , true);
+                            // 成功時は、ファイルをフォルダにコピーする
+                            try
+                            {
+                                System.IO.File.Copy(result[2],item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text , true);
 
-                            set_error("集計表ファイルを出力しました。:" + item1_PritFileName.Text);
+                                set_error("集計表ファイルを出力しました。:" + item1_PritFileName.Text);
 
-                            // リンク先を設定するチェックボックスチェック時
-                            if (item_LinkCheckBox.Checked) {
-                                // 対象を取得する
-                                string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-                                DataTable dt0 = new DataTable();
-                                using (var conn = new SqlConnection(connStr))
-                                {
-                                    try
+                                // リンク先を設定するチェックボックスチェック時
+                                if (item_LinkCheckBox.Checked) {
+                                    // 対象を取得する
+                                    string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                                    DataTable dt0 = new DataTable();
+                                    using (var conn = new SqlConnection(connStr))
                                     {
-                                        conn.Open();
-                                        var cmd = conn.CreateCommand();
-
-                                        // 全品目一括集計表ではない
-                                        if (!checkBox_Zenhinmoku.Checked)
+                                        try
                                         {
-                                            cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
-                                                "WHERE " +
-                                                "MadoguchiID = '" + MadoguchiID + "' ";
+                                            conn.Open();
+                                            var cmd = conn.CreateCommand();
 
-                                            // 個人CD が0出ない場合は、個人のみ更新
-                                            if (report_data[3] != "0") { 
-                                                cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
-                                                    "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
-                                                    "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
+                                            // 全品目一括集計表ではない
+                                            if (!checkBox_Zenhinmoku.Checked)
+                                            {
+                                                cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
+                                                    "WHERE " +
+                                                    "MadoguchiID = '" + MadoguchiID + "' ";
+
+                                                // 個人CD が0出ない場合は、個人のみ更新
+                                                if (report_data[3] != "0") { 
+                                                    cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
+                                                        "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
+                                                        "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
+                                                }
                                             }
+                                            else
+                                            {
+                                                // 全品目一括集計表
+                                                cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
+                                                    "WHERE " +
+                                                    "MadoguchiID = '" + MadoguchiID + "' ";
+                                            }
+                                            cmd.ExecuteNonQuery();
+                                            conn.Close();
+                                            // 調査品目データを取り直しさせるためにパラメータをセット
+                                            ReturnValue[0] = "1";
                                         }
-                                        else
+                                        catch (Exception)
                                         {
-                                            // 全品目一括集計表
-                                            cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
-                                                "WHERE " +
-                                                "MadoguchiID = '" + MadoguchiID + "' ";
+                                            // エラーが発生しました
+                                            set_error("", 0);
+                                            set_error(GlobalMethod.GetMessage("E00091", ""));
                                         }
-                                        cmd.ExecuteNonQuery();
-                                        conn.Close();
-                                        // 調査品目データを取り直しさせるためにパラメータをセット
-                                        ReturnValue[0] = "1";
-                                    }
-                                    catch (Exception)
-                                    {
-                                        // エラーが発生しました
-                                        set_error("", 0);
-                                        set_error(GlobalMethod.GetMessage("E00091", ""));
                                     }
                                 }
                             }
+                            catch (Exception)
+                            {
+                                // ファイルコピー失敗
+                                set_error(GlobalMethod.GetMessage("E20332", ""));
+                            }
+
                         }
-                        catch (Exception)
+                        else // VIPS　20220316　課題管理表No1263(957)　ADD　DL処理の追加
                         {
-                            // ファイルコピー失敗
-                            set_error(GlobalMethod.GetMessage("E20332", ""));
+                            // DLダイアログを表示する。
+                            if (download_form != null)
+                            {
+                                download_form.Close();
+                            }
+                            // DLダイアログを表示する。
+                            download_form = new Popup_Download();
+                            download_form.TopLevel = false;
+                            this.Controls.Add(download_form);
+
+                            String fileName = Path.GetFileName(item1_PritFileName.Text);
+                            download_form.ExcelName = fileName;
+                            download_form.TotalFilePath = result[2];
+                            download_form.Dock = DockStyle.Bottom;
+                            download_form.Show();
+                            download_form.BringToFront();
                         }
                     }
                 }
@@ -1073,54 +1114,79 @@ namespace TokuchoBugyoK2
                                 }
                                 else
                                 {
-                                    // 成功時は、ファイルをフォルダにコピーする
-                                    try
+                                    // VIPS　20220316　課題管理表No1263(957)　ADD　保存、DL選択の分岐を追加
+                                    // 直接フォルダに保存するかDLダイアログを表示するか選択させる
+                                    if (radioButton_Save.Checked)
                                     {
-                                        System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + fileName, true);
-                                        set_error("集計表ファイルを出力しました。:" + fileName);
-
-                                        // リンク先を設定するチェックボックスチェック時
-                                        if (item_LinkCheckBox.Checked)
+                                        // 成功時は、ファイルをフォルダにコピーする
+                                        try
                                         {
-                                            // 対象を取得する
-                                            using (var conn = new SqlConnection(connStr))
+                                            System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + fileName, true);
+                                            set_error("集計表ファイルを出力しました。:" + fileName);
+
+                                            // リンク先を設定するチェックボックスチェック時
+                                            if (item_LinkCheckBox.Checked)
                                             {
-                                                try
+                                                // 対象を取得する
+                                                using (var conn = new SqlConnection(connStr))
                                                 {
-                                                    conn.Open();
-                                                    var cmd = conn.CreateCommand();
-                                                    cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + fileName + "' " +
-                                                        "WHERE " +
-                                                        "MadoguchiID = '" + MadoguchiID + "' ";
-
-                                                    // 個人CD が0出ない場合は、個人のみ更新
-                                                    if (report_data[3] != "0")
+                                                    try
                                                     {
-                                                        cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
-                                                            "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
-                                                            "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
+                                                        conn.Open();
+                                                        var cmd = conn.CreateCommand();
+                                                        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + fileName + "' " +
+                                                            "WHERE " +
+                                                            "MadoguchiID = '" + MadoguchiID + "' ";
+
+                                                        // 個人CD が0出ない場合は、個人のみ更新
+                                                        if (report_data[3] != "0")
+                                                        {
+                                                            cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
+                                                                "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
+                                                                "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
+                                                        }
+
+                                                        cmd.ExecuteNonQuery();
+                                                        conn.Close();
+
+                                                        // 調査品目データを取り直しさせるためにパラメータをセット
+                                                        ReturnValue[0] = "1";
                                                     }
-
-                                                    cmd.ExecuteNonQuery();
-                                                    conn.Close();
-
-                                                    // 調査品目データを取り直しさせるためにパラメータをセット
-                                                    ReturnValue[0] = "1";
-                                                }
-                                                catch (Exception)
-                                                {
-                                                    // エラーが発生しました
-                                                    set_error("", 0);
-                                                    set_error(GlobalMethod.GetMessage("E00091", ""));
+                                                    catch (Exception)
+                                                    {
+                                                        // エラーが発生しました
+                                                        set_error("", 0);
+                                                        set_error(GlobalMethod.GetMessage("E00091", ""));
+                                                    }
                                                 }
                                             }
-                                        }
 
+                                        }
+                                        catch (Exception)
+                                        {
+                                            // ファイルコピー失敗
+                                            set_error("ファイルコピー失敗:" + fileName);
+                                        }
                                     }
-                                    catch (Exception)
+                                    else // VIPS　20220316　課題管理表No1263(957)　ADD　DL処理の追加
                                     {
-                                        // ファイルコピー失敗
-                                        set_error("ファイルコピー失敗:" + fileName);
+                                        // DLダイアログを表示する。
+                                        if (download_form != null)
+                                        {
+                                            download_form.Close();
+                                        }
+                                        // DLダイアログを表示する。
+                                        download_form = new Popup_Download();
+                                        download_form.TopLevel = false;
+                                        this.Controls.Add(download_form);
+
+                                        fileName = Path.GetFileName(item1_PritFileName.Text);
+                                        download_form.ExcelName = fileName;
+                                        download_form.TotalFilePath = result[2];
+                                        download_form.Dock = DockStyle.Bottom;
+                                        download_form.Show();
+                                        download_form.BringToFront();
+
                                     }
                                 }
                             }
@@ -1222,6 +1288,27 @@ namespace TokuchoBugyoK2
                 set_error("", 0);
                 // ファイル出力ボタンを非活性化
                 btnFileExport.Enabled = false;
+            }
+        }
+
+        // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
+        private void radioButton_DL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (PrintGamen == "Jibun")
+            {
+                // DLが選択されている時はフォルダ有無に関係なく出力できるようにする
+                if (radioButton_DL.Checked || existFolder)
+                {
+                    // ファイル出力ボタンを活性化
+                    btnFileExport.Enabled = true;
+                    btnFileExport.BackColor = Color.FromArgb(42, 78, 122);
+                }
+                else
+                {
+                    // ファイル出力ボタンを非活性化
+                    btnFileExport.Enabled = false;
+                    btnFileExport.BackColor = Color.DimGray;
+                }
             }
         }
     }
