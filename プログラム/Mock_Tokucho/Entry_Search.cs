@@ -1617,7 +1617,9 @@ namespace TokuchoBugyoK2
             // VIPS　20220316　課題管理表No1287(981)　CHANGE　工期開始年度に現年度が出ていたので、＋1年を初期表示に変更
             //item1_KoukiNendo.SelectedValue = GlobalMethod.GetTodayNendo();
             item1_KoukiNendo.SelectedValue = (int.Parse(GlobalMethod.GetTodayNendo()) + 1).ToString();
-            set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
+            // VIPS　20220322  課題管理表No1287(981)  CHANGE  売上年度を引数として受託課所支部を設定
+            //set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
+            set_combo_shibu(src_1.SelectedValue.ToString());
 
             item1_1_Tounendo.Checked = false;
             item1_2_SanNen.Checked = true;
@@ -1734,13 +1736,17 @@ namespace TokuchoBugyoK2
         private void src_1_TextChanged(object sender, EventArgs e)
         {
             //set_combo_shibu(src_1.SelectedValue.ToString());
-            set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
+            // VIPS　20220322  課題管理表No1287(981)  CHANGE  売上年度を引数として受託課所支部を設定
+            //set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
+            set_combo_shibu(src_1.SelectedValue.ToString());
         }
 
         private void src_3_Click(object sender, EventArgs e)
         {
             //set_combo_shibu(src_1.SelectedValue.ToString());
-            set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
+            // VIPS　20220322  課題管理表No1287(981)  CHANGE  売上年度を引数として受託課所支部を設定
+            //set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
+            set_combo_shibu(src_1.SelectedValue.ToString());
         }
 
         private void src_4_TextChanged(object sender, EventArgs e)
@@ -2214,7 +2220,8 @@ namespace TokuchoBugyoK2
 
         private void item1_KoukiNendo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
+            // VIPS　20220322  課題管理表No1287(981)  DEL  売上年度を引数として受託課所支部を設定
+            //set_combo_shibu(item1_KoukiNendo.SelectedValue.ToString());
         }
 
         private void btnGridSize_Click(object sender, EventArgs e)
@@ -2311,6 +2318,11 @@ namespace TokuchoBugyoK2
                 c1FlexGrid1.Width = smallWidth;
             }
         }
+
+        // VIPS　20220322  課題管理表No1287(981) ADD  売上年度を引数として受託課所支部を設定
+        private void src_1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            set_combo_shibu(src_1.SelectedValue.ToString());
+        }
     }
 }
-

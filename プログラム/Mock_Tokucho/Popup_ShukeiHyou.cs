@@ -36,7 +36,8 @@ namespace TokuchoBugyoK2
 
         // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
         Popup_Download download_form = null;
-        private Boolean existFolder = false;
+        // VIPS　20220316　課題管理表No1263(957)　DEL  DLのフォルダ存在チェック行わない
+        //private Boolean existFolder = false;
 
         public Popup_ShukeiHyou()
         {
@@ -86,7 +87,7 @@ namespace TokuchoBugyoK2
 
             //getFileName();
 
-            if(src_Tantousha.Text != "")
+            if (src_Tantousha.Text != "")
             {
                 DataTable dt = new DataTable();
 
@@ -136,6 +137,10 @@ namespace TokuchoBugyoK2
             {
                 radioButton_DL.Enabled = false;
                 radioButton_Save.Checked = true;
+            }
+            else //  VIPS　20220322　課題管理表No1263(957)　ADD 自分大臣の時、初期選択はDLにする
+            {
+                radioButton_DL.Checked = true;
             }
 
         }
@@ -187,7 +192,7 @@ namespace TokuchoBugyoK2
             }
 
             //対象　コンボ
-            DataTable tmpdt =  new System.Data.DataTable();
+            DataTable tmpdt = new System.Data.DataTable();
             tmpdt.Columns.Add("Value", typeof(int));
             tmpdt.Columns.Add("Discript", typeof(string));
             tmpdt.Rows.Add(0, "主+副");
@@ -278,7 +283,8 @@ namespace TokuchoBugyoK2
             var hti = this.c1FlexGrid1.HitTest(new Point(e.X, e.Y));
 
             //部所一括チェックがtrueじゃない
-            if (!Busho_Ikkatu) {
+            if (!Busho_Ikkatu)
+            {
                 //if (hti.Column == 0 & hti.Row != 0)
                 if (hti.Column == 0 & hti.Row > 0)
                 {
@@ -296,8 +302,9 @@ namespace TokuchoBugyoK2
                     //this.Close();
                     getFileName();
 
+                    //  VIPS　20220322　課題管理表No1263(957)　ADD  保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
                     // フォルダチェック
-                    if (!Directory.Exists(item1_ShukeiFolder.Text))
+                    if (!Directory.Exists(item1_ShukeiFolder.Text) && radioButton_Save.Checked)
                     {
                         // 集計表フォルダがみつかりません。
                         set_error("", 0);
@@ -307,8 +314,9 @@ namespace TokuchoBugyoK2
                     }
                     else
                     {
+                        //  VIPS　20220322　課題管理表No1263(957)　ADD  保存にチェックがついていて、ファイルが存在する場合にエラー
                         // フォルダ + ファイル名存在チェック
-                        if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text))
+                        if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text) && radioButton_Save.Checked)
                         {
                             // E20332:集計表ファイルが既に存在します。
                             set_error("", 0);
@@ -536,7 +544,8 @@ namespace TokuchoBugyoK2
                 item1_ShukeiFolder_icon.Image = Image.FromFile("Resource/Image/folder_yellow_s.png");
                 set_error("", 0);
                 // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
-                existFolder = true;
+                // VIPS　20220322　課題管理表No1263(957)　DEL　DELフォルダチェック行わない
+                //existFolder = true;
             }
             else
             {
@@ -544,7 +553,8 @@ namespace TokuchoBugyoK2
                 set_error("", 0);
                 set_error(GlobalMethod.GetMessage("E20331", ""));
                 // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
-                existFolder = false;
+                // VIPS　20220322　課題管理表No1263(957)　DEL　DELフォルダチェック行わない
+                //existFolder = false;
             }
         }
 
@@ -566,8 +576,9 @@ namespace TokuchoBugyoK2
 
                 item1_PritFileName.Enabled = false;
 
+                //  VIPS　20220322　課題管理表No1263(957)　ADD  保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
                 // フォルダチェック
-                if (!Directory.Exists(item1_ShukeiFolder.Text))
+                if (!Directory.Exists(item1_ShukeiFolder.Text) && radioButton_Save.Checked)
                 {
                     // 集計表フォルダがみつかりません。
                     set_error("", 0);
@@ -581,7 +592,7 @@ namespace TokuchoBugyoK2
                 }
             }
             //チェックが外れたら
-            else 
+            else
             {
                 //Gridの1列目の画像を変更
                 c1FlexGrid1.Cols[0].Style.BackgroundImage = Image.FromFile("Resource/Image/selectRow.png");
@@ -609,8 +620,9 @@ namespace TokuchoBugyoK2
 
                 getFileName();
 
+                //  VIPS　20220322　課題管理表No1263(957)　ADD  保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
                 // フォルダチェック
-                if (!Directory.Exists(item1_ShukeiFolder.Text))
+                if (!Directory.Exists(item1_ShukeiFolder.Text) && radioButton_Save.Checked)
                 {
                     // 集計表フォルダがみつかりません。
                     set_error("", 0);
@@ -620,7 +632,8 @@ namespace TokuchoBugyoK2
                 }
                 else
                 {
-                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName))
+                    // VIPS 20220322 課題管理表No1263(957) ADD  保存にチェックがついていて、ファイルが存在する場合にエラー
+                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName) && radioButton_Save.Checked)
                     {
                         // ファイルが存在する
                         // E20332:集計表ファイルが既に存在します。
@@ -637,7 +650,7 @@ namespace TokuchoBugyoK2
                     }
                 }
             }
-            else 
+            else
             {
                 Hinmoku_All = false;
                 //gridと対象表示
@@ -662,7 +675,8 @@ namespace TokuchoBugyoK2
             var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
             using (var conn = new SqlConnection(connStr))
             {
-                if (comboBox_Chohyo.SelectedValue != null) { 
+                if (comboBox_Chohyo.SelectedValue != null)
+                {
                     var cmd = conn.CreateCommand();
                     // printFileName取得
                     var dtCommon = new DataTable();
@@ -679,7 +693,7 @@ namespace TokuchoBugyoK2
                     }
                     conn.Close();
 
-                    if(printFileName != "" && printFileName.Length > 5)
+                    if (printFileName != "" && printFileName.Length > 5)
                     {
                         // 後ろから5文字「.xlsm」を取る
                         extensions = printFileName.Substring(printFileName.Length - 5, 5);
@@ -690,11 +704,14 @@ namespace TokuchoBugyoK2
             {
                 item1_PritFileName.Text = "一括集計表" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
             }
-            else { 
-                if(label_SentakuTantousha.Text != "") { 
+            else
+            {
+                if (label_SentakuTantousha.Text != "")
+                {
                     item1_PritFileName.Text = label_SentakuTantousha.Text + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
                 }
-                else {
+                else
+                {
                     item1_PritFileName.Text = "未登録" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
                 }
             }
@@ -711,12 +728,14 @@ namespace TokuchoBugyoK2
         {
             set_error("", 0);
             // 部所一括集計表出力以外の場合
-            if (!checkBox_BushoIkkatu.Checked) {
+            if (!checkBox_BushoIkkatu.Checked)
+            {
+                // VIPS 20220322 課題管理表No1263(957) ADD  保存にチェックがついていて、かつ、ファイルが存在する場合にエラー
                 // ファイル存在チェック
-                if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text))
+                if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text) && radioButton_Save.Checked)
                 {
                     // 既にファイルが存在する
-                    set_error("",0);
+                    set_error("", 0);
                     set_error(GlobalMethod.GetMessage("E20332", "") + ":" + item1_PritFileName.Text);
                     return;
                 }
@@ -734,7 +753,8 @@ namespace TokuchoBugyoK2
                 // 窓口ID
                 report_data[0] = MadoguchiID;
                 // 全品目一括集計表 1:チェック 0:未チェック
-                if (checkBox_Zenhinmoku.Checked) {
+                if (checkBox_Zenhinmoku.Checked)
+                {
                     report_data[1] = "1";
                 }
                 else
@@ -775,7 +795,7 @@ namespace TokuchoBugyoK2
 
                 int listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
 
-                string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data,"Shukeihyo");
+                string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data, "Shukeihyo");
                 // result
                 // 成否判定 0:正常 1：エラー
                 // メッセージ（主にエラー用）
@@ -800,12 +820,13 @@ namespace TokuchoBugyoK2
                             // 成功時は、ファイルをフォルダにコピーする
                             try
                             {
-                                System.IO.File.Copy(result[2],item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text , true);
+                                System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text, true);
 
                                 set_error("集計表ファイルを出力しました。:" + item1_PritFileName.Text);
 
                                 // リンク先を設定するチェックボックスチェック時
-                                if (item_LinkCheckBox.Checked) {
+                                if (item_LinkCheckBox.Checked)
+                                {
                                     // 対象を取得する
                                     string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
                                     DataTable dt0 = new DataTable();
@@ -824,7 +845,8 @@ namespace TokuchoBugyoK2
                                                     "MadoguchiID = '" + MadoguchiID + "' ";
 
                                                 // 個人CD が0出ない場合は、個人のみ更新
-                                                if (report_data[3] != "0") { 
+                                                if (report_data[3] != "0")
+                                                {
                                                     cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
                                                         "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
                                                         "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
@@ -895,11 +917,12 @@ namespace TokuchoBugyoK2
 
                 // 対象を取得する
                 string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-                
+
                 //分類
                 using (var conn = new SqlConnection(connStr))
                 {
-                    try { 
+                    try
+                    {
                         var cmd = conn.CreateCommand();
                         //cmd.CommandText = "SELECT " +
                         //        "MadoguchiL1ChousaTantoushaCD " +
@@ -916,7 +939,7 @@ namespace TokuchoBugyoK2
 
                         // 主のデータを取得
                         // 0:主+副 1:主 2:副
-                        if(comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0" || comboBox_Taisho.SelectedValue.ToString() == "1"))
+                        if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0" || comboBox_Taisho.SelectedValue.ToString() == "1"))
                         {
                             cmd.CommandText = "SELECT distinct " +
                                     "HinmokuChousainCD " +
@@ -932,9 +955,9 @@ namespace TokuchoBugyoK2
                             DataTable dt0 = new DataTable();
                             sda.Fill(dt0);
 
-                            if(dt0 != null && dt0.Rows.Count > 0)
+                            if (dt0 != null && dt0.Rows.Count > 0)
                             {
-                                for(int i = 0; i < dt0.Rows.Count; i++)
+                                for (int i = 0; i < dt0.Rows.Count; i++)
                                 {
                                     // 重複除外
                                     if (!kojinList.Contains(dt0.Rows[i][0].ToString()))
@@ -1008,18 +1031,19 @@ namespace TokuchoBugyoK2
                         conn.Close();
                     }
                     catch (Exception)
-                    { 
-                    //    // エラーが発生しました
-                    //    label3.Text = GlobalMethod.GetMessage("E00091", "");
-                    //    label3.Visible = true;
+                    {
+                        //    // エラーが発生しました
+                        //    label3.Text = GlobalMethod.GetMessage("E00091", "");
+                        //    label3.Visible = true;
                     }
                 }
                 // 対象者がいる場合
                 //if(dt0.Rows.Count > 0)
-                if(kojinList.Count > 0)
+                if (kojinList.Count > 0)
                 {
+                    // VIPS　20220322　課題管理表No1263(957)　ADD保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
                     // フォルダチェック
-                    if (!Directory.Exists(item1_ShukeiFolder.Text))
+                    if (!Directory.Exists(item1_ShukeiFolder.Text) && radioButton_Save.Checked)
                     {
                         // 集計表フォルダがみつかりません。
                         set_error("", 0);
@@ -1046,8 +1070,9 @@ namespace TokuchoBugyoK2
 
                         //fileName = dt0.Rows[i][1].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
                         fileName = ChousainMeiList[i].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                        // VIPS　20220322　課題管理表No1263(957)　ADD保存にチェックがついていて、かつ、ファイルが存在する場合にエラー
                         // 存在チェック
-                        if (File.Exists(item1_ShukeiFolder.Text + @"\" + fileName))
+                        if (File.Exists(item1_ShukeiFolder.Text + @"\" + fileName) && radioButton_Save.Checked)
                         {
                             // E20332:集計表ファイルが既に存在します。
                             set_error(GlobalMethod.GetMessage("E20332", "") + ":" + fileName);
@@ -1253,10 +1278,11 @@ namespace TokuchoBugyoK2
         // ファイル名
         private void item1_PritFileName_TextChanged(object sender, EventArgs e)
         {
-            if(item1_PritFileName.Text != "")
+            if (item1_PritFileName.Text != "")
             {
+                //VIPS 20220322 課題管理表No1263(957) ADD 保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
                 // フォルダチェック
-                if (!Directory.Exists(item1_ShukeiFolder.Text))
+                if (!Directory.Exists(item1_ShukeiFolder.Text) && radioButton_Save.Checked)
                 {
                     // 集計表フォルダがみつかりません。
                     set_error("", 0);
@@ -1266,8 +1292,9 @@ namespace TokuchoBugyoK2
                 }
                 else
                 {
+                    //VIPS 20220322 課題管理表No1263(957) ADD 保存にチェックがついていて、ファイルが存在する場合にエラー
                     // フォルダ + ファイル名存在チェック
-                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text))
+                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text) && radioButton_Save.Checked)
                     {
                         // E20332:集計表ファイルが既に存在します。
                         set_error("", 0);
@@ -1294,22 +1321,26 @@ namespace TokuchoBugyoK2
         // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
         private void radioButton_DL_CheckedChanged(object sender, EventArgs e)
         {
-            if (PrintGamen == "Jibun")
-            {
-                // DLが選択されている時はフォルダ有無に関係なく出力できるようにする
-                if (radioButton_DL.Checked || existFolder)
-                {
-                    // ファイル出力ボタンを活性化
-                    btnFileExport.Enabled = true;
-                    btnFileExport.BackColor = Color.FromArgb(42, 78, 122);
-                }
-                else
-                {
-                    // ファイル出力ボタンを非活性化
-                    btnFileExport.Enabled = false;
-                    btnFileExport.BackColor = Color.DimGray;
-                }
-            }
+            //VIPS 20220322 課題管理表No1263(957) ADD ファイルが存在するなどのエラーを消す
+            set_error("", 0);
+
+            //VIPS 20220322 課題管理表No1263(957) DEL ファイル存在チェックは行わない
+            //if (PrintGamen == "Jibun")
+            //{
+            //    // DLが選択されている時はフォルダ有無に関係なく出力できるようにする
+            //    if (radioButton_DL.Checked || existFolder)
+            //    {
+            //        // ファイル出力ボタンを活性化
+            //        btnFileExport.Enabled = true;
+            //        btnFileExport.BackColor = Color.FromArgb(42, 78, 122);
+            //    }
+            //    else
+            //    {
+            //        // ファイル出力ボタンを非活性化
+            //        btnFileExport.Enabled = false;
+            //        btnFileExport.BackColor = Color.DimGray;
+            //    }
+            //}
         }
     }
 }

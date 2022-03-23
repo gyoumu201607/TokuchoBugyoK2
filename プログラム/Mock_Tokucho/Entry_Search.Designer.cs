@@ -462,7 +462,6 @@ namespace TokuchoBugyoK2
             this.item1_2_SanNen.TabStop = true;
             this.item1_2_SanNen.Text = "3年以内";
             this.item1_2_SanNen.UseVisualStyleBackColor = true;
-            this.item1_2_SanNen.Click += new System.EventHandler(this.src_3_Click);
             // 
             // item1_KoukiNendo
             // 
@@ -481,7 +480,6 @@ namespace TokuchoBugyoK2
             this.item1_KoukiNendo.TabIndex = 0;
             this.item1_KoukiNendo.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             this.item1_KoukiNendo.SelectedIndexChanged += new System.EventHandler(this.item1_KoukiNendo_SelectedIndexChanged);
-            this.item1_KoukiNendo.TextChanged += new System.EventHandler(this.src_1_TextChanged);
             // 
             // item1_1_Tounendo
             // 
@@ -494,7 +492,6 @@ namespace TokuchoBugyoK2
             this.item1_1_Tounendo.TabIndex = 1;
             this.item1_1_Tounendo.Text = "当年度";
             this.item1_1_Tounendo.UseVisualStyleBackColor = true;
-            this.item1_1_Tounendo.Click += new System.EventHandler(this.src_3_Click);
             // 
             // label7
             // 
@@ -1236,6 +1233,7 @@ namespace TokuchoBugyoK2
             this.src_3.TabIndex = 2;
             this.src_3.Text = "3年以内";
             this.src_3.UseVisualStyleBackColor = true;
+            this.src_3.Click += new System.EventHandler(this.src_3_Click);
             // 
             // src_2
             // 
@@ -1250,6 +1248,7 @@ namespace TokuchoBugyoK2
             this.src_2.TabStop = true;
             this.src_2.Text = "当年度";
             this.src_2.UseVisualStyleBackColor = true;
+            this.src_2.Click += new System.EventHandler(this.src_3_Click);
             // 
             // src_1
             // 
@@ -1267,6 +1266,7 @@ namespace TokuchoBugyoK2
             this.src_1.Size = new System.Drawing.Size(94, 22);
             this.src_1.TabIndex = 0;
             this.src_1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
+            this.src_1.TextChanged += new System.EventHandler(this.src_1_TextChanged);
             // 
             // label31
             // 
