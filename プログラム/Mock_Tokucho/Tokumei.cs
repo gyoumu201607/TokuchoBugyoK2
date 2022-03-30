@@ -262,6 +262,7 @@ namespace TokuchoBugyoK2
             item_Shintyokujyoukyo.ValueMember = "Value";
             item_Shintyokujyoukyo.DataSource = tmpdt;
 
+            // VIPS　20220330　課題管理表No1294(982) ADD 担当者状況の追加
             // 担当者状況
             tmpdt = new System.Data.DataTable();
             tmpdt.Columns.Add("Value", typeof(int));
@@ -274,6 +275,11 @@ namespace TokuchoBugyoK2
             tmpdt.Rows.Add(50, "担当者済");
             tmpdt.Rows.Add(60, "一次検済");
             tmpdt.Rows.Add(70, "二次検済");
+            tmpdt.Rows.Add(200, "調査中");
+            tmpdt.Rows.Add(220, "依頼・調査中");
+            tmpdt.Rows.Add(230, "依頼・調査中・担当者済");
+            tmpdt.Rows.Add(300, "検証中");
+            tmpdt.Rows.Add(310, "検証中・二次検済");
             tmpdt.Rows.Add(80, "中止");
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
@@ -730,9 +736,9 @@ namespace TokuchoBugyoK2
                 "WHEN T2.MadoguchiHoukokuzumi = 1 THEN '8' " +
                 "WHEN T2.MadoguchiHoukokuzumi != 1 THEN " +
                 "     CASE " +
-                "         WHEN T2.MadoguchiShinchokuJoukyou = 80 THEN '6' " +
-                "         WHEN T2.MadoguchiShinchokuJoukyou = 70 THEN '5' " +
-                "         WHEN T2.MadoguchiShinchokuJoukyou = 50 THEN '7' " +
+                "         WHEN T2.MadoguchiShinchokuJoukyou = 80 THEN '6' " + //中止
+                "         WHEN T2.MadoguchiShinchokuJoukyou = 70 THEN '5' " + // 二次検済
+                "         WHEN T2.MadoguchiShinchokuJoukyou = 50 THEN '7' " + //担当者済
                 "         WHEN T2.MadoguchiShinchokuJoukyou = 60 THEN '7' " + // 一次検済
                 "     ELSE " +
                 "         CASE " +
@@ -782,7 +788,12 @@ namespace TokuchoBugyoK2
                     // 担当者進捗 が選択されている場合
                     if (item_TantoushaJoukyo.Text != "" && item_TantoushaJoukyo.SelectedValue != null)
                     {
-                        cmd.CommandText += " AND MadoguchiL1ChousaShinchoku = " + item_TantoushaJoukyo.SelectedValue.ToString() + " ";
+                        // VIPS　20220330　課題管理表No1294(982) ADD, CHANGE 担当者状況の追加・変更
+                        // 担当者状況が複数条件の場合はテーブルで直接探さない
+                        if (int.Parse(item_TantoushaJoukyo.SelectedValue.ToString()) <= 80)
+                        {
+                            cmd.CommandText += " AND MadoguchiL1ChousaShinchoku = " + item_TantoushaJoukyo.SelectedValue.ToString() + " ";
+                        }
                     }
                     // 未割振り
                     if (warifuriFlg)
@@ -1132,7 +1143,51 @@ namespace TokuchoBugyoK2
                 //担当者状況
                 if (item_TantoushaJoukyo.Text != "" && item_TantoushaJoukyo.SelectedValue != null)
                 {
-                    Where += "and T11.MadoguchiL1ChousaShinchoku = " + item_TantoushaJoukyo.SelectedValue.ToString() + " ";
+                    // VIPS　20220330　課題管理表No1294(982) ADD 担当者状況の分岐を追加
+                    int tantoushaJoukyo = int.Parse(item_TantoushaJoukyo.SelectedValue.ToString());
+
+                    //調査中
+                    if (tantoushaJoukyo == 200)
+                    {
+                        Where += "and (T11.MadoguchiL1ChousaShinchoku = 20 " +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 30)";
+                    }
+                    //依頼・調査中
+                    else if (tantoushaJoukyo == 220)
+                    {
+                        Where += "and (T11.MadoguchiL1ChousaShinchoku = 10 " +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 20" +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 30)";
+                    }
+                    //依頼・調査中・担当者済
+                    else if (tantoushaJoukyo == 230)
+                    {
+                        Where += "and (T11.MadoguchiL1ChousaShinchoku = 10 " +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 20" +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 30" +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 40" +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 50)";
+                    }
+                    //検証中
+                    else if (tantoushaJoukyo == 300)
+                    {
+                        Where += "and (T11.MadoguchiL1ChousaShinchoku = 50 " +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 60)";
+                    }
+                    //検証中・二次検済
+                    else if (tantoushaJoukyo == 310)
+                    {
+                        Where += "and (T11.MadoguchiL1ChousaShinchoku = 50 " +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 60" +
+                        " OR T11.MadoguchiL1ChousaShinchoku = 70)";
+                    }
+                    //それ以外　依頼, 調査開始, 見積中, 集計中, 担当者済, 一次検済, 二次検済
+                    else
+                    {
+                        Where += "and T11.MadoguchiL1ChousaShinchoku = " + item_TantoushaJoukyo.SelectedValue.ToString() + " ";
+                        Console.WriteLine(item_TantoushaJoukyo.SelectedValue);
+                    }
+
                 }
                 // 未割振り
                 if (warifuriFlg)
@@ -1155,8 +1210,6 @@ namespace TokuchoBugyoK2
                 //特命課長の並び順　窓口の締切日（降順）、第２キー特調番号(枝番含む)（昇順）、第３キー管理番号（降順）
                 cmd.CommandText += "ORDER BY ";
                 cmd.CommandText += " T2.MadoguchiShimekiribi DESC ,CASE WHEN T2.MadoguchiUketsukeBangouEdaban is null OR T2.MadoguchiUketsukeBangouEdaban = '' then T2.MadoguchiUketsukeBangou ELSE T2.MadoguchiUketsukeBangou + '-' + T2.MadoguchiUketsukeBangouEdaban END ,MadoguchiKanriBangou DESC";
-
-
 
                 Console.WriteLine(cmd.CommandText);
                 GlobalMethod.outputLogger("Search_Tokumei", "開始", "GetMadoguchiJouhou", UserInfos[1]);

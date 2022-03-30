@@ -270,15 +270,20 @@ namespace TokuchoBugyoK2
             tmpdt = new System.Data.DataTable();
             tmpdt.Columns.Add("Value", typeof(int));
             tmpdt.Columns.Add("Discript", typeof(string));
-            tmpdt.Rows.Add(10, "依頼");
+            // VIPS　20220330　課題管理表No1294(982) ADD, CHANGE 担当者状況の追加・変更
+            //tmpdt.Rows.Add(10, "依頼");
             tmpdt.Rows.Add(20, "調査開始");
             tmpdt.Rows.Add(30, "見積中");
             tmpdt.Rows.Add(40, "集計中");
             tmpdt.Rows.Add(50, "担当者済");
             tmpdt.Rows.Add(60, "一次検済");
             tmpdt.Rows.Add(70, "二次検済");
-            tmpdt.Rows.Add(68, "依頼・担当者済");
-            tmpdt.Rows.Add(69, "調査中・担当者済");
+            //tmpdt.Rows.Add(68, "依頼・担当者済");
+            //tmpdt.Rows.Add(69, "調査中・担当者済");
+            tmpdt.Rows.Add(200, "調査中");
+            tmpdt.Rows.Add(210, "調査中・担当者済");
+            tmpdt.Rows.Add(300, "検証中");
+            tmpdt.Rows.Add(310, "検証中・二次検済");
             tmpdt.Rows.Add(80, "中止");
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
@@ -291,26 +296,28 @@ namespace TokuchoBugyoK2
             item_TantouJoukyo.DisplayMember = "Discript";
             item_TantouJoukyo.ValueMember = "Value";
 
+            // VIPS　20220330　課題管理表No1294(982) DEL 同じ処理なので削る
             //担当者状況
-            tmpdt = new System.Data.DataTable();
-            tmpdt.Columns.Add("Value", typeof(int));
-            tmpdt.Columns.Add("Discript", typeof(string));
-            //tmpdt.Rows.Add(0, "　");
-            tmpdt.Rows.Add(10, "依頼");
-            tmpdt.Rows.Add(20, "調査開始");
-            tmpdt.Rows.Add(30, "見積中");
-            tmpdt.Rows.Add(40, "集計中");
-            tmpdt.Rows.Add(50, "担当者済");
-            tmpdt.Rows.Add(60, "一次検済");
-            tmpdt.Rows.Add(70, "二次検済");
-            tmpdt.Rows.Add(80, "中止");
-            sl = new SortedList();
-            sl = GlobalMethod.Get_SortedList(tmpdt);
-            if (tmpdt != null)
-            {
-                DataRow dr = tmpdt.NewRow();
-                tmpdt.Rows.InsertAt(dr, 0);
-            }
+            //tmpdt = new System.Data.DataTable();
+            //tmpdt.Columns.Add("Value", typeof(int));
+            //tmpdt.Columns.Add("Discript", typeof(string));
+            ////tmpdt.Rows.Add(0, "　");
+            //tmpdt.Rows.Add(10, "依頼");
+            //tmpdt.Rows.Add(20, "調査開始");
+            //tmpdt.Rows.Add(30, "見積中");
+            //tmpdt.Rows.Add(40, "集計中");
+            //tmpdt.Rows.Add(50, "担当者済");
+            //tmpdt.Rows.Add(60, "一次検済");
+            //tmpdt.Rows.Add(70, "二次検済");
+            //tmpdt.Rows.Add(80, "中止");
+            //sl = new SortedList();
+            //sl = GlobalMethod.Get_SortedList(tmpdt);
+            //if (tmpdt != null)
+            //{
+            //    DataRow dr = tmpdt.NewRow();
+            //    tmpdt.Rows.InsertAt(dr, 0);
+            //}
+
             //該当グリッドのセルにセット
             c1FlexGrid1.Cols[14].DataMap = sl;
 
@@ -770,22 +777,49 @@ namespace TokuchoBugyoK2
                         cmd.CommandText += "AND mjmc.MadoguchiL1ChousaShinchoku = " + tantoushaJoukyo + " ";
                     }
 
+                    // VIPS　20220330　課題管理表No1294(982) DEL 依頼・担当者済の項目削除
                     //担当者状況が依頼・担当者済の場合
                     //if (!String.IsNullOrEmpty(item_TantouJoukyo.Text) && tantoushaJoukyo == 68)
-                    if (tantoushaJoukyo == 68)
+                    //if (tantoushaJoukyo == 68)
+                    //{
+                    //    cmd.CommandText += "AND (mjmc.MadoguchiL1ChousaShinchoku = 10 " +
+                    //        "OR mjmc.MadoguchiL1ChousaShinchoku = 50 )";
+                    //}
+
+                    // VIPS　20220330　課題管理表No1294(982) ADD 調査中の追加
+                    //担当者状況が調査中の場合
+                    if (!String.IsNullOrEmpty(item_TantouJoukyo.Text) && tantoushaJoukyo == 200)
                     {
-                        cmd.CommandText += "AND (mjmc.MadoguchiL1ChousaShinchoku = 10 " +
-                            "OR mjmc.MadoguchiL1ChousaShinchoku = 50 )";
+                        cmd.CommandText += "AND (mjmc.MadoguchiL1ChousaShinchoku = 20 " +
+                            "OR mjmc.MadoguchiL1ChousaShinchoku = 30" +
+                            "OR mjmc.MadoguchiL1ChousaShinchoku = 40 )";
                     }
 
+                    // VIPS　20220330　課題管理表No1294(982) CHANGE 調査中・担当者済の条件変更
                     //担当者状況が調査中・担当者済の場合
-                    //if (!String.IsNullOrEmpty(item_TantouJoukyo.Text) && tantoushaJoukyo == 69)
-                    if (!String.IsNullOrEmpty(item_TantouJoukyo.Text) && tantoushaJoukyo == 69)
+                    if (!String.IsNullOrEmpty(item_TantouJoukyo.Text) && tantoushaJoukyo == 210)
                     {
                         cmd.CommandText += "AND (mjmc.MadoguchiL1ChousaShinchoku = 20 " +
                             "OR mjmc.MadoguchiL1ChousaShinchoku = 30" +
                             "OR mjmc.MadoguchiL1ChousaShinchoku = 40" +
                             "OR mjmc.MadoguchiL1ChousaShinchoku = 50 )";
+                    }
+
+                    // VIPS　20220330　課題管理表No1294(982) ADD 検証中の追加
+                    //担当者状況が検証中の場合
+                    if (!String.IsNullOrEmpty(item_TantouJoukyo.Text) && tantoushaJoukyo == 300)
+                    {
+                        cmd.CommandText += "AND (mjmc.MadoguchiL1ChousaShinchoku = 50 " +
+                            "OR mjmc.MadoguchiL1ChousaShinchoku = 60 )";
+                    }
+
+                    // VIPS　20220330　課題管理表No1294(982) ADD 検証中・二次検済の追加
+                    //担当者状況が検証中・二次検済の場合
+                    if (!String.IsNullOrEmpty(item_TantouJoukyo.Text) && tantoushaJoukyo == 310)
+                    {
+                        cmd.CommandText += "AND (mjmc.MadoguchiL1ChousaShinchoku = 50 " +
+                            "OR mjmc.MadoguchiL1ChousaShinchoku = 60" +
+                            "OR mjmc.MadoguchiL1ChousaShinchoku = 70 )";
                     }
 
                     ////担当者状況が一次検済の場合

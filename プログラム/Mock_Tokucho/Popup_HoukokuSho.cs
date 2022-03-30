@@ -90,6 +90,11 @@ namespace TokuchoBugyoK2
                 radioButton_Save.Enabled = false;
             }
 
+            //  VIPS　20220330　課題管理表No1298(983)　ADD 自分大臣の時、初期選択はDLにする
+            if (PrintGamen == "Jibun")
+            {
+                radioButton_DL.Checked = true;
+            }
         }
 
         //コンボボックス設定

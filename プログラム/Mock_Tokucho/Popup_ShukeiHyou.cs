@@ -138,9 +138,10 @@ namespace TokuchoBugyoK2
                 radioButton_DL.Enabled = false;
                 radioButton_Save.Checked = true;
             }
-            else //  VIPS　20220322　課題管理表No1263(957)　ADD 自分大臣の時、初期選択はDLにする
+            //else //  VIPS　20220322　課題管理表No1263(957)　ADD 自分大臣の時、初期選択はDLにする
+            else //  VIPS　20220330　課題管理表No1298(983)　CHANGE 自分大臣の時、初期選択は保存にする
             {
-                radioButton_DL.Checked = true;
+                radioButton_Save.Checked = true;
             }
 
         }
