@@ -296,27 +296,27 @@ namespace TokuchoBugyoK2
             item_TantouJoukyo.DisplayMember = "Discript";
             item_TantouJoukyo.ValueMember = "Value";
 
-            // VIPS　20220330　課題管理表No1294(982) DEL 同じ処理なので削る
+            // 検索結果一覧グリッド内の担当者状況
             //担当者状況
-            //tmpdt = new System.Data.DataTable();
-            //tmpdt.Columns.Add("Value", typeof(int));
-            //tmpdt.Columns.Add("Discript", typeof(string));
-            ////tmpdt.Rows.Add(0, "　");
-            //tmpdt.Rows.Add(10, "依頼");
-            //tmpdt.Rows.Add(20, "調査開始");
-            //tmpdt.Rows.Add(30, "見積中");
-            //tmpdt.Rows.Add(40, "集計中");
-            //tmpdt.Rows.Add(50, "担当者済");
-            //tmpdt.Rows.Add(60, "一次検済");
-            //tmpdt.Rows.Add(70, "二次検済");
-            //tmpdt.Rows.Add(80, "中止");
-            //sl = new SortedList();
-            //sl = GlobalMethod.Get_SortedList(tmpdt);
-            //if (tmpdt != null)
-            //{
-            //    DataRow dr = tmpdt.NewRow();
-            //    tmpdt.Rows.InsertAt(dr, 0);
-            //}
+            tmpdt = new System.Data.DataTable();
+            tmpdt.Columns.Add("Value", typeof(int));
+            tmpdt.Columns.Add("Discript", typeof(string));
+            //tmpdt.Rows.Add(0, "　");
+            tmpdt.Rows.Add(10, "依頼");
+            tmpdt.Rows.Add(20, "調査開始");
+            tmpdt.Rows.Add(30, "見積中");
+            tmpdt.Rows.Add(40, "集計中");
+            tmpdt.Rows.Add(50, "担当者済");
+            tmpdt.Rows.Add(60, "一次検済");
+            tmpdt.Rows.Add(70, "二次検済");
+            tmpdt.Rows.Add(80, "中止");
+            sl = new SortedList();
+            sl = GlobalMethod.Get_SortedList(tmpdt);
+            if (tmpdt != null)
+            {
+                DataRow dr = tmpdt.NewRow();
+                tmpdt.Rows.InsertAt(dr, 0);
+            }
 
             //該当グリッドのセルにセット
             c1FlexGrid1.Cols[14].DataMap = sl;
