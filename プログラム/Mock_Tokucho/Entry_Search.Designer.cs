@@ -105,6 +105,10 @@ namespace TokuchoBugyoK2
             this.label31 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.chosabuHaibun_Zeikomi_Goukei = new System.Windows.Forms.Label();
+            this.chosabuHaibun_Zeinuki_Goukei = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label417 = new System.Windows.Forms.Label();
             this.Top_Page = new System.Windows.Forms.PictureBox();
             this.Previous_Page = new System.Windows.Forms.PictureBox();
             this.After_Page = new System.Windows.Forms.PictureBox();
@@ -115,10 +119,6 @@ namespace TokuchoBugyoK2
             this.Paging_all = new System.Windows.Forms.Label();
             this.Grid_Num = new System.Windows.Forms.Label();
             this.btnGridSize = new System.Windows.Forms.Button();
-            this.label32 = new System.Windows.Forms.Label();
-            this.chosabuHaibun_Zeinuki_Goukei = new System.Windows.Forms.TextBox();
-            this.chosabuHaibun_Zeikomi_Goukei = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
             this.c1FlexGrid1 = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.button4 = new System.Windows.Forms.Button();
@@ -1306,34 +1306,97 @@ namespace TokuchoBugyoK2
             // 
             this.tableLayoutPanel12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tableLayoutPanel12.AutoSize = true;
-            this.tableLayoutPanel12.ColumnCount = 10;
+            this.tableLayoutPanel12.ColumnCount = 11;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel12.Controls.Add(this.chosabuHaibun_Zeikomi_Goukei, 10, 0);
+            this.tableLayoutPanel12.Controls.Add(this.chosabuHaibun_Zeinuki_Goukei, 8, 0);
+            this.tableLayoutPanel12.Controls.Add(this.label32, 9, 0);
+            this.tableLayoutPanel12.Controls.Add(this.label417, 7, 0);
             this.tableLayoutPanel12.Controls.Add(this.Top_Page, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.Previous_Page, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.After_Page, 3, 0);
             this.tableLayoutPanel12.Controls.Add(this.End_Page, 4, 0);
             this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel11, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.btnGridSize, 5, 0);
-            this.tableLayoutPanel12.Controls.Add(this.label32, 6, 0);
-            this.tableLayoutPanel12.Controls.Add(this.chosabuHaibun_Zeinuki_Goukei, 7, 0);
-            this.tableLayoutPanel12.Controls.Add(this.chosabuHaibun_Zeikomi_Goukei, 9, 0);
-            this.tableLayoutPanel12.Controls.Add(this.label33, 8, 0);
             this.tableLayoutPanel12.Location = new System.Drawing.Point(10, 3);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(952, 29);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(972, 30);
             this.tableLayoutPanel12.TabIndex = 38;
+            // 
+            // chosabuHaibun_Zeikomi_Goukei
+            // 
+            this.chosabuHaibun_Zeikomi_Goukei.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chosabuHaibun_Zeikomi_Goukei.BackColor = System.Drawing.Color.White;
+            this.chosabuHaibun_Zeikomi_Goukei.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chosabuHaibun_Zeikomi_Goukei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.chosabuHaibun_Zeikomi_Goukei.ForeColor = System.Drawing.Color.Black;
+            this.chosabuHaibun_Zeikomi_Goukei.Location = new System.Drawing.Point(852, 5);
+            this.chosabuHaibun_Zeikomi_Goukei.Margin = new System.Windows.Forms.Padding(0);
+            this.chosabuHaibun_Zeikomi_Goukei.MaximumSize = new System.Drawing.Size(120, 20);
+            this.chosabuHaibun_Zeikomi_Goukei.MinimumSize = new System.Drawing.Size(120, 20);
+            this.chosabuHaibun_Zeikomi_Goukei.Name = "chosabuHaibun_Zeikomi_Goukei";
+            this.chosabuHaibun_Zeikomi_Goukei.Size = new System.Drawing.Size(120, 20);
+            this.chosabuHaibun_Zeikomi_Goukei.TabIndex = 70;
+            this.chosabuHaibun_Zeikomi_Goukei.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // chosabuHaibun_Zeinuki_Goukei
+            // 
+            this.chosabuHaibun_Zeinuki_Goukei.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chosabuHaibun_Zeinuki_Goukei.BackColor = System.Drawing.Color.White;
+            this.chosabuHaibun_Zeinuki_Goukei.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chosabuHaibun_Zeinuki_Goukei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.chosabuHaibun_Zeinuki_Goukei.ForeColor = System.Drawing.Color.Black;
+            this.chosabuHaibun_Zeinuki_Goukei.Location = new System.Drawing.Point(552, 5);
+            this.chosabuHaibun_Zeinuki_Goukei.Margin = new System.Windows.Forms.Padding(0);
+            this.chosabuHaibun_Zeinuki_Goukei.MaximumSize = new System.Drawing.Size(120, 20);
+            this.chosabuHaibun_Zeinuki_Goukei.MinimumSize = new System.Drawing.Size(120, 20);
+            this.chosabuHaibun_Zeinuki_Goukei.Name = "chosabuHaibun_Zeinuki_Goukei";
+            this.chosabuHaibun_Zeinuki_Goukei.Size = new System.Drawing.Size(120, 20);
+            this.chosabuHaibun_Zeinuki_Goukei.TabIndex = 69;
+            this.chosabuHaibun_Zeinuki_Goukei.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label32
+            // 
+            this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label32.BackColor = System.Drawing.Color.SteelBlue;
+            this.label32.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label32.ForeColor = System.Drawing.Color.White;
+            this.label32.Location = new System.Drawing.Point(672, 5);
+            this.label32.Margin = new System.Windows.Forms.Padding(0);
+            this.label32.MaximumSize = new System.Drawing.Size(0, 20);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(180, 20);
+            this.label32.TabIndex = 68;
+            this.label32.Text = "調査部配分額(税抜)合計";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label417
+            // 
+            this.label417.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label417.BackColor = System.Drawing.Color.SteelBlue;
+            this.label417.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label417.ForeColor = System.Drawing.Color.White;
+            this.label417.Location = new System.Drawing.Point(372, 5);
+            this.label417.Margin = new System.Windows.Forms.Padding(0);
+            this.label417.MaximumSize = new System.Drawing.Size(0, 20);
+            this.label417.Name = "label417";
+            this.label417.Size = new System.Drawing.Size(180, 20);
+            this.label417.TabIndex = 67;
+            this.label417.Text = "調査部配分額(税抜)合計";
+            this.label417.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Top_Page
             // 
@@ -1342,7 +1405,7 @@ namespace TokuchoBugyoK2
             this.Top_Page.Location = new System.Drawing.Point(0, 0);
             this.Top_Page.Margin = new System.Windows.Forms.Padding(0);
             this.Top_Page.Name = "Top_Page";
-            this.Top_Page.Size = new System.Drawing.Size(30, 29);
+            this.Top_Page.Size = new System.Drawing.Size(30, 30);
             this.Top_Page.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Top_Page.TabIndex = 0;
             this.Top_Page.TabStop = false;
@@ -1355,7 +1418,7 @@ namespace TokuchoBugyoK2
             this.Previous_Page.Location = new System.Drawing.Point(30, 0);
             this.Previous_Page.Margin = new System.Windows.Forms.Padding(0);
             this.Previous_Page.Name = "Previous_Page";
-            this.Previous_Page.Size = new System.Drawing.Size(30, 29);
+            this.Previous_Page.Size = new System.Drawing.Size(30, 30);
             this.Previous_Page.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Previous_Page.TabIndex = 0;
             this.Previous_Page.TabStop = false;
@@ -1368,7 +1431,7 @@ namespace TokuchoBugyoK2
             this.After_Page.Location = new System.Drawing.Point(142, 0);
             this.After_Page.Margin = new System.Windows.Forms.Padding(0);
             this.After_Page.Name = "After_Page";
-            this.After_Page.Size = new System.Drawing.Size(30, 29);
+            this.After_Page.Size = new System.Drawing.Size(30, 30);
             this.After_Page.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.After_Page.TabIndex = 0;
             this.After_Page.TabStop = false;
@@ -1381,7 +1444,7 @@ namespace TokuchoBugyoK2
             this.End_Page.Location = new System.Drawing.Point(172, 0);
             this.End_Page.Margin = new System.Windows.Forms.Padding(0);
             this.End_Page.Name = "End_Page";
-            this.End_Page.Size = new System.Drawing.Size(30, 29);
+            this.End_Page.Size = new System.Drawing.Size(30, 30);
             this.End_Page.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.End_Page.TabIndex = 0;
             this.End_Page.TabStop = false;
@@ -1400,7 +1463,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel11.Controls.Add(this.label30, 1, 1);
             this.tableLayoutPanel11.Controls.Add(this.Paging_all, 2, 1);
             this.tableLayoutPanel11.Controls.Add(this.Grid_Num, 3, 1);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(63, 4);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(63, 5);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 2;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1463,62 +1526,6 @@ namespace TokuchoBugyoK2
             this.btnGridSize.Text = "一覧拡大";
             this.btnGridSize.UseVisualStyleBackColor = false;
             this.btnGridSize.Click += new System.EventHandler(this.btnGridSize_Click);
-            // 
-            // label32
-            // 
-            this.label32.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label32.Location = new System.Drawing.Point(372, 6);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(158, 17);
-            this.label32.TabIndex = 63;
-            this.label32.Text = "調査部配分額(税抜)合計";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chosabuHaibun_Zeinuki_Goukei
-            // 
-            this.chosabuHaibun_Zeinuki_Goukei.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.chosabuHaibun_Zeinuki_Goukei.BackColor = System.Drawing.Color.White;
-            this.chosabuHaibun_Zeinuki_Goukei.Enabled = false;
-            this.chosabuHaibun_Zeinuki_Goukei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.chosabuHaibun_Zeinuki_Goukei.ForeColor = System.Drawing.Color.Black;
-            this.chosabuHaibun_Zeinuki_Goukei.Location = new System.Drawing.Point(534, 4);
-            this.chosabuHaibun_Zeinuki_Goukei.Margin = new System.Windows.Forms.Padding(2);
-            this.chosabuHaibun_Zeinuki_Goukei.MaxLength = 40;
-            this.chosabuHaibun_Zeinuki_Goukei.Name = "chosabuHaibun_Zeinuki_Goukei";
-            this.chosabuHaibun_Zeinuki_Goukei.Size = new System.Drawing.Size(116, 21);
-            this.chosabuHaibun_Zeinuki_Goukei.TabIndex = 64;
-            this.chosabuHaibun_Zeinuki_Goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // chosabuHaibun_Zeikomi_Goukei
-            // 
-            this.chosabuHaibun_Zeikomi_Goukei.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.chosabuHaibun_Zeikomi_Goukei.BackColor = System.Drawing.Color.White;
-            this.chosabuHaibun_Zeikomi_Goukei.Enabled = false;
-            this.chosabuHaibun_Zeikomi_Goukei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.chosabuHaibun_Zeikomi_Goukei.ForeColor = System.Drawing.Color.Black;
-            this.chosabuHaibun_Zeikomi_Goukei.Location = new System.Drawing.Point(834, 4);
-            this.chosabuHaibun_Zeikomi_Goukei.Margin = new System.Windows.Forms.Padding(2);
-            this.chosabuHaibun_Zeikomi_Goukei.MaxLength = 40;
-            this.chosabuHaibun_Zeikomi_Goukei.Name = "chosabuHaibun_Zeikomi_Goukei";
-            this.chosabuHaibun_Zeikomi_Goukei.Size = new System.Drawing.Size(116, 21);
-            this.chosabuHaibun_Zeikomi_Goukei.TabIndex = 65;
-            this.chosabuHaibun_Zeikomi_Goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label33
-            // 
-            this.label33.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label33.Location = new System.Drawing.Point(672, 6);
-            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(158, 17);
-            this.label33.TabIndex = 66;
-            this.label33.Text = "調査部配分額(税込)合計";
-            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // c1FlexGrid1
             // 
@@ -1896,9 +1903,9 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button btnGridSize;
+        private System.Windows.Forms.Label label417;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox chosabuHaibun_Zeinuki_Goukei;
-        private System.Windows.Forms.TextBox chosabuHaibun_Zeikomi_Goukei;
-        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label chosabuHaibun_Zeinuki_Goukei;
+        private System.Windows.Forms.Label chosabuHaibun_Zeikomi_Goukei;
     }
 }
