@@ -1537,9 +1537,11 @@ namespace TokuchoBugyoK2
         private void button1_Click(object sender, EventArgs e)
         {
             // VIPS　20220413　課題管理表No1303(984)　ADD　検索結果の調査部配分金額合計欄を追加
-            //検索中は0を表示
+            //検索中に0を表示
             chosabuHaibun_Zeinuki_Goukei.Text = "0";
             chosabuHaibun_Zeikomi_Goukei.Text = "0";
+            chosabuHaibun_Zeinuki_Goukei.Refresh();
+            chosabuHaibun_Zeikomi_Goukei.Refresh();
 
             //レイアウトロジックを停止する
             this.SuspendLayout();
