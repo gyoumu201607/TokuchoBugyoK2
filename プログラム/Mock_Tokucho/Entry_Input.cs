@@ -9030,14 +9030,23 @@ namespace TokuchoBugyoK2
                                     ",KeiyakuUriageHaibunGakuRIBC2 " +
                                     ",KeiyakuSeikyuubi4 " +
                                     ",KeiyakuSeikyuubi5 " +
-                                    ",KeiyakuTankeiMikomiCho " +
-                                    ",KeiyakuTankeiMikomiJo " +
-                                    ",KeiyakuTankeiMikomiJosys " +
-                                    ",KeiyakuTankeiMikomiKei " +
-                                    ",KeiyakuKurikoshiCho " +
-                                    ",KeiyakuKurikoshiJo " +
-                                    ",KeiyakuKurikoshiJosys " +
-                                    ",KeiyakuKurikoshiKei " +
+                                    // VIPS 20220408 課題管理表No.1301(997) CHANGE 変更伝票時、下記項目を赤伝にマイナスの値で登録
+                                    //",KeiyakuTankeiMikomiCho " +
+                                    //",KeiyakuTankeiMikomiJo " +
+                                    //",KeiyakuTankeiMikomiJosys " +
+                                    //",KeiyakuTankeiMikomiKei " +
+                                    //",KeiyakuKurikoshiCho " +
+                                    //",KeiyakuKurikoshiJo " +
+                                    //",KeiyakuKurikoshiJosys " +
+                                    //",KeiyakuKurikoshiKei " +
+                                    ",- KeiyakuTankeiMikomiCho " +
+                                    ",- KeiyakuTankeiMikomiJo " +
+                                    ",- KeiyakuTankeiMikomiJosys " +
+                                    ",- KeiyakuTankeiMikomiKei " +
+                                    ",- KeiyakuKurikoshiCho " +
+                                    ",- KeiyakuKurikoshiJo " +
+                                    ",- KeiyakuKurikoshiJosys " +
+                                    ",- KeiyakuKurikoshiKei " +
                                     " FROM KeiyakuJouhouEntory WHERE KeiyakuJouhouEntory.AnkenJouhouID = " + AnkenID;
                             Console.WriteLine(cmd.CommandText);
                             result = cmd.ExecuteNonQuery();

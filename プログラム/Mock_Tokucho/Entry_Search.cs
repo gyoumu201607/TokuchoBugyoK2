@@ -1423,6 +1423,23 @@ namespace TokuchoBugyoK2
             }
 
             c1FlexGrid1.Visible = true;
+
+            // VIPS　20220408　課題管理表No1303(984)　ADD　検索結果の調査部配分金額合計欄を追加
+            int sumKeiyakuHaibunChoZeinuki = 0;
+            int sumKeiyakuUriageHaibunCho = 0;
+
+            //行数の分だけ「調査部配分額(税抜)」の合計と「調査部配分額(税込み)」の合計をそれぞれ算出
+            if (0 < ListData.Rows.Count)
+            {
+                for (int i = 0; i < ListData.Rows.Count; i++)
+                {
+                    sumKeiyakuHaibunChoZeinuki += Convert.ToInt32(ListData.Rows[i][29]);
+                    sumKeiyakuUriageHaibunCho += Convert.ToInt32(ListData.Rows[i][30]);
+                }
+            }
+
+            chosabuHaibun_Zeinuki_Goukei.Text = String.Format("￥{0:#,0}", sumKeiyakuHaibunChoZeinuki);
+            chosabuHaibun_Zeikomi_Goukei.Text = String.Format("￥{0:#,0}", sumKeiyakuUriageHaibunCho);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
