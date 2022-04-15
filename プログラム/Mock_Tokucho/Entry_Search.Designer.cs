@@ -1380,7 +1380,7 @@ namespace TokuchoBugyoK2
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(180, 20);
             this.label32.TabIndex = 68;
-            this.label32.Text = "調査部配分額(税抜)合計";
+            this.label32.Text = "調査部配分額(税込)合計";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label417
