@@ -8039,8 +8039,9 @@ namespace TokuchoBugyoK2
         // 調査品目Gridのマウスホイールイベント
         private void c1FlexGrid4_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            // VIPS 20220414 コンポーネント最新化にあたり修正
             // e.Deltaがマイナス値だと↓、プラス値だと↑
-            this.tabPage3.AutoScrollPosition = new System.Drawing.Point(-this.tabPage3.AutoScrollPosition.X, -this.tabPage3.AutoScrollPosition.Y - e.Delta);
+            //this.tabPage3.AutoScrollPosition = new System.Drawing.Point(-this.tabPage3.AutoScrollPosition.X, -this.tabPage3.AutoScrollPosition.Y - e.Delta);
         }
     }
 }

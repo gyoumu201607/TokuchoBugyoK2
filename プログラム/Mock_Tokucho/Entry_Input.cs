@@ -33,6 +33,9 @@ namespace TokuchoBugyoK2
         private System.Data.DataTable AnkenData_Grid3 = new System.Data.DataTable();
         private System.Data.DataTable AnkenData_Grid4 = new System.Data.DataTable();
         private System.Data.DataTable AnkenData_Grid5 = new System.Data.DataTable();
+        // VIPS 20220415 コンポーネント最新化にあたり修正
+        private Image Img_DeleteRowNonactive;
+
         private string Message = "";
         public string[] UserInfos;
         GlobalMethod GlobalMethod = new GlobalMethod();
@@ -129,6 +132,10 @@ namespace TokuchoBugyoK2
             c1FlexGrid4.Rows[1][25] = "工期末日付";
             c1FlexGrid4.Rows[1][26] = "計上月";
             c1FlexGrid4.Rows[1][27] = "計上額";
+
+            // VIPS 20220415 コンポーネント最新化にあたり修正
+            Img_DeleteRowNonactive = Image.FromFile("Resource/Image/DeleteRow.gif");
+
 
             int num = 2;
             // 20210412 不具合があったため、一度コメントアウト
@@ -14703,5 +14710,20 @@ namespace TokuchoBugyoK2
             return keijogakuKei;
         }
 
+        // VIPS 20220415 コンポーネント最新化にあたり修正
+        private void c1FlexGrid_OwnerDrawCell(object sender, OwnerDrawCellEventArgs e)
+        {
+            if (e.Row >= 1 && e.Col == 1)
+            {
+                e.Image = Img_DeleteRowNonactive;
+            }
+        }
+        private void c1FlexGrid5_OwnerDrawCell(object sender, OwnerDrawCellEventArgs e)
+        {
+            if (e.Row >= 1 && e.Col == 0)
+            {
+                e.Image = Img_DeleteRowNonactive;
+            }
+        }
     }
 }

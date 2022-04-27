@@ -334,11 +334,14 @@ namespace TokuchoBugyoK2
             for (int i = 0; i < TankaRank_Data.Rows.Count; i++)
             {
                 TankaRankuGrid.Rows.Add();
-                for (int k = 0; k < TankaRank_Data.Columns.Count; k++)
+                // VIPS 20220414 コンポーネント最新化にあたり修正
+                //for (int k = 0; k < TankaRank_Data.Columns.Count; k++)
+                for (int k = 0; k < TankaRank_Data.Columns.Count - 1; k++)
                 {
                     TankaRankuGrid.Rows[i + 1][k + 1] = TankaRank_Data.Rows[i][k].ToString();
                 }
             }
+
             ////データがない場合、共通マスタから取得した値で初期の行を用意する
             //if (TankaRank_Data.Rows.Count == 0)
             //{

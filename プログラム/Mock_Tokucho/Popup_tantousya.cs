@@ -78,7 +78,11 @@ namespace TokuchoBugyoK2
                     c1FlexGrid0.Rows.Add();
                     for (int k = 2; k < c1FlexGrid1.Cols.Count; k++)
                     {
-                        c1FlexGrid0.Rows[i][k] = Jimusyodata.Rows[i][k - 1];
+                        // VIPS 20220414 コンポーネント最新化にあたり修正
+                        if (k < 7)
+                        {
+                           c1FlexGrid0.Rows[i][k] = Jimusyodata.Rows[i][k - 1];
+                        }
                     }
                 }
             }

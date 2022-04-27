@@ -70,12 +70,12 @@
             this.comboBox_Chohyo = new System.Windows.Forms.ComboBox();
             this.item_LinkCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioButton_DL = new System.Windows.Forms.RadioButton();
+            this.radioButton_Save = new System.Windows.Forms.RadioButton();
             this.btnFileExport = new System.Windows.Forms.Button();
             this.button_end = new System.Windows.Forms.Button();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
-            this.radioButton_Save = new System.Windows.Forms.RadioButton();
-            this.radioButton_DL = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -684,6 +684,33 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(316, 39);
             this.tableLayoutPanel7.TabIndex = 19;
             // 
+            // radioButton_DL
+            // 
+            this.radioButton_DL.AutoSize = true;
+            this.radioButton_DL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_DL.Location = new System.Drawing.Point(63, 3);
+            this.radioButton_DL.Name = "radioButton_DL";
+            this.radioButton_DL.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.radioButton_DL.Size = new System.Drawing.Size(46, 29);
+            this.radioButton_DL.TabIndex = 14;
+            this.radioButton_DL.Text = "ＤＬ";
+            this.radioButton_DL.UseVisualStyleBackColor = true;
+            this.radioButton_DL.CheckedChanged += new System.EventHandler(this.radioButton_DL_CheckedChanged);
+            // 
+            // radioButton_Save
+            // 
+            this.radioButton_Save.AutoSize = true;
+            this.radioButton_Save.Checked = true;
+            this.radioButton_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_Save.Location = new System.Drawing.Point(3, 3);
+            this.radioButton_Save.Name = "radioButton_Save";
+            this.radioButton_Save.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.radioButton_Save.Size = new System.Drawing.Size(54, 29);
+            this.radioButton_Save.TabIndex = 13;
+            this.radioButton_Save.TabStop = true;
+            this.radioButton_Save.Text = "保存";
+            this.radioButton_Save.UseVisualStyleBackColor = true;
+            // 
             // btnFileExport
             // 
             this.btnFileExport.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -744,33 +771,6 @@
             this.ErrorMessage.Name = "ErrorMessage";
             this.ErrorMessage.Size = new System.Drawing.Size(574, 13);
             this.ErrorMessage.TabIndex = 2;
-            // 
-            // radioButton_Save
-            // 
-            this.radioButton_Save.AutoSize = true;
-            this.radioButton_Save.Checked = true;
-            this.radioButton_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.radioButton_Save.Location = new System.Drawing.Point(3, 3);
-            this.radioButton_Save.Name = "radioButton_Save";
-            this.radioButton_Save.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.radioButton_Save.Size = new System.Drawing.Size(54, 29);
-            this.radioButton_Save.TabIndex = 13;
-            this.radioButton_Save.TabStop = true;
-            this.radioButton_Save.Text = "保存";
-            this.radioButton_Save.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_DL
-            // 
-            this.radioButton_DL.AutoSize = true;
-            this.radioButton_DL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.radioButton_DL.Location = new System.Drawing.Point(63, 3);
-            this.radioButton_DL.Name = "radioButton_DL";
-            this.radioButton_DL.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.radioButton_DL.Size = new System.Drawing.Size(46, 29);
-            this.radioButton_DL.TabIndex = 14;
-            this.radioButton_DL.Text = "ＤＬ";
-            this.radioButton_DL.UseVisualStyleBackColor = true;
-            this.radioButton_DL.CheckedChanged += new System.EventHandler(this.radioButton_DL_CheckedChanged);
             // 
             // Popup_ShukeiHyou
             // 
