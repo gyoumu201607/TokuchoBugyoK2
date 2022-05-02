@@ -12701,7 +12701,10 @@ namespace TokuchoBugyoK2
                 {
                     item3_1_2.Checked = false;
                 }
-                if (AnkenData_K.Rows[0][2].ToString() != null && AnkenData_K.Rows[0][2].ToString() != "")
+
+                //VIPS 20220427 課題管理表No.1277(971) CHANGE 「契約締結（変更）」日を空欄で表示
+                //if (AnkenData_K.Rows[0][2].ToString() != null && AnkenData_K.Rows[0][2].ToString() != "")
+                if (AnkenData_K.Rows[0][2].ToString() != null && AnkenData_K.Rows[0][2].ToString() != "" && mode != "change")
                 {
                     Console.WriteLine("'" + AnkenData_K.Rows[0][2].ToString() + "'");
                     item3_1_3.Text = AnkenData_K.Rows[0][2].ToString();
@@ -12711,6 +12714,7 @@ namespace TokuchoBugyoK2
                     Console.WriteLine("'" + AnkenData_K.Rows[0][2].ToString() + "'");
                     item3_1_3.CustomFormat = " ";
                 }
+
                 if (AnkenData_K.Rows[0][3].ToString() != null && AnkenData_K.Rows[0][3].ToString() != "")
                 {
                     item3_1_4.Text = AnkenData_K.Rows[0][3].ToString();

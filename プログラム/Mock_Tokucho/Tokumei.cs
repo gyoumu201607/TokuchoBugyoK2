@@ -781,6 +781,12 @@ namespace TokuchoBugyoK2
                    "  LEFT JOIN " +
                    "(select distinct MadoguchiID, MadoguchiL1ChousaBushoCD ";
 
+                    // VIPS 20220427 課題管理表No.1311(1034) ADD 担当部所情報（MadoguchiJouhouMadoguchiL1Chou）の担当者締切日（MadoguchiL1ChousaShimekiribi）を参照
+                    if (item_DateFrom.CustomFormat == "" || item_DateTo.CustomFormat == "")
+                    {
+                        cmd.CommandText += ", MadoguchiL1ChousaShimekiribi ";
+                    }
+
                     if ((item_TantoushaJoukyo.Text != "" && item_TantoushaJoukyo.SelectedValue != null) || (item_Shintyokujyoukyo.SelectedValue != null && item_Shintyokujyoukyo.SelectedValue.ToString() != "")) { 
                         cmd.CommandText += ",MadoguchiL1ChousaShinchoku, MadoguchiL1ChousaShimekiribi ";
                     }
@@ -1099,13 +1105,15 @@ namespace TokuchoBugyoK2
                 // 調査担当者への締切日
                 if (item_DateFrom.CustomFormat == "")
                 {
-                    //Where += "and T11.MadoguchiL1ChousaShimekiribi >= '" + item_DateFrom.Text + "' ";
-                    Where += "and T2.MadoguchiShimekiribi >= '" + item_DateFrom.Text + "' ";
+                    //VIPS 20220427 課題管理表No.1311(1034) CHANGE 担当部所情報（MadoguchiJouhouMadoguchiL1Chou）の担当者締切日（MadoguchiL1ChousaShimekiribi）を参照
+                    Where += "and T11.MadoguchiL1ChousaShimekiribi >= '" + item_DateFrom.Text + "' ";
+                    //Where += "and T2.MadoguchiShimekiribi >= '" + item_DateFrom.Text + "' ";
                 }
                 if (item_DateTo.CustomFormat == "")
                 {
-                    //Where += "and T11.MadoguchiL1ChousaShimekiribi <= '" + item_DateTo.Text + "' ";
-                    Where += "and T2.MadoguchiShimekiribi <= '" + item_DateTo.Text + "' ";
+                    //VIPS 20220427 課題管理表No.1311(1034) CHANGE 担当部所情報（MadoguchiJouhouMadoguchiL1Chou）の担当者締切日（MadoguchiL1ChousaShimekiribi）を参照
+                    Where += "and T11.MadoguchiL1ChousaShimekiribi <= '" + item_DateTo.Text + "' ";
+                    //Where += "and T2.MadoguchiShimekiribi <= '" + item_DateTo.Text + "' ";
                 }
 
 
