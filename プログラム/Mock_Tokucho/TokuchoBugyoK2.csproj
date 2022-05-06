@@ -7,14 +7,14 @@
     <ProjectGuid>{0AA1DAEB-7746-4D4F-8B66-55281FA32BFE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TokuchoBugyoK2</RootNamespace>
-    <AssemblyName>TokuchoBugyoK2_UT</AssemblyName>
+    <AssemblyName>TokuchoBugyoK2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\deploy_app\検証環境_デプロイモジュール_20220222\</PublishUrl>
+    <PublishUrl>C:\deploy_app\江幡様環境_デプロイモジュール_20220506\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,20 +24,20 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://192.168.10.60/TokuchoBugyoK2_UT/</InstallUrl>
-    <ProductName>TokuchoBugyoK2_UT</ProductName>
+    <InstallUrl>http://HPNJPH8451DXGA/TokuchoBugyoK2/</InstallUrl>
+    <ProductName>TokuchoBugyoK2</ProductName>
     <PublisherName>Construction Research Institute</PublisherName>
-    <MinimumRequiredVersion>2.0.0.64</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.0.0.71</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>app.htm</WebPage>
-    <ApplicationRevision>64</ApplicationRevision>
-    <ApplicationVersion>2.0.0.64</ApplicationVersion>
+    <ApplicationRevision>71</ApplicationRevision>
+    <ApplicationVersion>2.0.0.71</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
-    <BootstrapperComponentsUrl>http://192.168.10.60/TokuchoBugyoK2_UT/</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>http://HPNJPH8451DXGA/TokuchoBugyoK2/</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -101,17 +101,17 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C1.C1Excel.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.C1Zip.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.Bitmap.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Command.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1DX.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Input.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Ribbon.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.Calendar.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.C1Excel.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.C1Zip.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.Bitmap.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Command.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1DX.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Input.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Ribbon.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1SuperTooltip.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.Calendar.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

@@ -103,6 +103,9 @@ namespace TokuchoBugyoK2
         public string MadoguchiID = "";
         public string KakoIraiID = "";
 
+        //VIPS 20200506 課題管理表No1314（1038）ADD 窓口ミハル　協力依頼書タブの協力先所属長を「調査統括部」の所属長でデフォルト登録されるようにする
+        private const string CONST_DEFAULT_KYORYOKUSAKI_BUSHO_CD = "127100";
+
         public Madoguchi_Input()
         {
             InitializeComponent();
@@ -6091,13 +6094,21 @@ namespace TokuchoBugyoK2
                         //  "ShibuMei " +
                         //  "FROM " + "Mst_Busho " +
                         //  "WHERE GyoumuBushoCD = '" + item1_MadoguchiTantoushaBushoCD.SelectedValue.ToString() + "' ";
+                        //VIPS 20200506 課題管理表No1314（1038）ADD 窓口ミハル　協力依頼書タブの協力先所属長を「調査統括部」の所属長でデフォルト登録されるようにする
                         cmd.CommandText = "SELECT"
                                         + " Mst_Busho.ShibuMei"
                                         + ", Mst_Chousain.KojinCD"
                                         + " FROM Mst_Busho"
                                         + " LEFT JOIN Mst_Chousain ON Mst_Busho.BushoShozokuChou = Mst_Chousain.ChousainMei"
-                                        + " WHERE Mst_Busho.GyoumuBushoCD = '" + item1_MadoguchiTantoushaBushoCD.SelectedValue.ToString() + "'"
+                                        + " WHERE Mst_Busho.GyoumuBushoCD = '" + CONST_DEFAULT_KYORYOKUSAKI_BUSHO_CD + "'"
                                         ;
+                        //cmd.CommandText = "SELECT"
+                        //                + " Mst_Busho.ShibuMei"
+                        //                + ", Mst_Chousain.KojinCD"
+                        //                + " FROM Mst_Busho"
+                        //                + " LEFT JOIN Mst_Chousain ON Mst_Busho.BushoShozokuChou = Mst_Chousain.ChousainMei"
+                        //                + " WHERE Mst_Busho.GyoumuBushoCD = '" + item1_MadoguchiTantoushaBushoCD.SelectedValue.ToString() + "'"
+                        //                ;
 
                         //データ取得
                         var busho_sda = new SqlDataAdapter(cmd);
@@ -6199,9 +6210,11 @@ namespace TokuchoBugyoK2
                         // 支⇒本の場合、協力先部所は窓口部所を初期設定
                         //if (chousaKubunShibuhon == 1)
                         //{
+                            //VIPS 20200506 課題管理表No1314（1038）ADD 窓口ミハル　協力依頼書タブの協力先所属長を「調査統括部」の所属長でデフォルト登録されるようにする
+                            //1調査統括部のコードで名称と部署所属長コードを取得するよう修正したので元に戻した。
                             // VIPS　20220307　課題管理表No1264(958)　UPDATE　「協力先部所」の初期値を「調査統括部」に変更
-                            //cmd.CommandText += ", '" + bushoShibuMei + "'"
-                            cmd.CommandText += ", '調査統括部'"
+                            cmd.CommandText += ", '" + bushoShibuMei + "'"
+                            //cmd.CommandText += ", '調査統括部'"
                                             + ", '" + BushoShozokuChouCD + "'"
                                             ;
                         //}
