@@ -781,15 +781,20 @@ namespace TokuchoBugyoK2
                    "  LEFT JOIN " +
                    "(select distinct MadoguchiID, MadoguchiL1ChousaBushoCD ";
 
+                    // VIPS 20220510 課題管理表No.1317(1041) ↓1311で対応した際、「MadoguchiL1ChousaShimekiribi」のカラムが重複してしまったため修正
                     // VIPS 20220427 課題管理表No.1311(1034) ADD 担当部所情報（MadoguchiJouhouMadoguchiL1Chou）の担当者締切日（MadoguchiL1ChousaShimekiribi）を参照
-                    if (item_DateFrom.CustomFormat == "" || item_DateTo.CustomFormat == "")
+                    //if (item_DateFrom.CustomFormat == "" || item_DateTo.CustomFormat == "")
+                    //{
+                    //    cmd.CommandText += ", MadoguchiL1ChousaShimekiribi ";
+                    //}
+                    if ((item_TantoushaJoukyo.Text != "" && item_TantoushaJoukyo.SelectedValue != null) || (item_Shintyokujyoukyo.SelectedValue != null && item_Shintyokujyoukyo.SelectedValue.ToString() != "") || item_DateFrom.CustomFormat == "" || item_DateTo.CustomFormat == "")
                     {
-                        cmd.CommandText += ", MadoguchiL1ChousaShimekiribi ";
-                    }
-
-                    if ((item_TantoushaJoukyo.Text != "" && item_TantoushaJoukyo.SelectedValue != null) || (item_Shintyokujyoukyo.SelectedValue != null && item_Shintyokujyoukyo.SelectedValue.ToString() != "")) { 
                         cmd.CommandText += ",MadoguchiL1ChousaShinchoku, MadoguchiL1ChousaShimekiribi ";
                     }
+                    //if ((item_TantoushaJoukyo.Text != "" && item_TantoushaJoukyo.SelectedValue != null) || (item_Shintyokujyoukyo.SelectedValue != null && item_Shintyokujyoukyo.SelectedValue.ToString() != "")) { 
+                    //    cmd.CommandText += ",MadoguchiL1ChousaShinchoku, MadoguchiL1ChousaShimekiribi ";
+                    //}
+
                     cmd.CommandText += " from MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiL1ChousaBushoCD = " + item_ChousaBusho.SelectedValue.ToString();
                     // 担当者進捗 が選択されている場合
                     if (item_TantoushaJoukyo.Text != "" && item_TantoushaJoukyo.SelectedValue != null)
