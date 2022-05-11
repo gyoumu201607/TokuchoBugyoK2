@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\deploy_app\江幡様環境_デプロイモジュール_20220506\</PublishUrl>
+    <PublishUrl>C:\deploy_app\本番環境_デプロイモジュール_20220511\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,20 +24,20 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://HPNJPH8451DXGA/TokuchoBugyoK2/</InstallUrl>
+    <InstallUrl>http://192.168.10.60/TokuchoBugyoK2/</InstallUrl>
     <ProductName>TokuchoBugyoK2</ProductName>
     <PublisherName>Construction Research Institute</PublisherName>
-    <MinimumRequiredVersion>2.0.0.71</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.0.0.72</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>app.htm</WebPage>
-    <ApplicationRevision>71</ApplicationRevision>
-    <ApplicationVersion>2.0.0.71</ApplicationVersion>
+    <ApplicationRevision>72</ApplicationRevision>
+    <ApplicationVersion>2.0.0.72</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
-    <BootstrapperComponentsUrl>http://HPNJPH8451DXGA/TokuchoBugyoK2/</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>http://192.168.10.60/TokuchoBugyoK2/</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -231,6 +231,12 @@
     </Compile>
     <Compile Include="Popup_Download.Designer.cs">
       <DependentUpon>Popup_Download.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_FileSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_FileSelect.Designer.cs">
+      <DependentUpon>Popup_FileSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Popup_FileError.cs">
       <SubType>Form</SubType>
@@ -527,6 +533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Download.resx">
       <DependentUpon>Popup_Download.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_FileSelect.resx">
+      <DependentUpon>Popup_FileSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_FileError.resx">
       <DependentUpon>Popup_FileError.cs</DependentUpon>
