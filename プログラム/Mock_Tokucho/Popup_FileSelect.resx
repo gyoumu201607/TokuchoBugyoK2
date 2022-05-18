@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="c1FlexGrid1.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="gridFileList.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
         +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
@@ -138,11 +138,11 @@
         GDCDuoSBlKdRpk0nJrTJs2pAADs=
 </value>
   </data>
-  <data name="c1FlexGrid1.ColumnInfo" xml:space="preserve">
-    <value>2,0,0,0,0,-1,Columns:0{Width:80;Caption:"出力";AllowDragging:False;AllowEditing:False;Style:"DataType:System.Boolean;Font:ＭＳ Ｐゴシック, 9pt;TextAlign:LeftCenter;ImageAlign:CenterCenter;";}	1{Width:394;Caption:"ファイル名";AllowDragging:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 9pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;WordWrap:True;";}	</value>
+  <data name="gridFileList.ColumnInfo" xml:space="preserve">
+    <value>2,0,0,0,0,-1,Columns:0{Width:80;Caption:"出力";AllowDragging:False;Style:"DataType:System.Boolean;Font:ＭＳ Ｐゴシック, 9pt;TextAlign:CenterCenter;ImageAlign:CenterCenter;";}	1{Width:394;Caption:"ファイル名";AllowDragging:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 9pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;WordWrap:True;";}	</value>
   </data>
-  <data name="c1FlexGrid1.StyleInfo" xml:space="preserve">
-    <value>Normal{ForeColor:Black;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ForeColor:Black;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
+  <data name="gridFileList.StyleInfo" xml:space="preserve">
+    <value>Normal{ForeColor:Black;Margins:1, 1, 1, 1;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ForeColor:Black;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

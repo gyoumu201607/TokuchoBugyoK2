@@ -65,6 +65,10 @@ namespace TokuchoBugyoK2
         private Image Img_DeleteRowNonactive;
         private Image Img_Sort;
         private int errorCnt = 0;
+        //課題No1300（994）VIPS 複数ファイル取り込み対応
+        private List<int> errorCounts;
+        private bool isManyFileExecute;
+
         private string ShukeiHyoFolder = "";
         private string chousaLinkFlg = "0"; // 調査品目明細のフォルダリンク先表示フラグ　1=非表示、0=表示
         // 調査品目明細の削除Key
@@ -4594,6 +4598,9 @@ namespace TokuchoBugyoK2
             // I20314:単価取込を行いますがよろしいですか？※他の担当者の単価取込を行う場合は、検索条件の調査担当者を変更して下さい。
             if (MessageBox.Show(GlobalMethod.GetMessage("I20314", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+                //課題No1300（994）VIPS 複数ファイル取り込み対応
+                isManyFileExecute=false;
+
                 //レイアウトロジックを停止する
                 this.SuspendLayout();
 
@@ -4603,6 +4610,11 @@ namespace TokuchoBugyoK2
                     src_HinmokuChousain.BackColor = Color.FromArgb(255, 255, 255);
 
                     string filePath = "";
+
+                    //課題No1300（994）VIPS
+                    string folderPath = "";
+                    bool isMenyFiles = false;
+                    List<string> selectFiles=new List<string>();
 
                     // GeneXusのPCに渡すファイル名用の変数
                     string Buf = "";
@@ -4629,96 +4641,272 @@ namespace TokuchoBugyoK2
 
                         w_DeleteFile = filePath;
                     }
-
-                    // ファイル存在チェック
-                    // 集計表フォルダ内に、取込対象ファイルがあるかどうかをチェック
-                    if (File.Exists(filePath))
+                    //課題No1300（994）VIPS
+                    else if (radioButton3.Checked)
                     {
-                        int i_ZumenNo = 0;
-                        int i_Hinmei = 0;
-                        int i_hachuu = 0;
+                        // 集計表フォルダパス + 調査担当者 + 特調番号（-枝番付き）
+                        folderPath = item1_MadoguchiShukeiHyoFolder.Text + @"\" + src_HinmokuChousain.Text + "-" + item1_MadoguchiUketsukeBangou.Text + "-" + item1_MadoguchiUketsukeBangouEdaban.Text;
+                        Popup_FileSelect form = new Popup_FileSelect(folderPath);
+                        //キャンセル時には何もしないで終了
+                        if (form.ShowDialog() == DialogResult.Cancel){
+                            // 調査品目を取り直す
+                            get_data(3);
+                            //レイアウトロジックを再開する
+                            this.ResumeLayout();
+                            return;
+                        }
+                        //複数ファイル取り込み実施だようフラグ
+                        isManyFileExecute = true;
+                        //エラーメッセージクリア
+                        set_error("",0);
+                        selectFiles = form.selectFiles;
+                        isMenyFiles =true;
+                    }
 
-                        // 図面番号/参考質量を取り込む
-                        if (checkBox1.Checked)
+                    //課題No1300（994）VIPS
+                    if (isMenyFiles)
+                    {
+                        if (selectFiles.Count == 0)
                         {
-                            i_ZumenNo = 1;
+                            // 調査品目を取り直す
+                            get_data(3);
+                            //レイアウトロジックを再開する
+                            this.ResumeLayout();
+                            return;
                         }
                         else
                         {
-                            i_ZumenNo = 2;
-                        }
-                        // 品名/規格を取り込む
-                        if (checkBox2.Checked)
-                        {
-                            i_Hinmei = 1;
-                        }
-                        else
-                        {
-                            i_Hinmei = 2;
-                        }
-                        // 発注機関コードをキーとして取り込む
-                        if (checkBox3.Checked)
-                        {
-                            i_hachuu = 1;
-                        }
-                        else
-                        {
-                            i_hachuu = 2;
-                        }
-
-                        string[] result = GlobalMethod.InsertTanka(filePath
-                                                                    , MadoguchiID
-                                                                    , i_ZumenNo
-                                                                    , i_Hinmei
-                                                                    , i_hachuu
-                                                                    , item3_HinmokuChousainCD.Text
-                                                                    , src_ShuFuku.SelectedValue.ToString()
-                                                                    , Buf
-                                                                    , UserInfos[0]
-                                                                    , UserInfos[2]);
-
-                        // result
-                        // 成否判定 0:正常 1：エラー
-                        // T_ReadFileErrorテーブルのエラーカウント（FileReadErrorReadCount）
-                        // メッセージ（主にエラー用）
-                        if (result != null && result.Length >= 1)
-                        {
-                            // 改行コードがあるので、削る
-                            result[0] = result[0].Replace(@"\r\n", "");
-
-                            if (result[0].Trim() == "1")
+                            int fileErrorCount = 0;
+                            errorCounts = new List<int>();
+                            foreach (string selFileName in selectFiles)
                             {
-                                //set_error(result[1]);
-                                // エラーが発生しました
-                                set_error(GlobalMethod.GetMessage("E00091", ""));
-                                //set_error(result[2]);
-                                int count = 0;
-                                // T_ReadFileErrorテーブルのエラーカウントをセット
-                                if (result[1] != null && int.TryParse(result[1].ToString(), out count))
+                                
+                                string selFileFullPath="";
+                                selFileFullPath = folderPath + @"\" + selFileName;
+                                // ファイル存在チェック
+                                // 集計表フォルダ内に、取込対象ファイルがあるかどうかをチェック
+                                if (File.Exists(selFileFullPath))
                                 {
-                                    errorCnt = count;
+                                    int i_ZumenNo = 0;
+                                    int i_Hinmei = 0;
+                                    int i_hachuu = 0;
+
+                                    // 図面番号/参考質量を取り込む
+                                    if (checkBox1.Checked)
+                                    {
+                                        i_ZumenNo = 1;
+                                    }
+                                    else
+                                    {
+                                        i_ZumenNo = 2;
+                                    }
+                                    // 品名/規格を取り込む
+                                    if (checkBox2.Checked)
+                                    {
+                                        i_Hinmei = 1;
+                                    }
+                                    else
+                                    {
+                                        i_Hinmei = 2;
+                                    }
+                                    // 発注機関コードをキーとして取り込む
+                                    if (checkBox3.Checked)
+                                    {
+                                        i_hachuu = 1;
+                                    }
+                                    else
+                                    {
+                                        i_hachuu = 2;
+                                    }
+
+                                    string[] result = GlobalMethod.InsertTanka(selFileFullPath
+                                                                                , MadoguchiID
+                                                                                , i_ZumenNo
+                                                                                , i_Hinmei
+                                                                                , i_hachuu
+                                                                                , item3_HinmokuChousainCD.Text
+                                                                                , src_ShuFuku.SelectedValue.ToString()
+                                                                                , selFileFullPath
+                                                                                , UserInfos[0]
+                                                                                , UserInfos[2]);
+
+                                    // result
+                                    // 成否判定 0:正常 1：エラー
+                                    // T_ReadFileErrorテーブルのエラーカウント（FileReadErrorReadCount）
+                                    // メッセージ（主にエラー用）
+                                    if (result != null && result.Length >= 1)
+                                    {
+                                        // 改行コードがあるので、削る
+                                        result[0] = result[0].Replace(@"\r\n", "");
+
+                                        if (result[0].Trim() == "1")
+                                        {
+                                            //set_error(result[1]);
+                                            // エラーが発生しました
+                                            set_error(GlobalMethod.GetMessage("E00091", "") + selFileName);
+                                            //set_error(result[2]);
+                                            int count = 0;
+                                            // T_ReadFileErrorテーブルのエラーカウントをセット
+                                            if (result[1] != null && int.TryParse(result[1].ToString(), out count))
+                                            {
+                                                errorCounts.Add(count);
+                                            }
+                                            fileErrorCount++;
+                                            //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                        }
+                                        else if (result[0].Trim() == "0")
+                                        {
+                                            // 正常 データ取り直し
+                                            get_data(3);
+                                            // E20321:取込が完了しました。
+                                            set_error(GlobalMethod.GetMessage("E20321", "") + selFileName);
+
+                                            // 調査品目明細から担当部所への連携 + 担当部所から窓口情報への連携
+                                            // ProUpdateHinmokuRenkei.Call(&p_MadoguchiID,&TabCode,&pRes)
+
+                                            String resultMessage = "";
+                                            GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Jibun", UserInfos[1], out resultMessage);
+
+                                            // メッセージがあれば画面に表示
+                                            if (resultMessage != "")
+                                            {
+                                                set_error(resultMessage);
+                                            }
+                                            //button3_TankaTorikomiResult.BackColor = Color.DarkGray;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // E20322:取込ファイルにエラーがありました。
+                                        set_error(GlobalMethod.GetMessage("E20322", "") + selFileName);
+                                        fileErrorCount++;
+                                        //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                    }
                                 }
+                                else
+                                {
+                                    // E20322:取込ファイルにエラーがありました。
+                                    set_error(GlobalMethod.GetMessage("E20322", "")  + selFileName);
+                                    fileErrorCount++;
+                                    //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                }
+                                //レイアウトロジックを再開する
+                                this.ResumeLayout();
+                                ErrorMessage.Refresh();
+                                //レイアウトロジックを停止する
+                                this.SuspendLayout();
+                            }
+                            if (fileErrorCount > 0)
+                            {
                                 button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
                             }
-                            else if (result[0].Trim() == "0")
+                            else
                             {
-                                // 正常 データ取り直し
-                                get_data(3);
-                                // E20321:取込が完了しました。
-                                set_error(GlobalMethod.GetMessage("E20321", ""));
-
-                                // 調査品目明細から担当部所への連携 + 担当部所から窓口情報への連携
-                                // ProUpdateHinmokuRenkei.Call(&p_MadoguchiID,&TabCode,&pRes)
-
-                                String resultMessage = "";
-                                GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Jibun", UserInfos[1], out resultMessage);
-
-                                // メッセージがあれば画面に表示
-                                if (resultMessage != "")
-                                {
-                                    set_error(resultMessage);
-                                }
                                 button3_TankaTorikomiResult.BackColor = Color.DarkGray;
+                            }
+                        }
+                            
+                        
+                    }
+                    //Elseは既存の処理
+                    else
+                    {
+                        // ファイル存在チェック
+                        // 集計表フォルダ内に、取込対象ファイルがあるかどうかをチェック
+                        if (File.Exists(filePath))
+                        {
+                            int i_ZumenNo = 0;
+                            int i_Hinmei = 0;
+                            int i_hachuu = 0;
+
+                            // 図面番号/参考質量を取り込む
+                            if (checkBox1.Checked)
+                            {
+                                i_ZumenNo = 1;
+                            }
+                            else
+                            {
+                                i_ZumenNo = 2;
+                            }
+                            // 品名/規格を取り込む
+                            if (checkBox2.Checked)
+                            {
+                                i_Hinmei = 1;
+                            }
+                            else
+                            {
+                                i_Hinmei = 2;
+                            }
+                            // 発注機関コードをキーとして取り込む
+                            if (checkBox3.Checked)
+                            {
+                                i_hachuu = 1;
+                            }
+                            else
+                            {
+                                i_hachuu = 2;
+                            }
+
+                            string[] result = GlobalMethod.InsertTanka(filePath
+                                                                        , MadoguchiID
+                                                                        , i_ZumenNo
+                                                                        , i_Hinmei
+                                                                        , i_hachuu
+                                                                        , item3_HinmokuChousainCD.Text
+                                                                        , src_ShuFuku.SelectedValue.ToString()
+                                                                        , Buf
+                                                                        , UserInfos[0]
+                                                                        , UserInfos[2]);
+
+                            // result
+                            // 成否判定 0:正常 1：エラー
+                            // T_ReadFileErrorテーブルのエラーカウント（FileReadErrorReadCount）
+                            // メッセージ（主にエラー用）
+                            if (result != null && result.Length >= 1)
+                            {
+                                // 改行コードがあるので、削る
+                                result[0] = result[0].Replace(@"\r\n", "");
+
+                                if (result[0].Trim() == "1")
+                                {
+                                    //set_error(result[1]);
+                                    // エラーが発生しました
+                                    set_error(GlobalMethod.GetMessage("E00091", ""));
+                                    //set_error(result[2]);
+                                    int count = 0;
+                                    // T_ReadFileErrorテーブルのエラーカウントをセット
+                                    if (result[1] != null && int.TryParse(result[1].ToString(), out count))
+                                    {
+                                        errorCnt = count;
+                                    }
+                                    button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                }
+                                else if (result[0].Trim() == "0")
+                                {
+                                    // 正常 データ取り直し
+                                    get_data(3);
+                                    // E20321:取込が完了しました。
+                                    set_error(GlobalMethod.GetMessage("E20321", ""));
+
+                                    // 調査品目明細から担当部所への連携 + 担当部所から窓口情報への連携
+                                    // ProUpdateHinmokuRenkei.Call(&p_MadoguchiID,&TabCode,&pRes)
+
+                                    String resultMessage = "";
+                                    GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Jibun", UserInfos[1], out resultMessage);
+
+                                    // メッセージがあれば画面に表示
+                                    if (resultMessage != "")
+                                    {
+                                        set_error(resultMessage);
+                                    }
+                                    button3_TankaTorikomiResult.BackColor = Color.DarkGray;
+                                }
+                            }
+                            else
+                            {
+                                // E20322:取込ファイルにエラーがありました。
+                                set_error(GlobalMethod.GetMessage("E20322", ""));
+                                button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
                             }
                         }
                         else
@@ -4728,12 +4916,7 @@ namespace TokuchoBugyoK2
                             button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
                         }
                     }
-                    else
-                    {
-                        // E20322:取込ファイルにエラーがありました。
-                        set_error(GlobalMethod.GetMessage("E20322", ""));
-                        button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
-                    }
+                    
                 }
                 // 調査担当者が空の場合
                 else
@@ -4757,8 +4940,18 @@ namespace TokuchoBugyoK2
         {
             if (button3_TankaTorikomiResult.BackColor == Color.FromArgb(42, 78, 122))
             {
-                Popup_FileError form = new Popup_FileError(MadoguchiID, errorCnt);
-                form.ShowDialog();
+                //課題No1300（994）
+                if (isManyFileExecute)
+                {
+                    Popup_FileError form = new Popup_FileError(MadoguchiID, errorCounts);
+                    form.ShowDialog();
+                }
+                else
+                {
+                    Popup_FileError form = new Popup_FileError(MadoguchiID, errorCnt);
+                    form.ShowDialog();
+                }
+                
             }
         }
 

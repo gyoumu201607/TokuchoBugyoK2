@@ -326,6 +326,63 @@ namespace TokuchoBugyoK2
                 return comboDt;
             }
         }
+        //課題No1300（994）VIPS Overload
+        public DataTable getError(string errorId, List<int> Counts, string Where, string chousaHinmokuErrorCnt = "", string FileReadErrorTokuchoBangou = "")
+        {
+            using (var conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                var cmd = conn.CreateCommand();
+                var comboDt = new System.Data.DataTable();
+                //FileReadErrorReadCountのin文字列を作成する
+                string inBuff = "";
+                foreach(int num in Counts)
+                {
+                    if (inBuff != "")
+                    {
+                        inBuff += ",";
+                    }
+                    inBuff += num.ToString();
+                }
+                //エラーがすべてファイルが見つからないなどの場合DBに登録されないのでゼロで検索する（もともとの仕様に合わせる）
+                if (inBuff == "")
+                {
+                    inBuff = " = 0";
+                }
+                else
+                {
+                    inBuff = " in (" + inBuff + ")";
+                }
+                
+                //SQL生成
+                cmd.CommandText = "SELECT " +
+                "FileReadErrorLineNo ,FileReadErrorMessage,LTRIM(RTRIM(FileReadErrorFilename)),FileReadErrorDateTime " +
+                "FROM " + "T_FileReadError " +
+                "WHERE ((FileReadErrorTokuchoBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + errorId + "' " +
+                " AND FileReadErrorReadCount " + inBuff;
+                cmd.CommandText += ") ";
+
+                if (chousaHinmokuErrorCnt != "" && FileReadErrorTokuchoBangou != "")
+                {
+                    // 窓口ミハル一括登録で、調査品目のエラーも出す
+                    cmd.CommandText += " OR (FileReadErrorTokuchoBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + FileReadErrorTokuchoBangou + "' AND FileReadErrorReadCount = " + chousaHinmokuErrorCnt + " ) ";
+                }
+
+                cmd.CommandText += ") ";
+                if (Where != ")")
+                {
+                    cmd.CommandText += " AND FileReadErrorMessage COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + ChangeSqlText(Where, 1, 0) + "%'  ESCAPE '\\' ";
+                }
+
+                //データ取得
+                var sda = new SqlDataAdapter(cmd);
+                sda.Fill(comboDt);
+
+                //MessageBox.Show(comboDt.Rows.Count + "テスト", "test", MessageBoxButtons.OK);
+                //データセット
+                return comboDt;
+            }
+        }
 
         public void outputLogger(String programName, String logTitle, String avalable, String logUser, int mode = 1)
         {

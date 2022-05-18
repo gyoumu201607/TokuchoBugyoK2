@@ -23,6 +23,17 @@ namespace TokuchoBugyoK2
         public string chousaHinmokuErrorCnt = "";
         public string FileReadErrorTokuchoBangou = "";
 
+        //課題No1300（994）　VIPS
+        bool isManyFile=false;
+        List<int> FileReadErrorReadCounts = new List<int>();
+        public Popup_FileError(string ErrorID, List<int> ReadCounts)
+        {
+            isManyFile = true;
+            this.ErrorID = ErrorID;
+            this.FileReadErrorReadCounts = ReadCounts;
+            InitializeComponent();
+        }
+
         public Popup_FileError(string ErrorID,int Count)
         {
             this.ErrorID = ErrorID;
@@ -43,7 +54,16 @@ namespace TokuchoBugyoK2
         private void Get_ErrorData()
         {
             ListData.Clear();
-            ListData = GlobalMethod.getError(ErrorID, Count, GlobalMethod.ChangeSqlText(textBox111.Text, 0, 0), chousaHinmokuErrorCnt, FileReadErrorTokuchoBangou);
+            //課題No1300（994）　VIPS
+            if (isManyFile)
+            {
+                ListData = GlobalMethod.getError(ErrorID, FileReadErrorReadCounts, GlobalMethod.ChangeSqlText(textBox111.Text, 0, 0), chousaHinmokuErrorCnt, FileReadErrorTokuchoBangou);
+            }
+            else
+            {
+                ListData = GlobalMethod.getError(ErrorID, Count, GlobalMethod.ChangeSqlText(textBox111.Text, 0, 0), chousaHinmokuErrorCnt, FileReadErrorTokuchoBangou);
+            }
+            
 
             c1FlexGrid1.Rows.Count = 1;
             for (int i = 0; i < ListData.Rows.Count; i++)
@@ -103,11 +123,35 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                rgn = xlSheet.Range("A2:B" + (ListData.Rows.Count + 1));
+                rgn = xlSheet.Range("A2:D" + (ListData.Rows.Count + 1));
                 rgn.Value = mData2;
 
                 string ExcelPath = "Work";
-                string ExcelName = "FileReadError_" + ErrorID + "_" + Count + @".xlsx";
+                string ExcelName;
+                //課題No1300（994）　VIPS
+                if (isManyFile)
+                {
+                    string bufCount = "";
+                    foreach(int num in FileReadErrorReadCounts)
+                    {
+                        if (bufCount != "")
+                        {
+                            bufCount += "_";
+                        }
+                        bufCount += num.ToString();
+                    }
+                    //ファイル存在しないエラー等だと、番号がつかない（DBに何もいないためゼロで
+                    if (bufCount == "")
+                    {
+                        bufCount = "0";
+                    }
+                    ExcelName = "FileReadError_" + ErrorID + "_" + bufCount + @".xlsx";
+                }
+                else
+                {
+                    ExcelName = "FileReadError_" + ErrorID + "_" + Count + @".xlsx";
+                }
+                    
 
                 try
                 {

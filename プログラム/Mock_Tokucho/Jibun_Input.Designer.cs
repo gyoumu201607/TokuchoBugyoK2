@@ -213,6 +213,7 @@
             this.label143 = new System.Windows.Forms.Label();
             this.BikoUpdateBtn = new System.Windows.Forms.Button();
             this.shibuBikouTableAdapter = new TokuchoBugyoK2.TokuchoBugyoKDataSetTableAdapters.ShibuBikouTableAdapter();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -1982,10 +1983,10 @@
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.tableLayoutPanel5);
-            this.groupBox1.Location = new System.Drawing.Point(681, 78);
+            this.groupBox1.Location = new System.Drawing.Point(681, 58);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(705, 142);
+            this.groupBox1.Size = new System.Drawing.Size(705, 168);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "単価取込";
@@ -1997,6 +1998,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.Controls.Add(this.radioButton3, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.radioButton1, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.radioButton2, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
@@ -2005,14 +2007,15 @@
             this.tableLayoutPanel5.Controls.Add(this.checkBox2, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.checkBox3, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.button3_TankaTorikomiResult, 2, 2);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(14, 24);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(14, 18);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowCount = 4;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(685, 97);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(685, 129);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // radioButton1
@@ -2830,6 +2833,19 @@
             // 
             this.shibuBikouTableAdapter.ClearBeforeFill = true;
             // 
+            // radioButton3
+            // 
+            this.radioButton3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3.Location = new System.Drawing.Point(3, 103);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(188, 19);
+            this.radioButton3.TabIndex = 11;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "奉行エクセル集計表から取込む";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
             // Jibun_Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3097,5 +3113,6 @@
         private System.Windows.Forms.Label label143;
         private System.Windows.Forms.Button BikoUpdateBtn;
         private System.Windows.Forms.Button btnGridSize;
+        private System.Windows.Forms.RadioButton radioButton3;
     }
 }
