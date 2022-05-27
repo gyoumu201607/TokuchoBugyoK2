@@ -791,7 +791,26 @@ namespace TokuchoBugyoK2
                 button1.Visible = false;
                 button10.Visible = false;
                 button12.Visible = false;
+
+                //不具合No1310(1028)
+                //コピペテキストと反映するボタンが配置されたテールブルレイアウトパネルを表示有効化する
+                tableLayoutPanel8.Visible = true;
+                //案件番号などの表が乗ってる列をサイズゼロにする
+                tableLayoutPanel2.ColumnStyles[4] = new ColumnStyle(SizeType.Absolute, 0.0F);
+                //削除ボタン乗ってる列のサイズをゼロパーセントにする。
+                tableLayoutPanel2.ColumnStyles[5] = new ColumnStyle(SizeType.Percent, 0);
+                //else追加　新規・計画以外は反映用のテキストとボタンを消す
             }
+            else
+            {
+                //新規・計画以外は反映用のテキストとボタンを消す
+                txtTayoriData.Visible = false;
+                btnHanei.Visible = false;
+                tableLayoutPanel8.Visible = false;
+                //コピペテキストと反映するボタンの配置された列幅をゼロにする
+                tableLayoutPanel2.ColumnStyles[6] = new ColumnStyle(SizeType.Absolute, 0.0F);
+            }
+
             if (mode == "change")
             {
                 //不要タブの非表示化
@@ -14729,5 +14748,187 @@ namespace TokuchoBugyoK2
                 e.Image = Img_DeleteRowNonactive;
             }
         }
+
+        //不具合管理表　1310(1028)　↓↓↓
+        enum excelIndex : int
+        {
+            busho_shozoku = 7
+            , tantosha = 8
+            , mail = 9
+            , post_address = 10
+            , tel = 11
+            , fax = 12
+            , irai_gyoumu = 13
+            , irai_naiyou = 14
+            , rikou_kikan = 17
+            , mitsumori_mokuteki = 20
+            , chosa_yotei = 21
+            , mitumori_jisseki = 22
+            , jouki_shitsumon = 23
+        }
+        private void btnHanei_Click(object sender, EventArgs e)
+        {
+            //テキストボックスに、エクセルの行をコピペしたものが入っていることが前提。タブ区切りでセットされる
+            //文字がない場合は何もしない
+            //タブ数によりどうするか？　要検討
+
+            //配列インデックス
+            
+
+            string textboxBuffer = txtTayoriData.Text;
+            string[] words = textboxBuffer.Split('\t');
+
+            //txtTayoriDataに何も入力がない場合は何もしない
+            if (textboxBuffer.Trim().Equals(""))
+            {
+                return;
+            }
+
+            //for debug
+            foreach(string word in words)
+            {
+                Console.WriteLine(word);
+            }
+
+            //部署・所属名
+            if (words.Length > (int)excelIndex.busho_shozoku)
+            {
+                item1_25.Text = words[(int)excelIndex.busho_shozoku];
+            }
+            //ご担当者名
+            if (words.Length > (int)excelIndex.tantosha)
+            {
+                item1_26.Text = words[(int)excelIndex.tantosha];
+            }
+            //メールアドレス
+            if (words.Length > (int)excelIndex.mail)
+            {
+                item1_29.Text = words[(int)excelIndex.mail];
+            }
+            //郵便番号
+            if (words.Length > (int)excelIndex.post_address)
+            {
+                item1_30.Text = getPostAddress(words[(int)excelIndex.post_address],true);
+            }
+            //住所
+            if (words.Length > (int)excelIndex.post_address)
+            {
+                item1_31.Text = getPostAddress(words[(int)excelIndex.post_address],false);
+            }
+            //電話番号
+            if (words.Length > (int)excelIndex.tel)
+            {
+                item1_27.Text = getTelNumber(words[(int)excelIndex.tel]);
+            }
+            //FAX番号
+            if (words.Length > (int)excelIndex.fax)
+            {
+                item1_28.Text = getTelNumber(words[(int)excelIndex.fax]);
+            }
+            //ご依頼業務名称
+            if (words.Length > (int)excelIndex.irai_gyoumu)
+            {
+                item1_13.Text = words[(int)excelIndex.irai_gyoumu];
+            }
+
+            //以降は一つのテキストエリアに:デリミタを付加し、改行なしで結合
+            string tmpBuff="";
+            //ご依頼内容の概要
+            if (words.Length > (int)excelIndex.irai_naiyou)
+            {
+                if(words[(int)excelIndex.irai_naiyou].Trim().Equals("") == false)
+                {
+                    tmpBuff += words[(int)excelIndex.irai_naiyou] + ":";
+                }
+            }
+            //履行期間
+            if (words.Length > (int)excelIndex.rikou_kikan)
+            {
+                if (words[(int)excelIndex.rikou_kikan].Trim().Equals("") == false)
+                {
+                    tmpBuff += words[(int)excelIndex.rikou_kikan] + ":";
+                }
+            }
+            //見積り依頼の目的
+            if (words.Length > (int)excelIndex.mitsumori_mokuteki)
+            {
+                if (words[(int)excelIndex.mitsumori_mokuteki].Trim().Equals("") == false)
+                {
+                    tmpBuff += words[(int)excelIndex.mitsumori_mokuteki] + ":";
+                }
+            }
+            //調査の予定時期
+            if (words.Length > (int)excelIndex.chosa_yotei)
+            {
+                if (words[(int)excelIndex.chosa_yotei].Trim().Equals("") == false)
+                {
+                    tmpBuff += words[(int)excelIndex.chosa_yotei] + ":";
+                }
+            }
+            //見積依頼の実績
+            if (words.Length > (int)excelIndex.mitumori_jisseki)
+            {
+                if (words[(int)excelIndex.mitumori_jisseki].Trim().Equals("") == false)
+                {
+                    tmpBuff += words[(int)excelIndex.mitumori_jisseki] + ":";
+                }
+            }
+            //上記質問で、「見積依頼の実績あり」と回答された方は、依頼時期、業務概要などについて、記入してください。
+            if (words.Length > (int)excelIndex.jouki_shitsumon)
+            {
+                if (words[(int)excelIndex.jouki_shitsumon].Trim().Equals("") == false)
+                {
+                    tmpBuff += words[(int)excelIndex.jouki_shitsumon] + ":";
+                }
+            }
+            item1_18.Text = tmpBuff;
+        }
+        //電話番号データから電話番号と思われるところを返却する。例）0980-53-1212（内線285）→0980-53-1212
+        private string getTelNumber(string orgBuff)
+        {
+            //半角変換
+            orgBuff = Microsoft.VisualBasic.Strings.StrConv(orgBuff, Microsoft.VisualBasic.VbStrConv.Narrow, 0x411);
+            //「(」が見つかれば、そこで分割し、トリム+半角スペースを削除して返却する
+            string[] strArr = orgBuff.Split('(');
+            return strArr[0].Trim().Replace(" ", "");
+        }
+        //郵便番号＋住所のデータから郵便番号と住所のどちらかを返却する
+        private string getPostAddress(string orgBuff,bool isPost)
+        {
+            //ここで半角変換しちゃダメ。住所に全角数字が使われてるので。
+            //半角スペースで分割。配列インデックス0に郵便番号、1以降に住所の想定
+            string[] strArr = orgBuff.Split(' ');
+            if (isPost)
+            {
+                //半角変換
+                string tmpBuff = Microsoft.VisualBasic.Strings.StrConv(strArr[0], Microsoft.VisualBasic.VbStrConv.Narrow, 0x411);
+                //郵便番号
+                return tmpBuff.Trim().Replace(" ", "").Replace("-", "");
+            }
+            else
+            {
+                //配列が半角スペースで分割されていれば再度半角スペースで結合する
+                if (strArr.Length > 1)
+                {
+                    string tmpBuff="";
+                    for(int i = 1; i < strArr.Length; i++)
+                    {
+                        if (tmpBuff != "")
+                        {
+                            tmpBuff += " ";
+                        }
+                        tmpBuff += strArr[i];
+                    }
+                    return tmpBuff;
+                }
+                else
+                {
+                    return "";
+                }
+                
+            }
+            
+        }
+        //不具合管理表　1310(1028)　↑↑↑
     }
 }
