@@ -2006,7 +2006,9 @@ namespace TokuchoBugyoK2
                     // 地区コード
                     c1FlexGrid4.Rows[RowCount]["ChousaTikuCode"] = DT_ChousaHinmoku.Rows[i]["ChousaTikuCode"];
                     // 地区名
-                    c1FlexGrid4.Rows[RowCount]["ChousaTikuMei"] = DT_ChousaHinmoku.Rows[i]["ChousaTikuMei"];
+                    //不具合No1318(1046)　改行コードを消して表示する
+                    //c1FlexGrid4.Rows[RowCount]["ChousaTikuMei"] = DT_ChousaHinmoku.Rows[i]["ChousaTikuMei"];
+                    c1FlexGrid4.Rows[RowCount]["ChousaTikuMei"] = DT_ChousaHinmoku.Rows[i]["ChousaTikuMei"].ToString().Replace(Environment.NewLine, "");
                     // 少額案件[10万/100万]
                     c1FlexGrid4.SetCellCheck(RowCount, c1FlexGrid4.Cols["ChousaShougaku"].Index, C1.Win.C1FlexGrid.CheckEnum.Unchecked);
                     if (DT_ChousaHinmoku.Rows[i]["ChousaShougaku"].ToString() == "1")
@@ -3278,7 +3280,9 @@ namespace TokuchoBugyoK2
                                             ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTankaCD1"].ToString(), 0, 0) + "' " +                  // 発注品目コード
                                             ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuWariCode"].ToString(), 0, 0) + "' " +              // 地区割コード
                                             ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuCode"].ToString(), 0, 0) + "' " +                  // 地区コード
-                                            ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuMei"].ToString(), 0, 0) + "' ";                    // 地区名
+                                            //不具合No1318(1046)　改行コードを消して登録する
+                                            //",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuMei"].ToString(), 0, 0) + "' ";                    // 地区名
+                                            ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuMei"].ToString().ToString().Replace(Environment.NewLine, ""), 0, 0) + "' ";                    // 地区名
 
                                         // 少額案件[10万/100万]
                                         //if (c1FlexGrid4.Rows[i][37] != null && c1FlexGrid4.Rows[i][37].ToString() == "True")
@@ -3659,7 +3663,9 @@ namespace TokuchoBugyoK2
                                             ",ChousaTankaCD1 = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTankaCD1"].ToString(), 0, 0) + "' " +                     // 発注品目コード
                                             ",ChousaTikuWariCode = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuWariCode"].ToString(), 0, 0) + "' " +             // 地区割コード
                                             ",ChousaTikuCode = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuCode"].ToString(), 0, 0) + "' " +                     // 地区コード
-                                            ",ChousaTikuMei = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuMei"].ToString(), 0, 0) + "' ";                        // 地区名
+                                            //不具合No1318(1046)　改行コードを消して登録する
+                                            //",ChousaTikuMei = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuMei"].ToString(), 0, 0) + "' ";                        // 地区名
+                                            ",ChousaTikuMei = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuMei"].ToString().ToString().Replace(Environment.NewLine, ""), 0, 0) + "' ";                        // 地区名
 
                                         // 少額案件[10万/100万]
                                         //if (c1FlexGrid4.Rows[i][37] != null && c1FlexGrid4.Rows[i][37].ToString() == "True")
