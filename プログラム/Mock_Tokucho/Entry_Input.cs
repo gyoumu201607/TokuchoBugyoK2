@@ -14785,9 +14785,15 @@ namespace TokuchoBugyoK2
             }
 
             //for debug
-            foreach(string word in words)
+            //foreach(string word in words)
+            //{
+            //    Console.WriteLine(word);
+            //}
+
+            //前後のダブルクオーテーションを消す。面倒なので配列全体に先にやってしまう。
+            for(int i=0; i < words.Length; i++)
             {
-                Console.WriteLine(word);
+                words[i] = deleteDoubleQuotation(words[i]);
             }
 
             //部署・所属名
@@ -14883,6 +14889,14 @@ namespace TokuchoBugyoK2
             }
             item1_18.Text = tmpBuff;
         }
+
+        //エクセルのセルに改行コードが入ってるとダブルクォーテーションが付加されてしまうので、消す
+        private string deleteDoubleQuotation(string orgBuff)
+        {
+            //前後のダブルクオーテーションを消す
+            return orgBuff.Trim(new char[] { '"' });
+        }
+
         //電話番号データから電話番号と思われるところを返却する。例）0980-53-1212（内線285）→0980-53-1212
         private string getTelNumber(string orgBuff)
         {
