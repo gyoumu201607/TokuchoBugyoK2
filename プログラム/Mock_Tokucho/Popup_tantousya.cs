@@ -329,15 +329,17 @@ namespace TokuchoBugyoK2
             }
             else
             {
-                for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
-                {
-                    if (i != _row && c1FlexGrid1.Rows[i][5].ToString() == Tantousha.Text)
-                    {
-                        set_error("担当者が重複しています");
-                        ErrorFlag = true;
-                        break;
-                    }
-                }
+                //不具合管理表No1326(1063)
+                //担当者名の重複エラーチェックは外す
+                //for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
+                //{
+                //    if (i != _row && c1FlexGrid1.Rows[i][5].ToString() == Tantousha.Text)
+                //    {
+                //        set_error("担当者が重複しています");
+                //        ErrorFlag = true;
+                //        break;
+                //    }
+                //}
             }
 
             if (ErrorFlag || !check_Mail() || !check_TEL() || !check_FAX())
@@ -409,15 +411,17 @@ namespace TokuchoBugyoK2
             }
             else
             {
-                for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
-                {
-                    if (c1FlexGrid1.Rows[i][5].ToString() == Tantousha.Text)
-                    {
-                        set_error("担当者が重複しています");
-                        ErrorFlag = true;
-                        break;
-                    }
-                }
+                //不具合管理表No1326(1063)
+                //担当者名の重複エラーチェックは外す
+                //for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
+                //{
+                //    if (c1FlexGrid1.Rows[i][5].ToString() == Tantousha.Text)
+                //    {
+                //        set_error("担当者が重複しています");
+                //        ErrorFlag = true;
+                //        break;
+                //    }
+                //}
             }
 
             if (ErrorFlag || !check_Mail() || !check_TEL() || !check_FAX())

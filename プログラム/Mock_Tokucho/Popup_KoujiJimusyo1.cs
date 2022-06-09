@@ -115,15 +115,17 @@ namespace TokuchoBugyoK2
             }
             else
             {
-                for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
-                {
-                    if (c1FlexGrid1.Rows[i][3].ToString() == JimusyoMei.Text)
-                    {
-                        set_error("工事事務所名が重複しています");
-                        ErrorFlag = true;
-                        break;
-                    }
-                }
+                //不具合管理表No1326(1063)
+                //工事事務所名の重複エラーチェックは外す
+                //for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
+                //{
+                //    if (c1FlexGrid1.Rows[i][3].ToString() == JimusyoMei.Text)
+                //    {
+                //        set_error("工事事務所名が重複しています");
+                //        ErrorFlag = true;
+                //        break;
+                //    }
+                //}
             }
 
             if (ErrorFlag)
@@ -170,15 +172,17 @@ namespace TokuchoBugyoK2
             }
             else
             {
-                for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
-                {
-                    if (i != _row && c1FlexGrid1.Rows[i][3].ToString() == JimusyoMei.Text)
-                    {
-                        set_error("工事事務所名が重複しています");
-                        ErrorFlag = true;
-                        break;
-                    }
-                }
+                //不具合管理表No1326(1063)
+                //工事事務所名の重複エラーチェックは外す
+                //for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
+                //{
+                //    if (i != _row && c1FlexGrid1.Rows[i][3].ToString() == JimusyoMei.Text)
+                //    {
+                //        set_error("工事事務所名が重複しています");
+                //        ErrorFlag = true;
+                //        break;
+                //    }
+                //}
             }
 
             if (ErrorFlag)
