@@ -14760,11 +14760,11 @@ namespace TokuchoBugyoK2
             , fax = 12
             , irai_gyoumu = 13
             , irai_naiyou = 14
-            , rikou_kikan = 17
-            , mitsumori_mokuteki = 20
-            , chosa_yotei = 21
-            , mitumori_jisseki = 22
-            , jouki_shitsumon = 23
+            , rikou_kikan = 22  //2022/06/14 エクセルのフォーマットが変更となり5列追加されたため以降＋５した
+            , mitsumori_mokuteki = 25
+            , chosa_yotei = 26
+            , mitumori_jisseki = 27
+            , jouki_shitsumon = 28
         }
         private void btnHanei_Click(object sender, EventArgs e)
         {
