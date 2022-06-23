@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\deploy_app\本番環境_デプロイモジュール_20220511\</PublishUrl>
+    <PublishUrl>C:\deploy_app\江幡様環境_デプロイモジュール_20220622\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,20 +24,20 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://192.168.10.60/TokuchoBugyoK2/</InstallUrl>
+    <InstallUrl>http://HPNJPH8451DXGA/TokuchoBugyoK2/</InstallUrl>
     <ProductName>TokuchoBugyoK2</ProductName>
     <PublisherName>Construction Research Institute</PublisherName>
-    <MinimumRequiredVersion>2.0.0.72</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.0.0.77</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>app.htm</WebPage>
-    <ApplicationRevision>72</ApplicationRevision>
-    <ApplicationVersion>2.0.0.72</ApplicationVersion>
+    <ApplicationRevision>77</ApplicationRevision>
+    <ApplicationVersion>2.0.0.77</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
-    <BootstrapperComponentsUrl>http://192.168.10.60/TokuchoBugyoK2/</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>http://HPNJPH8451DXGA/TokuchoBugyoK2/</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
