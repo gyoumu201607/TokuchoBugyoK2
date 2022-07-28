@@ -11445,7 +11445,10 @@ namespace TokuchoBugyoK2
 
                                 string akadenAnkenJouhouID = "";
                                 // 直近の02:契約変更（赤伝）を削除する
-                                if (dt3 != null && dt3.Rows.Count >= 0)
+                                //不具合No1331（1083）
+                                //赤伝を先に削除するとエラーになる。Count間違い
+                                //if (dt3 != null && dt3.Rows.Count >= 0)
+                                if (dt3 != null && dt3.Rows.Count > 0)
                                 {
                                     akadenAnkenJouhouID = dt3.Rows[0][0].ToString();
 
