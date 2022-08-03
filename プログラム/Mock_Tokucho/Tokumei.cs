@@ -751,7 +751,10 @@ namespace TokuchoBugyoK2
                 "END " +
                 "FROM MadoguchiJouhou T2 " +
                 //" INNER JOIN MadoguchiJouhou T2 ON T2.MadoguchiID = T0.MadoguchiID " +
-                " LEFT JOIN ShibuBikou T12 ON T12.MadoguchiID = T2.MadoguchiID AND ShibuBikouBushoKanriboBushoCD = T2.MadoguchiTantoushaBushoCD " +
+                //不具合No1339（No1096）2022/08/03 調査担当部所で部署備考を取得する必要あり
+                " LEFT JOIN ShibuBikou T12 ON T12.MadoguchiID = T2.MadoguchiID AND ShibuBikouBushoKanriboBushoCD = " + item_ChousaBusho.SelectedValue.ToString() +
+                //" LEFT JOIN ShibuBikou T12 ON T12.MadoguchiID = T2.MadoguchiID AND ShibuBikouBushoKanriboBushoCD = T2.MadoguchiTantoushaBushoCD " +
+                
                 //" LEFT JOIN Mst_Busho T3 ON T3.GyoumuBushoCD = T2.MadoguchiTantoushaBushoCD  " +
                 //" LEFT JOIN Mst_Busho T4 ON T4.GyoumuBushoCD = T2.MadoguchiJutakuBushoCD  " +
                 //" LEFT JOIN Mst_Chousain T5 ON T5.KojinCD = T2.MadoguchiJutakuTantoushaID  " +
