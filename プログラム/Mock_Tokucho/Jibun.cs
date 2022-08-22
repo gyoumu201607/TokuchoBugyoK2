@@ -319,7 +319,9 @@ namespace TokuchoBugyoK2
             }
 
             //該当グリッドのセルにセット
-            c1FlexGrid1.Cols[14].DataMap = sl;
+            //不具合No1337（1094）対応
+            c1FlexGrid1.Cols[13].DataMap = sl;
+            //c1FlexGrid1.Cols[14].DataMap = sl;
 
             //進捗状況
             tmpdt = new System.Data.DataTable();
@@ -460,38 +462,27 @@ namespace TokuchoBugyoK2
                   ",mj.MadoguchiHachuuKikanmei " + //発注者名・課名
                   ",mj.MadoguchiShiryouHolder " + // 5
                   ",mj.MadoguchiTourokubi " + //登録日 6
-                  ",mj.MadoguchiOuenUketsukebi " + //応援受付日
-                                                   //",mj.MadoguchiShimekiribi " + //締切日
                   ",mjmc.MadoguchiL1ChousaShimekiribi " + //締切日
                   ",mjmc.MadoguchiL1ChousaBushoCD " + //調査担当部所CD　非表示 9
-                                                      //",mjmc.MadoguchiL1ChousaBusho " + //調査担当部所
                   ",mb2.BushokanriboKamei " + //調査担当部所
                   ",mjmc.MadoguchiL1ChousaTantoushaCD " + //調査担当者CD　非表示
                   ",mjmc.MadoguchiL1ChousaTantousha " + //調査担当者
                   ",mjmc.MadoguchiL1ChousaShinchoku " + //担当者状況
-                  ",CASE mj.MadoguchiChousaShubetsu WHEN 1 THEN '単品' WHEN 2 THEN '一般' WHEN 3 THEN '単契' ELSE ' ' END AS MadoguchiChousaShubetsu" + //調査種別 14
-                  ",CASE mj.MadoguchiChousaKubunJibusho WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunJibusho" + //調査区分　自部所
-                  ",CASE mj.MadoguchiChousaKubunShibuShibu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunShibuShibu" + //調査区分　支部→支部
-                  ",CASE mj.MadoguchiChousaKubunHonbuShibu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunHonbuShibu" + //調査区分　本部→支部
-                  ",CASE mj.MadoguchiChousaKubunShibuHonbu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunShibuHonbu" + //調査区分　支部→本部
+                  ",mjmc.MadoguchiL1Memo " + //メモ 24
+                  ",CASE mj.MadoguchiChousaShubetsu WHEN 1 THEN '単品' WHEN 2 THEN '一般' WHEN 3 THEN '単契' ELSE ' ' END AS MadoguchiChousaShubetsu" + //調査種別 14 //非表示列
+                  ",CASE mj.MadoguchiChousaKubunJibusho WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunJibusho" + //調査区分　自部所 //非表示列
+                  ",CASE mj.MadoguchiChousaKubunShibuShibu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunShibuShibu" + //調査区分　支部→支部 //非表示列
+                  ",CASE mj.MadoguchiChousaKubunHonbuShibu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunHonbuShibu" + //調査区分　本部→支部 //非表示列
+                  ",CASE mj.MadoguchiChousaKubunShibuHonbu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunShibuHonbu" + //調査区分　支部→本部 //非表示列
                   ",mj.MadoguchiKanriBangou " + //管理番号 19
                   ",mj.MadoguchiBushoRenban " + //部所連番
                   ",mj.MadoguchiGyoumuMeishou " + //業務名称
                   ",mj.MadoguchiKoujiKenmei " + //工事件名
-                  ",sb.ShibuBikou ";  //部所備考
-                                      //",(select TOP 1 ShibuBikou from ShibuBikou where ShibuBikouBushoKanriboBushoCD = " + UserInfos[2] + " and MadoguchiID = mj.MadoguchiID and ShinDeleteFlag = 0 ";
-                                      //  ",(select TOP 1 ShibuBikou from ShibuBikou where ShibuBikouBushoKanriboBushoCD = mjmc.MadoguchiL1ChousaBushoCD and MadoguchiID = mj.MadoguchiID and ShinDeleteFlag = 0 ";
-                                      ////部所備考
-                                      //if (item_BushoBikou.Text != "")
-                                      //{
-                                      //    cmd.CommandText += "AND ShibuBikou LIKE '%" + GlobalMethod.ChangeSqlText(item_BushoBikou.Text, 1) + "%' ESCAPE '\\' ";
-                                      //}
-                                      //cmd.CommandText += ") ";
-
-                cmd.CommandText += ",mjmc.MadoguchiL1Memo " + //メモ 24
+                  ",sb.ShibuBikou "+
                   ",mj.MadoguchiChousaHinmoku " + //調査品目
-                  ",mc.ChousainMei " + //窓口担当者
                   ",mb.BushokanriboKamei " + //窓口部所
+                  ",mc.ChousainMei " + //窓口担当者
+                  ",mj.MadoguchiOuenUketsukebi " + //応援受付日
                   ",mj.MadoguchiID " +
                   ",mjmc.MadoguchiL1ChousaCD " +
                   ",mj.MadoguchiShiryouHolder " + // 30
@@ -527,10 +518,89 @@ namespace TokuchoBugyoK2
                 "LEFT JOIN Mst_Chousain mc ON  mj.MadoguchiTantoushaCD = mc.KojinCD " +
                 "LEFT JOIN Mst_Busho mb2 ON mjmc.MadoguchiL1ChousaBushoCD = mb2.GyoumuBushoCD " +
                 "LEFT JOIN Mst_Busho mb ON mj.MadoguchiTantoushaBushoCD = mb.GyoumuBushoCD " +
-                //"WHERE MadoguchiTourokuNendo = '" + item_Nendo.SelectedValue.ToString() + "' " +
-                //  "AND mj.MadoguchiDeleteFlag = 0 ";
                 "WHERE mj.MadoguchiDeleteFlag = 0 " +
                 " AND mj.MadoguchiSystemRenban > 0 ";
+
+                ////SQL生成
+                //cmd.CommandText = "SELECT " +
+                //  "mj.MadoguchiShinchokuJoukyou " + //進捗状況　0
+                //  ",mj.MadoguchiHoukokuzumi " + //報告済み
+                //  ",mj.MadoguchiKanryou " + //完了 2
+                //  ",mj.MadoguchiUketsukeBangou + '-' + MadoguchiUketsukeBangouEdaban as tokuchoBan　" + //特調番号（枝番付き）3
+                //  ",mj.MadoguchiHachuuKikanmei " + //発注者名・課名
+                //  ",mj.MadoguchiShiryouHolder " + // 5
+                //  ",mj.MadoguchiTourokubi " + //登録日 6
+                //  ",mj.MadoguchiOuenUketsukebi " + //応援受付日
+                //                                   //",mj.MadoguchiShimekiribi " + //締切日
+                //  ",mjmc.MadoguchiL1ChousaShimekiribi " + //締切日
+                //  ",mjmc.MadoguchiL1ChousaBushoCD " + //調査担当部所CD　非表示 9
+                //                                      //",mjmc.MadoguchiL1ChousaBusho " + //調査担当部所
+                //  ",mb2.BushokanriboKamei " + //調査担当部所
+                //  ",mjmc.MadoguchiL1ChousaTantoushaCD " + //調査担当者CD　非表示
+                //  ",mjmc.MadoguchiL1ChousaTantousha " + //調査担当者
+                //  ",mjmc.MadoguchiL1ChousaShinchoku " + //担当者状況
+                //  ",CASE mj.MadoguchiChousaShubetsu WHEN 1 THEN '単品' WHEN 2 THEN '一般' WHEN 3 THEN '単契' ELSE ' ' END AS MadoguchiChousaShubetsu" + //調査種別 14
+                //  ",CASE mj.MadoguchiChousaKubunJibusho WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunJibusho" + //調査区分　自部所
+                //  ",CASE mj.MadoguchiChousaKubunShibuShibu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunShibuShibu" + //調査区分　支部→支部
+                //  ",CASE mj.MadoguchiChousaKubunHonbuShibu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunHonbuShibu" + //調査区分　本部→支部
+                //  ",CASE mj.MadoguchiChousaKubunShibuHonbu WHEN 1 THEN '有' ELSE '無' END AS MadoguchiChousaKubunShibuHonbu" + //調査区分　支部→本部
+                //  ",mj.MadoguchiKanriBangou " + //管理番号 19
+                //  ",mj.MadoguchiBushoRenban " + //部所連番
+                //  ",mj.MadoguchiGyoumuMeishou " + //業務名称
+                //  ",mj.MadoguchiKoujiKenmei " + //工事件名
+                //  ",sb.ShibuBikou ";  //部所備考
+                //                      //",(select TOP 1 ShibuBikou from ShibuBikou where ShibuBikouBushoKanriboBushoCD = " + UserInfos[2] + " and MadoguchiID = mj.MadoguchiID and ShinDeleteFlag = 0 ";
+                //                      //  ",(select TOP 1 ShibuBikou from ShibuBikou where ShibuBikouBushoKanriboBushoCD = mjmc.MadoguchiL1ChousaBushoCD and MadoguchiID = mj.MadoguchiID and ShinDeleteFlag = 0 ";
+                //                      ////部所備考
+                //                      //if (item_BushoBikou.Text != "")
+                //                      //{
+                //                      //    cmd.CommandText += "AND ShibuBikou LIKE '%" + GlobalMethod.ChangeSqlText(item_BushoBikou.Text, 1) + "%' ESCAPE '\\' ";
+                //                      //}
+                //                      //cmd.CommandText += ") ";
+
+                //cmd.CommandText += ",mjmc.MadoguchiL1Memo " + //メモ 24
+                //  ",mj.MadoguchiChousaHinmoku " + //調査品目
+                //  ",mc.ChousainMei " + //窓口担当者
+                //  ",mb.BushokanriboKamei " + //窓口部所
+                //  ",mj.MadoguchiID " +
+                //  ",mjmc.MadoguchiL1ChousaCD " +
+                //  ",mj.MadoguchiShiryouHolder " + // 30
+                //  ",mj.MadoguchiHoukokuzumi " + // 31:報告済み
+
+                //// 32:進捗アイコンの判定用
+                //", " +
+                //"CASE " +
+                //"WHEN mj.MadoguchiHoukokuzumi = 1 THEN 8 " +
+                //"WHEN mj.MadoguchiHoukokuzumi != 1 THEN " +
+                //"     CASE " +
+                //"         WHEN mjmc.MadoguchiL1ChousaShinchoku = 80 THEN 6 " +
+                //"         WHEN mjmc.MadoguchiL1ChousaShinchoku = 70 THEN 5 " +
+                //"         WHEN mjmc.MadoguchiL1ChousaShinchoku = 50 THEN 7 " +
+                //"         WHEN mjmc.MadoguchiL1ChousaShinchoku = 60 THEN 7 " + // 一次検済
+                //"     ELSE " +
+                //"         CASE " +
+                //"              WHEN mjmc.MadoguchiL1ChousaShimekiribi < '" + DateTime.Today + "' THEN 1 " +
+                //"              WHEN mjmc.MadoguchiL1ChousaShimekiribi <= '" + DateTime.Today.AddDays(3) + "' THEN 2 " +
+                //"              WHEN mjmc.MadoguchiL1ChousaShimekiribi <= '" + DateTime.Today.AddDays(7) + "' THEN 3 " +
+                //"         ELSE 4 " +
+                //"         END " +
+                //"     END " +
+                //"END as Shinchoku " +
+                //"FROM MadoguchiJouhouMadoguchiL1Chou mjmc " +
+                //"INNER JOIN MadoguchiJouhou mj " +
+                //"  ON mj.MadoguchiID = mjmc.MadoguchiID " +
+                //" AND mjmc.MadoguchiL1DeleteFlag = 0 " +
+                //"LEFT JOIN ShibuBikou sb " +
+                //"  ON mj.MadoguchiID = sb.MadoguchiID " +
+                //" AND sb.ShibuBikouBushoKanriboBushoCD = mjmc.MadoguchiL1ChousaBushoCD " +
+                //" AND sb.ShinDeleteFlag = 0 " +
+                //"LEFT JOIN Mst_Chousain mc ON  mj.MadoguchiTantoushaCD = mc.KojinCD " +
+                //"LEFT JOIN Mst_Busho mb2 ON mjmc.MadoguchiL1ChousaBushoCD = mb2.GyoumuBushoCD " +
+                //"LEFT JOIN Mst_Busho mb ON mj.MadoguchiTantoushaBushoCD = mb.GyoumuBushoCD " +
+                ////"WHERE MadoguchiTourokuNendo = '" + item_Nendo.SelectedValue.ToString() + "' " +
+                ////  "AND mj.MadoguchiDeleteFlag = 0 ";
+                //"WHERE mj.MadoguchiDeleteFlag = 0 " +
+                //" AND mj.MadoguchiSystemRenban > 0 ";
 
                 // 当年度
                 if (item_NendoOptionTounen.Checked)
@@ -549,99 +619,100 @@ namespace TokuchoBugyoK2
                     cmd.CommandText += "OR MadoguchiTourokuNendo = '" + w_Nendo.ToString() + "') ";
                 }
 
-                if (item_ChousaKbnJibusho.Checked || item_ChousaKbnShibuShibu.Checked || item_ChousaKbnHonbuShibu.Checked || item_ChousaKbnShibuHonbu.Checked)
-                {
-                    // OR追加フラグ true:OR追加
-                    //Boolean OrAddFlg = false;
+                //不具合No1337（1094）対応
+                //if (item_ChousaKbnJibusho.Checked || item_ChousaKbnShibuShibu.Checked || item_ChousaKbnHonbuShibu.Checked || item_ChousaKbnShibuHonbu.Checked)
+                //{
+                //    // OR追加フラグ true:OR追加
+                //    //Boolean OrAddFlg = false;
 
-                    //cmd.CommandText += "AND (";
-                    ////調査区分　自部所
-                    //if (item_ChousaKbnJibusho.Checked)
-                    //{
-                    //    cmd.CommandText += "mj.MadoguchiChousaKubunJibusho = 1 ";
-                    //    OrAddFlg = true;
-                    //}
+                //    //cmd.CommandText += "AND (";
+                //    ////調査区分　自部所
+                //    //if (item_ChousaKbnJibusho.Checked)
+                //    //{
+                //    //    cmd.CommandText += "mj.MadoguchiChousaKubunJibusho = 1 ";
+                //    //    OrAddFlg = true;
+                //    //}
 
-                    ////調査区分　支部→支部
-                    //if (item_ChousaKbnShibuShibu.Checked)
-                    //{
-                    //    if (OrAddFlg)
-                    //    {
-                    //        //cmd.CommandText += "OR ";
-                    //        cmd.CommandText += "AND ";
-                    //    }
-                    //    cmd.CommandText += "mj.MadoguchiChousaKubunShibuShibu = 1 ";
-                    //    OrAddFlg = true;
-                    //}
+                //    ////調査区分　支部→支部
+                //    //if (item_ChousaKbnShibuShibu.Checked)
+                //    //{
+                //    //    if (OrAddFlg)
+                //    //    {
+                //    //        //cmd.CommandText += "OR ";
+                //    //        cmd.CommandText += "AND ";
+                //    //    }
+                //    //    cmd.CommandText += "mj.MadoguchiChousaKubunShibuShibu = 1 ";
+                //    //    OrAddFlg = true;
+                //    //}
 
-                    ////調査区分　本部→支部
-                    //if (item_ChousaKbnHonbuShibu.Checked)
-                    //{
-                    //    if (OrAddFlg)
-                    //    {
-                    //        //cmd.CommandText += "OR ";
-                    //        cmd.CommandText += "AND ";
-                    //    }
-                    //    cmd.CommandText += "mj.MadoguchiChousaKubunHonbuShibu = 1 ";
-                    //    OrAddFlg = true;
-                    //}
+                //    ////調査区分　本部→支部
+                //    //if (item_ChousaKbnHonbuShibu.Checked)
+                //    //{
+                //    //    if (OrAddFlg)
+                //    //    {
+                //    //        //cmd.CommandText += "OR ";
+                //    //        cmd.CommandText += "AND ";
+                //    //    }
+                //    //    cmd.CommandText += "mj.MadoguchiChousaKubunHonbuShibu = 1 ";
+                //    //    OrAddFlg = true;
+                //    //}
 
-                    ////調査区分　支部→本部
-                    //if (item_ChousaKbnShibuHonbu.Checked)
-                    //{
-                    //    if (OrAddFlg)
-                    //    {
-                    //        //cmd.CommandText += "OR ";
-                    //        cmd.CommandText += "AND ";
-                    //    }
-                    //    cmd.CommandText += "mj.MadoguchiChousaKubunShibuHonbu = 1 ";
-                    //    OrAddFlg = true;
-                    //}
-                    //cmd.CommandText += ")";
-                    cmd.CommandText += "AND (";
-                    //調査区分　自部所
-                    if (item_ChousaKbnJibusho.Checked)
-                    {
-                        cmd.CommandText += " MadoguchiChousaKubunJibusho = 1 ";
-                    }
-                    else
-                    {
-                        cmd.CommandText += " MadoguchiChousaKubunJibusho = 0 ";
-                    }
+                //    ////調査区分　支部→本部
+                //    //if (item_ChousaKbnShibuHonbu.Checked)
+                //    //{
+                //    //    if (OrAddFlg)
+                //    //    {
+                //    //        //cmd.CommandText += "OR ";
+                //    //        cmd.CommandText += "AND ";
+                //    //    }
+                //    //    cmd.CommandText += "mj.MadoguchiChousaKubunShibuHonbu = 1 ";
+                //    //    OrAddFlg = true;
+                //    //}
+                //    //cmd.CommandText += ")";
+                //    cmd.CommandText += "AND (";
+                //    //調査区分　自部所
+                //    if (item_ChousaKbnJibusho.Checked)
+                //    {
+                //        cmd.CommandText += " MadoguchiChousaKubunJibusho = 1 ";
+                //    }
+                //    else
+                //    {
+                //        cmd.CommandText += " MadoguchiChousaKubunJibusho = 0 ";
+                //    }
 
-                    cmd.CommandText += "AND ";
-                    //調査区分　支部→支部
-                    if (item_ChousaKbnShibuShibu.Checked)
-                    {
-                        cmd.CommandText += " MadoguchiChousaKubunShibuShibu = 1 ";
-                    }
-                    else
-                    {
-                        cmd.CommandText += " MadoguchiChousaKubunShibuShibu = 0 ";
-                    }
-                    cmd.CommandText += "AND ";
-                    //調査区分　本部→支部
-                    if (item_ChousaKbnHonbuShibu.Checked)
-                    {
-                        cmd.CommandText += " MadoguchiChousaKubunHonbuShibu = 1 ";
-                    }
-                    else
-                    {
-                        cmd.CommandText += " MadoguchiChousaKubunHonbuShibu = 0 ";
-                    }
+                //    cmd.CommandText += "AND ";
+                //    //調査区分　支部→支部
+                //    if (item_ChousaKbnShibuShibu.Checked)
+                //    {
+                //        cmd.CommandText += " MadoguchiChousaKubunShibuShibu = 1 ";
+                //    }
+                //    else
+                //    {
+                //        cmd.CommandText += " MadoguchiChousaKubunShibuShibu = 0 ";
+                //    }
+                //    cmd.CommandText += "AND ";
+                //    //調査区分　本部→支部
+                //    if (item_ChousaKbnHonbuShibu.Checked)
+                //    {
+                //        cmd.CommandText += " MadoguchiChousaKubunHonbuShibu = 1 ";
+                //    }
+                //    else
+                //    {
+                //        cmd.CommandText += " MadoguchiChousaKubunHonbuShibu = 0 ";
+                //    }
 
-                    cmd.CommandText += "AND ";
-                    //調査区分　支部→本部
-                    if (item_ChousaKbnShibuHonbu.Checked)
-                    {
-                        cmd.CommandText += " MadoguchiChousaKubunShibuHonbu = 1 ";
-                    }
-                    else
-                    {
-                        cmd.CommandText += " MadoguchiChousaKubunShibuHonbu = 0 ";
-                    }
-                    cmd.CommandText += ")";
-                }
+                //    cmd.CommandText += "AND ";
+                //    //調査区分　支部→本部
+                //    if (item_ChousaKbnShibuHonbu.Checked)
+                //    {
+                //        cmd.CommandText += " MadoguchiChousaKubunShibuHonbu = 1 ";
+                //    }
+                //    else
+                //    {
+                //        cmd.CommandText += " MadoguchiChousaKubunShibuHonbu = 0 ";
+                //    }
+                //    cmd.CommandText += ")";
+                //}
 
                 //// 調査区分 自部所
                 //if (item_ChousaKbnJibusho.Checked)
@@ -689,10 +760,11 @@ namespace TokuchoBugyoK2
                 }
 
                 //業務名称
-                if (item_Gyoumumei.Text != "")
-                {
-                    cmd.CommandText += "AND mj.MadoguchiGyoumuMeishou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + GlobalMethod.ChangeSqlText(item_Gyoumumei.Text, 1) + "%' ESCAPE '\\' ";
-                }
+                //不具合No1337（1094）対応
+                //if (item_Gyoumumei.Text != "")
+                //{
+                //    cmd.CommandText += "AND mj.MadoguchiGyoumuMeishou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + GlobalMethod.ChangeSqlText(item_Gyoumumei.Text, 1) + "%' ESCAPE '\\' ";
+                //}
 
                 //締切日 From
                 if (item_DateFrom.CustomFormat == "")
@@ -713,10 +785,11 @@ namespace TokuchoBugyoK2
                 }
 
                 //管理番号
-                if (item_KanriBangou.Text != "")
-                {
-                    cmd.CommandText += "AND mj.MadoguchiKanriBangou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + GlobalMethod.ChangeSqlText(item_KanriBangou.Text, 1) + "%' ESCAPE '\\' ";
-                }
+                //不具合No1337（1094）対応
+                //if (item_KanriBangou.Text != "")
+                //{
+                //    cmd.CommandText += "AND mj.MadoguchiKanriBangou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + GlobalMethod.ChangeSqlText(item_KanriBangou.Text, 1) + "%' ESCAPE '\\' ";
+                //}
 
                 //調査担当者 名前の文字列検索
                 if (item_ChousaTantousha.Text != "")
@@ -743,10 +816,11 @@ namespace TokuchoBugyoK2
                 }
 
                 //本部単品
-                if (item_HonbuTanpin.Checked)
-                {
-                    cmd.CommandText += "AND mj.MadoguchiHonbuTanpinflg = 1 ";
-                }
+                //不具合No1337（1094）対応
+                //if (item_HonbuTanpin.Checked)
+                //{
+                //    cmd.CommandText += "AND mj.MadoguchiHonbuTanpinflg = 1 ";
+                //}
 
                 //工事件名
                 if (item_Koujikenmei.Text != "")
@@ -829,10 +903,11 @@ namespace TokuchoBugyoK2
                     //}
                 }
                 //部所備考
-                if (item_BushoBikou.Text != "")
-                {
-                    cmd.CommandText += "AND sb.ShibuBikou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + GlobalMethod.ChangeSqlText(item_BushoBikou.Text, 1) + "%' ESCAPE '\\' ";
-                }
+                //不具合No1337（1094）対応
+                //if (item_BushoBikou.Text != "")
+                //{
+                //    cmd.CommandText += "AND sb.ShibuBikou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + GlobalMethod.ChangeSqlText(item_BushoBikou.Text, 1) + "%' ESCAPE '\\' ";
+                //}
 
                 //進捗Value
                 String w_jyokyou = "";
@@ -1007,7 +1082,9 @@ namespace TokuchoBugyoK2
 
                 //c1FlexGrid1.Cols[6].Style.BackgroundImage = Image.FromFile("Resource/Image/folder_gray_s.png");
                 // メモ
-                c1FlexGrid1.Cols[25].Style.WordWrap = true;
+                //不具合No1337（1094）対応
+                c1FlexGrid1.Cols[14].Style.WordWrap = true;
+                //c1FlexGrid1.Cols[25].Style.WordWrap = true;
                 //C1.Win.C1FlexGrid.CellRange cr;
                 //cr = c1FlexGrid1.GetCellRange(1, 7, c1FlexGrid1.Rows.Count - 1, 7);
                 //cr.Image = Image.FromFile("folder_gray_s.png");
@@ -1620,10 +1697,11 @@ namespace TokuchoBugyoK2
             item_NendoOption3Nen.Checked = false;
 
             //調査区分
-            item_ChousaKbnJibusho.Checked = false;
-            item_ChousaKbnShibuShibu.Checked = false;
-            item_ChousaKbnHonbuShibu.Checked = false;
-            item_ChousaKbnShibuHonbu.Checked = false;
+            //不具合No1337（1094）対応
+            //item_ChousaKbnJibusho.Checked = false;
+            //item_ChousaKbnShibuShibu.Checked = false;
+            //item_ChousaKbnHonbuShibu.Checked = false;
+            //item_ChousaKbnShibuHonbu.Checked = false;
 
             //発注者課名　特調番号
             item_HachushaKamei.Text = "";
@@ -1644,14 +1722,18 @@ namespace TokuchoBugyoK2
             item_Taisho.SelectedIndex = 0;
 
             //業務名　管理番号　工事件名 メモ　部署備考
-            item_Gyoumumei.Text = "";
-            item_KanriBangou.Text = "";
+            //不具合No1337（1094）対応
+            //item_Gyoumumei.Text = "";
+            //不具合No1337（1094）対応
+            //item_KanriBangou.Text = "";
             item_Koujikenmei.Text = "";
             item_Memo.Text = "";
-            item_BushoBikou.Text = "";
+            //不具合No1337（1094）対応
+            //item_BushoBikou.Text = "";
 
             //本部単品
-            item_HonbuTanpin.Checked = false;
+            //不具合No1337（1094）対応
+            //item_HonbuTanpin.Checked = false;
 
             // 検索期間　締め日の選択　表示件数
             item_FromTo.SelectedIndex = -1;
@@ -2190,15 +2272,27 @@ namespace TokuchoBugyoK2
         private void c1FlexGrid1_AfterEdit(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
             DateTime dateTime = DateTime.Today;
-
-            // 14:担当者状況変更
-            if (e.Row > 0 && (e.Col == 14))
+            //不具合No1337（1094）対応 もともと13とハードコーディングされていたところを変数に変更した。
+            int tanto_jokyo_index = 13;
+            //その他の列インデックスも併せて変数に。いづれメンバのEnumに変更したい。
+            int shinchoku_jokyo_index = 1;
+            int shimekiribi_index = 8;
+            int memo_index = 14;
+            int madoguchi_id_index = 29;
+            int madoguchi_chousa_id_index = 30;
+            int hinmoku_chousain_id_index = 11;
+            int tokucyo_no_index = 4;
+            int houkokuzumi_index = 32;
+            // 13:担当者状況変更 
+            //// 14:担当者状況変更 
+            //if (e.Row > 0 && (e.Col == 14))
+            if (e.Row > 0 && (e.Col == tanto_jokyo_index))
             {
                 // 1:報告済みの場合
-                if ("1".Equals(c1FlexGrid1[e.Row, 32].ToString()))
+                if ("1".Equals(c1FlexGrid1[e.Row, houkokuzumi_index].ToString()))
                 {
                     // 報告済み
-                    c1FlexGrid1.Rows[e.Row][1] = "8";
+                    c1FlexGrid1.Rows[e.Row][shinchoku_jokyo_index] = "8";
                 }
                 else
                 {
@@ -2211,44 +2305,44 @@ namespace TokuchoBugyoK2
                     // 60:一次検済
                     // 70:二次検済
                     // 80:中止
-                    if ("80".Equals(c1FlexGrid1[e.Row, 14].ToString()))
+                    if ("80".Equals(c1FlexGrid1[e.Row, tanto_jokyo_index].ToString()))
                     {
                         // 二次検証済み、または中止（中止）
-                        c1FlexGrid1.Rows[e.Row][1] = "6";
+                        c1FlexGrid1.Rows[e.Row][shinchoku_jokyo_index] = "6";
                     }
-                    else if ("70".Equals(c1FlexGrid1[e.Row, 14].ToString()))
+                    else if ("70".Equals(c1FlexGrid1[e.Row, tanto_jokyo_index].ToString()))
                     {
                         // 二次検証済み、または中止（二次検証済み）
-                        c1FlexGrid1.Rows[e.Row][1] = "5";
+                        c1FlexGrid1.Rows[e.Row][shinchoku_jokyo_index] = "5";
                     }
-                    else if ("50".Equals(c1FlexGrid1[e.Row, 14].ToString()) || "60".Equals(c1FlexGrid1[e.Row, 14].ToString()))
+                    else if ("50".Equals(c1FlexGrid1[e.Row, tanto_jokyo_index].ToString()) || "60".Equals(c1FlexGrid1[e.Row, tanto_jokyo_index].ToString()))
                     {
                         // 担当者済み or 一次検済
-                        c1FlexGrid1.Rows[e.Row][1] = "7";
+                        c1FlexGrid1.Rows[e.Row][shinchoku_jokyo_index] = "7";
                     }
-                    else if (c1FlexGrid1[e.Row, 9] != null)
+                    else if (c1FlexGrid1[e.Row, shimekiribi_index] != null)
                     {
                         try
                         {
-                            dateTime = DateTime.Parse(c1FlexGrid1[e.Row, 9].ToString());
+                            dateTime = DateTime.Parse(c1FlexGrid1[e.Row, shimekiribi_index].ToString());
                             if (dateTime < DateTime.Today)
                             {
                                 // 締切日経過
-                                c1FlexGrid1.Rows[e.Row][1] = "1";
+                                c1FlexGrid1.Rows[e.Row][shinchoku_jokyo_index] = "1";
                             }
                             else if (dateTime < DateTime.Today.AddDays(3))
                             {
                                 // 締切日が3日以内、かつ2次検証が完了していない
-                                c1FlexGrid1.Rows[e.Row][1] = "2";
+                                c1FlexGrid1.Rows[e.Row][shinchoku_jokyo_index] = "2";
                             }
                             else if (dateTime < DateTime.Today.AddDays(7))
                             {
                                 // 締切日が1週間以内、かつ2次検証が完了していない
-                                c1FlexGrid1.Rows[e.Row][1] = "3";
+                                c1FlexGrid1.Rows[e.Row][shinchoku_jokyo_index] = "3";
                             }
                             else
                             {
-                                c1FlexGrid1.Rows[e.Row][1] = "4";
+                                c1FlexGrid1.Rows[e.Row][shinchoku_jokyo_index] = "4";
                             }
                         }
                         catch
@@ -2281,16 +2375,16 @@ namespace TokuchoBugyoK2
 
                     //画面の担当者状況
                     string gamenShinchoku = "";
-                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][14].ToString()))
+                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][tanto_jokyo_index].ToString()))
                     {
-                        gamenShinchoku = c1FlexGrid1.Rows[i][14].ToString();
+                        gamenShinchoku = c1FlexGrid1.Rows[i][tanto_jokyo_index].ToString();
                     }
 
                     //画面のメモ
                     string gamenMemo = "";
-                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][25].ToString()))
+                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][memo_index].ToString()))
                     {
-                        gamenMemo = c1FlexGrid1.Rows[i][25].ToString();
+                        gamenMemo = c1FlexGrid1.Rows[i][memo_index].ToString();
                     }
 
                     //MadoguchiL1ChousaCDがない場合
@@ -2299,9 +2393,9 @@ namespace TokuchoBugyoK2
                     string chousaId = "";
 
                     //MadoguchiL1ChousaCDがある場合、以下の処理
-                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][30].ToString()))
+                    if (!String.IsNullOrEmpty(c1FlexGrid1.Rows[i][madoguchi_chousa_id_index].ToString()))
                     {
-                        chousaId = c1FlexGrid1.Rows[i][30].ToString();
+                        chousaId = c1FlexGrid1.Rows[i][madoguchi_chousa_id_index].ToString();
                         //差分フラグ
                         Boolean sabun = false;
 
@@ -2309,7 +2403,7 @@ namespace TokuchoBugyoK2
                         DataTable dt = new DataTable();
                         cmd.CommandText = "SELECT ISNULL(MadoguchiL1ChousaShinchoku,'') AS MadoguchiL1ChousaShinchoku, ISNULL(MadoguchiL1Memo,'') AS MadoguchiL1Memo " +
                             "FROM MadoguchiJouhouMadoguchiL1Chou " +
-                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
+                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][madoguchi_id_index].ToString() + " " +
                             "AND MadoguchiL1ChousaCD = " + chousaId + " ";
 
                         var sda = new SqlDataAdapter(cmd);
@@ -2338,8 +2432,8 @@ namespace TokuchoBugyoK2
                                 ",MadoguchiL1UpdateDate = SYSDATETIME() " +
                                 ",MadoguchiL1UpdateUser = N'" + UserInfos[0] + "' " +
                                 ",MadoguchiL1UpdateProgram = '" + pgmName + methodName + "' " +
-                                "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
-                                "AND MadoguchiL1ChousaCD = " + c1FlexGrid1.Rows[i][30].ToString() + " ";
+                                "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][madoguchi_id_index].ToString() + " " +
+                                "AND MadoguchiL1ChousaCD = " + c1FlexGrid1.Rows[i][madoguchi_chousa_id_index].ToString() + " ";
 
                             cmd.ExecuteNonQuery();
 
@@ -2349,7 +2443,7 @@ namespace TokuchoBugyoK2
                             DataTable dt2 = new DataTable();
                             cmd.CommandText = "SELECT min(MadoguchiL1ChousaShinchoku) " +
                                 "FROM MadoguchiJouhouMadoguchiL1Chou " +
-                                "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " ";
+                                "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][madoguchi_id_index].ToString() + " ";
 
                             var sda2 = new SqlDataAdapter(cmd);
                             sda2.Fill(dt2);
@@ -2365,7 +2459,7 @@ namespace TokuchoBugyoK2
                             ",MadoguchiUpdateDate = SYSDATETIME()" +
                             ",MadoguchiUpdateUser = N'" + UserInfos[0] + "' " +
                             ",MadoguchiUpdateProgram = '" + pgmName + methodName + "' " +
-                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " ";
+                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][madoguchi_id_index].ToString() + " ";
                             cmd.ExecuteNonQuery();
 
                             // 調査品目の進捗状況を更新・・・Gridで変更した進捗に更新
@@ -2374,8 +2468,8 @@ namespace TokuchoBugyoK2
                             ",ChousaUpdateDate = SYSDATETIME()" +
                             ",ChousaUpdateUser = N'" + UserInfos[0] + "' " +
                             ",ChousaUpdateProgram = '" + pgmName + methodName + "' " +
-                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][29].ToString() + " " +
-                            "AND HinmokuChousainCD = " + c1FlexGrid1.Rows[i][12].ToString();
+                            "WHERE MadoguchiID = " + c1FlexGrid1.Rows[i][madoguchi_id_index].ToString() + " " +
+                            "AND HinmokuChousainCD = " + c1FlexGrid1.Rows[i][hinmoku_chousain_id_index].ToString();
 
                             cmd.ExecuteNonQuery();
 
@@ -2383,7 +2477,7 @@ namespace TokuchoBugyoK2
                             transaction.Commit();
 
                             // 皇帝まもる連携
-                            GlobalMethod.KouteiTantouBushoRenkei(c1FlexGrid1.Rows[i][29].ToString(), UserInfos[0], UserInfos[2]);
+                            GlobalMethod.KouteiTantouBushoRenkei(c1FlexGrid1.Rows[i][madoguchi_id_index].ToString(), UserInfos[0], UserInfos[2]);
 
                             transaction = conn.BeginTransaction();
                             cmd.Transaction = transaction;
@@ -2414,8 +2508,8 @@ namespace TokuchoBugyoK2
                             ",N'" + UserInfos[3] + "' " +
                             ",'自分大臣で更新を行いました。進捗状況:" + gamenShinchoku + "' " +
                             ",'" + pgmName + methodName + "' " +
-                            ",'" + c1FlexGrid1.Rows[i][4].ToString() + "' " + // 特調番号
-                            "," + c1FlexGrid1.Rows[i][29].ToString() + " " + // MadoguchiID
+                            ",'" + c1FlexGrid1.Rows[i][tokucyo_no_index].ToString() + "' " + // 特調番号
+                            "," + c1FlexGrid1.Rows[i][madoguchi_id_index].ToString() + " " + // MadoguchiID
                             ",NULL " +
                             ",NULL " +
                             ",NULL " +
@@ -2545,9 +2639,13 @@ namespace TokuchoBugyoK2
                                     report_data[11] = item_MadoguchiBusho.SelectedValue.ToString();
                                 }
                                 // 12.業務名称
-                                report_data[12] = item_Gyoumumei.Text;
+                                //不具合No1337（1094）対応
+                                //report_data[12] = item_Gyoumumei.Text;
+                                report_data[12] = "";
                                 // 13.管理番号
-                                report_data[13] = item_KanriBangou.Text;
+                                //不具合No1337（1094）対応
+                                //report_data[13] = item_KanriBangou.Text;
+                                report_data[13] = "";
                                 // 14.検索期間の指定
                                 report_data[14] = "0";
                                 if (item_FromTo.Text != null && item_FromTo.Text != "")
@@ -2567,28 +2665,32 @@ namespace TokuchoBugyoK2
                                 }
                                 // 19.調査区分（自部所）
                                 report_data[19] = "0";
-                                if (item_ChousaKbnJibusho.Checked)
-                                {
-                                    report_data[19] = "1";
-                                }
+                                //不具合No1337（1094）対応
+                                //if (item_ChousaKbnJibusho.Checked)
+                                //{
+                                //    report_data[19] = "1";
+                                //}
                                 // 20.調査区分（支→支）
                                 report_data[20] = "0";
-                                if (item_ChousaKbnShibuShibu.Checked)
-                                {
-                                    report_data[20] = "1";
-                                }
+                                //不具合No1337（1094）対応
+                                //if (item_ChousaKbnShibuShibu.Checked)
+                                //{
+                                //    report_data[20] = "1";
+                                //}
                                 // 21.調査区分（本→支）
                                 report_data[21] = "0";
-                                if (item_ChousaKbnHonbuShibu.Checked)
-                                {
-                                    report_data[21] = "1";
-                                }
+                                //不具合No1337（1094）対応
+                                //if (item_ChousaKbnHonbuShibu.Checked)
+                                //{
+                                //    report_data[21] = "1";
+                                //}
                                 // 22.調査区分（支→本）
                                 report_data[22] = "0";
-                                if (item_ChousaKbnShibuHonbu.Checked)
-                                {
-                                    report_data[22] = "1";
-                                }
+                                //不具合No1337（1094）対応
+                                //if (item_ChousaKbnShibuHonbu.Checked)
+                                //{
+                                //    report_data[22] = "1";
+                                //}
                                 // 23.調査品目  自分大臣では未設定
                                 // 24.進捗状況
                                 report_data[24] = "0";
@@ -2598,10 +2700,11 @@ namespace TokuchoBugyoK2
                                 }
                                 // 25.本部単品
                                 report_data[25] = "0";
-                                if (item_HonbuTanpin.Checked)
-                                {
-                                    report_data[25] = "1";
-                                }
+                                //不具合No1337（1094）対応
+                                //if (item_HonbuTanpin.Checked)
+                                //{
+                                //    report_data[25] = "1";
+                                //}
                                 // 26.調査担当者名
                                 report_data[26] = item_ChousaTantousha.Text;
                                 // 27.メモ
@@ -2695,35 +2798,43 @@ namespace TokuchoBugyoK2
                                 report_data[9] = item_MadoguchiBusho.SelectedValue.ToString();
                             }
                             // 10.業務名称
-                            report_data[10] = item_Gyoumumei.Text;
+                            //不具合No1337（1094）対応
+                            //report_data[10] = item_Gyoumumei.Text;
+                            report_data[10] = "";
                             // 11.管理番号
-                            report_data[11] = item_Gyoumumei.Text;
+                            //不具合No1337（1094）対応
+                            //report_data[11] = item_Gyoumumei.Text;    //←そもそも不具合のような。
+                            report_data[11] = "";
                             // 12.工事件名
                             report_data[12] = item_Koujikenmei.Text;
                             // 13.調査区分（自部所）
                             report_data[13] = "0";
-                            if (item_ChousaKbnJibusho.Checked)
-                            {
-                                report_data[13] = "1";
-                            }
+                            //不具合No1337（1094）対応
+                            //if (item_ChousaKbnJibusho.Checked)
+                            //{
+                            //    report_data[13] = "1";
+                            //}
                             // 14.調査区分（支→支）
                             report_data[14] = "0";
-                            if (item_ChousaKbnShibuShibu.Checked)
-                            {
-                                report_data[14] = "1";
-                            }
+                            //不具合No1337（1094）対応
+                            //if (item_ChousaKbnShibuShibu.Checked)
+                            //{
+                            //    report_data[14] = "1";
+                            //}
                             // 15.調査区分（本→支）
                             report_data[15] = "0";
-                            if (item_ChousaKbnHonbuShibu.Checked)
-                            {
-                                report_data[15] = "1";
-                            }
+                            //不具合No1337（1094）対応
+                            //if (item_ChousaKbnHonbuShibu.Checked)
+                            //{
+                            //    report_data[15] = "1";
+                            //}
                             // 16.調査区分（支→本）
                             report_data[16] = "0";
-                            if (item_ChousaKbnShibuHonbu.Checked)
-                            {
-                                report_data[16] = "1";
-                            }
+                            //不具合No1337（1094）対応
+                            //if (item_ChousaKbnShibuHonbu.Checked)
+                            //{
+                            //    report_data[16] = "1";
+                            //}
                             // 17.進捗状況
                             report_data[17] = "0";
                             if (item_Shintyokujyoukyo.Text != null && item_Shintyokujyoukyo.Text != "")
@@ -2732,16 +2843,19 @@ namespace TokuchoBugyoK2
                             }
                             // 18.本部単品
                             report_data[18] = "0";
-                            if (item_HonbuTanpin.Checked)
-                            {
-                                report_data[18] = "1";
-                            }
+                            //不具合No1337（1094）対応
+                            //if (item_HonbuTanpin.Checked)
+                            //{
+                            //    report_data[18] = "1";
+                            //}
                             // 19.調査担当者名
                             report_data[19] = item_ChousaTantousha.Text;
                             // 20.メモ
                             report_data[20] = item_Memo.Text;
                             // 21.部所備考
-                            report_data[21] = item_BushoBikou.Text;
+                            //不具合No1337（1094）対応
+                            //report_data[21] = item_BushoBikou.Text;
+                            report_data[21] = "";
                             // 22.主副
                             report_data[22] = "0";
                             if (item_Taisho.Text != null && item_Taisho.Text != "")

@@ -451,6 +451,7 @@
     <Content Include="Resource\Image\ActionDeleteDisabled.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resource\Image\After_Page.png" />
     <Content Include="Resource\Image\blank.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -461,6 +462,7 @@
     <Content Include="Resource\Image\DeleteRow.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resource\Image\End_Page.png" />
     <Content Include="Resource\Image\excel_icon_s.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -477,6 +479,7 @@
     <Content Include="Resource\Image\new.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resource\Image\Previous_Page.png" />
     <Content Include="Resource\Image\selectRow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -509,33 +512,41 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entry_Search.resx">
       <DependentUpon>Entry_Search.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry_Input.resx">
       <DependentUpon>Entry_Input.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWork.resx">
       <DependentUpon>FormWork.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Jibun.resx">
       <DependentUpon>Jibun.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Jibun_Input.resx">
       <DependentUpon>Jibun_Input.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Madoguchi.resx">
       <DependentUpon>Madoguchi.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Madoguchi_Input.resx">
       <DependentUpon>Madoguchi_Input.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Bunrui.resx">
       <DependentUpon>Popup_Bunrui.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_BushoRireki.resx">
       <DependentUpon>Popup_BushoRireki.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Download.resx">
       <DependentUpon>Popup_Download.cs</DependentUpon>
@@ -548,45 +559,57 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Hachusha.resx">
       <DependentUpon>Popup_Hachusha.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_HinmokuTorikomi.resx">
       <DependentUpon>Popup_HinmokuTorikomi.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_KoujiJimusyo.resx">
       <DependentUpon>Popup_KoujiJimusyo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_KoujiJimusyo1.resx">
       <DependentUpon>Popup_KoujiJimusyo1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Kyougou.resx">
       <DependentUpon>Popup_Kyougou.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Anken.resx">
       <DependentUpon>Popup_Anken.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_ChousainList.resx">
       <DependentUpon>Popup_ChousainList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Keikaku.resx">
       <DependentUpon>Popup_Keikaku.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Loading.resx">
       <DependentUpon>Popup_Loading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_miharujutaku.resx">
       <DependentUpon>Popup_miharujutaku.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_MojiChange.resx">
       <DependentUpon>Popup_MojiChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Sekoujouken.resx">
       <DependentUpon>Popup_Sekoujouken.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_tantousya.resx">
       <DependentUpon>Popup_tantousya.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Yubin.resx">
       <DependentUpon>Popup_Yubin.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -610,15 +633,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_KanriNo.resx">
       <DependentUpon>Popup_KanriNo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_TokuchoNo.resx">
       <DependentUpon>Popup_TokuchoNo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_TanpinTantousya.resx">
       <DependentUpon>Popup_TanpinTantousya.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_ShukeiHyou.resx">
       <DependentUpon>Popup_ShukeiHyou.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_HoukokuSho.resx">
       <DependentUpon>Popup_HoukokuSho.cs</DependentUpon>
@@ -637,12 +664,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tokumei.resx">
       <DependentUpon>Tokumei.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tokumei_Input.resx">
       <DependentUpon>Tokumei_Input.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TopMenu.resx">
       <DependentUpon>TopMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
@@ -658,6 +688,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Resource\Image\Top_Page.png" />
     <Content Include="Resource\Image\UndeleteRow.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

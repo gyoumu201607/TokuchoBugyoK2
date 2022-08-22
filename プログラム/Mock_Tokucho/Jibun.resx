@@ -271,38 +271,6 @@
   <data name="Top_Page.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
-        AABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="Previous_Page.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABlBJREFUaEPVmm9olVUcx0chWaE2qMxIE3K5DEsaRjDBQXN3/+9aLTPFptSIyoyo
         yWzJXojUC2e9ScWiPxj1QkFmsTmKKOyFUb5w5XTaMq3MZoZJLMNVn+/td27PLs9z92z32b3sB997nuec
         35/vec55zjnPOTcvCqmoqJhaXV19b1VV1YbKysq3ST8CveSdJRV6lacydF+UrmzMPDdSV1d3DYSqIbYd
@@ -333,7 +301,70 @@
         uHjY19vYJC/vXx2dmxAwwFZaAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="Previous_Page.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <data name="After_Page.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="End_Page.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAABlBJREFUaEPV
         mm1oVmUYx0chWbFK6EUjl5ClGdZoGMEEB829P3vWapklNqVGVLaIWmhL9kGkPjjrSyoWvVDUhwlii22i
@@ -366,42 +397,11 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="End_Page.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
   <data name="c1FlexGrid1.ColumnInfo" xml:space="preserve">
-    <value>33,1,6,0,0,-1,Columns:0{Width:17;AllowSorting:False;Caption:" ";AllowResizing:False;AllowMerging:True;AllowEditing:False;}	1{Width:60;Caption:"進捗状況";AllowMerging:True;AllowEditing:False;Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;ImageAlign:CenterCenter;";}	2{Width:35;AllowSorting:False;Caption:"編集";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;ImageAlign:CenterCenter;Trimming:None;";}	3{Width:45;Caption:"完了";AllowEditing:False;Style:"DataType:System.Boolean;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;ImageAlign:CenterCenter;";}	4{Width:177;Caption:"特調番号";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	5{Width:200;Caption:"発注者名・課名";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	6{Width:41;AllowSorting:False;AllowEditing:False;Style:"Display:ImageOnly;Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;ImageAlign:CenterCenter;Trimming:None;BackgroundImage:AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAARgMAAAKJUE5HDQoaCgAAAA1JSERSAAAAFgAAABAIBgAAABLtjyYAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4AUSASostBFrugAAAtVJREFUOE+NlFsraG0UhVd+hB/iyg+QhCQ/QMqFG8kpJDkmISE5J6fklISEJCE5JSE55VJOSUhOaezvGVp76+v7al+M5rveOeaYY77rXSv4+vrS8fGx+vr6NDY2ptnZWc3Pz2tpaUkrKytaXV11fHx8FNy/hYUpHB4edkQwxPLysoXB3t6ezs7ObOL09FQnJydeHx0dGfv7+9re3tbV1dUf4bW1NZ2fn+vl5UXPz8/G09OTXT48POju7k7X19e6vLw0Li4uLH54eOiGxIODAxvY2trS5+enAkQnJiZ8BOH47G1ubmp3d9dOcIRbwBoRBHd2dsyDT93CwoKmpqY8aUCX3t5eDQ4Oanx83Inp6WnNzc39Po719XVtbGw4hiLk4MCdnJzU6OioBgYG/K7IB7hqbW21OOeMe4gzMzMuXFxctDhkwJo9cnAwQg21aLS3t3uKgFHr6+vV2dmp/v5+DQ0N+XZApogjQoSbQgTshYI4pQanaNTV1fmYAl5EdXW1mpubnejp6XEDHIQNmOAn2COHIFycdnV1WaO8vNy3Jbi5uVFxcbHFGxoa1NLSora2NnV3d7sgPH9EaAZCMUwwOjWNjY3WyM/P980Jbm9vlZeXp9LSUidqa2vdoKmpyQUU4oZGFJeVlf1eY6impsbjU1tSUqLMzEzd398r4K4WFRW5E0QKq6qqXMDZ0yScJCMjQxEREX7ZcCMjI5WWlmY+ogUFBcrKyvoWfn19tRidSOCeRkzAfmVlpd0Azg8ea/Ks4WOK2lCDDy3gK2Gs1NRUZWdnu2NsbKyio6P9nJubazIoLCw0EMvJyTEXMSJcNCoqKvTx8fEtzCgJCQlKT0/3aFFRUQqCwGvIxJ/4rz1qExMT3fT9/f37XzEyMmKXSUlJSk5OdgQQ4+Pjjbi4OCN8JhfyQUpKimJiYtTR0fHnJ4Tr8EfD9ft35OYQf67/j/v29vaP8Jd+AbA3EQrEpuU+AAAAAElFTkSuQmCCCw==;BackgroundImageLayout:Hide;";}	7{Width:100;Caption:"登録日";AllowMerging:True;AllowEditing:False;Style:"Format:""d"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	8{Width:100;Caption:"応援受付日";AllowMerging:True;AllowEditing:False;Style:"Format:""d"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	9{Width:100;Caption:"締切日";AllowMerging:True;AllowEditing:False;Style:"Format:""d"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	10{Caption:"調査担当部所CD";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	11{Width:200;Caption:"調査担当部所";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	12{Caption:"調査担当者CD";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	13{Width:200;Caption:"調査担当者";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	14{Width:105;Caption:"担当者状況";AllowMerging:True;Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";}	15{Width:60;Caption:"調査種別";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	16{Width:90;Caption:"調査区分自部所";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;ImageAlign:CenterCenter;Trimming:None;";StyleFixed:"TextAlign:CenterCenter;ImageAlign:CenterCenter;";}	17{Width:90;Caption:"調査区分支→支";AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	18{Width:90;Caption:"調査区分本→支";AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	19{Width:90;Caption:"調査区分支→本";AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	20{Width:100;Caption:"管理番号";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	21{Width:60;Caption:"部所連番";AllowMerging:True;AllowEditing:False;Style:"Format:""C0"";DataType:System.Int32;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	22{Width:200;Caption:"業務名称";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	23{Width:200;Caption:"工事件名";AllowMerging:True;AllowEditing:False;Style:"Format:""C0"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	24{Width:200;Caption:"部所備考";AllowMerging:True;AllowEditing:False;Style:"Format:""C0"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	25{Width:210;Caption:"メモ";Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";}	26{Width:200;Caption:"調査品目";AllowMerging:True;AllowEditing:False;Style:"Format:""C0"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	27{Width:200;Caption:"窓口担当者";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	28{Width:200;Caption:"窓口部所";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	29{Caption:"窓口ID";Visible:False;}	30{Caption:"窓口調査ID";Visible:False;}	31{Caption:"フォルダパス";Visible:False;}	32{Caption:"報告済み";Visible:False;}	</value>
+    <value>33,1,6,0,0,-1,Columns:0{Width:17;AllowSorting:False;Caption:" ";AllowResizing:False;AllowMerging:True;AllowEditing:False;}	1{Width:60;Caption:"進捗状況";AllowMerging:True;AllowEditing:False;Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;ImageAlign:CenterCenter;";}	2{Width:35;AllowSorting:False;Caption:"編集";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;ImageAlign:CenterCenter;Trimming:None;";}	3{Width:45;Caption:"完了";AllowEditing:False;Style:"DataType:System.Boolean;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;ImageAlign:CenterCenter;";}	4{Width:177;Caption:"特調番号";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	5{Width:200;Caption:"発注者名・課名";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	6{Width:41;AllowSorting:False;AllowEditing:False;Style:"Display:ImageOnly;Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;ImageAlign:CenterCenter;Trimming:None;BackgroundImageLayout:Hide;";}	7{Width:100;Caption:"登録日";AllowMerging:True;AllowEditing:False;Style:"Format:""d"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	8{Width:100;Caption:"締切日";AllowMerging:True;AllowEditing:False;Style:"Format:""d"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	9{Caption:"調査担当部所CD";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	10{Width:100;Caption:"調査担当部所";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	11{Caption:"調査担当者CD";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	12{Width:100;Caption:"調査担当者";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	13{Width:105;Caption:"担当者状況";AllowMerging:True;Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	14{Width:210;Caption:"メモ";Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";}	15{Width:60;Caption:"調査種別";Visible:False;AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	16{Width:90;Caption:"調査区分自部所";Visible:False;AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;ImageAlign:CenterCenter;Trimming:None;";StyleFixed:"TextAlign:CenterCenter;ImageAlign:CenterCenter;";}	17{Width:90;Caption:"調査区分支→支";Visible:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	18{Width:90;Caption:"調査区分本→支";Visible:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	19{Width:90;Caption:"調査区分支→本";Visible:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	20{Width:100;Caption:"管理番号";Visible:False;AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	21{Width:60;Caption:"部所連番";Visible:False;AllowMerging:True;AllowEditing:False;Style:"Format:""C0"";DataType:System.Int32;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	22{Width:200;Caption:"業務名称";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	23{Width:200;Caption:"工事件名";AllowMerging:True;AllowEditing:False;Style:"Format:""C0"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	24{Width:200;Caption:"部所備考";AllowMerging:True;AllowEditing:False;Style:"Format:""C0"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	25{Width:200;Caption:"調査品目";AllowMerging:True;AllowEditing:False;Style:"Format:""C0"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	26{Width:100;Caption:"窓口部所";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	27{Width:100;Caption:"窓口担当者";AllowMerging:True;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	28{Width:100;Caption:"応援受付日";AllowMerging:True;AllowEditing:False;Style:"Format:""d"";Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";}	29{Caption:"窓口ID";Visible:False;}	30{Caption:"窓口調査ID";Visible:False;}	31{Caption:"フォルダパス";Visible:False;}	32{Caption:"報告済み";Visible:False;}	</value>
   </data>
   <data name="c1FlexGrid1.StyleInfo" xml:space="preserve">
-    <value>Normal{}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;TextAlign:CenterCenter;WordWrap:True;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ImageAlign:CenterCenter;BackgroundImage:AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA7wAAAAKJUE5HDQoaCgAAAA1JSERSAAAAPAAAACgIAgAAAC3ZDqgAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAkUlEQVRYR+3O0Q2AIAxFUfffwNFcwSWwCSRigfDltZh30882PVtasH+h9+P8fAqlyaOnB2QjyQMdxOpqVTc6pjjnbAUdWZyrhUK/mdBUQlMJTSU0ldBUQlMJTSU0ldBUQlMJTSU0VQdtBXf30VZYt4M90FY0t3lakkdbea+7zTQFdNB19T025fe4CTpmC6JTugBmn6A1839rGQAAAABJRU5ErkJgggs=;BackgroundImageLayout:TileStretch;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;Border:Flat,1,White,Both;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	ErrorStyle{BackColor:Red;TextAlign:CenterCenter;ImageAlign:CenterCenter;BackgroundImage:AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAADAEAAAKJUE5HDQoaCgAAAA1JSERSAAAAPAAAACgIBgAAAKK7mf8AAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAArklEQVRoQ+3PsQ3DMBAEQRfiUE2rNLcgwDVI+ICGRf3RZkauLtjoQOLn8X4u+50yuG59bVOVGb5LwT0fjNavuy/gGZFZynECU7ClzPMB07Cl2mUwLYPVQMlgNVAyWA2UDFYDJYPVQMlgNVAyWA2UDFYDJYPVQMlgNVAyWA2UDFYDJQmOiOgmOCKhM8sFHM2OjvuVIQVH5VHr8Sj13CrBdfWnI5Xdq/obTOlm4GU/AII0HEuahKpdAAAAAElFTkSuQmCCCw==;BackgroundImageLayout:TileStretch;}	CelStyle{ImageAlign:CenterCenter;BackgroundImage:AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA7wAAAAKJUE5HDQoaCgAAAA1JSERSAAAAPAAAACgIAgAAAC3ZDqgAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAkUlEQVRYR+3O0Q2AIAxFUfffwNFcwSWwCSRigfDltZh30882PVtasH+h9+P8fAqlyaOnB2QjyQMdxOpqVTc6pjjnbAUdWZyrhUK/mdBUQlMJTSU0ldBUQlMJTSU0ldBUQlMJTSU0VQdtBXf30VZYt4M90FY0t3lakkdbea+7zTQFdNB19T025fe4CTpmC6JTugBmn6A1839rGQAAAABJRU5ErkJgggs=;BackgroundImageLayout:TileStretch;}	</value>
+    <value>Normal{}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;TextAlign:CenterCenter;WordWrap:True;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ImageAlign:CenterCenter;BackgroundImageLayout:TileStretch;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;Border:Flat,1,White,Both;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	ErrorStyle{BackColor:Red;TextAlign:CenterCenter;ImageAlign:CenterCenter;BackgroundImageLayout:TileStretch;}	CelStyle{ImageAlign:CenterCenter;BackgroundImageLayout:TileStretch;}	</value>
   </data>
   <data name="item_ChousaTantou_Icon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

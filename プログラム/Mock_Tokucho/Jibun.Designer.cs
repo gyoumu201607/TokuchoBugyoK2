@@ -58,26 +58,15 @@
             this.item_Nendo = new System.Windows.Forms.ComboBox();
             this.item_NendoOptionTounen = new System.Windows.Forms.RadioButton();
             this.item_NendoOption3Nen = new System.Windows.Forms.RadioButton();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.item_Koujikenmei = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.item_KanriBangou = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.item_ChousaTantousha = new System.Windows.Forms.TextBox();
             this.item_ChousaTantou_Icon = new System.Windows.Forms.PictureBox();
-            this.item_Gyoumumei = new System.Windows.Forms.TextBox();
             this.item_ShimekiriSentaku = new System.Windows.Forms.ComboBox();
             this.item_Shintyokujyoukyo = new System.Windows.Forms.ComboBox();
-            this.item_MadoguchiBusho = new System.Windows.Forms.ComboBox();
             this.item_FromTo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.label_DateFrom = new System.Windows.Forms.Label();
@@ -86,26 +75,23 @@
             this.item_DateTo = new System.Windows.Forms.DateTimePicker();
             this.label_DateTo = new System.Windows.Forms.Label();
             this.label_DateFromTo = new System.Windows.Forms.Label();
-            this.item_TokuchoNo = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.item_HachushaKamei = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.item_TantouJoukyo = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.item_Hyoujikensuu = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.item_ChousaTantouBusho = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.item_ChousaKbnJibusho = new System.Windows.Forms.CheckBox();
-            this.item_ChousaKbnShibuShibu = new System.Windows.Forms.CheckBox();
-            this.item_ChousaKbnHonbuShibu = new System.Windows.Forms.CheckBox();
-            this.item_ChousaKbnShibuHonbu = new System.Windows.Forms.CheckBox();
             this.item_Taisho = new System.Windows.Forms.ComboBox();
-            this.item_HonbuTanpin = new System.Windows.Forms.CheckBox();
+            this.item_Koujikenmei = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.item_Memo = new System.Windows.Forms.TextBox();
-            this.item_BushoBikou = new System.Windows.Forms.TextBox();
+            this.item_MadoguchiBusho = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.item_HachushaKamei = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.item_TokuchoNo = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.item_tyouhyouInsatu = new System.Windows.Forms.ComboBox();
             this.BtnClear = new System.Windows.Forms.Button();
@@ -135,7 +121,6 @@
             this.tableLayoutPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.item_ChousaTantou_Icon)).BeginInit();
             this.tableLayoutPanel13.SuspendLayout();
-            this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.ErrorBox.SuspendLayout();
@@ -506,7 +491,7 @@
             this.tableLayoutPanel9.AutoSize = true;
             this.tableLayoutPanel9.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tableLayoutPanel9.ColumnCount = 14;
+            this.tableLayoutPanel9.ColumnCount = 12;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -519,47 +504,37 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel7, 1, 0);
-            this.tableLayoutPanel9.Controls.Add(this.label12, 4, 1);
-            this.tableLayoutPanel9.Controls.Add(this.label28, 6, 1);
-            this.tableLayoutPanel9.Controls.Add(this.label22, 6, 2);
-            this.tableLayoutPanel9.Controls.Add(this.item_Koujikenmei, 7, 2);
-            this.tableLayoutPanel9.Controls.Add(this.label18, 8, 2);
-            this.tableLayoutPanel9.Controls.Add(this.item_KanriBangou, 9, 1);
             this.tableLayoutPanel9.Controls.Add(this.label15, 0, 2);
-            this.tableLayoutPanel9.Controls.Add(this.label16, 4, 2);
-            this.tableLayoutPanel9.Controls.Add(this.label25, 10, 1);
-            this.tableLayoutPanel9.Controls.Add(this.label24, 8, 1);
-            this.tableLayoutPanel9.Controls.Add(this.label14, 8, 3);
-            this.tableLayoutPanel9.Controls.Add(this.label26, 10, 3);
-            this.tableLayoutPanel9.Controls.Add(this.label2, 10, 2);
+            this.tableLayoutPanel9.Controls.Add(this.label25, 8, 1);
+            this.tableLayoutPanel9.Controls.Add(this.label26, 8, 3);
+            this.tableLayoutPanel9.Controls.Add(this.label2, 8, 2);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel10, 1, 2);
-            this.tableLayoutPanel9.Controls.Add(this.item_Gyoumumei, 7, 1);
-            this.tableLayoutPanel9.Controls.Add(this.item_ShimekiriSentaku, 11, 2);
-            this.tableLayoutPanel9.Controls.Add(this.item_Shintyokujyoukyo, 11, 3);
-            this.tableLayoutPanel9.Controls.Add(this.item_MadoguchiBusho, 5, 1);
-            this.tableLayoutPanel9.Controls.Add(this.item_FromTo, 11, 1);
-            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel13, 11, 0);
-            this.tableLayoutPanel9.Controls.Add(this.label_DateFromTo, 10, 0);
-            this.tableLayoutPanel9.Controls.Add(this.item_TokuchoNo, 9, 0);
-            this.tableLayoutPanel9.Controls.Add(this.label8, 8, 0);
-            this.tableLayoutPanel9.Controls.Add(this.item_HachushaKamei, 7, 0);
-            this.tableLayoutPanel9.Controls.Add(this.label7, 6, 0);
+            this.tableLayoutPanel9.Controls.Add(this.item_ShimekiriSentaku, 9, 2);
+            this.tableLayoutPanel9.Controls.Add(this.item_Shintyokujyoukyo, 9, 3);
+            this.tableLayoutPanel9.Controls.Add(this.item_FromTo, 9, 1);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel13, 9, 0);
+            this.tableLayoutPanel9.Controls.Add(this.label_DateFromTo, 8, 0);
             this.tableLayoutPanel9.Controls.Add(this.label20, 0, 3);
             this.tableLayoutPanel9.Controls.Add(this.item_TantouJoukyo, 1, 3);
-            this.tableLayoutPanel9.Controls.Add(this.label31, 12, 2);
-            this.tableLayoutPanel9.Controls.Add(this.item_Hyoujikensuu, 13, 2);
+            this.tableLayoutPanel9.Controls.Add(this.label31, 10, 2);
+            this.tableLayoutPanel9.Controls.Add(this.item_Hyoujikensuu, 11, 2);
             this.tableLayoutPanel9.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.item_ChousaTantouBusho, 1, 1);
-            this.tableLayoutPanel9.Controls.Add(this.label9, 4, 0);
-            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel15, 5, 0);
             this.tableLayoutPanel9.Controls.Add(this.item_Taisho, 3, 2);
-            this.tableLayoutPanel9.Controls.Add(this.item_HonbuTanpin, 5, 2);
-            this.tableLayoutPanel9.Controls.Add(this.item_Memo, 9, 2);
-            this.tableLayoutPanel9.Controls.Add(this.item_BushoBikou, 9, 3);
+            this.tableLayoutPanel9.Controls.Add(this.item_Koujikenmei, 7, 1);
+            this.tableLayoutPanel9.Controls.Add(this.label22, 6, 1);
+            this.tableLayoutPanel9.Controls.Add(this.label18, 4, 3);
+            this.tableLayoutPanel9.Controls.Add(this.item_Memo, 5, 3);
+            this.tableLayoutPanel9.Controls.Add(this.item_MadoguchiBusho, 7, 2);
+            this.tableLayoutPanel9.Controls.Add(this.label12, 6, 2);
+            this.tableLayoutPanel9.Controls.Add(this.label7, 4, 2);
+            this.tableLayoutPanel9.Controls.Add(this.item_HachushaKamei, 5, 2);
+            this.tableLayoutPanel9.Controls.Add(this.label8, 4, 1);
+            this.tableLayoutPanel9.Controls.Add(this.item_TokuchoNo, 5, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(10, 43);
@@ -649,74 +624,6 @@
             this.item_NendoOption3Nen.Text = "3年以内";
             this.item_NendoOption3Nen.UseVisualStyleBackColor = true;
             // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label12.Location = new System.Drawing.Point(399, 33);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 17);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "窓口部所";
-            // 
-            // label28
-            // 
-            this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label28.Location = new System.Drawing.Point(751, 33);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(64, 17);
-            this.label28.TabIndex = 0;
-            this.label28.Text = "業務名称";
-            // 
-            // label22
-            // 
-            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label22.Location = new System.Drawing.Point(751, 61);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(64, 17);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "工事件名";
-            // 
-            // item_Koujikenmei
-            // 
-            this.item_Koujikenmei.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_Koujikenmei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_Koujikenmei.Location = new System.Drawing.Point(854, 60);
-            this.item_Koujikenmei.Margin = new System.Windows.Forms.Padding(2);
-            this.item_Koujikenmei.Name = "item_Koujikenmei";
-            this.item_Koujikenmei.Size = new System.Drawing.Size(204, 20);
-            this.item_Koujikenmei.TabIndex = 24;
-            // 
-            // label18
-            // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label18.Location = new System.Drawing.Point(1062, 61);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(29, 17);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "メモ";
-            // 
-            // item_KanriBangou
-            // 
-            this.item_KanriBangou.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_KanriBangou.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_KanriBangou.Location = new System.Drawing.Point(1130, 32);
-            this.item_KanriBangou.Margin = new System.Windows.Forms.Padding(2);
-            this.item_KanriBangou.Name = "item_KanriBangou";
-            this.item_KanriBangou.Size = new System.Drawing.Size(103, 20);
-            this.item_KanriBangou.TabIndex = 19;
-            // 
             // label15
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -729,21 +636,6 @@
             this.label15.TabIndex = 0;
             this.label15.Text = "調査担当者";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.CadetBlue;
-            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(400, 59);
-            this.label16.Margin = new System.Windows.Forms.Padding(3);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(64, 22);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "本部単品";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -751,7 +643,7 @@
             this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(1339, 31);
+            this.label25.Location = new System.Drawing.Point(987, 31);
             this.label25.Margin = new System.Windows.Forms.Padding(3);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(103, 22);
@@ -759,36 +651,12 @@
             this.label25.Text = "検索期間の指定";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label24
-            // 
-            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label24.Location = new System.Drawing.Point(1062, 33);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(64, 17);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "管理番号";
-            // 
-            // label14
-            // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label14.Location = new System.Drawing.Point(1062, 89);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(64, 17);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "部所備考";
-            // 
             // label26
             // 
             this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label26.Location = new System.Drawing.Point(1338, 89);
+            this.label26.Location = new System.Drawing.Point(986, 89);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(64, 17);
@@ -802,7 +670,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1339, 59);
+            this.label2.Location = new System.Drawing.Point(987, 59);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 22);
@@ -848,16 +716,6 @@
             this.item_ChousaTantou_Icon.TabStop = false;
             this.item_ChousaTantou_Icon.Click += new System.EventHandler(this.item_ChousaTantou_Icon_Click);
             // 
-            // item_Gyoumumei
-            // 
-            this.item_Gyoumumei.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_Gyoumumei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_Gyoumumei.Location = new System.Drawing.Point(854, 32);
-            this.item_Gyoumumei.Margin = new System.Windows.Forms.Padding(2);
-            this.item_Gyoumumei.Name = "item_Gyoumumei";
-            this.item_Gyoumumei.Size = new System.Drawing.Size(204, 20);
-            this.item_Gyoumumei.TabIndex = 18;
-            // 
             // item_ShimekiriSentaku
             // 
             this.item_ShimekiriSentaku.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -870,7 +728,7 @@
             "未確定",
             "発注確定",
             "発注なし"});
-            this.item_ShimekiriSentaku.Location = new System.Drawing.Point(1447, 59);
+            this.item_ShimekiriSentaku.Location = new System.Drawing.Point(1095, 59);
             this.item_ShimekiriSentaku.Margin = new System.Windows.Forms.Padding(2);
             this.item_ShimekiriSentaku.Name = "item_ShimekiriSentaku";
             this.item_ShimekiriSentaku.Size = new System.Drawing.Size(124, 21);
@@ -891,33 +749,12 @@
             "未確定",
             "発注確定",
             "発注なし"});
-            this.item_Shintyokujyoukyo.Location = new System.Drawing.Point(1447, 87);
+            this.item_Shintyokujyoukyo.Location = new System.Drawing.Point(1095, 87);
             this.item_Shintyokujyoukyo.Margin = new System.Windows.Forms.Padding(2);
             this.item_Shintyokujyoukyo.Name = "item_Shintyokujyoukyo";
             this.item_Shintyokujyoukyo.Size = new System.Drawing.Size(290, 21);
             this.item_Shintyokujyoukyo.TabIndex = 30;
             this.item_Shintyokujyoukyo.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
-            // 
-            // item_MadoguchiBusho
-            // 
-            this.item_MadoguchiBusho.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_MadoguchiBusho.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.item_MadoguchiBusho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.item_MadoguchiBusho.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_MadoguchiBusho.FormattingEnabled = true;
-            this.item_MadoguchiBusho.Items.AddRange(new object[] {
-            "",
-            "入札前",
-            "発注確定",
-            "不調",
-            "発注なし",
-            "不明"});
-            this.item_MadoguchiBusho.Location = new System.Drawing.Point(469, 31);
-            this.item_MadoguchiBusho.Margin = new System.Windows.Forms.Padding(2);
-            this.item_MadoguchiBusho.Name = "item_MadoguchiBusho";
-            this.item_MadoguchiBusho.Size = new System.Drawing.Size(144, 21);
-            this.item_MadoguchiBusho.TabIndex = 17;
-            this.item_MadoguchiBusho.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             // 
             // item_FromTo
             // 
@@ -931,7 +768,7 @@
             "未確定",
             "発注確定",
             "発注なし"});
-            this.item_FromTo.Location = new System.Drawing.Point(1447, 31);
+            this.item_FromTo.Location = new System.Drawing.Point(1095, 31);
             this.item_FromTo.Margin = new System.Windows.Forms.Padding(2);
             this.item_FromTo.Name = "item_FromTo";
             this.item_FromTo.Size = new System.Drawing.Size(85, 21);
@@ -954,7 +791,7 @@
             this.tableLayoutPanel13.Controls.Add(this.item_DateFrom, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.item_DateTo, 4, 0);
             this.tableLayoutPanel13.Controls.Add(this.label_DateTo, 3, 0);
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(1445, 0);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(1093, 0);
             this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
@@ -1034,57 +871,13 @@
             this.label_DateFromTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_DateFromTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label_DateFromTo.ForeColor = System.Drawing.Color.White;
-            this.label_DateFromTo.Location = new System.Drawing.Point(1339, 3);
+            this.label_DateFromTo.Location = new System.Drawing.Point(987, 3);
             this.label_DateFromTo.Margin = new System.Windows.Forms.Padding(3);
             this.label_DateFromTo.Name = "label_DateFromTo";
             this.label_DateFromTo.Size = new System.Drawing.Size(103, 22);
             this.label_DateFromTo.TabIndex = 0;
             this.label_DateFromTo.Text = "締切日";
             this.label_DateFromTo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // item_TokuchoNo
-            // 
-            this.item_TokuchoNo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_TokuchoNo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_TokuchoNo.Location = new System.Drawing.Point(1130, 4);
-            this.item_TokuchoNo.Margin = new System.Windows.Forms.Padding(2);
-            this.item_TokuchoNo.Name = "item_TokuchoNo";
-            this.item_TokuchoNo.Size = new System.Drawing.Size(108, 20);
-            this.item_TokuchoNo.TabIndex = 13;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label8.Location = new System.Drawing.Point(1062, 5);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 17);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "特調番号";
-            // 
-            // item_HachushaKamei
-            // 
-            this.item_HachushaKamei.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_HachushaKamei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_HachushaKamei.Location = new System.Drawing.Point(854, 4);
-            this.item_HachushaKamei.Margin = new System.Windows.Forms.Padding(2);
-            this.item_HachushaKamei.Name = "item_HachushaKamei";
-            this.item_HachushaKamei.Size = new System.Drawing.Size(204, 20);
-            this.item_HachushaKamei.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label7.Location = new System.Drawing.Point(751, 5);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 17);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "発注者名・課名";
             // 
             // label20
             // 
@@ -1128,7 +921,7 @@
             this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(1576, 59);
+            this.label31.Location = new System.Drawing.Point(1224, 59);
             this.label31.Margin = new System.Windows.Forms.Padding(3);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(64, 22);
@@ -1153,7 +946,7 @@
             "100",
             "150",
             "200"});
-            this.item_Hyoujikensuu.Location = new System.Drawing.Point(1645, 59);
+            this.item_Hyoujikensuu.Location = new System.Drawing.Point(1293, 59);
             this.item_Hyoujikensuu.Margin = new System.Windows.Forms.Padding(2);
             this.item_Hyoujikensuu.Name = "item_Hyoujikensuu";
             this.item_Hyoujikensuu.Size = new System.Drawing.Size(85, 21);
@@ -1206,89 +999,6 @@
             this.item_ChousaTantouBusho.TabIndex = 16;
             this.item_ChousaTantouBusho.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label9.Location = new System.Drawing.Point(399, 5);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 17);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "調査区分";
-            // 
-            // tableLayoutPanel15
-            // 
-            this.tableLayoutPanel15.AutoSize = true;
-            this.tableLayoutPanel15.ColumnCount = 4;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel15.Controls.Add(this.item_ChousaKbnJibusho, 0, 0);
-            this.tableLayoutPanel15.Controls.Add(this.item_ChousaKbnShibuShibu, 1, 0);
-            this.tableLayoutPanel15.Controls.Add(this.item_ChousaKbnHonbuShibu, 2, 0);
-            this.tableLayoutPanel15.Controls.Add(this.item_ChousaKbnShibuHonbu, 3, 0);
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(470, 3);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 1;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(276, 21);
-            this.tableLayoutPanel15.TabIndex = 1;
-            // 
-            // item_ChousaKbnJibusho
-            // 
-            this.item_ChousaKbnJibusho.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_ChousaKbnJibusho.AutoSize = true;
-            this.item_ChousaKbnJibusho.Location = new System.Drawing.Point(0, 0);
-            this.item_ChousaKbnJibusho.Margin = new System.Windows.Forms.Padding(0);
-            this.item_ChousaKbnJibusho.Name = "item_ChousaKbnJibusho";
-            this.item_ChousaKbnJibusho.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.item_ChousaKbnJibusho.Size = new System.Drawing.Size(69, 21);
-            this.item_ChousaKbnJibusho.TabIndex = 8;
-            this.item_ChousaKbnJibusho.Text = "自部所";
-            this.item_ChousaKbnJibusho.UseVisualStyleBackColor = true;
-            // 
-            // item_ChousaKbnShibuShibu
-            // 
-            this.item_ChousaKbnShibuShibu.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_ChousaKbnShibuShibu.AutoSize = true;
-            this.item_ChousaKbnShibuShibu.Location = new System.Drawing.Point(69, 0);
-            this.item_ChousaKbnShibuShibu.Margin = new System.Windows.Forms.Padding(0);
-            this.item_ChousaKbnShibuShibu.Name = "item_ChousaKbnShibuShibu";
-            this.item_ChousaKbnShibuShibu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.item_ChousaKbnShibuShibu.Size = new System.Drawing.Size(69, 21);
-            this.item_ChousaKbnShibuShibu.TabIndex = 9;
-            this.item_ChousaKbnShibuShibu.Text = "支→支";
-            this.item_ChousaKbnShibuShibu.UseVisualStyleBackColor = true;
-            // 
-            // item_ChousaKbnHonbuShibu
-            // 
-            this.item_ChousaKbnHonbuShibu.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_ChousaKbnHonbuShibu.AutoSize = true;
-            this.item_ChousaKbnHonbuShibu.Location = new System.Drawing.Point(138, 0);
-            this.item_ChousaKbnHonbuShibu.Margin = new System.Windows.Forms.Padding(0);
-            this.item_ChousaKbnHonbuShibu.Name = "item_ChousaKbnHonbuShibu";
-            this.item_ChousaKbnHonbuShibu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.item_ChousaKbnHonbuShibu.Size = new System.Drawing.Size(69, 21);
-            this.item_ChousaKbnHonbuShibu.TabIndex = 10;
-            this.item_ChousaKbnHonbuShibu.Text = "本→支";
-            this.item_ChousaKbnHonbuShibu.UseVisualStyleBackColor = true;
-            // 
-            // item_ChousaKbnShibuHonbu
-            // 
-            this.item_ChousaKbnShibuHonbu.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_ChousaKbnShibuHonbu.AutoSize = true;
-            this.item_ChousaKbnShibuHonbu.Location = new System.Drawing.Point(207, 0);
-            this.item_ChousaKbnShibuHonbu.Margin = new System.Windows.Forms.Padding(0);
-            this.item_ChousaKbnShibuHonbu.Name = "item_ChousaKbnShibuHonbu";
-            this.item_ChousaKbnShibuHonbu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.item_ChousaKbnShibuHonbu.Size = new System.Drawing.Size(69, 21);
-            this.item_ChousaKbnShibuHonbu.TabIndex = 11;
-            this.item_ChousaKbnShibuHonbu.Text = "支→本";
-            this.item_ChousaKbnShibuHonbu.UseVisualStyleBackColor = true;
-            // 
             // item_Taisho
             // 
             this.item_Taisho.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1309,36 +1019,126 @@
             this.item_Taisho.TabIndex = 22;
             this.item_Taisho.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             // 
-            // item_HonbuTanpin
+            // item_Koujikenmei
             // 
-            this.item_HonbuTanpin.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_HonbuTanpin.AutoSize = true;
-            this.item_HonbuTanpin.Location = new System.Drawing.Point(469, 63);
-            this.item_HonbuTanpin.Margin = new System.Windows.Forms.Padding(2);
-            this.item_HonbuTanpin.Name = "item_HonbuTanpin";
-            this.item_HonbuTanpin.Size = new System.Drawing.Size(15, 14);
-            this.item_HonbuTanpin.TabIndex = 23;
-            this.item_HonbuTanpin.UseVisualStyleBackColor = true;
+            this.item_Koujikenmei.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.item_Koujikenmei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.item_Koujikenmei.Location = new System.Drawing.Point(778, 32);
+            this.item_Koujikenmei.Margin = new System.Windows.Forms.Padding(2);
+            this.item_Koujikenmei.Name = "item_Koujikenmei";
+            this.item_Koujikenmei.Size = new System.Drawing.Size(204, 20);
+            this.item_Koujikenmei.TabIndex = 24;
+            // 
+            // label22
+            // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label22.Location = new System.Drawing.Point(710, 33);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(64, 17);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "工事件名";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label18.Location = new System.Drawing.Point(399, 89);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(29, 17);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "メモ";
             // 
             // item_Memo
             // 
             this.item_Memo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.item_Memo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_Memo.Location = new System.Drawing.Point(1130, 60);
+            this.item_Memo.Location = new System.Drawing.Point(502, 88);
             this.item_Memo.Margin = new System.Windows.Forms.Padding(2);
             this.item_Memo.Name = "item_Memo";
             this.item_Memo.Size = new System.Drawing.Size(204, 20);
             this.item_Memo.TabIndex = 25;
             // 
-            // item_BushoBikou
+            // item_MadoguchiBusho
             // 
-            this.item_BushoBikou.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_BushoBikou.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_BushoBikou.Location = new System.Drawing.Point(1130, 88);
-            this.item_BushoBikou.Margin = new System.Windows.Forms.Padding(2);
-            this.item_BushoBikou.Name = "item_BushoBikou";
-            this.item_BushoBikou.Size = new System.Drawing.Size(204, 20);
-            this.item_BushoBikou.TabIndex = 29;
+            this.item_MadoguchiBusho.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.item_MadoguchiBusho.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.item_MadoguchiBusho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.item_MadoguchiBusho.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.item_MadoguchiBusho.FormattingEnabled = true;
+            this.item_MadoguchiBusho.Items.AddRange(new object[] {
+            "",
+            "入札前",
+            "発注確定",
+            "不調",
+            "発注なし",
+            "不明"});
+            this.item_MadoguchiBusho.Location = new System.Drawing.Point(778, 59);
+            this.item_MadoguchiBusho.Margin = new System.Windows.Forms.Padding(2);
+            this.item_MadoguchiBusho.Name = "item_MadoguchiBusho";
+            this.item_MadoguchiBusho.Size = new System.Drawing.Size(144, 21);
+            this.item_MadoguchiBusho.TabIndex = 17;
+            this.item_MadoguchiBusho.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label12.Location = new System.Drawing.Point(710, 61);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(64, 17);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "窓口部所";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label7.Location = new System.Drawing.Point(399, 61);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 17);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "発注者名・課名";
+            // 
+            // item_HachushaKamei
+            // 
+            this.item_HachushaKamei.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.item_HachushaKamei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.item_HachushaKamei.Location = new System.Drawing.Point(502, 60);
+            this.item_HachushaKamei.Margin = new System.Windows.Forms.Padding(2);
+            this.item_HachushaKamei.Name = "item_HachushaKamei";
+            this.item_HachushaKamei.Size = new System.Drawing.Size(204, 20);
+            this.item_HachushaKamei.TabIndex = 12;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label8.Location = new System.Drawing.Point(399, 33);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 17);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "特調番号";
+            // 
+            // item_TokuchoNo
+            // 
+            this.item_TokuchoNo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.item_TokuchoNo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.item_TokuchoNo.Location = new System.Drawing.Point(502, 32);
+            this.item_TokuchoNo.Margin = new System.Windows.Forms.Padding(2);
+            this.item_TokuchoNo.Name = "item_TokuchoNo";
+            this.item_TokuchoNo.Size = new System.Drawing.Size(108, 20);
+            this.item_TokuchoNo.TabIndex = 13;
             // 
             // tableLayoutPanel3
             // 
@@ -1571,8 +1371,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.item_ChousaTantou_Icon)).EndInit();
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel13.PerformLayout();
-            this.tableLayoutPanel15.ResumeLayout(false);
-            this.tableLayoutPanel15.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
@@ -1614,23 +1412,16 @@
         private System.Windows.Forms.RadioButton item_NendoOptionTounen;
         private System.Windows.Forms.RadioButton item_NendoOption3Nen;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox item_Koujikenmei;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox item_KanriBangou;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.TextBox item_ChousaTantousha;
         private System.Windows.Forms.PictureBox item_ChousaTantou_Icon;
-        private System.Windows.Forms.CheckBox item_HonbuTanpin;
-        private System.Windows.Forms.TextBox item_Gyoumumei;
         private System.Windows.Forms.ComboBox item_ShimekiriSentaku;
         private System.Windows.Forms.ComboBox item_Shintyokujyoukyo;
         private System.Windows.Forms.ComboBox item_MadoguchiBusho;
@@ -1645,14 +1436,8 @@
         private System.Windows.Forms.TextBox item_HachushaKamei;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox item_Taisho;
         private System.Windows.Forms.ComboBox item_TantouJoukyo;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        private System.Windows.Forms.CheckBox item_ChousaKbnJibusho;
-        private System.Windows.Forms.CheckBox item_ChousaKbnShibuShibu;
-        private System.Windows.Forms.CheckBox item_ChousaKbnHonbuShibu;
-        private System.Windows.Forms.CheckBox item_ChousaKbnShibuHonbu;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ComboBox item_Hyoujikensuu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -1662,7 +1447,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox item_Memo;
-        private System.Windows.Forms.TextBox item_BushoBikou;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TableLayoutPanel ErrorBox;
         private System.Windows.Forms.Label ErrorMessage;

@@ -478,7 +478,7 @@
             this.tableLayoutPanel8.ColumnCount = 3;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1583F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1584F));
             this.tableLayoutPanel8.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.label4, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.label5, 2, 0);
@@ -534,7 +534,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(8, 4, 8, 4);
-            this.label5.Size = new System.Drawing.Size(1583, 34);
+            this.label5.Size = new System.Drawing.Size(1584, 34);
             this.label5.TabIndex = 1;
             this.label5.Text = "内容";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
