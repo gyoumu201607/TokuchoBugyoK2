@@ -108,6 +108,10 @@ namespace TokuchoBugyoK2
             c1FlexGrid1.Cols[6].ImageMap = imgMap;
             c1FlexGrid1.Cols[6].ImageAndText = false;
 
+            //不具合No1337（1094）対応　差戻分
+            //グリッドの調査担当部所のキャプションに改行を入れる
+            c1FlexGrid1.Cols[10].Caption = "調査担当" + Environment.NewLine + "部所";
+
             //コンボボックスセット
             set_combo();
 

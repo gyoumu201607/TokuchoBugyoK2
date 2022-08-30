@@ -1770,6 +1770,72 @@ namespace TokuchoBugyoK2
             }
         }
 
+        // 不具合No1338 窓口ミハル更新SQL
+        public Boolean MadoguchiUpdateRealTime_SQL(string MadoguchiID, string[,] data, out string mes, string[] UserInfos)
+        {
+            string methodName = ".MadoguchiUpdateRealTime_SQL";
+            mes = "";
+            SqlConnection sqlconn = new SqlConnection(connStr);
+            sqlconn.Open();
+            var cmd = sqlconn.CreateCommand();
+            SqlTransaction transaction = sqlconn.BeginTransaction();
+            cmd.Transaction = transaction;
+
+            try
+            {
+                //窓口情報更新　報告済みはいずれにしても変更
+                cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
+                    "MadoguchiHoukokuzumi = N'" + data[0, 34] + "' ";
+
+                cmd.CommandText += " WHERE MadoguchiID =  " + MadoguchiID;
+                cmd.ExecuteNonQuery();
+
+                //報告済み
+                if ("1".Equals(data[0, 34]))
+                {
+                    //実施区分により変更されているがここでは判定しなくてよいのか？
+                    //その他情報も更新する。
+                    //進捗状況 10：依頼　調査中→40：集計中　70：二次検済　80：中止
+
+                    cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET " +
+                                "MadoguchiL1ChousaShinchoku = 70 " +
+                                ",MadoguchiL1ChousaKakunin = 1 " +
+                                ",MadoguchiL1AsteriaKoushinFlag = 1 " +
+                                ",MadoguchiL1UpdateDate = SYSDATETIME() " +
+                                ",MadoguchiL1UpdateUser = N'" + UserInfos[0] + "' " +
+                                ",MadoguchiL1UpdateProgram = '" + pgmName + methodName + "' " +
+                                " WHERE MadoguchiL1ChousaShinchoku != 80 AND MadoguchiID = " + MadoguchiID;
+
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "UPDATE ChousaHinmoku SET " +
+                                "ChousaShinchokuJoukyou = 70 " +
+                                ",ChousaHoukokuzumi = 1 " +
+                                ",ChousaUpdateDate = SYSDATETIME() " +
+                                ",ChousaUpdateUser = N'" + UserInfos[0] + "' " +
+                                ",ChousaUpdateProgram = '" + pgmName + methodName + "' " +
+                                " WHERE ChousaShinchokuJoukyou != 80 AND MadoguchiID = " + MadoguchiID;
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                transaction.Commit();
+
+            }
+            catch (ArithmeticException e)
+            {
+                transaction.Rollback();
+                Console.WriteLine(e);
+                return false;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+
+            return true;
+        }
+
         // 窓口ミハル更新SQL
         public Boolean MadoguchiUpdate_SQL(int tab, string MadoguchiID, string[,] data, out string mes, string[] UserInfos, string[,] data2 = null, string gamenMode = "")
         {

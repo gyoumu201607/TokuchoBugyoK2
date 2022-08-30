@@ -106,6 +106,10 @@ namespace TokuchoBugyoK2
         //VIPS 20200506 課題管理表No1314（1038）ADD 窓口ミハル　協力依頼書タブの協力先所属長を「調査統括部」の所属長でデフォルト登録されるようにする
         private const string CONST_DEFAULT_KYORYOKUSAKI_BUSHO_CD = "127100";
 
+        // 不具合No1342
+        //画面表示時の実施区分を保持するための変数
+        private string originalJiishiKubun = "";
+
         public Madoguchi_Input()
         {
             InitializeComponent();
@@ -776,6 +780,11 @@ namespace TokuchoBugyoK2
             if (MadoguchiID != "")
             {
                 get_data(1);
+                // 不具合No1342
+                //画面表示時の実施区分を保持する。これをもとに実施区分のテキストチェンジイベント時に、報告完了を元に戻すか判定する。
+                originalJiishiKubun=item1_MadoguchiJiishiKubun.SelectedValue.ToString();
+                //Console.WriteLine("登録済み実施区分：" + originalJiishiKubun);
+
                 get_combo_byNendo();
                 //get_data(2);
                 //get_data(3); //調査品目　検索条件のコンボが正常に認識できないため、別タイミングに移動
@@ -3072,6 +3081,33 @@ namespace TokuchoBugyoK2
                 UpdateMadoguchi(6);
             }
         }
+
+        //不具合No1338
+        private void UpdateMadoguchiRealTime()
+        {
+            //登録データ配列 必要なところはごくわずかだが、既存メソッドUpdateMadoguchiと併せておく。
+            string[,] SQLData = new string[1, 60];
+            string mes = "";
+
+            //報告済
+            string houkokuzumi = str_bool(item1_MadoguchiHoukokuzumi.Checked);
+            
+            //配列に格納
+            SQLData[0, 1] = MadoguchiID;    //これ必要ないような
+            SQLData[0, 34] = houkokuzumi;
+
+            //テーブル登録・更新
+            Boolean result = GlobalMethod.MadoguchiUpdateRealTime_SQL(MadoguchiID, SQLData, out mes, UserInfos);
+
+            set_error("", 0);
+            set_error(mes);
+
+            //担当部署と、調査品目明細のタブを表示しなおし。
+            get_data(2);
+            get_data(3);
+
+        }
+
         private void UpdateMadoguchi(int tab)
         {
             //更新成功フラグ
@@ -5554,7 +5590,7 @@ namespace TokuchoBugyoK2
             //報告済みのチェックがついていない
             if (!item1_MadoguchiHoukokuzumi.Checked)
             {
-                //報告完了　「報告完了にしますがよろしいですか。」
+                //報告完了　「報告完了にしますがよろしいですか。」不具合No1338対応で、I20104のメッセージを変更してもらう必要あり。
                 if (MessageBox.Show(GlobalMethod.GetMessage("I20104", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     // 報告実施日が既に入っている場合は値をセットしない
@@ -5574,6 +5610,11 @@ namespace TokuchoBugyoK2
                     //報告実施日に日付が入っていない→再報告
 
                     MadoguchiHoukokuzumi = "1";
+
+                    //不具合No1338
+                    //更新メソッド（今回追加分）を呼ぶ
+                    UpdateMadoguchiRealTime();
+
                 }
             }
             //報告済チェックがある
@@ -5599,6 +5640,10 @@ namespace TokuchoBugyoK2
                     item1_MadoguchiHoukokuzumi.Checked = false;
 
                     MadoguchiHoukokuzumi = "0";
+
+                    //不具合No1338
+                    //更新メソッド（今回追加分）を呼ぶ
+                    UpdateMadoguchiRealTime();
                 }
 
             }
@@ -13146,14 +13191,33 @@ namespace TokuchoBugyoK2
             }
             else
             {
-                //報告済を0にする
-                item1_MadoguchiHoukokuzumi.Checked = false;
+                // 不具合No1342
+                //登録済みの実施区分が「打診中：2」の場合は、実施に変更されても、報告済みを戻さない
+                if ("2".Equals(originalJiishiKubun))
+                {
+                    //何もしない 今後追加修正ありそうなのであえてElseに分けた
+                    //Console.WriteLine("実施区分テキスト：2");
+                }
+                else
+                {
+                    //報告済を0にする
+                    item1_MadoguchiHoukokuzumi.Checked = false;
 
-                //報告完了ボタンを表示
-                //報告完了取消ボタンを非表示
-                button9.Text = "報告完了";
+                    //報告完了ボタンを表示
+                    //報告完了取消ボタンを非表示
+                    button9.Text = "報告完了";
 
-                MadoguchiHoukokuzumi = "0";
+                    MadoguchiHoukokuzumi = "0";
+                }
+               
+                //////報告済を0にする
+                ////item1_MadoguchiHoukokuzumi.Checked = false;
+
+                //////報告完了ボタンを表示
+                //////報告完了取消ボタンを非表示
+                ////button9.Text = "報告完了";
+
+                ////MadoguchiHoukokuzumi = "0";
             }
         }
 
