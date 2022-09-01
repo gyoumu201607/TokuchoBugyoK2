@@ -2512,7 +2512,7 @@ namespace TokuchoBugyoK2
                             ",N'" + UserInfos[3] + "' " +
                             ",'自分大臣で更新を行いました。進捗状況:" + gamenShinchoku + "' " +
                             ",'" + pgmName + methodName + "' " +
-                            ",'" + c1FlexGrid1.Rows[i][tokucyo_no_index].ToString() + "' " + // 特調番号
+                            ",N'" + c1FlexGrid1.Rows[i][tokucyo_no_index].ToString() + "' " + // 特調番号
                             "," + c1FlexGrid1.Rows[i][madoguchi_id_index].ToString() + " " + // MadoguchiID
                             ",NULL " +
                             ",NULL " +
