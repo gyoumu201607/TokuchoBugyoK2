@@ -2177,6 +2177,7 @@
             this.item1_AnkenGyoumuKubun.Size = new System.Drawing.Size(166, 22);
             this.item1_AnkenGyoumuKubun.TabIndex = 25;
             this.item1_AnkenGyoumuKubun.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
+            this.item1_AnkenGyoumuKubun.SelectedValueChanged += new System.EventHandler(this.item1_AnkenGyoumuKubun_SelectedValueChanged);
             // 
             // label5
             // 

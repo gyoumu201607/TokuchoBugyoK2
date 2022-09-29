@@ -4268,6 +4268,8 @@ namespace TokuchoBugyoK2
                                                       ",GaroonTsuikaAtesakiUpdateDate = SYSDATETIME() " +
                                                       ",GaroonTsuikaAtesakiUpdateUser = N'" + UserInfos[0] + "' " +
                                                       ",GaroonTsuikaAtesakiUpdateProgram = '" + pgmName + methodName + "'" +
+                                                      //不具合No1332(1084) 画面登録か品目追加により書き換える
+                                                      ",GaroonTsuikaAtesakiGamenFlag = '" + data2[i, 5] + "'" +
                                                       " WHERE GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "' " +
                                                       "AND GaroonTsuikaAtesakiBushoCD = '" + data2[i, 1] + "' " +
                                                       "AND GaroonTsuikaAtesakiTantoushaCD = '" + data2[i, 3] + "' ";
@@ -4312,6 +4314,8 @@ namespace TokuchoBugyoK2
                                                 ",GaroonTsuikaAtesakiUpdateUser " +
                                                 ",GaroonTsuikaAtesakiUpdateProgram " +
                                                 ",GaroonTsuikaAtesakiDeleteFlag " +
+                                                //不具合No1332(1084) 
+                                                ",GaroonTsuikaAtesakiGamenFlag " +
                                                 " ) VALUES ( " +
                                                 " '" + GaroonTsuikaAtesakiID + "' " +
                                                 ",'" + MadoguchiID + "' " +
@@ -4326,6 +4330,8 @@ namespace TokuchoBugyoK2
                                                 ",N'" + UserInfos[0] + "' " +                    // 更新ユーザ
                                                 ",'" + pgmName + methodName + "' " +            // 更新プログラム
                                                 ",0 " +                                         // 削除フラグ
+                                                //不具合No1332(1084) 
+                                                ",'" + data2[i, 5] + "' " +                     //画面から追加されたかフラグ
                                                 " ) ";
                                 Console.WriteLine(cmd.CommandText);
                                 cmd.ExecuteNonQuery();
@@ -5623,7 +5629,8 @@ namespace TokuchoBugyoK2
                         "AND ch.HinmokuRyakuBushoFuku1CD is not null  " +
                         "AND ch.HinmokuRyakuBushoFuku1CD != '' " +
                         "AND HinmokuRyakuBushoFuku1CD != '0' " +
-                        "AND ch.HinmokuFukuChousainCD1 is not null " + // 998 副担当者1,2未割当は除外
+                        //不具合No1356(1124)　下記の条件があると担当部署に登録されないためコメントアウト
+                        //"AND ch.HinmokuFukuChousainCD1 is not null " + // 998 副担当者1,2未割当は除外
                         "order by ch.HinmokuRyakuBushoFuku1CD,HinmokuFukuChousainCD1 ";
 
                     //データ取得
@@ -5757,7 +5764,8 @@ namespace TokuchoBugyoK2
                         "AND ch.HinmokuRyakuBushoFuku2CD is not null  " +
                         "AND ch.HinmokuRyakuBushoFuku2CD != '' " +
                         "AND HinmokuRyakuBushoFuku2CD != '0' " +
-                        "AND ch.HinmokuFukuChousainCD2 is not null " + // 998 副担当者1,2未割当は除外
+                        //不具合No1356(1124)　下記の条件があると担当部署に登録されないためコメントアウト
+                        //"AND ch.HinmokuFukuChousainCD2 is not null " + // 998 副担当者1,2未割当は除外
                         "order by ch.HinmokuRyakuBushoFuku2CD,HinmokuFukuChousainCD2 ";
 
                     //データ取得
@@ -6389,7 +6397,7 @@ namespace TokuchoBugyoK2
                         // 支部備考の更新
                         ProUpdateBikoFromBusho(MadoguchiID, gamenMode, UpdateKojinCD, bikou, MadoguchiL1ChousaBushoCDList[index_row]);
                     }
-
+                    
                     // 担当部所に追加された調査部所、副部所1、副部所2で支部応援をみて、GaroonTsuikaAteskiにユーザーを登録する
                     cmd.CommandText = "SELECT DISTINCT " +
                     " mc.KojinCD " +
@@ -6399,10 +6407,12 @@ namespace TokuchoBugyoK2
                     "FROM MadoguchiJouhouMadoguchiL1Chou mjmc " +
                     "INNER JOIN Mst_Busho mb ON mb.GyoumuBushoCD = mjmc.MadoguchiL1ChousaBushoCD AND ISNULL(BushoDeleteFlag,0) = 0 " +
                     "INNER JOIN Mst_Chousain mc ON mc.GyoumuBushoCD = mb.GyoumuBushoCD AND ISNULL(ChousainDeleteFlag,0) = 0 " +
-                    //"INNER JOIN Mst_Shibuouen ms ON ms.ShibuouenKojinCD = mc.KojinCD AND ISNULL(ShibuouenDeleteFlag,0) = 0 " +
-                    "INNER JOIN Mst_Shibuouen ms ON ms.ShibuouenKojinCD = mc.KojinCD " + // 支部応援の削除フラグは見ない・・・
+                    //不具合No1356(1124)　支部応援の削除フラグを見ていないところを復活。
+                    "INNER JOIN Mst_Shibuouen ms ON ms.ShibuouenKojinCD = mc.KojinCD AND ISNULL(ShibuouenDeleteFlag,0) = 0 " +
+                    //"INNER JOIN Mst_Shibuouen ms ON ms.ShibuouenKojinCD = mc.KojinCD " + // 支部応援の削除フラグは見ない・・・
                     "WHERE mjmc.MadoguchiID = '" + MadoguchiID + "' " +
                     "ORDER BY mjmc.MadoguchiL1ChousaBushoCD,mc.KojinCD";
+
                     //データ取得
                     sda = new SqlDataAdapter(cmd);
                     DataTable garoonDt = new DataTable();
@@ -6464,6 +6474,8 @@ namespace TokuchoBugyoK2
                                 ",GaroonTsuikaAtesakiUpdateUser " +
                                 ",GaroonTsuikaAtesakiUpdateProgram " +
                                 ",GaroonTsuikaAtesakiDeleteFlag " +
+                                //不具合No1332(1084)
+                                ",GaroonTsuikaAtesakiGamenFlag " +
                                 ") VALUES (" +
                                 "'" + getSaiban("GaroonTsuikaAtesakiID") + "' " + // GaroonTsuikaAtesakiID
                                 ",'" + MadoguchiID + "' " +      　　　    // GaroonTsuikaAtesakiMadoguchiID
@@ -6478,6 +6490,8 @@ namespace TokuchoBugyoK2
                                 ",N'" + UpdateKojinCD + "' " +              // 更新ユーザ
                                 ",'" + pgmName + methodName + "' " +       // 更新プログラム
                                 ",0 " +                                    // 削除フラグ
+                                //不具合No1332(1084)
+                                ",0 " +                                    //画面登録フラグ。ここは画面じゃないので0
                                 ") ";
 
                                 cmd.ExecuteNonQuery();
@@ -6488,6 +6502,15 @@ namespace TokuchoBugyoK2
                     // 1016 部所が削除されても備考が削除されない
                     cmd.CommandText = "DELETE FROM ShibuBikou Where MadoguchiID = '" + MadoguchiID + "' " +
                                       "AND ShibuBikouBushoKanriboBushoCD not in (SELECT DISTINCT MadoguchiL1ChousaBushoCD FROM MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiID = '" + MadoguchiID + "') ";
+                    cmd.ExecuteNonQuery();
+
+                    //不具合No1332(1084)
+                    // 部所が削除されてもGaroon連携の担当が削除されない　ここは物理削除のはず。更新時に画面から消えたら物理削除しているので。
+                    cmd.CommandText = "DELETE FROM GaroonTsuikaAtesaki Where GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "' " +
+                                      "AND GaroonTsuikaAtesakiGamenFlag = 0 " +
+                                      "AND GaroonTsuikaAtesakiBushoCD not in (SELECT DISTINCT MadoguchiL1ChousaBushoCD FROM MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiID = '" + MadoguchiID + "') ";
+                    //cmd.CommandText = "UPDATE GaroonTsuikaAtesaki SET GaroonTsuikaAtesakiDeleteFlag=1 Where GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "' " +
+                    //                  "AND GaroonTsuikaAtesakiBushoCD not in (SELECT DISTINCT MadoguchiL1ChousaBushoCD FROM MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiID = '" + MadoguchiID + "') ";
                     cmd.ExecuteNonQuery();
 
                     // 683

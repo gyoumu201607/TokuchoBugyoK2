@@ -1170,6 +1170,8 @@ namespace TokuchoBugyoK2
                             "  GaroonTsuikaAtesakiID " +
                             ", GaroonTsuikaAtesakiBushoCD " +
                             ", GaroonTsuikaAtesakiTantoushaCD " +
+                            //不具合No1332(1084) 画面から登録されたか否かのフラグ
+                            ", GaroonTsuikaAtesakiGamenFlag " +
                             "FROM GaroonTsuikaAtesaki " +
                             "WHERE GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "' AND GaroonTsuikaAtesakiDeleteFlag <> 1 ";
 
@@ -1672,6 +1674,8 @@ namespace TokuchoBugyoK2
                         //調査担当者をセット
                         c1FlexGrid5.Rows.Add();
                         c1FlexGrid5.Rows[i + 1].Height = 28;
+                        //不具合No1332(1084) 画面から登録されたかのフラグを追加で取得
+                        c1FlexGrid5.Rows[i + 1].UserData = DT_GaroonTsuikaAtesaki.Rows[i][3];
                         for (int k = 1; k < c1FlexGrid5.Cols.Count; k++)
                         {
                             c1FlexGrid5.Rows[i + 1][k] = DT_GaroonTsuikaAtesaki.Rows[i][k - 1];
@@ -4547,6 +4551,8 @@ namespace TokuchoBugyoK2
         {
             c1FlexGrid5.Rows.Add();
             c1FlexGrid5.Rows[c1FlexGrid5.Rows.Count - 1].Height = 28;
+            //不具合No1332(1084)　画面から追加されたよフラグをつける
+            c1FlexGrid5.Rows[c1FlexGrid5.Rows.Count - 1].UserData = "1";
             Resize_Grid("c1FlexGrid5");
         }
         public void Resize_Grid(string name)
@@ -5066,8 +5072,10 @@ namespace TokuchoBugyoK2
                         }
                     }
 
+                    //不具合No1332(1084)　グリッドの行UserDataに画面更新フラグ0、1をセットするようにしたので、6にセットするよう修正
                     //Groon追加宛先Gridのデータ
-                    string[,] SQLData2 = new string[c1FlexGrid5.Rows.Count - 1, 5];
+                    string[,] SQLData2 = new string[c1FlexGrid5.Rows.Count - 1, 6];
+                    //string[,] SQLData2 = new string[c1FlexGrid5.Rows.Count - 1, 5];
                     for (int i = 1; i < c1FlexGrid5.Rows.Count; i++)
                     {
                         if (c1FlexGrid5.Rows[i][1] != null)
@@ -5084,6 +5092,8 @@ namespace TokuchoBugyoK2
                             SQLData2[i - 1, 3] = c1FlexGrid5.Rows[i][3].ToString();
                             SQLData2[i - 1, 4] = c1FlexGrid5.GetDataDisplay(i, 3).ToString();
                         }
+                        //不具合No1332(1084)
+                        SQLData2[i - 1, 5] = c1FlexGrid5.Rows[i].UserData.ToString();
                     }
 
                     string mes = "";

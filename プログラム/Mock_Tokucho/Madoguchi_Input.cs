@@ -1015,6 +1015,8 @@ namespace TokuchoBugyoK2
                             "  GaroonTsuikaAtesakiID " +
                             ", GaroonTsuikaAtesakiBushoCD " +
                             ", GaroonTsuikaAtesakiTantoushaCD " +
+                            //不具合No1332(1084) 画面から登録されたか否かのフラグ
+                            ", GaroonTsuikaAtesakiGamenFlag " +
                             "FROM GaroonTsuikaAtesaki " +
                             "WHERE GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "' AND GaroonTsuikaAtesakiDeleteFlag <> 1 ";
 
@@ -1753,6 +1755,13 @@ namespace TokuchoBugyoK2
                     item1_AnkenGyoumuKubun.SelectedValue = MadoguchiData.Rows[0][24].ToString();
                 }
 
+                ////不具合No1345 契約区分により、選択できる調査種別を制限したが、過去データで選択ミスのものについては表示することとする
+                int chousaShubetsu = 0;
+                if (int.TryParse(MadoguchiData.Rows[0][25].ToString(), out chousaShubetsu))
+                {
+                    ChousaShubetsuAddData(chousaShubetsu);
+                }
+
                 //調査種別 調査品目
                 item1_MadoguchiChousaShubetsu.SelectedValue = MadoguchiData.Rows[0][25].ToString();
                 item1_MadoguchiChousaHinmoku.Text = MadoguchiData.Rows[0][26].ToString();
@@ -1958,10 +1967,13 @@ namespace TokuchoBugyoK2
                         //}
                         c1FlexGrid5.Rows.Add();
                         c1FlexGrid5.Rows[i + 1].Height = 28;
+                        //不具合No1332(1084) 画面から登録されたかのフラグを追加で取得
+                        c1FlexGrid5.Rows[i + 1].UserData = DT_GaroonTsuikaAtesaki.Rows[i][3];
                         for (int k = 1; k < c1FlexGrid5.Cols.Count; k++)
                         {
                             c1FlexGrid5.Rows[i + 1][k] = DT_GaroonTsuikaAtesaki.Rows[i][k - 1];
                         }
+                        
                     }
                     //for (int i = count + 1;i < 31; i++)
                     //{
@@ -3413,8 +3425,10 @@ namespace TokuchoBugyoK2
                     }
                 }
 
+                //不具合No1332(1084)　グリッドの行UserDataに画面更新フラグ0、1をセットするようにしたので、6にセットするよう修正
                 //Groon追加宛先Gridのデータ
-                string[,] SQLData2 = new string[c1FlexGrid5.Rows.Count - 1, 5];
+                string[,] SQLData2 = new string[c1FlexGrid5.Rows.Count - 1, 6];
+                //string[,] SQLData2 = new string[c1FlexGrid5.Rows.Count - 1, 5];
                 for (int i = 1; i < c1FlexGrid5.Rows.Count; i++)
                 {
                     if (c1FlexGrid5.Rows[i][1] != null)
@@ -3431,6 +3445,8 @@ namespace TokuchoBugyoK2
                         SQLData2[i - 1, 3] = c1FlexGrid5.Rows[i][3].ToString();
                         SQLData2[i - 1, 4] = c1FlexGrid5.GetDataDisplay(i, 3).ToString();
                     }
+                    //不具合No1332(1084)
+                    SQLData2[i - 1, 5] = c1FlexGrid5.Rows[i].UserData.ToString();
                 }
 
                 string mes = "";
@@ -6871,6 +6887,8 @@ namespace TokuchoBugyoK2
                                     ",GaroonTsuikaAtesakiUpdateUser " +
                                     ",GaroonTsuikaAtesakiUpdateProgram " +
                                     ",GaroonTsuikaAtesakiDeleteFlag " +
+                                    //不具合No1332(1084) 
+                                    ",GaroonTsuikaAtesakiGamenFlag " +
                                     ") VALUES (" +
                                     "'" + GlobalMethod.getSaiban("GaroonTsuikaAtesakiID") + "' " + // GaroonTsuikaAtesakiID
                                     ",'" + saibanMadoguchiNo + "' " +          // GaroonTsuikaAtesakiMadoguchiID
@@ -6885,6 +6903,8 @@ namespace TokuchoBugyoK2
                                     ",N'" + UserInfos[0] + "' " +                    // 更新ユーザ
                                     ",'" + pgmName + methodName + "' " +            // 更新プログラム
                                     ",0 " +                                         // 削除フラグ
+                                    //不具合No1332(1084) ここは0 なのか1なのかわからん。
+                                    ",0 " +
                                     ") ";
 
                                     cmd.ExecuteNonQuery();
@@ -9655,6 +9675,8 @@ namespace TokuchoBugyoK2
 
             c1FlexGrid5.Rows.Add();
             c1FlexGrid5.Rows[c1FlexGrid5.Rows.Count - 1].Height = 28;
+            //不具合No1332(1084)　画面から追加されたよフラグをつける
+            c1FlexGrid5.Rows[c1FlexGrid5.Rows.Count - 1].UserData = "1";
             Resize_Grid("c1FlexGrid5");
 
             //描画再開
@@ -17936,6 +17958,93 @@ namespace TokuchoBugyoK2
         private void btnCopyMadoguchiHoukokuJisshibi_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(item1_MadoguchiHoukokuJisshibi.Text.ToString());
+        }
+
+        //不具合No1345　契約区分の選択状況により、調査種別を切り替える
+        private void item1_AnkenGyoumuKubun_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //for debug
+            //return;
+
+            //契約区分はMst_GyoumuKubunから取得している。valueにはなぜか、GyoumuNarabijunCDをセットしているため、それで判定
+            int num = 0;
+            if (int.TryParse(item1_AnkenGyoumuKubun.SelectedValue.ToString(), out num))
+            {
+                DataTable tmpdt;
+                //調査種別
+                tmpdt = new System.Data.DataTable();
+                tmpdt.Columns.Add("Value", typeof(int));
+                tmpdt.Columns.Add("Discript", typeof(string));
+                // GyoumuNarabijunCD = 1
+                if (num == 1)
+                {
+                    tmpdt.Rows.Add(2, "一般");
+                }
+                // GyoumuNarabijunCD = 2
+                else if (num == 2)
+                {
+                    tmpdt.Rows.Add(2, "一般");
+                    tmpdt.Rows.Add(3, "単契");
+                }
+                // GyoumuNarabijunCD = 3
+                else if (num == 3)
+                {
+                    tmpdt.Rows.Add(3, "単契");
+                }
+                // GyoumuNarabijunCD = 4
+                else if (num == 4)
+                {
+                    tmpdt.Rows.Add(1, "単品");
+                }
+                // GyoumuNarabijunCD 5以上はすべて同じ
+                else
+                {
+                    tmpdt.Rows.Add(1, "単品");
+                    tmpdt.Rows.Add(2, "一般");
+                    tmpdt.Rows.Add(3, "単契");
+                }
+                item1_MadoguchiChousaShubetsu.DataSource = tmpdt;
+                item1_MadoguchiChousaShubetsu.DisplayMember = "Discript";
+                item1_MadoguchiChousaShubetsu.ValueMember = "Value";
+            }
+            
+        }
+
+        ////不具合No1345 契約区分により、選択できる調査種別を制限したが、過去データで選択ミスのものについては表示することとする
+        private void ChousaShubetsuAddData(int addShubetsu)
+        {
+            DataTable tmpdt;
+            //現在調査種別にセットされているデータ取得
+            tmpdt = (DataTable)item1_MadoguchiChousaShubetsu.DataSource;
+
+            //データが存在しているかチェック
+            bool isFind = false;
+            foreach (DataRow dr in tmpdt.Rows)
+            {
+                if ((int)dr["Value"] == addShubetsu)
+                {
+                    isFind = true;
+                    break;
+                }
+            }
+
+            //データが存在していなかったらデータテーブルに追加
+            if (isFind == false)
+            {    
+                if (addShubetsu == 1)
+                {
+                    tmpdt.Rows.Add(1, "単品");
+                }
+                else if (addShubetsu == 2)
+                {
+                    tmpdt.Rows.Add(2, "一般");
+                }
+                else if (addShubetsu == 3)
+                {
+                    tmpdt.Rows.Add(3, "単契");
+                }
+            }
+
         }
     }
 
