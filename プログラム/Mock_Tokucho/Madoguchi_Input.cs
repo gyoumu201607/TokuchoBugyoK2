@@ -17996,7 +17996,17 @@ namespace TokuchoBugyoK2
                 {
                     tmpdt.Rows.Add(1, "単品");
                 }
-                // GyoumuNarabijunCD 5以上はすべて同じ
+                // GyoumuNarabijunCD = 5
+                else if (num == 5)
+                {
+                    tmpdt.Rows.Add(1, "一般");
+                }
+                // GyoumuNarabijunCD = 7
+                else if (num == 7)
+                {
+                    tmpdt.Rows.Add(1, "一般");
+                }
+                // GyoumuNarabijunCD 上記以外はすべて同じ
                 else
                 {
                     tmpdt.Rows.Add(1, "単品");
