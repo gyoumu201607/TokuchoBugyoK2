@@ -711,6 +711,8 @@ namespace TokuchoBugyoK2
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
+            this.lblBootMode = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -882,12 +884,16 @@ namespace TokuchoBugyoK2
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.lblVersion, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label7, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblBootMode, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -895,7 +901,6 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1884, 80);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
@@ -915,7 +920,7 @@ namespace TokuchoBugyoK2
             // 
             this.tableLayoutPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
             this.tableLayoutPanel6.ColumnCount = 5;
-            this.tableLayoutPanel4.SetColumnSpan(this.tableLayoutPanel6, 2);
+            this.tableLayoutPanel4.SetColumnSpan(this.tableLayoutPanel6, 4);
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
@@ -972,7 +977,7 @@ namespace TokuchoBugyoK2
             this.pictureBox1.Location = new System.Drawing.Point(2, 2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(938, 36);
+            this.pictureBox1.Size = new System.Drawing.Size(176, 36);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -1459,7 +1464,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 168F));
             this.tableLayoutPanel21.Controls.Add(this.label52, 0, 0);
             this.tableLayoutPanel21.Controls.Add(this.label58, 1, 2);
             this.tableLayoutPanel21.Controls.Add(this.item1_7_1_1_1, 2, 2);
@@ -1493,7 +1498,7 @@ namespace TokuchoBugyoK2
             this.label52.Location = new System.Drawing.Point(5, 1);
             this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(806, 28);
+            this.label52.Size = new System.Drawing.Size(807, 28);
             this.label52.TabIndex = 15;
             this.label52.Text = "部門配分";
             this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1672,7 +1677,7 @@ namespace TokuchoBugyoK2
             this.label45.Location = new System.Drawing.Point(648, 30);
             this.label45.Margin = new System.Windows.Forms.Padding(0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(167, 28);
+            this.label45.Size = new System.Drawing.Size(168, 28);
             this.label45.TabIndex = 15;
             this.label45.Text = "合計";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1685,7 +1690,7 @@ namespace TokuchoBugyoK2
             this.item1_7_1_5_1.Location = new System.Drawing.Point(651, 59);
             this.item1_7_1_5_1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item1_7_1_5_1.Name = "item1_7_1_5_1";
-            this.item1_7_1_5_1.Size = new System.Drawing.Size(161, 27);
+            this.item1_7_1_5_1.Size = new System.Drawing.Size(162, 27);
             this.item1_7_1_5_1.TabIndex = 23;
             this.item1_7_1_5_1.Text = "0.00%";
             this.item1_7_1_5_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1708,7 +1713,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
             this.tableLayoutPanel16.Controls.Add(this.item1_7_2_1_1, 2, 2);
             this.tableLayoutPanel16.Controls.Add(this.label9, 1, 2);
             this.tableLayoutPanel16.Controls.Add(this.label8, 2, 1);
@@ -2021,7 +2026,7 @@ namespace TokuchoBugyoK2
             this.item1_7_2_13_1.Location = new System.Drawing.Point(1611, 59);
             this.item1_7_2_13_1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item1_7_2_13_1.Name = "item1_7_2_13_1";
-            this.item1_7_2_13_1.Size = new System.Drawing.Size(149, 27);
+            this.item1_7_2_13_1.Size = new System.Drawing.Size(150, 27);
             this.item1_7_2_13_1.TabIndex = 23;
             this.item1_7_2_13_1.Text = "0.00%";
             this.item1_7_2_13_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2194,7 +2199,7 @@ namespace TokuchoBugyoK2
             this.label49.Location = new System.Drawing.Point(1608, 30);
             this.label49.Margin = new System.Windows.Forms.Padding(0);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(155, 28);
+            this.label49.Size = new System.Drawing.Size(156, 28);
             this.label49.TabIndex = 15;
             this.label49.Text = "合計";
             this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2207,7 +2212,7 @@ namespace TokuchoBugyoK2
             this.label60.Location = new System.Drawing.Point(5, 1);
             this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(1754, 28);
+            this.label60.Size = new System.Drawing.Size(1755, 28);
             this.label60.TabIndex = 15;
             this.label60.Text = "調査部 業務別配分";
             this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4166,7 +4171,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
+            this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 194F));
             this.tableLayoutPanel69.Controls.Add(this.label164, 0, 0);
             this.tableLayoutPanel69.Controls.Add(this.label167, 2, 1);
             this.tableLayoutPanel69.Controls.Add(this.label168, 3, 1);
@@ -4200,7 +4205,7 @@ namespace TokuchoBugyoK2
             this.label164.Location = new System.Drawing.Point(5, 1);
             this.label164.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label164.Name = "label164";
-            this.label164.Size = new System.Drawing.Size(832, 28);
+            this.label164.Size = new System.Drawing.Size(833, 28);
             this.label164.TabIndex = 15;
             this.label164.Text = "部門配分";
             this.label164.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4284,7 +4289,7 @@ namespace TokuchoBugyoK2
             this.label173.Location = new System.Drawing.Point(648, 30);
             this.label173.Margin = new System.Windows.Forms.Padding(0);
             this.label173.Name = "label173";
-            this.label173.Size = new System.Drawing.Size(193, 28);
+            this.label173.Size = new System.Drawing.Size(194, 28);
             this.label173.TabIndex = 15;
             this.label173.Text = "合計";
             this.label173.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -4393,7 +4398,7 @@ namespace TokuchoBugyoK2
             this.item2_4_1_5_1.Location = new System.Drawing.Point(651, 59);
             this.item2_4_1_5_1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item2_4_1_5_1.Name = "item2_4_1_5_1";
-            this.item2_4_1_5_1.Size = new System.Drawing.Size(187, 37);
+            this.item2_4_1_5_1.Size = new System.Drawing.Size(188, 37);
             this.item2_4_1_5_1.TabIndex = 23;
             this.item2_4_1_5_1.Text = "0.00%";
             this.item2_4_1_5_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4416,7 +4421,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
+            this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tableLayoutPanel70.Controls.Add(this.label180, 2, 1);
             this.tableLayoutPanel70.Controls.Add(this.label182, 3, 1);
             this.tableLayoutPanel70.Controls.Add(this.label183, 4, 1);
@@ -4691,7 +4696,7 @@ namespace TokuchoBugyoK2
             this.label196.Location = new System.Drawing.Point(1608, 30);
             this.label196.Margin = new System.Windows.Forms.Padding(0);
             this.label196.Name = "label196";
-            this.label196.Size = new System.Drawing.Size(139, 28);
+            this.label196.Size = new System.Drawing.Size(140, 28);
             this.label196.TabIndex = 15;
             this.label196.Text = "合計";
             this.label196.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -4704,7 +4709,7 @@ namespace TokuchoBugyoK2
             this.label197.Location = new System.Drawing.Point(5, 1);
             this.label197.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label197.Name = "label197";
-            this.label197.Size = new System.Drawing.Size(1738, 28);
+            this.label197.Size = new System.Drawing.Size(1739, 28);
             this.label197.TabIndex = 15;
             this.label197.Text = "調査部 業務別配分";
             this.label197.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4915,7 +4920,7 @@ namespace TokuchoBugyoK2
             this.item2_4_2_13_1.Location = new System.Drawing.Point(1611, 59);
             this.item2_4_2_13_1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item2_4_2_13_1.Name = "item2_4_2_13_1";
-            this.item2_4_2_13_1.Size = new System.Drawing.Size(133, 37);
+            this.item2_4_2_13_1.Size = new System.Drawing.Size(134, 37);
             this.item2_4_2_13_1.TabIndex = 23;
             this.item2_4_2_13_1.Text = "0.00%";
             this.item2_4_2_13_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5013,7 +5018,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 424F));
             this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 491F));
-            this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1363F));
+            this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1364F));
             this.tableLayoutPanel76.Controls.Add(this.label263, 0, 1);
             this.tableLayoutPanel76.Controls.Add(this.label295, 1, 0);
             this.tableLayoutPanel76.Controls.Add(this.label296, 2, 0);
@@ -5078,7 +5083,7 @@ namespace TokuchoBugyoK2
             this.label297.Location = new System.Drawing.Point(991, 4);
             this.label297.Margin = new System.Windows.Forms.Padding(3);
             this.label297.Name = "label297";
-            this.label297.Size = new System.Drawing.Size(1357, 17);
+            this.label297.Size = new System.Drawing.Size(1358, 17);
             this.label297.TabIndex = 23;
             this.label297.Text = "コメント";
             this.label297.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5123,7 +5128,7 @@ namespace TokuchoBugyoK2
             this.item2_3_11.Margin = new System.Windows.Forms.Padding(0);
             this.item2_3_11.Name = "item2_3_11";
             this.item2_3_11.Padding = new System.Windows.Forms.Padding(3);
-            this.item2_3_11.Size = new System.Drawing.Size(1363, 74);
+            this.item2_3_11.Size = new System.Drawing.Size(1364, 74);
             this.item2_3_11.TabIndex = 23;
             this.item2_3_11.Text = " ";
             this.item2_3_11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -6211,7 +6216,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel86.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel86.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel86.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel86.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 202F));
+            this.tableLayoutPanel86.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 203F));
             this.tableLayoutPanel86.Controls.Add(this.label387, 0, 0);
             this.tableLayoutPanel86.Controls.Add(this.label388, 1, 2);
             this.tableLayoutPanel86.Controls.Add(this.label390, 2, 1);
@@ -6253,7 +6258,7 @@ namespace TokuchoBugyoK2
             this.label387.Location = new System.Drawing.Point(5, 1);
             this.label387.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label387.Name = "label387";
-            this.label387.Size = new System.Drawing.Size(841, 28);
+            this.label387.Size = new System.Drawing.Size(842, 28);
             this.label387.TabIndex = 15;
             this.label387.Text = "部門配分";
             this.label387.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -6363,7 +6368,7 @@ namespace TokuchoBugyoK2
             this.label396.Location = new System.Drawing.Point(648, 30);
             this.label396.Margin = new System.Windows.Forms.Padding(0);
             this.label396.Name = "label396";
-            this.label396.Size = new System.Drawing.Size(202, 28);
+            this.label396.Size = new System.Drawing.Size(203, 28);
             this.label396.TabIndex = 15;
             this.label396.Text = "合計";
             this.label396.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -6463,7 +6468,7 @@ namespace TokuchoBugyoK2
             this.item3_7_1_5_1.Margin = new System.Windows.Forms.Padding(0);
             this.item3_7_1_5_1.Name = "item3_7_1_5_1";
             this.item3_7_1_5_1.Padding = new System.Windows.Forms.Padding(4);
-            this.item3_7_1_5_1.Size = new System.Drawing.Size(202, 28);
+            this.item3_7_1_5_1.Size = new System.Drawing.Size(203, 28);
             this.item3_7_1_5_1.TabIndex = 23;
             this.item3_7_1_5_1.Text = "0.00%";
             this.item3_7_1_5_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6527,7 +6532,7 @@ namespace TokuchoBugyoK2
             this.item3_7_1_10_1.Location = new System.Drawing.Point(651, 88);
             this.item3_7_1_10_1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item3_7_1_10_1.Name = "item3_7_1_10_1";
-            this.item3_7_1_10_1.Size = new System.Drawing.Size(196, 28);
+            this.item3_7_1_10_1.Size = new System.Drawing.Size(197, 28);
             this.item3_7_1_10_1.TabIndex = 40;
             this.item3_7_1_10_1.Text = "¥0";
             this.item3_7_1_10_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6551,7 +6556,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel87.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel87.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel87.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel87.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.tableLayoutPanel87.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel87.Controls.Add(this.item3_7_2_26_2, 14, 4);
             this.tableLayoutPanel87.Controls.Add(this.item3_7_2_25_2, 13, 4);
             this.tableLayoutPanel87.Controls.Add(this.item3_7_2_24_2, 12, 4);
@@ -6621,7 +6626,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel87.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel87.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel87.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel87.Size = new System.Drawing.Size(1754, 146);
+            this.tableLayoutPanel87.Size = new System.Drawing.Size(1755, 146);
             this.tableLayoutPanel87.TabIndex = 4;
             // 
             // item3_7_2_26_2
@@ -6631,7 +6636,7 @@ namespace TokuchoBugyoK2
             this.item3_7_2_26_2.Location = new System.Drawing.Point(1611, 117);
             this.item3_7_2_26_2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item3_7_2_26_2.Name = "item3_7_2_26_2";
-            this.item3_7_2_26_2.Size = new System.Drawing.Size(139, 25);
+            this.item3_7_2_26_2.Size = new System.Drawing.Size(140, 25);
             this.item3_7_2_26_2.TabIndex = 52;
             this.item3_7_2_26_2.Text = "¥0";
             this.item3_7_2_26_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6799,7 +6804,7 @@ namespace TokuchoBugyoK2
             this.item3_7_2_26_1.Location = new System.Drawing.Point(1611, 88);
             this.item3_7_2_26_1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item3_7_2_26_1.Name = "item3_7_2_26_1";
-            this.item3_7_2_26_1.Size = new System.Drawing.Size(139, 25);
+            this.item3_7_2_26_1.Size = new System.Drawing.Size(140, 25);
             this.item3_7_2_26_1.TabIndex = 38;
             this.item3_7_2_26_1.Text = "0.00%";
             this.item3_7_2_26_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -7262,7 +7267,7 @@ namespace TokuchoBugyoK2
             this.label437.Location = new System.Drawing.Point(1608, 30);
             this.label437.Margin = new System.Windows.Forms.Padding(0);
             this.label437.Name = "label437";
-            this.label437.Size = new System.Drawing.Size(145, 28);
+            this.label437.Size = new System.Drawing.Size(146, 28);
             this.label437.TabIndex = 15;
             this.label437.Text = "合計";
             this.label437.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -7275,7 +7280,7 @@ namespace TokuchoBugyoK2
             this.label438.Location = new System.Drawing.Point(5, 1);
             this.label438.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label438.Name = "label438";
-            this.label438.Size = new System.Drawing.Size(1744, 28);
+            this.label438.Size = new System.Drawing.Size(1745, 28);
             this.label438.TabIndex = 15;
             this.label438.Text = "調査部 業務別配分";
             this.label438.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -7469,7 +7474,7 @@ namespace TokuchoBugyoK2
             this.item3_7_2_13_1.Margin = new System.Windows.Forms.Padding(0);
             this.item3_7_2_13_1.Name = "item3_7_2_13_1";
             this.item3_7_2_13_1.Padding = new System.Windows.Forms.Padding(4);
-            this.item3_7_2_13_1.Size = new System.Drawing.Size(145, 28);
+            this.item3_7_2_13_1.Size = new System.Drawing.Size(146, 28);
             this.item3_7_2_13_1.TabIndex = 23;
             this.item3_7_2_13_1.Text = "0.00%";
             this.item3_7_2_13_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -7566,7 +7571,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel44.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel44.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel44.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel44.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.tableLayoutPanel44.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
             this.tableLayoutPanel44.Controls.Add(this.label103, 7, 0);
             this.tableLayoutPanel44.Controls.Add(this.label86, 1, 0);
             this.tableLayoutPanel44.Controls.Add(this.label87, 3, 0);
@@ -7597,7 +7602,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel44.Size = new System.Drawing.Size(1065, 102);
+            this.tableLayoutPanel44.Size = new System.Drawing.Size(1068, 102);
             this.tableLayoutPanel44.TabIndex = 4;
             // 
             // label103
@@ -7611,7 +7616,7 @@ namespace TokuchoBugyoK2
             this.label103.Margin = new System.Windows.Forms.Padding(0);
             this.label103.Name = "label103";
             this.label103.Padding = new System.Windows.Forms.Padding(3);
-            this.label103.Size = new System.Drawing.Size(198, 30);
+            this.label103.Size = new System.Drawing.Size(201, 30);
             this.label103.TabIndex = 50;
             this.label103.Text = "請求合計額";
             this.label103.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -7912,7 +7917,7 @@ namespace TokuchoBugyoK2
             this.item3_6_13.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.item3_6_13.Location = new System.Drawing.Point(867, 69);
             this.item3_6_13.Name = "item3_6_13";
-            this.item3_6_13.Size = new System.Drawing.Size(192, 30);
+            this.item3_6_13.Size = new System.Drawing.Size(195, 30);
             this.item3_6_13.TabIndex = 76;
             this.item3_6_13.Text = "¥0";
             this.item3_6_13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -7980,7 +7985,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel78.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel78.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel78.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
-            this.tableLayoutPanel78.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 298F));
+            this.tableLayoutPanel78.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
             this.tableLayoutPanel78.Controls.Add(this.item3_3_5, 4, 1);
             this.tableLayoutPanel78.Controls.Add(this.label321, 4, 0);
             this.tableLayoutPanel78.Controls.Add(this.label317, 0, 0);
@@ -7998,7 +8003,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel78.RowCount = 2;
             this.tableLayoutPanel78.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel78.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel78.Size = new System.Drawing.Size(1196, 69);
+            this.tableLayoutPanel78.Size = new System.Drawing.Size(1199, 69);
             this.tableLayoutPanel78.TabIndex = 4;
             // 
             // item3_3_5
@@ -8010,7 +8015,7 @@ namespace TokuchoBugyoK2
             this.item3_3_5.Location = new System.Drawing.Point(898, 36);
             this.item3_3_5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item3_3_5.Name = "item3_3_5";
-            this.item3_3_5.Size = new System.Drawing.Size(292, 27);
+            this.item3_3_5.Size = new System.Drawing.Size(295, 27);
             this.item3_3_5.TabIndex = 42;
             this.item3_3_5.Text = "¥0";
             this.item3_3_5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -8026,7 +8031,7 @@ namespace TokuchoBugyoK2
             this.label321.Margin = new System.Windows.Forms.Padding(0);
             this.label321.Name = "label321";
             this.label321.Padding = new System.Windows.Forms.Padding(0, 3, 10, 3);
-            this.label321.Size = new System.Drawing.Size(298, 30);
+            this.label321.Size = new System.Drawing.Size(301, 30);
             this.label321.TabIndex = 28;
             this.label321.Text = "単契等の見込補正額(税抜)";
             this.label321.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -9526,7 +9531,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel108.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.tableLayoutPanel108.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel108.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel108.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel108.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel108.Controls.Add(this.pictureBox18, 2, 0);
             this.tableLayoutPanel108.Controls.Add(this.item3_4_1, 0, 0);
             this.tableLayoutPanel108.Controls.Add(this.pictureBox6, 1, 0);
@@ -9537,7 +9542,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel108.Name = "tableLayoutPanel108";
             this.tableLayoutPanel108.RowCount = 1;
             this.tableLayoutPanel108.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel108.Size = new System.Drawing.Size(455, 28);
+            this.tableLayoutPanel108.Size = new System.Drawing.Size(456, 28);
             this.tableLayoutPanel108.TabIndex = 0;
             // 
             // pictureBox18
@@ -9599,7 +9604,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel109.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.tableLayoutPanel109.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel109.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel109.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel109.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel109.Controls.Add(this.pictureBox19, 2, 0);
             this.tableLayoutPanel109.Controls.Add(this.item3_4_2, 0, 0);
             this.tableLayoutPanel109.Controls.Add(this.pictureBox8, 1, 0);
@@ -9610,7 +9615,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel109.Name = "tableLayoutPanel109";
             this.tableLayoutPanel109.RowCount = 1;
             this.tableLayoutPanel109.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel109.Size = new System.Drawing.Size(455, 28);
+            this.tableLayoutPanel109.Size = new System.Drawing.Size(456, 28);
             this.tableLayoutPanel109.TabIndex = 1;
             // 
             // pictureBox19
@@ -9671,7 +9676,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel110.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
             this.tableLayoutPanel110.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.tableLayoutPanel110.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel110.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel110.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
             this.tableLayoutPanel110.Controls.Add(this.pictureBox20, 2, 0);
             this.tableLayoutPanel110.Controls.Add(this.item3_4_3, 0, 0);
             this.tableLayoutPanel110.Controls.Add(this.pictureBox9, 1, 0);
@@ -9681,7 +9686,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel110.Name = "tableLayoutPanel110";
             this.tableLayoutPanel110.RowCount = 1;
             this.tableLayoutPanel110.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel110.Size = new System.Drawing.Size(435, 28);
+            this.tableLayoutPanel110.Size = new System.Drawing.Size(436, 28);
             this.tableLayoutPanel110.TabIndex = 3;
             // 
             // pictureBox20
@@ -9734,7 +9739,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
             this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
             this.tableLayoutPanel111.Controls.Add(this.pictureBox21, 2, 0);
             this.tableLayoutPanel111.Controls.Add(this.item3_4_4, 0, 0);
             this.tableLayoutPanel111.Controls.Add(this.pictureBox10, 1, 0);
@@ -9744,7 +9749,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel111.Name = "tableLayoutPanel111";
             this.tableLayoutPanel111.RowCount = 1;
             this.tableLayoutPanel111.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel111.Size = new System.Drawing.Size(435, 28);
+            this.tableLayoutPanel111.Size = new System.Drawing.Size(436, 28);
             this.tableLayoutPanel111.TabIndex = 4;
             // 
             // pictureBox21
@@ -9800,7 +9805,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
             this.tableLayoutPanel112.Controls.Add(this.pictureBox22, 2, 0);
             this.tableLayoutPanel112.Controls.Add(this.item3_4_5, 0, 0);
             this.tableLayoutPanel112.Controls.Add(this.pictureBox11, 1, 0);
@@ -9813,7 +9818,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel112.Name = "tableLayoutPanel112";
             this.tableLayoutPanel112.RowCount = 1;
             this.tableLayoutPanel112.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel112.Size = new System.Drawing.Size(495, 28);
+            this.tableLayoutPanel112.Size = new System.Drawing.Size(496, 28);
             this.tableLayoutPanel112.TabIndex = 5;
             // 
             // pictureBox22
@@ -10275,7 +10280,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel91.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel91.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel91.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel91.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 196F));
+            this.tableLayoutPanel91.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
             this.tableLayoutPanel91.Controls.Add(this.item3_2_5_2, 5, 3);
             this.tableLayoutPanel91.Controls.Add(this.item3_2_5_1, 5, 2);
             this.tableLayoutPanel91.Controls.Add(this.label494, 0, 3);
@@ -10303,7 +10308,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel91.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel91.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel91.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel91.Size = new System.Drawing.Size(790, 122);
+            this.tableLayoutPanel91.Size = new System.Drawing.Size(792, 122);
             this.tableLayoutPanel91.TabIndex = 7;
             // 
             // item3_2_5_2
@@ -10315,7 +10320,7 @@ namespace TokuchoBugyoK2
             this.item3_2_5_2.Location = new System.Drawing.Point(595, 92);
             this.item3_2_5_2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item3_2_5_2.Name = "item3_2_5_2";
-            this.item3_2_5_2.Size = new System.Drawing.Size(190, 25);
+            this.item3_2_5_2.Size = new System.Drawing.Size(192, 25);
             this.item3_2_5_2.TabIndex = 42;
             this.item3_2_5_2.Text = "¥0";
             this.item3_2_5_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -10329,7 +10334,7 @@ namespace TokuchoBugyoK2
             this.item3_2_5_1.Location = new System.Drawing.Point(595, 62);
             this.item3_2_5_1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item3_2_5_1.Name = "item3_2_5_1";
-            this.item3_2_5_1.Size = new System.Drawing.Size(190, 25);
+            this.item3_2_5_1.Size = new System.Drawing.Size(192, 25);
             this.item3_2_5_1.TabIndex = 41;
             this.item3_2_5_1.Text = "¥0";
             this.item3_2_5_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -10357,7 +10362,7 @@ namespace TokuchoBugyoK2
             this.label485.Location = new System.Drawing.Point(592, 32);
             this.label485.Margin = new System.Windows.Forms.Padding(0);
             this.label485.Name = "label485";
-            this.label485.Size = new System.Drawing.Size(196, 28);
+            this.label485.Size = new System.Drawing.Size(198, 28);
             this.label485.TabIndex = 22;
             this.label485.Text = "合計";
             this.label485.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -10428,7 +10433,7 @@ namespace TokuchoBugyoK2
             this.label479.Location = new System.Drawing.Point(6, 2);
             this.label479.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label479.Name = "label479";
-            this.label479.Size = new System.Drawing.Size(778, 28);
+            this.label479.Size = new System.Drawing.Size(780, 28);
             this.label479.TabIndex = 16;
             this.label479.Text = "受託金額配分";
             this.label479.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -10652,7 +10657,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel67.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel67.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel67.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
-            this.tableLayoutPanel67.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 298F));
+            this.tableLayoutPanel67.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
             this.tableLayoutPanel67.Controls.Add(this.item3_7_5, 4, 1);
             this.tableLayoutPanel67.Controls.Add(this.label35, 4, 0);
             this.tableLayoutPanel67.Controls.Add(this.label37, 0, 0);
@@ -10670,7 +10675,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel67.RowCount = 2;
             this.tableLayoutPanel67.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel67.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel67.Size = new System.Drawing.Size(1196, 69);
+            this.tableLayoutPanel67.Size = new System.Drawing.Size(1199, 69);
             this.tableLayoutPanel67.TabIndex = 4;
             // 
             // item3_7_5
@@ -10682,7 +10687,7 @@ namespace TokuchoBugyoK2
             this.item3_7_5.Location = new System.Drawing.Point(898, 36);
             this.item3_7_5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.item3_7_5.Name = "item3_7_5";
-            this.item3_7_5.Size = new System.Drawing.Size(292, 27);
+            this.item3_7_5.Size = new System.Drawing.Size(295, 27);
             this.item3_7_5.TabIndex = 42;
             this.item3_7_5.Text = "¥0";
             this.item3_7_5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -10698,7 +10703,7 @@ namespace TokuchoBugyoK2
             this.label35.Margin = new System.Windows.Forms.Padding(0);
             this.label35.Name = "label35";
             this.label35.Padding = new System.Windows.Forms.Padding(0, 3, 10, 3);
-            this.label35.Size = new System.Drawing.Size(298, 30);
+            this.label35.Size = new System.Drawing.Size(301, 30);
             this.label35.TabIndex = 28;
             this.label35.Text = "年度繰越額合計(税抜)";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -11211,7 +11216,7 @@ namespace TokuchoBugyoK2
             this.label112.Margin = new System.Windows.Forms.Padding(4);
             this.label112.Name = "label112";
             this.label112.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.label112.Size = new System.Drawing.Size(1036, 30);
+            this.label112.Size = new System.Drawing.Size(1019, 30);
             this.label112.TabIndex = 3;
             this.label112.Text = "評価・評点";
             // 
@@ -11345,6 +11350,33 @@ namespace TokuchoBugyoK2
             this.ErrorMessage.Name = "ErrorMessage";
             this.ErrorMessage.Size = new System.Drawing.Size(1874, 13);
             this.ErrorMessage.TabIndex = 0;
+            // 
+            // lblBootMode
+            // 
+            this.lblBootMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBootMode.AutoSize = true;
+            this.lblBootMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.lblBootMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.lblBootMode.Location = new System.Drawing.Point(207, 5);
+            this.lblBootMode.Margin = new System.Windows.Forms.Padding(5);
+            this.lblBootMode.Name = "lblBootMode";
+            this.lblBootMode.Size = new System.Drawing.Size(27, 30);
+            this.lblBootMode.TabIndex = 18;
+            this.lblBootMode.Text = " ";
+            this.lblBootMode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblVersion.Location = new System.Drawing.Point(185, 18);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(12, 17);
+            this.lblVersion.TabIndex = 19;
+            this.lblVersion.Text = " ";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Entry_Input
             // 
@@ -12301,5 +12333,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button btnHanei;
         private PlaceholderTextBox txtTayoriData;
+        private System.Windows.Forms.Label lblBootMode;
+        private System.Windows.Forms.Label lblVersion;
     }
 }

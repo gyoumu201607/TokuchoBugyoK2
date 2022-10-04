@@ -64,6 +64,9 @@
             this.c1FlexGrid3 = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.c1FlexGrid4 = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.BtnSearch = new System.Windows.Forms.Button();
+            this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.lblBootMode = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -76,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid4)).BeginInit();
+            this.tlpHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -534,12 +538,56 @@
             this.BtnSearch.UseVisualStyleBackColor = false;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
+            // tlpHeader
+            // 
+            this.tlpHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpHeader.ColumnCount = 2;
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpHeader.Controls.Add(this.lblBootMode, 0, 0);
+            this.tlpHeader.Controls.Add(this.lblVersion, 0, 0);
+            this.tlpHeader.Location = new System.Drawing.Point(177, -1);
+            this.tlpHeader.Name = "tlpHeader";
+            this.tlpHeader.RowCount = 1;
+            this.tlpHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpHeader.Size = new System.Drawing.Size(1358, 40);
+            this.tlpHeader.TabIndex = 56;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblVersion.Location = new System.Drawing.Point(5, 18);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(12, 17);
+            this.lblVersion.TabIndex = 6;
+            this.lblVersion.Text = " ";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblBootMode
+            // 
+            this.lblBootMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBootMode.AutoSize = true;
+            this.lblBootMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.lblBootMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.lblBootMode.Location = new System.Drawing.Point(27, 5);
+            this.lblBootMode.Margin = new System.Windows.Forms.Padding(5);
+            this.lblBootMode.Name = "lblBootMode";
+            this.lblBootMode.Size = new System.Drawing.Size(27, 30);
+            this.lblBootMode.TabIndex = 7;
+            this.lblBootMode.Text = " ";
+            this.lblBootMode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Tokuchoyaro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1884, 1021);
+            this.Controls.Add(this.tlpHeader);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.c1FlexGrid4);
             this.Controls.Add(this.c1FlexGrid3);
@@ -588,6 +636,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid4)).EndInit();
+            this.tlpHeader.ResumeLayout(false);
+            this.tlpHeader.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -629,5 +679,8 @@
         private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid3;
         private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid4;
         private System.Windows.Forms.Button BtnSearch;
+        private System.Windows.Forms.TableLayoutPanel tlpHeader;
+        private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Label lblBootMode;
     }
 }

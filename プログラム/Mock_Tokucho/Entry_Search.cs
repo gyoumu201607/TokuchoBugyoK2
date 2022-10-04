@@ -32,6 +32,12 @@ namespace TokuchoBugyoK2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //不具合No1355（1123）
+            lblVersion.Text = GlobalMethod.GetCommonValue1("APL_VERSION");
+            if (GlobalMethod.GetCommonValue1("BOOT_MODE") == "1")
+            {
+                lblBootMode.Text = GlobalMethod.GetCommonValue2("BOOT_MODE");
+            }
             //ユーザ名を設定
             label3.Text = UserInfos[3] + "：" + UserInfos[1];
 

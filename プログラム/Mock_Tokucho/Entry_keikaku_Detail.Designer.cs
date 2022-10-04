@@ -168,10 +168,10 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label3, 3, 0);
@@ -247,7 +247,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(188, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(180, 40);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -266,7 +266,7 @@
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(192, 23);
+            this.label20.Location = new System.Drawing.Point(184, 23);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(12, 17);
@@ -275,11 +275,11 @@
             // 
             // label19
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.label19.Location = new System.Drawing.Point(1833, 3);
+            this.label19.Location = new System.Drawing.Point(204, 3);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(27, 37);
@@ -439,7 +439,7 @@
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanel70.Controls.Add(this.label179, 0, 1);
             this.tableLayoutPanel70.Controls.Add(this.label180, 1, 0);
             this.tableLayoutPanel70.Controls.Add(this.label182, 2, 0);
@@ -474,7 +474,7 @@
             this.tableLayoutPanel70.RowCount = 2;
             this.tableLayoutPanel70.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel70.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel70.Size = new System.Drawing.Size(1697, 59);
+            this.tableLayoutPanel70.Size = new System.Drawing.Size(1698, 59);
             this.tableLayoutPanel70.TabIndex = 39;
             // 
             // label179
@@ -669,7 +669,7 @@
             this.label196.Location = new System.Drawing.Point(1554, 1);
             this.label196.Margin = new System.Windows.Forms.Padding(0);
             this.label196.Name = "label196";
-            this.label196.Size = new System.Drawing.Size(142, 28);
+            this.label196.Size = new System.Drawing.Size(143, 28);
             this.label196.TabIndex = 15;
             this.label196.Text = "合計";
             this.label196.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -851,7 +851,7 @@
             this.item3_13.Margin = new System.Windows.Forms.Padding(0);
             this.item3_13.Name = "item3_13";
             this.item3_13.Padding = new System.Windows.Forms.Padding(4);
-            this.item3_13.Size = new System.Drawing.Size(142, 28);
+            this.item3_13.Size = new System.Drawing.Size(143, 28);
             this.item3_13.TabIndex = 23;
             this.item3_13.Text = "0.00%";
             this.item3_13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -964,7 +964,7 @@
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel20.Size = new System.Drawing.Size(1392, 130);
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(1398, 130);
             this.tableLayoutPanel20.TabIndex = 21;
             // 
             // label11
@@ -973,7 +973,7 @@
             this.label11.Location = new System.Drawing.Point(6, 98);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(228, 30);
+            this.label11.Size = new System.Drawing.Size(229, 30);
             this.label11.TabIndex = 23;
             this.label11.Text = "見込額合計(税抜)";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -982,11 +982,11 @@
             // 
             this.item2_8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_8.Location = new System.Drawing.Point(699, 70);
+            this.item2_8.Location = new System.Drawing.Point(702, 70);
             this.item2_8.Margin = new System.Windows.Forms.Padding(4);
             this.item2_8.Name = "item2_8";
             this.item2_8.ReadOnly = true;
-            this.item2_8.Size = new System.Drawing.Size(222, 21);
+            this.item2_8.Size = new System.Drawing.Size(223, 21);
             this.item2_8.TabIndex = 29;
             this.item2_8.TabStop = false;
             this.item2_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -997,7 +997,7 @@
             this.label10.Location = new System.Drawing.Point(6, 34);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(228, 30);
+            this.label10.Size = new System.Drawing.Size(229, 30);
             this.label10.TabIndex = 15;
             this.label10.Text = "落札見込額(税抜)";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1008,7 +1008,7 @@
             this.label9.Location = new System.Drawing.Point(6, 66);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(228, 30);
+            this.label9.Size = new System.Drawing.Size(229, 30);
             this.label9.TabIndex = 15;
             this.label9.Text = "変更見込額(税抜)";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1017,11 +1017,11 @@
             // 
             this.item2_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_1.Location = new System.Drawing.Point(244, 38);
+            this.item2_1.Location = new System.Drawing.Point(245, 38);
             this.item2_1.Margin = new System.Windows.Forms.Padding(4);
             this.item2_1.Name = "item2_1";
             this.item2_1.ReadOnly = true;
-            this.item2_1.Size = new System.Drawing.Size(213, 21);
+            this.item2_1.Size = new System.Drawing.Size(214, 21);
             this.item2_1.TabIndex = 22;
             this.item2_1.TabStop = false;
             this.item2_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1030,11 +1030,11 @@
             // 
             this.item2_6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_6.Location = new System.Drawing.Point(244, 70);
+            this.item2_6.Location = new System.Drawing.Point(245, 70);
             this.item2_6.Margin = new System.Windows.Forms.Padding(4);
             this.item2_6.Name = "item2_6";
             this.item2_6.ReadOnly = true;
-            this.item2_6.Size = new System.Drawing.Size(213, 21);
+            this.item2_6.Size = new System.Drawing.Size(214, 21);
             this.item2_6.TabIndex = 27;
             this.item2_6.TabStop = false;
             this.item2_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1043,11 +1043,11 @@
             // 
             this.item2_11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_11.Location = new System.Drawing.Point(244, 102);
+            this.item2_11.Location = new System.Drawing.Point(245, 102);
             this.item2_11.Margin = new System.Windows.Forms.Padding(4);
             this.item2_11.Name = "item2_11";
             this.item2_11.ReadOnly = true;
-            this.item2_11.Size = new System.Drawing.Size(213, 21);
+            this.item2_11.Size = new System.Drawing.Size(214, 21);
             this.item2_11.TabIndex = 32;
             this.item2_11.TabStop = false;
             this.item2_11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1056,11 +1056,11 @@
             // 
             this.item2_2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_2.Location = new System.Drawing.Point(467, 38);
+            this.item2_2.Location = new System.Drawing.Point(469, 38);
             this.item2_2.Margin = new System.Windows.Forms.Padding(4);
             this.item2_2.Name = "item2_2";
             this.item2_2.ReadOnly = true;
-            this.item2_2.Size = new System.Drawing.Size(222, 21);
+            this.item2_2.Size = new System.Drawing.Size(223, 21);
             this.item2_2.TabIndex = 23;
             this.item2_2.TabStop = false;
             this.item2_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1069,11 +1069,11 @@
             // 
             this.item2_7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_7.Location = new System.Drawing.Point(467, 70);
+            this.item2_7.Location = new System.Drawing.Point(469, 70);
             this.item2_7.Margin = new System.Windows.Forms.Padding(4);
             this.item2_7.Name = "item2_7";
             this.item2_7.ReadOnly = true;
-            this.item2_7.Size = new System.Drawing.Size(222, 21);
+            this.item2_7.Size = new System.Drawing.Size(223, 21);
             this.item2_7.TabIndex = 28;
             this.item2_7.TabStop = false;
             this.item2_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1082,11 +1082,11 @@
             // 
             this.item2_12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_12.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_12.Location = new System.Drawing.Point(467, 102);
+            this.item2_12.Location = new System.Drawing.Point(469, 102);
             this.item2_12.Margin = new System.Windows.Forms.Padding(4);
             this.item2_12.Name = "item2_12";
             this.item2_12.ReadOnly = true;
-            this.item2_12.Size = new System.Drawing.Size(222, 21);
+            this.item2_12.Size = new System.Drawing.Size(223, 21);
             this.item2_12.TabIndex = 33;
             this.item2_12.TabStop = false;
             this.item2_12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1095,11 +1095,11 @@
             // 
             this.item2_3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_3.Location = new System.Drawing.Point(699, 38);
+            this.item2_3.Location = new System.Drawing.Point(702, 38);
             this.item2_3.Margin = new System.Windows.Forms.Padding(4);
             this.item2_3.Name = "item2_3";
             this.item2_3.ReadOnly = true;
-            this.item2_3.Size = new System.Drawing.Size(222, 21);
+            this.item2_3.Size = new System.Drawing.Size(223, 21);
             this.item2_3.TabIndex = 24;
             this.item2_3.TabStop = false;
             this.item2_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1108,11 +1108,11 @@
             // 
             this.item2_13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_13.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_13.Location = new System.Drawing.Point(699, 102);
+            this.item2_13.Location = new System.Drawing.Point(702, 102);
             this.item2_13.Margin = new System.Windows.Forms.Padding(4);
             this.item2_13.Name = "item2_13";
             this.item2_13.ReadOnly = true;
-            this.item2_13.Size = new System.Drawing.Size(222, 21);
+            this.item2_13.Size = new System.Drawing.Size(223, 21);
             this.item2_13.TabIndex = 34;
             this.item2_13.TabStop = false;
             this.item2_13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1123,10 +1123,10 @@
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(240, 2);
+            this.label12.Location = new System.Drawing.Point(241, 2);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(221, 30);
+            this.label12.Size = new System.Drawing.Size(222, 30);
             this.label12.TabIndex = 15;
             this.label12.Text = "調査部";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1137,10 +1137,10 @@
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(463, 2);
+            this.label13.Location = new System.Drawing.Point(465, 2);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(230, 30);
+            this.label13.Size = new System.Drawing.Size(231, 30);
             this.label13.TabIndex = 15;
             this.label13.Text = "事業普及部";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1151,10 +1151,10 @@
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(695, 2);
+            this.label14.Location = new System.Drawing.Point(698, 2);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(230, 30);
+            this.label14.Size = new System.Drawing.Size(231, 30);
             this.label14.TabIndex = 15;
             this.label14.Text = "情報システム部";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1165,10 +1165,10 @@
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(927, 2);
+            this.label15.Location = new System.Drawing.Point(931, 2);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(230, 30);
+            this.label15.Size = new System.Drawing.Size(231, 30);
             this.label15.TabIndex = 15;
             this.label15.Text = "総合研究所";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1177,11 +1177,11 @@
             // 
             this.item2_4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_4.Location = new System.Drawing.Point(931, 38);
+            this.item2_4.Location = new System.Drawing.Point(935, 38);
             this.item2_4.Margin = new System.Windows.Forms.Padding(4);
             this.item2_4.Name = "item2_4";
             this.item2_4.ReadOnly = true;
-            this.item2_4.Size = new System.Drawing.Size(222, 21);
+            this.item2_4.Size = new System.Drawing.Size(223, 21);
             this.item2_4.TabIndex = 25;
             this.item2_4.TabStop = false;
             this.item2_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1190,11 +1190,11 @@
             // 
             this.item2_9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_9.Location = new System.Drawing.Point(931, 70);
+            this.item2_9.Location = new System.Drawing.Point(935, 70);
             this.item2_9.Margin = new System.Windows.Forms.Padding(4);
             this.item2_9.Name = "item2_9";
             this.item2_9.ReadOnly = true;
-            this.item2_9.Size = new System.Drawing.Size(222, 21);
+            this.item2_9.Size = new System.Drawing.Size(223, 21);
             this.item2_9.TabIndex = 30;
             this.item2_9.TabStop = false;
             this.item2_9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1203,11 +1203,11 @@
             // 
             this.item2_14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_14.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_14.Location = new System.Drawing.Point(931, 102);
+            this.item2_14.Location = new System.Drawing.Point(935, 102);
             this.item2_14.Margin = new System.Windows.Forms.Padding(4);
             this.item2_14.Name = "item2_14";
             this.item2_14.ReadOnly = true;
-            this.item2_14.Size = new System.Drawing.Size(222, 21);
+            this.item2_14.Size = new System.Drawing.Size(223, 21);
             this.item2_14.TabIndex = 35;
             this.item2_14.TabStop = false;
             this.item2_14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1218,10 +1218,10 @@
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(1159, 2);
+            this.label16.Location = new System.Drawing.Point(1164, 2);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(231, 30);
+            this.label16.Size = new System.Drawing.Size(232, 30);
             this.label16.TabIndex = 15;
             this.label16.Text = "合計";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1230,11 +1230,11 @@
             // 
             this.item2_15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_15.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_15.Location = new System.Drawing.Point(1163, 102);
+            this.item2_15.Location = new System.Drawing.Point(1168, 102);
             this.item2_15.Margin = new System.Windows.Forms.Padding(4);
             this.item2_15.Name = "item2_15";
             this.item2_15.ReadOnly = true;
-            this.item2_15.Size = new System.Drawing.Size(223, 21);
+            this.item2_15.Size = new System.Drawing.Size(224, 21);
             this.item2_15.TabIndex = 36;
             this.item2_15.TabStop = false;
             this.item2_15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1243,11 +1243,11 @@
             // 
             this.item2_5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_5.Location = new System.Drawing.Point(1163, 38);
+            this.item2_5.Location = new System.Drawing.Point(1168, 38);
             this.item2_5.Margin = new System.Windows.Forms.Padding(4);
             this.item2_5.Name = "item2_5";
             this.item2_5.ReadOnly = true;
-            this.item2_5.Size = new System.Drawing.Size(223, 21);
+            this.item2_5.Size = new System.Drawing.Size(224, 21);
             this.item2_5.TabIndex = 26;
             this.item2_5.TabStop = false;
             this.item2_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1256,11 +1256,11 @@
             // 
             this.item2_10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item2_10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.item2_10.Location = new System.Drawing.Point(1163, 70);
+            this.item2_10.Location = new System.Drawing.Point(1168, 70);
             this.item2_10.Margin = new System.Windows.Forms.Padding(4);
             this.item2_10.Name = "item2_10";
             this.item2_10.ReadOnly = true;
-            this.item2_10.Size = new System.Drawing.Size(223, 21);
+            this.item2_10.Size = new System.Drawing.Size(224, 21);
             this.item2_10.TabIndex = 31;
             this.item2_10.TabStop = false;
             this.item2_10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1445,7 +1445,7 @@
             "事業普及部（物品購入）",
             "情シス部（一般契約）",
             "総合研究所"});
-            this.item1_3.Location = new System.Drawing.Point(745, 3);
+            this.item1_3.Location = new System.Drawing.Point(745, 4);
             this.item1_3.Name = "item1_3";
             this.item1_3.Size = new System.Drawing.Size(189, 21);
             this.item1_3.TabIndex = 10;

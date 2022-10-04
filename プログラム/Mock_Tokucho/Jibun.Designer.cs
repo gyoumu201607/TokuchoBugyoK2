@@ -103,6 +103,8 @@
             this.ErrorMessage = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lblBootMode = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -144,12 +146,16 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.lblVersion, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.label3, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label3, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblBootMode, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -167,7 +173,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(942, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(180, 40);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -175,7 +181,7 @@
             // 
             this.tableLayoutPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
             this.tableLayoutPanel6.ColumnCount = 5;
-            this.tableLayoutPanel4.SetColumnSpan(this.tableLayoutPanel6, 2);
+            this.tableLayoutPanel4.SetColumnSpan(this.tableLayoutPanel6, 4);
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
@@ -288,6 +294,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1884, 879);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
@@ -1334,6 +1341,33 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "※赤背景は必須入力項目です。";
             // 
+            // lblBootMode
+            // 
+            this.lblBootMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBootMode.AutoSize = true;
+            this.lblBootMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.lblBootMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.lblBootMode.Location = new System.Drawing.Point(207, 5);
+            this.lblBootMode.Margin = new System.Windows.Forms.Padding(5);
+            this.lblBootMode.Name = "lblBootMode";
+            this.lblBootMode.Size = new System.Drawing.Size(27, 30);
+            this.lblBootMode.TabIndex = 31;
+            this.lblBootMode.Text = " ";
+            this.lblBootMode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblVersion.Location = new System.Drawing.Point(185, 18);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(12, 17);
+            this.lblVersion.TabIndex = 32;
+            this.lblVersion.Text = " ";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Jibun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1457,5 +1491,7 @@
         private System.Windows.Forms.ComboBox item_tyouhyouInsatu;
         private System.Windows.Forms.Button BtnClear;
         private System.Windows.Forms.Button btnGridSize;
+        private System.Windows.Forms.Label lblBootMode;
+        private System.Windows.Forms.Label lblVersion;
     }
 }

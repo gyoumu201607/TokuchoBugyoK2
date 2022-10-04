@@ -60,6 +60,12 @@ namespace TokuchoBugyoK2
 
         private void tanka_Load(object sender, EventArgs e)
         {
+            //不具合No1355（1123）
+            lblVersion.Text = GlobalMethod.GetCommonValue1("APL_VERSION");
+            if (GlobalMethod.GetCommonValue1("BOOT_MODE") == "1")
+            {
+                lblBootMode.Text = GlobalMethod.GetCommonValue2("BOOT_MODE");
+            }
             // 昇順降順アイコン設定
             TankaRankuGrid.Glyphs[C1.Win.C1FlexGrid.GlyphEnum.Ascending] = Image.FromFile("Resource/Asc.png");
             TankaRankuGrid.Glyphs[C1.Win.C1FlexGrid.GlyphEnum.Descending] = Image.FromFile("Resource/Desc.png");

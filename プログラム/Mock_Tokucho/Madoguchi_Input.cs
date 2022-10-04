@@ -182,7 +182,12 @@ namespace TokuchoBugyoK2
 
         private void Madoguchi_Input_Load(object sender, EventArgs e)
         {
-
+            //不具合No1355（1123）
+            lblVersion.Text = GlobalMethod.GetCommonValue1("APL_VERSION");
+            if (GlobalMethod.GetCommonValue1("BOOT_MODE") == "1")
+            {
+                lblBootMode.Text = GlobalMethod.GetCommonValue2("BOOT_MODE");
+            }
             GlobalMethod.outputLogger("Madoguchi", "Madoguchi_Input Load開始:" + DateTime.Now.ToString(), "", "DEBUG");
             //ユーザ名を設定
             label7.Text = UserInfos[3] + "：" + UserInfos[1];

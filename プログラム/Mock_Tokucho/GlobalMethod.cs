@@ -1294,7 +1294,9 @@ namespace TokuchoBugyoK2
                     "(" + WorkID + ",8" + ",'KeiyakuKubunCD'" + ",2" + ",null" + "," + data[7] + ",null" + ")," +
                     "(" + WorkID + ",9" + ",'NyusatsuJokyouCD'" + ",2" + ",null" + "," + data[8] + "" + ",null" + ")," +
                     "(" + WorkID + ",10" + ",'Rakusatsusha'" + ",1" + ",N'" + ChangeSqlText(data[9], 0, 0) + "'" + ",null" + ",null" + ")," +
-                    "(" + WorkID + ",11" + ",'HachushaKubun1'" + ",2" + ",null" + ",null" + ",null" + ")," +
+                    //不具合No1357（1128）nullで渡していたが、値を渡すよう修正。呼び出し元ではdata[10]にはしっかり値を入れていた。
+                    "(" + WorkID + ",11" + ",'HachushaKubun1'" + ",2" + ",null" + "," + data[10] + ",null" + ")," +
+                    //"(" + WorkID + ",11" + ",'HachushaKubun1'" + ",2" + ",null" + ",null" + ",null" + ")," +
                     "(" + WorkID + ",12" + ",'KeikakuBangou'" + ",1" + ",N'" + ChangeSqlText(data[11], 0, 0) + "'" + ",null" + ",null" + ")," +
                     "(" + WorkID + ",13" + ",'KeikakuAnkenMei'" + ",1" + ",N'" + ChangeSqlText(data[12], 0, 0) + "'" + ",null" + ",null" + ")," +
                     "(" + WorkID + ",14" + ",'JutakuBangou'" + ",1" + ",N'" + ChangeSqlText(data[13], 0, 0) + "'" + ",null" + ",null" + ")," +

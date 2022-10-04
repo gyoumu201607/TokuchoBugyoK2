@@ -127,10 +127,10 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label3, 3, 0);
@@ -153,7 +153,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(188, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(180, 40);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -229,7 +229,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.label1.Location = new System.Drawing.Point(1802, 5);
+            this.label1.Location = new System.Drawing.Point(215, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 30);
@@ -241,7 +241,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label12.Location = new System.Drawing.Point(193, 18);
+            this.label12.Location = new System.Drawing.Point(185, 18);
             this.label12.Margin = new System.Windows.Forms.Padding(5);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(20, 17);

@@ -100,6 +100,12 @@ namespace TokuchoBugyoK2
             //レイアウトロジックを停止する
             this.SuspendLayout();
             //GlobalMethod.outputLogger("entory_input", "entory_input load 開始 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
+            //不具合No1355（1123）
+            lblVersion.Text = GlobalMethod.GetCommonValue1("APL_VERSION");
+            if (GlobalMethod.GetCommonValue1("BOOT_MODE") == "1")
+            {
+                lblBootMode.Text = GlobalMethod.GetCommonValue2("BOOT_MODE");
+            }
             //ユーザ名を設定
             label7.Text = UserInfos[3] + "：" + UserInfos[1];
 
