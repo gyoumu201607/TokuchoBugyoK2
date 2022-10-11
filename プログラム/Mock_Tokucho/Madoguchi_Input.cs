@@ -18001,16 +18001,17 @@ namespace TokuchoBugyoK2
                 {
                     tmpdt.Rows.Add(1, "単品");
                 }
-                // GyoumuNarabijunCD = 5
-                else if (num == 5)
-                {
-                    tmpdt.Rows.Add(1, "一般");
-                }
-                // GyoumuNarabijunCD = 7
-                else if (num == 7)
-                {
-                    tmpdt.Rows.Add(1, "一般");
-                }
+                //不具合No1345（1108）差戻分。前回指示の仕様は取り消し
+                //// GyoumuNarabijunCD = 5
+                //else if (num == 5)
+                //{
+                //    tmpdt.Rows.Add(1, "一般");
+                //}
+                //// GyoumuNarabijunCD = 7
+                //else if (num == 7)
+                //{
+                //    tmpdt.Rows.Add(1, "一般");
+                //}
                 // GyoumuNarabijunCD 上記以外はすべて同じ
                 else
                 {
