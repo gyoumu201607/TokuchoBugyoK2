@@ -32,13 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tokumei_Input));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblBootMode = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnMadoguchi = new System.Windows.Forms.Button();
             this.btnTokuchoyaro = new System.Windows.Forms.Button();
             this.btnTokumei = new System.Windows.Forms.Button();
             this.btnJibun = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.item1_GaroonUpdateDispTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -205,8 +207,7 @@
             this.label143 = new System.Windows.Forms.Label();
             this.BikoUpdateBtn = new System.Windows.Forms.Button();
             this.shibuBikouTableAdapter = new TokuchoBugyoK2.TokuchoBugyoKDataSetTableAdapters.ShibuBikouTableAdapter();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.lblBootMode = new System.Windows.Forms.Label();
+            this.btnRowSizeChange = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -292,6 +293,20 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1884, 80);
             this.tableLayoutPanel4.TabIndex = 10;
+            // 
+            // lblBootMode
+            // 
+            this.lblBootMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBootMode.AutoSize = true;
+            this.lblBootMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.lblBootMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.lblBootMode.Location = new System.Drawing.Point(207, 5);
+            this.lblBootMode.Margin = new System.Windows.Forms.Padding(5);
+            this.lblBootMode.Name = "lblBootMode";
+            this.lblBootMode.Size = new System.Drawing.Size(27, 30);
+            this.lblBootMode.TabIndex = 18;
+            this.lblBootMode.Text = " ";
+            this.lblBootMode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel6
             // 
@@ -381,6 +396,17 @@
             this.btnJibun.UseVisualStyleBackColor = false;
             this.btnJibun.Click += new System.EventHandler(this.btnJibun_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 36);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -393,16 +419,18 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "ユーザー所属部所：ユーザー名";
             // 
-            // pictureBox1
+            // lblVersion
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 36);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblVersion.Location = new System.Drawing.Point(185, 18);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(12, 17);
+            this.lblVersion.TabIndex = 17;
+            this.lblVersion.Text = " ";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel2
             // 
@@ -1901,6 +1929,7 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.btnRowSizeChange);
             this.tabPage3.Controls.Add(this.btnGridSize);
             this.tabPage3.Controls.Add(this.item3_RegistrationRowCount);
             this.tabPage3.Controls.Add(this.label140);
@@ -2736,32 +2765,20 @@
             // 
             this.shibuBikouTableAdapter.ClearBeforeFill = true;
             // 
-            // lblVersion
+            // btnRowSizeChange
             // 
-            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblVersion.Location = new System.Drawing.Point(185, 18);
-            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(12, 17);
-            this.lblVersion.TabIndex = 17;
-            this.lblVersion.Text = " ";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblBootMode
-            // 
-            this.lblBootMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblBootMode.AutoSize = true;
-            this.lblBootMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
-            this.lblBootMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.lblBootMode.Location = new System.Drawing.Point(207, 5);
-            this.lblBootMode.Margin = new System.Windows.Forms.Padding(5);
-            this.lblBootMode.Name = "lblBootMode";
-            this.lblBootMode.Size = new System.Drawing.Size(27, 30);
-            this.lblBootMode.TabIndex = 18;
-            this.lblBootMode.Text = " ";
-            this.lblBootMode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRowSizeChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.btnRowSizeChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRowSizeChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRowSizeChange.ForeColor = System.Drawing.Color.White;
+            this.btnRowSizeChange.Location = new System.Drawing.Point(513, 194);
+            this.btnRowSizeChange.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRowSizeChange.Name = "btnRowSizeChange";
+            this.btnRowSizeChange.Size = new System.Drawing.Size(160, 32);
+            this.btnRowSizeChange.TabIndex = 64;
+            this.btnRowSizeChange.Text = "行高自動調整解除";
+            this.btnRowSizeChange.UseVisualStyleBackColor = false;
+            this.btnRowSizeChange.Click += new System.EventHandler(this.btnRowSizeChange_Click);
             // 
             // Tokumei_Input
             // 
@@ -3020,5 +3037,6 @@
         private System.Windows.Forms.Button btnGridSize;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblBootMode;
+        private System.Windows.Forms.Button btnRowSizeChange;
     }
 }

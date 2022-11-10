@@ -110,6 +110,12 @@ namespace TokuchoBugyoK2
         //画面表示時の実施区分を保持するための変数
         private string originalJiishiKubun = "";
 
+        //不具合No1207
+        //共通マスタからグリッド行高の設定を取得する
+        private string AutoSizeGridRowMode;
+        private const string GRID_ROW_AUTO_SIZE = "行高自動調整";
+        private const string GRID_ROW_FIX_SIZE = "行高自動調整解除";
+
         public Madoguchi_Input()
         {
             InitializeComponent();
@@ -182,6 +188,10 @@ namespace TokuchoBugyoK2
 
         private void Madoguchi_Input_Load(object sender, EventArgs e)
         {
+            //不具合No1207
+            //共通マスタからグリッド行高の設定を取得する
+            AutoSizeGridRowMode = GlobalMethod.GetCommonValue1("CHOUSA_GYOU_FLG");
+
             //不具合No1355（1123）
             lblVersion.Text = GlobalMethod.GetCommonValue1("APL_VERSION");
             if (GlobalMethod.GetCommonValue1("BOOT_MODE") == "1")
@@ -2294,6 +2304,10 @@ namespace TokuchoBugyoK2
 
                     RowCount += 1;
                 }
+
+                //不具合No1207
+                //共通マスタの値により、行高さを固定にするか、自動高さ調整を行うか。
+                gridRowHeightAutoResize(AutoSizeGridRowMode);
 
                 //描画再開
                 c1FlexGrid4.EndUpdate();
@@ -18061,6 +18075,49 @@ namespace TokuchoBugyoK2
                 }
             }
 
+        }
+
+        //不具合No1207(903)
+        //mode:0 デフォルト行の高さ、mode:0以外 行幸自動調整
+        private void gridRowHeightAutoResize(string mode)
+        {
+            //タブ選択時に現在の選択値を保持する。//タブ選択する度にDBのデフォルト設定に戻してよい場合はこの1行コメントアウト
+            AutoSizeGridRowMode = mode;
+            //固定行高さにする場合、ボタンキャプションは自動調整にする
+            if (mode == "0")
+            {
+                btnRowSizeChange.Text = GRID_ROW_AUTO_SIZE;
+            }
+            else
+            {
+                btnRowSizeChange.Text = GRID_ROW_FIX_SIZE;
+            }
+            //Gridのヘッダの次の１行目から行の最後まで。
+            for (int i = 1; i < c1FlexGrid4.Rows.Count; i++)
+            {
+                //デフォルト行高さ
+                if (mode == "0")
+                {
+                    c1FlexGrid4.Rows[i].Height = -1;    //-1 にすると、グリッドのデフォルトの行高になる
+                }
+                //自動行高調整
+                else
+                {
+                    c1FlexGrid4.AutoSizeRow(i);
+                }
+            }
+        }
+
+        private void btnRowSizeChange_Click(object sender, EventArgs e)
+        {
+            if (btnRowSizeChange.Text == GRID_ROW_AUTO_SIZE)
+            {
+                gridRowHeightAutoResize("1");
+            }
+            else
+            {
+                gridRowHeightAutoResize("0");
+            }
         }
     }
 
