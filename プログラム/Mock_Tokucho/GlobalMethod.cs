@@ -7345,5 +7345,60 @@ namespace TokuchoBugyoK2
                 outputLogger(Pgmname, "皇帝まもるexeファイルの呼び出しに失敗しました。", "insert", "DEBUG");
             }
         }
+
+        //不具合管理表No1017（751）
+        //タブの表示を加工する。タブコントロールのDrawModeプロパティを下記のように設定する必要あり
+        // tab.DrawMode = TabDrawMode.OwnerDrawFixed;
+        public void tabDisplaySet(TabControl tab ,object sender, DrawItemEventArgs e)
+        {
+            System.Drawing.SolidBrush backBrush;
+            System.Drawing.SolidBrush foreBrush;
+            System.Drawing.Font font;
+            if (tab.SelectedIndex == e.Index)
+            {
+                backBrush = new System.Drawing.SolidBrush(System.Drawing.SystemColors.Window);
+                foreBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Blue);
+                font = new System.Drawing.Font("メイリオ", 14, System.Drawing.FontStyle.Regular);
+            }
+            else
+            {
+                backBrush = new System.Drawing.SolidBrush(System.Drawing.SystemColors.Control);
+                foreBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+                font = new System.Drawing.Font("メイリオ", 14, System.Drawing.FontStyle.Regular);
+            }
+            System.Drawing.StringFormat format = new System.Drawing.StringFormat();
+            System.Drawing.RectangleF rect = new System.Drawing.RectangleF(e.Bounds.X, e.Bounds.Y + 6, e.Bounds.Width, e.Bounds.Height);
+            format.Alignment = System.Drawing.StringAlignment.Center;
+            e.Graphics.FillRectangle(backBrush, e.Bounds);
+            e.Graphics.DrawString(tab.TabPages[e.Index].Text, font, foreBrush, rect, format);
+        }
+
+        //不具合管理表No1228（919） ファイルが開いていてロックされてないか
+        /// 0:ファイルが編集可能／1:ファイルが存在しない／2:ファイルが開いていてロックされてる
+        public int getFileStatus(string path)
+        {
+            FileStream stream = null;
+            if (!File.Exists(path))
+            {
+                return 1;
+            }
+            try
+            {
+                stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch
+            {
+                return 2;
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+            }
+
+            return 0;
+        }
     }
 }

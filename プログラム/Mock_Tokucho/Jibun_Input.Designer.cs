@@ -147,6 +147,7 @@
             this.button2_Update = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.tabPage3 = new TokuchoBugyoK2.GlobalMethod.CTabPage();
+            this.btnRowSizeChange = new System.Windows.Forms.Button();
             this.btnGridSize = new System.Windows.Forms.Button();
             this.label148 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -216,7 +217,6 @@
             this.label143 = new System.Windows.Forms.Label();
             this.BikoUpdateBtn = new System.Windows.Forms.Button();
             this.shibuBikouTableAdapter = new TokuchoBugyoK2.TokuchoBugyoKDataSetTableAdapters.ShibuBikouTableAdapter();
-            this.btnRowSizeChange = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -719,7 +719,7 @@
             this.tab.Controls.Add(this.tabPage8);
             this.tab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tab.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tab.ItemSize = new System.Drawing.Size(100, 23);
+            this.tab.ItemSize = new System.Drawing.Size(130, 30);
             this.tab.Location = new System.Drawing.Point(13, 10);
             this.tab.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tab.Name = "tab";
@@ -729,6 +729,7 @@
             this.tab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tab.TabIndex = 14;
             this.tab.TabStop = false;
+            this.tab.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tab_DrawItem);
             this.tab.SelectedIndexChanged += new System.EventHandler(this.tab_SelectedIndexChanged);
             // 
             // tabPage1
@@ -737,10 +738,10 @@
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 27);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1846, 677);
+            this.tabPage1.Size = new System.Drawing.Size(1846, 670);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "調査概要";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1299,10 +1300,10 @@
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Location = new System.Drawing.Point(4, 27);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1846, 677);
+            this.tabPage2.Size = new System.Drawing.Size(1846, 670);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "担当部所";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1923,13 +1924,28 @@
             this.tabPage3.Controls.Add(this.item3_HinmokuChousainCD);
             this.tabPage3.Controls.Add(this.c1FlexGrid4);
             this.tabPage3.Controls.Add(this.item3_MadoguchiShukeiHyoFolder_icon);
-            this.tabPage3.Location = new System.Drawing.Point(4, 27);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1846, 677);
+            this.tabPage3.Size = new System.Drawing.Size(1846, 670);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "調査品目明細";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnRowSizeChange
+            // 
+            this.btnRowSizeChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.btnRowSizeChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRowSizeChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRowSizeChange.ForeColor = System.Drawing.Color.White;
+            this.btnRowSizeChange.Location = new System.Drawing.Point(509, 269);
+            this.btnRowSizeChange.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRowSizeChange.Name = "btnRowSizeChange";
+            this.btnRowSizeChange.Size = new System.Drawing.Size(160, 32);
+            this.btnRowSizeChange.TabIndex = 63;
+            this.btnRowSizeChange.Text = "行高自動調整解除";
+            this.btnRowSizeChange.UseVisualStyleBackColor = false;
+            this.btnRowSizeChange.Click += new System.EventHandler(this.btnRowSizeChange_Click);
             // 
             // btnGridSize
             // 
@@ -2801,10 +2817,10 @@
             this.tabPage8.Controls.Add(this.label149);
             this.tabPage8.Controls.Add(this.label143);
             this.tabPage8.Controls.Add(this.BikoUpdateBtn);
-            this.tabPage8.Location = new System.Drawing.Point(4, 27);
+            this.tabPage8.Location = new System.Drawing.Point(4, 34);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1846, 677);
+            this.tabPage8.Size = new System.Drawing.Size(1846, 670);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "備考";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -2879,21 +2895,6 @@
             // shibuBikouTableAdapter
             // 
             this.shibuBikouTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnRowSizeChange
-            // 
-            this.btnRowSizeChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.btnRowSizeChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRowSizeChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnRowSizeChange.ForeColor = System.Drawing.Color.White;
-            this.btnRowSizeChange.Location = new System.Drawing.Point(509, 269);
-            this.btnRowSizeChange.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRowSizeChange.Name = "btnRowSizeChange";
-            this.btnRowSizeChange.Size = new System.Drawing.Size(160, 32);
-            this.btnRowSizeChange.TabIndex = 63;
-            this.btnRowSizeChange.Text = "行高自動調整解除";
-            this.btnRowSizeChange.UseVisualStyleBackColor = false;
-            this.btnRowSizeChange.Click += new System.EventHandler(this.btnRowSizeChange_Click);
             // 
             // Jibun_Input
             // 

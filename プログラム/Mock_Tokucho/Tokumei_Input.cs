@@ -113,6 +113,11 @@ namespace TokuchoBugyoK2
 
         private void Tokumei_Input_Load(object sender, EventArgs e)
         {
+            //不具合No1017（751）
+            //タブの文字装飾変更対応
+            //文字表示を大きくする場合は、デザイナでTabのItemSize.widthを変更する。窓口、特命課長、自分大臣は、125で設定すると、14ポイントぐらいのサイズでいける
+            tab.DrawMode = TabDrawMode.OwnerDrawFixed;
+
             //不具合No1207
             //共通マスタからグリッド行高の設定を取得する
             AutoSizeGridRowMode = GlobalMethod.GetCommonValue1("CHOUSA_GYOU_FLG");
@@ -8348,6 +8353,11 @@ namespace TokuchoBugyoK2
             {
                 gridRowHeightAutoResize("0");
             }
+        }
+
+        private void tab_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            GlobalMethod.tabDisplaySet(tab, sender, e);
         }
     }
 }

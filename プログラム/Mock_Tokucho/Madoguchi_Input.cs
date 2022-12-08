@@ -188,6 +188,11 @@ namespace TokuchoBugyoK2
 
         private void Madoguchi_Input_Load(object sender, EventArgs e)
         {
+            //不具合No1017（751）
+            //タブの文字装飾変更対応
+            //文字表示を大きくする場合は、デザイナでTabのItemSize.widthを変更する。窓口、特命課長、自分大臣は、125で設定すると、14ポイントぐらいのサイズでいける
+            tab.DrawMode = TabDrawMode.OwnerDrawFixed;
+
             //不具合No1207
             //共通マスタからグリッド行高の設定を取得する
             AutoSizeGridRowMode = GlobalMethod.GetCommonValue1("CHOUSA_GYOU_FLG");
@@ -7771,6 +7776,14 @@ namespace TokuchoBugyoK2
                 {
                     validateFlag = false;
                     set_error(GlobalMethod.GetMessage("E20106", ""));
+                }
+
+                //不具合No1360（1121）
+                //枝番の文字チェック特殊丸数字が含まれたらエラーにする
+                if (isErrorEdabanChar(item1_MadoguchiUketsukeBangouEdaban.Text))
+                {
+                    validateFlag = false;
+                    set_error(GlobalMethod.GetMessage("E20120", ""));
                 }
 
                 //エラーがあったらこの後の処理は行わない
@@ -16688,15 +16701,24 @@ namespace TokuchoBugyoK2
             // 5:規格     1:対象 それ以外対象外
             // 6:報告備考 1:対象 それ以外対象外
             // 7:依頼備考 1:対象 それ以外対象外
+            //不具合No1010（744）
+            // 8:カタカナ変換　1:変換 それ以外変換無し
             if (form.ReturnValue != null && form.ReturnValue[0] == "1")
             {
+                //不具合No1010（744）
                 // ～変換、英数字にチェックが入ってなければ処理終了
-                if (form.ReturnValue[2] != "1" && form.ReturnValue[3] != "1")
+                if (form.ReturnValue[2] != "1" && form.ReturnValue[3] != "1" && form.ReturnValue[8] != "1")
                 {
                     return;
                 }
+                ////// ～変換、英数字にチェックが入ってなければ処理終了
+                ////if (form.ReturnValue[2] != "1" && form.ReturnValue[3] != "1")
+                ////{
+                ////    return;
+                ////}
+                ///
                 // 変換対象項目にチェックが入ってなければ処理終了
-                if (form.ReturnValue[4] != "1" && form.ReturnValue[5] != "1" && form.ReturnValue[6] != "1" && form.ReturnValue[5] != "1")
+                if (form.ReturnValue[4] != "1" && form.ReturnValue[5] != "1" && form.ReturnValue[6] != "1" && form.ReturnValue[7] != "1")
                 {
                     return;
                 }
@@ -16739,6 +16761,17 @@ namespace TokuchoBugyoK2
                             }
                             where += "(MojiChangeYukouFlg = 1 AND MojiChangeKiguFlg = 1 AND MojiChangeHan = '~' ) ";
                         }
+                        //不具合No1010（744）
+                        // カタカナ変換
+                        if (form.ReturnValue[8] == "1")
+                        {
+                            if (where != "")
+                            {
+                                where += "OR ";
+                            }
+                            where += "(MojiChangeYukouFlg = 1 AND MojiChangeKanaFlg = 1 ) ";
+                        }
+
                         cmd.CommandText += "WHERE " + where;
                         var sda = new SqlDataAdapter(cmd);
                         sda.Fill(dt);
@@ -18118,6 +18151,29 @@ namespace TokuchoBugyoK2
             {
                 gridRowHeightAutoResize("0");
             }
+        }
+
+        //不具合No1017（751）
+        //タブの文字装飾変更対応
+        private void tab_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            GlobalMethod.tabDisplaySet(tab, sender, e);
+        }
+
+        //不具合No1360（1121）
+        //丸数字（U+2780以降）をエラーにする。通常の①などはOK
+        private bool isErrorEdabanChar(string buff)
+        {
+            string errChar = "➀➁➂➃➄➅➆➇➈➉➊➋➌➍➎➏➐➑➒➓";
+
+            for (int i=0; i<buff.Length; i++)
+            {
+                if (errChar.IndexOf(buff.Substring(i,1)) >= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 

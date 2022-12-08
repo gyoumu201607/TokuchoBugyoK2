@@ -54,6 +54,8 @@
             this.item_BtnCancel = new System.Windows.Forms.Button();
             this.item_BtnTouroku = new System.Windows.Forms.Button();
             this.item_MessageText = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.item_katakana = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -80,7 +82,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(492, 323);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(492, 346);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // groupBox1
@@ -90,7 +92,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(486, 115);
+            this.groupBox1.Size = new System.Drawing.Size(486, 140);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "文字変換の設定";
@@ -102,10 +104,12 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.93163F));
             this.tableLayoutPanel2.Controls.Add(this.item_Wave, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label76, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.item_Eisuu, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.item_Eisuu, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.item_katakana, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 3);
             this.tableLayoutPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 18);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -114,7 +118,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(468, 79);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(468, 104);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // item_Wave
@@ -147,7 +151,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(3, 58);
+            this.label1.Location = new System.Drawing.Point(3, 57);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(213, 17);
@@ -159,7 +163,7 @@
             // 
             this.item_Eisuu.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.item_Eisuu.AutoSize = true;
-            this.item_Eisuu.Location = new System.Drawing.Point(241, 59);
+            this.item_Eisuu.Location = new System.Drawing.Point(241, 58);
             this.item_Eisuu.Name = "item_Eisuu";
             this.item_Eisuu.Size = new System.Drawing.Size(15, 14);
             this.item_Eisuu.TabIndex = 56;
@@ -222,7 +226,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox2.Location = new System.Drawing.Point(3, 147);
+            this.groupBox2.Location = new System.Drawing.Point(3, 172);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(486, 127);
             this.groupBox2.TabIndex = 1;
@@ -356,7 +360,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.item_BtnCancel, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.item_BtnTouroku, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 280);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 305);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -410,11 +414,35 @@
             this.item_MessageText.Text = "メッセージ";
             this.item_MessageText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label6.Location = new System.Drawing.Point(3, 82);
+            this.label6.Margin = new System.Windows.Forms.Padding(3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(105, 17);
+            this.label6.TabIndex = 61;
+            this.label6.Text = "カタカナ文字変換";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // item_katakana
+            // 
+            this.item_katakana.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.item_katakana.AutoSize = true;
+            this.item_katakana.Location = new System.Drawing.Point(241, 83);
+            this.item_katakana.Name = "item_katakana";
+            this.item_katakana.Size = new System.Drawing.Size(15, 14);
+            this.item_katakana.TabIndex = 62;
+            this.item_katakana.UseVisualStyleBackColor = true;
+            // 
             // Popup_MojiChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 323);
+            this.ClientSize = new System.Drawing.Size(492, 346);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Popup_MojiChange";
@@ -462,5 +490,7 @@
         private System.Windows.Forms.RadioButton item_HankakuZenkaku;
         private System.Windows.Forms.RadioButton item_ZenkakuHankaku;
         private System.Windows.Forms.Label item_MessageText;
+        private System.Windows.Forms.CheckBox item_katakana;
+        private System.Windows.Forms.Label label6;
     }
 }

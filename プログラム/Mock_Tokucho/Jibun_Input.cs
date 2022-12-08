@@ -123,6 +123,11 @@ namespace TokuchoBugyoK2
 
         private void Jibun_Input_Load(object sender, EventArgs e)
         {
+            //不具合No1017（751）
+            //タブの文字装飾変更対応
+            //文字表示を大きくする場合は、デザイナでTabのItemSize.widthを変更する。窓口、特命課長、自分大臣は、125で設定すると、14ポイントぐらいのサイズでいける
+            tab.DrawMode = TabDrawMode.OwnerDrawFixed;
+
             //不具合No1207
             //共通マスタからグリッド行高の設定を取得する
             AutoSizeGridRowMode = GlobalMethod.GetCommonValue1("CHOUSA_GYOU_FLG");
@@ -4708,9 +4713,13 @@ namespace TokuchoBugyoK2
                                 
                                 string selFileFullPath="";
                                 selFileFullPath = folderPath + @"\" + selFileName;
-                                // ファイル存在チェック
-                                // 集計表フォルダ内に、取込対象ファイルがあるかどうかをチェック
-                                if (File.Exists(selFileFullPath))
+
+                                //不具合No1228（919）
+                                int fileStatus;
+                                //ファイルが存在しているか、開いているかをチェック
+                                fileStatus = GlobalMethod.getFileStatus(selFileFullPath);
+                                //ファイルが存在し、編集可能な状態
+                                if (fileStatus == 0)
                                 {
                                     int i_ZumenNo = 0;
                                     int i_Hinmei = 0;
@@ -4808,13 +4817,129 @@ namespace TokuchoBugyoK2
                                         //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
                                     }
                                 }
-                                else
+                                //fileStatus==1 ファイルが存在しない
+                                else if (fileStatus == 1)
                                 {
                                     // E20322:取込ファイルにエラーがありました。
-                                    set_error(GlobalMethod.GetMessage("E20322", "")  + selFileName);
-                                    fileErrorCount++;
-                                    //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                    set_error(GlobalMethod.GetMessage("E20322", "") + selFileName);
+                                    //fileErrorCount++;
                                 }
+                                //fileStatus==2 ファイルが開かれていて編集できない。
+                                else
+                                {
+                                    // E20322:取込ファイルが開かれています。。
+                                    set_error(GlobalMethod.GetMessage("E20351", "") + selFileName);
+                                    //fileErrorCount++;
+                                }
+                                
+                                //↑のファイル存在チェックに変更した。
+                                //// ファイル存在チェック
+                                //// 集計表フォルダ内に、取込対象ファイルがあるかどうかをチェック
+                                //if (File.Exists(selFileFullPath))
+                                //{
+                                //    int i_ZumenNo = 0;
+                                //    int i_Hinmei = 0;
+                                //    int i_hachuu = 0;
+
+                                //    // 図面番号/参考質量を取り込む
+                                //    if (checkBox1.Checked)
+                                //    {
+                                //        i_ZumenNo = 1;
+                                //    }
+                                //    else
+                                //    {
+                                //        i_ZumenNo = 2;
+                                //    }
+                                //    // 品名/規格を取り込む
+                                //    if (checkBox2.Checked)
+                                //    {
+                                //        i_Hinmei = 1;
+                                //    }
+                                //    else
+                                //    {
+                                //        i_Hinmei = 2;
+                                //    }
+                                //    // 発注機関コードをキーとして取り込む
+                                //    if (checkBox3.Checked)
+                                //    {
+                                //        i_hachuu = 1;
+                                //    }
+                                //    else
+                                //    {
+                                //        i_hachuu = 2;
+                                //    }
+
+                                //    string[] result = GlobalMethod.InsertTanka(selFileFullPath
+                                //                                                , MadoguchiID
+                                //                                                , i_ZumenNo
+                                //                                                , i_Hinmei
+                                //                                                , i_hachuu
+                                //                                                , item3_HinmokuChousainCD.Text
+                                //                                                , src_ShuFuku.SelectedValue.ToString()
+                                //                                                , selFileFullPath
+                                //                                                , UserInfos[0]
+                                //                                                , UserInfos[2]);
+
+                                //    // result
+                                //    // 成否判定 0:正常 1：エラー
+                                //    // T_ReadFileErrorテーブルのエラーカウント（FileReadErrorReadCount）
+                                //    // メッセージ（主にエラー用）
+                                //    if (result != null && result.Length >= 1)
+                                //    {
+                                //        // 改行コードがあるので、削る
+                                //        result[0] = result[0].Replace(@"\r\n", "");
+
+                                //        if (result[0].Trim() == "1")
+                                //        {
+                                //            //set_error(result[1]);
+                                //            // エラーが発生しました
+                                //            set_error(GlobalMethod.GetMessage("E00091", "") + selFileName);
+                                //            //set_error(result[2]);
+                                //            int count = 0;
+                                //            // T_ReadFileErrorテーブルのエラーカウントをセット
+                                //            if (result[1] != null && int.TryParse(result[1].ToString(), out count))
+                                //            {
+                                //                errorCounts.Add(count);
+                                //            }
+                                //            fileErrorCount++;
+                                //            //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                //        }
+                                //        else if (result[0].Trim() == "0")
+                                //        {
+                                //            // 正常 データ取り直し
+                                //            get_data(3);
+                                //            // E20321:取込が完了しました。
+                                //            set_error(GlobalMethod.GetMessage("E20321", "") + selFileName);
+
+                                //            // 調査品目明細から担当部所への連携 + 担当部所から窓口情報への連携
+                                //            // ProUpdateHinmokuRenkei.Call(&p_MadoguchiID,&TabCode,&pRes)
+
+                                //            String resultMessage = "";
+                                //            GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Jibun", UserInfos[1], out resultMessage);
+
+                                //            // メッセージがあれば画面に表示
+                                //            if (resultMessage != "")
+                                //            {
+                                //                set_error(resultMessage);
+                                //            }
+                                //            //button3_TankaTorikomiResult.BackColor = Color.DarkGray;
+                                //        }
+                                //    }
+                                //    else
+                                //    {
+                                //        // E20322:取込ファイルにエラーがありました。
+                                //        set_error(GlobalMethod.GetMessage("E20322", "") + selFileName);
+                                //        fileErrorCount++;
+                                //        //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                //    }
+                                //}
+                                //else
+                                //{
+                                //    // E20322:取込ファイルにエラーがありました。
+                                //    set_error(GlobalMethod.GetMessage("E20322", "")  + selFileName);
+                                //    fileErrorCount++;
+                                //    //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                //}
                                 //レイアウトロジックを再開する
                                 this.ResumeLayout();
                                 ErrorMessage.Refresh();
@@ -4836,9 +4961,11 @@ namespace TokuchoBugyoK2
                     //Elseは既存の処理
                     else
                     {
-                        // ファイル存在チェック
-                        // 集計表フォルダ内に、取込対象ファイルがあるかどうかをチェック
-                        if (File.Exists(filePath))
+                        //不具合No1228（919）
+                        int fileStatus;
+                        //ファイルが存在しているか、開いているかをチェック
+                        fileStatus = GlobalMethod.getFileStatus(filePath);
+                        if (fileStatus == 0)
                         {
                             int i_ZumenNo = 0;
                             int i_Hinmei = 0;
@@ -4933,13 +5060,125 @@ namespace TokuchoBugyoK2
                                 set_error(GlobalMethod.GetMessage("E20322", ""));
                                 button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
                             }
-                        }
-                        else
+                        }//fileStatus==1 ファイルが存在しない
+                        else if (fileStatus == 1)
                         {
                             // E20322:取込ファイルにエラーがありました。
                             set_error(GlobalMethod.GetMessage("E20322", ""));
-                            button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                            //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
                         }
+                        //fileStatus==2 ファイルが開かれていて編集できない。
+                        else
+                        {
+                            // E20322:取込ファイルにエラーがありました。
+                            set_error(GlobalMethod.GetMessage("E20351", ""));
+                            //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                        }
+
+                        ////// ファイル存在チェック
+                        ////// 集計表フォルダ内に、取込対象ファイルがあるかどうかをチェック
+                        ////if (File.Exists(filePath))
+                        ////{
+                        ////    int i_ZumenNo = 0;
+                        ////    int i_Hinmei = 0;
+                        ////    int i_hachuu = 0;
+
+                        ////    // 図面番号/参考質量を取り込む
+                        ////    if (checkBox1.Checked)
+                        ////    {
+                        ////        i_ZumenNo = 1;
+                        ////    }
+                        ////    else
+                        ////    {
+                        ////        i_ZumenNo = 2;
+                        ////    }
+                        ////    // 品名/規格を取り込む
+                        ////    if (checkBox2.Checked)
+                        ////    {
+                        ////        i_Hinmei = 1;
+                        ////    }
+                        ////    else
+                        ////    {
+                        ////        i_Hinmei = 2;
+                        ////    }
+                        ////    // 発注機関コードをキーとして取り込む
+                        ////    if (checkBox3.Checked)
+                        ////    {
+                        ////        i_hachuu = 1;
+                        ////    }
+                        ////    else
+                        ////    {
+                        ////        i_hachuu = 2;
+                        ////    }
+
+                        ////    string[] result = GlobalMethod.InsertTanka(filePath
+                        ////                                                , MadoguchiID
+                        ////                                                , i_ZumenNo
+                        ////                                                , i_Hinmei
+                        ////                                                , i_hachuu
+                        ////                                                , item3_HinmokuChousainCD.Text
+                        ////                                                , src_ShuFuku.SelectedValue.ToString()
+                        ////                                                , Buf
+                        ////                                                , UserInfos[0]
+                        ////                                                , UserInfos[2]);
+
+                        ////    // result
+                        ////    // 成否判定 0:正常 1：エラー
+                        ////    // T_ReadFileErrorテーブルのエラーカウント（FileReadErrorReadCount）
+                        ////    // メッセージ（主にエラー用）
+                        ////    if (result != null && result.Length >= 1)
+                        ////    {
+                        ////        // 改行コードがあるので、削る
+                        ////        result[0] = result[0].Replace(@"\r\n", "");
+
+                        ////        if (result[0].Trim() == "1")
+                        ////        {
+                        ////            //set_error(result[1]);
+                        ////            // エラーが発生しました
+                        ////            set_error(GlobalMethod.GetMessage("E00091", ""));
+                        ////            //set_error(result[2]);
+                        ////            int count = 0;
+                        ////            // T_ReadFileErrorテーブルのエラーカウントをセット
+                        ////            if (result[1] != null && int.TryParse(result[1].ToString(), out count))
+                        ////            {
+                        ////                errorCnt = count;
+                        ////            }
+                        ////            button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                        ////        }
+                        ////        else if (result[0].Trim() == "0")
+                        ////        {
+                        ////            // 正常 データ取り直し
+                        ////            get_data(3);
+                        ////            // E20321:取込が完了しました。
+                        ////            set_error(GlobalMethod.GetMessage("E20321", ""));
+
+                        ////            // 調査品目明細から担当部所への連携 + 担当部所から窓口情報への連携
+                        ////            // ProUpdateHinmokuRenkei.Call(&p_MadoguchiID,&TabCode,&pRes)
+
+                        ////            String resultMessage = "";
+                        ////            GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Jibun", UserInfos[1], out resultMessage);
+
+                        ////            // メッセージがあれば画面に表示
+                        ////            if (resultMessage != "")
+                        ////            {
+                        ////                set_error(resultMessage);
+                        ////            }
+                        ////            button3_TankaTorikomiResult.BackColor = Color.DarkGray;
+                        ////        }
+                        ////    }
+                        ////    else
+                        ////    {
+                        ////        // E20322:取込ファイルにエラーがありました。
+                        ////        set_error(GlobalMethod.GetMessage("E20322", ""));
+                        ////        button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                        ////    }
+                        ////}
+                        ////else
+                        ////{
+                        ////    // E20322:取込ファイルにエラーがありました。
+                        ////    set_error(GlobalMethod.GetMessage("E20322", ""));
+                        ////    button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                        ////}
                     }
                     
                 }
@@ -8307,6 +8546,11 @@ namespace TokuchoBugyoK2
             {
                 gridRowHeightAutoResize("0");
             }
+        }
+
+        private void tab_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            GlobalMethod.tabDisplaySet(tab, sender, e);
         }
     }
 }

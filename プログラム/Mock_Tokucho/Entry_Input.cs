@@ -99,6 +99,12 @@ namespace TokuchoBugyoK2
         {
             //レイアウトロジックを停止する
             this.SuspendLayout();
+
+            //不具合No1017（751）
+            //タブの文字装飾変更対応
+            //文字表示を大きくする場合は、デザイナでTabのItemSize.widthを変更する。窓口、特命課長、自分大臣は、125で設定すると、14ポイントぐらいのサイズでいける
+            tab.DrawMode = TabDrawMode.OwnerDrawFixed;
+
             //GlobalMethod.outputLogger("entory_input", "entory_input load 開始 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
             //不具合No1355（1123）
             lblVersion.Text = GlobalMethod.GetCommonValue1("APL_VERSION");
@@ -14953,5 +14959,11 @@ namespace TokuchoBugyoK2
             
         }
         //不具合管理表　1310(1028)　↑↑↑
+
+        private void tab_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            GlobalMethod.tabDisplaySet(tab, sender, e);
+        }
+        
     }
 }

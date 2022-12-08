@@ -12,7 +12,9 @@ namespace TokuchoBugyoK2
 {
     public partial class Popup_MojiChange : Form
     {
-        public string[] ReturnValue = new string[8];
+        //不具合No1010（744）カタカナ用インデックス追加
+        //public string[] ReturnValue = new string[8];
+        public string[] ReturnValue = new string[9];
         GlobalMethod GlobalMethod = new GlobalMethod();
 
         public Popup_MojiChange()
@@ -38,6 +40,12 @@ namespace TokuchoBugyoK2
             if (buf != null && buf == "1")
             {
                  item_Eisuu.Checked = true;  // 英数字
+            }
+            //不具合No1010（744）カタカナ追加
+            buf = GlobalMethod.GetCommonValue1("CHOUSA_MOJI_KANA");
+            if (buf != null && buf == "1")
+            {
+                item_katakana.Checked = true;  // カタカナ
             }
 
             // 文字変換の対象項目
@@ -81,6 +89,8 @@ namespace TokuchoBugyoK2
             // 5:規格     1:対象 それ以外対象外
             // 6:報告備考 1:対象 それ以外対象外
             // 7:依頼備考 1:対象 それ以外対象外
+            //不具合No1010（744）
+            // 8:カタカナ変換　1:変換 それ以外変換無し
 
             // 実行結果に1を追加
             ReturnValue[0] = "1";
@@ -146,6 +156,16 @@ namespace TokuchoBugyoK2
             else
             {
                 ReturnValue[7] = "0";
+            }
+            //不具合No1010（744）
+            // カタカナ
+            if (item_katakana.Checked)
+            {
+                ReturnValue[8] = "1";
+            }
+            else
+            {
+                ReturnValue[8] = "0";
             }
 
             this.Close();
