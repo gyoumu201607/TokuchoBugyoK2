@@ -1969,10 +1969,16 @@ namespace TokuchoBugyoK2
                                 }
                                 // 25.実施区分
                                 report_data[25] = "0";
-                                if (item_Shijisho.Text != null && item_Shijisho.Text != "")
+                                //不具合No1364（1145）
+                                //実施区分のコンボじゃなく、指示書を参照していたため修正
+                                if (item_JishiKbn.Text != null && item_JishiKbn.Text != "")
                                 {
-                                    report_data[25] = item_Shijisho.SelectedValue.ToString();
+                                    report_data[25] = item_JishiKbn.SelectedValue.ToString();
                                 }
+                                //if (item_Shijisho.Text != null && item_Shijisho.Text != "")
+                                //{
+                                //    report_data[25] = item_Shijisho.SelectedValue.ToString();
+                                //}
                                 // 26.調査品目
                                 report_data[26] = item_ChousaHinmoku.Text;
                                 // 27.完了は下
