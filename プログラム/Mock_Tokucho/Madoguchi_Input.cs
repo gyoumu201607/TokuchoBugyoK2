@@ -7786,6 +7786,15 @@ namespace TokuchoBugyoK2
                     set_error(GlobalMethod.GetMessage("E20120", ""));
                 }
 
+                //不具合No1367（1156）
+                //枝番に「_」アンダーバーが含まれたらエラーにする
+                //2023年03月末にリリースするため、コメントアウト
+                //if (item1_MadoguchiUketsukeBangouEdaban.Text.IndexOf("_") > 0)
+                //{
+                //    validateFlag = false;
+                //    set_error(GlobalMethod.GetMessage("E20120", ""));
+                //}
+
                 //エラーがあったらこの後の処理は行わない
                 if (!validateFlag)
                 {

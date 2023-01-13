@@ -59,6 +59,10 @@ namespace TokuchoBugyoK2
         // この案件番号の枝番で受託番号を作成するボタン：2
         public string CopyMode = "";
 
+        //エントリ君修正STEP1
+        //計画詳細画面の「前回案件番号を元に新規登録」ボタンから遷移してきたときTrue
+        public bool isKeikakuAnkenNew = false;
+
         public Entry_Input()
         {
             InitializeComponent();
@@ -6761,6 +6765,10 @@ namespace TokuchoBugyoK2
                     form.mode = formmode;
                     form.AnkenID = ankenID.ToString();
                     form.UserInfos = this.UserInfos;
+                    //エントリ君修正STEP1
+                    //計画画面詳細の案件数をこちらの登録が終わった際に更新させる対応を行ったら、
+                    //当画面がスタート画面の裏に表示されてしまうようになった。ということで、ここでTopMostを設定してみた。
+                    form.TopMost = true;
                     form.Show(this.Owner);
                     ownerflg = false;
                     this.Close();
@@ -11918,7 +11926,9 @@ namespace TokuchoBugyoK2
 
                 AnkenData_Grid1.Clear();
                 // この案件を元にコピー
-                if (mode == "insert")
+                // エントリ君修正STEP1
+                //if (mode == "insert")
+                if (mode == "insert" || isKeikakuAnkenNew == true)
                 {
                     using (var conn = new SqlConnection(connStr))
                     {
@@ -12550,22 +12560,105 @@ namespace TokuchoBugyoK2
                 TotalPercent("item1_7_2_", "_1", 13);
 
                 //業務情報（入札）
-                item2_4_1_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][36]));
-                item2_4_1_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][37]));
-                item2_4_1_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][38]));
-                item2_4_1_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][39]));
-                item2_4_2_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][40]));
-                item2_4_2_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][41]));
-                item2_4_2_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][42]));
-                item2_4_2_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][43]));
-                item2_4_2_5_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][44]));
-                item2_4_2_6_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][45]));
-                item2_4_2_7_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][46]));
-                item2_4_2_8_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][47]));
-                item2_4_2_9_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][48]));
-                item2_4_2_10_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][49]));
-                item2_4_2_11_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][50]));
-                item2_4_2_12_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][51]));
+                //エントリ君修正STEP1
+                //計画詳細の案件番号から新規登録ボタンで遷移した場合は、受託した場合、それ以外でデータの貼り付けが異なる
+                //AnkenData_Grid2 ←落札者情報が格納されているDataTable
+                //　このテーブルを操作し、1000かつ落札Flagが立っている場合は契約情報から自動セットする
+                //AnkenData_N
+                //　入札データ格納されているDatatable
+                //AnkenData_K
+                //　契約データ格納されているDatatable
+                if (isKeikakuAnkenNew == true)
+                {
+                    //受託か否か
+                    bool isJutaku = false;
+                    //企業コード　：　1001 建設物価調査会
+                    //受託フラグ　：　NyuusatsuRakusatsuJokyou = 1
+                    //↑上記が見つかれば受託案件
+                    for (int i = 0; i < AnkenData_Grid2.Rows.Count; i++)
+                    {
+                        if(AnkenData_Grid2.Rows[i][2].ToString()=="1001" && AnkenData_Grid2.Rows[i][1].ToString() == "1")
+                        {
+                            isJutaku = true;
+                            break;
+                        }
+                    }
+                    //受託だった場合は契約情報からコピー
+                    if(isJutaku == true)
+                    {
+                        //契約でも部署ごとの配分はAnkenData_Hのデータ[GyoumuHaibun]テーブルの[GyoumuHibunKubun]が10で良いようだ。
+                        item2_4_1_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][36]));
+                        item2_4_1_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][37]));
+                        item2_4_1_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][38]));
+                        item2_4_1_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][39]));
+                        item2_4_2_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][71]));
+                        item2_4_2_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][72]));
+                        item2_4_2_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][73]));
+                        item2_4_2_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][74]));
+                        item2_4_2_5_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][75]));
+                        item2_4_2_6_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][76]));
+                        item2_4_2_7_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][77]));
+                        item2_4_2_8_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][78]));
+                        item2_4_2_9_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][79]));
+                        item2_4_2_10_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][80]));
+                        item2_4_2_11_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][81]));
+                        item2_4_2_12_1.Text = GetPercentText(Convert.ToDouble(AnkenData_K.Rows[0][82]));
+                    }
+                    else
+                    {
+                        item2_4_1_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][21]));
+                        item2_4_1_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][22]));
+                        item2_4_1_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][23]));
+                        item2_4_1_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][24]));
+                        item2_4_2_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][25]));
+                        item2_4_2_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][26]));
+                        item2_4_2_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][27]));
+                        item2_4_2_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][28]));
+                        item2_4_2_5_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][29]));
+                        item2_4_2_6_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][30]));
+                        item2_4_2_7_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][31]));
+                        item2_4_2_8_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][32]));
+                        item2_4_2_9_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][33]));
+                        item2_4_2_10_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][34]));
+                        item2_4_2_11_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][35]));
+                        item2_4_2_12_1.Text = GetPercentText(Convert.ToDouble(AnkenData_N.Rows[0][36]));
+                    }
+                }
+                else
+                {
+                    item2_4_1_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][36]));
+                    item2_4_1_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][37]));
+                    item2_4_1_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][38]));
+                    item2_4_1_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][39]));
+                    item2_4_2_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][40]));
+                    item2_4_2_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][41]));
+                    item2_4_2_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][42]));
+                    item2_4_2_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][43]));
+                    item2_4_2_5_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][44]));
+                    item2_4_2_6_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][45]));
+                    item2_4_2_7_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][46]));
+                    item2_4_2_8_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][47]));
+                    item2_4_2_9_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][48]));
+                    item2_4_2_10_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][49]));
+                    item2_4_2_11_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][50]));
+                    item2_4_2_12_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][51]));
+                }
+                //item2_4_1_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][36]));
+                //item2_4_1_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][37]));
+                //item2_4_1_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][38]));
+                //item2_4_1_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][39]));
+                //item2_4_2_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][40]));
+                //item2_4_2_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][41]));
+                //item2_4_2_3_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][42]));
+                //item2_4_2_4_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][43]));
+                //item2_4_2_5_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][44]));
+                //item2_4_2_6_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][45]));
+                //item2_4_2_7_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][46]));
+                //item2_4_2_8_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][47]));
+                //item2_4_2_9_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][48]));
+                //item2_4_2_10_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][49]));
+                //item2_4_2_11_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][50]));
+                //item2_4_2_12_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][51]));
 
                 TotalPercent("item2_4_1_", "_1", 5);
                 TotalPercent("item2_4_2_", "_1", 13);

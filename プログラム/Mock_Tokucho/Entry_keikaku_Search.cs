@@ -28,6 +28,100 @@ namespace TokuchoBugyoK2
 {
     public partial class Entry_keikaku_Search : Form
     {
+        //エントリ君STEP1
+        //GRID用列位置定数
+        private enum GRID_COL
+        {
+            syosai=1
+            ,keikaku_id //隠し列
+            ,keikaku_uriage
+            ,kouki_kaishi_nendo
+            ,keikaku_bango
+            ,keikakubusho_shibu
+            ,zennendo_1
+            ,zennendo_2
+            ,zennendo_3
+            ,keikaku_hacchushamei
+            ,keikaku_ankenmei
+            ,keiyaku_kubun
+            ,keikaku_torokubi
+            ,kouki_kaishibi
+            ,kouki_syuryobi
+            ,keiyaku_kashoshibu
+            ,rakusatsu_mikomi_chosabu
+            ,henko_mikomi_chosabu
+            ,nendo_kurikoshi_chosabu
+            ,mikomi_gokei_chosabu
+            ,rakusatsu_mikomi_jigyofukyu
+            ,henko_mikomi_jigyofukyu
+            ,nendo_kurikoshi_jigyofukyu
+            ,mikomi_gokei_jigyofukyu
+            ,rakusatsu_mikomi_johosystem
+            ,henko_mikomi_johosystem
+            ,nendo_kurikoshi_johosystem
+            ,mikomi_gokei_johosystem
+            ,rakusatsu_mikomi_sogokenkyu
+            ,henko_mikomi_sogokenkyu
+            ,nendo_kurikoshi_sogokenkyu
+            ,mikomi_gokei_sogokenkyu
+            ,anken_mikomi_gokei
+            ,anken_su
+        }
+        //エントリ君STEP1
+        //EXCELデータ格納配列用Index（Excelの列-1の値。Excelシート2列目はIndex=1）
+        private enum EXCEL_DATA_INDEX
+        {
+            shoriKubun = 1                          //処理区分
+            , KeikakuTourokubi                   // 計画登録日
+            , KeikakuUriageNendo                 // 売上年度
+            , KeikakuKaishiNendo                 // 計画開始年度
+            , KeikakuBangou                      // 計画番号
+            , KeikakuZenkaiKeikakuBangou         // 前年度計画番号
+            , KeikakuZenkaiAnkenBangou           // 前年度案件番号
+            , KeikakuZenkaiJutakuBangou          // 前年度受託番号
+            , KeikakuZenkaiHachuushaMeiKaMei     // 前年度発注者名・課名
+            , KeikakuZenkaiGyoumuMei             // 前年度業務名称
+            , KeikakuBushoShibuMei               // 部所支部名
+            , KeikakuKashoShibuMei               // 課所支部名
+            , KeikakuGyoumuKubunMei              // 契約区分
+            , KeikakuHachuushaMeiKaMei           // 発注者名・課名
+            , KeikakuAnkenMei                    // 計画案件名
+            , KeikakuKoukiKaishibi               // 工期開始日
+            , KeikakuKoukiShuryoubi              // 工期終了日
+            , KeikakuRakusatsumikomigaku         // 調査部配分　落札時見込額（税抜）
+            , KeikakuHenkoumikomigaku            // 調査部配分　変更見込額（税抜）
+            , KeikakuNendoKurikoshiGaku            // 調査部配分　年度繰越額（税抜）
+            , KeikakuMikomigaku                  // 調査部配分　見込額合計（税抜）
+            , KeikakuRakusatsumikomigakuJF       // 事業普及部配分　落札時見込額（税抜）
+            , KeikakuHenkoumikomigakuJF          // 事業普及部配分　変更見込額（税抜）
+            , KeikakuNendoKurikoshiGakuJF          // 事業普及部配分　年度繰越額（税抜）
+            , KeikakuMikomigakuJF                // 事業普及部配分　見込額合計（税抜）
+            , KeikakuRakusatsumikomigakuJ        // 情報システム部配分　落札時見込額（税抜）
+            , KeikakuHenkoumikomigakuJ           // 情報システム部配分　変更見込額（税抜）
+            , KeikakuNendoKurikoshiGakuJ           // 情報システム部配分　年度繰越額（税抜）
+            , KeikakuMikomigakuJ                 // 情報システム部配分　見込額合計（税抜）
+            , KeikakuRakusatsumikomigakuK        // 総合研究所　落札時見込額（税抜）
+            , KeikakuHenkoumikomigakuK           // 総合研究所　変更見込額（税抜）
+            , KeikakuNendoKurikoshiGakuK           // 総合研究所　年度繰越額（税抜）
+            , KeikakuMikomigakuK                 // 総合研究所　見込額合計（税抜）
+            , KeikakuMikomigakuGoukei            // 見込額総合計(税抜）
+            , KeikakuShizaiChousa                // 調査業務別　配分　資材調査
+            , KeikakuEizen                       // 調査業務別　配分　営繕
+            , KeikakuKikiruiChousa               // 調査業務別　配分　機器類調査
+            , KeikakuKoujiChousahi               // 調査業務別　配分　工事費調査
+            , KeikakuSanpaiChousa                // 調査業務別　配分　産廃調査
+            , KeikakuHokakeChousa                // 調査業務別　配分　歩掛調査
+            , KeikakuShokeihiChousa              // 調査業務別　配分　諸経費調査
+            , KeikakuGenkaBunseki                // 調査業務別　配分　原価分析調査
+            , KeikakuKijunsakusei                // 調査業務別　配分　基準作成改訂
+            , KeikakuKoukyouRoumuhi              // 調査業務別　配分　公共労費調査
+            , KeikakuRoumuhiKoukyouigai          // 調査業務別　配分　労務費公共以外
+            , KeikakuSonotaChousabu              // 調査業務別　配分　その他調査部
+            , KeikakuHaibunGoukei                // 調査業務別　配分　合計
+        }
+        private const int PLAN_NO_LENGTH = 13;
+
+
         private string pgmName = "Entry_keikaku_Search";
 
         private DataTable ListData = new DataTable();
@@ -58,6 +152,8 @@ namespace TokuchoBugyoK2
             this.src_8.MouseWheel += item_MouseWheel; // 契約区分
             this.src_12.MouseWheel += item_MouseWheel; // 案件数
             this.src_13.MouseWheel += item_MouseWheel; // 表示件数
+            //エントリ君STEP1
+            this.src_14.MouseWheel += item_MouseWheel; // 工期開始年度
 
             // 昇順降順アイコン設定
             c1FlexGrid1.Glyphs[C1.Win.C1FlexGrid.GlyphEnum.Ascending] = Image.FromFile("Resource/Asc.png");
@@ -82,15 +178,26 @@ namespace TokuchoBugyoK2
             // 行ヘッダを作成します。
             c1FlexGrid1.Rows[0].AllowMerging = true;
 
+            //エントリ君STEP1
+            //  工期開始年度、工期開始日、工期終了日、各部に年度繰り越し列が増えたため修正
             // 同一内容の４つのセルをマージします。
-            C1.Win.C1FlexGrid.CellRange rng = c1FlexGrid1.GetCellRange(0, 14, 0, 16);
+            C1.Win.C1FlexGrid.CellRange rng = c1FlexGrid1.GetCellRange(0, 17, 0, 20);
             rng.Data = "調査部";
-            rng = c1FlexGrid1.GetCellRange(0, 17, 0, 19);
+            rng = c1FlexGrid1.GetCellRange(0, 21, 0, 24);
             rng.Data = "事業普及部";
-            rng = c1FlexGrid1.GetCellRange(0, 20, 0, 22);
+            rng = c1FlexGrid1.GetCellRange(0, 25, 0, 28);
             rng.Data = "情報システム部";
-            rng = c1FlexGrid1.GetCellRange(0, 23, 0, 25);
+            rng = c1FlexGrid1.GetCellRange(0, 29, 0, 32);
             rng.Data = "総合研究所";
+            //////// 同一内容の４つのセルをマージします。
+            //////C1.Win.C1FlexGrid.CellRange rng = c1FlexGrid1.GetCellRange(0, 14, 0, 16);
+            //////rng.Data = "調査部";
+            //////rng = c1FlexGrid1.GetCellRange(0, 17, 0, 19);
+            //////rng.Data = "事業普及部";
+            //////rng = c1FlexGrid1.GetCellRange(0, 20, 0, 22);
+            //////rng.Data = "情報システム部";
+            //////rng = c1FlexGrid1.GetCellRange(0, 23, 0, 25);
+            //////rng.Data = "総合研究所";
 
 
             set_combo();
@@ -115,42 +222,91 @@ namespace TokuchoBugyoK2
             C1.Win.C1FlexGrid.CellRange cr;
             Bitmap bmp1 = new Bitmap("Resource/Image/SortIconDefalt.png");
             Bitmap bmpSort = new Bitmap(bmp1, bmp1.Width / 6, bmp1.Height / 6);
-            cr = c1FlexGrid1.GetCellRange(0, 3);
+            //エントリ君STEP1　Enumに変更する
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.keikaku_uriage);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 4);
+            //エントリ君STEP1
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.kouki_kaishi_nendo);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 5);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.keikaku_bango);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 6);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.keikakubusho_shibu);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 7);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.zennendo_1);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 8);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.zennendo_2);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 9);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.zennendo_3);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 10);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.keikaku_hacchushamei);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 11);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.keikaku_ankenmei);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 12);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.keiyaku_kubun);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 13);
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.keikaku_torokubi);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
-            cr = c1FlexGrid1.GetCellRange(0, 27);
+            //エントリ君STEP1
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.kouki_kaishibi);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.kouki_syuryobi);
+            cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            cr.Image = bmpSort;
+
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.keiyaku_kashoshibu);
+            cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            cr.Image = bmpSort;
+            cr = c1FlexGrid1.GetCellRange(0, (int)GRID_COL.anken_su);
+            cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 3);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 4);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 5);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 6);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 7);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 8);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 9);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 10);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 11);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 12);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 13);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
+            //cr = c1FlexGrid1.GetCellRange(0, 27);
+            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
+            //cr.Image = bmpSort;
         }
 
         //コンボボックスの内容を設定
@@ -175,6 +331,17 @@ namespace TokuchoBugyoK2
             src_1.DataSource = combodt;
             src_1.DisplayMember = "Discript";
             src_1.ValueMember = "Value";
+            //エントリ君STEP1
+            DataTable combodt2 = GlobalMethod.getData(discript, value, table, where);
+            DataRow nendodr2;
+            if (combodt2 != null)
+            {
+                nendodr2 = combodt2.NewRow();
+                combodt2.Rows.InsertAt(nendodr2, 0);
+            }
+            src_14.DataSource = combodt2;
+            src_14.DisplayMember = "Discript";
+            src_14.ValueMember = "Value";
 
             //計画部所支部（Grid）
             discript = "Mst_Busho.ShibuMei ";
@@ -197,7 +364,9 @@ namespace TokuchoBugyoK2
             //行の数だけの数だけSortedListにIDとValueをadd
             sl = GlobalMethod.Get_SortedList(combodt);
             //該当グリッドのセルにセット
-            c1FlexGrid1.Cols[5].DataMap = sl;
+            //エントリ君STEP1
+            c1FlexGrid1.Cols[(int)GRID_COL.keikakubusho_shibu].DataMap = sl;
+            //c1FlexGrid1.Cols[5].DataMap = sl;
 
             //計画課所支部（Grid）
             discript = "BushokanriboKamei";
@@ -219,7 +388,9 @@ namespace TokuchoBugyoK2
             //行の数だけの数だけSortedListにIDとValueをadd
             sl = GlobalMethod.Get_SortedList(combodt);
             //該当グリッドのセルにセット
-            c1FlexGrid1.Cols[13].DataMap = sl;
+            //エントリ君STEP1
+            c1FlexGrid1.Cols[(int)GRID_COL.keiyaku_kashoshibu].DataMap = sl;
+            //c1FlexGrid1.Cols[13].DataMap = sl;
 
             //契約区分
             discript = "GyoumuKubunHyouji";
@@ -241,7 +412,9 @@ namespace TokuchoBugyoK2
             //行の数だけの数だけSortedListにIDとSakuseiKubunをadd
             sl = GlobalMethod.Get_SortedList(combodt);
             //該当グリッドのセルにセット
-            c1FlexGrid1.Cols[11].DataMap = sl;
+            //エントリ君STEP1
+            c1FlexGrid1.Cols[(int)GRID_COL.keiyaku_kubun].DataMap = sl;
+            //c1FlexGrid1.Cols[11].DataMap = sl;
         }
 
         private void set_combo_shibu(string nendo)
@@ -323,6 +496,9 @@ namespace TokuchoBugyoK2
             }
             */
             src_1.SelectedValue = GlobalMethod.GetTodayNendo();
+            //エントリ君STEP1
+            src_14.SelectedValue = GlobalMethod.GetTodayNendo();
+
             //計画支部(検索条件)
             set_combo_shibu(GlobalMethod.GetTodayNendo());
 
@@ -543,7 +719,551 @@ namespace TokuchoBugyoK2
         }
 
 
+        //エントリ君STEP1で大幅修正する
         private Boolean checkMasta(Workbook wb, Worksheet ws, out string fileBusho, string FileName, string nendo, string busho)
+        {
+            Boolean checkFlag = true;
+            dynamic xlSheet = null;
+            fileBusho = "";
+            try
+            {
+                var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                using (var conn = new SqlConnection(connStr))
+                {
+                    //エラーメッセージ
+                    conn.Open();
+                    var cmd = conn.CreateCommand();
+                    SqlTransaction transaction = conn.BeginTransaction();
+                    cmd.Transaction = transaction;
+
+
+                    //Excelシートのインスタンスを作る
+                    //インデックスは1始まりF
+                    int u = wb.Sheets.Count;
+
+                    //取込シートから部所支部名取得
+                    xlSheet = wb.Sheets["取り込みシート"];
+                    Excel.Range w_rgnName = xlSheet.Cells;
+                    int getRowCount = xlSheet.UsedRange.Rows.Count;
+
+
+                    DateTime tmp;
+                    string ErrorMsg = "";
+                    if (!DateTime.TryParse(w_rgnName[2, 3].Text, out tmp))
+                    {
+                        ErrorMsg += "・" + GlobalMethod.GetMessage("E70007", "");
+                    }
+                    //エクセルから部所名を取得
+
+                    if (ErrorMsg != "")
+                    {
+                        if (errorId == 0)
+                        {
+                            errorId = GlobalMethod.getSaiban("ErrorID");
+                        }
+                        if (readCount == 0)
+                        {
+                            //同じファイルで何度目のエラーか取得
+                            readCount = GlobalMethod.getReadCount(errorUser);
+                        }
+                        GlobalMethod.InsertErrorTable(errorId, "KeikakuEXCEL", FileName, 2, ErrorMsg, errorUser, readCount, 1);
+                        checkFlag = false;
+                    }
+
+                    // パフォーマンス改善
+                    Worksheet worksheet = wb.Sheets["取り込みシート"];
+                    worksheet.Select();
+
+                    // Excel操作用の配列の作成
+                    // 二次元配列の各次元の最小要素番号
+                    int[] lower = { 1, 1 };
+                    // 二次元配列の各次元の要素数
+                    //エントリ君STEP1
+                    int[] length = { getRowCount - 7, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei };
+                    object[,] InputObject = (object[,])Array.CreateInstance(typeof(object), length, lower);
+
+                    // B8セルから、AV列（配列Index最終＋1）の最後を取得する
+                    //エントリ君STEP1
+                    Excel.Range InputRange = worksheet.Range[worksheet.Cells[8, 2], worksheet.Cells[getRowCount, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei + 1]];
+                    //Excel.Range InputRange = worksheet.Range[worksheet.Cells[8, 2], worksheet.Cells[getRowCount, 41]];
+                    InputObject = (object[,])InputRange.Value;
+
+                    String process = "";
+                    String keikakuNo = "";
+
+                    String nameBusho = "";
+                    String nameKasho = "";
+                    String keiyakuDivision = "";
+
+                    int NendoFrom = 0;
+                    int NendoTo = 0;
+
+                    //int total = 0;
+                    int haibun = 0;
+
+                    long longChousabu = 0;      // 調査部配分　落札時見込額（税抜）
+                    long longChousabuKei = 0;   // 調査部配分　見込額合計（税抜）
+
+                    //Boolean totalFlg = false;
+                    Boolean chousaCheckFlg = false;
+                    Boolean PlanNoChk = true;
+
+                    //for (int i = 8; getRowCount >= i; i++)
+                    for (int i = 1; getRowCount - 7>= i; i++)
+                    {
+                        // 開始セル（B8＝[1, 1]）のため注意
+
+                        ErrorMsg = "";
+
+                        process = "";
+                        if (InputObject[i, 1] != null)
+                        {
+                            process = InputObject[i, 1].ToString();
+                        }
+
+                        //計画番号が空欄の場合、以降空白行とみなし処理終了
+                        keikakuNo = "";
+                        if (InputObject[i,(int)EXCEL_DATA_INDEX.KeikakuBangou] != null)
+                        {
+                            keikakuNo = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBangou].ToString();
+                        }
+
+                        if (String.IsNullOrEmpty(keikakuNo))
+                        {
+                            break;
+                        }                        
+
+                        //必須チェック                    
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun] == null
+                        || InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuUriageNendo] == null
+                        || InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKaishiNendo] == null
+                        || InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBangou] == null
+                        || InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei] == null
+                        || InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKashoShibuMei] == null
+                        || InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGyoumuKubunMei] == null)
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70003", "");
+                        }                       
+
+                        //処理区分ごとのチェック処理
+                        ErrorMsg = processCheck(process, keikakuNo, ErrorMsg, nendo, busho);
+
+                        //洗い替えで更新の場合エラー
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun] != null)
+                        {
+                            if (radioButton4.Checked && InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun].ToString().Equals("更新"))
+                            {
+                                ErrorMsg += "・" + GlobalMethod.GetMessage("E70044", "");
+                            }
+
+                        }
+                     
+                        //部所支部名
+                        nameBusho = "";
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei] != null)
+                        {
+                            nameBusho = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei].ToString();
+                        }
+                        
+                        // 課所支部名
+                        nameKasho = "";
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKashoShibuMei] != null)
+                        {
+                            nameKasho = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKashoShibuMei].ToString();
+                        }
+                        
+                        // 契約区分
+                        keiyakuDivision = "";
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGyoumuKubunMei] != null)
+                        {
+                            keiyakuDivision = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGyoumuKubunMei].ToString();
+                        }
+                       
+
+                        //マスタ存在チェック
+
+                        NendoFrom = DateTime.Today.Year;
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuUriageNendo] != null)
+                        {
+                            int.TryParse(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuUriageNendo].ToString(), out NendoFrom);
+                        }
+                        //int NendoTo = NendoFrom + 1;
+                        NendoTo = NendoFrom + 1;
+
+                        if (!GlobalMethod.Check_Table(nameBusho, "ShibuMei", "Mst_Busho", "GyoumuBushoCD < '999990' and BushoKeikakuHyoujiFlg = '1' " +
+                            "AND NOT GyoumuBushoCD LIKE '121%' " + 
+                            //"AND NOT GyoumuBushoCD LIKE '1502%' AND NOT GyoumuBushoCD LIKE '1504%' AND NOT GyoumuBushoCD LIKE '121%' " +
+                            "AND BushoNewOld <= 1 AND ISNULL(BushoDeleteFlag,0) = 0 AND (BushoShibuCD IS NOT NULL OR KashoShibuCD IS NOT NULL) " +
+                            //"AND ( BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + NendoFrom + "/04/01' ) " +
+                            //"AND ( BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + NendoTo + "/03/31' )"))
+                            "AND ( BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + NendoTo + "/03/31' ) " +
+                            "AND ( BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + NendoFrom + "/04/1' )"))
+                        {
+                            // E70004:部所支部名がマスタにありません。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70004", "");
+                        }
+                        if (!GlobalMethod.Check_Table(nameKasho, "BushokanriboKamei", "Mst_Busho", "GyoumuBushoCD < '999990' and BushoKeikakuHyoujiFlg = '1' " +
+                            "AND NOT GyoumuBushoCD LIKE '121%' " +
+                            //"AND NOT GyoumuBushoCD LIKE '1502%' AND NOT GyoumuBushoCD LIKE '1504%' AND NOT GyoumuBushoCD LIKE '121%' " +
+                            "AND BushoNewOld <= 1 AND ISNULL(BushoDeleteFlag,0) = 0 AND (BushoShibuCD IS NOT NULL OR KashoShibuCD IS NOT NULL) " +
+                            //"AND ( BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + NendoFrom + "/04/01' ) " +
+                            //"AND ( BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + NendoTo + "/03/31' )"))
+                            "AND ( BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + NendoTo + "/03/31' ) " +
+                            "AND ( BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + NendoFrom + "/04/1' )"))
+                        {
+                            // E70005:課所支部名がマスタにありません。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70005", "");
+                        }
+                        if (!GlobalMethod.Check_Table(keiyakuDivision, "GyoumuKubun", "Mst_GyoumuKubun", ""))
+                        {
+                            // E70006:契約区分がマスタにありません。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70006", "");
+                        }
+
+                        // ファイルの課所とのチェックはなし
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuTourokubi] != null)
+                        {
+                            if (!DateTime.TryParse(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuTourokubi].ToString(), out tmp))
+                            {
+                                // E70008:計画登録日はYYYY/MM/DD形式で入力してください。
+                                ErrorMsg += "・" + GlobalMethod.GetMessage("E70008", "");
+                            }
+                        }
+                        //エントリ君STEP1
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiKaishibi] != null)
+                        {
+                            if (!DateTime.TryParse(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiKaishibi].ToString(), out tmp))
+                            {
+                                // E70080:工期開始日はYYYY/MM/DD形式で入力してください。
+                                ErrorMsg += "・" + GlobalMethod.GetMessage("E70080", "");    //メッセージ変更待ち
+                            }
+                        }
+                        //エントリ君STEP1
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiShuryoubi] != null)
+                        {
+                            if (!DateTime.TryParse(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiShuryoubi].ToString(), out tmp))
+                            {
+                                // E70081:工期終了日はYYYY/MM/DD形式で入力してください。
+                                ErrorMsg += "・" + GlobalMethod.GetMessage("E70081", "");    //メッセージ変更待ち
+                            }
+                        }
+                   
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuUriageNendo] != null)
+                        {
+                            if (!Regex.IsMatch(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuUriageNendo].ToString(), @"^[0-9]{4}$"))
+                            {
+                                // E70009:売上年度はYYYY形式で入力してください。
+                                ErrorMsg += "・" + GlobalMethod.GetMessage("E70009", "");
+                            }
+
+                        }
+
+                        //エントリ君STEP1
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKaishiNendo] != null)
+                        {
+                            if (!Regex.IsMatch(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKaishiNendo].ToString(), @"^[0-9]{4}$"))
+                            {
+                                // E70079:工期開始年度はYYYY形式で入力してください。
+                                ErrorMsg += "・" + GlobalMethod.GetMessage("E70079", "");
+                            }
+
+                        }
+
+//ここから下はまだIndexが古いエクセルのままなので変更すること
+                        //調査部                        
+                        longChousabu = 0;
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigaku] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigaku].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70011", "");
+                        }
+                        else
+                        {
+                            longChousabu = long.Parse(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigaku].ToString());
+                        }                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigaku] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigaku].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70012", "");
+                        }
+                        //年度繰り越し追加
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGaku] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGaku].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70082", "");
+                        }
+                        longChousabuKei = 0;
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigaku] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigaku].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70013", "");
+                        }
+                        else
+                        {
+                            longChousabuKei = long.Parse(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigaku].ToString());
+                        }
+
+                        //事業普及部
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuJF] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuJF].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70014", "");
+                        }
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuJF] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuJF].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70015", "");
+                        }
+                        //年度繰越
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuJF] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuJF].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70083", "");
+                        }
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuJF] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuJF].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70016", "");
+                        }
+
+                        //情報システム                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuJ] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuJ].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70017", "");
+                        }
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuJ] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuJ].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70018", "");
+                        }
+                        //年度繰越
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuJ] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuJ].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70084", "");
+                        }
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuJ] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuJ].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70019", "");
+                        }
+
+                        //総合研究所                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuK] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuK].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70020", "");
+                        }                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuK] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuK].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70021", "");
+                        }
+                        //年度繰越
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuK] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuK].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70085", "");
+                        }
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuK] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuK].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70022", "");
+                        }
+
+                        //見込み合計額                      
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuGoukei] != null && !CheckMoney(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuGoukei].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70023", "");
+                        }
+
+                        //業務別配分                                           
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuShizaiChousa] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuShizaiChousa].ToString()))
+                        {
+                            // E70024:調査業務別　配分　資材調査は半角数字で入力してください。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70024", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuEizen] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuEizen].ToString()))
+                        {
+                            // E70025:調査業務別　配分　営繕は半角数字で入力してください。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70025", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKikiruiChousa] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKikiruiChousa].ToString()))
+                        {
+                            // E70026:調査業務別　配分　機器類調査は半角数字で入力してください。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70026", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoujiChousahi] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoujiChousahi].ToString()))
+                        {
+                            // E70027:調査業務別　配分　工事費調査は半角数字で入力してください。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70027", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuSanpaiChousa] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuSanpaiChousa].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70028", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHokakeChousa] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHokakeChousa].ToString()))
+                        {
+                        ErrorMsg += "・" + GlobalMethod.GetMessage("E70029", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuShokeihiChousa] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuShokeihiChousa].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70030", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGenkaBunseki] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGenkaBunseki].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70031", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKijunsakusei] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKijunsakusei].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70032", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukyouRoumuhi] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukyouRoumuhi].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70033", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRoumuhiKoukyouigai] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRoumuhiKoukyouigai].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70034", "");
+                        }
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuSonotaChousabu] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuSonotaChousabu].ToString()))
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70035", "");
+                        }
+
+                        int intGyomuHaibunKei = 0;
+                        //業務配分合計
+                        
+                        if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei] != null && !CheckNumber(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei].ToString()))
+                        {
+                            // E70036:調査業務別　配分　合計は半角数字で入力してください。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70036", "");
+                        }
+                        else
+                        {
+                            intGyomuHaibunKei = int.Parse(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei].ToString());
+                        }
+                       
+                        if (chousaCheckFlg == true)
+                        {                            
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei] != null)
+                            {
+                                if (int.TryParse(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei].ToString(), out haibun))
+                                {
+                                    if (haibun != 100)
+                                    {
+                                        // E70045:調査業務別　配分の合計が100になるように入力してください。
+                                        ErrorMsg += "・" + GlobalMethod.GetMessage("E70045", "");
+                                    }
+                                }
+                            }
+                        }
+                        if (longChousabuKei != 0 || intGyomuHaibunKei != 0)
+                        {
+                            if (longChousabuKei > 0 && intGyomuHaibunKei != 100)
+                            {
+                                // E70045:調査業務別　配分の合計が100になるように入力してください。
+                                ErrorMsg += "・" + GlobalMethod.GetMessage("E70045", "");
+                            }
+
+                            if (longChousabuKei == 0 && intGyomuHaibunKei > 0)
+                            {
+                                // 落札見込額と変更見込額で相殺して0円になったケースを除くため、落札見込額が0かチェックする
+                                if (longChousabu == 0)
+                                {
+                                    // E70045:調査業務別　配分を入力するには、業務別配分の入力をしてください。
+                                    ErrorMsg += "・" + GlobalMethod.GetMessage("E70056", "");
+                                }
+                            }
+
+                        }
+
+                        
+                        //計画番号形式チェック
+                        //計画開始年度が追加になったため、10桁→13桁に変更
+                        //Boolean PlanNoChk = true;
+                        PlanNoChk = true;
+                        int keikakuNo_Ketasu = 13;
+                        if (keikakuNo.Length != keikakuNo_Ketasu)
+                        {
+                            PlanNoChk = false;
+                        }
+                        else
+                        {
+                            if (!GlobalMethod.Check_Table(keikakuNo.Substring(0, 2), "BushoShibuCD", "Mst_Busho", ""))
+                            {
+                                PlanNoChk = false;
+                            }
+                            if (!GlobalMethod.Check_Table(keikakuNo.Substring(2, 1), "JigyoubuHeadCD", "Mst_Jigyoubu", ""))
+                            {
+                                PlanNoChk = false;
+                            }
+                            //if (!Regex.IsMatch(keikakuNo.Substring(3, 2), @"^[0-9]+$"))
+                            if (!CheckNumber(keikakuNo.Substring(3, 2)))
+                            {
+                                PlanNoChk = false;
+                            }
+                            if (keikakuNo.Substring(5, 1) != "-")
+                            {
+                                PlanNoChk = false;
+                            }
+                            if (keikakuNo.Substring(6, 1) != "P")
+                            {
+                                PlanNoChk = false;
+                            }
+                            //if (!Regex.IsMatch(keikakuNo.Substring(7, 3), @"^[0-9]+$"))
+                            if (!CheckNumber(keikakuNo.Substring(7, 3)))
+                            {
+                                PlanNoChk = false;
+                            }
+                            //追加のセパレータ
+                            if (keikakuNo.Substring(10, 1) != "-")
+                            {
+                                PlanNoChk = false;
+                            }
+                            //追加の工期開始年度2桁
+                            if (!CheckNumber(keikakuNo.Substring(11, 2)))
+                            {
+                                PlanNoChk = false;
+                            }
+                        }
+                        if (!PlanNoChk)
+                        {
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70041", "");
+                        }
+
+                        if (ErrorMsg != "")
+                        {
+                            if (errorId == 0)
+                            {
+                                errorId = GlobalMethod.getSaiban("ErrorID");
+                            }
+                            if (readCount == 0)
+                            {
+                                //同じファイルで何度目のエラーか取得
+                                readCount = GlobalMethod.getReadCount(errorUser);
+                            }
+                            // エクセルの行番号と合わせるため、カウントに7を加算する。
+                            GlobalMethod.InsertErrorTable(errorId, "KeikakuEXCEL", FileName, i + 7, ErrorMsg, errorUser, readCount, 1);
+                            checkFlag = false;
+                        }
+
+                    }
+                    transaction.Commit();
+                    conn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                checkFlag = false;
+            }
+            finally
+            {
+                xlSheet = null;
+            }
+            return checkFlag;
+        }
+
+        #region "一時保存。そのうち消す"
+        private Boolean checkMasta_org(Workbook wb, Worksheet ws, out string fileBusho, string FileName, string nendo, string busho)
         {
             Boolean checkFlag = true;
             dynamic xlSheet = null;
@@ -603,7 +1323,7 @@ namespace TokuchoBugyoK2
                     // Excel操作用の配列の作成
                     // 二次元配列の各次元の最小要素番号
                     int[] lower = { 1, 1 };
-                    // 二次元配列の各次元の要素数 
+                    // 二次元配列の各次元の要素数
                     int[] length = { getRowCount - 7, 40 };
                     object[,] InputObject = (object[,])Array.CreateInstance(typeof(object), length, lower);
 
@@ -632,7 +1352,7 @@ namespace TokuchoBugyoK2
                     Boolean PlanNoChk = true;
 
                     //for (int i = 8; getRowCount >= i; i++)
-                    for (int i = 1; getRowCount - 7>= i; i++)
+                    for (int i = 1; getRowCount - 7 >= i; i++)
                     {
                         // 開始セル（B8＝[1, 1]）のため注意
 
@@ -651,7 +1371,7 @@ namespace TokuchoBugyoK2
 
                         //計画番号が空欄の場合、以降空白行とみなし処理終了
                         keikakuNo = "";
-                        if (InputObject[i,4] != null)
+                        if (InputObject[i, 4] != null)
                         {
                             keikakuNo = InputObject[i, 4].ToString();
                         }
@@ -683,7 +1403,6 @@ namespace TokuchoBugyoK2
                             ErrorMsg += "・" + GlobalMethod.GetMessage("E70003", "");
                         }
 
-
                         //処理区分ごとのチェック処理
                         ErrorMsg = processCheck(process, keikakuNo, ErrorMsg, nendo, busho);
 
@@ -707,21 +1426,19 @@ namespace TokuchoBugyoK2
                         //keiyakuDivision = w_rgnName[i, 13].Text;
 
                         //部所支部名
-                        nameBusho = "";
+                        nameBusho = "";                        
                         if (InputObject[i, 10] != null)
                         {
                             nameBusho = InputObject[i, 10].ToString();
                         }
-
                         // 課所支部名
-                        nameKasho = "";
+                        nameKasho = "";                        
                         if (InputObject[i, 11] != null)
                         {
                             nameKasho = InputObject[i, 11].ToString();
                         }
-
                         // 契約区分
-                        keiyakuDivision = "";
+                        keiyakuDivision = "";                        
                         if (InputObject[i, 12] != null)
                         {
                             keiyakuDivision = InputObject[i, 12].ToString();
@@ -740,7 +1457,7 @@ namespace TokuchoBugyoK2
                         NendoTo = NendoFrom + 1;
 
                         if (!GlobalMethod.Check_Table(nameBusho, "ShibuMei", "Mst_Busho", "GyoumuBushoCD < '999990' and BushoKeikakuHyoujiFlg = '1' " +
-                            "AND NOT GyoumuBushoCD LIKE '121%' " + 
+                            "AND NOT GyoumuBushoCD LIKE '121%' " +
                             //"AND NOT GyoumuBushoCD LIKE '1502%' AND NOT GyoumuBushoCD LIKE '1504%' AND NOT GyoumuBushoCD LIKE '121%' " +
                             "AND BushoNewOld <= 1 AND ISNULL(BushoDeleteFlag,0) = 0 AND (BushoShibuCD IS NOT NULL OR KashoShibuCD IS NOT NULL) " +
                             //"AND ( BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + NendoFrom + "/04/01' ) " +
@@ -1057,7 +1774,7 @@ namespace TokuchoBugyoK2
                         //}
                         if (InputObject[i, 33] != null && !CheckNumber(InputObject[i, 33].ToString()))
                         {
-                        ErrorMsg += "・" + GlobalMethod.GetMessage("E70029", "");
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70029", "");
                         }
                         //if (!string.IsNullOrEmpty(w_rgnName[i, 35].Text) && !Regex.IsMatch(w_rgnName[i, 35].Text, @"^[0-9]+$"))
                         //{
@@ -1312,7 +2029,7 @@ namespace TokuchoBugyoK2
             }
             return checkFlag;
         }
-
+        #endregion
         private Boolean deleteRecord(String fileYear, String fileBusho)
         {
             Boolean endFlag = true;
@@ -1506,6 +2223,433 @@ namespace TokuchoBugyoK2
 
                         //取込シートから部所支部名取得
                         dynamic xlSheet = null;
+                        xlSheet = wb.Sheets["取り込みシート"];
+                        ws = wb.Sheets["取り込みシート"];
+                        w_rgnName = xlSheet.UsedRange;
+
+                        int getRowCount = ws.UsedRange.Rows.Count;
+
+                        string InsertSQL;
+
+                        string Sakuseibi = (string)w_rgnName[2, 3].Text;
+                        string KashoShibuMei = (string)w_rgnName[3, 3].Text;
+
+                        // パフォーマンス改善
+                        Worksheet worksheet = wb.Sheets["取り込みシート"];
+                        worksheet.Select();
+
+                        // Excel操作用の配列の作成
+                        // 二次元配列の各次元の最小要素番号
+                        int[] lower = { 1, 1 };
+                        // 二次元配列の各次元の要素数
+                        int[] length = { getRowCount - 7, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei };
+                        object[,] InputObject = (object[,])Array.CreateInstance(typeof(object), length, lower);
+
+                        // B8セルから、AV列の最後を取得する
+                        //エントリ君STEP1
+                        Excel.Range InputRange = worksheet.Range[worksheet.Cells[8, 2], worksheet.Cells[getRowCount, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei + 1]];
+                        InputObject = (object[,])InputRange.Value;
+
+                        String procces = "";
+                        String planNo = "";
+                        String nameBusho = "";
+
+                        int saibanPlanNo = 0;
+
+                        String tmpKeikakuKoukiKaishibi;
+                        String tmpKeikakuKoukiShuryobi;
+
+
+                        // 登録用SQL
+                        String InsertSQLText = GetInsertKeikakuJouhou();
+                        
+                        // 登録処理
+                        for (int i = 1; getRowCount - 7 >= i; i++)
+                        {
+
+                            //処理区分 部所支部名
+                            procces = "";
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun] != null)
+                            {
+                                procces = InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun].ToString();
+                            }
+                            planNo = "";                            
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBangou] != null)
+                            {
+                                planNo = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBangou].ToString();
+                            }                          
+
+                            nameBusho = "";
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei] != null)
+                            {
+                                nameBusho = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei].ToString();
+                            }                         
+
+                            //planNoが取得できない場合、以降空白行とみなし処理終了
+                            if (String.IsNullOrEmpty(planNo))
+                            {
+                                break;
+                            }
+
+                            //エントリ君STEP1
+                            //工期開始日と工期終了日はここで変数に格納しておく
+                            if(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiKaishibi] != null)
+                            {
+                                tmpKeikakuKoukiKaishibi = ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiKaishibi], 0, 0) + "' ";
+                            }
+                            else
+                            {
+                                tmpKeikakuKoukiKaishibi = ", null";
+                            }
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiShuryoubi] != null)
+                            {
+                                tmpKeikakuKoukiShuryobi = ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiShuryoubi], 0, 0) + "' ";
+                            }
+                            else
+                            {
+                                tmpKeikakuKoukiShuryobi = ", null";
+                            }
+
+                            //計画情報登録更新
+                            if (procces.Equals("登録"))
+                            {
+                                //GlobalMethod.outputLogger(pgmName + methodName, "計画情報の登録", planNo.ToString(), UserInfos[1]);
+
+                                //処理区分が登録のときは新規登録
+                                //int saibanPlanNo = GlobalMethod.getSaiban("KeikakuID");
+                                saibanPlanNo = GlobalMethod.getSaiban("KeikakuID");
+                                
+                                //エントリ君STEP1
+                                //工期開始日と工期終了日はここで
+                                cmd.CommandText = InsertSQLText
+                                                + saibanPlanNo
+                                                + ", N'" + GlobalMethod.ChangeSqlText(fileName, 0, 100) + "' "//ファイル名
+                                                + ", N'" + GlobalMethod.ChangeSqlText(Sakuseibi, 0, 0) + "' " //作成日
+                                                + ", N'" + GlobalMethod.ChangeSqlText(KashoShibuMei, 0, 50) + "' " //課所支部名
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuTourokubi], 0, 0) + "' " //計画登録日
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuUriageNendo], 0, 4) + "' " //売上年度
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKaishiNendo], 0, 4) + "' " //工期開始年度
+                                                + ", N'" + ChangeSQLString(planNo, 0, PLAN_NO_LENGTH) + "' " //計画番号
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiKeikakuBangou], 0, PLAN_NO_LENGTH) + "' " //前年度計画番号
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiAnkenBangou], 0, 40) + "' " //前年度案件番号
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiJutakuBangou], 0, 40) + "' " //前年度受託番号
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiHachuushaMeiKaMei], 0, 50) + "' " //前年度発注者名・課名
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiGyoumuMei], 0, 100) + "' " //前年度業務名称
+                                                + ", N'" + DiscriptToValue(ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei], 0, 50), "ShibuMei", "BushoShibuCD", "Mst_Busho") + "' " //部所支部CD
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei], 0, 50) + "' " //部所支部名
+                                                + ", N'" + DiscriptToValue(ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKashoShibuMei], 0, 50), "BushokanriboKamei", "KashoShibuCD", "Mst_Busho") + "' " //課所支部CD
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKashoShibuMei], 0, 50) + "' " //課所支部名
+                                                + ", N'" + DiscriptToValue(ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGyoumuKubunMei], 0, 50), "GyoumuKubun", "GyoumuNarabijunCD", "Mst_GyoumuKubun") + "' " //契約区分CD
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGyoumuKubunMei], 0, 50) + "' " //契約区分
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHachuushaMeiKaMei], 0, 100) + "' " //発注者名・課名
+                                                + ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuAnkenMei], 0, 150) + "' " //計画案件名
+                                                + tmpKeikakuKoukiKaishibi //工期開始日
+                                                + tmpKeikakuKoukiShuryobi //工期終了日
+                                                //+ ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiKaishibi], 0, 0) + "' " //工期開始日
+                                                //+ ", N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiShuryoubi], 0, 0) + "' " //工期終了日
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigaku], 0, 0) + "' " //調査部配分　落札時見込額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigaku], 0, 0) + "' " //調査部配分　変更見込額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGaku], 0, 0) + "' " //調査部配分　年度繰越額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigaku], 0, 0) + "' " //調査部配分　見込額合計（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuJF], 0, 0) + "' " //事業普及部配分　落札時見込額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuJF], 0, 0) + "' " //事業普及部配分　変更見込額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuJF], 0, 0) + "' " //事業普及部配分　年度繰越額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuJF], 0, 0) + "' " //事業普及部配分　見込額合計（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuJ], 0, 0) + "' " //情報システム部配分　落札時見込額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuJ], 0, 0) + "' " //情報システム部配分　変更見込額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuJ], 0, 0) + "' " //情報システム部配分　年度繰越額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuJ], 0, 0) + "' " //情報システム部配分　見込額合計（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuK], 0, 0) + "' " //総合研究所　落札時見込額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuK], 0, 0) + "' " //総合研究所　変更見込額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuK], 0, 0) + "' " //総合研究所　年度繰越額（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuK], 0, 0) + "' " //総合研究所　見込額合計（税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuGoukei], 0, 0) + "' " //見込額総合計(税抜）
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuShizaiChousa], 0, 0) + "' " //調査業務別　配分　資材調査
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuEizen], 0, 0) + "' " //調査業務別　配分　営繕
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKikiruiChousa], 0, 0) + "' " //調査業務別　配分　機器類調査
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoujiChousahi], 0, 0) + "' " //調査業務別　配分　工事費調査
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuSanpaiChousa], 0, 0) + "' " //調査業務別　配分　産廃調査
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHokakeChousa], 0, 0) + "' " //調査業務別　配分　歩掛調査
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuShokeihiChousa], 0, 0) + "' " //調査業務別　配分　諸経費調査
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGenkaBunseki], 0, 0) + "' " //調査業務別　配分　原価分析調査
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKijunsakusei], 0, 0) + "' " //調査業務別　配分　基準作成改訂
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukyouRoumuhi], 0, 0) + "' " //調査業務別　配分　公共労費調査
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRoumuhiKoukyouigai], 0, 0) + "' " //調査業務別　配分　労務費公共以外
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuSonotaChousabu], 0, 0) + "' " //調査業務別　配分　その他調査部
+                                                + ", N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei], 0, 0) + "' " //調査業務別　配分　合計
+                                                + ", " + GetAnkensu(planNo) + " " //案件数
+                                                + ", SYSDATETIME()  " //作成日時
+                                                + ", N'" + UserInfos[0] + "' " //作成ユーザ
+                                                + ", '計画情報取込' " //作成機能
+                                                + ", SYSDATETIME()  " //更新日時
+                                                + ", N'" + UserInfos[0] + "' " //更新ユーザ
+                                                + ", '計画情報取込' " //更新機能
+                                                + ", '0' " //削除フラグ
+                                                + ")";
+                                
+                                cmd.ExecuteNonQuery();
+
+                                //GlobalMethod.outputLogger(pgmName + methodName, "変更履歴の登録", planNo.ToString(), UserInfos[1]);
+                                // 共通メソッドを使うと、コミットされてしまうので、個別に記載する
+                                //GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "計画情報を登録しました ID:" + saibanPlanNo + " 計画番号:" + ChangeSQLString(planNo, 0, 10), pgmName + methodName, "");
+                                cmd.CommandText = Insert_History_SQLText("計画情報を登録しました ID:" + saibanPlanNo + " 計画番号:" + ChangeSQLString(planNo, 0, PLAN_NO_LENGTH), pgmName + methodName);
+                                cmd.ExecuteNonQuery();
+
+                            }
+                        }
+
+                        //更新処理
+                        for (int i = 1; getRowCount - 7 >= i; i++)
+                        {
+
+                            //処理区分 部所支部名
+                            procces = "";
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun] != null)
+                            {
+                                procces = InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun].ToString();
+                            }
+                            planNo = "";
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBangou] != null)
+                            {
+                                planNo = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBangou].ToString();
+                            }
+                            nameBusho = "";
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei] != null)
+                            {
+                                nameBusho = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei].ToString();
+                            }
+
+                            //planNoが取得できない場合、以降空白行とみなし処理終了
+                            if (String.IsNullOrEmpty(planNo))
+                            {
+                                break;
+                            }
+
+                            //エントリ君STEP1
+                            //工期開始日と工期終了日はここで変数に格納しておく
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiKaishibi] != null)
+                            {
+                                tmpKeikakuKoukiKaishibi = ",KeikakuKoukiKaishibi = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiKaishibi], 0, 0) + "' ";
+                            }
+                            else
+                            {
+                                tmpKeikakuKoukiKaishibi = ",KeikakuKoukiKaishibi = null";
+                            }
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiShuryoubi] != null)
+                            {
+                                tmpKeikakuKoukiShuryobi = ",KeikakuKoukiShuryoubi = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiShuryoubi], 0, 0) + "' ";
+                            }
+                            else
+                            {
+                                tmpKeikakuKoukiShuryobi = ",KeikakuKoukiShuryoubi = null";
+                            }
+
+                            //計画情報更新
+                            if (procces.Equals("更新"))
+                            {
+                                // 計画IDの取得
+                                var KeikakuDt = new DataTable();
+                                cmd.CommandText = "SELECT KeikakuID FROM KeikakuJouhou WHERE KeikakuBangou = '" + planNo + "'";
+                                var sda = new SqlDataAdapter(cmd);
+                                sda.Fill(KeikakuDt);
+                                saibanPlanNo = 0;
+                                if (KeikakuDt != null && KeikakuDt.Rows.Count > 0)
+                                {
+                                    int.TryParse(KeikakuDt.Rows[0][0].ToString(), out saibanPlanNo);
+                                }
+
+                                //GlobalMethod.outputLogger(pgmName + methodName, "計画情報の更新", planNo.ToString(), UserInfos[1]);
+
+                                //処理区分が更新のときは更新処理 
+                                //エントリ君STEP1
+                                cmd.CommandText = "UPDATE KeikakuJouhou SET " +
+                                    "KeikakuSakuseibi                   = N'" + GlobalMethod.ChangeSqlText(Sakuseibi, 0, 0) + "' " +
+                                    ",KeikakuFileMei                    = N'" + GlobalMethod.ChangeSqlText(fileName, 0, 100) + "' " +
+                                    ",KeikakuSakuseiKashoShibuMei       = N'" + GlobalMethod.ChangeSqlText(KashoShibuMei, 0, 50) + "' " +
+                                    ",KeikakuTourokubi                  = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuTourokubi], 0, 0) + "' " +
+                                    ",KeikakuUriageNendo                = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuUriageNendo], 0, 4) + "' " +
+                                    ",KeikakuKaishiNendo                = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKaishiNendo], 0, 4) + "' " +
+                                    ",KeikakuZenkaiKeikakuBangou        = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiKeikakuBangou], 0, PLAN_NO_LENGTH) + "' " +
+                                    ",KeikakuZenkaiAnkenBangou          = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiAnkenBangou], 0, 40) + "' " +
+                                    ",KeikakuZenkaiJutakuBangou         = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiJutakuBangou], 0, 40) + "' " +
+                                    ",KeikakuZenkaiHachuushaMeiKaMei    = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiHachuushaMeiKaMei], 0, 100) + "' " +
+                                    ",KeikakuZenkaiGyoumuMei            = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuZenkaiGyoumuMei], 0, 150) + "' " +
+                                    ",KeikakuBushoShibuCD               = N'" + DiscriptToValue(ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei], 0, 50), "ShibuMei", "BushoShibuCD", "Mst_Busho") + "' " +
+                                    ",KeikakuBushoShibuMei              = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei], 0, 50) + "' " +
+                                    ",KeikakuKashoShibuCD               = N'" + DiscriptToValue(ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKashoShibuMei], 0, 50), "BushokanriboKamei", "KashoShibuCD", "Mst_Busho") + "' " +
+                                    ",KeikakuKashoShibuMei              = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKashoShibuMei], 0, 50) + "' " +
+                                    ",KeikakuGyoumuKubun                = N'" + DiscriptToValue(ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGyoumuKubunMei], 0, 50), "GyoumuKubun", "GyoumuNarabijunCD", "Mst_GyoumuKubun") + "' " +
+                                    ",KeikakuGyoumuKubunMei             = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGyoumuKubunMei], 0, 50) + "' " +
+                                    ",KeikakuHachuushaMeiKaMei          = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHachuushaMeiKaMei], 0, 100) + "' " +
+                                    ",KeikakuAnkenMei                   = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuAnkenMei], 0, 150) + "' " +
+                                    tmpKeikakuKoukiKaishibi +
+                                    tmpKeikakuKoukiShuryobi +
+                                    //",KeikakuKoukiKaishibi              = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiKaishibi], 0, 0) + "' " +
+                                    //",KeikakuKoukiShuryoubi             = N'" + ChangeSQLString(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukiShuryoubi], 0, 0) + "' " +
+                                    ",KeikakuRakusatsumikomigaku        = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigaku], 0, 0) + "' " +
+                                    ",KeikakuHenkoumikomigaku           = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigaku], 0, 0) + "' " +
+                                    ",KeikakuNendoKurikoshiGaku           = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGaku], 0, 0) + "' " +
+                                    ",KeikakuMikomigaku                 = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigaku], 0, 0) + "' " +
+                                    ",KeikakuRakusatsumikomigakuJF      = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuJF], 0, 0) + "' " +
+                                    ",KeikakuHenkoumikomigakuJF         = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuJF], 0, 0) + "' " +
+                                    ",KeikakuNendoKurikoshiGakuJF         = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuJF], 0, 0) + "' " +
+                                    ",KeikakuMikomigakuJF               = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuJF], 0, 0) + "' " +
+                                    ",KeikakuRakusatsumikomigakuJ       = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuJ], 0, 0) + "' " +
+                                    ",KeikakuHenkoumikomigakuJ          = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuJ], 0, 0) + "' " +
+                                    ",KeikakuNendoKurikoshiGakuJ          = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuJ], 0, 0) + "' " +
+                                    ",KeikakuMikomigakuJ                = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuJ], 0, 0) + "' " +
+                                    ",KeikakuRakusatsumikomigakuK       = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRakusatsumikomigakuK], 0, 0) + "' " +
+                                    ",KeikakuHenkoumikomigakuK          = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHenkoumikomigakuK], 0, 0) + "' " +
+                                    ",KeikakuNendoKurikoshiGakuK          = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuNendoKurikoshiGakuK], 0, 0) + "' " +
+                                    ",KeikakuMikomigakuK                = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuK], 0, 0) + "' " +
+                                    ",KeikakuMikomigakuGoukei           = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuMikomigakuGoukei], 0, 0) + "' " +
+                                    ",KeikakuShizaiChousa               = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuShizaiChousa], 0, 0) + "' " +
+                                    ",KeikakuEizen                      = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuEizen], 0, 0) + "' " +
+                                    ",KeikakuKikiruiChousa              = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKikiruiChousa], 0, 0) + "' " +
+                                    ",KeikakuKoujiChousahi              = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoujiChousahi], 0, 0) + "' " +
+                                    ",KeikakuSanpaiChousa               = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuSanpaiChousa], 0, 0) + "' " +
+                                    ",KeikakuHokakeChousa               = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHokakeChousa], 0, 0) + "' " +
+                                    ",KeikakuShokeihiChousa             = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuShokeihiChousa], 0, 0) + "' " +
+                                    ",KeikakuGenkaBunseki               = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuGenkaBunseki], 0, 0) + "' " +
+                                    ",KeikakuKijunsakusei               = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKijunsakusei], 0, 0) + "' " +
+                                    ",KeikakuKoukyouRoumuhi             = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuKoukyouRoumuhi], 0, 0) + "' " +
+                                    ",KeikakuRoumuhiKoukyouigai         = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuRoumuhiKoukyouigai], 0, 0) + "' " +
+                                    ",KeikakuSonotaChousabu             = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuSonotaChousabu], 0, 0) + "' " +
+                                    ",KeikakuHaibunGoukei               = N'" + ChangeSQLInt(InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuHaibunGoukei], 0, 0) + "' " +
+                                    ",KeikakuAnkensu                    = " + GetAnkensu(planNo) + " " +
+                                    ",KeikakuUpdateDate                 = SYSDATETIME() " +
+                                    ",KeikakuUpdateUser                 = '" + UserInfos[0] + "' " +
+                                    ",KeikakuUpdateProgram              = '計画情報取込' " +
+                                    ",KeikakuDeleteFlag                 = '0' " +
+                                    "WHERE KeikakuBangou                = '" + planNo + "' ";
+                                
+                                cmd.ExecuteNonQuery();
+
+                                //GlobalMethod.outputLogger(pgmName + methodName, "変更履歴の登録", planNo.ToString(), UserInfos[1]);
+                                // 共通メソッドを使うと、コミットされてしまうので、個別に記載する
+                                //GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "計画情報を更新しました ID:" + saibanPlanNo + " 計画番号:" + ChangeSQLString(planNo, 0, 10), pgmName + methodName, "");
+                                cmd.CommandText = Insert_History_SQLText("計画情報を更新しました ID:" + saibanPlanNo + " 計画番号:" + ChangeSQLString(planNo, 0, PLAN_NO_LENGTH), pgmName + methodName);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        //登録更新処理
+                        for (int i = 1; getRowCount - 7 >= i; i++)
+                        {
+
+                            //処理区分 部所支部名
+                            procces = "";
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun] != null)
+                            {
+                                procces = InputObject[i, (int)EXCEL_DATA_INDEX.shoriKubun].ToString();
+                            }
+                            planNo = "";
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBangou] != null)
+                            {
+                                planNo = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBangou].ToString();
+                            }
+                            nameBusho = "";
+                            if (InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei] != null)
+                            {
+                                nameBusho = InputObject[i, (int)EXCEL_DATA_INDEX.KeikakuBushoShibuMei].ToString();
+                            }
+
+                            //planNoが取得できない場合、以降空白行とみなし処理終了
+                            if (String.IsNullOrEmpty(planNo))
+                            {
+                                break;
+                            }                            
+
+                            //計画情報削除
+                            if (procces.Equals("削除"))
+                            {
+                                // 計画IDの取得
+                                var KeikakuDt = new DataTable();
+                                cmd.CommandText = "SELECT KeikakuID FROM KeikakuJouhou WHERE KeikakuBangou = '" + planNo + "'";
+                                var sda = new SqlDataAdapter(cmd);
+                                sda.Fill(KeikakuDt);
+                                saibanPlanNo = 0;
+                                if (KeikakuDt != null && KeikakuDt.Rows.Count > 0)
+                                {
+                                    int.TryParse(KeikakuDt.Rows[0][0].ToString(), out saibanPlanNo);
+                                }
+
+                                //GlobalMethod.outputLogger(pgmName + methodName, "案件情報の更新", planNo.ToString(), UserInfos[1]);
+
+                                // 案件情報から計画情報のクリア
+                                cmd.CommandText = "UPDATE AnkenJouhou SET"
+                                                + "  AnkenKeikakuBangou = ''"                       // 計画番号
+                                                + ", AnkenKeikakuAnkenMei = ''"                     // 計画案件名
+                                                + " WHERE AnkenKeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + planNo + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
+
+                                //GlobalMethod.outputLogger(pgmName + methodName, "計画情報の削除", planNo.ToString(), UserInfos[1]);
+
+                                // 計画情報の削除
+                                cmd.CommandText = "DELETE FROM KeikakuJouhou"
+                                                + " WHERE KeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + planNo + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
+
+                                //GlobalMethod.outputLogger(pgmName + methodName, "変更履歴の登録", planNo.ToString(), UserInfos[1]);
+                                // 共通メソッドを使うと、コミットされてしまうので、個別に記載する
+                                //GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "計画情報を削除しました ID:" + saibanPlanNo + " 計画番号:" + ChangeSQLString(planNo, 0, 10), pgmName + methodName, "");
+                                cmd.CommandText = Insert_History_SQLText("計画情報を削除しました ID:" + saibanPlanNo + " 計画番号:" + ChangeSQLString(planNo, 0, PLAN_NO_LENGTH), pgmName + methodName);
+                                cmd.ExecuteNonQuery();
+
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        transaction.Rollback();
+                        GlobalMethod.outputLogger(pgmName + methodName, "計画情報取込エラー1", e.ToString(), UserInfos[1]);
+                        throw;
+                    }
+                    finally
+                    {
+                        // Rangeもプロセス開放しないといけない
+                        Marshal.ReleaseComObject(w_rgnName);
+                    }
+                    conn.Close();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                GlobalMethod.outputLogger(pgmName + methodName, "計画情報取込エラー2", e.ToString(), UserInfos[1]);
+                return false;
+            }
+        }
+
+        #region "念のため取っておく。すぐ削除する"
+        private Boolean registrationKeikaku_org(Workbook wb, Worksheet ws)
+        {
+            string methodName = ".registrationKeikaku";
+            try
+            {
+                var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                using (var conn = new SqlConnection(connStr))
+                {
+                    //エラーメッセージ
+                    conn.Open();
+                    var cmd = conn.CreateCommand();
+                    SqlTransaction transaction = conn.BeginTransaction();
+                    cmd.Transaction = transaction;
+
+                    Excel.Range w_rgnName = null;
+
+                    try
+                    {
+                        //Excelシートのインスタンスを作る
+                        //インデックスは1始まり
+                        int u = wb.Sheets.Count;
+
+                        //取込シートから部所支部名取得
+                        dynamic xlSheet = null;
                         //xlSheet = wb.Sheets[u - 1];
                         //ws = wb.Sheets[u - 1];
                         xlSheet = wb.Sheets["取り込みシート"];
@@ -1528,7 +2672,7 @@ namespace TokuchoBugyoK2
                         // Excel操作用の配列の作成
                         // 二次元配列の各次元の最小要素番号
                         int[] lower = { 1, 1 };
-                        // 二次元配列の各次元の要素数 
+                        // 二次元配列の各次元の要素数                    
                         int[] length = { getRowCount - 7, 40 };
                         object[,] InputObject = (object[,])Array.CreateInstance(typeof(object), length, lower);
 
@@ -1891,7 +3035,8 @@ namespace TokuchoBugyoK2
                             {
                                 planNo = InputObject[i, 4].ToString();
                             }
-                            nameBusho = "";
+
+                            nameBusho = "";                      
                             if (InputObject[i, 10] != null)
                             {
                                 nameBusho = InputObject[i, 10].ToString();
@@ -1922,7 +3067,6 @@ namespace TokuchoBugyoK2
                                 //処理区分が登録のときは新規登録
                                 //int saibanPlanNo = GlobalMethod.getSaiban("KeikakuID");
                                 saibanPlanNo = GlobalMethod.getSaiban("KeikakuID");
-
 
                                 cmd.CommandText = InsertSQLText
                                                 + saibanPlanNo
@@ -2047,6 +3191,7 @@ namespace TokuchoBugyoK2
                                 //GlobalMethod.outputLogger(pgmName + methodName, "計画情報の更新", planNo.ToString(), UserInfos[1]);
 
                                 //処理区分が更新のときは更新処理 
+
                                 cmd.CommandText = "UPDATE KeikakuJouhou SET " +
                                     "KeikakuSakuseibi                   = N'" + GlobalMethod.ChangeSqlText(Sakuseibi, 0, 0) + "' " +
                                     ",KeikakuFileMei                    = N'" + GlobalMethod.ChangeSqlText(fileName, 0, 100) + "' " +
@@ -2212,6 +3357,8 @@ namespace TokuchoBugyoK2
             }
         }
 
+        #endregion
+
         private string DiscriptToValue(string Discript, string DiscriptCol, string ValueCol, string Table)
         {
             string value = "";
@@ -2339,6 +3486,28 @@ namespace TokuchoBugyoK2
                 nendo2 = year.ToString();
             }
 
+            //エントリ君STEP1　工期開始年度追加
+            String kouki_kaishi_nendo1 = "";
+            String kouki_kaishi_nendo2 = "";
+            // 工期開始年度
+            if (src_14.Text != "")
+            {
+                kouki_kaishi_nendo1 = src_14.Text.Substring(0, 4);
+                kouki_kaishi_nendo2 = kouki_kaishi_nendo1;
+                if (src_16.Checked)
+                {
+                    kouki_kaishi_nendo2 = (int.Parse(kouki_kaishi_nendo1) - 2).ToString();
+                }
+            }
+            else
+            {
+                year = int.Parse(GlobalMethod.GetTodayNendo());
+                kouki_kaishi_nendo1 = year.ToString();
+                year = year - 4;
+                kouki_kaishi_nendo2 = year.ToString();
+            }
+
+
             int FromNendo;
             if (!int.TryParse(src_1.SelectedValue.ToString(), out FromNendo))
             {
@@ -2351,6 +3520,7 @@ namespace TokuchoBugyoK2
             using (var conn = new SqlConnection(connStr))
             {
                 var cmd = conn.CreateCommand();
+                //エントリ君STEP1    KeikakuNendoKurikoshiGakuK～KeikakuKaishiNendo　まで追加
                 cmd.CommandText = @"SELECT KeikakuID,KeikakuUriageNendo,KeikakuBangou,KeikakuBushoShibuCD
                     ,KeikakuZenkaiKeikakuBangou,KeikakuZenkaiAnkenBangou,KeikakuZenkaiJutakuBangou
                     ,KeikakuHachuushaMeiKaMei,KeikakuAnkenMei,KeikakuGyoumuKubun,KeikakuTourokubi
@@ -2359,14 +3529,19 @@ namespace TokuchoBugyoK2
                     ,KeikakuRakusatsumikomigakuJF,KeikakuHenkoumikomigakuJF,KeikakuMikomigakuJF
                     ,KeikakuRakusatsumikomigakuJ,KeikakuHenkoumikomigakuJ,KeikakuMikomigakuJ
                     ,KeikakuRakusatsumikomigakuK,KeikakuHenkoumikomigakuK,KeikakuMikomigakuK
-                    ,KeikakuMikomigakuGoukei,KeikakuAnkensu 
+                    ,KeikakuMikomigakuGoukei,KeikakuAnkensu
+                    ,KeikakuNendoKurikoshiGakuK,KeikakuNendoKurikoshiGakuJ,KeikakuNendoKurikoshiGakuJF,KeikakuNendoKurikoshiGaku
+                    ,KeikakuKoukiShuryoubi,KeikakuKoukiKaishibi,KeikakuKaishiNendo
                     FROM KeikakuJouhou " +
                     "LEFT JOIN Mst_Busho ON KeikakuBushoShibuCD = BushoShibuCD AND KeikakuKashoShibuCD = KashoShibuCD " +
                     //"AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
                     //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' ) " +
                     "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + ToNendo + "/3/31' ) " +
                     "AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + FromNendo + "/4/1' ) " +
-                    "WHERE KeikakuUriageNendo IS NOT NULL and KeikakuUriageNendo <= '" + nendo1 + "' and KeikakuUriageNendo >= '" + nendo2 + "' ";
+                    "WHERE KeikakuUriageNendo IS NOT NULL and KeikakuUriageNendo <= '" + nendo1 + "' and KeikakuUriageNendo >= '" + nendo2 + "' " +
+                    //エントリ君STEP1
+                    "and KeikakuKaishiNendo IS NOT NULL and KeikakuKaishiNendo <= '" + kouki_kaishi_nendo1 + "' and KeikakuKaishiNendo >= '" + kouki_kaishi_nendo2 + "' ";
+                    
                 if (src_4.Text != "")
                 {
                     if (src_4.SelectedValue.ToString() == "127100")
@@ -2452,32 +3627,68 @@ namespace TokuchoBugyoK2
             for (int r = 0; r < addnum; r++)
             {
                 c1FlexGrid1.Rows.Add();
-                c1FlexGrid1[r + 2, 2] = ListData.Rows[startrow + r][0];
-                c1FlexGrid1[r + 2, 3] = ListData.Rows[startrow + r][1];
-                c1FlexGrid1[r + 2, 4] = ListData.Rows[startrow + r][2];
-                c1FlexGrid1[r + 2, 5] = ListData.Rows[startrow + r][3];
-                c1FlexGrid1[r + 2, 6] = ListData.Rows[startrow + r][4];
-                c1FlexGrid1[r + 2, 7] = ListData.Rows[startrow + r][5];
-                c1FlexGrid1[r + 2, 8] = ListData.Rows[startrow + r][6];
-                c1FlexGrid1[r + 2, 9] = ListData.Rows[startrow + r][7];
-                c1FlexGrid1[r + 2, 10] = ListData.Rows[startrow + r][8];
-                c1FlexGrid1[r + 2, 11] = ListData.Rows[startrow + r][9];
-                c1FlexGrid1[r + 2, 12] = ListData.Rows[startrow + r][10];
-                c1FlexGrid1[r + 2, 13] = ListData.Rows[startrow + r][11];
-                c1FlexGrid1[r + 2, 14] = ListData.Rows[startrow + r][12];
-                c1FlexGrid1[r + 2, 15] = ListData.Rows[startrow + r][13];
-                c1FlexGrid1[r + 2, 16] = ListData.Rows[startrow + r][14];
-                c1FlexGrid1[r + 2, 17] = ListData.Rows[startrow + r][15];
-                c1FlexGrid1[r + 2, 18] = ListData.Rows[startrow + r][16];
-                c1FlexGrid1[r + 2, 19] = ListData.Rows[startrow + r][17];
-                c1FlexGrid1[r + 2, 20] = ListData.Rows[startrow + r][18];
-                c1FlexGrid1[r + 2, 21] = ListData.Rows[startrow + r][19];
-                c1FlexGrid1[r + 2, 22] = ListData.Rows[startrow + r][20];
-                c1FlexGrid1[r + 2, 23] = ListData.Rows[startrow + r][21];
-                c1FlexGrid1[r + 2, 24] = ListData.Rows[startrow + r][22];
-                c1FlexGrid1[r + 2, 25] = ListData.Rows[startrow + r][23];
-                c1FlexGrid1[r + 2, 26] = ListData.Rows[startrow + r][24];
-                c1FlexGrid1[r + 2, 27] = ListData.Rows[startrow + r][25];
+                //エントリ君STEP1    Enum変更
+                c1FlexGrid1[r + 2, (int)GRID_COL.keikaku_id] = ListData.Rows[startrow + r][0];
+                c1FlexGrid1[r + 2, (int)GRID_COL.keikaku_uriage] = ListData.Rows[startrow + r][1];
+                c1FlexGrid1[r + 2, (int)GRID_COL.keikaku_bango] = ListData.Rows[startrow + r][2];
+                c1FlexGrid1[r + 2, (int)GRID_COL.keikakubusho_shibu] = ListData.Rows[startrow + r][3];
+                c1FlexGrid1[r + 2, (int)GRID_COL.zennendo_1] = ListData.Rows[startrow + r][4];
+                c1FlexGrid1[r + 2, (int)GRID_COL.zennendo_2] = ListData.Rows[startrow + r][5];
+                c1FlexGrid1[r + 2, (int)GRID_COL.zennendo_3] = ListData.Rows[startrow + r][6];
+                c1FlexGrid1[r + 2, (int)GRID_COL.keikaku_hacchushamei] = ListData.Rows[startrow + r][7];
+                c1FlexGrid1[r + 2, (int)GRID_COL.keikaku_ankenmei] = ListData.Rows[startrow + r][8];
+                c1FlexGrid1[r + 2, (int)GRID_COL.keiyaku_kubun] = ListData.Rows[startrow + r][9];
+                c1FlexGrid1[r + 2, (int)GRID_COL.keikaku_torokubi] = ListData.Rows[startrow + r][10];
+                c1FlexGrid1[r + 2, (int)GRID_COL.keiyaku_kashoshibu] = ListData.Rows[startrow + r][11];
+                c1FlexGrid1[r + 2, (int)GRID_COL.rakusatsu_mikomi_chosabu] = ListData.Rows[startrow + r][12];
+                c1FlexGrid1[r + 2, (int)GRID_COL.henko_mikomi_chosabu] = ListData.Rows[startrow + r][13];
+                c1FlexGrid1[r + 2, (int)GRID_COL.mikomi_gokei_chosabu] = ListData.Rows[startrow + r][14];
+                c1FlexGrid1[r + 2, (int)GRID_COL.rakusatsu_mikomi_jigyofukyu] = ListData.Rows[startrow + r][15];
+                c1FlexGrid1[r + 2, (int)GRID_COL.henko_mikomi_jigyofukyu] = ListData.Rows[startrow + r][16];
+                c1FlexGrid1[r + 2, (int)GRID_COL.mikomi_gokei_jigyofukyu] = ListData.Rows[startrow + r][17];
+                c1FlexGrid1[r + 2, (int)GRID_COL.rakusatsu_mikomi_johosystem] = ListData.Rows[startrow + r][18];
+                c1FlexGrid1[r + 2, (int)GRID_COL.henko_mikomi_johosystem] = ListData.Rows[startrow + r][19];
+                c1FlexGrid1[r + 2, (int)GRID_COL.mikomi_gokei_johosystem] = ListData.Rows[startrow + r][20];
+                c1FlexGrid1[r + 2, (int)GRID_COL.rakusatsu_mikomi_sogokenkyu] = ListData.Rows[startrow + r][21];
+                c1FlexGrid1[r + 2, (int)GRID_COL.henko_mikomi_sogokenkyu] = ListData.Rows[startrow + r][22];
+                c1FlexGrid1[r + 2, (int)GRID_COL.mikomi_gokei_sogokenkyu] = ListData.Rows[startrow + r][23];
+                c1FlexGrid1[r + 2, (int)GRID_COL.anken_mikomi_gokei] = ListData.Rows[startrow + r][24];
+                c1FlexGrid1[r + 2, (int)GRID_COL.anken_su] = ListData.Rows[startrow + r][25];
+                //エントリ君STEP1 追加列分　DBのインデックスは末尾に追加した
+                c1FlexGrid1[r + 2, (int)GRID_COL.nendo_kurikoshi_sogokenkyu] = ListData.Rows[startrow + r][26];
+                c1FlexGrid1[r + 2, (int)GRID_COL.nendo_kurikoshi_johosystem] = ListData.Rows[startrow + r][27];
+                c1FlexGrid1[r + 2, (int)GRID_COL.nendo_kurikoshi_jigyofukyu] = ListData.Rows[startrow + r][28];
+                c1FlexGrid1[r + 2, (int)GRID_COL.nendo_kurikoshi_chosabu] = ListData.Rows[startrow + r][29];
+                c1FlexGrid1[r + 2, (int)GRID_COL.kouki_syuryobi] = ListData.Rows[startrow + r][30];
+                c1FlexGrid1[r + 2, (int)GRID_COL.kouki_kaishibi] = ListData.Rows[startrow + r][31];
+                c1FlexGrid1[r + 2, (int)GRID_COL.kouki_kaishi_nendo] = ListData.Rows[startrow + r][32];
+
+                //c1FlexGrid1[r + 2, 2] = ListData.Rows[startrow + r][0];
+                //c1FlexGrid1[r + 2, 3] = ListData.Rows[startrow + r][1];
+                //c1FlexGrid1[r + 2, 4] = ListData.Rows[startrow + r][2];
+                //c1FlexGrid1[r + 2, 5] = ListData.Rows[startrow + r][3];
+                //c1FlexGrid1[r + 2, 6] = ListData.Rows[startrow + r][4];
+                //c1FlexGrid1[r + 2, 7] = ListData.Rows[startrow + r][5];
+                //c1FlexGrid1[r + 2, 8] = ListData.Rows[startrow + r][6];
+                //c1FlexGrid1[r + 2, 9] = ListData.Rows[startrow + r][7];
+                //c1FlexGrid1[r + 2, 10] = ListData.Rows[startrow + r][8];
+                //c1FlexGrid1[r + 2, 11] = ListData.Rows[startrow + r][9];
+                //c1FlexGrid1[r + 2, 12] = ListData.Rows[startrow + r][10];
+                //c1FlexGrid1[r + 2, 13] = ListData.Rows[startrow + r][11];
+                //c1FlexGrid1[r + 2, 14] = ListData.Rows[startrow + r][12];
+                //c1FlexGrid1[r + 2, 15] = ListData.Rows[startrow + r][13];
+                //c1FlexGrid1[r + 2, 16] = ListData.Rows[startrow + r][14];
+                //c1FlexGrid1[r + 2, 17] = ListData.Rows[startrow + r][15];
+                //c1FlexGrid1[r + 2, 18] = ListData.Rows[startrow + r][16];
+                //c1FlexGrid1[r + 2, 19] = ListData.Rows[startrow + r][17];
+                //c1FlexGrid1[r + 2, 20] = ListData.Rows[startrow + r][18];
+                //c1FlexGrid1[r + 2, 21] = ListData.Rows[startrow + r][19];
+                //c1FlexGrid1[r + 2, 22] = ListData.Rows[startrow + r][20];
+                //c1FlexGrid1[r + 2, 23] = ListData.Rows[startrow + r][21];
+                //c1FlexGrid1[r + 2, 24] = ListData.Rows[startrow + r][22];
+                //c1FlexGrid1[r + 2, 25] = ListData.Rows[startrow + r][23];
+                //c1FlexGrid1[r + 2, 26] = ListData.Rows[startrow + r][24];
+                //c1FlexGrid1[r + 2, 27] = ListData.Rows[startrow + r][25];
                 c1FlexGrid1.Rows[r + 2].Height = 40;
             }
             c1FlexGrid1.AllowAddNew = false;
@@ -2771,11 +3982,423 @@ namespace TokuchoBugyoK2
                     "BushoShibuCD ,ShibuMei " +
                     "FROM " + "Mst_Busho " +
                     "WHERE ISNULL(BushoShibuCD,'') <> '' AND GyoumuBushoCD < '999990' and BushoKeikakuHyoujiFlg = '1' " +
+                    "AND NOT GyoumuBushoCD LIKE '121%' " +
+                    "AND BushoNewOld <= 1 AND ISNULL(BushoDeleteFlag,0) = 0 AND (BushoShibuCD IS NOT NULL OR KashoShibuCD IS NOT NULL) " +
+                    "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + ToNendo + "/3/31' ) " +
+                    "AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + FromNendo + "/4/1' )";
+
+                    //データ取得
+                    var sda = new SqlDataAdapter(cmd);
+                    sda.Fill(dt);
+
+                    //データセット
+                    String[,] mData1 = new string[dt.Rows.Count, dt.Columns.Count];
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        for (int k = 0; k < dt.Columns.Count; k++)
+                        {
+                            mData1[i, k] = dt.Rows[i][k].ToString();
+                        }
+                    }
+
+                    w_rgn = xlSheet.Range("A3:B" + (dt.Rows.Count + 2));
+                    w_rgn.Value = mData1;
+
+
+                    //課所支部データ取得
+                    var dt2 = new DataTable();
+                    //SQL生成
+                    cmd.CommandText = "SELECT DISTINCT " +
+                    "KashoShibuCD,BushokanriboKamei " +
+                    "FROM " + "Mst_Busho " +
+                    "WHERE ISNULL(KashoShibuCD,'') <> '' AND GyoumuBushoCD < '999990' and BushoKeikakuHyoujiFlg = '1' " +
+                    "AND NOT GyoumuBushoCD LIKE '121%' " +
+                    "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + ToNendo + "/3/31' ) " +
+                    "AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + FromNendo + "/4/1' )";
+
+                    //データ取得
+                    sda = new SqlDataAdapter(cmd);
+                    sda.Fill(dt2);
+
+                    String[,] mData2 = new string[dt2.Rows.Count, dt2.Columns.Count];
+                    for (int i = 0; i < dt2.Rows.Count; i++)
+                    {
+                        for (int k = 0; k < dt2.Columns.Count; k++)
+                        {
+                            mData2[i, k] = dt2.Rows[i][k].ToString();
+                        }
+                    }
+
+                    w_rgn = xlSheet.Range("D3:E" + (dt2.Rows.Count + 2));
+                    w_rgn.Value = mData2;
+
+                    //契約区分データ取得
+                    var dt3 = new DataTable();
+                    //SQL生成
+                    cmd.CommandText = "SELECT " +
+                    "GyoumuNarabijunCD ,GyoumuKubun " +
+                    "FROM " + "Mst_GyoumuKubun " +
+                    "WHERE GyoumuNarabijunCD < 100 ";
+
+                    //データ取得
+                    sda = new SqlDataAdapter(cmd);
+                    sda.Fill(dt3);
+
+                    //データセット
+                    String[,] mData3 = new string[dt3.Rows.Count, dt3.Columns.Count];
+                    for (int i = 0; i < dt3.Rows.Count; i++)
+                    {
+                        for (int k = 0; k < dt3.Columns.Count; k++)
+                        {
+                            mData3[i, k] = dt3.Rows[i][k].ToString();
+                        }
+                    }
+
+                    w_rgn = xlSheet.Range("G3:H" + (dt3.Rows.Count + 2));
+                    w_rgn.Value = mData3;
+
+
+                    //計画データ
+                    //ws = wb.Sheets[u - 1];
+                    ws = wb.Sheets["取り込みシート"];
+                    ws.Select(Type.Missing);
+                    w_rgn = ws.Cells;
+                    var dt4 = new DataTable();
+
+                    w_rgn[2, 3].Value = DateTime.Today;
+
+                    //エントリ君STEP1
+                    String nendo1 = "";
+                    String nendo2 = "";
+                    int year = 0;
+                    // 売上年度
+                    if (src_1.Text != "")
+                    {
+                        nendo1 = src_1.Text.Substring(0, 4);
+                        nendo2 = nendo1;
+                        if (src_3.Checked)
+                        {
+                            nendo2 = (int.Parse(nendo1) - 2).ToString();
+                        }
+                    }
+                    else
+                    {
+                        year = int.Parse(GlobalMethod.GetTodayNendo());
+                        nendo1 = year.ToString();
+                        year = year - 4;
+                        nendo2 = year.ToString();
+                    }
+
+                    //エントリ君STEP1
+                    //↓これ、年度が選択されていないとコケるので↑に変更
+                    ////SQL生成
+                    //String nendo1 = src_1.Text.Substring(0, 4);
+                    //String nendo2 = nendo1;
+                    //if (src_3.Checked)
+                    //{
+                    //    nendo2 = (int.Parse(nendo1) - 2).ToString();
+                    //}
+
+                    //エントリ君STEP1　工期開始年度追加
+                    String kouki_kaishi_nendo1 = "";
+                    String kouki_kaishi_nendo2 = "";
+                    // 工期開始年度
+                    if (src_14.Text != "")
+                    {
+                        kouki_kaishi_nendo1 = src_14.Text.Substring(0, 4);
+                        kouki_kaishi_nendo2 = kouki_kaishi_nendo1;
+                        if (src_16.Checked)
+                        {
+                            kouki_kaishi_nendo2 = (int.Parse(kouki_kaishi_nendo1) - 2).ToString();
+                        }
+                    }
+                    else
+                    {
+                        year = int.Parse(GlobalMethod.GetTodayNendo());
+                        kouki_kaishi_nendo1 = year.ToString();
+                        year = year - 4;
+                        kouki_kaishi_nendo2 = year.ToString();
+                    }
+
+                    cmd.CommandText = "SELECT"
+                                    + " '更新'"                                                                 // 0.処理区分
+                                    + ", CONVERT(NVARCHAR, KeikakuTourokubi, 111) AS 'KeikakuTourokubi'"        // 1.計画登録日
+                                    + ", KeikakuUriageNendo"                                                    // 2.売上年度
+                                    + ", KeikakuKaishiNendo"                                                    // 3.工期開始年度
+                                    + ", KeikakuBangou"                                                         // 4.計画番号
+                                    + ", KeikakuZenkaiKeikakuBangou"                                            // 5.前年度計画番号
+                                    + ", KeikakuZenkaiAnkenBangou"                                              // 6.前年度案件番号
+                                    + ", KeikakuZenkaiJutakuBangou"                                             // 7.前年度受託番号
+                                    + ", KeikakuZenkaiHachuushaMeiKaMei"                                        // 8.前年度発注者名・課名
+                                    + ", KeikakuZenkaiGyoumuMei"                                                // 9.前年度業務名称
+                                    + ", KeikakuBushoShibuMei"                                                  // 10.部所支部名
+                                    + ", KeikakuKashoShibuMei"                                                  // 11.課所支部名
+                                    + ", KeikakuGyoumuKubunMei"                                                 // 12.契約区分
+                                    + ", KeikakuHachuushaMeiKaMei"                                              // 13.発注者名・課名
+                                    + ", KeikakuAnkenMei"                                                       // 14.計画案件名
+                                    + ", CONVERT(NVARCHAR, KeikakuKoukiKaishibi, 111) AS 'KeikakuKoukiKaishibi'"    // 15.工期開始日
+                                    + ", CONVERT(NVARCHAR, KeikakuKoukiShuryoubi, 111) AS 'KeikakuKoukiShuryoubi'"  // 16.工期終了日
+                                    + ", KeikakuRakusatsumikomigaku"                                            // 17.調査部配分 落札見込額（税抜）
+                                    + ", KeikakuHenkoumikomigaku"                                               // 18.調査部配分 変更見込額（税抜） 
+                                    + ", KeikakuNendoKurikoshiGaku"                                             // 19.調査部配分 年度繰越額（税抜）
+                                    + ", KeikakuMikomigaku"                                                     // 20.調査部配分 見込額合計（税抜）           ※出力対象外
+                                    + ", KeikakuRakusatsumikomigakuJF"                                          // 21.事業普及部配分 落札見込額（税抜）
+                                    + ", KeikakuHenkoumikomigakuJF"                                             // 22.事業普及部配分 変更見込額（税抜）
+                                    + ", KeikakuNendoKurikoshiGakuJF"                                           // 23.事業普及部配分 年度繰越額（税抜）
+                                    + ", KeikakuMikomigakuJF"                                                   // 24.事業普及部配分 見込額合計（税抜）       ※出力対象外
+                                    + ", KeikakuRakusatsumikomigakuJ"                                           // 25.情報システム部配分 落札見込額（税抜）
+                                    + ", KeikakuHenkoumikomigakuJ"                                              // 26.情報システム部配分 変更見込額（税抜）
+                                    + ", KeikakuNendoKurikoshiGakuJ"                                            // 27.情報システム部配分 年度繰越額（税抜）
+                                    + ", KeikakuMikomigakuJ"                                                    // 28.情報システム部配分 見込額合計（税抜）   ※出力対象外
+                                    + ", KeikakuRakusatsumikomigakuK"                                           // 29.総合研究所配分 落札見込額（税抜）
+                                    + ", KeikakuHenkoumikomigakuK"                                              // 30.総合研究所配分 変更見込額（税抜）
+                                    + ", KeikakuNendoKurikoshiGakuK"                                            // 31.総合研究所配分 年度繰越額（税抜）
+                                    + ", KeikakuMikomigakuK"                                                    // 32.総合研究所配分 見込額合計（税抜）       ※出力対象外
+                                    + ", KeikakuMikomigakuGoukei"                                               // 33.見込額総合計（税抜）                    ※出力対象外
+                                    + ", KeikakuShizaiChousa"                                                   // 34.調査業務別 配分 資材調査
+                                    + ", KeikakuEizen"                                                          // 35.調査業務別 配分 営繕
+                                    + ", KeikakuKikiruiChousa"                                                  // 36.調査業務別 配分 機器類調査
+                                    + ", KeikakuKoujiChousahi"                                                  // 37.調査業務別 配分 工事費調査
+                                    + ", KeikakuSanpaiChousa"                                                   // 38.調査業務別 配分 産廃調査
+                                    + ", KeikakuHokakeChousa"                                                   // 39.調査業務別 配分 歩掛調査
+                                    + ", KeikakuShokeihiChousa"                                                 // 40.調査業務別 配分 諸経費調査
+                                    + ", KeikakuGenkaBunseki"                                                   // 41.調査業務別 配分 原価分析調査
+                                    + ", KeikakuKijunsakusei"                                                   // 42.調査業務別 配分 基準作成改訂
+                                    + ", KeikakuKoukyouRoumuhi"                                                 // 43.調査業務別 配分 公共労費調査
+                                    + ", KeikakuRoumuhiKoukyouigai"                                             // 44.調査業務別 配分 労務費公共以外
+                                    + ", KeikakuSonotaChousabu"                                                 // 45.調査業務別 配分 その他調査部
+                                    + ", KeikakuHaibunGoukei"                                                   // 46.調査業務別 配分 合計                    ※出力対象外
+                                    + " FROM KeikakuJouhou"
+                                    + " LEFT JOIN Mst_Busho"
+                                    + " ON KeikakuBushoShibuCD = BushoShibuCD"
+                                    + " AND KeikakuKashoShibuCD = KashoShibuCD"
+                                    + " AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + ToNendo + "/3/31' ) "
+                                    + " AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + FromNendo + "/4/1' ) "
+                                    + " WHERE KeikakuUriageNendo IS NOT NULL"                                    
+                                    + " and KeikakuUriageNendo <= '" + nendo1 + "'"
+                                    + " and KeikakuUriageNendo >= '" + nendo2 + "'"
+                                    //エントリ君STEP1　工期開始年度追加
+                                    + " and KeikakuKaishiNendo <= '" + kouki_kaishi_nendo1 + "'"
+                                    + " and KeikakuKaishiNendo >= '" + kouki_kaishi_nendo2 + "'"
+                                    ;
+                    if (src_4.Text != "")
+                    {
+                        if (src_4.SelectedValue.ToString() == "127100")
+                        {
+                            cmd.CommandText += "  and ( GyoumuBushoCD like '1271%' or GyoumuBushoCD = '127220' ) ";
+                        }
+                        else
+                        {
+                            cmd.CommandText += "  and GyoumuBushoCD = '" + src_4.SelectedValue + "'";
+                        }
+                    }
+                    cmd.CommandText += " ORDER BY KeikakuBangou DESC ";
+
+                    //データ取得
+                    sda = new SqlDataAdapter(cmd);
+                    sda.Fill(dt4);
+                    conn.Close();
+
+
+                    //xlSheet = wb.Sheets[u - 1];
+                    xlSheet = wb.Sheets["取り込みシート"];
+
+                    // 出力対象のセルをレンジでまとめるため、配列を複数用意する。
+                    String[,] pData1 = new string[dt4.Rows.Count, 17];      // B～R      処理区分 ～ 工期終了日
+                    int[,] pData2 = new int[dt4.Rows.Count, 3];             // S～U      調査部配分 落札時見込額（税抜） ～ 年度繰越額（税抜）
+                    int[,] pData3 = new int[dt4.Rows.Count, 3];             // W～Y      事業普及部配分 落札時見込額（税抜） ～ 年度繰越額（税抜）
+                    int[,] pData4 = new int[dt4.Rows.Count, 3];             // AA～AC      情報システム部配分 落札時見込額（税抜） ～ 年度繰越額（税抜）
+                    int[,] pData5 = new int[dt4.Rows.Count, 3];             // AE～AG      総合研究所 落札時見込額（税抜） ～ 年度繰越額（税抜）
+                    int[,] pData6 = new int[dt4.Rows.Count, 12];            // AJ～AU    調査業務別　配分 資材調査 ～ その他調査部
+
+                    int colCount_moto = 0;  // 編集元配列のカウント（編集先が変わっても連続する）
+                    int colCount_saki = 0;  // 編集先配列のカウント（編集先が変わるごとリセット）
+                    for (int i = 0; i < dt4.Rows.Count; i++)
+                    {
+
+                        colCount_moto = 0;
+                        colCount_saki = 0;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 0.処理区分
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 1.計画登録日
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 2.売上年度
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 3.工期開始年度
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 4.計画番号
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 5.前年度計画番号
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 6.前年度案件番号
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 7.前年度受託番号
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 8.前年度発注者名・課名
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 9.前年度業務名称
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 10.部所支部名
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 11.課所支部名
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 12.契約区分
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 13.発注者名・課名
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 14.計画案件名
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 15.工期開始日
+                        colCount_saki += 1;
+                        pData1[i, colCount_saki] = dt4.Rows[i][colCount_moto + colCount_saki].ToString();     // 16.工期終了日
+                        colCount_saki += 1;
+
+                        colCount_moto += colCount_saki;
+                        colCount_saki = 0;
+                        pData2[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 17.調査部配分 落札見込額（税抜）
+                        colCount_saki += 1;
+                        pData2[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 18.調査部配分 変更見込額（税抜） 
+                        colCount_saki += 1;
+                        pData2[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 19.調査部配分 年度繰越額（税抜） 
+                        colCount_saki += 1;
+                        // 20.調査部配分 見込額合計（税抜）           ※出力対象外 
+                        colCount_saki += 1; 
+
+                        colCount_moto += colCount_saki;
+                        colCount_saki = 0;
+                        pData3[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 21.事業普及部配分 落札見込額（税抜）
+                        colCount_saki += 1;
+                        pData3[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 22.事業普及部配分 変更見込額（税抜）
+                        colCount_saki += 1;
+                        pData3[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 23.事業普及部配分 年度繰越額（税抜）
+                        colCount_saki += 1;
+                        // 24.事業普及部配分 見込額合計（税抜）       ※出力対象外
+                        colCount_saki += 1;
+
+                        colCount_moto += colCount_saki;
+                        colCount_saki = 0;
+                        pData4[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 25.情報システム部配分 落札見込額（税抜）
+                        colCount_saki += 1;
+                        pData4[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 26.情報システム部配分 変更見込額（税抜）
+                        colCount_saki += 1;
+                        pData4[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 27.情報システム部配分 年度繰越額（税抜）
+                        colCount_saki += 1;
+                        // 28.情報システム部配分 見込額合計（税抜）   ※出力対象外
+                        colCount_saki += 1;
+
+                        colCount_moto += colCount_saki;
+                        colCount_saki = 0;
+                        pData5[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 29.総合研究所配分 落札見込額（税抜）
+                        colCount_saki += 1;
+                        pData5[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 30.総合研究所配分 変更見込額（税抜）
+                        colCount_saki += 1;
+                        pData5[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 31.総合研究所配分 変更見込額（税抜）
+                        colCount_saki += 1;
+                        // 32.総合研究所配分 見込額合計（税抜）       ※出力対象外
+                        colCount_saki += 1;
+                        // 33.見込額総合計（税抜）                    ※出力対象外
+                        colCount_saki += 1;
+
+                        colCount_moto += colCount_saki;
+                        colCount_saki = 0;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 34.調査業務別 配分 資材調査
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 35.調査業務別 配分 営繕
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 36.調査業務別 配分 機器類調査
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 37.調査業務別 配分 工事費調査
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 38.調査業務別 配分 産廃調査
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 39.調査業務別 配分 歩掛調査
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 40.調査業務別 配分 諸経費調査
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 41.調査業務別 配分 原価分析調査
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 42.調査業務別 配分 基準作成改訂
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 43.調査業務別 配分 公共労費調査
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 44.調査業務別 配分 労務費公共以外
+                        colCount_saki += 1;
+                        pData6[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 45.調査業務別 配分 その他調査部
+                        colCount_saki += 1;
+                        // 46.調査業務別 配分 合計                    ※出力対象外
+                        colCount_saki += 1;
+                    }
+
+                    // 開始行、終了行の指定
+                    int startRow = 8;
+                    int endRow = dt4.Rows.Count + 7;
+
+                    // 出力対象のセルを連続するセルでまとめて、配列ごと書き出しを行う。
+                    w_rgn = xlSheet.Range("B" + startRow + ":" + "R" + endRow);
+                    w_rgn.Value = pData1;
+
+                    w_rgn = xlSheet.Range("S" + startRow + ":" + "U" + endRow);
+                    w_rgn.Value = pData2;
+
+                    w_rgn = xlSheet.Range("W" + startRow + ":" + "Y" + endRow);
+                    w_rgn.Value = pData3;
+
+                    w_rgn = xlSheet.Range("AA" + startRow + ":" + "AC" + endRow);
+                    w_rgn.Value = pData4;
+
+                    w_rgn = xlSheet.Range("AE" + startRow + ":" + "AG" + endRow);
+                    w_rgn.Value = pData5;
+
+                    w_rgn = xlSheet.Range("AJ" + startRow + ":" + "AU" + endRow);
+                    w_rgn.Value = pData6;
+
+                }
+            }
+            finally
+            {
+                Marshal.ReleaseComObject(w_rgn);
+                Marshal.ReleaseComObject(xlSheet);
+                xlSheet = null;
+                GC.Collect();
+            }
+        }
+
+        #region "setExcelFileのオリジナルソース ひとまずバックアップ"
+        private void setExcelFile_org(Workbook wb, Worksheet ws)
+        {
+            //Excelシートのインスタンスを作る
+            //インデックスは1始まり
+            int u = wb.Sheets.Count;
+            dynamic xlSheet = null;
+            xlSheet = wb.Sheets[u];
+            Excel.Range w_rgn = xlSheet.Cells;
+            try
+            {
+                var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                using (var conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+                    var cmd = conn.CreateCommand();
+
+                    int FromNendo;
+                    if (!int.TryParse(src_1.SelectedValue.ToString(), out FromNendo))
+                    {
+                        FromNendo = DateTime.Today.Year;
+                    }
+                    int ToNendo = FromNendo + 1;
+
+                    //部所支部データ取得
+                    var dt = new DataTable();
+                    //SQL生成
+                    cmd.CommandText = "SELECT DISTINCT " +
+                    "BushoShibuCD ,ShibuMei " +
+                    "FROM " + "Mst_Busho " +
+                    "WHERE ISNULL(BushoShibuCD,'') <> '' AND GyoumuBushoCD < '999990' and BushoKeikakuHyoujiFlg = '1' " +
                 "AND NOT GyoumuBushoCD LIKE '121%' " +
                 //"AND NOT GyoumuBushoCD LIKE '1502%' AND NOT GyoumuBushoCD LIKE '1504%' AND NOT GyoumuBushoCD LIKE '121%' " +
                 "AND BushoNewOld <= 1 AND ISNULL(BushoDeleteFlag,0) = 0 AND (BushoShibuCD IS NOT NULL OR KashoShibuCD IS NOT NULL) " +
-                //"AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
-                //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
+                    //"AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
+                    //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
                     "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + ToNendo + "/3/31' ) " +
                     "AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + FromNendo + "/4/1' )";
 
@@ -2805,10 +4428,10 @@ namespace TokuchoBugyoK2
                     "FROM " + "Mst_Busho " +
                     "WHERE ISNULL(KashoShibuCD,'') <> '' AND GyoumuBushoCD < '999990' and BushoKeikakuHyoujiFlg = '1' " +
                 "AND NOT GyoumuBushoCD LIKE '121%' " +
-                //"AND NOT GyoumuBushoCD LIKE '1502%' AND NOT GyoumuBushoCD LIKE '1504%' AND NOT GyoumuBushoCD LIKE '121%' " +
-                //"AND BushoNewOld <= 1 AND ISNULL(BushoDeleteFlag,0) = 0 AND (BushoShibuCD IS NOT NULL OR KashoShibuCD IS NOT NULL) " +
-                //"AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
-                //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
+                    //"AND NOT GyoumuBushoCD LIKE '1502%' AND NOT GyoumuBushoCD LIKE '1504%' AND NOT GyoumuBushoCD LIKE '121%' " +
+                    //"AND BushoNewOld <= 1 AND ISNULL(BushoDeleteFlag,0) = 0 AND (BushoShibuCD IS NOT NULL OR KashoShibuCD IS NOT NULL) " +
+                    //"AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
+                    //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
                     "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + ToNendo + "/3/31' ) " +
                     "AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + FromNendo + "/4/1' )";
 
@@ -3020,7 +4643,7 @@ namespace TokuchoBugyoK2
                         pData2[i, colCount_saki] = int.Parse(((decimal)dt4.Rows[i][colCount_moto + colCount_saki]).ToString("F0"));      // 15.調査部配分 変更見込額（税抜） 
                         colCount_saki += 1;
                         // 16.調査部配分 見込額合計（税抜）           ※出力対象外 
-                        colCount_saki += 1; 
+                        colCount_saki += 1;
 
                         colCount_moto += colCount_saki;
                         colCount_saki = 0;
@@ -3132,6 +4755,7 @@ namespace TokuchoBugyoK2
                 GC.Collect();
             }
         }
+        #endregion
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -3320,6 +4944,8 @@ namespace TokuchoBugyoK2
             SQLtext.AppendLine(", KeikakuSakuseiKashoShibuMei");        // 課所支部名
             SQLtext.AppendLine(", KeikakuTourokubi");                   // 計画登録日
             SQLtext.AppendLine(", KeikakuUriageNendo");                 // 売上年度
+            //エントリ君STEP1
+            SQLtext.AppendLine(", KeikakuKaishiNendo");                 // 計画開始年度
             SQLtext.AppendLine(", KeikakuBangou");                      // 計画番号
             SQLtext.AppendLine(", KeikakuZenkaiKeikakuBangou");         // 前年度計画番号
             SQLtext.AppendLine(", KeikakuZenkaiAnkenBangou");           // 前年度案件番号
@@ -3334,17 +4960,28 @@ namespace TokuchoBugyoK2
             SQLtext.AppendLine(", KeikakuGyoumuKubunMei");              // 契約区分
             SQLtext.AppendLine(", KeikakuHachuushaMeiKaMei");           // 発注者名・課名
             SQLtext.AppendLine(", KeikakuAnkenMei");                    // 計画案件名
+            //エントリ君STEP1
+            SQLtext.AppendLine(", KeikakuKoukiKaishibi");               // 工期開始日
+            SQLtext.AppendLine(", KeikakuKoukiShuryoubi");              // 工期終了日
             SQLtext.AppendLine(", KeikakuRakusatsumikomigaku");         // 調査部配分　落札時見込額（税抜）
             SQLtext.AppendLine(", KeikakuHenkoumikomigaku");            // 調査部配分　変更見込額（税抜）
+            //エントリ君STEP1
+            SQLtext.AppendLine(", KeikakuNendoKurikoshiGaku");            // 調査部配分　年度繰越額（税抜）
             SQLtext.AppendLine(", KeikakuMikomigaku");                  // 調査部配分　見込額合計（税抜）
             SQLtext.AppendLine(", KeikakuRakusatsumikomigakuJF");       // 事業普及部配分　落札時見込額（税抜）
             SQLtext.AppendLine(", KeikakuHenkoumikomigakuJF");          // 事業普及部配分　変更見込額（税抜）
+            //エントリ君STEP1
+            SQLtext.AppendLine(", KeikakuNendoKurikoshiGakuJF");          // 事業普及部配分　年度繰越額（税抜）
             SQLtext.AppendLine(", KeikakuMikomigakuJF");                // 事業普及部配分　見込額合計（税抜）
             SQLtext.AppendLine(", KeikakuRakusatsumikomigakuJ");        // 情報システム部配分　落札時見込額（税抜）
             SQLtext.AppendLine(", KeikakuHenkoumikomigakuJ");           // 情報システム部配分　変更見込額（税抜）
+            //エントリ君STEP1
+            SQLtext.AppendLine(", KeikakuNendoKurikoshiGakuJ");           // 情報システム部配分　年度繰越額（税抜）
             SQLtext.AppendLine(", KeikakuMikomigakuJ");                 // 情報システム部配分　見込額合計（税抜）
             SQLtext.AppendLine(", KeikakuRakusatsumikomigakuK");        // 総合研究所　落札時見込額（税抜）
             SQLtext.AppendLine(", KeikakuHenkoumikomigakuK");           // 総合研究所　変更見込額（税抜）
+            //エントリ君STEP1
+            SQLtext.AppendLine(", KeikakuNendoKurikoshiGakuK");           // 総合研究所　年度繰越額（税抜）
             SQLtext.AppendLine(", KeikakuMikomigakuK");                 // 総合研究所　見込額合計（税抜）
             SQLtext.AppendLine(", KeikakuMikomigakuGoukei");            // 見込額総合計(税抜）
             SQLtext.AppendLine(", KeikakuShizaiChousa");                // 調査業務別　配分　資材調査

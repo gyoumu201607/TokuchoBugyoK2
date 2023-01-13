@@ -62,6 +62,11 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.src_14 = new System.Windows.Forms.ComboBox();
+            this.src_15 = new System.Windows.Forms.RadioButton();
+            this.src_16 = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.src_13 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -81,12 +86,12 @@
             this.src_11 = new System.Windows.Forms.TextBox();
             this.src_12 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.src_8 = new System.Windows.Forms.ComboBox();
             this.src_7 = new System.Windows.Forms.TextBox();
             this.src_6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.src_8 = new System.Windows.Forms.ComboBox();
             this.ErrorMessage = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -103,6 +108,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
@@ -266,7 +272,7 @@
             this.tableLayoutPanel2.RowCount = 7;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -298,12 +304,12 @@
             this.c1FlexGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.c1FlexGrid1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.c1FlexGrid1.KeyActionTab = C1.Win.C1FlexGrid.KeyActionEnum.MoveAcross;
-            this.c1FlexGrid1.Location = new System.Drawing.Point(8, 228);
+            this.c1FlexGrid1.Location = new System.Drawing.Point(8, 265);
             this.c1FlexGrid1.Margin = new System.Windows.Forms.Padding(8);
             this.c1FlexGrid1.Name = "c1FlexGrid1";
             this.c1FlexGrid1.Rows.Count = 3;
             this.c1FlexGrid1.Rows.Fixed = 2;
-            this.c1FlexGrid1.Size = new System.Drawing.Size(1864, 680);
+            this.c1FlexGrid1.Size = new System.Drawing.Size(1864, 654);
             this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
             this.c1FlexGrid1.TabIndex = 21;
             this.c1FlexGrid1.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid1_BeforeMouseDown);
@@ -326,7 +332,7 @@
             this.tableLayoutPanel12.Controls.Add(this.End_Page, 4, 0);
             this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel10, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.btnGridSize, 5, 0);
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 186);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 223);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -477,7 +483,7 @@
             this.tableLayoutPanel3.Controls.Add(this.button2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.button7, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.button1, 2, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 122);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 159);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -637,6 +643,8 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.94296F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.32093F));
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel11, 1, 1);
+            this.tableLayoutPanel9.Controls.Add(this.label13, 0, 2);
             this.tableLayoutPanel9.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.src_13, 9, 1);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel5, 1, 0);
@@ -651,22 +659,94 @@
             this.tableLayoutPanel9.Controls.Add(this.label2, 6, 1);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel7, 7, 1);
             this.tableLayoutPanel9.Controls.Add(this.label6, 0, 1);
-            this.tableLayoutPanel9.Controls.Add(this.src_8, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.src_7, 9, 0);
             this.tableLayoutPanel9.Controls.Add(this.src_6, 7, 0);
             this.tableLayoutPanel9.Controls.Add(this.label9, 8, 0);
             this.tableLayoutPanel9.Controls.Add(this.label8, 6, 0);
             this.tableLayoutPanel9.Controls.Add(this.label7, 8, 1);
+            this.tableLayoutPanel9.Controls.Add(this.src_8, 1, 2);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(8, 55);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(8);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 2;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1864, 59);
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1864, 96);
             this.tableLayoutPanel9.TabIndex = 2;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 3;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel11.Controls.Add(this.src_14, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.src_15, 1, 0);
+            this.tableLayoutPanel11.Controls.Add(this.src_16, 2, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(106, 32);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(294, 32);
+            this.tableLayoutPanel11.TabIndex = 16;
+            // 
+            // src_14
+            // 
+            this.src_14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_14.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.src_14.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.src_14.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.src_14.FormattingEnabled = true;
+            this.src_14.Items.AddRange(new object[] {
+            "2018年度",
+            "2019年度",
+            "2020年度"});
+            this.src_14.Location = new System.Drawing.Point(3, 5);
+            this.src_14.Name = "src_14";
+            this.src_14.Size = new System.Drawing.Size(94, 22);
+            this.src_14.TabIndex = 2;
+            this.src_14.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
+            // 
+            // src_15
+            // 
+            this.src_15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_15.AutoSize = true;
+            this.src_15.Checked = true;
+            this.src_15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.src_15.Location = new System.Drawing.Point(103, 5);
+            this.src_15.Name = "src_15";
+            this.src_15.Size = new System.Drawing.Size(68, 21);
+            this.src_15.TabIndex = 3;
+            this.src_15.TabStop = true;
+            this.src_15.Text = "当年度";
+            this.src_15.UseVisualStyleBackColor = true;
+            // 
+            // src_16
+            // 
+            this.src_16.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_16.AutoSize = true;
+            this.src_16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.src_16.Location = new System.Drawing.Point(177, 5);
+            this.src_16.Name = "src_16";
+            this.src_16.Size = new System.Drawing.Size(76, 21);
+            this.src_16.TabIndex = 4;
+            this.src_16.Text = "3年以内";
+            this.src_16.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label13.Location = new System.Drawing.Point(3, 71);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 17);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "契約区分";
             // 
             // label4
             // 
@@ -674,7 +754,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.AntiqueWhite;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(4, 6);
+            this.label4.Location = new System.Drawing.Point(4, 7);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 17);
@@ -693,7 +773,7 @@
             "100",
             "150",
             "200"});
-            this.src_13.Location = new System.Drawing.Point(1619, 33);
+            this.src_13.Location = new System.Drawing.Point(1619, 37);
             this.src_13.Name = "src_13";
             this.src_13.Size = new System.Drawing.Size(64, 22);
             this.src_13.TabIndex = 14;
@@ -714,7 +794,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(294, 29);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(294, 32);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // src_1
@@ -728,7 +808,7 @@
             "2018年度",
             "2019年度",
             "2020年度"});
-            this.src_1.Location = new System.Drawing.Point(3, 3);
+            this.src_1.Location = new System.Drawing.Point(3, 5);
             this.src_1.Name = "src_1";
             this.src_1.Size = new System.Drawing.Size(94, 22);
             this.src_1.TabIndex = 2;
@@ -742,7 +822,7 @@
             this.src_2.AutoSize = true;
             this.src_2.Checked = true;
             this.src_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.src_2.Location = new System.Drawing.Point(103, 4);
+            this.src_2.Location = new System.Drawing.Point(103, 5);
             this.src_2.Name = "src_2";
             this.src_2.Size = new System.Drawing.Size(68, 21);
             this.src_2.TabIndex = 3;
@@ -756,7 +836,7 @@
             this.src_3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.src_3.AutoSize = true;
             this.src_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.src_3.Location = new System.Drawing.Point(177, 4);
+            this.src_3.Location = new System.Drawing.Point(177, 5);
             this.src_3.Name = "src_3";
             this.src_3.Size = new System.Drawing.Size(76, 21);
             this.src_3.TabIndex = 4;
@@ -769,7 +849,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(763, 35);
+            this.label5.Location = new System.Drawing.Point(763, 39);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 17);
             this.label5.TabIndex = 0;
@@ -779,7 +859,7 @@
             // 
             this.src_10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.src_10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.src_10.Location = new System.Drawing.Point(879, 33);
+            this.src_10.Location = new System.Drawing.Point(879, 37);
             this.src_10.MaxLength = 40;
             this.src_10.Name = "src_10";
             this.src_10.Size = new System.Drawing.Size(152, 21);
@@ -790,7 +870,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label10.Location = new System.Drawing.Point(403, 6);
+            this.label10.Location = new System.Drawing.Point(403, 7);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(92, 17);
             this.label10.TabIndex = 0;
@@ -823,7 +903,7 @@
             "建築調査部",
             "建築調査部 建築",
             "建築調査部 設備"});
-            this.src_4.Location = new System.Drawing.Point(519, 3);
+            this.src_4.Location = new System.Drawing.Point(519, 5);
             this.src_4.Name = "src_4";
             this.src_4.Size = new System.Drawing.Size(233, 22);
             this.src_4.TabIndex = 4;
@@ -834,7 +914,7 @@
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label22.Location = new System.Drawing.Point(403, 35);
+            this.label22.Location = new System.Drawing.Point(403, 39);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(106, 17);
             this.label22.TabIndex = 0;
@@ -844,7 +924,7 @@
             // 
             this.src_9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.src_9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.src_9.Location = new System.Drawing.Point(519, 33);
+            this.src_9.Location = new System.Drawing.Point(519, 37);
             this.src_9.MaxLength = 40;
             this.src_9.Name = "src_9";
             this.src_9.Size = new System.Drawing.Size(152, 21);
@@ -855,7 +935,7 @@
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label17.Location = new System.Drawing.Point(763, 6);
+            this.label17.Location = new System.Drawing.Point(763, 7);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(64, 17);
             this.label17.TabIndex = 0;
@@ -865,8 +945,8 @@
             // 
             this.src_5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.src_5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.src_5.Location = new System.Drawing.Point(879, 4);
-            this.src_5.MaxLength = 10;
+            this.src_5.Location = new System.Drawing.Point(879, 5);
+            this.src_5.MaxLength = 13;
             this.src_5.Name = "src_5";
             this.src_5.Size = new System.Drawing.Size(127, 21);
             this.src_5.TabIndex = 5;
@@ -878,10 +958,10 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1150, 32);
+            this.label2.Location = new System.Drawing.Point(1150, 35);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 24);
+            this.label2.Size = new System.Drawing.Size(96, 26);
             this.label2.TabIndex = 0;
             this.label2.Text = "案件数";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -893,7 +973,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76F));
             this.tableLayoutPanel7.Controls.Add(this.src_11, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.src_12, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(1249, 29);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(1249, 32);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
@@ -932,12 +1012,70 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.AntiqueWhite;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label6.Location = new System.Drawing.Point(3, 35);
+            this.label6.Location = new System.Drawing.Point(3, 39);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 17);
+            this.label6.Size = new System.Drawing.Size(92, 17);
             this.label6.TabIndex = 0;
-            this.label6.Text = "契約区分";
+            this.label6.Text = "工期開始年度";
+            // 
+            // src_7
+            // 
+            this.src_7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.src_7.Location = new System.Drawing.Point(1619, 5);
+            this.src_7.MaxLength = 150;
+            this.src_7.Name = "src_7";
+            this.src_7.Size = new System.Drawing.Size(240, 21);
+            this.src_7.TabIndex = 7;
+            // 
+            // src_6
+            // 
+            this.src_6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.src_6.Location = new System.Drawing.Point(1252, 5);
+            this.src_6.MaxLength = 100;
+            this.src_6.Name = "src_6";
+            this.src_6.Size = new System.Drawing.Size(236, 21);
+            this.src_6.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label9.Location = new System.Drawing.Point(1531, 7);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 17);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "計画案件名";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label8.Location = new System.Drawing.Point(1150, 7);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(92, 17);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "計画発注者名";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.CadetBlue;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(1531, 35);
+            this.label7.Margin = new System.Windows.Forms.Padding(3);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 26);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "表示件数";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // src_8
             // 
@@ -956,68 +1094,11 @@
             "事業普及部（物品購入）",
             "情シス部（一般契約）",
             "総合研究所"});
-            this.src_8.Location = new System.Drawing.Point(109, 33);
+            this.src_8.Location = new System.Drawing.Point(109, 69);
             this.src_8.Name = "src_8";
             this.src_8.Size = new System.Drawing.Size(175, 22);
             this.src_8.TabIndex = 8;
             this.src_8.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
-            // 
-            // src_7
-            // 
-            this.src_7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.src_7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.src_7.Location = new System.Drawing.Point(1619, 4);
-            this.src_7.MaxLength = 150;
-            this.src_7.Name = "src_7";
-            this.src_7.Size = new System.Drawing.Size(240, 21);
-            this.src_7.TabIndex = 7;
-            // 
-            // src_6
-            // 
-            this.src_6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.src_6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.src_6.Location = new System.Drawing.Point(1252, 4);
-            this.src_6.MaxLength = 100;
-            this.src_6.Name = "src_6";
-            this.src_6.Size = new System.Drawing.Size(236, 21);
-            this.src_6.TabIndex = 6;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label9.Location = new System.Drawing.Point(1531, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 17);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "計画案件名";
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label8.Location = new System.Drawing.Point(1150, 6);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 17);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "計画発注者名";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.CadetBlue;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(1531, 32);
-            this.label7.Margin = new System.Windows.Forms.Padding(3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 24);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "表示件数";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ErrorMessage
             // 
@@ -1067,6 +1148,8 @@
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -1136,5 +1219,10 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label Grid_Num;
         private System.Windows.Forms.Button btnGridSize;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.ComboBox src_14;
+        private System.Windows.Forms.RadioButton src_15;
+        private System.Windows.Forms.RadioButton src_16;
+        private System.Windows.Forms.Label label13;
     }
 }

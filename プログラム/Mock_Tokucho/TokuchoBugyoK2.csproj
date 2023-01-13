@@ -462,6 +462,7 @@
     <Content Include="Resource\Image\DeleteRow.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resource\Image\DeleteRow.png" />
     <Content Include="Resource\Image\End_Page.png" />
     <Content Include="Resource\Image\excel_icon_s.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

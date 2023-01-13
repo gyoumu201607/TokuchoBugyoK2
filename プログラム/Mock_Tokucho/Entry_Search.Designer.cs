@@ -39,6 +39,8 @@ namespace TokuchoBugyoK2
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblBootMode = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -131,8 +133,6 @@ namespace TokuchoBugyoK2
             this.label10 = new System.Windows.Forms.Label();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
-            this.lblBootMode = new System.Windows.Forms.Label();
-            this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -287,6 +287,33 @@ namespace TokuchoBugyoK2
             this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 11;
             this.label3.Text = "label3";
+            // 
+            // lblBootMode
+            // 
+            this.lblBootMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBootMode.AutoSize = true;
+            this.lblBootMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.lblBootMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.lblBootMode.Location = new System.Drawing.Point(207, 5);
+            this.lblBootMode.Margin = new System.Windows.Forms.Padding(5);
+            this.lblBootMode.Name = "lblBootMode";
+            this.lblBootMode.Size = new System.Drawing.Size(27, 30);
+            this.lblBootMode.TabIndex = 17;
+            this.lblBootMode.Text = " ";
+            this.lblBootMode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblVersion.Location = new System.Drawing.Point(185, 18);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(12, 17);
+            this.lblVersion.TabIndex = 18;
+            this.lblVersion.Text = " ";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel5
             // 
@@ -773,7 +800,7 @@ namespace TokuchoBugyoK2
             this.src_13.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.src_13.Location = new System.Drawing.Point(1373, 42);
             this.src_13.Margin = new System.Windows.Forms.Padding(2);
-            this.src_13.MaxLength = 10;
+            this.src_13.MaxLength = 13;
             this.src_13.Name = "src_13";
             this.src_13.Size = new System.Drawing.Size(103, 21);
             this.src_13.TabIndex = 15;
@@ -1759,33 +1786,6 @@ namespace TokuchoBugyoK2
             this.ErrorMessage.Name = "ErrorMessage";
             this.ErrorMessage.Size = new System.Drawing.Size(1874, 13);
             this.ErrorMessage.TabIndex = 1;
-            // 
-            // lblBootMode
-            // 
-            this.lblBootMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblBootMode.AutoSize = true;
-            this.lblBootMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
-            this.lblBootMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.lblBootMode.Location = new System.Drawing.Point(207, 5);
-            this.lblBootMode.Margin = new System.Windows.Forms.Padding(5);
-            this.lblBootMode.Name = "lblBootMode";
-            this.lblBootMode.Size = new System.Drawing.Size(27, 30);
-            this.lblBootMode.TabIndex = 17;
-            this.lblBootMode.Text = " ";
-            this.lblBootMode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblVersion.Location = new System.Drawing.Point(185, 18);
-            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(12, 17);
-            this.lblVersion.TabIndex = 18;
-            this.lblVersion.Text = " ";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Entry_Search
             // 
