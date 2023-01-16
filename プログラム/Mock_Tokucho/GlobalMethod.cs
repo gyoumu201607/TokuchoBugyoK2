@@ -317,6 +317,9 @@ namespace TokuchoBugyoK2
                     cmd.CommandText += " AND FileReadErrorMessage COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + ChangeSqlText(Where, 1, 0) + "%'  ESCAPE '\\' ";
                 }
 
+                //なぜかコニカミノルタ環境だと取得するDBの順序が、文字ソートみたいになっているため、order by を明示する
+                cmd.CommandText += " ORDER BY FileReadErrorID ASC , FileReadErrorLineNo ASC";
+
                 //データ取得
                 var sda = new SqlDataAdapter(cmd);
                 sda.Fill(comboDt);
@@ -373,6 +376,9 @@ namespace TokuchoBugyoK2
                 {
                     cmd.CommandText += " AND FileReadErrorMessage COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'%" + ChangeSqlText(Where, 1, 0) + "%'  ESCAPE '\\' ";
                 }
+
+                //なぜかコニカミノルタ環境だと取得するDBの順序が、文字ソートみたいになっているため、order by を明示する
+                cmd.CommandText += " ORDER BY FileReadErrorID ASC , FileReadErrorLineNo ASC";
 
                 //データ取得
                 var sda = new SqlDataAdapter(cmd);
