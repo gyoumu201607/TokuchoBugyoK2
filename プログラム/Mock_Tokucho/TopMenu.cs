@@ -12,6 +12,8 @@ using System.Configuration;
 using System.Drawing.Imaging;
 using System.Deployment.Application;
 using Microsoft.VisualBasic.ApplicationServices;
+using System.IO;
+
 
 namespace TokuchoBugyoK2
 {
@@ -138,7 +140,8 @@ namespace TokuchoBugyoK2
 
             this.Owner.Hide();
             //レイアウトロジックを再開する
-            this.ResumeLayout();
+            this.ResumeLayout();            
+
         }
 
         private void Get_Date()
@@ -399,6 +402,272 @@ namespace TokuchoBugyoK2
                 }
             }
 
+        }
+
+        //報告書改善対応：帳票更新APL関連
+        private const string APL_VERSION_CHOUHYOUUPDATE = "APL_VERSION_CHOUHYOUUPDATE";
+        private const char LINE_DATA_EQUAL = '=';
+        private const string ENV_USERNAME = "%username%";
+        //帳票
+        private enum RESULT_CODE
+        {
+            OK = 0
+            ,NG = 1
+        }
+
+        /// <summary>
+        /// 帳票出力アプリケーション（KMJ社作成）の最新版をコピーするためのメソッド
+        /// </summary>
+        private void ReportExeUpdate()
+        {
+            //ローディング画面
+            Popup_Loading Loading = new Popup_Loading();
+            Loading.StartPosition = FormStartPosition.CenterScreen;
+            //Loading.Show();
+
+            try
+            {
+ 
+                //環境変数からログインユーザ名を取得する
+                string loginUser = System.Environment.ExpandEnvironmentVariables(ENV_USERNAME);
+
+                //帳票更新APLのバージョンをDBから取得する。
+                string latestVersion = null2string(GlobalMethod.GetCommonValue1("APL_VERSION_CHOUHYOUUPDATE"));
+                //帳票更新APLのサーバのフォルダを取得   フォルダの情報はすべて末尾に¥がついてる想定
+                string serverReportAplFolder = null2string(GlobalMethod.GetCommonValue1("CHOUHYOUUPDATE_EXE_SERVER_FOLDER"));
+
+                //バージョンやサーバパスがとれなかったらエラーで何もしなくて良いか。
+                if (latestVersion == "" || serverReportAplFolder == "")
+                {
+                    return;
+
+                }
+
+                //帳票更新APLを置くフォルダを取得
+                string repAplFolder = null2string(GlobalMethod.GetCommonValue1("CHOUHYOUUPDATE_EXE_FOLDER")).Replace(ENV_USERNAME, loginUser);
+
+                //configファイルのパスを生成
+                string configFilePath = repAplFolder + null2string(GlobalMethod.GetCommonValue1("CHOUHYOUUPDATE_CLIENT_CONFIG_FILE"));
+
+                //帳票更新APLファイルのパスを生成
+                string reportAplName = null2string(GlobalMethod.GetCommonValue1("CHOUHYOUUPDATE_EXE_NAME"));
+                string localReportAplPath = repAplFolder + reportAplName;
+                string ServerReportAplPath = serverReportAplFolder + reportAplName;
+                //帳票更新APLがDB接続ファイルが必要になったらしい。
+                string reportAplDbConfigName = null2string(GlobalMethod.GetCommonValue1("CHOUHYOUUPDATE_EXE_NAME","2"));
+                string localReportAplDbConfigPath = repAplFolder + reportAplDbConfigName;
+                string ServerReportAplDbConfigPath = serverReportAplFolder + reportAplDbConfigName;
+
+                bool isReportAplCopy = false;
+
+                //configファイルが存在していた
+                if (isExistsFile(configFilePath))
+                {
+                    //configファイルを開き、バージョン番号を取得する。
+                    string localVersion = getReportAplVersion(configFilePath);
+                    //ファイルから取得したバージョン番号と、DBから取得したバージョン番号が異なる場合、帳票更新アプリをコピーするフラグを立てる
+                    if (latestVersion != localVersion)
+                    {
+                        isReportAplCopy = true;
+                    }
+
+                }
+                else //configファイルが存在していなかった。
+                {
+                    //帳票更新APLを置くフォルダを作成する。mkdir
+                    createDir(repAplFolder);
+
+                    //帳票更新APLをサーバからローカルにコピーするフラグを立てる
+                    isReportAplCopy = true;
+                }
+
+                //帳票更新APLのコピーフラグが立っている場合、コピー実施および、Exe起動する。
+                if (isReportAplCopy)
+                {
+                    //帳票サーバから帳票更新APLをコピーする。
+                    //サーバのファイルの存在確認
+                    if (isExistsFile(ServerReportAplPath) && isExistsFile(ServerReportAplDbConfigPath))
+                    {
+                        Loading.Show();
+
+                        //先にDBConfigファイルを取得
+                        File.Copy(ServerReportAplDbConfigPath, localReportAplDbConfigPath, true);
+                        //最新の帳票更新APLをローカルPCにコピー
+                        File.Copy(ServerReportAplPath, localReportAplPath, true);
+
+                        //最新の帳票更新APLを起動する。
+                        //成功するまでリトライするカウント
+                        const int RETRY_COUNT= 1;
+                        bool isSuccess = false;
+
+                        //最新の帳票更新APLを起動する。
+                        for (int i = 0; i <= RETRY_COUNT; i++)
+                        {
+                            //2回目以降は1秒スリープする
+                            if (i > 0)
+                            {
+                                System.Threading.Thread.Sleep(1000);
+                            }
+                            //帳票更新APLを終了待ちで起動する。最新バージョン番号をパラメータとして起動
+                            System.Diagnostics.ProcessStartInfo psInfo = new System.Diagnostics.ProcessStartInfo();
+                            psInfo.FileName = localReportAplPath;
+                            psInfo.Arguments= latestVersion;
+                            psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+                            psInfo.UseShellExecute = false; // シェル機能を使用しない
+
+                            System.Diagnostics.Process p = System.Diagnostics.Process.Start(psInfo);
+                            p.WaitForExit();
+                            //成功したら終了
+                            if(p.ExitCode == (int)RESULT_CODE.OK)
+                            {
+                                Console.WriteLine("Result Code = " + p.ExitCode.ToString());
+                                isSuccess = true;
+                                break;
+                            }
+                            
+                        }
+                        //成功
+                        if (isSuccess)
+                        {
+                            //configファイルのバージョンを作成する、または書き換える
+                            writeFileExecResult(configFilePath, latestVersion);
+                        }
+                        else　//失敗
+                        {
+                            Loading.Close();
+                            //更新プログラム実行中にエラーが発生しました。
+                            MessageBox.Show(GlobalMethod.GetMessage("E00011", ""), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        Loading.Close();
+                        //プログラム更新時にエラーが発生しました。
+                        MessageBox.Show(GlobalMethod.GetMessage("E00010", ""), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Loading.Close();
+                //プログラム更新時にエラーが発生しました。
+                MessageBox.Show(GlobalMethod.GetMessage("E00010", ""), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                //ロード中ファイル閉じる
+                Loading.Close();
+            }
+
+        }
+        /// <summary>
+        /// ディレクトリの存在を確認する
+        /// </summary>
+        /// <param name="dir">ディレクトリ</param>
+        /// <returns>存在有無（true:あり false:なし）</returns>
+        private bool isExistsDir(string dir)
+        {
+            if (System.IO.Directory.Exists(dir))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// ディレクトリを作成する
+        /// </summary>
+        /// <param name="dir">ディレクトリ</param>
+        private void createDir(string dir)
+        {
+            System.IO.Directory.CreateDirectory(dir);
+        }
+
+        /// <summary>
+        /// ファイルの存在を確認する
+        /// </summary>
+        /// <param name="fileName">ファイル名</param>
+        /// <returns>存在有無（true:あり false:なし）</returns>
+        private bool isExistsFile(string fileName)
+        {
+            if (System.IO.File.Exists(fileName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// バージョン番号をconfigファイルに記載する
+        /// </summary>
+        /// <param name="filePath">configファイルパス</param>
+        /// <param name="versionNo">バージョン番号</param>
+        private void writeFileExecResult(string filePath , string versionNo)
+        {
+            //サンプル
+            // APL_VERSION_CHOUHYOUUPDATE = 2.0.0.82.01
+
+            string[] _writeStr;
+            _writeStr = new string[1];
+            _writeStr[0] = APL_VERSION_CHOUHYOUUPDATE + LINE_DATA_EQUAL + versionNo;
+
+            // 文字コード(ここでは、Shift JIS)
+            //Encoding enc = Encoding.GetEncoding("UTF-8");
+            Encoding enc = new System.Text.UTF8Encoding();
+
+            // ファイルが存在しているときは、上書きする
+            System.IO.File.WriteAllLines(filePath, _writeStr, enc);
+        }
+
+       ///configファイルを読み出し、バージョン番号を返却する。
+       ///ファイルの存在確認は事前に実施すること。
+       private string getReportAplVersion(string filePath)
+        {
+            string versionNo = "";
+
+            foreach (string line in System.IO.File.ReadLines(filePath))
+            {
+                System.Console.WriteLine(line);
+                string[] arrData = line.Split(LINE_DATA_EQUAL);
+                if (arrData.Length > 1)
+                {
+                    if(arrData[0].Trim() == APL_VERSION_CHOUHYOUUPDATE)
+                    {
+                        versionNo = arrData[1].Trim();
+                            break;
+                    }
+                }
+ 
+            }
+
+            return versionNo;
+
+        }
+
+        private string null2string(string buff)
+        {
+            if (buff == null)
+            {
+                return "";
+            }
+            else
+            {
+                return buff;
+            }
+        }
+
+        private void TopMenu_Shown(object sender, EventArgs e)
+        {
+            //メイン画面の表示をまず行う。
+            this.Refresh();
+            //報告書改善対応
+            ReportExeUpdate();
         }
     }
 }
