@@ -1080,7 +1080,7 @@
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(236, 30);
             this.label23.TabIndex = 37;
-            this.label23.Text = "変更見込額(税抜)";
+            this.label23.Text = "年度繰越額(税抜)";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label11
