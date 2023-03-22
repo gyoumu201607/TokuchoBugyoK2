@@ -83,7 +83,7 @@ namespace TokuchoBugyoK2
                         {
                             using (var context = new PrincipalContext(ContextType.Domain, ADDomain))
                             {
-                                if (context.ValidateCredentials(UserID.Text, UserPW.Text))
+                                if (context.ValidateCredentials(UserID.Text, UserPW.Text, ContextOptions.Negotiate))
                                 {
                                     var dt2 = globalMethod.Check_Login_Chousain("", UserID.Text);
                                     if (dt2 != null)
