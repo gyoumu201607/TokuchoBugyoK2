@@ -54,6 +54,17 @@ namespace TokuchoBugyoK2
         // 変更伝票がどのボタンから遷移したかのフラグ
         public int ChangeFlag = 0;
 
+        // えんとり君修正STEP2
+        private string sFolderRenameBef = "";    //ファイルを移動するため、変更前のフォルダを保存する
+        private string sFolderBushoCDRenameBef = "";    //受託課所支部（契約部所）
+        private string sFolderYearRenameBef = "";   // 工期開始年度
+        private string sFolderGyomuRenameBef = "";   // 業務名称
+        private string sFolderOrderRenameBef = "";//発注者名
+        private string sItem1_10_ori = ""; //受託課所支部（契約部所）DB値
+        private string sItem1_2_KoukiNendo_ori = ""; //工期開始年度DB値
+        private string sAnkenSakuseiKubun_ori = ""; // 案件区分変更前の値
+        private string sJigyoubuHeadCD_ori = "";    // 事業部ヘッダーコード
+
         // VIPS 20220221 課題管理表No.1273(967) ADD 計画番号コピー制御用
         // この業務を元に新規登録ボタン                ：1
         // この案件番号の枝番で受託番号を作成するボタン：2
@@ -97,6 +108,17 @@ namespace TokuchoBugyoK2
             this.item2_3_2.MouseWheel += item1_3_MouseWheel; // 落札額状況
             this.item3_1_1.MouseWheel += item1_3_MouseWheel; // 案件区分
             this.item3_1_8.MouseWheel += item1_3_MouseWheel; // 契約区分
+
+            //エントリ君修正STEP2
+            this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
+        }
+
+        //不具合No1388対応
+        private void Entry_Input_Shown(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+            this.Refresh();
+            this.TopMost = false;
         }
 
         private void Entry_Input_Load(object sender, EventArgs e)
@@ -230,6 +252,8 @@ namespace TokuchoBugyoK2
             item3_1_14.ImeMode = ImeMode.Disable; // 内消費税
             item3_1_15.ImeMode = ImeMode.Disable; // 受託金額（税込）
             item3_1_16.ImeMode = ImeMode.Disable; // 受託外金額（税込）
+            //えんとり君修正STEP2
+            item3_1_27.ImeMode = ImeMode.Disable;
 
             item3_2_1_1.ImeMode = ImeMode.Disable; // 受託金額配分 配分額（税抜） 調査部
             item3_2_2_1.ImeMode = ImeMode.Disable; // 受託金額配分 配分額（税抜） 事業普及部
@@ -389,7 +413,7 @@ namespace TokuchoBugyoK2
                     {
                         //「この案件番号の枝番で受託番号を作成する」
                         item1_36.Text = GetMoneyTextLong(0);
-                        
+
                         c1FlexGrid1.Rows.Count = 2;
                         Resize_Grid("c1FlexGrid1");
 
@@ -460,7 +484,7 @@ namespace TokuchoBugyoK2
                     {
                         // 取得できた場合、最大値+1する
                         EdaStr = AnkenEdadt.Rows[0][0].ToString();
-                        if(int.TryParse(EdaStr,out Eda))
+                        if (int.TryParse(EdaStr, out Eda))
                         {
                             Eda += 1;
                         }
@@ -497,12 +521,35 @@ namespace TokuchoBugyoK2
                 //item3_1_2.Checked = false;
                 //item3_1_3.CustomFormat = " ";
                 //item3_1_4.CustomFormat = " ";
+                //えんとり君修正STEP2
+                item3_1_27.Visible = false;
+                label44.Visible = false;
+                label50.Visible = false;
+                if (item1_7.Text == "")
+                {
+                    if (item3_1_2.Checked)
+                    {
+                        label51.Visible = false;
+                    }
+                    else
+                    {
+                        label51.Visible = true;
+                    }
+                }
+                else
+                {
+                    label51.Visible = false;
+                }
             }
             else
             {
                 label584.Text = (Convert.ToInt32(AnkenData_H.Rows[0][52]) + 1).ToString();
                 item3_1_4.Text = "";
                 item3_1_4.CustomFormat = " "; // 741:赤黒作成時に起案日をクリア対応
+                //えんとり君修正STEP2
+                item3_1_27.Visible = true;
+                label44.Visible = true;
+                label50.Visible = true;
             }
 
             //新規登録後
@@ -695,6 +742,11 @@ namespace TokuchoBugyoK2
                 item3_1_24.Enabled = false; // その他
                 item3_1_25.Enabled = false; // その他備考
                 item3_1_26.Enabled = false; // 契約図書
+                // えんとり君修正STEP2
+                item3_ribc_price.Enabled = false;//RIBC用単価データ
+                item3_sa_commpany.Enabled = false;//サ社経由
+                item3_1_ribc.Enabled = false;//RIBC用単価契約書
+                //item3_1_
                 //配分情報
                 item3_2_1_1.Enabled = false;
                 item3_2_2_1.Enabled = false;
@@ -731,6 +783,10 @@ namespace TokuchoBugyoK2
                 c1FlexGrid4.Cols[27].AllowEditing = false;
                 //請求書情報
                 label586.Visible = false;
+                //エントリ君修正STEP2
+                label43.Visible = false;
+                label326.Visible = false;
+
                 item3_6_1.Enabled = false;
                 item3_6_2.Enabled = false;
                 item3_6_3.Enabled = false;
@@ -807,6 +863,12 @@ namespace TokuchoBugyoK2
                 button1.Visible = false;
                 button10.Visible = false;
                 button12.Visible = false;
+                //えんとり君修正STEP2
+                label51.Visible = false;
+                item1_37.Visible = false;
+                item1_38.Visible = false;
+                label82.Visible = false;
+                label84.Visible = false;
 
                 //不具合No1310(1028)
                 //コピペテキストと反映するボタンが配置されたテールブルレイアウトパネルを表示有効化する
@@ -876,7 +938,8 @@ namespace TokuchoBugyoK2
                 item3_1_20_kuroden.Visible = false;
             }
 
-            if (Message != "") {
+            if (Message != "")
+            {
                 // 画面呼びなおし時にメッセージを表示
                 set_error(Message);
                 // メッセージをクリア
@@ -891,6 +954,28 @@ namespace TokuchoBugyoK2
             {
                 button10.Visible = false;
             }
+
+            // えんとり君修正STEP2
+            sFolderRenameBef = item1_12.Text;
+            sFolderBushoCDRenameBef = UserInfos[2];    //受託課所支部（契約部所）
+            if (item1_2_KoukiNendo.SelectedValue == null)
+            {
+                sFolderYearRenameBef = item1_2_KoukiNendo.Text.Substring(0, 4);
+            }
+            else
+            {
+                sFolderYearRenameBef = item1_2_KoukiNendo.SelectedValue.ToString();   // 工期開始年度
+            }
+            sFolderGyomuRenameBef = item1_13.Text;   // 業務名称
+            sFolderOrderRenameBef = item1_23.Text;//発注者名
+
+            sItem1_10_ori = item1_10.SelectedValue == null ? "" : item1_10.SelectedValue.ToString(); //受託課所支部（契約部所）DB値
+            sItem1_2_KoukiNendo_ori = sFolderYearRenameBef; //工期開始年度DB値
+
+            bool bVisible = UserInfos[4].Equals("2");
+            label66.Visible = bVisible;
+            label70.Visible = bVisible;
+            item3_sa_commpany.Visible = bVisible;
 
             //GlobalMethod.outputLogger("entory_input", "entory_input load 終了 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
             //レイアウトロジックを再開する
@@ -948,7 +1033,7 @@ namespace TokuchoBugyoK2
             else
             {
                 // 案件情報IDが存在する（更新等）
-                if(AnkenID != "" && mode != "insert" && mode != "keikaku")
+                if (AnkenID != "" && mode != "insert" && mode != "keikaku")
                 {
                     // 01以外の場合、変更伝票を行ったと判定
                     // 1073 赤黒の案件区分修正対応
@@ -966,7 +1051,7 @@ namespace TokuchoBugyoK2
                     {
                         where = " SakuseiKubunID >= '04' AND SakuseiKubunID <> '05'";
                     }
-                    else if(dt != null && dt.Rows[0][0].ToString() == "02")
+                    else if (dt != null && dt.Rows[0][0].ToString() == "02")
                     {
                         // 02:契約変更(赤伝)が表示されない対応
                         where = " SakuseiKubunID = '02'";
@@ -1003,10 +1088,22 @@ namespace TokuchoBugyoK2
             where = "GyoumuNarabijunCD < 100 ";
             //コンボボックスデータ取得
             combodt3 = GlobalMethod.getData(discript, value, table, where);
+            //えんとり君修正STEP2
+            DataTable combodt3C = new DataTable();
+            if (combodt3 != null)
+            {
+                combodt3C = combodt3.Copy();
+                DataRow dr = combodt3.NewRow();
+                combodt3.Rows.InsertAt(dr, 0);
+            }
+            else
+            {
+                combodt3C = null;
+            }
             item1_14.DataSource = combodt3;
             item1_14.DisplayMember = "Discript";
             item1_14.ValueMember = "Value";
-            item3_1_8.DataSource = combodt3;
+            item3_1_8.DataSource = combodt3C;
             item3_1_8.DisplayMember = "Discript";
             item3_1_8.ValueMember = "Value";
 
@@ -1018,6 +1115,12 @@ namespace TokuchoBugyoK2
             where = "KeiyakuKeitaiNarabijun < 20";
             //コンボボックスデータ取得
             combodt4 = GlobalMethod.getData(discript, value, table, where);
+            //えんとり君修正STEP2
+            if (combodt4 != null)
+            {
+                DataRow dr = combodt4.NewRow();
+                combodt4.Rows.InsertAt(dr, 0);
+            }
             item1_15.DataSource = combodt4;
             item1_15.DisplayMember = "Discript";
             item1_15.ValueMember = "Value";
@@ -1218,7 +1321,7 @@ namespace TokuchoBugyoK2
                 for (int i = 1; i < c1FlexGrid1.Rows.Count; i++)
                 {
                     AnkenZenkaiRakusatsuID = c1FlexGrid1.Rows[i][16].ToString();
-                    if(int.TryParse(AnkenZenkaiRakusatsuID ,out num))
+                    if (int.TryParse(AnkenZenkaiRakusatsuID, out num))
                     {
                         if (maxNum < num)
                         {
@@ -1248,7 +1351,7 @@ namespace TokuchoBugyoK2
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             ((DateTimePicker)sender).CustomFormat = "";
-            
+
 
         }
 
@@ -1509,8 +1612,8 @@ namespace TokuchoBugyoK2
             //form.nendo = item1_3.SelectedValue.ToString();
             form.nendo = item1_2_KoukiNendo.SelectedValue.ToString();
             // 受託課所支部が空じゃない場合、工期開始年度を変更時にコンボから値が無くなった場合にエラーとならないように
-            if (item1_10.SelectedValue != null) 
-            { 
+            if (item1_10.SelectedValue != null)
+            {
                 form.Busho = item1_10.SelectedValue.ToString();
             }
 
@@ -1548,35 +1651,54 @@ namespace TokuchoBugyoK2
                 if (item3_1_2.Checked && mode != "change" && mode != "insert" && mode != "keikaku")
                 {
                     ErrorMessage.Text = "";
-                    string[] result = GlobalMethod.InsertReportWork(2, UserInfos[0], new string[] { AnkenID, Header1.Text, "1", "0" });
-
-                    // result
-                    // 成否判定 0:正常 1：エラー
-                    // メッセージ（主にエラー用）
-                    // ファイル物理パス（C:\Work\xxxx\0000000111_エントリーシート.xlsx）
-                    // ダウンロード時のファイル名（エントリーシート.xlsx）
-                    if (result != null && result.Length >= 4)
+                    // えんとり君修正STEP2
+                    //string[] result = GlobalMethod.InsertReportWork(2, UserInfos[0], new string[] { AnkenID, Header1.Text, "1", "0" });
+                    if (!ErrorFLG(2))
                     {
-                        if (result[0].Trim() == "1")
+                        Execute_SQL(2);
+                        int ListID = 2;
+                        if (item3_1_1.Text != null && item3_1_1.Text != "" && (item3_1_1.SelectedValue.ToString() == "03" || int.Parse(item3_1_1.SelectedValue.ToString()) > 5))
                         {
-                            set_error(result[1]);
+                            // 01:新規
+                            // 02:契約変更(赤伝)
+                            // 03:契約変更(黒伝)
+                            // 04:中止
+                            // 05:計画
+                            // 06:契約変更(黒伝・金額変更)
+                            // 07:契約変更(黒伝・工期変更)
+                            // 08:契約変更(黒伝・金額工期変更)
+                            // 09:契約変更(黒伝・その他)
+                            ListID = 353;
+                        }
+                        string[] result = GlobalMethod.InsertReportWork(ListID, UserInfos[0], new string[] { AnkenID, Header1.Text, "1", "0" });
+                        // result
+                        // 成否判定 0:正常 1：エラー
+                        // メッセージ（主にエラー用）
+                        // ファイル物理パス（C:\Work\xxxx\0000000111_エントリーシート.xlsx）
+                        // ダウンロード時のファイル名（エントリーシート.xlsx）
+                        if (result != null && result.Length >= 4)
+                        {
+                            if (result[0].Trim() == "1")
+                            {
+                                set_error(result[1]);
+                            }
+                            else
+                            {
+                                Popup_Download form = new Popup_Download();
+                                form.TopLevel = false;
+                                this.Controls.Add(form);
+                                form.ExcelName = Path.GetFileName(result[3]);
+                                form.TotalFilePath = result[2];
+                                form.Dock = DockStyle.Bottom;
+                                form.Show();
+                                form.BringToFront();
+                            }
                         }
                         else
                         {
-                            Popup_Download form = new Popup_Download();
-                            form.TopLevel = false;
-                            this.Controls.Add(form);
-                            form.ExcelName = Path.GetFileName(result[3]);
-                            form.TotalFilePath = result[2];
-                            form.Dock = DockStyle.Bottom;
-                            form.Show();
-                            form.BringToFront();
+                            // エラーが発生しました
+                            set_error(GlobalMethod.GetMessage("E00091", ""));
                         }
-                    }
-                    else
-                    {
-                        // エラーが発生しました
-                        set_error(GlobalMethod.GetMessage("E00091", ""));
                     }
                 }
                 else
@@ -1585,8 +1707,22 @@ namespace TokuchoBugyoK2
                     if (!ErrorFLG(2))
                     {
                         Execute_SQL(2);
-                        string[] result = GlobalMethod.InsertReportWork(2, UserInfos[0], new string[] { AnkenID, Header1.Text, "1", "0" });
-
+                        //string[] result = GlobalMethod.InsertReportWork(2, UserInfos[0], new string[] { AnkenID, Header1.Text, "1", "0" });
+                        int ListID = 2;
+                        if (item3_1_1.Text != null && item3_1_1.Text != "" && (item3_1_1.SelectedValue.ToString() == "03" || int.Parse(item3_1_1.SelectedValue.ToString()) > 5))
+                        {
+                            // 01:新規
+                            // 02:契約変更(赤伝)
+                            // 03:契約変更(黒伝)
+                            // 04:中止
+                            // 05:計画
+                            // 06:契約変更(黒伝・金額変更)
+                            // 07:契約変更(黒伝・工期変更)
+                            // 08:契約変更(黒伝・金額工期変更)
+                            // 09:契約変更(黒伝・その他)
+                            ListID = 353;
+                        }
+                        string[] result = GlobalMethod.InsertReportWork(ListID, UserInfos[0], new string[] { AnkenID, Header1.Text, "1", "0" });
                         // result
                         // 成否判定 0:正常 1：エラー
                         // メッセージ（主にエラー用）
@@ -1620,6 +1756,76 @@ namespace TokuchoBugyoK2
             }
         }
 
+        // えんとり君修正STEP2　変更伝票画面から確認用エントリーチェックシートを出力出来ます。　「赤伝作成・出力」ボタンを流用する
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(GlobalMethod.GetMessage("I10701", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                ErrorMessage.Text = "";
+                if (String.IsNullOrEmpty(item3_1_1.Text))
+                {
+                    set_error("案件区分を選択してください。");
+                    return;
+                }
+                KianError(1);
+                // エラーでも確認シートを出力する    
+                string sKubun = item3_1_1.SelectedValue.ToString();
+                int ListID = 2;
+                if ((sKubun == "03" || int.Parse(sKubun) > 5))
+                {
+                    // 01:新規
+                    // 02:契約変更(赤伝)
+                    // 03:契約変更(黒伝)
+                    // 04:中止
+                    // 05:計画
+                    // 06:契約変更(黒伝・金額変更)
+                    // 07:契約変更(黒伝・工期変更)
+                    // 08:契約変更(黒伝・金額工期変更)
+                    // 09:契約変更(黒伝・その他)
+                    ListID = 353;
+                }
+                int ankenJouhouID = Create_DummyData();
+                if (ankenJouhouID > 0)
+                {
+                    string[] result = GlobalMethod.InsertReportWork(ListID, UserInfos[0], new string[] { ankenJouhouID.ToString(), Header1.Text, "1", "0" });
+                    // result
+                    // 成否判定 0:正常 1：エラー
+                    // メッセージ（主にエラー用）
+                    // ファイル物理パス（C:\Work\xxxx\0000000111_エントリーシート.xlsx）
+                    // ダウンロード時のファイル名（エントリーシート.xlsx）
+                    if (result != null && result.Length >= 4)
+                    {
+                        if (result[0].Trim() == "1")
+                        {
+                            set_error(result[1]);
+                        }
+                        else
+                        {
+                            Popup_Download form = new Popup_Download();
+                            form.TopLevel = false;
+                            this.Controls.Add(form);
+                            form.ExcelName = Path.GetFileName(result[3]);
+                            form.TotalFilePath = result[2];
+                            form.Dock = DockStyle.Bottom;
+                            form.Show();
+                            form.BringToFront();
+                        }
+                    }
+                    else
+                    {
+                        // エラーが発生しました
+                        set_error(GlobalMethod.GetMessage("E00091", ""));
+                    }
+                }
+                else
+                {
+                    // エラーが発生しました
+                    set_error("出力用データを作成する時にエラーが発生しました。");
+                }
+            }
+        }
+
+        /*
         // 赤伝作成・出力
         private void button20_Click(object sender, EventArgs e)
         {
@@ -1661,15 +1867,33 @@ namespace TokuchoBugyoK2
                 }
             }
         }
+        */
 
         // 黒伝・中止伝票作成・出力
         private void button21_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(GlobalMethod.GetMessage("I10701", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+                //えんとり君修正STEP2 STT
+                int ListID = 1;
+                if (item3_1_1.Text != null && item3_1_1.Text != "" && (item3_1_1.SelectedValue.ToString() == "03" || int.Parse(item3_1_1.SelectedValue.ToString()) > 5))
+                {
+                    // 01:新規
+                    // 02:契約変更(赤伝)
+                    // 03:契約変更(黒伝)
+                    // 04:中止
+                    // 05:計画
+                    // 06:契約変更(黒伝・金額変更)
+                    // 07:契約変更(黒伝・工期変更)
+                    // 08:契約変更(黒伝・金額工期変更)
+                    // 09:契約変更(黒伝・その他)
+                    ListID = 352;
+                }
+                //えんとり君修正STEP2 END
                 // 帳票に渡すAnkenJouhouID
                 string ankenJouhouID = "";
-                if(item3_1_1.Text != null && item3_1_1.Text != "" && item3_1_1.SelectedValue.ToString() == "04")
+                
+                if (item3_1_1.Text != null && item3_1_1.Text != "" && item3_1_1.SelectedValue.ToString() == "04")
                 {
                     // 案件区分が04：中止の場合、帳票プログラムには赤伝のAnkenJouhouIDを渡す
                     ankenJouhouID = item3_1_20_akaden.Text;
@@ -1680,8 +1904,9 @@ namespace TokuchoBugyoK2
                     ankenJouhouID = item3_1_20_kuroden.Text;
                 }
 
-
-                string[] result = GlobalMethod.InsertReportWork(1, UserInfos[0], new string[] { ankenJouhouID, Header1.Text, "0", "1" });
+                //えんとり君修正STEP2
+                //string[] result = GlobalMethod.InsertReportWork(1, UserInfos[0], new string[] { ankenJouhouID, Header1.Text, "0", "1" });
+                string[] result = GlobalMethod.InsertReportWork(ListID, UserInfos[0], new string[] { ankenJouhouID, Header1.Text, "0", "1" });
 
                 // result
                 // 成否判定 0:正常 1：エラー
@@ -2398,6 +2623,7 @@ namespace TokuchoBugyoK2
             item1_12.BackColor = Color.FromArgb(255, 255, 255);
             item1_13.BackColor = Color.FromArgb(255, 255, 255);
             item1_14.BackColor = Color.FromArgb(255, 255, 255);
+            item1_15.BackColor = Color.FromArgb(255, 255, 255); //えんとり君修正STEP2　ご指摘：1392
             item1_16.BackColor = Color.FromArgb(255, 255, 255);
             item1_19.BackColor = Color.FromArgb(255, 255, 255);
             item1_20.BackColor = Color.FromArgb(255, 255, 255);
@@ -2441,6 +2667,18 @@ namespace TokuchoBugyoK2
             label328.BackColor = Color.FromArgb(252, 228, 214);
             label325.BackColor = Color.FromArgb(252, 228, 214);
             label86.BackColor = Color.DarkGray;
+            //えんとり君修正STEP2
+            item3_7_2_26_1.BackColor = Color.FromArgb(255, 255, 255);
+            label502.BackColor = Color.FromArgb(252, 228, 214);
+            c1FlexGrid4.GetCellRange(2, 3).StyleNew.BackColor = Color.FromArgb(255, 255, 255);
+            c1FlexGrid4.GetCellRange(2, 11).StyleNew.BackColor = Color.FromArgb(255, 255, 255);
+            c1FlexGrid4.GetCellRange(2, 19).StyleNew.BackColor = Color.FromArgb(255, 255, 255);
+            c1FlexGrid4.GetCellRange(2, 27).StyleNew.BackColor = Color.FromArgb(255, 255, 255);
+
+            item3_2_1_1.BackColor = Color.FromArgb(255, 255, 255);
+            item3_2_2_1.BackColor = Color.FromArgb(255, 255, 255);
+            item3_2_3_1.BackColor = Color.FromArgb(255, 255, 255);
+            item3_2_4_1.BackColor = Color.FromArgb(255, 255, 255);
 
             // 20210505 チェック処理の記述見直し
             // 更新不可の場合、ErrorFLGをtrueにして返却する
@@ -2508,10 +2746,10 @@ namespace TokuchoBugyoK2
                 // 業務配分と業務別配分のチェックだけのため、条件判定しないようにコメント化
                 //if (errorNyuusatsuFlag)
                 //{
-                    if (nyuusatsuDataCheck())
-                    {
-                        ErrorFLG = true;
-                    }
+                if (nyuusatsuDataCheck())
+                {
+                    ErrorFLG = true;
+                }
                 //}
 
                 // 契約タブのデータチェック（調査会様での入札が成立時）
@@ -4571,6 +4809,13 @@ namespace TokuchoBugyoK2
                 item1_14.BackColor = Color.FromArgb(255, 204, 255);
             }
 
+            //えんとり君修正STEP2　ご指摘：1392
+            //入札方式
+            if (String.IsNullOrEmpty(item1_15.Text))
+            {
+                errorFlg = true;
+                item1_15.BackColor = Color.FromArgb(255, 204, 255);
+            }
             // 538対応 入札状況は編集不可項目になったので、入札（予定）日のみチェック
             //入札状況が、1:入札前以外の場合、
             //if (item1_17.SelectedValue.ToString() != "1")
@@ -4758,15 +5003,15 @@ namespace TokuchoBugyoK2
             //        errorFlg = false;
             //    }
 
-                // 483 業務別配分の必須チェックを無しとし、横計の100%のチェックのみとする。
-                //Double zeroDouble = GetDouble("0");
-                //// 業務別配分の資材調査、営繕調査、機器類調査、工事費調査のいづれかが1以上でない
-                //if (GetDouble(item1_7_2_1_1.Text) == zeroDouble && GetDouble(item1_7_2_2_1.Text) == zeroDouble && GetDouble(item1_7_2_3_1.Text) == zeroDouble && GetDouble(item1_7_2_4_1.Text) == zeroDouble)
-                //{
-                //    // 調査業務別 配分 資材調査、営繕調査、機器類調査、工事費調査のいずれかを入力してください。
-                //    set_error(GlobalMethod.GetMessage("E70049", ""));
-                //    errorFlg = false;
-                //}
+            // 483 業務別配分の必須チェックを無しとし、横計の100%のチェックのみとする。
+            //Double zeroDouble = GetDouble("0");
+            //// 業務別配分の資材調査、営繕調査、機器類調査、工事費調査のいづれかが1以上でない
+            //if (GetDouble(item1_7_2_1_1.Text) == zeroDouble && GetDouble(item1_7_2_2_1.Text) == zeroDouble && GetDouble(item1_7_2_3_1.Text) == zeroDouble && GetDouble(item1_7_2_4_1.Text) == zeroDouble)
+            //{
+            //    // 調査業務別 配分 資材調査、営繕調査、機器類調査、工事費調査のいずれかを入力してください。
+            //    set_error(GlobalMethod.GetMessage("E70049", ""));
+            //    errorFlg = false;
+            //}
             //}
             return errorFlg;
         }
@@ -4868,6 +5113,86 @@ namespace TokuchoBugyoK2
             //    c1FlexGrid3.GetCellRange(1, 2).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
             //    errorFlg = false;
             //}
+
+            //エントリ君修正STEP2
+            if (item3_1_2.Checked == false)
+            {
+                // 調査部 業務別配分が100でないとエラー
+                if (item3_7_2_26_1.Text != "100.00%")
+                {
+                    // 調査業務別　配分の合計が100になるように入力してください。
+                    item3_7_2_26_1.BackColor = Color.FromArgb(255, 204, 255);
+                    label502.BackColor = Color.FromArgb(255, 204, 255);
+                    errorFlg = true;
+                }
+                Double total1 = 0;
+                Double total2 = 0;
+                Double total3 = 0;
+                Double total4 = 0;
+                for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
+                {
+                    if (c1FlexGrid4[i, 3] != null) total1 += GetDouble(c1FlexGrid4[i, 3].ToString());
+                    if (c1FlexGrid4[i, 11] != null) total2 += GetDouble(c1FlexGrid4[i, 11].ToString());
+                    if (c1FlexGrid4[i, 19] != null) total3 += GetDouble(c1FlexGrid4[i, 19].ToString());
+                    if (c1FlexGrid4[i, 27] != null) total4 += GetDouble(c1FlexGrid4[i, 27].ToString());
+                }
+
+                //事業部配分の％と事業部の配分金額が異なっていても起案出来てしまう為、エラーとする。
+                if (item3_7_1_1_1.Text != "0.00%")
+                {
+                    if (total1 == 0)
+                    {
+                        c1FlexGrid4.GetCellRange(2, 3).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
+                    if (GetLong(item3_7_1_6_1.Text) == 0)
+                    {
+                        item3_2_1_1.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
+                }
+                if (item3_7_1_2_1.Text != "0.00%")
+                {
+                    if (total2 == 0)
+                    {
+                        c1FlexGrid4.GetCellRange(2, 11).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
+
+                    if (GetLong(item3_7_1_7_1.Text) == 0)
+                    {
+                        item3_2_2_1.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
+                }
+                if (item3_7_1_3_1.Text != "0.00%")
+                {
+                    if (total3 == 0)
+                    {
+                        c1FlexGrid4.GetCellRange(2, 19).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
+
+                    if (GetLong(item3_7_1_8_1.Text) == 0)
+                    {
+                        item3_2_3_1.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
+                }
+                if (item3_7_1_4_1.Text != "0.00%")
+                {
+                    if (total4 == 0)
+                    {
+                        c1FlexGrid4.GetCellRange(2, 27).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
+                    if (GetLong(item3_7_1_9_1.Text) == 0)
+                    {
+                        item3_2_4_1.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
+                }
+            }
             return errorFlg;
         }
 
@@ -4916,7 +5241,6 @@ namespace TokuchoBugyoK2
                 set_error(GlobalMethod.GetMessage("E70045", "契約タブ"));
                 errorFlg = true;
             }
-
             return errorFlg;
         }
 
@@ -4958,7 +5282,9 @@ namespace TokuchoBugyoK2
 
         }
 
-        private Boolean KianError()
+        // えんとり君修正STEP2：ダミーデータ作成時
+        //private Boolean KianError()
+        private Boolean KianError(int dummyFlag = 0)
         {
             Boolean requiredFlag = true;
             Boolean varidateFlag = true;
@@ -5101,23 +5427,23 @@ namespace TokuchoBugyoK2
             //引合タブ
             //if (mode != "change")
             //{
-                // //引合タブの7.業務内容の調査部の合計が0か100でない
-                //chosaTotal = Decimal.Parse(item1_7_2_13_1.Text.Substring(0, item1_7_2_13_1.Text.Length - 1));
-                // if (Decimal.Compare(chosaTotal, totalHundred) != 0 && Decimal.Compare(chosaTotal, totalZero) != 0)
-                // {
-                //     varidateFlag = false;
-                //     set_error(GlobalMethod.GetMessage("E10703", "(調査部)"));
+            // //引合タブの7.業務内容の調査部の合計が0か100でない
+            //chosaTotal = Decimal.Parse(item1_7_2_13_1.Text.Substring(0, item1_7_2_13_1.Text.Length - 1));
+            // if (Decimal.Compare(chosaTotal, totalHundred) != 0 && Decimal.Compare(chosaTotal, totalZero) != 0)
+            // {
+            //     varidateFlag = false;
+            //     set_error(GlobalMethod.GetMessage("E10703", "(調査部)"));
 
-                // }
+            // }
 
-                // //引合タブの7.業務内容の総合研究所の合計が0か100でない　
-                // Decimal sogoTotal = Decimal.Parse(item1_7_1_4_1.Text.Substring(0, item1_7_1_4_1.Text.Length - 1));
-                // if (Decimal.Compare(sogoTotal, totalHundred) != 0 && Decimal.Compare(sogoTotal, totalZero) != 0)
-                // {
-                //     varidateFlag = false;
-                //     set_error(GlobalMethod.GetMessage("E10703", "(総合研究所)"));
+            // //引合タブの7.業務内容の総合研究所の合計が0か100でない　
+            // Decimal sogoTotal = Decimal.Parse(item1_7_1_4_1.Text.Substring(0, item1_7_1_4_1.Text.Length - 1));
+            // if (Decimal.Compare(sogoTotal, totalHundred) != 0 && Decimal.Compare(sogoTotal, totalZero) != 0)
+            // {
+            //     varidateFlag = false;
+            //     set_error(GlobalMethod.GetMessage("E10703", "(総合研究所)"));
 
-                // }
+            // }
             //}
 
             // 20210515 エラーのチェックを先に行い、ワーニングを後にする。（エラー時はワーニングのチェックをしないようにする）
@@ -5279,7 +5605,53 @@ namespace TokuchoBugyoK2
                 }
             }
 
-            // エラーがなければワーニングのチェックを行う
+            //エントリ君修正STEP2
+            // 受託金額（税込）
+            Double jutakuTax = GetDouble(item3_1_15.Text);      // 1.契約情報の受託金額(税込)
+            Double totalAmount = GetDouble(item3_2_5_1.Text);   // 2.配分情報の配分情報の配分額(税込)の合計
+
+            //受託金額(税込)と配分額(税込)の合計が一致しない
+            if (!Double.Equals(jutakuTax, totalAmount))
+            {
+                set_error(GlobalMethod.GetMessage("E10705", ""));
+                varidateFlag = false;
+            }
+
+            //請求書合計額
+            Double keiyakuTax = GetDouble(item3_1_13.Text);     // 1.契約情報の契約金額の税込
+            Double seikyuTotal = GetDouble(item3_6_13.Text);    // 6.請求書情報の請求金額の請求合計額
+
+            //契約タブの1.契約情報の契約金額の税込と、6.請求書情報の請求金額の請求合計額が一致していない
+            if (!Double.Equals(keiyakuTax, seikyuTotal))
+            {
+                set_error(GlobalMethod.GetMessage("E10707", ""));
+                varidateFlag = false;
+            }
+
+            Double haibunTotal = GetDouble(item3_2_5_1.Text);   // 2.配分情報の配分額(税込)の合計額
+
+            //契約タブの1.契約情報の契約金額の税込と、2.配分情報の配分額(税込)の合計額一致していない
+            if (!Double.Equals(keiyakuTax, haibunTotal))
+            {
+                set_error(GlobalMethod.GetMessage("E10720", ""));
+                varidateFlag = false;
+            }
+
+            // 売上情報と契約金額（税込）の合計額が一致しない
+            Double uriageTotal = 0;
+            for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
+            {
+                if (c1FlexGrid4[i, 3] != null) uriageTotal += GetDouble(c1FlexGrid4[i, 3].ToString());
+                if (c1FlexGrid4[i, 11] != null) uriageTotal += GetDouble(c1FlexGrid4[i, 11].ToString());
+                if (c1FlexGrid4[i, 19] != null) uriageTotal += GetDouble(c1FlexGrid4[i, 19].ToString());
+                if (c1FlexGrid4[i, 27] != null) uriageTotal += GetDouble(c1FlexGrid4[i, 27].ToString());
+            }
+            if (!Double.Equals(keiyakuTax, uriageTotal))
+            {
+                set_error(GlobalMethod.GetMessage("E10728", ""));
+                varidateFlag = false;
+            }
+
             if (requiredFlag && varidateFlag)
             {
                 // 税込
@@ -5301,35 +5673,79 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                // 受託金額（税込）
-                Double jutakuTax = GetDouble(item3_1_15.Text);      // 1.契約情報の受託金額(税込)
-                Double totalAmount = GetDouble(item3_2_5_1.Text);   // 2.配分情報の配分情報の配分額(税込)の合計
+                //えんとり君修正STEP2
+                if(dummyFlag == 0) {
+                    //①当会応札（入札タブ）が「対応前」のままで起案しようとしたらアラート表示する。
+                    if(item2_2_1.SelectedValue != null && item2_2_1.SelectedValue.ToString().Equals("1"))
+                    {
+                        GlobalMethod.outputMessage("E10729", "(入札タブ)");
+                    }
 
-                //受託金額(税込)と配分額(税込)の合計が一致しない
-                if (!Double.Equals(jutakuTax, totalAmount))
-                {
-                    set_error(GlobalMethod.GetMessage("E10705", ""));
+                    //②受注意欲（入札タブ）を「なし」以外にした状態で、当会応札（入札タブ）が「不参加」「辞退」、または参考見積（引合タブ）が「辞退」の場合にアラート表示してほしい
+                    if (item2_2_3.SelectedValue != null && item2_2_3.SelectedValue.ToString().Equals("3") == false)
+                    {
+                        if((item2_2_1.SelectedValue != null && (item2_2_1.SelectedValue.ToString().Equals("3") || item2_2_1.SelectedValue.ToString().Equals("4"))) ||
+                            (item1_34.SelectedValue != null && item1_34.SelectedValue.ToString().Equals("4")))
+                        {
+                            if (GlobalMethod.outputMessage("E10730", "(入札タブ)(引合タブ)",1) == DialogResult.Cancel)
+                            {
+                                varidateFlag = false;
+                            }
+                        }
+                    }
                 }
-
-                //請求書合計額
-                Double keiyakuTax = GetDouble(item3_1_13.Text);     // 1.契約情報の契約金額の税込
-                Double seikyuTotal = GetDouble(item3_6_13.Text);    // 6.請求書情報の請求金額の請求合計額
-
-                //契約タブの1.契約情報の契約金額の税込と、6.請求書情報の請求金額の請求合計額が一致していない
-                if (!Double.Equals(keiyakuTax, seikyuTotal))
-                {
-                    set_error(GlobalMethod.GetMessage("E10707", ""));
-                }
-
-                Double haibunTotal = GetDouble(item3_2_5_1.Text);   // 2.配分情報の配分額(税込)の合計額
-
-                //契約タブの1.契約情報の契約金額の税込と、2.配分情報の配分額(税込)の合計額一致していない
-                if (!Double.Equals(keiyakuTax, haibunTotal))
-                {
-                    set_error(GlobalMethod.GetMessage("E10720", ""));
-                }
-
             }
+            //// エラーがなければワーニングのチェックを行う
+            //if (requiredFlag && varidateFlag)
+            //{
+            //    // 税込
+            //    // 契約タブの1.契約情報の消費税率が空ではない場合
+            //    if (!String.IsNullOrEmpty(item3_1_10.Text))
+            //    {
+            //        Double keiyakuAmount = GetDouble(item3_1_13.Text);  // 契約金額の税込 
+            //        Double taxAmount = GetDouble(item3_1_10.Text);      // 消費税 
+            //        Double inTaxAmount = GetDouble(item3_1_14.Text);    // 内消費税
+            //        Double taxPercent = GetDouble(item3_1_10.Text);     // 消費税率
+
+            //        // 契約金額の税込 / (100 + 消費税率))* 消費税率, 0) の小数点切り捨て　amount
+            //        Double amount = Math.Floor(keiyakuAmount / (totalHundred + taxPercent) * taxPercent);
+
+            //        // 内消費税がamountと一致しない
+            //        if (!Double.Equals(inTaxAmount, amount))
+            //        {
+            //            GlobalMethod.outputMessage("E10704", "");
+            //        }
+            //    }
+
+            //    // 受託金額（税込）
+            //    Double jutakuTax = GetDouble(item3_1_15.Text);      // 1.契約情報の受託金額(税込)
+            //    Double totalAmount = GetDouble(item3_2_5_1.Text);   // 2.配分情報の配分情報の配分額(税込)の合計
+
+            //    //受託金額(税込)と配分額(税込)の合計が一致しない
+            //    if (!Double.Equals(jutakuTax, totalAmount))
+            //    {
+            //        set_error(GlobalMethod.GetMessage("E10705", ""));
+            //    }
+
+            //    //請求書合計額
+            //    Double keiyakuTax = GetDouble(item3_1_13.Text);     // 1.契約情報の契約金額の税込
+            //    Double seikyuTotal = GetDouble(item3_6_13.Text);    // 6.請求書情報の請求金額の請求合計額
+
+            //    //契約タブの1.契約情報の契約金額の税込と、6.請求書情報の請求金額の請求合計額が一致していない
+            //    if (!Double.Equals(keiyakuTax, seikyuTotal))
+            //    {
+            //        set_error(GlobalMethod.GetMessage("E10707", ""));
+            //    }
+
+            //    Double haibunTotal = GetDouble(item3_2_5_1.Text);   // 2.配分情報の配分額(税込)の合計額
+
+            //    //契約タブの1.契約情報の契約金額の税込と、2.配分情報の配分額(税込)の合計額一致していない
+            //    if (!Double.Equals(keiyakuTax, haibunTotal))
+            //    {
+            //        set_error(GlobalMethod.GetMessage("E10720", ""));
+            //    }
+
+            //}
 
 
             //契約タブ
@@ -5821,13 +6237,16 @@ namespace TokuchoBugyoK2
                     //// 新規登録を行いますが宜しいですか？
                     //if (MessageBox.Show(GlobalMethod.GetMessage("I10601", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     //{
-                        if (!ErrorFLG(0))
+                    if (!ErrorFLG(0))
+                    {
+                        if (Execute_SQL(0))
                         {
-                            if (Execute_SQL(0))
-                            {
-
-                            }
+                            //えんとり君修正STEP2
+                            sItem1_10_ori = item1_10.SelectedValue.ToString(); //受託課所支部（契約部所）DB値
+                            sItem1_2_KoukiNendo_ori = item1_2_KoukiNendo.SelectedValue.ToString(); //工期開始年度DB値
+                            sJigyoubuHeadCD_ori = getJigyoubuHeadCD();
                         }
+                    }
                     //}
                 }
             }
@@ -5840,6 +6259,10 @@ namespace TokuchoBugyoK2
                     {
                         if (Execute_SQL(1))
                         {
+                            //えんとり君修正STEP2
+                            sItem1_10_ori = item1_10.SelectedValue.ToString(); //受託課所支部（契約部所）DB値
+                            sItem1_2_KoukiNendo_ori = item1_2_KoukiNendo.SelectedValue.ToString(); //工期開始年度DB値
+                            sJigyoubuHeadCD_ori = getJigyoubuHeadCD();
                             //受託番号が採番された場合、「この案件番号の枝番で受託番号を作成する」ボタンを表示
                             if (item1_8.Text != "")
                             {
@@ -5859,6 +6282,8 @@ namespace TokuchoBugyoK2
 
             }
 
+            //えんとり君修正STEP2 不具合1406
+            FolderPathCheck();
         }
 
         private Boolean Execute_SQL(int mode)
@@ -6121,7 +6546,8 @@ namespace TokuchoBugyoK2
 
                 // 案件（受託）フォルダ
                 ankenFolder = item1_12.Text;
-                if(replaceTargetFolderName != "") { 
+                if (replaceTargetFolderName != "")
+                {
                     // 自分の部署フォルダを画面の選択している受託課所支部のフォルダに置き換える
                     ankenFolder = ankenFolder.Replace(replaceTargetFolderName, replaceFolderName);
 
@@ -6251,7 +6677,7 @@ namespace TokuchoBugyoK2
 
                                             ", N'" + item1_10.Text + "'" +                                             // AnkenJutakushibu
                                             ", N'" + item1_10.SelectedValue + "'" +                                    // AnkenJutakubushoCD
-                                            //", '" + GlobalMethod.ChangeSqlText(item1_12.Text, 0, 0) + "'" +           // AnkenKeiyakusho
+                                                                                                                       //", '" + GlobalMethod.ChangeSqlText(item1_12.Text, 0, 0) + "'" +           // AnkenKeiyakusho
                                             ", N'" + GlobalMethod.ChangeSqlText(ankenFolder, 0, 0) + "'" +           // AnkenKeiyakusho
                                             ", '" + item1_11_CD.Text + "'" +                                          // AnkenTantoushaCD
                                             ", N'" + item1_11.Text + "'" +                                             // AnkenTantoushaMei
@@ -6373,7 +6799,7 @@ namespace TokuchoBugyoK2
                                     AnkenZenkaiJutakuZeinuki = "null";
                                 }
 
-                                if(c1FlexGrid1.Rows[i][7] == null)
+                                if (c1FlexGrid1.Rows[i][7] == null)
                                 {
                                     c1FlexGrid1.Rows[i][7] = c1FlexGrid1.Rows[i][7];
                                 }
@@ -6396,7 +6822,7 @@ namespace TokuchoBugyoK2
                                                     ",AnkenZenkaiJutakuZeinuki " +
                                                     " ) VALUES ( " +
                                                      ankenID +                                             // [AnkenJouhouID] [decimal](16, 0) NOT NULL,
-                                                     //", " + i +                                          // [AnkenZenkaiRakusatsuID] [int] NOT NULL,
+                                                                                                           //", " + i +                                          // [AnkenZenkaiRakusatsuID] [int] NOT NULL,
                                                      ", N'" + c1FlexGrid1.Rows[i][16].ToString() + "'" +    // [AnkenZenkaiRakusatsuID] [int] NOT NULL,
                                                      ", N'" + c1FlexGrid1.Rows[i][3].ToString() + "'" +     // [AnkenZenkaiAnkenBangou] [nvarchar](40) NULL,
                                                      ", N'" + c1FlexGrid1.Rows[i][4].ToString() + "'" +     // [AnkenZenkaiJutakuBangou] [nvarchar](40) NULL,
@@ -6426,67 +6852,7 @@ namespace TokuchoBugyoK2
                             return false;
                         }
 
-                        cmd.CommandText = "INSERT INTO KeiyakuJouhouEntory ( " +
-                                            "KeiyakuJouhouEntoryID " +
-                                            ",KeiyakuSakuseiKubunID " +
-                                            ",KeiyakuSakuseiKubun " +
-                                            ",KeiyakuHachuushaMei " +
-                                            ",KeiyakuGyoumuKubun " +
-                                            ",KeiyakuGyoumuMei " +
-                                            ",JutakuBushoCD " +
-                                            ",KeiyakuTantousha " +
-                                            ",KeiyakuUriageHaibunCho1 " +
-                                            ",KeiyakuUriageHaibunCho2 " +
-                                            ",KeiyakuUriageHaibunJo1 " +
-                                            ",KeiyakuUriageHaibunJo2 " +
-                                            ",KeiyakuUriageHaibunJosys1 " +
-                                            ",KeiyakuUriageHaibunJosys2 " +
-                                            ",KeiyakuUriageHaibunKei1 " +
-                                            ",KeiyakuUriageHaibunKei2 " +
-                                            ",KeiyakuUriageHaibunChoGoukei " +
-                                            ",KeiyakuUriageHaibunJoGoukei " +
-                                            ",KeiyakuUriageHaibunJosysGoukei " +
-                                            ",KeiyakuUriageHaibunKeiGoukei " +
-                                            ",KeiyakuUriageHaibunGoukei " +
-                                            ",KeiyakuKeiyakuTeiketsubi " +
-                                            ",AnkenJouhouID " +
-                                            ",KeiyakuDeleteFlag " +
-                                            ",KeiyakuCreateDate " +
-                                            ",KeiyakuCreateUser " +
-                                            ",KeiyakuUpdateDate " +
-                                            ",KeiyakuUpdateUser " +
-                                            ",KeiyakuCreateProgram " +
-                                            " ) VALUES ( " +
-                                            ankenID +
-                                            ", N'" + item1_2.SelectedValue + "'" +
-                                            ", N'" + item1_2.Text + "'" +
-                                            ", N'" + item1_23.Text + "'" +
-                                            ", N'" + item1_14.SelectedValue + "'" +
-                                            ", N'" + item1_14.Text + "'" +
-                                            ",   null  " +
-                                            ",   null  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   0  " +
-                                            ",   null  " +
-                                            ",  " + ankenID + " " +
-                                            ",   0  " +
-                                            ",  GETDATE() " +
-                                            ", N'" + UserInfos[0] + "'" +
-                                            ",  GETDATE() " +
-                                            ", N'" + UserInfos[0] + "'" +
-                                            ", 'InsertEntry'" +
-                                            ")";
+                        cmd.CommandText = $"INSERT INTO KeiyakuJouhouEntory ( KeiyakuJouhouEntoryID ,KeiyakuSakuseiKubunID ,KeiyakuSakuseiKubun ,KeiyakuHachuushaMei ,KeiyakuGyoumuKubun ,KeiyakuGyoumuMei ,JutakuBushoCD ,KeiyakuTantousha ,KeiyakuUriageHaibunCho1 ,KeiyakuUriageHaibunCho2 ,KeiyakuUriageHaibunJo1 ,KeiyakuUriageHaibunJo2 ,KeiyakuUriageHaibunJosys1 ,KeiyakuUriageHaibunJosys2 ,KeiyakuUriageHaibunKei1 ,KeiyakuUriageHaibunKei2 ,KeiyakuUriageHaibunChoGoukei ,KeiyakuUriageHaibunJoGoukei ,KeiyakuUriageHaibunJosysGoukei ,KeiyakuUriageHaibunKeiGoukei ,KeiyakuUriageHaibunGoukei ,KeiyakuKeiyakuTeiketsubi ,AnkenJouhouID ,KeiyakuDeleteFlag ,KeiyakuCreateDate ,KeiyakuCreateUser ,KeiyakuUpdateDate ,KeiyakuUpdateUser ,KeiyakuCreateProgram  ) VALUES ( {ankenID}, N'{item1_2.SelectedValue}', N'{item1_2.Text}', N'{item1_23.Text}', N'{item1_14.SelectedValue}', N'{item1_14.Text}',   null  ,   null  ,   0  ,   0  ,   0  ,   0  ,   0  ,   0  ,   0  ,   0  ,   0  ,   0  ,   0  ,   0  ,   0  ,   null  ,  {ankenID} ,   0  ,  GETDATE() , N'{UserInfos[0]}',  GETDATE() , N'{UserInfos[0]}', 'InsertEntry')";
                         Console.WriteLine(cmd.CommandText);
                         cmd.ExecuteNonQuery();
 
@@ -6733,7 +7099,7 @@ namespace TokuchoBugyoK2
                     // フォルダ作成関連は工期開始年度で行う
                     if (GetInt(item1_2_KoukiNendo.SelectedValue.ToString()) >= 2021 && AnkenbaBangou == "")
                     {
-                            GlobalMethod.CreateFolder(ankenID);
+                        GlobalMethod.CreateFolder(ankenID);
                     }
                     else
                     {
@@ -6765,10 +7131,6 @@ namespace TokuchoBugyoK2
                     form.mode = formmode;
                     form.AnkenID = ankenID.ToString();
                     form.UserInfos = this.UserInfos;
-                    //エントリ君修正STEP1
-                    //計画画面詳細の案件数をこちらの登録が終わった際に更新させる対応を行ったら、
-                    //当画面がスタート画面の裏に表示されてしまうようになった。ということで、ここでTopMostを設定してみた。
-                    form.TopMost = true;
                     form.Show(this.Owner);
                     ownerflg = false;
                     this.Close();
@@ -6781,10 +7143,89 @@ namespace TokuchoBugyoK2
                 string ankenNo = "";
                 string ankenEda = "";
                 string jutakubangou = "";
+                string ori_ankenNo = "";
 
                 var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
                 // 案件番号
                 ankenNo = item1_6.Text;
+                ori_ankenNo = item1_6.Text;
+                //えんとり君修正STEP2
+                //案件番号変更機能
+                if (sItem1_10_ori.Equals(item1_10.SelectedValue.ToString()) == false || sItem1_2_KoukiNendo_ori.Equals(item1_2_KoukiNendo.SelectedValue.ToString()) == false) { 
+                    string jigyoubuHeadCD = "";
+                    // 契約区分で業務分類CDを判定
+                    // Mst_Jigyoubu に問い合わせる方法が無い為、
+                    // 調査部が見つかった場合、T と判断
+                    if (item1_14.Text.IndexOf("調査部") > -1)
+                    {
+                        jigyoubuHeadCD = "T";
+                    }
+                    else if (item1_14.Text.IndexOf("事業普及部") > -1)
+                    {
+                        jigyoubuHeadCD = "B";
+                    }
+                    else if (item1_14.Text.IndexOf("情シス部") > -1)
+                    {
+                        jigyoubuHeadCD = "J";
+                    }
+                    else if (item1_14.Text.IndexOf("総合研究所") > -1)
+                    {
+                        jigyoubuHeadCD = "K";
+                    }
+                    using (var conn = new SqlConnection(connStr))
+                    {
+                        conn.Open();
+                        var cmd = conn.CreateCommand();
+
+                        // 業務分類CD + 年度下2桁
+                        ankenNo = jigyoubuHeadCD + item1_2_KoukiNendo.SelectedValue.ToString().Substring(2, 2);
+
+                        // KashoShibuCD
+                        cmd.CommandText = "SELECT  " +
+                                "KashoShibuCD " +
+
+                                //参照テーブル
+                                "FROM Mst_Busho " +
+                                "WHERE GyoumuBushoCD = '" + item1_10.SelectedValue.ToString() + "' ";
+                        var sda = new SqlDataAdapter(cmd);
+                        var dt = new DataTable();
+                        sda.Fill(dt);
+                        // KashoShibuCDが正しい
+                        ankenNo = ankenNo + dt.Rows[0][0].ToString();
+
+                        cmd.CommandText = "SELECT TOP 1 " +
+                                " SUBSTRING(AnkenAnkenBangou,7,3) " +
+
+                                //参照テーブル
+                                "FROM AnkenJouhou " +
+                                "WHERE AnkenAnkenBangou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + ankenNo + "%' and AnkenDeleteFlag != 1 ORDER BY AnkenAnkenBangou DESC";
+                        sda = new SqlDataAdapter(cmd);
+                        Console.WriteLine(cmd.CommandText);
+                        dt = new DataTable();
+                        sda.Fill(dt);
+
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            int AnkenNoRenban;
+                            if (int.TryParse(dt.Rows[0][0].ToString(), out AnkenNoRenban))
+                            {
+                                AnkenNoRenban++;
+                            }
+                            else
+                            {
+                                AnkenNoRenban = 1;
+                            }
+                            ankenNo += string.Format("{0:D3}", AnkenNoRenban);
+                        }
+                        else
+                        {
+                            ankenNo += "001";
+                        }
+                        // 受託フォルダも変更する
+                        item1_6.Text = ankenNo;
+                        Header1.Text = ankenNo;
+                    }
+                }
                 // 受託番号
                 if (item1_7.Text != "")
                 {
@@ -6867,8 +7308,103 @@ namespace TokuchoBugyoK2
                         Header2.Text = jutakubangou;
                     }
                 }
+                else
+                {
+                    // エントリ君修正STEP2
+                    //・受託番号を解除する為、受注チェックを外すことにより、受託番号を削除する。
+                    //・受託番号削除は、起案後には行えない。起案後に行う場合は、起案解除後に行える。（システム管理者のみ）
+                    if (UserInfos[4].Equals("2")) { 
+                        if (item3_1_2.Checked == false && (item2_3_7.Text == GlobalMethod.GetCommonValue2("ENTORY_TOUKAI")) == false)
+                        {
+                            string checkBangou = Header2.Text;
+                            bool isDel = false;
+                            //・窓口ミハルが登録されている場合は、エラーメッセージを表示し、削除が出来ない。
+                            using (var conn = new SqlConnection(connStr))
+                            {
+                                try
+                                {
+                                    conn.Open();
+                                    var cmd = conn.CreateCommand();
+                                    cmd.CommandText = "SELECT  " +
+                                        "TOP 1 MadoguchiJutakuBangou " +
+                                        "FROM MadoguchiJouhou " +
+                                        "WHERE AnkenJouhouID = " + AnkenID + " AND MadoguchiJutakuBangou = '" + ankenNo + "' AND MadoguchiJutakuBangouEdaban = '" + item1_8.Text + "' AND MadoguchiDeleteFlag != 1 ";
+                                    var sda = new SqlDataAdapter(cmd);
+                                    var dt = new DataTable();
+                                    sda.Fill(dt);
+                                    if (dt != null && dt.Rows.Count > 0)
+                                    {
+                                        set_error(GlobalMethod.GetMessage("E10726", ""));
+                                        isDel = false;
+                                    }
+                                    else
+                                    {
+                                        isDel = true;
+                                    }
+                                    dt.Clear();
+                                }
+                                catch (Exception)
+                                {
+                                    isDel = false;
+                                    // エラー
+                                    GlobalMethod.outputLogger("Execute_SQL", "窓口ミハルが登録されているかチェックにエラー", "ID:" + AnkenID + " mode:" + mode, "DEBUG");
+                                }
+                            }
+                            //・単価契約が登録されている場合は、エラーメッセージを表示し、削除が出来ない。
+                            if (isDel == true)
+                            {
+                                using (var conn = new SqlConnection(connStr))
+                                {
+                                    try
+                                    {
+                                        conn.Open();
+                                        var cmd = conn.CreateCommand();
+                                        cmd.CommandText = "SELECT  " +
+                                            "TOP 1 TankakeiyakuJutakuBangou " +
+                                            "FROM TankaKeiyaku " +
+                                            "WHERE AnkenJouhouID = " + AnkenID + " AND TankakeiyakuJutakuBangou = '" + checkBangou + "' and TankakeiyakuDeleteFlag != 1 ";
+                                        var sda = new SqlDataAdapter(cmd);
+                                        var dt = new DataTable();
+                                        sda.Fill(dt);
+                                        if (dt != null && dt.Rows.Count > 0)
+                                        {
+                                            set_error(GlobalMethod.GetMessage("E10727", ""));
+                                            isDel = false;
+                                        }
+                                        else
+                                        {
+                                            isDel = true;
+                                        }
+                                        dt.Clear();
+                                    }
+                                    catch (Exception)
+                                    {
+                                        isDel = false;
+                                        // エラー
+                                        GlobalMethod.outputLogger("Execute_SQL", "単価契約が登録されているかチェックにエラー", "ID:" + AnkenID + " mode:" + mode, "DEBUG");
+                                    }
+                                }
+                            }
+                            if (isDel == true)
+                            {
+                                jutakubangou = "";
+                                ankenEda = "";
+                                // 引合タブの受託番号、枝番にセット
+                                item1_7.Text = jutakubangou;
+                                item1_8.Text = ankenEda;
+                                Header2.Text = jutakubangou;
+                            }
 
+                        }
+                    }
+                }
 
+                // えんとり君修正STEP2 フォルダリムーブ処理
+                if (RenameFolder(ori_ankenNo))
+                {
+                    // 移動履歴LOG残す
+                    GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "フォルダ変更前：" + GlobalMethod.ChangeSqlText(sFolderRenameBef, 0, 0) + "→フォルダ変更後：" + GlobalMethod.ChangeSqlText(item1_12.Text, 0, 0), pgmName + methodName, "");
+                }
                 using (var conn = new SqlConnection(connStr))
                 {
                     conn.Open();
@@ -6914,7 +7450,7 @@ namespace TokuchoBugyoK2
                                     ",AnkenHachuuDaihyousha = " + "N'" + GlobalMethod.ChangeSqlText(item1_33.Text, 0, 0) + "'" +
                                     ",AnkenToukaiSankouMitsumori = " + "N'" + item1_34.SelectedValue + "'" +
                                     ",AnkenToukaiJyutyuIyoku = " + "N'" + item1_35.SelectedValue + "'" +
-                                    ",AnkenToukaiSankouMitsumoriGaku = " + item1_36.Text.Replace("¥", "").Replace(",", "") + " " + 
+                                    ",AnkenToukaiSankouMitsumoriGaku = " + item1_36.Text.Replace("¥", "").Replace(",", "") + " " +
                                     ",AnkenUpdateProgram = " + "'UpdateEntry'" +
                                     ",AnkenUpdateDate = " + "GETDATE()" +
                                     ",AnkenUpdateUser = " + "N'" + UserInfos[0] + "'" +
@@ -6927,6 +7463,9 @@ namespace TokuchoBugyoK2
                                     ",AnkenKokyakuHyoukaComment = " + "N'" + GlobalMethod.ChangeSqlText(item4_1_9.Text, 0, 0) + "'" +
                                     ",AnkenToukaiHyoukaComment = " + "N'" + GlobalMethod.ChangeSqlText(item4_1_10.Text, 0, 0) + "'" +
                                     ",AnkenKoukiNendo = " + "'" + item1_2_KoukiNendo.SelectedValue.ToString() + "' " +
+                                    //えんとり君修正STEP２
+                                    ",AnkenFolderHenkouDatetime = " + (string.IsNullOrEmpty(item1_38.Text) ? "NULL " : "'" + item1_38.Text + "' ") +
+                                    ",AnkenFolderHenkouTantoushaCD = '" + item1_37_kojinCD.Text + "' " +
                                     " WHERE AnkenJouhouID = " + AnkenID;
 
                         Console.WriteLine(cmd.CommandText);
@@ -7020,7 +7559,7 @@ namespace TokuchoBugyoK2
                                                     ",AnkenZenkaiJutakuZeinuki " +
                                                     " ) VALUES ( " +
                                                      AnkenID +                                             // [AnkenJouhouID] [decimal](16, 0) NOT NULL,
-                                                     //", " + i +                                            // [AnkenZenkaiRakusatsuID] [int] NOT NULL,
+                                                                                                           //", " + i +                                            // [AnkenZenkaiRakusatsuID] [int] NOT NULL,
                                                      ", N'" + c1FlexGrid1.Rows[i][16].ToString() + "'" +    // [AnkenZenkaiRakusatsuID] [int] NOT NULL,
                                                      ", N'" + c1FlexGrid1.Rows[i][3].ToString() + "'" +     // [AnkenZenkaiAnkenBangou] [nvarchar](40) NULL,
                                                      ", N'" + c1FlexGrid1.Rows[i][4].ToString() + "'" +     // [AnkenZenkaiJutakuBangou] [nvarchar](40) NULL,
@@ -7107,6 +7646,10 @@ namespace TokuchoBugyoK2
                                     ",KeiyakuKurikoshiJo  = " + item3_7_2.Text.Replace("¥", "").Replace(",", "") +
                                     ",KeiyakuKurikoshiJosys  = " + item3_7_3.Text.Replace("¥", "").Replace(",", "") +
                                     ",KeiyakuKurikoshiKei  = " + item3_7_4.Text.Replace("¥", "").Replace(",", "") +
+                                    // えんとり君修正STEP2（RIBC項目追加）
+                                    ",KeiyakuRIBCYouTankaDataMoushikomisho = " + (item3_ribc_price.Checked ? 1 : 0) +
+                                    ",KeiyakuSashaKeiyu = " + (item3_sa_commpany.Checked ? 1 : 0) +
+                                    ",KeiyakuRIBCYouTankaData = " + (item3_1_ribc.Checked ? 1 : 0) +
                                     ",KeiyakuUpdateProgram = " + "'UpdateEntry'" +
                                     ",KeiyakuUpdateDate = " + "GETDATE()" +
                                     ",KeiyakuUpdateUser = " + "N'" + UserInfos[0] + "'" +
@@ -7148,9 +7691,9 @@ namespace TokuchoBugyoK2
 
                             // 計上日、計上月、計上額のどれかが入っていれば登録する
                             // c1FlexGrid の基本はNull、DBからの場合は空文字があり得る、\0は0、0を消すとまたnullになる
-                            if ((c1FlexGrid4.Rows[i][1] != null && c1FlexGrid4.Rows[i][1] != "" )
+                            if ((c1FlexGrid4.Rows[i][1] != null && c1FlexGrid4.Rows[i][1] != "")
                                 //|| (c1FlexGrid4.Rows[i][2] != null && c1FlexGrid4.Rows[i][2] != "" )
-                                || (c1FlexGrid4.Rows[i][3] != null && c1FlexGrid4.Rows[i][3].ToString() != "0")) 
+                                || (c1FlexGrid4.Rows[i][3] != null && c1FlexGrid4.Rows[i][3].ToString() != "0"))
                             {
                                 RibcKoukiStart = "null";
                                 if (c1FlexGrid4.Rows[i][4] != null)
@@ -7248,7 +7791,7 @@ namespace TokuchoBugyoK2
                             if ((c1FlexGrid4.Rows[i][9] != null && c1FlexGrid4.Rows[i][9] != "")
                                 //|| (c1FlexGrid4.Rows[i][10] != null && c1FlexGrid4.Rows[i][10] != "")
                                 || (c1FlexGrid4.Rows[i][11] != null && c1FlexGrid4.Rows[i][11].ToString() != "0"))
-                                {
+                            {
                                 RibcKoukiStart = "null";
                                 if (c1FlexGrid4.Rows[i][12] != null)
                                 {
@@ -7653,7 +8196,8 @@ namespace TokuchoBugyoK2
                         var sda2 = new SqlDataAdapter(cmd);
                         dt2.Clear();
                         sda2.Fill(dt2);
-                        if(dt2 != null && dt2.Rows.Count > 0) { 
+                        if (dt2 != null && dt2.Rows.Count > 0)
+                        {
                             GyoumuJouhouMadoShibuMei = dt2.Rows[0][0].ToString();
                             GyoumuJouhouMadoKamei = dt2.Rows[0][1].ToString();
                         }
@@ -7716,7 +8260,7 @@ namespace TokuchoBugyoK2
                         else
                         {
                             // データが存在する場合
-                            if(GyoumuJouhouMadoguchiID != "")
+                            if (GyoumuJouhouMadoguchiID != "")
                             {
                                 cmd.CommandText = "UPDATE GyoumuJouhouMadoguchi set " +
                                                 "GyoumuJouhouMadoGyoumuBushoCD = N'" + item3_4_5_Busho.Text + "' " +
@@ -7961,7 +8505,7 @@ namespace TokuchoBugyoK2
                         string updateC1FlexGrid2Data = sb.ToString();
 
                         // 入札者情報が同じかどうか
-                        if(c1FlexGrid2Data != updateC1FlexGrid2Data)
+                        if (c1FlexGrid2Data != updateC1FlexGrid2Data)
                         {
                             nyuusatsuOusatushaUpdateFlg = true;
                         }
@@ -7995,11 +8539,12 @@ namespace TokuchoBugyoK2
                         // No.278 競合他社IDが入っていない対応
                         string KyougouTashaID = "";
                         // 落札者がいれば、競合他社IDを取得する
-                        if (item2_3_7.Text != null && item2_3_7.Text != "") { 
-                        cmd.CommandText = "SELECT  " +
-                        "KyougouTashaID " +
-                        "FROM Mst_KyougouTasha " +
-                        "WHERE KyougouMeishou = N'" + item2_3_7.Text + "' ";
+                        if (item2_3_7.Text != null && item2_3_7.Text != "")
+                        {
+                            cmd.CommandText = "SELECT  " +
+                            "KyougouTashaID " +
+                            "FROM Mst_KyougouTasha " +
+                            "WHERE KyougouMeishou = N'" + item2_3_7.Text + "' ";
                             var sda = new SqlDataAdapter(cmd);
                             var dt = new DataTable();
                             sda.Fill(dt);
@@ -8029,7 +8574,8 @@ namespace TokuchoBugyoK2
                                      ",NyuusatsuKyougouTasha = " + " N'" + GlobalMethod.ChangeSqlText(item2_3_7.Text, 0, 0) + "' ";
 
                         // 競合他社ID
-                        if(KyougouTashaID != "") { 
+                        if (KyougouTashaID != "")
+                        {
                             cmd.CommandText += ",NyuusatsuKyougouTashaID = " + " N'" + KyougouTashaID + "' ";
                         }
                         else
@@ -8103,6 +8649,17 @@ namespace TokuchoBugyoK2
                         }
                         set_error(GlobalMethod.GetMessage("I00008", ""));
                         conn.Close();
+
+                        // えんとり君修正STEP2
+                        if (item1_7.Text == "")
+                        {
+                            label51.Visible = true;
+                        }
+                        else
+                        {
+                            label51.Visible = false;
+                        }
+
                         return true;
                     }
                     if (mode == 2 || mode == 3)
@@ -8146,6 +8703,7 @@ namespace TokuchoBugyoK2
                     // 計画番号を変更後のものを保持
                     beforeKeikakuBangou = item1_4.Text;
                 }
+
             }
             // 変更伝票の起案
             else if (mode == 4)
@@ -8772,7 +9330,7 @@ namespace TokuchoBugyoK2
                             var sda = new SqlDataAdapter(cmd);
                             sda.Fill(gyoumuJouhouDT);
 
-                            if(gyoumuJouhouDT != null && gyoumuJouhouDT.Rows.Count > 0)
+                            if (gyoumuJouhouDT != null && gyoumuJouhouDT.Rows.Count > 0)
                             {
                                 for (int i = 0; i < gyoumuJouhouDT.Rows.Count; i++)
                                 {
@@ -10677,7 +11235,11 @@ namespace TokuchoBugyoK2
                                         ",KeiyakuUpdateProgram = " + "'ChangeKianEntry'" +
                                         ",KeiyakuUpdateDate = " + "GETDATE()" +
                                         ",KeiyakuUpdateUser = " + "N'" + UserInfos[0] + "'" +
-                                        " WHERE AnkenJouhouID = " + ankenNo2;
+                                        // えんとり君修正STEP2（RIBC項目追加）
+                                        ",KeiyakuRIBCYouTankaDataMoushikomisho = " + (item3_ribc_price.Checked ? 1 : 0) +
+                                        ",KeiyakuSashaKeiyu = " + (item3_sa_commpany.Checked ? 1 : 0) +
+                                        ",KeiyakuRIBCYouTankaData = " + (item3_1_ribc.Checked ? 1 : 0) +
+                                " WHERE AnkenJouhouID = " + ankenNo2;
                             result = cmd.ExecuteNonQuery();
 
                             cmd.CommandText = "DELETE FROM RibcJouhou " +
@@ -11118,13 +11680,13 @@ namespace TokuchoBugyoK2
                                         "AnkenJouhouID = '" + ankenNo2 + "' " +
                                         ",MadoguchiAnkenJouhouID = '" + ankenNo2 + "' " +
                                         " WHERE MadoguchiJouhou.AnkenJouhouID = " + AnkenID;
-                                result = cmd.ExecuteNonQuery();
+                            result = cmd.ExecuteNonQuery();
 
-                                // 単価契約の案件情報IDを最新に置き換える
-                                cmd.CommandText = "UPDATE TankaKeiyaku SET " +
-                                        "AnkenJouhouID = '" + ankenNo2 + "' " +
-                                        " WHERE TankaKeiyaku.AnkenJouhouID = " + AnkenID;
-                                cmd.ExecuteNonQuery();
+                            // 単価契約の案件情報IDを最新に置き換える
+                            cmd.CommandText = "UPDATE TankaKeiyaku SET " +
+                                    "AnkenJouhouID = '" + ankenNo2 + "' " +
+                                    " WHERE TankaKeiyaku.AnkenJouhouID = " + AnkenID;
+                            cmd.ExecuteNonQuery();
                             //}
 
                             // 変更伝票の起案で変更した管理技術者を更新する
@@ -11175,7 +11737,2327 @@ namespace TokuchoBugyoK2
                     }
                 }
             }
+
             return true;
+        }
+
+        // えんとり君修正STEP2 フォルダリムーブ処理
+        private bool RenameFolder(string ori_ankenNo)
+        {
+            // えんとり君修正STEP2
+            bool isMoveOk = false;
+            string folderTo = GlobalMethod.ChangeSqlText(item1_12.Text, 0, 0);
+            string sJigyoubuHeadCD = getJigyoubuHeadCD();
+            int isRename = 0; // 0:何もしない、1:リネーム、2:削除のみ、3：新規作成
+            if (sFolderRenameBef.Equals(folderTo) == false)
+            {   
+                // リネームボタン押下時
+                if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
+                {
+                    // リネーム前後、すべて調査部の場合、リネームを実施する
+                    isRename = 1;
+                }
+                else if (sJigyoubuHeadCD_ori.Equals("T"))
+                {
+                    // リネーム前のみ調査部なら、リネームで、もとフォルダを削除する
+                    isRename = 2;
+                }
+                else if (sJigyoubuHeadCD.Equals("T"))
+                {
+                    // リネーム後のみ調査部なら、新規作成する
+                    isRename = 3;
+                }
+
+            }
+            else if (ori_ankenNo.Equals(item1_6.Text) == false)
+            {
+                // リネームボタン押下しない　AND　案件番号自動変更
+                if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
+                {
+                    // リネーム前後、すべて調査部の場合、リネームを実施する
+                    isRename = 1;
+                }
+                else if (sJigyoubuHeadCD.Equals("T"))
+                {
+                    // リネーム後のみ調査部なら、新規作成する
+                    isRename = 3;
+                }
+                else if (sJigyoubuHeadCD_ori.Equals("T"))
+                {
+                    // リネームボタン押下しない、契約部署のみ変更する場合
+                    isRename = 4;
+                }
+                else
+                {
+                    if (item1_12.Text.Contains(ori_ankenNo)) { 
+                        isRename = 4;
+                    }
+                    else
+                    {
+                        isRename = 5;
+                    }
+                }
+            }
+            else
+            {
+                isRename = 5;
+            }
+            
+            //案件番号も変更する場合
+            if (ori_ankenNo.Equals(item1_6.Text) == false && (isRename == 1 || isRename == 3 || isRename == 4))
+            {
+                folderTo = GlobalMethod.ChangeSqlText(item1_12.Text.Replace("\\" + ori_ankenNo, "\\" + item1_6.Text), 0, 0);
+            }
+
+            // リネームを実行する
+            if (isRename == 1 || isRename == 4)
+            {
+                bool isError = false;
+                //調査部から調査部----------------------------------------------------
+                //E10018	元フォルダが見つかりませんでした。確認して下さい。
+                if (Directory.Exists(sFolderRenameBef) == false)
+                {
+                    isError = true;
+                    set_error(GlobalMethod.GetMessage("E10018", "(引合)"));
+                }
+
+                //E10019 リネームするフォルダが既に存在します。確認して下さい。
+                if (Directory.Exists(folderTo) == true)
+                {
+                    isError = true;
+                    set_error(GlobalMethod.GetMessage("E10019", "(引合)"));
+                }
+
+                //E10020 リネームするフォルダ（支部のフォルダ）が見つかりませんでした。確認して下さい。
+                int lstI = folderTo.LastIndexOf("\\");
+                string sTo = folderTo;
+                if (lstI >= 0)
+                {
+                    sTo = folderTo.Substring(0, lstI);
+                }
+                if (Directory.Exists(sTo) == false)
+                {
+                    isError = true;
+                    set_error(GlobalMethod.GetMessage("E10020", "(引合)"));
+                }
+                // ファイルを移動処理
+                if (isError == false)
+                {
+                    try
+                    {
+                        // DirectoryInfoのインスタンスを生成する
+                        DirectoryInfo di = new DirectoryInfo(sFolderRenameBef);
+
+                        // ディレクトリを移動する
+                        di.MoveTo(folderTo);
+                        isMoveOk = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        // 移動失敗
+                        set_error(GlobalMethod.GetMessage("E70065", "(引合)"));
+                        GlobalMethod.outputLogger("UpdateEntory->FileMove", ex.Message, AnkenID, UserInfos[1]);
+                    }
+                }
+            }
+            else if (isRename == 2)
+            {
+                //調査部からほかの部門----------------------------------------------------
+                isMoveOk = true;
+            }
+            else if (isRename == 3)
+            {
+                //ほかの部門から調査部----------------------------------------------------
+                bool isCreateOk = false;
+                // フォルダが存在しない場合、作成する
+                if (!File.Exists(folderTo))
+                {
+                    try
+                    {
+                        DirectoryInfo di = new DirectoryInfo(folderTo);
+                        di.Create();
+                        isCreateOk = true;
+                    }
+                    catch (Exception)
+                    {
+                        // フォルダを作成する権限がありません。
+                        set_error(GlobalMethod.GetMessage("E70046", "(引合)"));
+                    }
+                }
+                else
+                {
+                    // 案件テーブルにすでに登録されているか
+                    string where = "";
+                    where = "AnkenKeiyakusho = N'" + GlobalMethod.ChangeSqlText(item1_12.Text, 0, 0) + "'" +
+                        " AND AnkenDeleteFlag = 0 AND AnkenAnkenBangou <> '" + ori_ankenNo + "' ";
+                    DataTable dtFolder = GlobalMethod.getData("AnkenKeiyakusho", "AnkenKeiyakusho", "AnkenJouhou", where);
+                    if (dtFolder is null || dtFolder.Rows.Count <= 0)
+                    {
+                        isCreateOk = true;
+                    }
+                }
+                if (isCreateOk)
+                {
+                    DataTable CreateList = GlobalMethod.getData("CommonMasterID", "CommonValue1", "M_CommonMaster", "CommonMasterKye = 'ANKEN_BANGOU_FOLDER' ORDER BY CommonMasterID ");
+                    if (CreateList != null && CreateList.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < CreateList.Rows.Count; i++)
+                        {
+
+                            DirectoryInfo di = new DirectoryInfo(folderTo + "\\" + CreateList.Rows[i][0].ToString());
+                            if (!Directory.Exists(folderTo + "\\" + CreateList.Rows[i][0].ToString()))
+                            {
+                                try
+                                {
+                                    di.Create();
+                                }
+                                catch (Exception)
+                                {
+                                    // フォルダを作成する権限がありません。
+                                    set_error(GlobalMethod.GetMessage("E70046", "(引合)"));
+                                    break;
+                                }
+                            }
+                        }
+                        // ここまできたらフォルダ作成が成功なので、
+                        isMoveOk = true;
+                    }
+                }
+            }
+            else if(isRename == 5)
+            {
+                //何もしない
+            }
+            else
+            {
+                // フォルダ関連は工期開始年度で作成する
+                string FolderBase = GlobalMethod.GetCommonValue1("FOLDER_BASE").Replace(@"$NENDO$", item1_2_KoukiNendo.SelectedValue.ToString());
+                string FolderPath = FolderBase.Replace("/", @"\");
+
+                // 変更後のパスは基本パスの場合、元パスを削除するか
+                if (FolderPath.Length == sFolderRenameBef.Length)
+                {
+                    //元パスも基本バスなら、なにもしない
+                }
+                else
+                {
+                    string sBef = sFolderRenameBef;
+                    int iBef = sBef.Length - sBef.Replace(@"\", "").Length;
+                    sBef = FolderBase;
+                    int iBase = sBef.Length - sBef.Replace(@"\", "").Length;
+                    if (iBef <= iBase)
+                    {
+                        // 何もしない
+                    }
+                    else
+                    {
+                        isMoveOk = true;
+                    }
+                }
+            }
+
+            if (isMoveOk)
+            {
+                // 元フォルダがあるだったら、削除をする
+                if (isRename != 3 && isRename != 4)
+                {
+                    try
+                    {
+                        // 元フォルダを削除する
+                        if (Directory.Exists(sFolderRenameBef))
+                        {
+                            Directory.Delete(sFolderRenameBef, true);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        GlobalMethod.outputLogger("UpdateEntory->FileDelete", ex.Message, AnkenID, UserInfos[1]);
+                    }
+                }
+                item1_37_kojinCD.Text = UserInfos[0];
+                item1_37.Text = UserInfos[1];
+                item1_38.Text = System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                item1_12.Text = folderTo;
+
+                // 現在フォルダを更新
+                sFolderRenameBef = item1_12.Text;
+            }
+            else
+            {
+                //元フォルダへ戻す
+                item1_12.Text = sFolderRenameBef;
+            }
+            return isMoveOk;
+        }
+        // えんとり君修正STEP2 確認シートのダミーデータ作成
+        private int Create_DummyData()
+        {
+            int rtnAnkenNo = 0;
+            string methodName = ".Create_DummyData";
+            var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+            using (var conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                var cmd = conn.CreateCommand();
+
+                SqlTransaction transaction = conn.BeginTransaction();
+                cmd.Transaction = transaction;
+
+                try
+                {
+                    string SakuseiKubun = item3_1_1.SelectedValue.ToString();
+                    // ダミーの赤伝のAnkenJouhouID取得
+                    int ankenNo = GlobalMethod.getSaiban("AnkenJouhouID");
+
+                    // 案件情報　INSERT　カラム共通
+                    string sAkSqlCom = getAnkenJouhouInsertSQL();
+                    // 案件情報の赤伝のダミーデータ作成 ----------------------------------------------------------------------------------
+                    cmd.CommandText = sAkSqlCom + " SELECT " + ankenNo + getAnkenJouhouInsertVal(SakuseiKubun);
+                    Console.WriteLine(cmd.CommandText);
+                    var result = cmd.ExecuteNonQuery();
+
+                    // 案件情報前回落札情報作成
+                    cmd.CommandText = getAnkenJouhouZenkaiRakusatsuInsertSQL(ankenNo);
+                    Console.WriteLine(cmd.CommandText);
+                    result = cmd.ExecuteNonQuery();
+
+                    //顧客契約情報存在チェック処理
+                    if (!GlobalMethod.Check_Table(AnkenID, "KokyakuKeiyakuID", "KokyakuKeiyakuJouhou", ""))
+                    {
+                        GlobalMethod.outputLogger("ChangeKianEntry", "顧客契約情報が見つからない", "ID:" + AnkenID, "DEBUG");
+                        transaction.Rollback();
+                        conn.Close();
+                        return rtnAnkenNo;
+                    }
+                    cmd.CommandText = getKokyakuKeiyakuJouhouInsertSQL(ankenNo);
+                    Console.WriteLine(cmd.CommandText);
+                    result = cmd.ExecuteNonQuery();
+
+                    //業務情報存在チェック処理
+                    if (!GlobalMethod.Check_Table(AnkenID, "GyoumuJouhouID", "GyoumuJouhou", ""))
+                    {
+                        GlobalMethod.outputLogger("ChangeKianEntry", "業務情報が見つからない", "ID:" + AnkenID, "DEBUG");
+                        transaction.Rollback();
+                        conn.Close();
+                        return rtnAnkenNo;
+                    }
+                    cmd.CommandText = getGyoumuJouhouInsertSql(ankenNo);
+                    Console.WriteLine(cmd.CommandText);
+                    result = cmd.ExecuteNonQuery();
+
+                    if (GlobalMethod.Check_Table(AnkenID, "GyoumuJouhouID", "GyoumuJouhouHyouronTantouL1", ""))
+                    {
+                        cmd.CommandText = getGyoumuJouhouHyouronTantouL1InsertSQL(ankenNo);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+                    }
+
+                    if (GlobalMethod.Check_Table(AnkenID, "GyoumuJouhouID", "GyoumuJouhouMadoguchi", ""))
+                    {
+                        // 窓口担当者
+                        // 新では1件しか入らないが、現行が複数件はいるので、複数件あった場合でも落ちないようにする
+                        exeGyoumuJouhouMadoguchi(ankenNo, cmd);
+                    }
+
+                    if (GlobalMethod.Check_Table(AnkenID, "GyoumuJouhouID", "GyoumuJouhouHyoutenBusho", ""))
+                    {
+                        cmd.CommandText = getGyoumuJouhouHyoutenBushoInsertSql(ankenNo);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+                    }
+
+                    // 契約情報存在チェック
+                    if (!GlobalMethod.Check_Table(AnkenID, "KeiyakuJouhouEntoryID", "KeiyakuJouhouEntory", ""))
+                    {
+                        GlobalMethod.outputLogger("ChangeKianEntry", "契約情報が見つからない", "ID:" + AnkenID, "DEBUG");
+                        transaction.Rollback();
+                        conn.Close();
+                        return rtnAnkenNo;
+                    }
+
+                    cmd.CommandText = getKeiyakuJouhouEntoryInsertSql(ankenNo);
+                    Console.WriteLine(cmd.CommandText);
+                    result = cmd.ExecuteNonQuery();
+
+                    if (GlobalMethod.Check_Table(AnkenID, "RibcID", "RibcJouhou", ""))
+                    {
+                        cmd.CommandText = getRibcJouhouInsertSql(ankenNo);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+                    }
+
+                    if (GlobalMethod.Check_Table(AnkenID, "NyuusatsuJouhouID", "NyuusatsuJouhou", ""))
+                    {
+                        cmd.CommandText = getNyuusatsuJouhouInsertSql(ankenNo);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        GlobalMethod.outputLogger("ChangeKianEntry", "入札情報が見つからない", "ID:" + AnkenID, "DEBUG");
+                        transaction.Rollback();
+                        conn.Close();
+                        return rtnAnkenNo;
+                    }
+
+                    if (GlobalMethod.Check_Table(AnkenID, "NyuusatsuJouhouID", "NyuusatsuJouhouOusatsusha", ""))
+                    {
+                        cmd.CommandText = getNyuusatsuJouhouOusatsushaInsertSql(ankenNo);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+                    }
+
+                    DataTable GH_dt = new DataTable();
+                    GH_dt = GlobalMethod.getData("GyoumuHaibunID", "GyoumuAnkenJouhouID", "GyoumuHaibun", "GyoumuAnkenJouhouID = " + AnkenID);
+                    if (GH_dt != null && GH_dt.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < GH_dt.Rows.Count; i++)
+                        {
+                            cmd.CommandText = getGyoumuHaibunInsertSql(ankenNo, GetInt(GH_dt.Rows[i][1].ToString()));
+                            Console.WriteLine(cmd.CommandText);
+                            result = cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    // 案件情報の黒伝のダミーデータ作成 ----------------------------------------------------------------------------------
+                    int ankenNo2 = 0;
+                    if (SakuseiKubun == "03" || int.Parse(SakuseiKubun) > 5)
+                    {
+                        // 黒伝のAnkenJouhouID
+                        ankenNo2 = GlobalMethod.getSaiban("AnkenJouhouID");
+                        //黒伝のダミーデータ作成
+                        cmd.CommandText = sAkSqlCom + " SELECT " + ankenNo2 + getAnkenJouhouInsertVal(SakuseiKubun, 1);
+                        result = cmd.ExecuteNonQuery();
+
+                        // 案件情報前回落札情報作成
+                        cmd.CommandText = getAnkenJouhouZenkaiRakusatsuInsertSQL(ankenNo2, 1);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+
+                        //顧客契約情報存在チェック処理
+                        if (!GlobalMethod.Check_Table(AnkenID, "KokyakuKeiyakuID", "KokyakuKeiyakuJouhou", ""))
+                        {
+                            GlobalMethod.outputLogger("ChangeKianEntry", "顧客契約情報が見つからない", "ID:" + AnkenID, "DEBUG");
+                            transaction.Rollback();
+                            conn.Close();
+                            return rtnAnkenNo;
+                        }
+                        cmd.CommandText = getKokyakuKeiyakuJouhouInsertSQL(ankenNo2);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+
+                        //業務情報存在チェック処理
+                        if (!GlobalMethod.Check_Table(AnkenID, "GyoumuJouhouID", "GyoumuJouhou", ""))
+                        {
+                            GlobalMethod.outputLogger("ChangeKianEntry", "業務情報が見つからない", "ID:" + AnkenID, "DEBUG");
+                            transaction.Rollback();
+                            conn.Close();
+                            return rtnAnkenNo;
+                        }
+                        cmd.CommandText = getGyoumuJouhouInsertSql(ankenNo2);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+
+                        if (GlobalMethod.Check_Table(AnkenID, "GyoumuJouhouID", "GyoumuJouhouHyouronTantouL1", ""))
+                        {
+                            cmd.CommandText = getGyoumuJouhouHyouronTantouL1InsertSQL(ankenNo2);
+                            Console.WriteLine(cmd.CommandText);
+                            result = cmd.ExecuteNonQuery();
+                        }
+
+                        if (GlobalMethod.Check_Table(AnkenID, "GyoumuJouhouID", "GyoumuJouhouMadoguchi", ""))
+                        {
+                            // 窓口担当者
+                            // 新では1件しか入らないが、現行が複数件はいるので、複数件あった場合でも落ちないようにする
+                            exeGyoumuJouhouMadoguchi(ankenNo2, cmd);
+                        }
+
+                        if (GlobalMethod.Check_Table(AnkenID, "GyoumuJouhouID", "GyoumuJouhouHyoutenBusho", ""))
+                        {
+                            cmd.CommandText = getGyoumuJouhouHyoutenBushoInsertSql(ankenNo2);
+                            Console.WriteLine(cmd.CommandText);
+                            result = cmd.ExecuteNonQuery();
+                        }
+
+                        // 契約情報存在チェック
+                        if (!GlobalMethod.Check_Table(AnkenID, "KeiyakuJouhouEntoryID", "KeiyakuJouhouEntory", ""))
+                        {
+                            GlobalMethod.outputLogger("ChangeKianEntry", "契約情報が見つからない", "ID:" + AnkenID, "DEBUG");
+                            transaction.Rollback();
+                            conn.Close();
+                            return rtnAnkenNo;
+                        }
+                        cmd.CommandText = getKeiyakuJouhouEntoryInsertSql(ankenNo2, 1);
+                        Console.WriteLine(cmd.CommandText);
+                        result = cmd.ExecuteNonQuery();
+
+                        if (GlobalMethod.Check_Table(AnkenID, "RibcID", "RibcJouhou", ""))
+                        {
+                            cmd.CommandText = getRibcJouhouInsertSql(ankenNo2, 1);
+                            Console.WriteLine(cmd.CommandText);
+                            result = cmd.ExecuteNonQuery();
+                        }
+
+                        if (GlobalMethod.Check_Table(AnkenID, "NyuusatsuJouhouID", "NyuusatsuJouhou", ""))
+                        {
+                            cmd.CommandText = getNyuusatsuJouhouInsertSql(ankenNo2, 1);
+                            Console.WriteLine(cmd.CommandText);
+                            result = cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            GlobalMethod.outputLogger("ChangeKianEntry", "入札情報が見つからない", "ID:" + AnkenID, "DEBUG");
+                            transaction.Rollback();
+                            conn.Close();
+                            return rtnAnkenNo;
+                        }
+
+                        if (GlobalMethod.Check_Table(AnkenID, "NyuusatsuJouhouID", "NyuusatsuJouhouOusatsusha", ""))
+                        {
+                            cmd.CommandText = getNyuusatsuJouhouOusatsushaInsertSql(ankenNo2, 1);
+                            Console.WriteLine(cmd.CommandText);
+                            result = cmd.ExecuteNonQuery();
+                        }
+
+                        GH_dt = new DataTable();
+                        GH_dt = GlobalMethod.getData("GyoumuHaibunID", "GyoumuAnkenJouhouID", "GyoumuHaibun", "GyoumuAnkenJouhouID = " + AnkenID);
+                        if (GH_dt != null && GH_dt.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < GH_dt.Rows.Count; i++)
+                            {
+                                cmd.CommandText = getGyoumuHaibunInsertSql(ankenNo2, GetInt(GH_dt.Rows[i][1].ToString()), 1);
+                                Console.WriteLine(cmd.CommandText);
+                                result = cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    transaction.Commit();
+
+                    transaction = conn.BeginTransaction();
+                    cmd.Transaction = transaction;
+
+                    if (GlobalMethod.Check_Table(AnkenID, "KeiyakuJouhouEntoryID", "KeiyakuJouhouEntory", ""))
+                    {
+                        cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET " +
+                                 "KeiyakuHenkouChuushiRiyuu = N'" + item3_1_17.Text + "' " +
+                                ",KeiyakuSakuseibi = " + Get_DateTimePicker("item3_1_4");
+                        if (SakuseiKubun == "02")
+                        {
+                            cmd.CommandText += ",KeiyakuKeiyakuTeiketsubi = " + Get_DateTimePicker("item3_1_3");
+                        }
+                        cmd.CommandText += " WHERE KeiyakuJouhouEntoryID = " + ankenNo;
+                        result = cmd.ExecuteNonQuery();
+                    }
+
+                    if (SakuseiKubun == "03" || int.Parse(SakuseiKubun) > 5)
+                    {
+                        cmd.CommandText = "UPDATE AnkenJouhou SET " +
+                                    "AnkenSakuseiKubun = N'" + item3_1_1.SelectedValue.ToString() + "' " +
+                                    ",AnkenGyoumuKubun = N'" + item3_1_8.SelectedValue.ToString() + "' " +
+                                    ",AnkenGyoumuKubunMei = N'" + item3_1_8.Text + "' " +
+                                    ",AnkenGyoumuMei = N'" + item3_1_11.Text + "' " +
+                                    ",AnkenKianzumi = '1' " +
+                                    ",AnkenUriageNendo = N'" + item3_1_5.SelectedValue.ToString() + "' " +
+                                    ",AnkenKeiyakuTeiketsubi = " + Get_DateTimePicker("item3_1_3") +
+                                    ",AnkenKeiyakuKoukiKaishibi = " + Get_DateTimePicker("item3_1_6") +
+                                    ",AnkenKeiyakuKoukiKanryoubi = " + Get_DateTimePicker("item3_1_7") +
+                                    ",AnkenKeiyakuZeikomiKingaku = " + item3_1_13.Text.Replace("¥", "").Replace(",", "") +
+                                    ",AnkenKeiyakuUriageHaibunGakuC = " + item3_2_1_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",AnkenKeiyakuUriageHaibunGakuJ = " + item3_2_2_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",AnkenKeiyakuUriageHaibunGakuJs = " + item3_2_3_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",AnkenKeiyakuUriageHaibunGakuK = " + item3_2_4_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",AnkenKeiyakuSakuseibi = " + Get_DateTimePicker("item3_1_4") +
+                                    ",GyoumuKanrishaCD = " + "N'" + item3_4_4_CD.Text + "'" +
+                                    ",GyoumuKanrishaMei = " + "N'" + item3_4_4.Text + "'" +
+                                    ",AnkenUpdateUser = N'" + UserInfos[0] + "' " +
+                                    " WHERE AnkenJouhou.AnkenJouhouID = " + ankenNo2;
+                        //業務情報
+                        cmd.CommandText = "UPDATE GyoumuJouhou SET " +
+                                    "GyoumuHyouten = " + "N'" + item4_1_1.Text + "'" +
+                                    ",KanriGijutsushaCD = " + "N'" + item3_4_1_CD.Text + "'" +
+                                    ",KanriGijutsushaNM = " + "N'" + item3_4_1.Text + "'" +
+                                    ",GyoumuKanriHyouten = " + "N'" + item3_4_1_Hyoten.Text + "'" +
+                                    ",ShousaTantoushaCD = " + "N'" + item3_4_2_CD.Text + "'" +
+                                    ",ShousaTantoushaNM = " + "N'" + item3_4_2.Text + "'" +
+                                    ",GyoumuShousaHyouten = " + "N'" + item3_4_2_Hyoten.Text + "'" +
+                                    ",SinsaTantoushaCD = " + "N'" + item3_4_3_CD.Text + "'" +
+                                    ",SinsaTantoushaNM = " + "N'" + item3_4_3.Text + "'" +
+                                    ",GyoumuUpdateDate = " + " GETDATE() " +
+                                    ",GyoumuUpdateUser = " + "N'" + UserInfos[0] + "' " +
+                                    ",GyoumuUpdateProgram = " + "'UpdateEntory' " +
+                                    ",GyoumuDeleteFlag = " + "0 " +
+                                    " WHERE AnkenJouhouID = " + ankenNo2;
+                        Console.WriteLine(cmd.CommandText);
+                        cmd.ExecuteNonQuery();
+                        result = cmd.ExecuteNonQuery();
+
+                        //業務情報技術担当者
+                        cmd.CommandText = "DELETE GyoumuJouhouHyouronTantouL1 WHERE GyoumuJouhouID = '" + ankenNo2 + "' ";
+                        cmd.ExecuteNonQuery();
+
+                        for (int i = 1; i < c1FlexGrid5.Rows.Count; i++)
+                        {
+                            if (c1FlexGrid3.Rows[i][1] != null && c1FlexGrid3.Rows[i][1].ToString() != "")
+                            {
+                                string Hyouten = "";
+                                if (c1FlexGrid3.Rows[i][3] != null && c1FlexGrid3.Rows[i][3].ToString() != "")
+                                {
+                                    Hyouten = c1FlexGrid3.Rows[i][3].ToString();
+                                }
+                                cmd.CommandText = "INSERT GyoumuJouhouHyouronTantouL1 ( " +
+                                        "GyoumuJouhouID " +
+                                        ", HyouronTantouID " +
+                                        ", HyouronTantoushaCD " +
+                                        ", HyouronTantoushaMei " +
+                                        ", HyouronnTantoushaHyouten " +
+                                        ") VALUES (" +
+                                        "'" + ankenNo2 + "' " +
+                                        "," + i +
+                                        ",N'" + c1FlexGrid5.Rows[i][1].ToString() + "' " +
+                                        ",N'" + c1FlexGrid5.Rows[i][2].ToString() + "' " +
+                                        ",N'" + Hyouten + "' " +
+                                        ") ";
+                                Console.WriteLine(cmd.CommandText);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        // 名称の取得
+                        string GyoumuJouhouMadoShibuMei = "";
+                        string GyoumuJouhouMadoKamei = "";
+                        DataTable dt2 = new DataTable();
+                        cmd.CommandText = "SELECT ShibuMei, KaMei FROM Mst_Busho WHERE GyoumuBushoCD = '" + item3_4_5_Busho.Text + "'";
+                        var sda2 = new SqlDataAdapter(cmd);
+                        dt2.Clear();
+                        sda2.Fill(dt2);
+                        if (dt2 != null && dt2.Rows.Count > 0)
+                        {
+                            GyoumuJouhouMadoShibuMei = dt2.Rows[0][0].ToString();
+                            GyoumuJouhouMadoKamei = dt2.Rows[0][1].ToString();
+                        }
+
+                        //窓口担当者の更新
+                        if ((item3_4_5_CD.Text == "0") || (item3_4_5_CD.Text == ""))
+                        {
+                            cmd.CommandText = "DELETE GyoumuJouhouMadoguchi WHERE GyoumuJouhouID = '" + ankenNo2 + "' ";
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            // 窓口担当者が複数いた場合の対応
+                            DataTable gyoumuJouhouMadoguchiDT = new DataTable();
+                            cmd.CommandText = "SELECT TOP 1 GyoumuJouhouMadoguchiID " +
+                                            "FROM GyoumuJouhouMadoguchi " +
+                                            "where GyoumuJouhouID = '" + ankenNo2 + "' " +
+                                            "ORDER BY GyoumuJouhouMadoguchiID ";
+
+                            string GyoumuJouhouMadoguchiID = "";
+
+                            var gyoumuJouhouMadoguchiSda = new SqlDataAdapter(cmd);
+                            gyoumuJouhouMadoguchiDT.Clear();
+                            gyoumuJouhouMadoguchiSda.Fill(gyoumuJouhouMadoguchiDT);
+                            if (gyoumuJouhouMadoguchiDT != null && gyoumuJouhouMadoguchiDT.Rows.Count > 0)
+                            {
+                                GyoumuJouhouMadoguchiID = gyoumuJouhouMadoguchiDT.Rows[0][0].ToString();
+                            }
+                            // データが存在する場合
+                            if (GyoumuJouhouMadoguchiID != "")
+                            {
+                                cmd.CommandText = "UPDATE GyoumuJouhouMadoguchi set " +
+                                                "GyoumuJouhouMadoGyoumuBushoCD = N'" + item3_4_5_Busho.Text + "' " +
+                                                ",GyoumuJouhouMadoShibuMei = N'" + GyoumuJouhouMadoShibuMei + "' " +
+                                                ",GyoumuJouhouMadoKamei = N'" + GyoumuJouhouMadoKamei + "' " +
+                                                ",GyoumuJouhouMadoKojinCD = N'" + item3_4_5_CD.Text + "' " +
+                                                ",GyoumuJouhouMadoChousainMei = N'" + item3_4_5.Text + "' " +
+                                                "WHERE GyoumuJouhouMadoguchiID = N'" + GyoumuJouhouMadoguchiID + "' ";
+
+                                cmd.ExecuteNonQuery();
+                            }
+
+                        }
+
+                        cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET " +
+                                    "KeiyakuKeiyakuTeiketsubi = " + Get_DateTimePicker("item3_1_3") +
+                                    ",KeiyakuSakuseibi = " + Get_DateTimePicker("item3_1_4") +
+                                    ",KeiyakuKeiyakuKoukiKaishibi = " + Get_DateTimePicker("item3_1_6") +
+                                    ",KeiyakuKeiyakuKoukiKanryoubi = " + Get_DateTimePicker("item3_1_7") +
+                                    ",KeiyakuKeiyakuKingaku = " + item3_1_12.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuZeikomiKingaku = " + item3_1_13.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuuchizeiKingaku = " + item3_1_14.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuShouhizeiritsu = N'" + item3_1_10.Text + "'" +
+                                    ",KeiyakuHenkouChuushiRiyuu = " + "N'" + GlobalMethod.ChangeSqlText(item3_1_17.Text, 0, 0) + "'" +
+                                    ",KeiyakuBikou = " + "N'" + GlobalMethod.ChangeSqlText(item3_1_19.Text, 0, 0) + "'" +
+                                    ",KeiyakuShosha = " + (item3_1_20.Checked ? 1 : 0) +
+                                    ",KeiyakuTokkiShiyousho = " + (item3_1_21.Checked ? 1 : 0) +
+                                    ",KeiyakuMitsumorisho = " + (item3_1_22.Checked ? 1 : 0) +
+                                    ",KeiyakuTanpinChousaMitsumorisho = " + (item3_1_23.Checked ? 1 : 0) +
+                                    ",KeiyakuSonota = " + (item3_1_24.Checked ? 1 : 0) +
+                                    ",KeiyakuSonotaNaiyou = " + "N'" + GlobalMethod.ChangeSqlText(item3_1_25.Text, 0, 0) + "'" +
+                                    ",KeiyakuZentokinUkewatashibi = " + Get_DateTimePicker("item3_6_11") +
+                                    ",KeiyakuZentokin = " + item3_6_12.Text.Replace("¥", "").Replace(",", "") +
+                                    ",Keiyakukeiyakukingakukei = " + item3_1_15.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuBetsuKeiyakuKingaku = " + item3_1_16.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuSeikyuubi1 = " + " " + Get_DateTimePicker("item3_6_1") + "" +
+                                    ",KeiyakuSeikyuuKingaku1 = " + item3_6_2.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuSeikyuubi2 = " + " " + Get_DateTimePicker("item3_6_3") + "" +
+                                    ",KeiyakuSeikyuuKingaku2 = " + item3_6_4.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuSeikyuubi3 = " + " " + Get_DateTimePicker("item3_6_5") + "" +
+                                    ",KeiyakuSeikyuuKingaku3 = " + item3_6_6.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuSeikyuubi4 = " + " " + Get_DateTimePicker("item3_6_7") + "" +
+                                    ",KeiyakuSeikyuuKingaku4 = " + item3_6_8.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuSeikyuubi5 = " + " " + Get_DateTimePicker("item3_6_9") + "" +
+                                    ",KeiyakuSeikyuuKingaku5 = " + item3_6_10.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuSakuseiKubunID = " + "N'" + item3_1_1.SelectedValue + "'" +
+                                    ",KeiyakuSakuseiKubun = " + "N'" + item3_1_1.Text + "'" +
+                                    ",KeiyakuGyoumuKubun = " + "N'" + item3_1_8.SelectedValue + "'" +
+                                    ",KeiyakuGyoumuMei = " + "N'" + item3_1_8.Text + "'" +
+                                    ",KeiyakuKianzumi = " + (item3_1_2.Checked ? 1 : 0) +
+                                    ",KeiyakuHachuushaMei = " + "N'" + item3_1_9.Text + "'" +
+                                    ",KeiyakuHaibunChoZeinuki = " + item3_2_1_2.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuHaibunJoZeinuki = " + item3_2_2_2.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuHaibunJosysZeinuki = " + item3_2_3_2.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuHaibunKeiZeinuki = " + item3_2_4_2.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuHaibunZeinukiKei = " + item3_2_5_2.Text.Replace("¥", "").Replace(",", "").Replace("%", "") +
+                                    ",KeiyakuUriageHaibunCho  = " + item3_2_1_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuUriageHaibunJo   = " + item3_2_2_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuUriageHaibunJosys  = " + item3_2_3_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuUriageHaibunKei  = " + item3_2_4_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuUriageHaibunGoukei = " + item3_2_5_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuTankeiMikomiCho  = " + item3_3_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuTankeiMikomiJo  = " + item3_3_2.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuTankeiMikomiJosys  = " + item3_3_3.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuTankeiMikomiKei  = " + item3_3_4.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuKurikoshiCho  = " + item3_7_1.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuKurikoshiJo  = " + item3_7_2.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuKurikoshiJosys  = " + item3_7_3.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuKurikoshiKei  = " + item3_7_4.Text.Replace("¥", "").Replace(",", "") +
+                                    ",KeiyakuUpdateProgram = " + "'ChangeKianEntry'" +
+                                    ",KeiyakuUpdateDate = " + "GETDATE()" +
+                                    ",KeiyakuUpdateUser = " + "N'" + UserInfos[0] + "'" +
+                                    // えんとり君修正STEP2（RIBC項目追加）
+                                    ",KeiyakuRIBCYouTankaDataMoushikomisho = " + (item3_ribc_price.Checked ? 1 : 0) +
+                                    ",KeiyakuSashaKeiyu = " + (item3_sa_commpany.Checked ? 1 : 0) +
+                                    ",KeiyakuRIBCYouTankaData = " + (item3_1_ribc.Checked ? 1 : 0) +
+                                    " WHERE AnkenJouhouID = " + ankenNo2;
+                        result = cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "DELETE FROM RibcJouhou " +
+                                " WHERE RibcID = " + ankenNo2;
+                        cmd.ExecuteNonQuery();
+                        int cnt = 0;
+                        string RibcKoukiStart;
+                        string RibcNouhinbi;
+                        string RibcSeikyubi;
+                        string RibcNyukinyoteibi;
+                        string RibcKubun;
+                        for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
+                        {
+
+                            // 新では計上額のみでも登録を可とする
+                            // 計上日、計上月、計上額のどれかが入っていれば登録する
+                            // c1FlexGrid の基本はNull、DBからの場合は空文字があり得る、\0は0、0を消すとまたnullになる
+                            if ((c1FlexGrid4.Rows[i][1] != null && c1FlexGrid4.Rows[i][1].ToString() != "")
+                                || (c1FlexGrid4.Rows[i][2] != null && c1FlexGrid4.Rows[i][2].ToString() != "")
+                                || (c1FlexGrid4.Rows[i][3] != null && c1FlexGrid4.Rows[i][3].ToString() != "0"))
+                            {
+                                RibcKoukiStart = "null";
+                                if (c1FlexGrid4.Rows[i][4] != null)
+                                {
+                                    RibcKoukiStart = "N'" + c1FlexGrid4.Rows[i][4].ToString() + "'";
+                                }
+                                RibcNouhinbi = "null";
+                                if (c1FlexGrid4.Rows[i][5] != null)
+                                {
+                                    RibcNouhinbi = "N'" + c1FlexGrid4.Rows[i][5].ToString() + "'";
+                                }
+                                RibcSeikyubi = "null";
+                                if (c1FlexGrid4.Rows[i][6] != null)
+                                {
+                                    RibcSeikyubi = "N'" + c1FlexGrid4.Rows[i][6].ToString() + "'";
+                                }
+                                RibcNyukinyoteibi = "null";
+                                if (c1FlexGrid4.Rows[i][7] != null)
+                                {
+                                    RibcNyukinyoteibi = "N'" + c1FlexGrid4.Rows[i][7].ToString() + "'";
+                                }
+                                RibcKubun = "0";
+                                if (c1FlexGrid4.Rows[i][8] != null)
+                                {
+                                    RibcKubun = "N'" + c1FlexGrid4.Rows[i][8].ToString() + "'";
+                                }
+
+                                cnt++;
+                                cmd.CommandText = "INSERT INTO RibcJouhou (" +
+                                            "RibcID " +
+                                            ",RibcNo " +
+                                            ",RibcKoukiEnd " +
+                                            ",RibcUriageKeijyoTuki " +
+                                            ",RibcSeikyuKingaku " +
+                                            ",RibcKankeibusho " +
+                                            ",RibcKoukiStart " +
+                                            ",RibcNouhinbi " +
+                                            ",RibcSeikyubi " +
+                                            ",RibcNyukinyoteibi " +
+                                            ",RibcKubun " +
+                                            ") VALUES (" +
+                                           ankenNo2 +
+                                            "," + cnt + "";
+                                if (c1FlexGrid4.Rows[i][1] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][1].ToString() + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",null";
+                                }
+                                // 計上月 RibcUriageKeijyoTuki
+                                if (c1FlexGrid4.Rows[i][2] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][2].ToString() + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'' " + "";
+                                }
+                                // 計上額 RibcSeikyuKingaku
+                                if (c1FlexGrid4.Rows[i][3] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][3].ToString().Replace("¥", "").Replace(",", "") + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'0' " + "";
+                                }
+                                cmd.CommandText = cmd.CommandText +
+                                ",'127120' " +
+                                            "," + RibcKoukiStart +
+                                            "," + RibcNouhinbi +
+                                            "," + RibcSeikyubi +
+                                            "," + RibcNyukinyoteibi +
+                                            "," + RibcKubun +
+                                            ")";
+
+                                Console.WriteLine(cmd.CommandText);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            // 新では計上額のみでも登録を可とする
+                            // 計上日、計上月、計上額のどれかが入っていれば登録する
+                            // c1FlexGrid の基本はNull、DBからの場合は空文字があり得る、\0は0、0を消すとまたnullになる
+                            if ((c1FlexGrid4.Rows[i][9] != null && c1FlexGrid4.Rows[i][9].ToString() != "")
+                                || (c1FlexGrid4.Rows[i][10] != null && c1FlexGrid4.Rows[i][10].ToString() != "")
+                                || (c1FlexGrid4.Rows[i][11] != null && c1FlexGrid4.Rows[i][11].ToString() != "0"))
+                            {
+                                RibcKoukiStart = "null";
+                                if (c1FlexGrid4.Rows[i][12] != null)
+                                {
+                                    RibcKoukiStart = "N'" + c1FlexGrid4.Rows[i][12].ToString() + "'";
+                                }
+                                RibcNouhinbi = "null";
+                                if (c1FlexGrid4.Rows[i][13] != null)
+                                {
+                                    RibcNouhinbi = "N'" + c1FlexGrid4.Rows[i][13].ToString() + "'";
+                                }
+                                RibcSeikyubi = "null";
+                                if (c1FlexGrid4.Rows[i][14] != null)
+                                {
+                                    RibcSeikyubi = "N'" + c1FlexGrid4.Rows[i][14].ToString() + "'";
+                                }
+                                RibcNyukinyoteibi = "null";
+                                if (c1FlexGrid4.Rows[i][15] != null)
+                                {
+                                    RibcNyukinyoteibi = "N'" + c1FlexGrid4.Rows[i][15].ToString() + "'";
+                                }
+                                RibcKubun = "0";
+                                if (c1FlexGrid4.Rows[i][16] != null)
+                                {
+                                    RibcKubun = "N'" + c1FlexGrid4.Rows[i][16].ToString() + "'";
+                                }
+                                cnt++;
+                                cmd.CommandText = "INSERT INTO RibcJouhou (" +
+                                            "RibcID " +
+                                            ",RibcNo " +
+                                            ",RibcKoukiEnd " +
+                                            ",RibcUriageKeijyoTuki " +
+                                            ",RibcSeikyuKingaku " +
+                                            ",RibcKankeibusho " +
+                                            ",RibcKoukiStart " +
+                                            ",RibcNouhinbi " +
+                                            ",RibcSeikyubi " +
+                                            ",RibcNyukinyoteibi " +
+                                            ",RibcKubun " +
+                                            ") VALUES (" +
+                                           ankenNo2 +
+                                            "," + cnt + "";
+
+                                if (c1FlexGrid4.Rows[i][9] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][9].ToString() + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",null";
+                                }
+                                // 計上月 RibcUriageKeijyoTuki
+                                if (c1FlexGrid4.Rows[i][10] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][10].ToString() + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'' " + "";
+                                }
+                                // 計上額 RibcSeikyuKingaku
+                                if (c1FlexGrid4.Rows[i][11] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][11].ToString().Replace("¥", "").Replace(",", "") + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'0' " + "";
+                                }
+                                cmd.CommandText = cmd.CommandText + ",'129230' " +
+                                            "," + RibcKoukiStart +
+                                            "," + RibcNouhinbi +
+                                            "," + RibcSeikyubi +
+                                            "," + RibcNyukinyoteibi +
+                                            "," + RibcKubun +
+                                            ")";
+
+                                cmd.ExecuteNonQuery();
+                            }
+                            //}
+
+                            // 新では計上額のみでも登録を可とする
+                            // 計上日、計上月、計上額のどれかが入っていれば登録する
+                            // c1FlexGrid の基本はNull、DBからの場合は空文字があり得る、\0は0、0を消すとまたnullになる
+                            if ((c1FlexGrid4.Rows[i][17] != null && c1FlexGrid4.Rows[i][17].ToString() != "")
+                                || (c1FlexGrid4.Rows[i][18] != null && c1FlexGrid4.Rows[i][18].ToString() != "")
+                                || (c1FlexGrid4.Rows[i][19] != null && c1FlexGrid4.Rows[i][19].ToString() != "0"))
+                            {
+                                RibcKoukiStart = "null";
+                                if (c1FlexGrid4.Rows[i][20] != null)
+                                {
+                                    RibcKoukiStart = "N'" + c1FlexGrid4.Rows[i][20].ToString() + "'";
+                                }
+                                RibcNouhinbi = "null";
+                                if (c1FlexGrid4.Rows[i][21] != null)
+                                {
+                                    RibcNouhinbi = "N'" + c1FlexGrid4.Rows[i][21].ToString() + "'";
+                                }
+                                RibcSeikyubi = "null";
+                                if (c1FlexGrid4.Rows[i][22] != null)
+                                {
+                                    RibcSeikyubi = "N'" + c1FlexGrid4.Rows[i][22].ToString() + "'";
+                                }
+                                RibcNyukinyoteibi = "null";
+                                if (c1FlexGrid4.Rows[i][23] != null)
+                                {
+                                    RibcNyukinyoteibi = "N'" + c1FlexGrid4.Rows[i][23].ToString() + "'";
+                                }
+                                RibcKubun = "0";
+                                if (c1FlexGrid4.Rows[i][24] != null)
+                                {
+                                    RibcKubun = "N'" + c1FlexGrid4.Rows[i][24].ToString() + "'";
+                                }
+                                cnt++;
+                                cmd.CommandText = "INSERT INTO RibcJouhou (" +
+                                            "RibcID " +
+                                            ",RibcNo " +
+                                            ",RibcKoukiEnd " +
+                                            ",RibcUriageKeijyoTuki " +
+                                            ",RibcSeikyuKingaku " +
+                                            ",RibcKankeibusho " +
+                                            ",RibcKoukiStart " +
+                                            ",RibcNouhinbi " +
+                                            ",RibcSeikyubi " +
+                                            ",RibcNyukinyoteibi " +
+                                            ",RibcKubun " +
+                                            ") VALUES (" +
+                                           ankenNo2 +
+                                            "," + cnt + "";
+
+                                if (c1FlexGrid4.Rows[i][17] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][17].ToString() + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",null";
+                                }
+                                // 計上月 RibcUriageKeijyoTuki
+                                if (c1FlexGrid4.Rows[i][18] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][18].ToString() + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'' " + "";
+                                }
+                                // 計上額 RibcSeikyuKingaku
+                                if (c1FlexGrid4.Rows[i][19] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][19].ToString().Replace("¥", "").Replace(",", "") + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'0' " + "";
+                                }
+                                // 年度により、情報システム部の部コードを変更する
+                                if (GetInt(item3_1_5.SelectedValue.ToString()) >= 2021)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'128400' " +
+                                                "," + RibcKoukiStart +
+                                                "," + RibcNouhinbi +
+                                                "," + RibcSeikyubi +
+                                                "," + RibcNyukinyoteibi +
+                                                "," + RibcKubun +
+                                                ")";
+                                }
+                                else
+                                {
+                                    // 2021年度以前は127900
+                                    cmd.CommandText = cmd.CommandText + ",'127900' " +
+                                                "," + RibcKoukiStart +
+                                                "," + RibcNouhinbi +
+                                                "," + RibcSeikyubi +
+                                                "," + RibcNyukinyoteibi +
+                                                "," + RibcKubun +
+                                                ")";
+                                }
+
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            // 新では計上額のみでも登録を可とする
+                            // 計上日、計上月、計上額のどれかが入っていれば登録する
+                            // c1FlexGrid の基本はNull、DBからの場合は空文字があり得る、\0は0、0を消すとまたnullになる
+                            if ((c1FlexGrid4.Rows[i][25] != null && c1FlexGrid4.Rows[i][25].ToString() != "")
+                                || (c1FlexGrid4.Rows[i][26] != null && c1FlexGrid4.Rows[i][26].ToString() != "")
+                                || (c1FlexGrid4.Rows[i][27] != null && c1FlexGrid4.Rows[i][27].ToString() != "0"))
+                            {
+                                RibcKoukiStart = "null";
+                                if (c1FlexGrid4.Rows[i][28] != null)
+                                {
+                                    RibcKoukiStart = "N'" + c1FlexGrid4.Rows[i][28].ToString() + "'";
+                                }
+                                RibcNouhinbi = "null";
+                                if (c1FlexGrid4.Rows[i][29] != null)
+                                {
+                                    RibcNouhinbi = "N'" + c1FlexGrid4.Rows[i][29].ToString() + "'";
+                                }
+                                RibcSeikyubi = "null";
+                                if (c1FlexGrid4.Rows[i][30] != null)
+                                {
+                                    RibcSeikyubi = "'" + c1FlexGrid4.Rows[i][30].ToString() + "'";
+                                }
+                                RibcNyukinyoteibi = "null";
+                                if (c1FlexGrid4.Rows[i][31] != null)
+                                {
+                                    RibcNyukinyoteibi = "N'" + c1FlexGrid4.Rows[i][31].ToString() + "'";
+                                }
+                                RibcKubun = "0";
+                                if (c1FlexGrid4.Rows[i][32] != null)
+                                {
+                                    RibcKubun = "N'" + c1FlexGrid4.Rows[i][32].ToString() + "'";
+                                }
+                                cnt++;
+                                cmd.CommandText = "INSERT INTO RibcJouhou (" +
+                                            "RibcID " +
+                                            ",RibcNo " +
+                                            ",RibcKoukiEnd " +
+                                            ",RibcUriageKeijyoTuki " +
+                                            ",RibcSeikyuKingaku " +
+                                            ",RibcKankeibusho " +
+                                            ",RibcKoukiStart " +
+                                            ",RibcNouhinbi " +
+                                            ",RibcSeikyubi " +
+                                            ",RibcNyukinyoteibi " +
+                                            ",RibcKubun " +
+                                            ") VALUES (" +
+                                           ankenNo2 +
+                                            "," + cnt + "";
+                                if (c1FlexGrid4.Rows[i][25] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][25].ToString() + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",null";
+                                }
+                                // 計上月 RibcUriageKeijyoTuki
+                                if (c1FlexGrid4.Rows[i][26] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][26].ToString() + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'' " + "";
+                                }
+                                // 計上額 RibcSeikyuKingaku
+                                if (c1FlexGrid4.Rows[i][27] != null)
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",N'" + c1FlexGrid4.Rows[i][27].ToString().Replace("¥", "").Replace(",", "") + "'";
+                                }
+                                else
+                                {
+                                    cmd.CommandText = cmd.CommandText + ",'0' " + "";
+                                }
+                                cmd.CommandText = cmd.CommandText + ",'150200' " +
+                                            "," + RibcKoukiStart +
+                                            "," + RibcNouhinbi +
+                                            "," + RibcSeikyubi +
+                                            "," + RibcNyukinyoteibi +
+                                            "," + RibcKubun +
+                                            ")";
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        //業務配分登録
+                        cmd.CommandText = "UPDATE GyoumuHaibun SET " +
+                                            " GyoumuChosaBuGaku " + " = N'" + item3_7_1_6_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuJigyoFukyuBuGaku " + " = N'" + item3_7_1_7_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuJyohouSystemBuGaku " + " = N'" + item3_7_1_8_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuSougouKenkyuJoGaku " + " = N'" + item3_7_1_9_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuShizaiChousaRitsu " + " = N'" + item3_7_2_14_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuEizenRitsu " + " = N'" + item3_7_2_15_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuKikiruiChousaRitsu " + " = N'" + item3_7_2_16_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuKoujiChousahiRitsu " + " = N'" + item3_7_2_17_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuSanpaiFukusanbutsuRitsu " + " = N'" + item3_7_2_18_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuHokakeChousaRitsu " + " = N'" + item3_7_2_19_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuShokeihiChousaRitsu " + " = N'" + item3_7_2_20_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuGenkaBunsekiRitsu " + " = N'" + item3_7_2_21_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuKijunsakuseiRitsu " + " = N'" + item3_7_2_22_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuKoukyouRoumuhiRitsu " + " = N'" + item3_7_2_23_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuRoumuhiKoukyouigaiRitsu " + " = N'" + item3_7_2_24_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuSonotaChousabuRitsu " + " = N'" + item3_7_2_25_1.Text.Replace("%", "") + "' " +
+                                            ",GyoumuShizaiChousaGaku " + " = N'" + item3_7_2_14_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuEizenGaku " + " = N'" + item3_7_2_15_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuKikiruiChousaGaku " + " = N'" + item3_7_2_16_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuKoujiChousahiGaku " + " = N'" + item3_7_2_17_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuSanpaiFukusanbutsuGaku " + " = N'" + item3_7_2_18_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuHokakeChousaGaku " + " = N'" + item3_7_2_19_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuShokeihiChousaGaku " + " = N'" + item3_7_2_20_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuGenkaBunsekiGaku " + " = N'" + item3_7_2_21_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuKijunsakuseiGaku " + " = N'" + item3_7_2_22_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuKoukyouRoumuhiGaku " + " = N'" + item3_7_2_23_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuRoumuhiKoukyouigaiGaku " + " = N'" + item3_7_2_24_2.Text.Replace("%", "") + "' " +
+                                            ",GyoumuSonotaChousabuGaku " + " = N'" + item3_7_2_25_2.Text.Replace("%", "") + "' " +
+                                            " WHERE GyoumuAnkenJouhouID = " + ankenNo2 + " AND GyoumuHibunKubun = 30 ";
+                        Console.WriteLine(cmd.CommandText);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    
+                    GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "確認シートのダミー赤伝を作成しました ID:" + ankenNo, pgmName + methodName, "");
+                    if (SakuseiKubun == "03" || int.Parse(SakuseiKubun) > 5)
+                    {
+                        rtnAnkenNo = ankenNo2;
+                        GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "確認シートのダミー黒伝を作成しました ID:" + ankenNo2, pgmName + methodName, "");
+                    }
+                    else
+                    {
+                        rtnAnkenNo = ankenNo;
+                        GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "確認シートのダミー中止伝票を追加しました。 ID:" + AnkenID, pgmName + methodName, "");
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            return rtnAnkenNo;
+        }
+
+        /// <summary>
+        /// えんとり君修正STEP2 確認シート：ダミーデータ
+        /// </summary>
+        /// <returns></returns>
+        private string getAnkenJouhouInsertSQL()
+        {
+            return "INSERT INTO AnkenJouhou ( " +
+                            "AnkenJouhouID " +
+                            ",AnkenSakuseiKubun " +
+                            ",AnkenSaishinFlg " +
+                            ",AnkenKishuKeikakugaku " +
+                            ",AnkenKishuKeikakakugakuJf " +
+                            ",AnkenKishuKeikakugakuJ " +
+                            ",AnkenKeikakuZangaku " +
+                            ",AnkenkeikakuZangakuJF " +
+                            ",AnkenkeikakuZangakuJ " +
+                            ",AnkenChokusetsuGenka " +
+                            ",AnkenChokusetsuGenkaRitsu " +
+                            ",AnkenGaichuuhi " +
+                            ",AnkenJoukanDoboku " +
+                            ",AnkenJoukanFukugou " +
+                            ",AnkenJoukanGesuidou " +
+                            ",AnkenJoukanHyoujun " +
+                            ",AnkenJoukanIchiba " +
+                            ",AnkenJoukanItiji " +
+                            ",AnkenJoukanJutakuSonota " +
+                            ",AnkenJoukanKentiku " +
+                            ",AnkenJoukanKijunsho " +
+                            ",AnkenJoukanKouwan " +
+                            ",AnkenJoukanKuukou " +
+                            ",AnkenJoukanSetsubi " +
+                            ",AnkenJoukanSonota " +
+                            ",AnkenJoukanSuidou " +
+                            ",AnkenKeichoukaiKounyuuhi " +
+                            ",AnkenKishuKeikakugakuK " +
+                            ",AnkenKaisuu " +
+                            ",AnkenCreateDate " +
+                            ",AnkenCreateUser " +
+                            ",AnkenCreateProgram " +
+                            ",AnkenUpdateDate " +
+                            ",AnkenUpdateUser " +
+                            ",AnkenUpdateProgram " +
+                            ",AnkenTourokubi " +
+                            ",AnkenGyoumuMei " +
+                            ",AnkenDeleteFlag " +
+                            ",AnkenUriageNendo " +
+                            ",AnkenHachushaKubunCD " +
+                            ",AnkenHachushaKubunMei " +
+                            ",AnkenHachuushaCodeID " +
+                            ",AnkenHachuushaMei " +
+                            ",AnkenGyoumuKubun " +
+                            ",AnkenGyoumuKubunMei " +
+                            ",AnkenNyuusatsuHoushiki " +
+                            ",AnkenKyougouTasha " +
+                            ",AnkenJutakubushoCD " +
+                            ",AnkenJutakushibu " +
+                            ",AnkenTantoushaCD " +
+                            ",AnkenMadoguchiTantoushaCD " +
+                            ",AnkenGyoumuKanrishaCD " +
+                            ",AnkenGyoumuKanrisha " +
+                            ",GyoumuKanrishaCD " +
+                            ",AnkenHachuushaBusho " +
+                            ",AnkenkeikakuZangakuK " +
+                            ",AnkenJutakuBangou " +
+                            ",AnkenJutakuBangouEda " +
+                            ",AnkenNyuusatsuYoteibi " +
+                            ",AnkenRakusatsusha " +
+                            ",AnkenRakusatsuJouhou " +
+                            ",AnkenKianZumi " +
+                            ",AnkenKiangetsu " +
+                            ",AnkenHanteiKubun " +
+                            ",AnkenJoukanData " +
+                            ",AnkenJoukanHachuuKikanCD " +
+                            ",AnkenNyuukinKakuninbi " +
+                            ",AnkenKanryouSakuseibi " +
+                            ",AnkenHonbuKakuninbi " +
+                            ",AnkenShizaiChousa " +
+                            ",AnkenKoujiChousahi " +
+                            ",AnkenKikiruiChousa " +
+                            ",AnkenSanpaiFukusanbutsu " +
+                            ",AnkenHokakeChousa " +
+                            ",AnkenShokeihiChousa " +
+                            ",AnkenGenkaBunseki " +
+                            ",AnkenKijunsakusei " +
+                            ",AnkenKoukyouRoumuhi " +
+                            ",AnkenRoumuhiKoukyouigai " +
+                            ",AnkenSonotaChousabu " +
+                            ",AnkenOrdermadeJifubu " +
+                            ",AnkenRIBCJifubu " +
+                            ",AnkenSonotaJifubu " +
+                            ",AnkenOrdermade " +
+                            ",AnkenJouhouKaihatsu " +
+                            ",AnkenRIBCJouhouKaihatsu " +
+                            ",AnkenSoukenbu " +
+                            ",AnkenSonotaJoujibu " +
+                            ",AnkenTeikiTokuchou " +
+                            ",AnkenTanpinTokuchou " +
+                            ",AnkenKikiChousa " +
+                            ",AnkenHachuushaIraibusho " +
+                            ",AnkenHachuushaTantousha " +
+                            ",AnkenHachuushaTEL " +
+                            ",AnkenHachuushaFAX " +
+                            ",AnkenHachuushaMail " +
+                            ",AnkenHachuushaIraiYuubin " +
+                            ",AnkenHachuushaIraiJuusho " +
+                            ",AnkenHachuushaKeiyakuBusho " +
+                            ",AnkenHachuushaKeiyakuTantou " +
+                            ",AnkenHachuushaKeiyakuTEL " +
+                            ",AnkenHachuushaKeiyakuFAX " +
+                            ",AnkenHachuushaKeiyakuMail " +
+                            ",AnkenHachuushaKeiyakuYuubin " +
+                            ",AnkenHachuushaKeiyakuJuusho " +
+                            ",AnkenHachuuDaihyouYakushoku " +
+                            ",AnkenHachuuDaihyousha " +
+                            ",AnkenRosenKawamei " +
+                            ",AnkenGyoumuItakuKasho " +
+                            ",AnkenJititaiKibunID " +
+                            ",AnkenJititaiKubun " +
+                            ",AnkenKeiyakuToshoNo " +
+                            ",AnkenKirokuToshoNo " +
+                            ",AnkenKirokuHokanNo " +
+                            ",AnkenCDHokan " +
+                            ",AnkenSeikaButsuHokanFile " +
+                            ",AnkenSeikabutsuHokanbako " +
+                            ",AnkenKokyakuHyoukaComment " +
+                            ",AnkenToukaiHyoukaComment " +
+                            ",AnkenKenCD " +
+                            ",AnkenToshiCD " +
+                            ",AnkenKeiyakusho " +
+                            ",AnkenEizen " +
+                            ",AnkenTantoushaMei " +
+                            ",GyoumuKanrishaMei " +
+                            ",AnkenGyoumuKubunCD " +
+                            ",AnkenHachuushaKaMei " +
+                            ",AnkenKeiyakuKoukiKaishibi " +
+                            ",AnkenKeiyakuKoukiKanryoubi " +
+                            ",AnkenKeiyakuTeiketsubi " +
+                            ",AnkenKeiyakuZeikomiKingaku " +
+                            ",AnkenKeiyakuUriageHaibunGakuC " +
+                            ",AnkenKeiyakuUriageHaibunGakuJ " +
+                            ",AnkenKeiyakuUriageHaibunGakuJs " +
+                            ",AnkenKeiyakuUriageHaibunGakuK " +
+                            ",AnkenKeiyakuUriageHaibunGakuR " +
+                            ",AnkenKeiyakuSakuseibi " +
+                            ",AnkenAnkenBangou " +
+                            ",AnkenKeikakuBangou " +
+                            ",AnkenHikiaijhokyo " +
+                            ",AnkenKeikakuAnkenMei " +
+                            ",AnkenToukaiSankouMitsumori " +
+                            ",AnkenToukaiJyutyuIyoku " +
+                            ",AnkenToukaiSankouMitsumoriGaku " +
+                            ",AnkenHachushaKaMei " +
+                            ",AnkenHachushaCD " +
+                            ",AnkenToukaiOusatu " +
+                            ",AnkenKoukiNendo) ";
+        }
+
+        /// <summary>
+        /// えんとり君修正STEP2 確認シート：ダミーデータ
+        /// </summary>
+        /// <param name="SakuseiKubun">案件区分</param>
+        /// <param name="flag">0:赤伝、1:黒伝</param>
+        /// <returns></returns>
+        private string getAnkenJouhouInsertVal(string SakuseiKubun, int flag = 0)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (SakuseiKubun == "03" || int.Parse(SakuseiKubun) > 5)
+            {
+                if (flag == 0)
+                {
+                    sb.Append(",'02' ");    //",AnkenSakuseiKubun "
+                    sb.Append(",0 ");       //",AnkenSaishinFlg "
+                    sb.Append(",- AnkenKishuKeikakugaku ");     //",AnkenKishuKeikakugaku "
+                    sb.Append(",- AnkenKishuKeikakakugakuJf "); //",AnkenKishuKeikakakugakuJf "
+                    sb.Append(",- AnkenKishuKeikakugakuJ ");    //",AnkenKishuKeikakugakuJ "
+                }
+                else
+                {
+                    sb.Append(",'").Append(SakuseiKubun).Append("' ");  //",AnkenSakuseiKubun "
+                    sb.Append(",0 ");       //",AnkenSaishinFlg "
+                    sb.Append(",AnkenKishuKeikakugaku ");     //",AnkenKishuKeikakugaku "
+                    sb.Append(",AnkenKishuKeikakakugakuJf "); //",AnkenKishuKeikakakugakuJf "
+                    sb.Append(",AnkenKishuKeikakugakuJ ");    //",AnkenKishuKeikakugakuJ "
+                }
+            }
+            else
+            {
+                sb.Append(",'04' ");    //",AnkenSakuseiKubun "
+                sb.Append(",0 ");       //",AnkenSaishinFlg "
+                sb.Append(",0 ");       //",AnkenKishuKeikakugaku "
+                sb.Append(",0 ");       //",AnkenKishuKeikakakugakuJf
+                sb.Append(",0 ");       //",AnkenKishuKeikakugakuJ "
+            }
+            if (flag == 0) { 
+                sb.Append(",- AnkenKeikakuZangaku ");
+                sb.Append(",- AnkenkeikakuZangakuJF ");
+                sb.Append(",- AnkenkeikakuZangakuJ ");
+                sb.Append(",- AnkenChokusetsuGenka ");
+                sb.Append(",- AnkenChokusetsuGenkaRitsu ");
+                sb.Append(",- AnkenGaichuuhi ");
+                sb.Append(",- AnkenJoukanDoboku ");
+                sb.Append(",- AnkenJoukanFukugou ");
+                sb.Append(",- AnkenJoukanGesuidou ");
+                sb.Append(",- AnkenJoukanHyoujun ");
+                sb.Append(",- AnkenJoukanIchiba ");
+                sb.Append(",- AnkenJoukanItiji ");
+                sb.Append(",- AnkenJoukanJutakuSonota ");
+                sb.Append(",- AnkenJoukanKentiku ");
+                sb.Append(",- AnkenJoukanKijunsho ");
+                sb.Append(",- AnkenJoukanKouwan ");
+                sb.Append(",- AnkenJoukanKuukou ");
+                sb.Append(",- AnkenJoukanSetsubi ");
+                sb.Append(",- AnkenJoukanSonota ");
+                sb.Append(",- AnkenJoukanSuidou ");
+                sb.Append(",- AnkenKeichoukaiKounyuuhi ");
+                sb.Append(",- AnkenKishuKeikakugakuK ");
+            }
+            else
+            {
+                sb.Append(",AnkenKeikakuZangaku ");
+                sb.Append(",AnkenkeikakuZangakuJF ");
+                sb.Append(",AnkenkeikakuZangakuJ ");
+                sb.Append(",AnkenChokusetsuGenka ");
+                sb.Append(",AnkenChokusetsuGenkaRitsu ");
+                sb.Append(",AnkenGaichuuhi ");
+                sb.Append(",AnkenJoukanDoboku ");
+                sb.Append(",AnkenJoukanFukugou ");
+                sb.Append(",AnkenJoukanGesuidou ");
+                sb.Append(",AnkenJoukanHyoujun ");
+                sb.Append(",AnkenJoukanIchiba ");
+                sb.Append(",AnkenJoukanItiji ");
+                sb.Append(",AnkenJoukanJutakuSonota ");
+                sb.Append(",AnkenJoukanKentiku ");
+                sb.Append(",AnkenJoukanKijunsho ");
+                sb.Append(",AnkenJoukanKouwan ");
+                sb.Append(",AnkenJoukanKuukou ");
+                sb.Append(",AnkenJoukanSetsubi ");
+                sb.Append(",AnkenJoukanSonota ");
+                sb.Append(",AnkenJoukanSuidou ");
+                sb.Append(",AnkenKeichoukaiKounyuuhi ");
+                sb.Append(",AnkenKishuKeikakugakuK ");
+            }
+            sb.Append(",AnkenKaisuu + 1 ");
+            sb.Append(",GETDATE() ");
+            sb.Append(",'").Append(UserInfos[0]).Append("' ");
+            sb.Append(",'ChangeKianEntry' ");
+            sb.Append(",GETDATE() ");
+            sb.Append(",'").Append(UserInfos[0]).Append("' ");
+            sb.Append(",'ChangeKianEntry' ");
+            sb.Append(",AnkenTourokubi ");
+            sb.Append(",AnkenGyoumuMei ");
+            sb.Append(",1 ");
+            sb.Append(",AnkenUriageNendo ");
+            sb.Append(",AnkenHachushaKubunCD ");
+            sb.Append(",AnkenHachushaKubunMei ");
+            sb.Append(",AnkenHachuushaCodeID ");
+            sb.Append(",AnkenHachuushaMei ");
+            sb.Append(",AnkenGyoumuKubun ");
+            sb.Append(",AnkenGyoumuKubunMei ");
+            sb.Append(",AnkenNyuusatsuHoushiki ");
+            sb.Append(",AnkenKyougouTasha ");
+            sb.Append(",AnkenJutakubushoCD ");
+            sb.Append(",AnkenJutakushibu ");
+            sb.Append(",AnkenTantoushaCD ");
+            sb.Append(",AnkenMadoguchiTantoushaCD ");
+            sb.Append(",AnkenGyoumuKanrishaCD ");
+            sb.Append(",AnkenGyoumuKanrisha ");
+            sb.Append(",GyoumuKanrishaCD ");
+            sb.Append(",AnkenHachuushaBusho ");
+            sb.Append(",AnkenkeikakuZangakuK ");
+            sb.Append(",AnkenJutakuBangou ");
+            sb.Append(",AnkenJutakuBangouEda ");
+            sb.Append(",AnkenNyuusatsuYoteibi ");
+            sb.Append(",AnkenRakusatsusha ");
+            sb.Append(",AnkenRakusatsuJouhou ");
+            sb.Append(",AnkenKianZumi ");
+            sb.Append(",AnkenKiangetsu ");
+            sb.Append(",AnkenHanteiKubun ");
+            sb.Append(",AnkenJoukanData ");
+            sb.Append(",AnkenJoukanHachuuKikanCD ");
+            sb.Append(",AnkenNyuukinKakuninbi ");
+            sb.Append(",AnkenKanryouSakuseibi ");
+            sb.Append(",AnkenHonbuKakuninbi ");
+            sb.Append(",AnkenShizaiChousa ");
+            sb.Append(",AnkenKoujiChousahi ");
+            sb.Append(",AnkenKikiruiChousa ");
+            sb.Append(",AnkenSanpaiFukusanbutsu ");
+            sb.Append(",AnkenHokakeChousa ");
+            sb.Append(",AnkenShokeihiChousa ");
+            sb.Append(",AnkenGenkaBunseki ");
+            sb.Append(",AnkenKijunsakusei ");
+            sb.Append(",AnkenKoukyouRoumuhi ");
+            sb.Append(",AnkenRoumuhiKoukyouigai ");
+            sb.Append(",AnkenSonotaChousabu ");
+            sb.Append(",AnkenOrdermadeJifubu ");
+            sb.Append(",AnkenRIBCJifubu ");
+            sb.Append(",AnkenSonotaJifubu ");
+            sb.Append(",AnkenOrdermade ");
+            sb.Append(",AnkenJouhouKaihatsu ");
+            sb.Append(",AnkenRIBCJouhouKaihatsu ");
+            sb.Append(",AnkenSoukenbu ");
+            sb.Append(",AnkenSonotaJoujibu ");
+            sb.Append(",AnkenTeikiTokuchou ");
+            sb.Append(",AnkenTanpinTokuchou ");
+            sb.Append(",AnkenKikiChousa ");
+            sb.Append(",AnkenHachuushaIraibusho ");
+            sb.Append(",AnkenHachuushaTantousha ");
+            sb.Append(",AnkenHachuushaTEL ");
+            sb.Append(",AnkenHachuushaFAX ");
+            sb.Append(",AnkenHachuushaMail ");
+            sb.Append(",AnkenHachuushaIraiYuubin ");
+            sb.Append(",AnkenHachuushaIraiJuusho ");
+            sb.Append(",AnkenHachuushaKeiyakuBusho ");
+            sb.Append(",AnkenHachuushaKeiyakuTantou ");
+            sb.Append(",AnkenHachuushaKeiyakuTEL ");
+            sb.Append(",AnkenHachuushaKeiyakuFAX ");
+            sb.Append(",AnkenHachuushaKeiyakuMail ");
+            sb.Append(",AnkenHachuushaKeiyakuYuubin ");
+            sb.Append(",AnkenHachuushaKeiyakuJuusho ");
+            sb.Append(",AnkenHachuuDaihyouYakushoku ");
+            sb.Append(",AnkenHachuuDaihyousha ");
+            sb.Append(",AnkenRosenKawamei ");
+            sb.Append(",AnkenGyoumuItakuKasho ");
+            sb.Append(",AnkenJititaiKibunID ");
+            sb.Append(",AnkenJititaiKubun ");
+            sb.Append(",AnkenKeiyakuToshoNo ");
+            sb.Append(",AnkenKirokuToshoNo ");
+            sb.Append(",AnkenKirokuHokanNo ");
+            sb.Append(",AnkenCDHokan ");
+            sb.Append(",AnkenSeikaButsuHokanFile ");
+            sb.Append(",AnkenSeikabutsuHokanbako ");
+            sb.Append(",AnkenKokyakuHyoukaComment ");
+            sb.Append(",AnkenToukaiHyoukaComment ");
+            sb.Append(",AnkenKenCD ");
+            sb.Append(",AnkenToshiCD ");
+            sb.Append(",AnkenKeiyakusho ");
+            sb.Append(",AnkenEizen ");
+            sb.Append(",AnkenTantoushaMei ");
+            sb.Append(",GyoumuKanrishaMei ");
+            sb.Append(",AnkenGyoumuKubunCD ");
+            sb.Append(",AnkenHachuushaKaMei ");
+            sb.Append(",AnkenKeiyakuKoukiKaishibi ");
+            sb.Append(",AnkenKeiyakuKoukiKanryoubi ");
+            sb.Append(",AnkenKeiyakuTeiketsubi ");
+            sb.Append(",AnkenKeiyakuZeikomiKingaku ");     // 契約タブの契約金額の税込
+            sb.Append(",AnkenKeiyakuUriageHaibunGakuC ");  // 契約タブの受託金額配分の調査部、配分額（税込）
+            sb.Append(",AnkenKeiyakuUriageHaibunGakuJ ");  // 契約タブの受託金額配分の事業普及部、配分額（税込）
+            sb.Append(",AnkenKeiyakuUriageHaibunGakuJs "); // 契約タブの受託金額配分の情報システム部、配分額（税込）
+            sb.Append(",AnkenKeiyakuUriageHaibunGakuK ");  // 契約タブの受託金額配分の総合研究所、配分額（税込）
+            sb.Append(",AnkenKeiyakuUriageHaibunGakuR ");  // なし
+            sb.Append(",AnkenKeiyakuSakuseibi ");
+            sb.Append(",AnkenAnkenBangou ");
+            sb.Append(",AnkenKeikakuBangou ");
+            sb.Append(",AnkenHikiaijhokyo ");
+            sb.Append(",AnkenKeikakuAnkenMei ");
+            sb.Append(",AnkenToukaiSankouMitsumori ");
+            sb.Append(",AnkenToukaiJyutyuIyoku ");
+            sb.Append(",AnkenToukaiSankouMitsumoriGaku ");
+            sb.Append(",AnkenHachushaKaMei ");
+            sb.Append(",AnkenHachushaCD ");
+            sb.Append(",AnkenToukaiOusatu ");
+            sb.Append(",AnkenKoukiNendo ");
+            sb.Append(" FROM AnkenJouhou WHERE AnkenJouhou.AnkenJouhouID = ");
+            sb.Append(AnkenID);
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// SQL文作成
+        /// </summary>
+        /// <param name="ankenNo">作成案件番号</param>
+        /// <param name="flag">0:赤伝、1:黒伝</param>
+        /// <returns></returns>
+        private string getAnkenJouhouZenkaiRakusatsuInsertSQL(int ankenNo, int flag = 0)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO AnkenJouhouZenkaiRakusatsu ( ");
+            sb.Append("AnkenJouhouID ");
+            sb.Append(",AnkenZenkaiJutakuKingaku ");
+            sb.Append(",AnkenZenkaiRakusatsuID ");
+            sb.Append(",AnkenZenkaiJutakuBangou ");
+            sb.Append(",AnkenZenkaiJutakuEdaban ");
+            sb.Append(",AnkenZenkaiAnkenBangou ");
+            sb.Append(",AnkenZenkaiRakusatsushaID ");
+            sb.Append(",AnkenZenkaiRakusatsusha ");
+            sb.Append(",AnkenZenkaiGyoumuMei ");
+            sb.Append(",AnkenZenkaiKyougouKigyouCD ");
+            sb.Append(",AnkenZenkaiJutakuZeinuki ");
+            sb.Append(",KeiyakuZenkaiRakusatsushaID ");
+            sb.Append(" ) SELECT ");
+            sb.Append(ankenNo);
+            if(flag == 0)
+            {
+                sb.Append(",-AnkenZenkaiJutakuKingaku ");
+            }
+            else
+            {
+                sb.Append(",AnkenZenkaiJutakuKingaku ");
+            }
+            sb.Append(",AnkenZenkaiRakusatsuID ");
+            sb.Append(",AnkenZenkaiJutakuBangou ");
+            sb.Append(",AnkenZenkaiJutakuEdaban ");
+            sb.Append(",AnkenZenkaiAnkenBangou ");
+            sb.Append(",AnkenZenkaiRakusatsushaID ");
+            sb.Append(",AnkenZenkaiRakusatsusha ");
+            sb.Append(",AnkenZenkaiGyoumuMei ");
+            sb.Append(",AnkenZenkaiKyougouKigyouCD ");
+            sb.Append(",AnkenZenkaiJutakuZeinuki ");
+            sb.Append(",KeiyakuZenkaiRakusatsushaID ");
+            sb.Append(" FROM AnkenJouhouZenkaiRakusatsu WHERE AnkenJouhouZenkaiRakusatsu.AnkenJouhouID = ");
+            sb.Append(AnkenID);
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// SQL文作成
+        /// </summary>
+        /// <param name="ankenNo">作成案件番号</param>
+        /// <returns></returns>
+        private string getKokyakuKeiyakuJouhouInsertSQL(int ankenNo)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO KokyakuKeiyakuJouhou ( ");
+            sb.Append("AnkenJouhouID ");
+            sb.Append(",KokyakuKeiyakuID ");
+            sb.Append(",KokyakuCreateUser   ");
+            sb.Append(",KokyakuCreateDate   ");
+            sb.Append(",KokyakuCreateProgram");
+            sb.Append(",KokyakuUpdateUser   ");
+            sb.Append(",KokyakuUpdateDate   ");
+            sb.Append(",KokyakuDeleteFlag   ");
+            sb.Append(",KokyakuUpdateProgram");
+            sb.Append(",KokyakuKeiyakuTanka ");
+            sb.Append(",KokyakuKeiyakuChosakuken ");
+            sb.Append(",KokyakuKeiyakuKeisai ");
+            sb.Append(",KokyakuKeiyakuTokchouChosaku ");
+            sb.Append(",KokyakuKeiyakuRiyuu ");
+            sb.Append(",KokyakuMaebaraiJoukou ");
+            sb.Append(",KokyakuMaebaraiSeikyuu ");
+            sb.Append(",KokyakuSekkeiTanka ");
+            sb.Append(",KokyakuSekisanKijun ");
+            sb.Append(",KokyakuKaiteiGetsu ");
+            sb.Append(",KokyakuShichouson ");
+            sb.Append(",KokyakuGijutsuCenter ");
+            sb.Append(",KokyakuSonota ");
+            sb.Append(",KokyakuKeiyakuRiyuuTou ");
+            sb.Append(",KokyakuDataTeikyou ");
+            sb.Append(",KokyakuAlpha ");
+            sb.Append(",KokyakuDataDoboku ");
+            sb.Append(",KokyakuDataNourin ");
+            sb.Append(",KokyakuDataEizen ");
+            sb.Append(",KokyakuDataSonota ");
+            sb.Append(",KokyakuDataSekouP ");
+            sb.Append(",KokyakuDataDobokuKouji ");
+            sb.Append(",KokyakuDataRIBC ");
+            sb.Append(",KokyakuDataGoukei ");
+            sb.Append(",KokyakuDataKeisaiTanka ");
+            sb.Append(",KokyakuDataWebTeikyou ");
+            sb.Append(",KokyakuDataKeiyaku ");
+            sb.Append(",KokyakuDataTempFile ");
+            sb.Append(",KokyakuDataTempFileData ");
+            sb.Append(",KokyakuData05Comment ");
+            sb.Append(",KokyakuData06Comment ");
+            sb.Append(",KokyakuData07Comment ");
+            sb.Append(",KokyakuDataMeiki ");
+            sb.Append(",KokyakuDataTeikyouTensu ");
+            sb.Append(" ) SELECT ");
+            sb.Append(ankenNo);
+            sb.Append(",");
+            sb.Append(ankenNo);
+            sb.Append(",'");
+            sb.Append(UserInfos[0]);
+            sb.Append("' ");
+            sb.Append(",GETDATE() ");
+            sb.Append(",'ChangeKianEntry' ");
+            sb.Append(",'");
+            sb.Append(UserInfos[0]);
+            sb.Append("' ");
+            sb.Append(",GETDATE() ");
+            sb.Append(",1");
+            sb.Append(",'ChangeKianEntry' ");
+            sb.Append(",KokyakuKeiyakuTanka ");
+            sb.Append(",KokyakuKeiyakuChosakuken ");
+            sb.Append(",KokyakuKeiyakuKeisai ");
+            sb.Append(",KokyakuKeiyakuTokchouChosaku ");
+            sb.Append(",KokyakuKeiyakuRiyuu ");
+            sb.Append(",KokyakuMaebaraiJoukou ");
+            sb.Append(",KokyakuMaebaraiSeikyuu ");
+            sb.Append(",KokyakuSekkeiTanka ");
+            sb.Append(",KokyakuSekisanKijun ");
+            sb.Append(",KokyakuKaiteiGetsu ");
+            sb.Append(",KokyakuShichouson ");
+            sb.Append(",KokyakuGijutsuCenter ");
+            sb.Append(",KokyakuSonota ");
+            sb.Append(",KokyakuKeiyakuRiyuuTou ");
+            sb.Append(",KokyakuDataTeikyou ");
+            sb.Append(",KokyakuAlpha ");
+            sb.Append(",KokyakuDataDoboku ");
+            sb.Append(",KokyakuDataNourin ");
+            sb.Append(",KokyakuDataEizen ");
+            sb.Append(",KokyakuDataSonota ");
+            sb.Append(",KokyakuDataSekouP ");
+            sb.Append(",KokyakuDataDobokuKouji ");
+            sb.Append(",KokyakuDataRIBC ");
+            sb.Append(",KokyakuDataGoukei ");
+            sb.Append(",KokyakuDataKeisaiTanka ");
+            sb.Append(",KokyakuDataWebTeikyou ");
+            sb.Append(",KokyakuDataKeiyaku ");
+            sb.Append(",KokyakuDataTempFile ");
+            sb.Append(",KokyakuDataTempFileData ");
+            sb.Append(",KokyakuData05Comment ");
+            sb.Append(",KokyakuData06Comment ");
+            sb.Append(",KokyakuData07Comment ");
+            sb.Append(",KokyakuDataMeiki ");
+            sb.Append(",KokyakuDataTeikyouTensu ");
+            sb.Append(" FROM KokyakuKeiyakuJouhou WHERE KokyakuKeiyakuJouhou.AnkenJouhouID = ");
+            sb.Append(AnkenID);
+            return sb.ToString();
+        }
+
+        private string getGyoumuJouhouInsertSql(int ankenNo)
+        {
+            return "INSERT INTO GyoumuJouhou ( " +
+                    "AnkenJouhouID " +
+                    ",GyoumuJouhouID " +
+                    ",GyoumuCreateDate " +
+                    ",GyoumuCreateUser    " +
+                    ",GyoumuCreateProgram " +
+                    ",GyoumuUpdateDate    " +
+                    ",GyoumuUpdateUser    " +
+                    ",GyoumuUpdateProgram " +
+                    ",GyoumuDeleteFlag " +
+
+                    ",GyoumuHyouten " +
+                    ",KanriGijutsushaCD " +
+                    ",GyoumuKanriHyouten " +
+                    ",ShousaTantoushaCD " +
+                    ",SinsaTantoushaCD " +
+                    ",GyoumuTECRISTourokuBangou " +
+                    ",GyoumuKeisaiTankaTeikyou " +
+                    ",GyoumuChosakukenJouto " +
+                    ",GyoumuSeikyuubi " +
+                    ",GyoumuSeikyuusho " +
+                    ",GyoumuHikiwatashiNaiyou " +
+                    ",KanriGijutsushaNM " +
+                    ",ShousaTantoushaNM " +
+                    ",SinsaTantoushaNM " +
+                    ",GyoumuShousaHyouten " +
+                    " ) SELECT " +
+                    ankenNo +
+                    "," + ankenNo +
+                    ",GETDATE() " +
+                    ",'" + UserInfos[0] + "' " +
+                    ",'ChangeKianEntry' " +
+                    ",GETDATE() " +
+                    ",'" + UserInfos[0] + "' " +
+                    ",'ChangeKianEntry' " +
+                    ",1 " +
+
+                    ",GyoumuHyouten " +
+                    ",KanriGijutsushaCD " +
+                    ",GyoumuKanriHyouten " +
+                    ",ShousaTantoushaCD " +
+                    ",SinsaTantoushaCD " +
+                    ",GyoumuTECRISTourokuBangou " +
+                    ",GyoumuKeisaiTankaTeikyou " +
+                    ",GyoumuChosakukenJouto " +
+                    ",GyoumuSeikyuubi " +
+                    ",GyoumuSeikyuusho " +
+                    ",GyoumuHikiwatashiNaiyou " +
+                    ",KanriGijutsushaNM " +
+                    ",ShousaTantoushaNM " +
+                    ",SinsaTantoushaNM " +
+                    ",GyoumuShousaHyouten " +
+                    " FROM GyoumuJouhou WHERE GyoumuJouhou.AnkenJouhouID = " + AnkenID;
+        }
+
+        private string getGyoumuJouhouHyouronTantouL1InsertSQL(int ankenNo)
+        {
+            return "INSERT INTO GyoumuJouhouHyouronTantouL1 ( " +
+                                "GyoumuJouhouID " +
+                                ",HyouronTantouID " +
+
+                                ",HyouronTantoushaCD " +
+                                ",HyouronTantoushaMei " +
+                                ",HyouronnTantoushaHyouten " +
+                               " ) SELECT " +
+                                ankenNo +
+                                ",HyouronTantouID " +
+
+                                ",HyouronTantoushaCD " +
+                                ",HyouronTantoushaMei " +
+                                ",HyouronnTantoushaHyouten " +
+                                " FROM GyoumuJouhouHyouronTantouL1 WHERE GyoumuJouhouHyouronTantouL1.GyoumuJouhouID = " + AnkenID;
+        }
+
+        private void exeGyoumuJouhouMadoguchi(int ankenNo, SqlCommand cmd)
+        {
+            DataTable gyoumuJouhouDT = new DataTable();
+            cmd.CommandText = "SELECT " +
+                    " GyoumuJouhouMadoKojinCD " +
+                    ",GyoumuJouhouMadoChousainMei " +
+                    ",GyoumuJouhouMadoGyoumuBushoCD " +
+                    ",GyoumuJouhouMadoShibuMei " +
+                    ",GyoumuJouhouMadoKamei " +
+                    " FROM GyoumuJouhouMadoguchi WHERE GyoumuJouhouMadoguchi.GyoumuJouhouID = " + AnkenID;
+            var sda = new SqlDataAdapter(cmd);
+            sda.Fill(gyoumuJouhouDT);
+
+            if (gyoumuJouhouDT != null && gyoumuJouhouDT.Rows.Count > 0)
+            {
+                for (int i = 0; i < gyoumuJouhouDT.Rows.Count; i++)
+                {
+                    cmd.CommandText = "INSERT INTO GyoumuJouhouMadoguchi ( " +
+                            "GyoumuJouhouID " +
+                            ",GyoumuJouhouMadoguchiID " +
+                            ",GyoumuJouhouMadoKojinCD " +
+                            ",GyoumuJouhouMadoChousainMei " +
+                            ",GyoumuJouhouMadoGyoumuBushoCD " +
+                            ",GyoumuJouhouMadoShibuMei " +
+                            ",GyoumuJouhouMadoKamei " +
+                            " ) VALUES( " +
+                            ankenNo +                                                       // GyoumuJouhouID
+                            "," + GlobalMethod.getSaiban("GyoumuJouhouMadoguchiID") + " " + // GyoumuJouhouMadoguchiID
+                            "," + gyoumuJouhouDT.Rows[i][0].ToString() + " " +              // GyoumuJouhouMadoKojinCD
+                            ",N'" + gyoumuJouhouDT.Rows[i][1].ToString() + "' " +            // GyoumuJouhouMadoChousainMei
+                            ",N'" + gyoumuJouhouDT.Rows[i][2].ToString() + "' " +            // GyoumuJouhouMadoGyoumuBushoCD
+                            ",N'" + gyoumuJouhouDT.Rows[i][3].ToString() + "' " +            // GyoumuJouhouMadoShibuMei
+                            ",N'" + gyoumuJouhouDT.Rows[i][4].ToString() + "' " +            // GyoumuJouhouMadoKamei
+                            ") ";
+                    Console.WriteLine(cmd.CommandText);
+                    var result = cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private string getGyoumuJouhouHyoutenBushoInsertSql(int ankenNo)
+        {
+            return "INSERT INTO GyoumuJouhouHyoutenBusho ( " +
+                                "GyoumuJouhouID " +
+                                ",HyoutenBushoID " +
+
+                                ",HyoutenKyouryokuBushoID " +
+                                ",HyoutenKyouryokuBushoMei " +
+                                " ) SELECT " +
+                                ankenNo +
+                                ",HyoutenBushoID " +
+
+                                ",HyoutenKyouryokuBushoID " +
+                                ",HyoutenKyouryokuBushoMei " +
+                                " FROM GyoumuJouhouHyoutenBusho WHERE GyoumuJouhouHyoutenBusho.GyoumuJouhouID = " + AnkenID;
+        }
+
+        /// <summary>
+        /// SQL文作成
+        /// </summary>
+        /// <param name="ankenNo">作成案件番号</param>
+        /// <param name="flag">0:赤伝、1:黒伝</param>
+        /// <returns></returns>
+        private string getKeiyakuJouhouEntoryInsertSql(int ankenNo, int flag = 0)
+        {
+            string sFix = "- ";
+            if(flag == 1)
+            {
+                sFix = "";
+            }
+            return "INSERT INTO KeiyakuJouhouEntory ( " +
+                                    "AnkenJouhouID " +
+                                    ",KeiyakuJouhouEntoryID " +
+                                    ",KeiyakuKeiyakuKingaku " +
+                                    ",KeiyakuZeikomiKingaku " +
+                                    ",KeiyakuuchizeiKingaku " +
+                                    ",KeiyakuUriageHaibunCho " +
+                                    ",KeiyakuUriageHaibunGakuCho1 " +
+                                    ",KeiyakuUriageHaibunGakuCho2 " +
+                                    ",KeiyakuUriageHaibunJo " +
+                                    ",KeiyakuUriageHaibunGakuJo1 " +
+                                    ",KeiyakuUriageHaibunGakuJo2 " +
+                                    ",KeiyakuUriageHaibunJosys " +
+                                    ",KeiyakuUriageHaibunGakuJosys1 " +
+                                    ",KeiyakuUriageHaibunGakuJosys2 " +
+                                    ",KeiyakuUriageHaibunKei " +
+                                    ",KeiyakuUriageHaibunGakuKei1 " +
+                                    ",KeiyakuUriageHaibunGakuKei2 " +
+                                    ",KeiyakuZentokin " +
+                                    ",KeiyakuSeikyuuKingaku1 " +
+                                    ",KeiyakuSeikyuuKingaku2 " +
+                                    ",KeiyakuSeikyuuKingaku3 " +
+                                    ",KeiyakuSeikyuuKingaku4 " +
+                                    ",KeiyakuSeikyuuKingaku5 " +
+                                    ",KeiyakuCreateDate " +
+                                    ",KeiyakuCreateUser " +
+                                    ",KeiyakuCreateProgram " +
+                                    ",KeiyakuUpdateDate " +
+                                    ",KeiyakuUpdateUser " +
+                                    ",KeiyakuUpdateProgram " +
+                                    ",KeiyakuBetsuKeiyakuKingaku " +
+                                    ",KeiyakuKeiyakuKingakuKei " +
+                                    ",KeiyakuUriageHaibunChoGoukei " +
+                                    ",KeiyakuUriageHaibunJoGoukei " +
+                                    ",KeiyakuUriageHaibunJosysGoukei " +
+                                    ",KeiyakuUriageHaibunKeiGoukei " +
+                                    ",KeiyakuUriageHaibunGoukei " +
+                                    ",KeiyakuHaibunChoZeinuki " +
+                                    ",KeiyakuHaibunJoZeinuki " +
+                                    ",KeiyakuHaibunJosysZeinuki " +
+                                    ",KeiyakuHaibunKeiZeinuki " +
+                                    ",KeiyakuHaibunZeinukiKei " +
+                                    ",KeiyakuDeleteFlag " +
+
+                                    ",KeiyakuSakuseibi " +
+                                    ",KeiyakuSakuseiKubunID " +
+                                    ",KeiyakuSakuseiKubun " +
+                                    ",KeiyakuHachuushaMei " +
+                                    ",KeiyakuGyoumuKubun " +
+                                    ",KeiyakuGyoumuMei " +
+                                    ",JutakuBushoCD " +
+                                    ",KeiyakuTantousha " +
+                                    ",KeiyakuJutakubangou " +
+                                    ",KeiyakuEdaban " +
+                                    ",KeiyakuKianzumi " +
+                                    ",KeiyakuNyuusatsuYoteibi " +
+                                    ",KeiyakuKeiyakuTeiketsubi " +
+                                    ",KeiyakuKeiyakuKoukiKaishibi " +
+                                    ",KeiyakuKeiyakuKoukiKanryoubi " +
+                                    ",KeiyakuShouhizeiritsu " +
+                                    ",KeiyakuRIBCKeishiki " +
+                                    ",KeiyakuUriageHaibunCho1 " +
+                                    ",KeiyakuUriageHaibunCho2 " +
+                                    ",KeiyakuUriageHaibunJo1 " +
+                                    ",KeiyakuUriageHaibunJo2 " +
+                                    ",KeiyakuUriageHaibunJosys1 " +
+                                    ",KeiyakuUriageHaibunJosys2 " +
+                                    ",KeiyakuUriageHaibunKei1 " +
+                                    ",KeiyakuUriageHaibunKei2 " +
+                                    ",KeiyakuHenkoukanryoubi " +
+                                    ",KeiyakuHenkouChuushiRiyuu " +
+                                    ",KeiyakuBikou " +
+                                    ",KeiyakuShosha " +
+                                    ",KeiyakuTokkiShiyousho " +
+                                    ",KeiyakuMitsumorisho " +
+                                    ",KeiyakuTanpinChousaMitsumorisho " +
+                                    ",KeiyakuSonota " +
+                                    ",KeiyakuSonotaNaiyou " +
+                                    ",KeiyakuSeikyuubi " +
+                                    ",KeiyakuKeiyakusho " +
+                                    ",KeiyakuZentokinUkewatashibi " +
+                                    ",KeiyakuSeikyuusaki " +
+                                    ",KeiyakuSeikyuuTaishouKoukiS1 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiE1 " +
+                                    ",KeiyakuSeikyuubi1 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiS2 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiE2 " +
+                                    ",KeiyakuSeikyuubi2 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiS3 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiE3 " +
+                                    ",KeiyakuSeikyuubi3 " +
+                                    ",KeiyakuKankeibusho1 " +
+                                    ",KeiyakuKankeibusho2 " +
+                                    ",KeiyakuKankeibusho3 " +
+                                    ",KeiyakuKankeibusho4 " +
+                                    ",KeiyakuKankeibusho5 " +
+                                    ",KeiyakuKankeibusho6 " +
+                                    ",KeiyakuKankeibusho7 " +
+                                    ",KeiyakuKankeibusho8 " +
+                                    ",KeiyakuKankeibusho9 " +
+                                    ",KeiyakuKankeibusho10 " +
+                                    ",KeiyakuKankeibusho11 " +
+                                    ",KeiyakuKankeibusho12 " +
+                                    ",KeiyakuKankeibusho14 " +
+                                    ",KeiyakuKankeibusho15 " +
+                                    ",KeiyakuKankeibusho13 " +
+                                    ",KeiyakuNyuukinYoteibi " +
+                                    ",KeiyakuUriageHaibunCho1Mei " +
+                                    ",KeiyakuUriageHaibunCho2Mei " +
+                                    ",KeiyakuUriageHaibunJo1Mei " +
+                                    ",KeiyakuUriageHaibunJo2Mei " +
+                                    ",KeiyakuUriageHaibunJosys1Mei " +
+                                    ",KeiyakuUriageHaibunJosys2Mei " +
+                                    ",KeiyakuUriageHaibunKei1Mei " +
+                                    ",KeiyakuUriageHaibunKei2Mei " +
+                                    ",KeiyakuUriageHaibunRIBC " +
+                                    ",KeiyakuUriageHaibunRIBC1 " +
+                                    ",KeiyakuUriageHaibunRIBC1Mei " +
+                                    ",KeiyakuUriageHaibunGakuRIBC1 " +
+                                    ",KeiyakuUriageHaibunRIBC2 " +
+                                    ",KeiyakuUriageHaibunRIBC2Mei " +
+                                    ",KeiyakuUriageHaibunGakuRIBC2 " +
+                                    ",KeiyakuSeikyuubi4 " +
+                                    ",KeiyakuSeikyuubi5 " +
+                                    ",KeiyakuTankeiMikomiCho " +
+                                    ",KeiyakuTankeiMikomiJo " +
+                                    ",KeiyakuTankeiMikomiJosys " +
+                                    ",KeiyakuTankeiMikomiKei " +
+                                    ",KeiyakuKurikoshiCho " +
+                                    ",KeiyakuKurikoshiJo " +
+                                    ",KeiyakuKurikoshiJosys " +
+                                    ",KeiyakuKurikoshiKei " +
+                                    " ) SELECT " +
+                                    ankenNo +
+                                    "," + ankenNo +
+                                    "," + sFix + "KeiyakuKeiyakuKingaku " +
+                                    "," + sFix + "KeiyakuZeikomiKingaku " +
+                                    "," + sFix + "KeiyakuuchizeiKingaku " +
+                                    "," + sFix + "KeiyakuUriageHaibunCho " +
+                                    "," + sFix + "KeiyakuUriageHaibunGakuCho1 " +
+                                    "," + sFix + "KeiyakuUriageHaibunGakuCho2 " +
+                                    "," + sFix + "KeiyakuUriageHaibunJo " +
+                                    "," + sFix + "KeiyakuUriageHaibunGakuJo1 " +
+                                    "," + sFix + "KeiyakuUriageHaibunGakuJo2 " +
+                                    "," + sFix + "KeiyakuUriageHaibunJosys " +
+                                    "," + sFix + "KeiyakuUriageHaibunGakuJosys1 " +
+                                    "," + sFix + "KeiyakuUriageHaibunGakuJosys2 " +
+                                    "," + sFix + "KeiyakuUriageHaibunKei " +
+                                    "," + sFix + "KeiyakuUriageHaibunGakuKei1 " +
+                                    "," + sFix + "KeiyakuUriageHaibunGakuKei2 " +
+                                    "," + sFix + "KeiyakuZentokin " +
+                                    "," + sFix + "KeiyakuSeikyuuKingaku1 " +
+                                    "," + sFix + "KeiyakuSeikyuuKingaku2 " +
+                                    "," + sFix + "KeiyakuSeikyuuKingaku3 " +
+                                    "," + sFix + "KeiyakuSeikyuuKingaku4 " +
+                                    "," + sFix + "KeiyakuSeikyuuKingaku5 " +
+                                    ",GETDATE() " +
+                                    ",'" + UserInfos[0] + "' " +
+                                    ",'ChangeKianEntry' " +
+                                    ",GETDATE() " +
+                                    ",'" + UserInfos[0] + "' " +
+                                    ",'ChangeKianEntry' " +
+                                    "," + sFix + "KeiyakuBetsuKeiyakuKingaku " +
+                                    "," + sFix + "KeiyakuKeiyakuKingakuKei " +
+                                    "," + sFix + "KeiyakuUriageHaibunChoGoukei " +
+                                    "," + sFix + "KeiyakuUriageHaibunJoGoukei " +
+                                    "," + sFix + "KeiyakuUriageHaibunJosysGoukei " +
+                                    "," + sFix + "KeiyakuUriageHaibunKeiGoukei " +
+                                    "," + sFix + "KeiyakuUriageHaibunGoukei " +
+                                    "," + sFix + "KeiyakuHaibunChoZeinuki " +
+                                    "," + sFix + "KeiyakuHaibunJoZeinuki " +
+                                    "," + sFix + "KeiyakuHaibunJosysZeinuki " +
+                                    "," + sFix + "KeiyakuHaibunKeiZeinuki " +
+                                    "," + sFix + "KeiyakuHaibunZeinukiKei " +
+                                    ",1 " +
+
+                                    ",KeiyakuSakuseibi " +
+                                    ",KeiyakuSakuseiKubunID " +
+                                    ",KeiyakuSakuseiKubun " +
+                                    ",KeiyakuHachuushaMei " +
+                                    ",KeiyakuGyoumuKubun " +
+                                    ",KeiyakuGyoumuMei " +
+                                    ",JutakuBushoCD " +
+                                    ",KeiyakuTantousha " +
+                                    ",KeiyakuJutakubangou " +
+                                    ",KeiyakuEdaban " +
+                                    ",KeiyakuKianzumi " +
+                                    ",KeiyakuNyuusatsuYoteibi " +
+                                    ",KeiyakuKeiyakuTeiketsubi " +
+                                    ",KeiyakuKeiyakuKoukiKaishibi " +
+                                    ",KeiyakuKeiyakuKoukiKanryoubi " +
+                                    ",KeiyakuShouhizeiritsu " +
+                                    ",KeiyakuRIBCKeishiki " +
+                                    ",KeiyakuUriageHaibunCho1 " +
+                                    ",KeiyakuUriageHaibunCho2 " +
+                                    ",KeiyakuUriageHaibunJo1 " +
+                                    ",KeiyakuUriageHaibunJo2 " +
+                                    ",KeiyakuUriageHaibunJosys1 " +
+                                    ",KeiyakuUriageHaibunJosys2 " +
+                                    ",KeiyakuUriageHaibunKei1 " +
+                                    ",KeiyakuUriageHaibunKei2 " +
+                                    ",KeiyakuHenkoukanryoubi " +
+                                    ",KeiyakuHenkouChuushiRiyuu " +
+                                    ",KeiyakuBikou " +
+                                    ",KeiyakuShosha " +
+                                    ",KeiyakuTokkiShiyousho " +
+                                    ",KeiyakuMitsumorisho " +
+                                    ",KeiyakuTanpinChousaMitsumorisho " +
+                                    ",KeiyakuSonota " +
+                                    ",KeiyakuSonotaNaiyou " +
+                                    ",KeiyakuSeikyuubi " +
+                                    ",KeiyakuKeiyakusho " +
+                                    ",KeiyakuZentokinUkewatashibi " +
+                                    ",KeiyakuSeikyuusaki " +
+                                    ",KeiyakuSeikyuuTaishouKoukiS1 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiE1 " +
+                                    ",KeiyakuSeikyuubi1 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiS2 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiE2 " +
+                                    ",KeiyakuSeikyuubi2 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiS3 " +
+                                    ",KeiyakuSeikyuuTaishouKoukiE3 " +
+                                    ",KeiyakuSeikyuubi3 " +
+                                    ",KeiyakuKankeibusho1 " +
+                                    ",KeiyakuKankeibusho2 " +
+                                    ",KeiyakuKankeibusho3 " +
+                                    ",KeiyakuKankeibusho4 " +
+                                    ",KeiyakuKankeibusho5 " +
+                                    ",KeiyakuKankeibusho6 " +
+                                    ",KeiyakuKankeibusho7 " +
+                                    ",KeiyakuKankeibusho8 " +
+                                    ",KeiyakuKankeibusho9 " +
+                                    ",KeiyakuKankeibusho10 " +
+                                    ",KeiyakuKankeibusho11 " +
+                                    ",KeiyakuKankeibusho12 " +
+                                    ",KeiyakuKankeibusho14 " +
+                                    ",KeiyakuKankeibusho15 " +
+                                    ",KeiyakuKankeibusho13 " +
+                                    ",KeiyakuNyuukinYoteibi " +
+                                    ",KeiyakuUriageHaibunCho1Mei " +
+                                    ",KeiyakuUriageHaibunCho2Mei " +
+                                    ",KeiyakuUriageHaibunJo1Mei " +
+                                    ",KeiyakuUriageHaibunJo2Mei " +
+                                    ",KeiyakuUriageHaibunJosys1Mei " +
+                                    ",KeiyakuUriageHaibunJosys2Mei " +
+                                    ",KeiyakuUriageHaibunKei1Mei " +
+                                    ",KeiyakuUriageHaibunKei2Mei " +
+                                    ",KeiyakuUriageHaibunRIBC " +
+                                    ",KeiyakuUriageHaibunRIBC1 " +
+                                    ",KeiyakuUriageHaibunRIBC1Mei " +
+                                    ",KeiyakuUriageHaibunGakuRIBC1 " +
+                                    ",KeiyakuUriageHaibunRIBC2 " +
+                                    ",KeiyakuUriageHaibunRIBC2Mei " +
+                                    ",KeiyakuUriageHaibunGakuRIBC2 " +
+                                    ",KeiyakuSeikyuubi4 " +
+                                    ",KeiyakuSeikyuubi5 " +
+                                    "," + sFix + "KeiyakuTankeiMikomiCho " +
+                                    "," + sFix + "KeiyakuTankeiMikomiJo " +
+                                    "," + sFix + "KeiyakuTankeiMikomiJosys " +
+                                    "," + sFix + "KeiyakuTankeiMikomiKei " +
+                                    "," + sFix + "KeiyakuKurikoshiCho " +
+                                    "," + sFix + "KeiyakuKurikoshiJo " +
+                                    "," + sFix + "KeiyakuKurikoshiJosys " +
+                                    "," + sFix + "KeiyakuKurikoshiKei " +
+                                    " FROM KeiyakuJouhouEntory WHERE KeiyakuJouhouEntory.AnkenJouhouID = " + AnkenID;
+        }
+
+        /// <summary>
+        /// SQL文作成
+        /// </summary>
+        /// <param name="ankenNo">作成案件番号</param>
+        /// <param name="flag">0:赤伝、1:黒伝</param>
+        private string getRibcJouhouInsertSql(int ankenNo, int flag = 0)
+        {
+            string sFix = "- ";
+            if (flag == 1)
+            {
+                sFix = "";
+            }
+            return "INSERT INTO RibcJouhou ( " +
+                    "RibcID " +
+                    ",RibcNo " +
+                    ",RibcSeikyuKingaku " +
+
+                    ",RibcKoukiStart " +
+                    ",RibcKoukiEnd " +
+                    ",RibcSeikyubi " +
+                    ",RibcNouhinbi " +
+                    ",RibcNyukinyoteibi " +
+                    ",RibcUriageKeijyoTuki " +
+                    ",RibcKankeibusho " +
+                    ",RibcKubun " +
+                    ",RibcKankeibushoMei " +
+                    " ) SELECT " +
+                    ankenNo +
+                    ",RibcNo " +
+                    "," + sFix + "RibcSeikyuKingaku " +
+
+                    ",RibcKoukiStart " +
+                    ",RibcKoukiEnd " +
+                    ",RibcSeikyubi " +
+                    ",RibcNouhinbi " +
+                    ",RibcNyukinyoteibi " +
+                    ",RibcUriageKeijyoTuki " +
+                    ",RibcKankeibusho " +
+                    ",RibcKubun " +
+                    ",RibcKankeibushoMei " +
+                    " FROM RibcJouhou WHERE RibcJouhou.RibcID = " + AnkenID;
+        }
+
+        /// <summary>
+        /// SQL文作成
+        /// </summary>
+        /// <param name="ankenNo">作成案件番号</param>
+        /// <param name="flag">0:赤伝、1:黒伝</param>
+        private string getNyuusatsuJouhouInsertSql(int ankenNo, int flag = 0)
+        {
+            string sFix = "- ";
+            if (flag == 1)
+            {
+                sFix = "";
+            }
+            return "INSERT INTO NyuusatsuJouhou ( " +
+                    "AnkenJouhouID " +
+                    ",NyuusatsuJouhouID " +
+                    ",NyuusatsuMitsumorigaku " +
+                    ",NyuusatsuOusatugaku " +
+                    ",NyuusatsuRakusatugaku " +
+                    ",NyuusatsuRakusatuSougaku " +
+                    ",NyuusatsuNendoKurikoshigaku " +
+                    ",NyuusatsuKyougouTashaID " +
+                    ",NyuusatsuKyougouTasha " +
+                    ",NyuusatsuRakusatsushaID " +
+                    ",NyuusatsuRakusatsusha " +
+                    ",NyuusatsuYoteiKakaku " +
+                    ",NyuusatsuHoushiki " +
+                    ",NyuusatsuKeiyakukeitaiCDSaishuu " +
+                    ",NyuusatsuDenshiNyuusatsu " +
+                    ",NyuusatsuTanpinMikomigaku " +
+                    ",NyuusatsushaSuu " +
+                    ",NyuusatsuGyoumuBikou " +
+                    ",NyuusatsuShoruiSoufu " +
+                    ",NyuusatsuDeleteFlag " +
+                    ",NyuusatsuRakusatsuKekkaDate " +
+                    ",NyuusatsuCreateDate " +
+                    ",NyuusatsuCreateUser " +
+                    ",NyuusatsuCreateProgram " +
+                    ",NyuusatsuUpdateDate " +
+                    ",NyuusatsuUpdateUser " +
+                    ",NyuusatsuUpdateProgram " +
+
+                    ",NyuusatsuRakusatsuShaJokyou " +
+                    ",NyuusatsuRakusatsuGakuJokyou " +
+                    ",NyuusatsuRakusatsuShokaiDate " +
+                    ",NyuusatsuRakusatsuSaisyuDate " +
+                    ",NyuusatsuKekkaMemo " +
+                    " ) SELECT " +
+                    "" + ankenNo +
+                    "," + ankenNo +
+                    "," + sFix + "NyuusatsuMitsumorigaku " +
+                    "," + sFix + "NyuusatsuOusatugaku " +
+                    "," + sFix + "NyuusatsuRakusatugaku " +
+                    "," + sFix + "NyuusatsuRakusatuSougaku " +
+                    "," + sFix + "NyuusatsuNendoKurikoshigaku " +
+                    ",CASE WHEN NyuusatsuKyougouTashaID > 0 THEN NyuusatsuKyougouTashaID ELSE NULL END " +
+                    ",CASE WHEN NyuusatsuKyougouTashaID > 0 THEN NyuusatsuKyougouTasha ELSE NULL END " +
+                    ",CASE WHEN NyuusatsuRakusatsushaID > 0 THEN NyuusatsuRakusatsushaID ELSE NULL END " +
+                    ",CASE WHEN NyuusatsuRakusatsushaID > 0 THEN NyuusatsuRakusatsusha ELSE NULL END " +
+                    ",NyuusatsuYoteiKakaku " +
+                    ",NyuusatsuHoushiki " +
+                    ",NyuusatsuKeiyakukeitaiCDSaishuu " +
+                    ",NyuusatsuDenshiNyuusatsu " +
+                    ",NyuusatsuTanpinMikomigaku " +
+                    ",NyuusatsushaSuu " +
+                    ",NyuusatsuGyoumuBikou " +
+                    ",NyuusatsuShoruiSoufu " +
+                    ",1 " +
+                    ",NyuusatsuRakusatsuKekkaDate " +
+                    ",GETDATE() " +
+                    ",N'" + UserInfos[0] + "' " +
+                    ",'ChangeKianEntry' " +
+                    ",GETDATE() " +
+                    ",'" + UserInfos[0] + "' " +
+                    ",'ChangeKianEntry' " +
+
+                    ",NyuusatsuRakusatsuShaJokyou " +
+                    ",NyuusatsuRakusatsuGakuJokyou " +
+                    ",NyuusatsuRakusatsuShokaiDate " +
+                    ",NyuusatsuRakusatsuSaisyuDate " +
+                    ",NyuusatsuKekkaMemo " +
+                    " FROM NyuusatsuJouhou WHERE NyuusatsuJouhou.NyuusatsuJouhouID = " + AnkenID;
+        }
+
+        /// <summary>
+        /// SQL文作成
+        /// </summary>
+        /// <param name="ankenNo">作成案件番号</param>
+        /// <param name="flag">0:赤伝、1:黒伝</param>
+        private string getNyuusatsuJouhouOusatsushaInsertSql(int ankenNo, int flag = 0)
+        {
+            string sFix = "- ";
+            if (flag == 1)
+            {
+                sFix = "";
+            }
+            return "INSERT INTO NyuusatsuJouhouOusatsusha ( " +
+                                "NyuusatsuJouhouID" +
+                                ",NyuusatsuOusatsuID" +
+                                ",NyuusatsuOusatsuKingaku" +
+
+                                ",NyuusatsuOusatsushaID" +
+                                ",NyuusatsuOusatsusha" +
+                                ",NyuusatsuOusatsuKyougouTashaID" +
+                                ",NyuusatsuOusatsuKyougouKigyouCD" +
+                                ",NyuusatsuRakusatsuJyuni" +
+                                ",NyuusatsuRakusatsuJokyou" +
+                                ",NyuusatsuRakusatsuComment" +
+                                " ) SELECT " +
+                                ankenNo +
+                                ",ROW_NUMBER() OVER(ORDER BY NyuusatsuJouhouID) " +    // ",NyuusatsuOusatsuID" +
+                                "," + sFix + "NyuusatsuOusatsuKingaku" +
+
+                                ",NyuusatsuOusatsushaID" +
+                                ",NyuusatsuOusatsusha" +
+                                ",NyuusatsuOusatsuKyougouTashaID" +
+                                ",NyuusatsuOusatsuKyougouKigyouCD" +
+                                ",NyuusatsuRakusatsuJyuni" +
+                                ",NyuusatsuRakusatsuJokyou" +
+                                ",NyuusatsuRakusatsuComment" +
+                                " FROM NyuusatsuJouhouOusatsusha WHERE NyuusatsuJouhouOusatsusha.NyuusatsuJouhouID = " + AnkenID;
+        }
+
+        /// <summary>
+        /// SQL文作成
+        /// </summary>
+        /// <param name="ankenNo">作成する案件番号</param>
+        /// <param name="gyoumuHaibunID">業務配分ID</param>
+        /// <param name="flag">0:赤伝、1:黒伝</param>
+        /// <returns></returns>
+        private string getGyoumuHaibunInsertSql(int ankenNo, int gyoumuHaibunID, int flag = 0)
+        {
+            string sFix = "- ";
+            if (flag == 1)
+            {
+                sFix = "";
+            }
+
+            return "INSERT INTO GyoumuHaibun ( " +
+                                    "GyoumuHaibunID " +
+                                    ",GyoumuAnkenJouhouID " +
+                                    ",GyoumuChosaBuRitsu " +
+                                    ",GyoumuChosaBuGaku " +
+                                    ",GyoumuJigyoFukyuBuRitsu " +
+                                    ",GyoumuJigyoFukyuBuGaku " +
+                                    ",GyoumuJyohouSystemBuRitsu " +
+                                    ",GyoumuJyohouSystemBuGaku " +
+                                    ",GyoumuSougouKenkyuJoRitsu " +
+                                    ",GyoumuSougouKenkyuJoGaku " +
+                                    ",GyoumuShizaiChousaRitsu " +
+                                    ",GyoumuShizaiChousaGaku " +
+                                    ",GyoumuEizenRitsu " +
+                                    ",GyoumuEizenGaku " +
+                                    ",GyoumuKikiruiChousaRitsu " +
+                                    ",GyoumuKikiruiChousaGaku " +
+                                    ",GyoumuKoujiChousahiRitsu " +
+                                    ",GyoumuKoujiChousahiGaku " +
+                                    ",GyoumuSanpaiFukusanbutsuRitsu " +
+                                    ",GyoumuSanpaiFukusanbutsuGaku " +
+                                    ",GyoumuHokakeChousaRitsu " +
+                                    ",GyoumuHokakeChousaGaku " +
+                                    ",GyoumuShokeihiChousaRitsu " +
+                                    ",GyoumuShokeihiChousaGaku " +
+                                    ",GyoumuGenkaBunsekiRitsu " +
+                                    ",GyoumuGenkaBunsekiGaku " +
+                                    ",GyoumuKijunsakuseiRitsu " +
+                                    ",GyoumuKijunsakuseiGaku " +
+                                    ",GyoumuKoukyouRoumuhiRitsu " +
+                                    ",GyoumuKoukyouRoumuhiGaku " +
+                                    ",GyoumuRoumuhiKoukyouigaiRitsu " +
+                                    ",GyoumuRoumuhiKoukyouigaiGaku " +
+                                    ",GyoumuSonotaChousabuRitsu " +
+                                    ",GyoumuSonotaChousabuGaku " +
+                                    ",GyoumuHibunKubun " +
+                                    " ) SELECT " +
+                                    GlobalMethod.getSaiban("GyoumuHaibunID") +
+                                    "," + ankenNo +
+                                    ",GyoumuChosaBuRitsu " +
+                                    "," + sFix + "GyoumuChosaBuGaku " +
+                                    ",GyoumuJigyoFukyuBuRitsu " +
+                                    "," + sFix + "GyoumuJigyoFukyuBuGaku " +
+                                    ",GyoumuJyohouSystemBuRitsu " +
+                                    "," + sFix + "GyoumuJyohouSystemBuGaku " +
+                                    ",GyoumuSougouKenkyuJoRitsu " +
+                                    "," + sFix + "GyoumuSougouKenkyuJoGaku " +
+                                    ",GyoumuShizaiChousaRitsu " +
+                                    "," + sFix + "GyoumuShizaiChousaGaku " +
+                                    ",GyoumuEizenRitsu " +
+                                    "," + sFix + "GyoumuEizenGaku " +
+                                    ",GyoumuKikiruiChousaRitsu " +
+                                    "," + sFix + "GyoumuKikiruiChousaGaku " +
+                                    ",GyoumuKoujiChousahiRitsu " +
+                                    "," + sFix + "GyoumuKoujiChousahiGaku " +
+                                    ",GyoumuSanpaiFukusanbutsuRitsu " +
+                                    "," + sFix + "GyoumuSanpaiFukusanbutsuGaku " +
+                                    ",GyoumuHokakeChousaRitsu " +
+                                    "," + sFix + "GyoumuHokakeChousaGaku " +
+                                    ",GyoumuShokeihiChousaRitsu " +
+                                    "," + sFix + "GyoumuShokeihiChousaGaku " +
+                                    ",GyoumuGenkaBunsekiRitsu " +
+                                    "," + sFix + "GyoumuGenkaBunsekiGaku " +
+                                    ",GyoumuKijunsakuseiRitsu " +
+                                    "," + sFix + "GyoumuKijunsakuseiGaku " +
+                                    ",GyoumuKoukyouRoumuhiRitsu " +
+                                    "," + sFix + "GyoumuKoukyouRoumuhiGaku " +
+                                    ",GyoumuRoumuhiKoukyouigaiRitsu " +
+                                    "," + sFix + "GyoumuRoumuhiKoukyouigaiGaku " +
+                                    ",GyoumuSonotaChousabuRitsu " +
+                                    "," + sFix + "GyoumuSonotaChousabuGaku " +
+                                    ",GyoumuHibunKubun " +
+                                    " FROM GyoumuHaibun WHERE GyoumuHaibun.GyoumuHaibunID = " + gyoumuHaibunID;
         }
 
         // Garoon宛先追加登録
@@ -11306,227 +14188,259 @@ namespace TokuchoBugyoK2
         private void button12_Click(object sender, EventArgs e)
         {
             string methodName = ".btnDelete_Click";
-            if (MessageBox.Show(GlobalMethod.GetMessage("I10605", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            // エントリ君修正STEP2
+            using (Popup_MessageBox dlg = new Popup_MessageBox("確認", GlobalMethod.GetMessage("I10605", ""), "案件番号"))
             {
-                Boolean ErrorFLG = false;
-                if (item3_1_2.Checked == true)
+                // if (MessageBox.Show(GlobalMethod.GetMessage("I10605", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    set_error(GlobalMethod.GetMessage("E10601", ""));
-                    ErrorFLG = true;
-                }
-                if (item3_1_1.SelectedValue != null && item3_1_1.SelectedValue.ToString() == "05")
-                {
-                    // E10602:計画業務は削除できません。
-                    set_error(GlobalMethod.GetMessage("E10602", ""));
-                    ErrorFLG = true;
-                }
-
-                var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-                var dt = new System.Data.DataTable();
-                var dt2 = new System.Data.DataTable();
-                using (var conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-                    var cmd = conn.CreateCommand();
-                    cmd.CommandText = "SELECT  " +
-                            "AnkenSaishinFlg " +
-                            ",AnkenSakuseiKubun " +
-                            ",AnkenJutakuBangou " +
-                            ",AnkenJutakuBangouEda " +
-
-                            //参照テーブル
-                            "FROM AnkenJouhou " +
-                            "WHERE AnkenJouhou.AnkenJouhouID =  " + AnkenID.ToString();
-                    var sda = new SqlDataAdapter(cmd);
-                    dt.Clear();
-                    sda.Fill(dt);
-                    if (dt.Rows.Count == 0)
+                    if (dlg.GetInputText().Equals(Header1.Text))
                     {
-                        // E10009:対象データは存在しません。
-                        set_error(GlobalMethod.GetMessage("E10009", ""));
-                        ErrorFLG = true;
-                    }
-                    conn.Close();
-                }
-
-                if (!ErrorFLG)
-                {
-                    using (var conn = new SqlConnection(connStr))
-                    {
-                        conn.Open();
-                        SqlTransaction transaction = conn.BeginTransaction();
-                        var cmd = conn.CreateCommand();
-                        cmd.Transaction = transaction;
-
-                        try
+                        ErrorMessage.Text = "";
+                        Boolean ErrorFLG = false;
+                        if (item3_1_2.Checked == true)
                         {
-                            cmd.CommandText = "UPDATE KokyakuKeiyakuJouhou SET KokyakuDeleteFlag = 1 " +
-                                "WHERE AnkenJouhouID =  " + AnkenID.ToString();
-                            cmd.ExecuteNonQuery();
+                            set_error(GlobalMethod.GetMessage("E10601", ""));
+                            ErrorFLG = true;
+                        }
+                        if (item3_1_1.SelectedValue != null && item3_1_1.SelectedValue.ToString() == "05")
+                        {
+                            // E10602:計画業務は削除できません。
+                            set_error(GlobalMethod.GetMessage("E10602", ""));
+                            ErrorFLG = true;
+                        }
 
-                            cmd.CommandText = "UPDATE GyoumuJouhou SET GyoumuDeleteFlag = 1 " +
-                                "WHERE AnkenJouhouID =  " + AnkenID.ToString();
-                            cmd.ExecuteNonQuery();
+                        var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                        var dt = new System.Data.DataTable();
+                        var dt2 = new System.Data.DataTable();
+                        using (var conn = new SqlConnection(connStr))
+                        {
+                            conn.Open();
+                            var cmd = conn.CreateCommand();
+                            cmd.CommandText = "SELECT  " +
+                                    "AnkenSaishinFlg " +
+                                    ",AnkenSakuseiKubun " +
+                                    ",AnkenJutakuBangou " +
+                                    ",AnkenJutakuBangouEda " +
 
-                            cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET KeiyakuDeleteFlag = 1 " +
-                                "WHERE AnkenJouhouID =  " + AnkenID.ToString();
-                            cmd.ExecuteNonQuery();
-
-                            cmd.CommandText = "UPDATE NyuusatsuJouhou SET NyuusatsuDeleteFlag = 1 " +
-                                "WHERE AnkenJouhouID =  " + AnkenID.ToString();
-                            cmd.ExecuteNonQuery();
-
-                            cmd.CommandText = "UPDATE AnkenJouhou SET AnkenDeleteFlag = 1 " +
-                                "WHERE AnkenJouhouID =  " + AnkenID.ToString();
-                            cmd.ExecuteNonQuery();
-
-                            // 最新フラグが0:最新ではない
-                            // 契約区分
-                            // 03:契約変更（黒伝）
-                            // 06:契約変更（黒伝・金額変更）
-                            // 07:契約変更（黒伝・工期変更）
-                            // 08:契約変更（黒伝・金額工期変更）
-                            // 09:契約変更（黒伝・その他）
-                            if (dt.Rows[0][0].ToString() == "1" && (dt.Rows[0][1].ToString() == "03" 
-                                || dt.Rows[0][1].ToString() == "06" || dt.Rows[0][1].ToString() == "07" 
-                                || dt.Rows[0][1].ToString() == "08" || dt.Rows[0][1].ToString() == "09"
-                                ))
+                                    //参照テーブル
+                                    "FROM AnkenJouhou " +
+                                    "WHERE AnkenJouhou.AnkenJouhouID =  " + AnkenID.ToString();
+                            var sda = new SqlDataAdapter(cmd);
+                            dt.Clear();
+                            sda.Fill(dt);
+                            if (dt.Rows.Count == 0)
                             {
-                                cmd.CommandText = "SELECT " +
-                                        " AnkenJouhouID " +
-                                        ",AnkenSaishinFlg " +
-                                        ",AnkenSakuseiKubun " +
-
-                                        //参照テーブル
-                                        "FROM AnkenJouhou " +
-                                        //"WHERE AnkenJouhou.AnkenJutakuBangou = " + AnkenID.ToString() +
-                                        //" AND AnkenJouhou.AnkenJutakuBangouEda =  " + AnkenID.ToString() +
-                                        "WHERE AnkenJouhou.AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + item1_7.Text + "' " +
-                                        " AND AnkenJouhou.AnkenJutakuBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC =  N'" + item1_8.Text + "' " +
-                                        " AND AnkenJouhou.AnkenSakuseiKubun IN ('01','03','06','07','08','09') " +
-                                        " AND AnkenJouhou.AnkenJouhouID != '" + AnkenID + "' " + // 自分を除く
-                                        " AND AnkenJouhou.AnkenDeleteFlag != 1 " + // 削除された案件を除く
-                                        " ORDER BY AnkenJutakuBangou DESC, AnkenJouhouID DESC ";
-                                var sda = new SqlDataAdapter(cmd);
-                                dt2.Clear();
-                                sda.Fill(dt2);
-
-                                for (int i = 0; i < dt2.Rows.Count; i++)
+                                // E10009:対象データは存在しません。
+                                set_error(GlobalMethod.GetMessage("E10009", ""));
+                                ErrorFLG = true;
+                            }
+                            conn.Close();
+                        }
+                        //えんとり君修正STEP2　単価契約　OR　窓口ミハルが存在するなら削除しない
+                        if (!ErrorFLG) {
+                            // 単価契約
+                            DataTable tankaData = GlobalMethod.getData("AnkenJouhouID", "TankaKeiyakuID", "TankaKeiyaku", "AnkenJouhouID = " + AnkenID.ToString());
+                            if(tankaData!= null && tankaData.Rows.Count > 0)
+                            {
+                                set_error(GlobalMethod.GetMessage("E10608", ""));
+                                ErrorFLG = true;
+                            }
+                            else
+                            {
+                                // 窓口ミハル
+                                DataTable mdData = GlobalMethod.getData("AnkenJouhouID", "MadoguchiID", "MadoguchiJouhou", "AnkenJouhouID = " + AnkenID.ToString());
+                                if (mdData != null && mdData.Rows.Count > 0)
                                 {
-                                    if (i == 0)
-                                    {
-                                        cmd.CommandText = "UPDATE AnkenJouhou SET " +
-                                            " AnkenSaishinFlg = 1 " +
-                                            "WHERE AnkenJouhouID =  " + dt2.Rows[i][0].ToString();
-                                        cmd.ExecuteNonQuery();
-
-                                        // 窓口のAnkenJouhouIDも同様に更新する
-                                        cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
-                                            "AnkenJouhouID = '" + dt2.Rows[i][0].ToString() + "' " +
-                                            ",MadoguchiAnkenJouhouID = '" + dt2.Rows[i][0].ToString() + "' " +
-                                            " WHERE MadoguchiJouhou.AnkenJouhouID = " + AnkenID;
-                                        cmd.ExecuteNonQuery();
-
-                                        // 単価契約のAnkenJouhouIDも同様に更新する
-                                        cmd.CommandText = "UPDATE TankaKeiyaku SET " +
-                                            "AnkenJouhouID = '" + dt2.Rows[i][0].ToString() + "' " +
-                                            " WHERE TankaKeiyaku.AnkenJouhouID = " + AnkenID;
-                                        cmd.ExecuteNonQuery();
-                                    }
-                                    else
-                                    {
-                                        cmd.CommandText = "UPDATE AnkenJouhou SET " +
-                                            " AnkenSaishinFlg = 0 " +
-                                            "WHERE AnkenJouhouID =  " + dt2.Rows[i][0].ToString();
-                                        cmd.ExecuteNonQuery();
-                                    }
+                                    set_error(GlobalMethod.GetMessage("E10609", ""));
+                                    ErrorFLG = true;
                                 }
-                                // 最新フラグを落とす
-                                cmd.CommandText = "UPDATE AnkenJouhou SET " +
-                                " AnkenSaishinFlg = 0 " +
-                                "WHERE AnkenJouhouID = '" + AnkenID　+ "'";
-                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        if (!ErrorFLG)
+                        {
+                            using (var conn = new SqlConnection(connStr))
+                            {
+                                conn.Open();
+                                SqlTransaction transaction = conn.BeginTransaction();
+                                var cmd = conn.CreateCommand();
+                                cmd.Transaction = transaction;
 
-
-                                DataTable dt3 = new DataTable();
-                                // 赤伝も削除する
-                                cmd.CommandText = "SELECT " +
-                                        " AnkenJouhouID " +
-                                        //参照テーブル
-                                        "FROM AnkenJouhou " +
-                                        "WHERE AnkenJouhou.AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + item1_7.Text + "' " +
-                                        " AND AnkenJouhou.AnkenJutakuBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC =  N'" + item1_8.Text + "' " +
-                                        " AND AnkenJouhou.AnkenSakuseiKubun = '02' " +
-                                        " AND AnkenJouhou.AnkenDeleteFlag != 1 " + // 削除された案件を除く
-                                        " ORDER BY AnkenJutakuBangou DESC, AnkenJouhouID DESC ";
-                                sda = new SqlDataAdapter(cmd);
-                                dt3.Clear();
-                                sda.Fill(dt3);
-
-                                string akadenAnkenJouhouID = "";
-                                // 直近の02:契約変更（赤伝）を削除する
-                                //不具合No1331（1083）
-                                //赤伝を先に削除するとエラーになる。Count間違い
-                                //if (dt3 != null && dt3.Rows.Count >= 0)
-                                if (dt3 != null && dt3.Rows.Count > 0)
+                                try
                                 {
-                                    akadenAnkenJouhouID = dt3.Rows[0][0].ToString();
-
                                     cmd.CommandText = "UPDATE KokyakuKeiyakuJouhou SET KokyakuDeleteFlag = 1 " +
-                                        "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                        "WHERE AnkenJouhouID =  " + AnkenID.ToString();
                                     cmd.ExecuteNonQuery();
 
                                     cmd.CommandText = "UPDATE GyoumuJouhou SET GyoumuDeleteFlag = 1 " +
-                                        "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                        "WHERE AnkenJouhouID =  " + AnkenID.ToString();
                                     cmd.ExecuteNonQuery();
 
                                     cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET KeiyakuDeleteFlag = 1 " +
-                                        "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                        "WHERE AnkenJouhouID =  " + AnkenID.ToString();
                                     cmd.ExecuteNonQuery();
 
                                     cmd.CommandText = "UPDATE NyuusatsuJouhou SET NyuusatsuDeleteFlag = 1 " +
-                                        "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                        "WHERE AnkenJouhouID =  " + AnkenID.ToString();
                                     cmd.ExecuteNonQuery();
 
                                     cmd.CommandText = "UPDATE AnkenJouhou SET AnkenDeleteFlag = 1 " +
-                                        "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                        "WHERE AnkenJouhouID =  " + AnkenID.ToString();
                                     cmd.ExecuteNonQuery();
+
+                                    // 最新フラグが0:最新ではない
+                                    // 契約区分
+                                    // 03:契約変更（黒伝）
+                                    // 06:契約変更（黒伝・金額変更）
+                                    // 07:契約変更（黒伝・工期変更）
+                                    // 08:契約変更（黒伝・金額工期変更）
+                                    // 09:契約変更（黒伝・その他）
+                                    if (dt.Rows[0][0].ToString() == "1" && (dt.Rows[0][1].ToString() == "03"
+                                        || dt.Rows[0][1].ToString() == "06" || dt.Rows[0][1].ToString() == "07"
+                                        || dt.Rows[0][1].ToString() == "08" || dt.Rows[0][1].ToString() == "09"
+                                        ))
+                                    {
+                                        cmd.CommandText = "SELECT " +
+                                                " AnkenJouhouID " +
+                                                ",AnkenSaishinFlg " +
+                                                ",AnkenSakuseiKubun " +
+
+                                                //参照テーブル
+                                                "FROM AnkenJouhou " +
+                                                //"WHERE AnkenJouhou.AnkenJutakuBangou = " + AnkenID.ToString() +
+                                                //" AND AnkenJouhou.AnkenJutakuBangouEda =  " + AnkenID.ToString() +
+                                                "WHERE AnkenJouhou.AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + item1_7.Text + "' " +
+                                                " AND AnkenJouhou.AnkenJutakuBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC =  N'" + item1_8.Text + "' " +
+                                                " AND AnkenJouhou.AnkenSakuseiKubun IN ('01','03','06','07','08','09') " +
+                                                " AND AnkenJouhou.AnkenJouhouID != '" + AnkenID + "' " + // 自分を除く
+                                                " AND AnkenJouhou.AnkenDeleteFlag != 1 " + // 削除された案件を除く
+                                                " ORDER BY AnkenJutakuBangou DESC, AnkenJouhouID DESC ";
+                                        var sda = new SqlDataAdapter(cmd);
+                                        dt2.Clear();
+                                        sda.Fill(dt2);
+
+                                        for (int i = 0; i < dt2.Rows.Count; i++)
+                                        {
+                                            if (i == 0)
+                                            {
+                                                cmd.CommandText = "UPDATE AnkenJouhou SET " +
+                                                    " AnkenSaishinFlg = 1 " +
+                                                    "WHERE AnkenJouhouID =  " + dt2.Rows[i][0].ToString();
+                                                cmd.ExecuteNonQuery();
+
+                                                // 窓口のAnkenJouhouIDも同様に更新する
+                                                cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
+                                                    "AnkenJouhouID = '" + dt2.Rows[i][0].ToString() + "' " +
+                                                    ",MadoguchiAnkenJouhouID = '" + dt2.Rows[i][0].ToString() + "' " +
+                                                    " WHERE MadoguchiJouhou.AnkenJouhouID = " + AnkenID;
+                                                cmd.ExecuteNonQuery();
+
+                                                // 単価契約のAnkenJouhouIDも同様に更新する
+                                                cmd.CommandText = "UPDATE TankaKeiyaku SET " +
+                                                    "AnkenJouhouID = '" + dt2.Rows[i][0].ToString() + "' " +
+                                                    " WHERE TankaKeiyaku.AnkenJouhouID = " + AnkenID;
+                                                cmd.ExecuteNonQuery();
+                                            }
+                                            else
+                                            {
+                                                cmd.CommandText = "UPDATE AnkenJouhou SET " +
+                                                    " AnkenSaishinFlg = 0 " +
+                                                    "WHERE AnkenJouhouID =  " + dt2.Rows[i][0].ToString();
+                                                cmd.ExecuteNonQuery();
+                                            }
+                                        }
+                                        // 最新フラグを落とす
+                                        cmd.CommandText = "UPDATE AnkenJouhou SET " +
+                                        " AnkenSaishinFlg = 0 " +
+                                        "WHERE AnkenJouhouID = '" + AnkenID + "'";
+                                        cmd.ExecuteNonQuery();
+
+
+                                        DataTable dt3 = new DataTable();
+                                        // 赤伝も削除する
+                                        cmd.CommandText = "SELECT " +
+                                                " AnkenJouhouID " +
+                                                //参照テーブル
+                                                "FROM AnkenJouhou " +
+                                                "WHERE AnkenJouhou.AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + item1_7.Text + "' " +
+                                                " AND AnkenJouhou.AnkenJutakuBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC =  N'" + item1_8.Text + "' " +
+                                                " AND AnkenJouhou.AnkenSakuseiKubun = '02' " +
+                                                " AND AnkenJouhou.AnkenDeleteFlag != 1 " + // 削除された案件を除く
+                                                " ORDER BY AnkenJutakuBangou DESC, AnkenJouhouID DESC ";
+                                        sda = new SqlDataAdapter(cmd);
+                                        dt3.Clear();
+                                        sda.Fill(dt3);
+
+                                        string akadenAnkenJouhouID = "";
+                                        // 直近の02:契約変更（赤伝）を削除する
+                                        //不具合No1331（1083）
+                                        //赤伝を先に削除するとエラーになる。Count間違い
+                                        //if (dt3 != null && dt3.Rows.Count >= 0)
+                                        if (dt3 != null && dt3.Rows.Count > 0)
+                                        {
+                                            akadenAnkenJouhouID = dt3.Rows[0][0].ToString();
+
+                                            cmd.CommandText = "UPDATE KokyakuKeiyakuJouhou SET KokyakuDeleteFlag = 1 " +
+                                                "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                            cmd.ExecuteNonQuery();
+
+                                            cmd.CommandText = "UPDATE GyoumuJouhou SET GyoumuDeleteFlag = 1 " +
+                                                "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                            cmd.ExecuteNonQuery();
+
+                                            cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET KeiyakuDeleteFlag = 1 " +
+                                                "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                            cmd.ExecuteNonQuery();
+
+                                            cmd.CommandText = "UPDATE NyuusatsuJouhou SET NyuusatsuDeleteFlag = 1 " +
+                                                "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                            cmd.ExecuteNonQuery();
+
+                                            cmd.CommandText = "UPDATE AnkenJouhou SET AnkenDeleteFlag = 1 " +
+                                                "WHERE AnkenJouhouID =  " + akadenAnkenJouhouID.ToString();
+                                            cmd.ExecuteNonQuery();
+                                        }
+                                    }
+                                    // 計画の案件数更新
+                                    if (item1_4.Text != "")
+                                    {
+                                        cmd.CommandText = "UPDATE KeikakuJouhou SET KeikakuAnkensu = (select count(*) from AnkenJouhou where AnkenKeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + item1_4.Text + "' and AnkenDeleteFlag != 1 and AnkenSaishinFlg = 1) WHERE KeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + item1_4.Text + "' ";
+                                        Console.WriteLine(cmd.CommandText);
+                                        cmd.ExecuteNonQuery();
+                                    }
+                                    if (beforeKeikakuBangou != "")
+                                    {
+                                        cmd.CommandText = "UPDATE KeikakuJouhou SET KeikakuAnkensu = (select count(*) from AnkenJouhou where AnkenKeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + beforeKeikakuBangou + "' and AnkenDeleteFlag != 1 and AnkenSaishinFlg = 1) WHERE KeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + beforeKeikakuBangou + "' ";
+                                        Console.WriteLine(cmd.CommandText);
+                                        cmd.ExecuteNonQuery();
+                                    }
+
+                                    transaction.Commit();
+
+                                    // 234 削除から戻ってきたら、検索条件が初期化されている対応
+                                    //Entry_Search form = new Entry_Search();
+                                    //form.UserInfos = this.UserInfos;
+                                    //form.Show();
+                                    //this.Close();
+
+                                    // 更新履歴の登録
+                                    GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "契約情報を削除しました ID:" + AnkenID, pgmName + methodName, "");
+
+                                    this.Owner.Show();
+                                    this.Close();
+
+                                }
+                                catch (Exception)
+                                {
+                                    transaction.Rollback();
+                                    throw;
                                 }
                             }
-                            // 計画の案件数更新
-                            if(item1_4.Text != "") 
-                            { 
-                                cmd.CommandText = "UPDATE KeikakuJouhou SET KeikakuAnkensu = (select count(*) from AnkenJouhou where AnkenKeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + item1_4.Text + "' and AnkenDeleteFlag != 1 and AnkenSaishinFlg = 1) WHERE KeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + item1_4.Text + "' ";
-                                Console.WriteLine(cmd.CommandText);
-                                cmd.ExecuteNonQuery();
-                            }
-                            if(beforeKeikakuBangou != "") 
-                            { 
-                                cmd.CommandText = "UPDATE KeikakuJouhou SET KeikakuAnkensu = (select count(*) from AnkenJouhou where AnkenKeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + beforeKeikakuBangou + "' and AnkenDeleteFlag != 1 and AnkenSaishinFlg = 1) WHERE KeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + beforeKeikakuBangou + "' ";
-                                Console.WriteLine(cmd.CommandText);
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            transaction.Commit();
-
-                            // 234 削除から戻ってきたら、検索条件が初期化されている対応
-                            //Entry_Search form = new Entry_Search();
-                            //form.UserInfos = this.UserInfos;
-                            //form.Show();
-                            //this.Close();
-
-                            // 更新履歴の登録
-                            GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "契約情報を削除しました ID:" + AnkenID, pgmName + methodName, "");
-
-                            this.Owner.Show();
-                            this.Close();
-
                         }
-                        catch (Exception)
-                        {
-                            transaction.Rollback();
-                            throw;
-                        }
+                    }
+                    else
+                    {
+                        set_error(GlobalMethod.GetMessage("E10009", ""));
                     }
                 }
             }
@@ -11903,11 +14817,17 @@ namespace TokuchoBugyoK2
                             // 398 工期開始年度対応
                             ",AnkenKoukiNendo " + // 56:工期開始年度
 
+                            // えんとり君修正STEP2(INDEX:57～) 
+                            ",ISNULL(mc.ChousainMei,'') " +
+                            ",ISNULL(AnkenFolderHenkouTantoushaCD,'') " +
+                            ",CASE WHEN AnkenFolderHenkouDatetime IS NULL THEN '' ELSE FORMAT(AnkenFolderHenkouDatetime,'yyyy/MM/dd HH:mm:ss') END " +
+                            // えんとり君修正STEP2(INDEX:60～) 
+                            ",ISNULL(mb.JigyoubuHeadCD,'') " +
 
                     //参照テーブル
                     "FROM AnkenJouhou " +
                             "LEFT JOIN Mst_SakuseiKubun ON AnkenSakuseiKubun = SakuseiKubunID " +
-                            "LEFT JOIN Mst_Busho ON AnkenJutakubushoCD = GyoumuBushoCD " +
+                            "LEFT JOIN Mst_Busho mb ON AnkenJutakubushoCD = GyoumuBushoCD " +
                             "LEFT JOIN Mst_KeiyakuKeitai ON AnkenNyuusatsuHoushiki = KeiyakuKeitaiCD " +
                             "LEFT JOIN Mst_Hachusha ON AnkenHachushaCD = HachushaCD " +
                             "LEFT JOIN Mst_HachushaKubun1 ON Mst_HachushaKubun1.HachushaKubun1CD = Mst_Hachusha.HachushaKubun1CD " +
@@ -11918,6 +14838,7 @@ namespace TokuchoBugyoK2
                             "LEFT JOIN KeikakuJouhou ON AnkenJouhou.AnkenKeikakuBangou = KeikakuJouhou.KeikakuBangou " +
                             "LEFT JOIN GyoumuHaibun ON AnkenJouhou.AnkenJouhouID = GyoumuHaibun.GyoumuAnkenJouhouID AND GyoumuHibunKubun = '10' " +
                             "LEFT JOIN Mst_Chousain ON AnkenJouhou.AnkenTantoushaCD = Mst_Chousain.KojinCD " +
+                            "LEFT JOIN Mst_Chousain mc ON AnkenJouhou.AnkenFolderHenkouTantoushaCD = mc.KojinCD " +
                             "WHERE AnkenJouhou.AnkenJouhouID =  " + AnkenID.ToString();
                     var sda = new SqlDataAdapter(cmd);
                     AnkenData_H.Clear();
@@ -11951,14 +14872,14 @@ namespace TokuchoBugyoK2
                                 ",ISNULL(NyuusatsuMitsumorigaku,0) AS 'NyuusatsuMitsumorigaku' " +
                                 //",ISNULL(KeiyakuZeikomiKingaku,0) AS 'KeiyakuZeikomiKingaku' " +
                                 ",ISNULL(KeiyakuKeiyakuKingaku,0) AS 'KeiyakuKeiyakuKingaku' " + // 契約金額 税抜
-                                //",ISNULL(AnkenZenkaiJutakuZeinuki,0) AS 'AnkenZenkaiJutakuZeinuki' " +
+                                                                                                 //",ISNULL(AnkenZenkaiJutakuZeinuki,0) AS 'AnkenZenkaiJutakuZeinuki' " +
                                 ",ISNULL(KeiyakuHaibunZeinukiKei,0) AS 'KeiyakuHaibunZeinukiKei' " + // 前回受託金額（税抜）
                                 ",KeiyakuZenkaiRakusatsushaID " +
                                 ",AnkenZenkaiKyougouKigyouCD " +
 
                                 ",AnkenZenkaiRakusatsuID " + // 14:前回落札ID データ追い出しで使用
                                 ",AnkenUriageNendo + '_' + CONVERT(NVARCHAR, AnkenNyuusatsuYoteibi,111) + '_' + CONVERT(NVARCHAR, AnkenJouhou.AnkenJouhouID) AS sortKey " + // 15:SotKey
-                                //参照テーブル
+                                                                                                                                                                            //参照テーブル
                                 "FROM AnkenJouhouZenkaiRakusatsu " +
                                 "LEFT JOIN NyuusatsuJouhou ON AnkenJouhouZenkaiRakusatsu.AnkenZenkaiAnkenJouhouID = NyuusatsuJouhou.AnkenJouhouID " +
                                 "LEFT JOIN KeiyakuJouhouEntory ON AnkenJouhouZenkaiRakusatsu.AnkenZenkaiAnkenJouhouID = KeiyakuJouhouEntory.AnkenJouhouID " +
@@ -12010,8 +14931,8 @@ namespace TokuchoBugyoK2
                                 ",NyuusatsuMitsumorigaku AS 'NyuusatsuMitsumorigaku' " +
                                 //",ISNULL(KeiyakuZeikomiKingaku,0) AS 'KeiyakuZeikomiKingaku' " +
                                 ",ISNULL(KeiyakuKeiyakuKingaku,0) AS 'KeiyakuKeiyakuKingaku' " + // 契約金額 税抜
-                                //",ISNULL(Keiyakukeiyakukingakukei,0) AS 'AnkenZenkaiJutakuZeinuki' " +
-                                // 前回受託金額は、受託金額（税込）から消費税分を引いた値
+                                                                                                 //",ISNULL(Keiyakukeiyakukingakukei,0) AS 'AnkenZenkaiJutakuZeinuki' " +
+                                                                                                 // 前回受託金額は、受託金額（税込）から消費税分を引いた値
                                 ",ISNULL(KeiyakuHaibunZeinukiKei,0) AS 'KeiyakuHaibunZeinukiKei' " + // 前回受託金額（税抜）
                                 ",NyuusatsuKyougouTashaID AS 'KeiyakuZenkaiRakusatsushaID' " +
                                 ",KyougouKigyouCD AS 'AnkenZenkaiKyougouKigyouCD' " +
@@ -12033,7 +14954,7 @@ namespace TokuchoBugyoK2
                         sda.Fill(AnkenData_Grid1);
 
                         // 取得した過去案件が5件を超えている場合、追い出しを行う
-                        if(AnkenData_Grid1.Rows.Count > 5)
+                        if (AnkenData_Grid1.Rows.Count > 5)
                         {
                             // 案件前回ID（AnkenZenkaiRakusatsuID）が一番古い（低い）データが追い出し対象
                             cmd.CommandText = "SELECT TOP 1 " +
@@ -12208,7 +15129,7 @@ namespace TokuchoBugyoK2
                     sda.Fill(AnkenData_Grid2);
 
                     StringBuilder sb = new StringBuilder();
-                    for(int i = 0;i < AnkenData_Grid2.Rows.Count; i++)
+                    for (int i = 0; i < AnkenData_Grid2.Rows.Count; i++)
                     {
                         sb.Append(AnkenData_Grid2.Rows[i][0]);
                         sb.Append(",");
@@ -12340,6 +15261,10 @@ namespace TokuchoBugyoK2
                             // 不足分取得
                             ",AnkenGyoumuMei " +
 
+                            //えんとり君修正STEP2（RIBC項目追加）
+                            ",KeiyakuRIBCYouTankaDataMoushikomisho " +
+                            ",KeiyakuSashaKeiyu " +
+                            ",KeiyakuRIBCYouTankaData " +
 
                     //参照テーブル
                     "FROM AnkenJouhou " +
@@ -12476,7 +15401,7 @@ namespace TokuchoBugyoK2
 
                 // VIPS 20220221 課題管理表No.1273(967) ADD 計画番号コピー制御用
                 // この業務を元に新規登録ボタンから遷移してきたときは空にする
-                if (CopyMode == "1") 
+                if (CopyMode == "1")
                 {
                     item1_4.Text = "";
                     beforeKeikakuBangou = "";
@@ -12502,6 +15427,12 @@ namespace TokuchoBugyoK2
                 item1_11_CD.Text = AnkenData_H.Rows[0][54].ToString();
                 item1_11_Busho.Text = AnkenData_H.Rows[0][55].ToString();
                 item1_12.Text = AnkenData_H.Rows[0][11].ToString();
+
+                // えんとり君修正STEP2
+                item1_37.Text = AnkenData_H.Rows[0][57].ToString();
+                item1_37_kojinCD.Text = AnkenData_H.Rows[0][58].ToString();
+                item1_38.Text = AnkenData_H.Rows[0][59].ToString();
+                sJigyoubuHeadCD_ori = AnkenData_H.Rows[0][60].ToString();
                 //案件情報
                 item1_13.Text = AnkenData_H.Rows[0][12].ToString();
                 item1_14.SelectedValue = AnkenData_H.Rows[0][13].ToString();
@@ -12516,7 +15447,13 @@ namespace TokuchoBugyoK2
                     item1_16.CustomFormat = " ";
                 }
                 item1_17.SelectedValue = AnkenData_H.Rows[0][16].ToString();
-                item1_18.Text = AnkenData_H.Rows[0][17].ToString();
+                //えんとり君修正STEP2
+                //案件メモ・参考見積額をコピーしない。
+                //item1_18.Text = AnkenData_H.Rows[0][17].ToString();
+                if (CopyMode != "1")
+                {
+                    item1_18.Text = AnkenData_H.Rows[0][17].ToString();
+                }
                 //発注者情報
                 item1_19.Text = AnkenData_H.Rows[0][18].ToString();
                 item1_20.Text = AnkenData_H.Rows[0][19].ToString();
@@ -12537,7 +15474,13 @@ namespace TokuchoBugyoK2
                 //当会応札
                 item1_34.SelectedValue = AnkenData_H.Rows[0][33].ToString();
                 item1_35.SelectedValue = AnkenData_H.Rows[0][34].ToString();
-                item1_36.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_H.Rows[0][35]));
+                //えんとり君修正STEP2
+                //案件メモ・参考見積額をコピーしない。
+                //item1_36.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_H.Rows[0][35]));
+                if (CopyMode != "1")
+                {
+                    item1_36.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_H.Rows[0][35]));
+                }
                 //業務情報（引合）
                 item1_7_1_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][36]));
                 item1_7_1_2_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][37]));
@@ -12577,14 +15520,14 @@ namespace TokuchoBugyoK2
                     //↑上記が見つかれば受託案件
                     for (int i = 0; i < AnkenData_Grid2.Rows.Count; i++)
                     {
-                        if(AnkenData_Grid2.Rows[i][2].ToString()=="1001" && AnkenData_Grid2.Rows[i][1].ToString() == "1")
+                        if (AnkenData_Grid2.Rows[i][2].ToString() == "1001" && AnkenData_Grid2.Rows[i][1].ToString() == "1")
                         {
                             isJutaku = true;
                             break;
                         }
                     }
                     //受託だった場合は契約情報からコピー
-                    if(isJutaku == true)
+                    if (isJutaku == true)
                     {
                         //契約でも部署ごとの配分はAnkenData_Hのデータ[GyoumuHaibun]テーブルの[GyoumuHibunKubun]が10で良いようだ。
                         item2_4_1_1_1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0][36]));
@@ -12820,6 +15763,8 @@ namespace TokuchoBugyoK2
                 //【契約】
                 //契約情報
                 item3_1_1.SelectedValue = AnkenData_K.Rows[0][0].ToString();
+                // えんとり君修正STEP2 伝票変更前も確認シートを出力する時、案件区分
+                sAnkenSakuseiKubun_ori = AnkenData_K.Rows[0][0].ToString();
                 if (AnkenData_K.Rows[0][1].ToString() == "1")
                 {
                     item3_1_2.Checked = true;
@@ -13161,6 +16106,20 @@ namespace TokuchoBugyoK2
             TotalPercent("item1_7_2_", "_1", 13);
             copy_haibun("item1_7_2_", "item2_4_2_", 13);
             copy_haibun("item1_7_2_", "item3_7_2_", 13);
+
+            // えんとり君修正STEP2（RIBC項目追加）
+            if (AnkenData_K.Rows[0][96].ToString() == "1")
+            {
+                item3_ribc_price.Checked = true;
+            }
+            if (AnkenData_K.Rows[0][97].ToString() == "1")
+            {
+                item3_sa_commpany.Checked = true;
+            }
+            if (AnkenData_K.Rows[0][98].ToString() == "1")
+            {
+                item3_1_ribc.Checked = true;
+            }
         }
 
         private void c1FlexGrid4_AfterEdit(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
@@ -13238,7 +16197,7 @@ namespace TokuchoBugyoK2
                 {
 
                     if (KianError())
-                    { 
+                    {
                         //if (ErrorFLG(3))
                         //{
                         //    if (KianError(1))
@@ -13295,7 +16254,8 @@ namespace TokuchoBugyoK2
                     {
                         // 変更後の起案ボタン
                         button13.Enabled = false;
-                        if(item3_1_1.Text != null && item3_1_1.Text != "" && (item3_1_1.SelectedValue.ToString() == "03" || int.Parse(item3_1_1.SelectedValue.ToString()) > 5)){
+                        if (item3_1_1.Text != null && item3_1_1.Text != "" && (item3_1_1.SelectedValue.ToString() == "03" || int.Parse(item3_1_1.SelectedValue.ToString()) > 5))
+                        {
                             // 案件区分が以下の場合のみ赤伝ボタン有効化
                             // 03 契約変更(黒伝)
                             // 06 契約変更(黒伝・金額変更)
@@ -13303,8 +16263,9 @@ namespace TokuchoBugyoK2
                             // 08 契約変更(黒伝・金額工期変更)
                             // 09 契約変更(黒伝・その他)
                             // 赤伝作成・出力ボタン
-                            button20.Enabled = true;
-                            button20.BackColor = Color.FromArgb(42, 78, 122);
+                            // えんとり君修正STEP2 変更伝票画面で「チェック用帳票出力・内容確認」追加　赤伝作成・出力ボタン流用する
+                            //button20.Enabled = true;
+                            //button20.BackColor = Color.FromArgb(42, 78, 122);
                         }
                         //// 赤伝作成・出力ボタン
                         //button20.Enabled = true;
@@ -13442,7 +16403,23 @@ namespace TokuchoBugyoK2
                 if (!ErrorFLG(3))
                 {
                     Execute_SQL(2);
-                    string[] result = GlobalMethod.InsertReportWork(1, UserInfos[0], new string[] { AnkenID, Header1.Text, "0", "0" });
+                    // えんとり君修正STEP2
+                    //string[] result = GlobalMethod.InsertReportWork(1, UserInfos[0], new string[] { AnkenID, Header1.Text, "0", "0" });
+                    int ListID = 1;
+                    if (item3_1_1.Text != null && item3_1_1.Text != "" && (item3_1_1.SelectedValue.ToString() == "03" || int.Parse(item3_1_1.SelectedValue.ToString()) > 5))
+                    {
+                        // 01:新規
+                        // 02:契約変更(赤伝)
+                        // 03:契約変更(黒伝)
+                        // 04:中止
+                        // 05:計画
+                        // 06:契約変更(黒伝・金額変更)
+                        // 07:契約変更(黒伝・工期変更)
+                        // 08:契約変更(黒伝・金額工期変更)
+                        // 09:契約変更(黒伝・その他)
+                        ListID = 352;
+                    }
+                    string[] result = GlobalMethod.InsertReportWork(ListID, UserInfos[0], new string[] { AnkenID, Header1.Text, "0", "0" });
                     if (result != null && result.Length >= 4)
                     {
                         if (result[0].Trim() == "1")
@@ -13964,18 +16941,18 @@ namespace TokuchoBugyoK2
                     // 工期開始年度　2021年度まで、　010北道
                     // 工期開始年度　2022年度から　　010北海
                     int koukinendo = 0;
-                    if (int.TryParse(item1_2_KoukiNendo.SelectedValue.ToString(),out koukinendo))
+                    if (int.TryParse(item1_2_KoukiNendo.SelectedValue.ToString(), out koukinendo))
                     {
-                        if(koukinendo > 2021)
+                        if (koukinendo > 2021)
                         {
                             // 010北道
                             string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
                             // 010北海
                             string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
 
-                            if (str1 != null && str2 != null) 
-                            { 
-                                folderPath = folderPath.Replace(str1,str2);
+                            if (str1 != null && str2 != null)
+                            {
+                                folderPath = folderPath.Replace(str1, str2);
                             }
                         }
                     }
@@ -14090,7 +17067,7 @@ namespace TokuchoBugyoK2
                     // 売上年度
                     item3_1_5.SelectedValue = dt.Rows[0][0].ToString();
                     // 変更伝票以外の場合、引合タブの売上年度も更新する
-                    if(mode != "change")
+                    if (mode != "change")
                     {
                         item1_3.SelectedValue = dt.Rows[0][0].ToString();
                     }
@@ -14295,8 +17272,8 @@ namespace TokuchoBugyoK2
             if (c1FlexGrid2.GetCellCheck(e.Row, 3) == C1.Win.C1FlexGrid.CheckEnum.Checked)
             {
                 // c1FlexGrid2.Rows[e.Row][5]がNullの場合に、エラーになるので回避
-                if (c1FlexGrid2.Rows[e.Row][5] != null) 
-                { 
+                if (c1FlexGrid2.Rows[e.Row][5] != null)
+                {
                     item2_3_7.Text = c1FlexGrid2.Rows[e.Row][5].ToString();
                     if (c1FlexGrid2.Rows[e.Row][6] == null || c1FlexGrid2.Rows[e.Row][6].ToString() == "")
                     {
@@ -14881,7 +17858,7 @@ namespace TokuchoBugyoK2
             //タブ数によりどうするか？　要検討
 
             //配列インデックス
-            
+
 
             string textboxBuffer = txtTayoriData.Text;
             string[] words = textboxBuffer.Split('\t');
@@ -14899,7 +17876,7 @@ namespace TokuchoBugyoK2
             //}
 
             //前後のダブルクオーテーションを消す。面倒なので配列全体に先にやってしまう。
-            for(int i=0; i < words.Length; i++)
+            for (int i = 0; i < words.Length; i++)
             {
                 words[i] = deleteDoubleQuotation(words[i]);
             }
@@ -14922,12 +17899,12 @@ namespace TokuchoBugyoK2
             //郵便番号
             if (words.Length > (int)excelIndex.post_address)
             {
-                item1_30.Text = getPostAddress(words[(int)excelIndex.post_address],true);
+                item1_30.Text = getPostAddress(words[(int)excelIndex.post_address], true);
             }
             //住所
             if (words.Length > (int)excelIndex.post_address)
             {
-                item1_31.Text = getPostAddress(words[(int)excelIndex.post_address],false);
+                item1_31.Text = getPostAddress(words[(int)excelIndex.post_address], false);
             }
             //電話番号
             if (words.Length > (int)excelIndex.tel)
@@ -14946,11 +17923,11 @@ namespace TokuchoBugyoK2
             }
 
             //以降は一つのテキストエリアに:デリミタを付加し、改行なしで結合
-            string tmpBuff="";
+            string tmpBuff = "";
             //ご依頼内容の概要
             if (words.Length > (int)excelIndex.irai_naiyou)
             {
-                if(words[(int)excelIndex.irai_naiyou].Trim().Equals("") == false)
+                if (words[(int)excelIndex.irai_naiyou].Trim().Equals("") == false)
                 {
                     tmpBuff += words[(int)excelIndex.irai_naiyou] + ":";
                 }
@@ -15015,7 +17992,7 @@ namespace TokuchoBugyoK2
             return strArr[0].Trim().Replace(" ", "");
         }
         //郵便番号＋住所のデータから郵便番号と住所のどちらかを返却する
-        private string getPostAddress(string orgBuff,bool isPost)
+        private string getPostAddress(string orgBuff, bool isPost)
         {
             //ここで半角変換しちゃダメ。住所に全角数字が使われてるので。
             //半角スペースで分割。配列インデックス0に郵便番号、1以降に住所の想定
@@ -15032,8 +18009,8 @@ namespace TokuchoBugyoK2
                 //配列が半角スペースで分割されていれば再度半角スペースで結合する
                 if (strArr.Length > 1)
                 {
-                    string tmpBuff="";
-                    for(int i = 1; i < strArr.Length; i++)
+                    string tmpBuff = "";
+                    for (int i = 1; i < strArr.Length; i++)
                     {
                         if (tmpBuff != "")
                         {
@@ -15047,9 +18024,9 @@ namespace TokuchoBugyoK2
                 {
                     return "";
                 }
-                
+
             }
-            
+
         }
         //不具合管理表　1310(1028)　↑↑↑
 
@@ -15057,6 +18034,166 @@ namespace TokuchoBugyoK2
         {
             GlobalMethod.tabDisplaySet(tab, sender, e);
         }
-        
+
+        //エントリ君修正STEP2
+        private void label43_Click(object sender, EventArgs e)
+        {
+            //契約金額（税込）　item3_1_13
+            //契約金額（税抜）　item3_1_12
+            string sDt = item3_1_7.Text.Trim();
+            string sYm = "";
+            try
+            {
+                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+            }
+            catch (Exception)
+            {
+                // 何もしない
+            }
+            string GyoumuCD = item3_1_8.SelectedValue.ToString();
+            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
+                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "5" || GyoumuCD == "6")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
+                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "7")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
+                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "8")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
+                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+            }
+        }
+
+        //エントリ君修正STEP2
+        private void label326_Click(object sender, EventArgs e)
+        {
+            //契約金額（税込）　item3_1_13
+            //契約金額（税抜）　item3_1_12
+            //配分額（税込）
+            item3_2_1_1.Text = item3_1_13.Text;
+            TotalMoney("item3_2_", "_1", 5);
+
+            //配分額（税抜）
+            item3_2_1_2.Text = item3_1_12.Text;
+            TotalMoney("item3_2_", "_2", 5);
+
+            set_keiyaku_haibun();
+
+            // 全部計算指せる
+            SetKeiyakuHaibunKingaku();
+        }
+
+        //エントリ君修正STEP2
+        private void item3_1_27_Leave(object sender, EventArgs e)
+        {
+            long zeinuki = GetLong(item3_1_12.Text) + GetLong(item3_1_27.Text);
+            item3_1_12.Text = string.Format("{0:C}", zeinuki);
+        }
+
+        //エントリ君修正STEP2
+        private void label51_Click(object sender, EventArgs e)
+        {
+            // フォルダリネーム========================================================
+            string sBushoCd = item1_10.SelectedValue.ToString();//受託課所支部（契約部所）
+            string sYear = item1_2_KoukiNendo.SelectedValue.ToString();   // 工期開始年度
+            string sGyomu = item1_13.Text;   // 業務名称
+            string sGOrder = item1_23.Text;//発注者名
+            //if(sBushoCd.Equals(sFolderBushoCDRenameBef) && sYear.Equals(sFolderYearRenameBef) && sGyomu.Equals(sFolderGyomuRenameBef) && sGOrder.Equals(sFolderOrderRenameBef))
+            //{
+            //    return;
+            //}
+            sFolderBushoCDRenameBef = sBushoCd;    //受託課所支部（契約部所）
+            sFolderYearRenameBef = sYear;   // 工期開始年度
+            sFolderGyomuRenameBef = sGyomu;   // 業務名称
+            sFolderOrderRenameBef = sGOrder;//発注者名
+
+            // 案件（受託）フォルダ初期値設定 取得
+            String discript = "FolderPath";
+            String value = "FolderPath ";
+            String table = "M_Folder";
+            String where = "MENU_ID = 100 AND FolderBunruiCD = 1 AND FolderBushoCD = '" + sBushoCd + "' ";
+
+            // //xxxx/00Cyousa/00調査情報部門共有/$NENDO$/200受託調査関連
+            // フォルダ関連は工期開始年度で作成する
+            string FolderBase = GlobalMethod.GetCommonValue1("FOLDER_BASE").Replace(@"$NENDO$", sYear);
+            string FolderPath = "";
+
+            DataTable dt = new System.Data.DataTable();
+            dt = GlobalMethod.getData(discript, value, table, where);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                // $FOLDER_BASE$/004 本部
+                FolderPath = dt.Rows[0][0].ToString();
+            }
+            if (FolderBase != "" && FolderPath != "")
+            {
+                FolderPath = FolderPath.Replace(@"$FOLDER_BASE$", FolderBase);
+                FolderPath = FolderPath.Replace("/", @"\");
+
+                string jCd = getJigyoubuHeadCD();
+
+                if (jCd.Equals("T"))
+                {
+                    // 空白はトリム
+                    sGOrder = System.Text.RegularExpressions.Regex.Replace(sGOrder, @"\s", "");
+                    if (sGOrder.Length > 10)
+                    {
+                        sGOrder = sGOrder.Substring(0, 10);
+                    }
+                    sGyomu = System.Text.RegularExpressions.Regex.Replace(sGyomu, @"\s", "");
+                    if (sGyomu.Length > 20)
+                    {
+                        sGyomu = sGyomu.Substring(0, 20);
+                    }
+                    string AnkenBangou = item1_6.Text;
+                    FolderPath = FolderPath + "\\" + AnkenBangou + "_" + sGOrder + "_" + sGyomu;
+                }
+            }
+            else
+            {
+                FolderPath = FolderBase;
+                FolderPath = FolderPath.Replace("/", @"\");
+            }
+            // 案件（受託）フォルダ
+            item1_12.Text = FolderPath;
+        }
+
+
+        //エントリ君修正STEP2:部署のヘッダーマックを取得する
+        private string getJigyoubuHeadCD()
+        {
+            //SQL変数
+            string discript = "GyoumuBushoCD";
+            string value = "JigyoubuHeadCD";
+            string table = "Mst_Busho";
+            string where = "GyoumuBushoCD = '" + item1_10.SelectedValue.ToString() + "'";
+            //データ取得
+            DataTable combodt1 = new System.Data.DataTable();
+            combodt1 = GlobalMethod.getData(discript, value, table, where);
+            if (combodt1 != null && combodt1.Rows.Count > 0)
+            {
+                if (combodt1.Rows[0][0] != null)
+                    return combodt1.Rows[0][0].ToString();
+                else
+                    return "";
+            }
+            else
+            {
+                return "";
+            }
+        }
     }
 }

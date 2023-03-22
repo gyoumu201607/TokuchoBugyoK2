@@ -304,6 +304,12 @@
     <Compile Include="Popup_Loading.Designer.cs">
       <DependentUpon>Popup_Loading.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popup_MessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_MessageBox.designer.cs">
+      <DependentUpon>Popup_MessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popup_miharujutaku.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -592,6 +598,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Loading.resx">
       <DependentUpon>Popup_Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_MessageBox.resx">
+      <DependentUpon>Popup_MessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_miharujutaku.resx">
       <DependentUpon>Popup_miharujutaku.cs</DependentUpon>

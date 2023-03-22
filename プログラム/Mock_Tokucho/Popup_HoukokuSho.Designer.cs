@@ -52,12 +52,17 @@
             this.comboBox_Chohyo = new System.Windows.Forms.ComboBox();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioButton_Yes = new System.Windows.Forms.RadioButton();
+            this.radioButton_No = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
             this.ErrorMessage = new System.Windows.Forms.Label();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.item1_Folder_icon)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel4
@@ -72,7 +77,7 @@
             this.tableLayoutPanel4.Controls.Add(this.button_end, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.radioButton_Save, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.radioButton_DL, 1, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(311, 164);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(311, 200);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -162,6 +167,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(428, 60);
             this.tableLayoutPanel3.TabIndex = 29;
             // 
@@ -386,8 +392,9 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.ErrorMessage, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.ErrorBox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
@@ -395,7 +402,8 @@
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Symbol", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -403,6 +411,61 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(624, 321);
             this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel5.Controls.Add(this.radioButton_Yes, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.radioButton_No, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 164);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(428, 30);
+            this.tableLayoutPanel5.TabIndex = 34;
+            // 
+            // radioButton_Yes
+            // 
+            this.radioButton_Yes.AutoSize = true;
+            this.radioButton_Yes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radioButton_Yes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_Yes.Location = new System.Drawing.Point(183, 3);
+            this.radioButton_Yes.Name = "radioButton_Yes";
+            this.radioButton_Yes.Size = new System.Drawing.Size(40, 24);
+            this.radioButton_Yes.TabIndex = 17;
+            this.radioButton_Yes.Text = "要";
+            this.radioButton_Yes.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_No
+            // 
+            this.radioButton_No.AutoSize = true;
+            this.radioButton_No.Checked = true;
+            this.radioButton_No.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radioButton_No.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_No.Location = new System.Drawing.Point(123, 3);
+            this.radioButton_No.Name = "radioButton_No";
+            this.radioButton_No.Size = new System.Drawing.Size(54, 24);
+            this.radioButton_No.TabIndex = 18;
+            this.radioButton_No.TabStop = true;
+            this.radioButton_No.Text = "否";
+            this.radioButton_No.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.White;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(3, 3);
+            this.label8.Margin = new System.Windows.Forms.Padding(3);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(110, 17);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "品目の中止を含む";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ErrorMessage
             // 
@@ -435,6 +498,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.item1_Folder_icon)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,5 +531,9 @@
         private System.Windows.Forms.Label ErrorMessage;
         private System.Windows.Forms.RadioButton radioButton_Save;
         private System.Windows.Forms.RadioButton radioButton_DL;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.RadioButton radioButton_Yes;
+        private System.Windows.Forms.RadioButton radioButton_No;
+        private System.Windows.Forms.Label label8;
     }
 }

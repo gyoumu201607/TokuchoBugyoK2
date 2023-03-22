@@ -142,6 +142,8 @@ namespace TokuchoBugyoK2
         public Entry_keikaku_Search()
         {
             InitializeComponent();
+            //エントリ君修正STEP2
+            this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
         }
 
         private void Entry_keikaku_Search_Load(object sender, EventArgs e)

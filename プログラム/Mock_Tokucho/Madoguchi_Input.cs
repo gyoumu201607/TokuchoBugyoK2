@@ -158,6 +158,9 @@ namespace TokuchoBugyoK2
 
             this.c1FlexGrid4.MouseWheel += c1FlexGrid4_MouseWheel; // 調査品目明細のGrid
 
+            //エントリ君修正STEP2
+            this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
+
         }
 
         private void ComboBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -1562,7 +1565,9 @@ namespace TokuchoBugyoK2
                                         + " ON tnr.TanpinNyuuryokuID = tn.TanpinNyuuryokuID"
                                         + " AND tnr.TanpinL1RankMei = tkr.TankaRankHinmoku"
                                         + " WHERE tn.MadoguchiID = " + MadoguchiID
-                                        + " ORDER BY TankaRankHinmoku"
+                                        // えんとり君修正STEP2　並び順追加
+                                        //+ " ORDER BY TankaRankHinmoku"
+                                        + " ORDER BY TankaRankNarabijunn, TankaRankHinmoku"
                                         ;
 
                         Console.WriteLine(cmd.CommandText);
@@ -7788,12 +7793,11 @@ namespace TokuchoBugyoK2
 
                 //不具合No1367（1156）
                 //枝番に「_」アンダーバーが含まれたらエラーにする
-                //2023年03月末にリリースするため、コメントアウト
-                //if (item1_MadoguchiUketsukeBangouEdaban.Text.IndexOf("_") > 0)
-                //{
-                //    validateFlag = false;
-                //    set_error(GlobalMethod.GetMessage("E20120", ""));
-                //}
+                if (item1_MadoguchiUketsukeBangouEdaban.Text.IndexOf("_") > 0)
+                {
+                    validateFlag = false;
+                    set_error(GlobalMethod.GetMessage("E20121", ""));
+                }
 
                 //エラーがあったらこの後の処理は行わない
                 if (!validateFlag)
@@ -8426,7 +8430,9 @@ namespace TokuchoBugyoK2
                                 + " GROUP BY CH.ChousaIraiRank) AS CH2"
                                 + " ON TKR.TankaRankHinmoku = ch2.IraiRank"
                                 + " WHERE MJ.MadoguchiID = '" + MadoguchiID + "'"
-                                + " ORDER BY TKR.TankaKeiyakuID, TKR.TankaRankHinmoku"
+                                // えんとり君修正STEP2　並び順追加
+                                //+ " ORDER BY TKR.TankaKeiyakuID, TKR.TankaRankHinmoku"
+                                + " ORDER BY TKR.TankaKeiyakuID, TKR.TankaRankNarabijunn, TKR.TankaRankHinmoku"
                                 ;
 
 
@@ -13040,7 +13046,9 @@ namespace TokuchoBugyoK2
                                     + " FROM TankaKeiyakuRank"
                                     + " WHERE TankaRankDeleteFlag != 1"
                                     + " AND TankaKeiyakuID = " + TankaKeiyakuID
-                                    + " ORDER BY TankaKeiyakuID, TankaRankID"
+                                    // えんとり君修正STEP2　並び順追加
+                                    //+ " ORDER BY TankaKeiyakuID, TankaRankID"
+                                    + " ORDER BY TankaKeiyakuID, TankaRankNarabijunn, TankaRankID"
                                     ;
 
                     var sda = new SqlDataAdapter(cmd);
@@ -13063,7 +13071,9 @@ namespace TokuchoBugyoK2
                                     + " FROM TankaKeiyakuRank"
                                     + " WHERE TankaRankDeleteFlag != 1"
                                     + " AND TankaKeiyakuID = " + TankaKeiyakuID
-                                    + " ORDER BY TankaKeiyakuID, TankaRankID"
+                                    // えんとり君修正STEP2　並び順追加
+                                    //+ " ORDER BY TankaKeiyakuID, TankaRankID"
+                                    + " ORDER BY TankaKeiyakuID, TankaRankNarabijunn, TankaRankID"
                                     ;
 
                     var sda = new SqlDataAdapter(cmd);
@@ -17072,137 +17082,149 @@ namespace TokuchoBugyoK2
             string methodName = ".btnDelete_Click";
 
             // I20002:現在登録したこの窓口情報の全てを削除しようとしています。削除すると元に戻せません。削除してよろしいですか？
-            if (MessageBox.Show(GlobalMethod.GetMessage("I20002", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            // エントリ君修正STEP2
+            using (Popup_MessageBox dlg = new Popup_MessageBox("確認", GlobalMethod.GetMessage("I20002", ""), "特調番号"))
             {
-                string tokuchoBangou = Header1.Text;
-
-                var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-                using (var conn = new SqlConnection(connStr))
+                //if (MessageBox.Show(GlobalMethod.GetMessage("I20002", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    conn.Open();
-                    var cmd = conn.CreateCommand();
-                    SqlTransaction transaction = conn.BeginTransaction();
-                    cmd.Transaction = transaction;
-
-                    try
+                    if (dlg.GetInputText().Equals(Header1.Text))
                     {
-                        // ▼以下の順で窓口の削除フラグを更新していく
-                        // 支部備考欄テーブル（ShibuBikou）
-                        // 施工条件テーブル（SekouJouken）
-                        // 応援受付テーブル（OuenUketsuke）
-                        // 協力依頼書情報テーブル（KyouryokuIraisho）
-                        // 単品入力項目（単価ランク）テーブル（TanpinNyuuryokuRank）・・・DeleteFlagなし
-                        // 単品入力項目テーブル（TanpinNyuuryoku）
-                        // 調査品目情報テーブル（ChousaHinmoku）
-                        // 窓口情報（調査担当者）テーブル（MadoguchiJouhouMadoguchiL1Chou）
-                        // 窓口情報テーブル（MadoguchiJouhou）
+                        string tokuchoBangou = Header1.Text;
 
-                        cmd.CommandText = "UPDATE ShibuBikou SET ShinDeleteFlag = 1"
-                                        + ", ShibuBikouUpdateDate = SYSDATETIME()"
-                                        + ", ShibuBikouUpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", ShibuBikouUpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE MadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                        var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                        using (var conn = new SqlConnection(connStr))
+                        {
+                            conn.Open();
+                            var cmd = conn.CreateCommand();
+                            SqlTransaction transaction = conn.BeginTransaction();
+                            cmd.Transaction = transaction;
 
-                        cmd.CommandText = "UPDATE SekouJouken SET SekouDeleteFlag = 1"
-                                        + ", SekouUpdateDate = SYSDATETIME()"
-                                        + ", SekouUpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", SekouUpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE MadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                            try
+                            {
+                                // ▼以下の順で窓口の削除フラグを更新していく
+                                // 支部備考欄テーブル（ShibuBikou）
+                                // 施工条件テーブル（SekouJouken）
+                                // 応援受付テーブル（OuenUketsuke）
+                                // 協力依頼書情報テーブル（KyouryokuIraisho）
+                                // 単品入力項目（単価ランク）テーブル（TanpinNyuuryokuRank）・・・DeleteFlagなし
+                                // 単品入力項目テーブル（TanpinNyuuryoku）
+                                // 調査品目情報テーブル（ChousaHinmoku）
+                                // 窓口情報（調査担当者）テーブル（MadoguchiJouhouMadoguchiL1Chou）
+                                // 窓口情報テーブル（MadoguchiJouhou）
 
-                        cmd.CommandText = "UPDATE OuenUketsuke SET OuenDeleteFlag = 1"
-                                        + ", OuenUpdateDate = SYSDATETIME()"
-                                        + ", OuenUpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", OuenUpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE MadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                                cmd.CommandText = "UPDATE ShibuBikou SET ShinDeleteFlag = 1"
+                                                + ", ShibuBikouUpdateDate = SYSDATETIME()"
+                                                + ", ShibuBikouUpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", ShibuBikouUpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE MadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "UPDATE KyouryokuIraisho SET KyouryokuDeleteFlag = 1"
-                                        + ", KyouryokuUpdateDate = SYSDATETIME()"
-                                        + ", KyouryokuUpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", KyouryokuUpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE MadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                                cmd.CommandText = "UPDATE SekouJouken SET SekouDeleteFlag = 1"
+                                                + ", SekouUpdateDate = SYSDATETIME()"
+                                                + ", SekouUpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", SekouUpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE MadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "UPDATE TanpinNyuuryoku SET TanpinDeleteFlag = 1"
-                                        + ", TanpinUpdateDate = SYSDATETIME()"
-                                        + ", TanpinUpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", TanpinUpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE MadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                                cmd.CommandText = "UPDATE OuenUketsuke SET OuenDeleteFlag = 1"
+                                                + ", OuenUpdateDate = SYSDATETIME()"
+                                                + ", OuenUpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", OuenUpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE MadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaDeleteFlag = 1"
-                                        + ", ChousaUpdateDate = SYSDATETIME()"
-                                        + ", ChousaUpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", ChousaUpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE MadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                                cmd.CommandText = "UPDATE KyouryokuIraisho SET KyouryokuDeleteFlag = 1"
+                                                + ", KyouryokuUpdateDate = SYSDATETIME()"
+                                                + ", KyouryokuUpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", KyouryokuUpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE MadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1DeleteFlag = 1"
-                                        + ", MadoguchiL1AsteriaKoushinFlag = 1 " // 削除したというのも連携する
-                                        + ", MadoguchiL1UpdateDate = SYSDATETIME()"
-                                        + ", MadoguchiL1UpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", MadoguchiL1UpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE MadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                                cmd.CommandText = "UPDATE TanpinNyuuryoku SET TanpinDeleteFlag = 1"
+                                                + ", TanpinUpdateDate = SYSDATETIME()"
+                                                + ", TanpinUpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", TanpinUpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE MadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "UPDATE MadoguchiJouhou SET MadoguchiDeleteFlag = 1"
-                                        + ", MadoguchiUpdateDate = SYSDATETIME()"
-                                        + ", MadoguchiUpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", MadoguchiUpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE MadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                                cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaDeleteFlag = 1"
+                                                + ", ChousaUpdateDate = SYSDATETIME()"
+                                                + ", ChousaUpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", ChousaUpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE MadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        //cmd.CommandText = "UPDATE MailInfoCSVWork SET MailInfoCSVWorkDeleteFlag = 1"
-                        //                + ", MailInfoCSVWorkUpdateDate = SYSDATETIME()"
-                        //                + ", MailInfoCSVWorkUpdateUser = '" + UserInfos[0] + "'"
-                        //                + ", MailInfoCSVWorkUpdateProgram = '" + pgmName + methodName + "'"
-                        //                + " WHERE MailInfoCSVWorkMadoguchiID = '" + MadoguchiID + "'"
-                        //                ;
+                                cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1DeleteFlag = 1"
+                                                + ", MadoguchiL1AsteriaKoushinFlag = 1 " // 削除したというのも連携する
+                                                + ", MadoguchiL1UpdateDate = SYSDATETIME()"
+                                                + ", MadoguchiL1UpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", MadoguchiL1UpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE MadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        // 一時データとのことで物理削除
-                        cmd.CommandText = "DELETE FROM MailInfoCSVWork "
-                                        + " WHERE MailInfoCSVWorkMadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                                cmd.CommandText = "UPDATE MadoguchiJouhou SET MadoguchiDeleteFlag = 1"
+                                                + ", MadoguchiUpdateDate = SYSDATETIME()"
+                                                + ", MadoguchiUpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", MadoguchiUpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE MadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "UPDATE GaroonTsuikaAtesaki SET GaroonTsuikaAtesakiDeleteFlag = 1"
-                                        + ", GaroonTsuikaAtesakiUpdateDate = SYSDATETIME()"
-                                        + ", GaroonTsuikaAtesakiUpdateUser = N'" + UserInfos[0] + "'"
-                                        + ", GaroonTsuikaAtesakiUpdateProgram = '" + pgmName + methodName + "'"
-                                        + " WHERE GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "'"
-                                        ;
-                        cmd.ExecuteNonQuery();
+                                //cmd.CommandText = "UPDATE MailInfoCSVWork SET MailInfoCSVWorkDeleteFlag = 1"
+                                //                + ", MailInfoCSVWorkUpdateDate = SYSDATETIME()"
+                                //                + ", MailInfoCSVWorkUpdateUser = '" + UserInfos[0] + "'"
+                                //                + ", MailInfoCSVWorkUpdateProgram = '" + pgmName + methodName + "'"
+                                //                + " WHERE MailInfoCSVWorkMadoguchiID = '" + MadoguchiID + "'"
+                                //                ;
 
-                        transaction.Commit();
+                                // 一時データとのことで物理削除
+                                cmd.CommandText = "DELETE FROM MailInfoCSVWork "
+                                                + " WHERE MailInfoCSVWorkMadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
 
-                        // 皇帝まもる連携
-                        GlobalMethod.KouteiTantouBushoRenkei(MadoguchiID, UserInfos[0], UserInfos[2]);
+                                cmd.CommandText = "UPDATE GaroonTsuikaAtesaki SET GaroonTsuikaAtesakiDeleteFlag = 1"
+                                                + ", GaroonTsuikaAtesakiUpdateDate = SYSDATETIME()"
+                                                + ", GaroonTsuikaAtesakiUpdateUser = N'" + UserInfos[0] + "'"
+                                                + ", GaroonTsuikaAtesakiUpdateProgram = '" + pgmName + methodName + "'"
+                                                + " WHERE GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "'"
+                                                ;
+                                cmd.ExecuteNonQuery();
+
+                                transaction.Commit();
+
+                                // 皇帝まもる連携
+                                GlobalMethod.KouteiTantouBushoRenkei(MadoguchiID, UserInfos[0], UserInfos[2]);
+                            }
+                            catch (Exception)
+                            {
+                                throw;
+                                transaction.Rollback();
+                            }
+                            finally
+                            {
+                                conn.Close();
+                            }
+
+                            writeHistory("窓口情報を削除しました。特調番号=" + tokuchoBangou + " 窓口ID = " + MadoguchiID);
+
+                            // 窓口一覧に戻る
+                            this.Owner.Show();
+                            this.Close();
+                        }
                     }
-                    catch (Exception)
+                    else
                     {
-                        throw;
-                        transaction.Rollback();
+                        set_error(GlobalMethod.GetMessage("E10009", ""));
                     }
-                    finally
-                    {
-                        conn.Close();
-                    }
-
-                    writeHistory("窓口情報を削除しました。特調番号=" + tokuchoBangou + " 窓口ID = " + MadoguchiID);
-
-                    // 窓口一覧に戻る
-                    this.Owner.Show();
-                    this.Close();
                 }
             }
         }

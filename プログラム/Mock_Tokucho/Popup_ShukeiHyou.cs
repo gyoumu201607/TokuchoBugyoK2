@@ -833,44 +833,89 @@ namespace TokuchoBugyoK2
                                     DataTable dt0 = new DataTable();
                                     using (var conn = new SqlConnection(connStr))
                                     {
+                                        //No1381 1165 リンクについてエクセルのリンクを追加
+                                        conn.Open();
+                                        var cmd = conn.CreateCommand();
+                                        SqlTransaction transaction = conn.BeginTransaction();
+                                        cmd.Transaction = transaction;
+
                                         try
                                         {
-                                            conn.Open();
-                                            var cmd = conn.CreateCommand();
-
-                                            // 全品目一括集計表ではない
-                                            if (!checkBox_Zenhinmoku.Checked)
+                                            string linkpath = item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text;
+                                            // 全品目一括集計表
+                                            cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + linkpath + "' " +
+                                                "WHERE " +
+                                                "MadoguchiID = '" + MadoguchiID + "' ";
+                                            // 全品目一括集計表ではない AND 個人CD が0出ない場合は、個人のみ更新
+                                            if (!checkBox_Zenhinmoku.Checked && report_data[3] != "0")
                                             {
-                                                cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
-                                                    "WHERE " +
-                                                    "MadoguchiID = '" + MadoguchiID + "' ";
-
-                                                // 個人CD が0出ない場合は、個人のみ更新
-                                                if (report_data[3] != "0")
-                                                {
-                                                    cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
-                                                        "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
-                                                        "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
-                                                }
-                                            }
-                                            else
-                                            {
-                                                // 全品目一括集計表
-                                                cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
-                                                    "WHERE " +
-                                                    "MadoguchiID = '" + MadoguchiID + "' ";
+                                                cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
+                                                    "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
+                                                    "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
                                             }
                                             cmd.ExecuteNonQuery();
-                                            conn.Close();
-                                            // 調査品目データを取り直しさせるためにパラメータをセット
-                                            ReturnValue[0] = "1";
+
+
+                                            // 全品目一括集計表
+                                            cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + linkpath + "' " +
+                                                ", MadoguchiL1AsteriaKoushinFlag = 1 " +
+                                                "WHERE " +
+                                                "MadoguchiID = '" + MadoguchiID + "' ";
+                                            // 全品目一括集計表ではない AND 個人CD が0出ない場合は、個人のみ更新
+                                            if (!checkBox_Zenhinmoku.Checked && report_data[3] != "0")
+                                            {
+                                                cmd.CommandText += "AND MadoguchiL1ChousaTantoushaCD = '" + report_data[3] + "' ";
+                                            }
+                                            cmd.ExecuteNonQuery();
+
+                                            transaction.Commit();
                                         }
                                         catch (Exception)
                                         {
+                                            transaction.Rollback();
                                             // エラーが発生しました
                                             set_error("", 0);
                                             set_error(GlobalMethod.GetMessage("E00091", ""));
                                         }
+                                        conn.Close();
+                                        //try
+                                        //{
+                                        //    conn.Open();
+                                        //    var cmd = conn.CreateCommand();
+
+                                        //    // 全品目一括集計表ではない
+                                        //    if (!checkBox_Zenhinmoku.Checked)
+                                        //    {
+                                        //        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
+                                        //            "WHERE " +
+                                        //            "MadoguchiID = '" + MadoguchiID + "' ";
+
+                                        //        // 個人CD が0出ない場合は、個人のみ更新
+                                        //        if (report_data[3] != "0")
+                                        //        {
+                                        //            cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
+                                        //                "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
+                                        //                "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
+                                        //        }
+                                        //    }
+                                        //    else
+                                        //    {
+                                        //        // 全品目一括集計表
+                                        //        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
+                                        //            "WHERE " +
+                                        //            "MadoguchiID = '" + MadoguchiID + "' ";
+                                        //    }
+                                        //    cmd.ExecuteNonQuery();
+                                        //    conn.Close();
+                                        //    // 調査品目データを取り直しさせるためにパラメータをセット
+                                        //    ReturnValue[0] = "1";
+                                        //}
+                                        //catch (Exception)
+                                        //{
+                                        //    // エラーが発生しました
+                                        //    set_error("", 0);
+                                        //    set_error(GlobalMethod.GetMessage("E00091", ""));
+                                        //}
                                     }
                                 }
                             }
@@ -1156,14 +1201,19 @@ namespace TokuchoBugyoK2
                                                 // 対象を取得する
                                                 using (var conn = new SqlConnection(connStr))
                                                 {
+                                                    //No1381 1165 リンクについてエクセルのリンクを追加
+                                                    conn.Open();
+                                                    var cmd = conn.CreateCommand();
+                                                    SqlTransaction transaction = conn.BeginTransaction();
+                                                    cmd.Transaction = transaction;
+
                                                     try
                                                     {
-                                                        conn.Open();
-                                                        var cmd = conn.CreateCommand();
-                                                        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + fileName + "' " +
+                                                        string linkpath = item1_ShukeiFolder.Text + @"\" + fileName;
+                                                        // 全品目一括集計表
+                                                        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + linkpath + "' " +
                                                             "WHERE " +
                                                             "MadoguchiID = '" + MadoguchiID + "' ";
-
                                                         // 個人CD が0出ない場合は、個人のみ更新
                                                         if (report_data[3] != "0")
                                                         {
@@ -1171,19 +1221,60 @@ namespace TokuchoBugyoK2
                                                                 "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
                                                                 "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
                                                         }
-
                                                         cmd.ExecuteNonQuery();
-                                                        conn.Close();
 
-                                                        // 調査品目データを取り直しさせるためにパラメータをセット
-                                                        ReturnValue[0] = "1";
+
+                                                        // 全品目一括集計表
+                                                        cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + linkpath + "' " +
+                                                            ", MadoguchiL1AsteriaKoushinFlag = 1 " +
+                                                            "WHERE " +
+                                                            "MadoguchiID = '" + MadoguchiID + "' ";
+                                                        // 個人CD が0出ない場合は、個人のみ更新
+                                                        if (report_data[3] != "0")
+                                                        {
+                                                            cmd.CommandText += "AND MadoguchiL1ChousaTantoushaCD = '" + report_data[3] + "' ";
+                                                        }
+                                                        cmd.ExecuteNonQuery();
+
+                                                        transaction.Commit();
                                                     }
                                                     catch (Exception)
                                                     {
+                                                        transaction.Rollback();
                                                         // エラーが発生しました
                                                         set_error("", 0);
                                                         set_error(GlobalMethod.GetMessage("E00091", ""));
                                                     }
+                                                    conn.Close();
+
+                                                    //try
+                                                    //{
+                                                    //    conn.Open();
+                                                    //    var cmd = conn.CreateCommand();
+                                                    //    cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + fileName + "' " +
+                                                    //        "WHERE " +
+                                                    //        "MadoguchiID = '" + MadoguchiID + "' ";
+
+                                                    //    // 個人CD が0出ない場合は、個人のみ更新
+                                                    //    if (report_data[3] != "0")
+                                                    //    {
+                                                    //        cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
+                                                    //            "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
+                                                    //            "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
+                                                    //    }
+
+                                                    //    cmd.ExecuteNonQuery();
+                                                    //    conn.Close();
+
+                                                    //    // 調査品目データを取り直しさせるためにパラメータをセット
+                                                    //    ReturnValue[0] = "1";
+                                                    //}
+                                                    //catch (Exception)
+                                                    //{
+                                                    //    // エラーが発生しました
+                                                    //    set_error("", 0);
+                                                    //    set_error(GlobalMethod.GetMessage("E00091", ""));
+                                                    //}
                                                 }
                                             }
 

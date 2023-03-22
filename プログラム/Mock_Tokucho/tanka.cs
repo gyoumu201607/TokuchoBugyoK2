@@ -50,6 +50,8 @@ namespace TokuchoBugyoK2
             this.HoukokuSentaku.MouseWheel += item_MouseWheel;
             this.PrintList.MouseWheel += item_MouseWheel;
             this.ShuKeiHouhou.MouseWheel += item_MouseWheel;
+            //エントリ君修正STEP2
+            this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
         }
 
         private void Grid_AfterResizeRow(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
@@ -78,6 +80,14 @@ namespace TokuchoBugyoK2
 
             set_combo();
 
+            if (PrintList.SelectedValue.ToString() == "800" || PrintList.SelectedValue.ToString() == "801")
+            {
+                tableLayoutPanel13.Visible = true;
+            }
+            else
+            {
+                tableLayoutPanel13.Visible = false;
+            }
         }
 
         private void set_combo()
@@ -184,7 +194,9 @@ namespace TokuchoBugyoK2
                     //                ;
 
                     cmd.CommandText = "SELECT"
-                                    + " tkr.TankaRankHinmoku,tkr.TankaRankKakaku,tkr.TankaRankShubetsu,tkr.TankaKeiyakuID"
+                                    // えんとり君修正STEP2　並び順追加
+                                    // + " tkr.TankaRankHinmoku,tkr.TankaRankKakaku,tkr.TankaRankShubetsu,tkr.TankaKeiyakuID"
+                                    + " tkr.TankaRankHinmoku,tkr.TankaRankKakaku,tkr.TankaRankShubetsu,tkr.TankaRankNarabijunn,tkr.TankaKeiyakuID"
                                     + " FROM TankaKeiyakuRank tkr"
                                     ;
                     if (TankaKeiyakuID != 0)
@@ -199,17 +211,24 @@ namespace TokuchoBugyoK2
                                          + " WHERE aj.AnkenJouhouID = '" + AnkenJouhouID + "'"
                                          ;
                     }
-                    cmd.CommandText += " ORDER BY tkr.TankaRankHinmoku";
+                    // えんとり君修正STEP2　並び順追加
+                    // cmd.CommandText += " ORDER BY tkr.TankaRankHinmoku";
+                    cmd.CommandText += " ORDER BY tkr.TankaRankNarabijunn,tkr.TankaRankHinmoku";
 
                     var sda = new SqlDataAdapter(cmd);
                     TankaRank_Data.Clear();
                     sda.Fill(TankaRank_Data);
 
                     //TankaKeiyakuID = 0;
-                    if (TankaRank_Data.Rows.Count > 0 && TankaRank_Data.Rows[0][3] != null)
+                    // えんとり君修正STEP2　並び順追加
+                    if (TankaRank_Data.Rows.Count > 0 && TankaRank_Data.Rows[0][4] != null)
                     {
-                        TankaKeiyakuID = int.Parse(TankaRank_Data.Rows[0][3].ToString());
+                        TankaKeiyakuID = int.Parse(TankaRank_Data.Rows[0][4].ToString());
                     }
+                    //if (TankaRank_Data.Rows.Count > 0 && TankaRank_Data.Rows[0][3] != null)
+                    //{
+                    //    TankaKeiyakuID = int.Parse(TankaRank_Data.Rows[0][3].ToString());
+                    //}
 
                     // 共通マスタから単価ランクの初期行数（TANKAKEIYAKU_RANK_ROW）の取得
                     cmd.CommandText = "SELECT"
@@ -787,6 +806,38 @@ namespace TokuchoBugyoK2
                     cmd.CommandText = "DELETE FROM TankaKeiyakuRank	WHERE TankaKeiyakuID = " + TankaKeiyakuID;
                     cmd.ExecuteNonQuery();
 
+                    // えんとり君修正STEP2　単価契約業務画面のランク入力欄に並び順を追加します。
+                    List<int> sortList = new List<int>();
+                    int maxSort = -1;
+                    for (int i = 1; i < TankaRankuGrid.Rows.Count; i++)
+                    {
+                        if (TankaRankuGrid.Rows[i][1] != null && TankaRankuGrid.Rows[i][1].ToString() != "") { 
+                            if (TankaRankuGrid.Rows[i][4] != null && TankaRankuGrid.Rows[i][4].ToString() != "")
+                            {
+                                int iSort = (int)(TankaRankuGrid.Rows[i][4]);
+                                sortList.Add(iSort);
+                                if (iSort > maxSort) maxSort = iSort;
+                            }
+                            else
+                            {
+                                sortList.Add(-1);
+                            }
+                        }
+                        else
+                        {
+                            sortList.Add(0);
+                        }
+                    }
+                    if (maxSort < 0) maxSort = 0;
+                    maxSort = maxSort + 1;
+                    for (int i = 0; i < sortList.Count; i++)
+                    {
+                        if(sortList[i] < 0)
+                        {
+                            sortList[i] = maxSort;
+                            maxSort++;
+                        }
+                    }
                     for (int i = 1; i < TankaRankuGrid.Rows.Count; i++)
                     {
                         if (TankaRankuGrid.Rows[i][1] != null && TankaRankuGrid.Rows[i][1].ToString() != "")
@@ -804,6 +855,8 @@ namespace TokuchoBugyoK2
                                                 ",TankaRankUpdateUser " +
                                                 ",TankaRankUpdateProgram " +
                                                 ",TankaRankDeleteFlag " +
+                                                // えんとり君修正STEP2　並び順追加
+                                                ",TankaRankNarabijunn " +
                                                 " ) VALUES ( " +
                                                 //AnkenID +
                                                 TankaKeiyakuID +
@@ -818,6 +871,8 @@ namespace TokuchoBugyoK2
                                                 ", N'" + UserInfos[0] + "'" +
                                                 ", 'InsertTanka'" +
                                                 ",'0' " +
+                                                // えんとり君修正STEP2　並び順追加
+                                                "," + sortList[i-1].ToString() + " " +
                                                 " )";
                             Console.WriteLine(cmd.CommandText);
                             cmd.ExecuteNonQuery();
@@ -1259,8 +1314,8 @@ namespace TokuchoBugyoK2
                                     form.MENU_ID = 208;
                                     form.UserInfos = UserInfos;
                                     form.PrintGamen = "TankaKeiyaku";
-                                    if(HoukokuSentaku.Text != null && HoukokuSentaku.Text != "") 
-                                    { 
+                                    if (HoukokuSentaku.Text != null && HoukokuSentaku.Text != "")
+                                    {
                                         form.HoukokuSentaku = HoukokuSentaku.SelectedValue.ToString();
                                     }
                                     form.KikanStart = NullDate;
@@ -1296,6 +1351,142 @@ namespace TokuchoBugyoK2
 
                     }
 
+                    if (PrintList.SelectedValue.ToString() == "800" || PrintList.SelectedValue.ToString() == "801")
+                    {
+                        // 報告書共通化
+                        if (KikanStart.CustomFormat == "" && KikanEnd.CustomFormat == "")
+                        {
+                            if (KikanStart.Value > KikanEnd.Value)
+                            {
+                                ErrorFlag = true;
+                                set_error("期間指定が不正です。");
+                            }
+                        }
+                        else if (KikanStart.CustomFormat != "" && KikanEnd.CustomFormat != "")
+                        {
+                            ErrorFlag = true;
+                            set_error("期間指定を入力してください。");
+                        }
+                        else
+                        {
+                            // 窓口存在チェック
+                            DataTable MadoguchiJouhou = new DataTable();
+                            using (var conn = new SqlConnection(connStr))
+                            {
+                                try
+                                {
+                                    conn.Open();
+                                    var cmd = conn.CreateCommand();
+
+                                    // 受託番号から窓口IDを取得する
+                                    cmd.CommandText = "SELECT TOP 1 MadoguchiID FROM MadoguchiJouhou WHERE MadoguchiJutakuBangou = '" + JutakuBangou + "' ORDER BY MadoguchiID DESC";
+
+                                    var sda = new SqlDataAdapter(cmd);
+                                    MadoguchiJouhou.Clear();
+                                    sda.Fill(MadoguchiJouhou);
+
+                                    if (MadoguchiJouhou.Rows[0][0] == null)
+                                    {
+                                        ErrorFlag = true;
+                                        set_error("窓口の登録がありません。");
+                                    }
+
+                                }
+                                catch (Exception)
+                                {
+                                    ErrorFlag = true;
+                                }
+                                finally
+                                {
+                                    conn.Close();
+                                }
+
+                            }
+                        }
+
+                        if (!ErrorFlag)
+                        {
+                            // 0:TankaKeiyakuID  単価ID
+                            // 1:HoukokuSentaku  日付選択
+                            // 2:DateFrom        日付From
+                            // 3:DateTo          日付To
+                            // 4:seikyuuGetsu    請求月
+                            // 5:HoukokuSentaku1 日付選択2
+                            // 6:ChuushiYouhi    品目の中止を含む ※報告書共通化出力のみ
+
+                            // 7個分先に用意
+                            string[] report_data = new string[7] { "", "", "", "", "", "", "" };
+
+                            // 0.単価契約ID
+                            report_data[0] = TankaKeiyakuID.ToString();
+                            // 1.日付選択
+                            report_data[1] = "0";
+                            if (HoukokuSentaku.Text != null && HoukokuSentaku.Text != "")
+                            {
+                                report_data[1] = HoukokuSentaku.SelectedValue.ToString();
+                            }
+                            // 2.期間from
+                            report_data[2] = "null";
+                            if (KikanStart.CustomFormat == "")
+                            {
+                                report_data[2] = "'" + KikanStart.Text + "'";
+                            }
+                            // 3.期間to
+                            report_data[3] = "null";
+                            if (KikanEnd.CustomFormat == "")
+                            {
+                                report_data[3] = "'" + KikanEnd.Text + "'";
+                            }
+                            // 4.請求月
+                            report_data[4] = SeikyuuGetsu.Text;
+                            // 日付選択
+                            report_data[5] = radioButton_Report.Checked ? "2" : "1";
+
+                            // 中止要否
+                            report_data[6] = radioButton_No.Checked ? "0" : "1";
+                            int listID = int.Parse(PrintList.SelectedValue.ToString());
+
+                            string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data, "TankaHoukokusho");
+
+                            // result
+                            // 成否判定 0:正常 1：エラー
+                            // メッセージ（主にエラー用）
+                            // ファイル物理パス（C:\Work\xxxx\0000000111_xxx.xlsx）
+                            // ダウンロード時のファイル名（xxx.xlsx）
+                            if (result != null && result.Length >= 4)
+                            {
+                                if (result[0].Trim() == "1")
+                                {
+                                    if (result[1] == "")
+                                    {
+                                        set_error(GlobalMethod.GetMessage("E00091", ""));
+                                    }
+                                    else
+                                    {
+                                        set_error(result[1]);
+                                    }
+                                }
+                                else
+                                {
+                                    Popup_Download form = new Popup_Download();
+                                    form.TopLevel = false;
+                                    this.Controls.Add(form);
+
+                                    String fileName = Path.GetFileName(result[3]);
+                                    form.ExcelName = fileName;
+                                    form.TotalFilePath = result[2];
+                                    form.Dock = DockStyle.Bottom;
+                                    form.Show();
+                                    form.BringToFront();
+                                }
+                            }
+                            else
+                            {
+                                // エラーが発生しました
+                                set_error(GlobalMethod.GetMessage("E00091", ""));
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -1489,6 +1680,281 @@ namespace TokuchoBugyoK2
                     break;
             }
         }
+
+        private void PrintList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PrintList.SelectedValue.ToString() == "800" || PrintList.SelectedValue.ToString() == "801")
+            {
+                tableLayoutPanel13.Visible = true;
+            }
+            else
+            {
+                tableLayoutPanel13.Visible = false;
+            }
+        }
+
+        // えんとり君修正STEP2 20230131帳票出力性能改善対応
+        private void button_totalling_Click(object sender, EventArgs e)
+        {
+            //AggregateRank();
+            set_error("", 0);
+            if (TankaKeiyakuID == 0)
+            {
+                // 業務が選択されていませんので、出力できません。
+                set_error("業務が選択されていませんので、集計できません。");
+                return;
+            }
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+            var cmd = conn.CreateCommand();
+            DataTable MadoguchiJouhou = new DataTable();
+            try
+            {
+
+                // 受託番号から窓口IDを取得する
+                cmd.CommandText = "SELECT MadoguchiID,MadoguchiTourokubi FROM MadoguchiJouhou WHERE MadoguchiJutakuBangou = '" + JutakuBangou + "' ORDER BY MadoguchiID DESC";
+
+                var sda = new SqlDataAdapter(cmd);
+                MadoguchiJouhou.Clear();
+                sda.Fill(MadoguchiJouhou);
+
+                if (MadoguchiJouhou != null && MadoguchiJouhou.Rows.Count > 0)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    String strComma = ", ";
+                    String strEqual = " = ";
+                    string strTanPinSql = "";
+                    
+                    // テーブル定義（項目名、属性）
+                    string[,] TanpinNyuuryoku = new string[,]
+                    {
+                        {"TanpinNyuuryokuID", "Numeric"}	            // 0.単品入力項目ID
+                        ,{"TanpinJutakuDate", "Date"}	                // 1.受託日（依頼日）
+                        ,{"TanpinHoukokuDate", "Date"}	                // 2.報告日
+                        ,{"TanpinShiji", "String"}	                    // 3.指示番号
+                        ,{"TanpinHachuubusho", "String"}	            // 4.部所
+                        ,{"TanpinYakushoku", "String"}	                // 5.役職
+                        ,{"TanpinHachuuTantousha", "String"}	        // 6.担当者
+                        ,{"TanpinTel", "String"}	                    // 7.電話
+                        ,{"TanpinFax", "String"}	                    // 8.FAX
+                        ,{"TanpinMail", "String"}	                    // 9.メール
+                        ,{"TanpinMemo", "String"}	                    // 10.メモ
+                        ,{"TanpinRank", "String"}	                    // 11.ランク
+                        ,{"TanpinShousa", "String"}	                    // 12.照査実施
+                        ,{"TanpinShijisho", "Numeric"}	                // 13.指示書
+                        ,{"TanpinSaishuuKensa", "Numeric"}	            // 14.最終検査
+                        ,{"TanpinMitsumoriTeishutu", "Numeric"}	        // 15.見積提出方式
+                        ,{"TanpinTeinyuusatsu", "Numeric"}	            // 16.低入札
+                        ,{"TanpinShuyouChousain", "String"}	            // 17.主要調査員
+                        ,{"TanpinSeikyuuGetsu", "String"}	            // 18.単品請求月
+                        ,{"TanpinHokurikuShijouKakaku", "Numeric"}	    // 19.市場価格（北陸専用）
+                        ,{"TanpinHokurikuShijouKakaku_r", "Numeric"}	// 20.市場価格（北陸専用）r
+                        ,{"TanpinHokurikuSekouKanka", "Numeric"}	    // 21.施工単価（北陸専用）
+                        ,{"TanpinHokurikuSekouKanka_r", "Numeric"}	    // 22.施工単価（北陸専用）r
+                        ,{"TanpinSonotaShuukei", "Numeric"}	            // 23.その他集計
+                        ,{"TanpinSeikyuuKingaku", "Numeric"}	        // 24.請求金額
+                        ,{"TanpinSeikyuuKakutei", "Numeric"}	        // 25.請求確定
+                        ,{"MadoguchiID", "Numeric"}	                    // 26.窓口ID
+                        ,{"TanpinGyoumuCD", "Numeric"}	                // 27.業務CD
+                        ,{"TanpinAnkenJouhouID", "Numeric"}	            // 28.契約情報ID
+                        ,{"TanpinKeihi", "Numeric"}	                    // 29.経費（バックアップ用）
+                        ,{"TanpinCreateDate", "Date"}	                // 30.作成日時
+                        ,{"TanpinCreateUser", "String"}	                // 31.作成ユーザ
+                        ,{"TanpinCreateProgram", "String"}	            // 32.作成機能
+                        ,{"TanpinUpdateDate", "Date"}	                // 33.更新日時
+                        ,{"TanpinUpdateUser", "String"}	                // 34.更新ユーザ
+                        ,{"TanpinUpdateProgram", "String"}	            // 35.更新機能
+                        ,{"TanpinDeleteFlag", "Numeric"}                // 36.削除フラグ
+                    };
+
+                    sb.Clear();
+                    sb.Append("SELECT ");
+                    for (int i = 0; i < TanpinNyuuryoku.GetLength(0); i++)
+                    {
+                        if (i != 0)
+                        {
+                            sb.Append(strComma);
+                        }
+                        sb.Append(TanpinNyuuryoku[i, 0]);
+                    }
+
+                    // 条件式の設定
+                    sb.Append(" FROM TanpinNyuuryoku");
+                    sb.Append(" WHERE ");
+                    sb.Append(TanpinNyuuryoku[26, 0]);   // 単品入力項目ID
+                    sb.Append(strEqual);
+                    strTanPinSql = sb.ToString();
+                    string[,] TanpinNyuuryokuRank = new string[,]
+                    {
+                        {"TanpinNyuuryokuID", "Numeric"}               // 0.単品入力項目ID
+                        ,{"TanpinL1RankID", "Numeric"}                  // 1.ランクID
+                        ,{"TanpinL1RankMei", "String"}                  // 2.ランク名
+                        ,{"TanpunL1RankKubun", "Numeric"}               // 3.ランク種別（集計方法）
+                        ,{"TanpinL1Ranksuu", "Numeric"}                 // 4.依頼本数
+                        ,{"TanpinL1HoukokuHonsuu", "Numeric"}           // 5.報告本数
+                        ,{"TanpinL1Tanka", "Numeric"}                   // 6.単価
+                        ,{"TanpinL1Kingaku", "Numeric"}                 // 7.金額
+                    };
+
+                    
+                    var dt = new DataTable();
+                    foreach (DataRow dr in MadoguchiJouhou.Rows)
+                    {
+                        string MadoguchiID = dr[0].ToString();
+                        // 窓口ごと集計実施 -----------------------------------------------
+                        // 単品入力データ検索
+                        try {
+                            cmd.CommandText = strTanPinSql + MadoguchiID;
+                            Console.WriteLine(cmd.CommandText);
+                            sda = new SqlDataAdapter(cmd);
+                            dt.Clear();
+                            sda.Fill(dt);
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                        string[,] SQLData = new string[1, 37];
+                        // 初期値として取得した値をセットする
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            SQLData[0, i] = "";
+                            if (dt.Rows[0][i] != null && dt.Rows[0][i].ToString() != "")
+                            {
+                                SQLData[0, i] = dt.Rows[0][i].ToString();
+                            }
+                        }
+                        // 1.受託日（依頼日）
+                        if (SQLData[0, 1] == "")
+                        {
+                            SQLData[0, 1] = dr[1].ToString();
+                        }
+
+                        string mes = "";
+                        if (GlobalMethod.MadoguchiUpdate_ErrorCheck(6, SQLData, out string[] ErrorMes))
+                        {
+                            DataTable rRank = GetAggregateRankList(MadoguchiID, cmd);
+
+                            string[,] SQLData2 = new string[rRank.Rows.Count, 8];
+
+                            for (int i = 0; i < rRank.Rows.Count; i++)
+                            {
+
+                                SQLData2[i, 0] = SQLData[0, 0];               // 0.単品入力項目ID
+                                SQLData2[i, 1] = rRank.Rows[i][6].ToString(); // 1.ランクID
+                                SQLData2[i, 2] = rRank.Rows[i][0].ToString(); // 2.ランク名
+                                SQLData2[i, 3] = rRank.Rows[i][5].ToString(); // 3.ランク種別（集計方法）
+                                SQLData2[i, 4] = rRank.Rows[i][2].ToString(); // 4.依頼本数
+                                SQLData2[i, 5] = rRank.Rows[i][1].ToString(); // 5.報告本数
+                                SQLData2[i, 6] = "0";
+                                if (rRank.Rows[i][3] != null && rRank.Rows[i][3].ToString() != "")
+                                {
+                                    SQLData2[i, 6] = rRank.Rows[i][3].ToString();     // 6.単価
+                                }
+                                // 金額
+                                SQLData2[i, 7] = "0";
+                                if (rRank.Rows[i][4] != null && rRank.Rows[i][4].ToString() != "")
+                                {
+                                    SQLData2[i, 7] = rRank.Rows[i][4].ToString();     // 7.金額
+                                }
+                            }
+                            string mesR = "";
+                            GlobalMethod.MadoguchiUpdate_SQL(6, MadoguchiID, SQLData, out mesR, UserInfos, SQLData2);
+                        }
+                    }
+                    set_error("業務完了報告書の単品入力集計を実施しました。");
+                }
+                else
+                {
+                    set_error("窓口の登録がありません。");
+                }
+            }
+            catch (Exception)
+            {
+                set_error("業務完了報告書の単品入力集計に失敗しました。");
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        /// <summary>
+        /// えんとり君修正STEP2 20230131帳票出力性能改善対応
+        /// ランク集計処理
+        /// </summary>
+        /// <param name="iRankFlag">ランク区分1:報告、2:依頼</param>
+        /// <param name="MadoguchiID">窓口ID</param>
+        private DataTable GetAggregateRankList(string MadoguchiID, SqlCommand cmd)
+        {
+            try
+            {
+                //採番テーブル取得
+                var dt = new DataTable();
+                //SQL生成
+                //列ID 0～3
+                cmd.CommandText = "SELECT"
+                                + " TKR.TankaRankHinmoku"
+                                + ",CASE WHEN TKR.TankaRankShubetsu = 2"
+                                + " THEN ISNULL(CH1.HoukokuRankmax, 0)"
+                                + " ELSE ISNULL(CH1.HoukokuRanksum, 0)"
+                                + " END AS 'houkoku'"
+                                + ",CASE WHEN TKR.TankaRankShubetsu = 2"
+                                + " THEN ISNULL(CH2.IraiRankmax, 0)"
+                                + " ELSE ISNULL(CH2.IraiRanksum, 0)"
+                                + " END AS 'irai'"
+                                + ",TKR.TankaRankKakaku"
+                                ;
+
+
+                cmd.CommandText += ",CASE WHEN TKR.TankaRankShubetsu = 2"
+                                + " THEN ISNULL(CH1.HoukokuRankmax, 0) * ISNULL(TKR.TankaRankKakaku, 0)"
+                                + " ELSE ISNULL(CH1.HoukokuRanksum, 0) * ISNULL(TKR.TankaRankKakaku, 0)"
+                                + " END AS 'kakaku'"
+                                ;
+
+                cmd.CommandText += ",TKR.TankaRankShubetsu"
+                                + ",ISNULL(TNR.TanpinL1RankID, 0) AS TanpinL1RankID"
+                                + " FROM MadoguchiJouhou MJ"
+                                + " LEFT JOIN TanpinNyuuryoku TN"
+                                + " ON TN.MadoguchiID = MJ.MadoguchiID"
+                                + " LEFT JOIN TankaKeiyakuRank TKR"
+                                + " ON TKR.TankaKeiyakuID = TN.TanpinGyoumuCD"
+                                + " LEFT JOIN TanpinNyuuryokuRank TNR"
+                                + " ON TNR.TanpinNyuuryokuID = TN.TanpinNyuuryokuID AND TNR.TanpinL1RankMei = TKR.TankaRankHinmoku"
+                                + " LEFT JOIN (SELECT CH.ChousaHoukokuRank AS HoukokuRank"
+                                + ",MAX(ISNULL(CH.ChousaHoukokuHonsuu, 0)) AS HoukokuRankmax"
+                                + ",SUM(ISNULL(CH.ChousaHoukokuHonsuu, 0)) AS HoukokuRanksum"
+                                + " FROM MadoguchiJouhou MJ"
+                                + " LEFT JOIN ChousaHinmoku CH ON CH.MadoguchiID = MJ.MadoguchiID "
+                                + " WHERE MJ.MadoguchiID = '" + MadoguchiID + "'" + " and CH.ChousaHoukokuRank <> ''"
+                                + " GROUP BY CH.ChousaHoukokuRank ) AS CH1"
+                                + " ON TKR.TankaRankHinmoku = ch1.HoukokuRank"
+                                + " LEFT JOIN (SELECT CH.ChousaIraiRank AS IraiRank"
+                                + ",MAX(ISNULL(CH.ChousaIraiHonsuu, 0)) AS IraiRankmax"
+                                + ",SUM(ISNULL(CH.ChousaIraiHonsuu, 0)) AS IraiRanksum"
+                                + " FROM MadoguchiJouhou MJ"
+                                + " LEFT JOIN ChousaHinmoku CH ON CH.MadoguchiID = MJ.MadoguchiID"
+                                + " WHERE MJ.MadoguchiID = '" + MadoguchiID + "'" + " and CH.ChousaIraiRank <> ''"
+                                + " GROUP BY CH.ChousaIraiRank) AS CH2"
+                                + " ON TKR.TankaRankHinmoku = ch2.IraiRank"
+                                + " WHERE MJ.MadoguchiID = '" + MadoguchiID + "'"
+                                + " ORDER BY TKR.TankaKeiyakuID, TKR.TankaRankNarabijunn, TKR.TankaRankHinmoku"
+                                ;
+
+
+                //データ取得
+                Console.WriteLine(cmd.CommandText);
+                var sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
     }
 
     public class CPanel : System.Windows.Forms.TableLayoutPanel

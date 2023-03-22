@@ -38,6 +38,9 @@ namespace TokuchoBugyoK2
             this.item_ChousaKind.MouseWheel += item_MouseWheel;
             this.item_Shintyokujyoukyo.MouseWheel += item_MouseWheel;
             this.item_TantoushaJoukyo.MouseWheel += item_MouseWheel;
+
+            //エントリ君修正STEP2
+            this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
         }
 
         private void Tokumei_Load(object sender, EventArgs e)

@@ -44,6 +44,17 @@
             this.Header_GyoumuMei = new System.Windows.Forms.TextBox();
             this.button_Select = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.button_totalling = new System.Windows.Forms.Button();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioButton_Yes = new System.Windows.Forms.RadioButton();
+            this.radioButton_No = new System.Windows.Forms.RadioButton();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioButton_Closing = new System.Windows.Forms.RadioButton();
+            this.radioButton_Report = new System.Windows.Forms.RadioButton();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.HoukokuSentaku = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -77,14 +88,17 @@
             this.ErrorMessage = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblBootMode = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TankaRankuGrid)).BeginInit();
@@ -320,6 +334,9 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
+            this.tableLayoutPanel6.Controls.Add(this.label17, 2, 2);
+            this.tableLayoutPanel6.Controls.Add(this.button_totalling, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel13, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.label8, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.HoukokuSentaku, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label13, 0, 0);
@@ -328,18 +345,190 @@
             this.tableLayoutPanel6.Controls.Add(this.KikanEnd, 5, 0);
             this.tableLayoutPanel6.Controls.Add(this.label10, 6, 0);
             this.tableLayoutPanel6.Controls.Add(this.SeikyuuGetsu, 7, 0);
-            this.tableLayoutPanel6.Controls.Add(this.PrintList, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.button_Print, 2, 1);
-            this.tableLayoutPanel6.Controls.Add(this.label14, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.PrintList, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.button_Print, 2, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label14, 0, 3);
             this.tableLayoutPanel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(10, 244);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowCount = 4;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1267, 71);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1267, 185);
             this.tableLayoutPanel6.TabIndex = 3;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label17.AutoSize = true;
+            this.tableLayoutPanel6.SetColumnSpan(this.label17, 6);
+            this.label17.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(441, 109);
+            this.label17.Margin = new System.Windows.Forms.Padding(5);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(541, 26);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "※受託番号に対する、全ての特調番号の単価ランク集計を行います。ただし、[経費・その他]がある\r\n　場合は、別途特調番号の単品入力画面に移り、 [経費・その他]を入" +
+    "力の上保存をして下さい。";
+            // 
+            // button_totalling
+            // 
+            this.button_totalling.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button_totalling.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.tableLayoutPanel6.SetColumnSpan(this.button_totalling, 2);
+            this.button_totalling.FlatAppearance.BorderSize = 0;
+            this.button_totalling.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_totalling.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button_totalling.ForeColor = System.Drawing.Color.White;
+            this.button_totalling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_totalling.Location = new System.Drawing.Point(8, 105);
+            this.button_totalling.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
+            this.button_totalling.Name = "button_totalling";
+            this.button_totalling.Size = new System.Drawing.Size(420, 34);
+            this.button_totalling.TabIndex = 25;
+            this.button_totalling.Text = "業務完了報告書の単品入力集計を行う";
+            this.button_totalling.UseVisualStyleBackColor = false;
+            this.button_totalling.Click += new System.EventHandler(this.button_totalling_Click);
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.AutoSize = true;
+            this.tableLayoutPanel13.ColumnCount = 3;
+            this.tableLayoutPanel6.SetColumnSpan(this.tableLayoutPanel13, 8);
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel15, 1, 1);
+            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel14, 1, 0);
+            this.tableLayoutPanel13.Controls.Add(this.label16, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.label19, 0, 1);
+            this.tableLayoutPanel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 29);
+            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(481, 72);
+            this.tableLayoutPanel13.TabIndex = 7;
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 3;
+            this.tableLayoutPanel13.SetColumnSpan(this.tableLayoutPanel15, 2);
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel15.Controls.Add(this.radioButton_Yes, 1, 0);
+            this.tableLayoutPanel15.Controls.Add(this.radioButton_No, 0, 0);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(228, 39);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 1;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(250, 30);
+            this.tableLayoutPanel15.TabIndex = 36;
+            // 
+            // radioButton_Yes
+            // 
+            this.radioButton_Yes.AutoSize = true;
+            this.radioButton_Yes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radioButton_Yes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_Yes.Location = new System.Drawing.Point(123, 3);
+            this.radioButton_Yes.Name = "radioButton_Yes";
+            this.radioButton_Yes.Size = new System.Drawing.Size(40, 24);
+            this.radioButton_Yes.TabIndex = 17;
+            this.radioButton_Yes.Text = "要";
+            this.radioButton_Yes.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_No
+            // 
+            this.radioButton_No.AutoSize = true;
+            this.radioButton_No.Checked = true;
+            this.radioButton_No.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radioButton_No.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_No.Location = new System.Drawing.Point(3, 3);
+            this.radioButton_No.Name = "radioButton_No";
+            this.radioButton_No.Size = new System.Drawing.Size(114, 24);
+            this.radioButton_No.TabIndex = 18;
+            this.radioButton_No.TabStop = true;
+            this.radioButton_No.Text = "否";
+            this.radioButton_No.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 3;
+            this.tableLayoutPanel13.SetColumnSpan(this.tableLayoutPanel14, 2);
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel14.Controls.Add(this.radioButton_Closing, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.radioButton_Report, 0, 0);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(228, 3);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 1;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(250, 30);
+            this.tableLayoutPanel14.TabIndex = 35;
+            // 
+            // radioButton_Closing
+            // 
+            this.radioButton_Closing.AutoSize = true;
+            this.radioButton_Closing.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radioButton_Closing.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_Closing.Location = new System.Drawing.Point(123, 3);
+            this.radioButton_Closing.Name = "radioButton_Closing";
+            this.radioButton_Closing.Size = new System.Drawing.Size(68, 24);
+            this.radioButton_Closing.TabIndex = 17;
+            this.radioButton_Closing.Text = "締切日";
+            this.radioButton_Closing.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Report
+            // 
+            this.radioButton_Report.AutoSize = true;
+            this.radioButton_Report.Checked = true;
+            this.radioButton_Report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radioButton_Report.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.radioButton_Report.Location = new System.Drawing.Point(3, 3);
+            this.radioButton_Report.Name = "radioButton_Report";
+            this.radioButton_Report.Size = new System.Drawing.Size(114, 24);
+            this.radioButton_Report.TabIndex = 18;
+            this.radioButton_Report.TabStop = true;
+            this.radioButton_Report.Text = "報告実施日";
+            this.radioButton_Report.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.CadetBlue;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(8, 4);
+            this.label16.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(209, 28);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "出力日付選択";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.CadetBlue;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(8, 40);
+            this.label19.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(209, 28);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "中止を含む";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
@@ -453,11 +642,12 @@
             this.PrintList.Items.AddRange(new object[] {
             "案件完了内訳表",
             "関東地整-請求一覧"});
-            this.PrintList.Location = new System.Drawing.Point(230, 39);
+            this.PrintList.Location = new System.Drawing.Point(230, 153);
             this.PrintList.Name = "PrintList";
             this.PrintList.Size = new System.Drawing.Size(173, 22);
             this.PrintList.TabIndex = 5;
             this.PrintList.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
+            this.PrintList.SelectedIndexChanged += new System.EventHandler(this.PrintList_SelectedIndexChanged);
             // 
             // button_Print
             // 
@@ -469,7 +659,7 @@
             this.button_Print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button_Print.ForeColor = System.Drawing.Color.White;
             this.button_Print.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Print.Location = new System.Drawing.Point(444, 33);
+            this.button_Print.Location = new System.Drawing.Point(444, 147);
             this.button_Print.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.button_Print.Name = "button_Print";
             this.button_Print.Size = new System.Drawing.Size(184, 34);
@@ -485,7 +675,7 @@
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(8, 33);
+            this.label14.Location = new System.Drawing.Point(8, 147);
             this.label14.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(211, 34);
@@ -504,7 +694,7 @@
             this.tableLayoutPanel7.Controls.Add(this.label12, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel9, 0, 3);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(10, 335);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(10, 449);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 4;
@@ -512,7 +702,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1860, 606);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1860, 508);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
             // button_Copy
@@ -569,7 +759,7 @@
             this.TankaRankuGrid.Margin = new System.Windows.Forms.Padding(8);
             this.TankaRankuGrid.Name = "TankaRankuGrid";
             this.TankaRankuGrid.Rows.Count = 1;
-            this.TankaRankuGrid.Size = new System.Drawing.Size(455, 48);
+            this.TankaRankuGrid.Size = new System.Drawing.Size(514, 48);
             this.TankaRankuGrid.StyleInfo = resources.GetString("TankaRankuGrid.StyleInfo");
             this.TankaRankuGrid.TabIndex = 3;
             this.TankaRankuGrid.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid1_BeforeMouseDown);
@@ -694,7 +884,7 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1840, 352);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1840, 254);
             this.tableLayoutPanel9.TabIndex = 3;
             // 
             // label7
@@ -885,19 +1075,6 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(1833, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
@@ -913,6 +1090,19 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1884, 26);
             this.tableLayoutPanel3.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(1833, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblBootMode
             // 
@@ -959,6 +1149,12 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
@@ -1036,5 +1232,16 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblBootMode;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button button_totalling;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.RadioButton radioButton_Yes;
+        private System.Windows.Forms.RadioButton radioButton_No;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.RadioButton radioButton_Closing;
+        private System.Windows.Forms.RadioButton radioButton_Report;
     }
 }

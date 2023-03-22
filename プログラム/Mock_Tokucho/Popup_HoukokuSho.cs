@@ -60,9 +60,11 @@ namespace TokuchoBugyoK2
         private void Popup_HoukokuSho_Load(object sender, EventArgs e)
         {
             tableLayoutPanel3.Visible = false;
+            // えんとり君修正STEP2 報告書共通化
+            tableLayoutPanel5.Visible = false;
 
             // 単価契約画面からの遷移の場合
-            if("TankaKeiyaku".Equals(PrintGamen))
+            if ("TankaKeiyaku".Equals(PrintGamen))
             {
                 if (KikanStart != NullDate)
                 {
@@ -170,10 +172,26 @@ namespace TokuchoBugyoK2
             discript = "PrintName";
             value = "PrintListID";
             table = "Mst_PrintList";
-            where = "MENU_ID = " + MENU_ID 
-                  + " AND PrintBunruiCD = " + PrintBunruiCD
-                  + " AND (BushoKanriboBushoCD = '" + BushoCD + "' OR BushoKanriboBushoCD is null)"
-                  + " AND PrintDelFlg <> 1 ORDER BY PrintListNarabijun ";
+            // 20230131帳票出力性能改善対応：【共通】報告内容共通化
+            //where = "MENU_ID = " + MENU_ID
+            //        + " AND PrintBunruiCD = " + PrintBunruiCD
+            //        + " AND (BushoKanriboBushoCD = '" + BushoCD + "' OR BushoKanriboBushoCD is null)"
+            //        + " AND PrintDelFlg <> 1 ORDER BY PrintListNarabijun ";
+            if (PrintGamen == "Tokumei")
+            {
+                where = "MENU_ID = " + MENU_ID
+                      + " AND PrintBunruiCD = " + PrintBunruiCD
+                      + " AND (BushoKanriboBushoCD = '" + BushoCD + "' OR BushoKanriboBushoCD is null)"
+                      + " AND PrintHinagataBangou <> 21"
+                      + " AND PrintDelFlg <> 1 ORDER BY PrintListNarabijun ";
+            }
+            else
+            { 
+                where = "MENU_ID = " + MENU_ID 
+                      + " AND PrintBunruiCD = " + PrintBunruiCD
+                      + " AND (BushoKanriboBushoCD = '" + BushoCD + "' OR BushoKanriboBushoCD is null)"
+                      + " AND PrintDelFlg <> 1 ORDER BY PrintListNarabijun ";
+            }
             Console.WriteLine(where);
             // コンボボックスデータ取得
             combodt1 = GlobalMethod.getData(discript, value, table, where);
@@ -363,6 +381,8 @@ namespace TokuchoBugyoK2
             // 14:HizukeKubun    日付区分 0:空 1:前日 2:当日 3:翌日
             // 15:Memo1          メモ１
             // 16:Memo2          メモ２
+            // 17:ChuushiYouhi   品目の中止を含む ※報告書共通化出力のみ
+
             // 17個分先に用意
             string[] report_data = new string[17] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
 
@@ -442,6 +462,20 @@ namespace TokuchoBugyoK2
                 listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
             }
 
+            // えんとり君修正STEP2 報告書共通化
+            if(listID == 802 || listID == 803)
+            {
+                Array.Resize(ref report_data, 18);
+                report_data[17] = "null";
+                if (radioButton_No.Checked)
+                {
+                    report_data[17] = "0";
+                }
+                else
+                {
+                    report_data[17] = "1";
+                }
+            }
             //// ファイル名の取得
             //string w_PritFileName = get_PritFileName();
 
@@ -630,6 +664,16 @@ namespace TokuchoBugyoK2
             else
             {
                 tableLayoutPanel3.Visible = false;
+            }
+
+            // えんとり君修正STEP2 報告書共通化
+            if(w_PrintHinagataBangou == "21")
+            {
+                tableLayoutPanel5.Visible = true;
+            }
+            else
+            {
+                tableLayoutPanel5.Visible = false;
             }
         }
 

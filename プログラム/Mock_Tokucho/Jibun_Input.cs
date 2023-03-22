@@ -118,6 +118,8 @@ namespace TokuchoBugyoK2
             c1FlexGrid1.DoubleBuffer = true;
             c1FlexGrid5.DoubleBuffer = true;
             c1FlexGrid4.DoubleBuffer = true;
+            //エントリ君修正STEP2
+            this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
 
         }
 
@@ -4625,6 +4627,8 @@ namespace TokuchoBugyoK2
         {
             set_error("", 0);
             button3_TankaTorikomiResult.BackColor = Color.DarkGray;
+            //えんとり君修正STEP2　55ページ：単価取り込みエラー
+            this.tableLayoutPanel8.Visible = false;
             // I20314:単価取込を行いますがよろしいですか？※他の担当者の単価取込を行う場合は、検索条件の調査担当者を変更して下さい。
             if (MessageBox.Show(GlobalMethod.GetMessage("I20314", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
@@ -4815,6 +4819,8 @@ namespace TokuchoBugyoK2
                                         set_error(GlobalMethod.GetMessage("E20322", "") + selFileName);
                                         fileErrorCount++;
                                         //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                        // えんとり君修正STEP2 55ページ：単価取込エラー
+                                        this.tableLayoutPanel8.Visible = true;
                                     }
                                 }
                                 //fileStatus==1 ファイルが存在しない
@@ -4823,11 +4829,13 @@ namespace TokuchoBugyoK2
                                     // E20322:取込ファイルにエラーがありました。
                                     set_error(GlobalMethod.GetMessage("E20322", "") + selFileName);
                                     //fileErrorCount++;
+                                    // えんとり君修正STEP2 55ページ：単価取込エラー
+                                    this.tableLayoutPanel8.Visible = true;
                                 }
                                 //fileStatus==2 ファイルが開かれていて編集できない。
                                 else
                                 {
-                                    // E20322:取込ファイルが開かれています。。
+                                    // E20351:取込ファイルが開かれています。。
                                     set_error(GlobalMethod.GetMessage("E20351", "") + selFileName);
                                     //fileErrorCount++;
                                 }
@@ -5059,6 +5067,8 @@ namespace TokuchoBugyoK2
                                 // E20322:取込ファイルにエラーがありました。
                                 set_error(GlobalMethod.GetMessage("E20322", ""));
                                 button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                                // えんとり君修正STEP2 55ページ：単価取込エラー
+                                this.tableLayoutPanel8.Visible = true;
                             }
                         }//fileStatus==1 ファイルが存在しない
                         else if (fileStatus == 1)
@@ -5066,11 +5076,13 @@ namespace TokuchoBugyoK2
                             // E20322:取込ファイルにエラーがありました。
                             set_error(GlobalMethod.GetMessage("E20322", ""));
                             //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
+                            // えんとり君修正STEP2 55ページ：単価取込エラー
+                            this.tableLayoutPanel8.Visible = true;
                         }
                         //fileStatus==2 ファイルが開かれていて編集できない。
                         else
                         {
-                            // E20322:取込ファイルにエラーがありました。
+                            // E20351:取込ファイルにエラーがありました。
                             set_error(GlobalMethod.GetMessage("E20351", ""));
                             //button3_TankaTorikomiResult.BackColor = Color.FromArgb(42, 78, 122);
                         }
@@ -8551,6 +8563,12 @@ namespace TokuchoBugyoK2
         private void tab_DrawItem(object sender, DrawItemEventArgs e)
         {
             GlobalMethod.tabDisplaySet(tab, sender, e);
+        }
+
+        // えんとり君修正STEP2
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(GlobalMethod.GetCommonValue1("CHOUSA_CYBOZE_LINK"));
         }
     }
 }

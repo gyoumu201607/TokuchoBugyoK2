@@ -27,6 +27,8 @@ namespace TokuchoBugyoK2
         public Entry_Search()
         {
             InitializeComponent();
+            //エントリ君修正STEP2
+            this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
         }
 
 
@@ -170,6 +172,12 @@ namespace TokuchoBugyoK2
             cr = c1FlexGrid1.GetCellRange(0, 50);
             cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             cr.Image = bmpSort;
+
+            // えんとり君修正STEP2
+            bool bVisible = UserInfos[4].Equals("2");
+            label34.Visible = bVisible;
+            label35.Visible = bVisible;
+            src_30.Visible = bVisible;
             //cr = c1FlexGrid1.GetCellRange(0, 6);
             //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
             //cr.Image = bmpSort;
@@ -1127,13 +1135,15 @@ namespace TokuchoBugyoK2
                             ",CASE AnkenKeiyakuKoukiKaishibi WHEN '1753/01/01' THEN null ELSE FORMAT(AnkenKeiyakuKoukiKaishibi,'yyyy/MM/dd') END " +
                             ",CASE AnkenKeiyakuKoukiKanryoubi WHEN '1753/01/01' THEN null ELSE FORMAT(AnkenKeiyakuKoukiKanryoubi,'yyyy/MM/dd') END " +
                             ",CASE AnkenKeiyakuTeiketsubi WHEN '1753/01/01' THEN null ELSE FORMAT(AnkenKeiyakuTeiketsubi,'yyyy/MM/dd') END " +
-                            ",CASE WHEN ISNULL(KeiyakuKurikoshiCho,0) > 0 THEN '有' " +
-                            "      WHEN ISNULL(KeiyakuKurikoshiJo,0) > 0 THEN '有' " +
-                            "      WHEN ISNULL(KeiyakuKurikoshiJosys,0) > 0 THEN '有' " +
-                            "      WHEN ISNULL(KeiyakuKurikoshiKei,0) > 0 THEN '有' " +
-                            "      ELSE '無' END AS 'NendoKurikoshi' " +
+                            //えんとり君修正STEP2（年度配分越えを年度越配分額（税抜）（調査部）に表示を変更する。）
+                            //",CASE WHEN ISNULL(KeiyakuKurikoshiCho,0) > 0 THEN '有' " +
+                            //"      WHEN ISNULL(KeiyakuKurikoshiJo,0) > 0 THEN '有' " +
+                            //"      WHEN ISNULL(KeiyakuKurikoshiJosys,0) > 0 THEN '有' " +
+                            //"      WHEN ISNULL(KeiyakuKurikoshiKei,0) > 0 THEN '有' " +
+                            //"      ELSE '無' END AS 'NendoKurikoshi' " +
+                            ",ISNULL(KeiyakuKurikoshiCho,0) " +
                             ",AnkenHachushaCD " +
-                            ",AnkenSaishinFlg " +
+                            ",AnkenSaishinFlg " +                           
                             "FROM AnkenJouhou " +
                             "LEFT JOIN NyuusatsuJouhou ON AnkenJouhou.AnkenJouhouID = NyuusatsuJouhou.AnkenJouhouID " +
                             "LEFT JOIN KeiyakuJouhouEntory ON KeiyakuJouhouEntory.AnkenJouhouID = AnkenJouhou.AnkenJouhouID " +
@@ -1303,6 +1313,15 @@ namespace TokuchoBugyoK2
                         cmd.CommandText += "  and AnkenSaishinFlg = 1";
                     }
 
+                    // えんとり君修正STEP2
+                    if (src_29.Checked)
+                    {
+                        cmd.CommandText += "  and KeiyakuRIBCYouTankaDataMoushikomisho = 1";
+                    }
+                    if (src_30.Checked)
+                    {
+                        cmd.CommandText += "  and KeiyakuSashaKeiyu = 1";
+                    }
                     // 499 業務日報用の案件を除外する
                     //cmd.CommandText += " and AnkenAnkenBangou not like '%999' ";
                     // 業務日報のデータは60000～70000の間で登録している為、除外
@@ -1433,7 +1452,9 @@ namespace TokuchoBugyoK2
             // VIPS　20220408　課題管理表No1303(984)　ADD　検索結果の調査部配分金額合計欄を追加
             long sumKeiyakuHaibunChoZeinuki = 0;
             long sumKeiyakuUriageHaibunCho = 0;
-
+            //えんとり君修正STEP2（事業普及部の配分額合計を表示する。）
+            long sumJgyoZeinuki = 0;
+            long sumJgyoZeikomi = 0;
             //行数の分だけ「調査部配分額(税抜)」の合計と「調査部配分額(税込み)」の合計をそれぞれ算出
             if (0 < ListData.Rows.Count)
             {
@@ -1441,11 +1462,18 @@ namespace TokuchoBugyoK2
                 {
                     sumKeiyakuHaibunChoZeinuki += Convert.ToInt64(ListData.Rows[i][29]);
                     sumKeiyakuUriageHaibunCho += Convert.ToInt64(ListData.Rows[i][30]);
+                    //えんとり君修正STEP2（事業普及部の配分額合計を表示する。）
+                    sumJgyoZeinuki += Convert.ToInt64(ListData.Rows[i][35]);
+                    sumJgyoZeikomi += Convert.ToInt64(ListData.Rows[i][36]);
                 }
             }
 
             chosabuHaibun_Zeinuki_Goukei.Text = String.Format("{0:#,0}", sumKeiyakuHaibunChoZeinuki);
             chosabuHaibun_Zeikomi_Goukei.Text = String.Format("{0:#,0}", sumKeiyakuUriageHaibunCho);
+
+            //えんとり君修正STEP2（事業普及部の配分額合計を表示する。）
+            jigyobuHaibun_Zeinuki_Goukei.Text = String.Format("{0:#,0}", sumJgyoZeinuki);
+            jigyobuHaibun_Zeikomi_Goukei.Text = String.Format("{0:#,0}", sumJgyoZeikomi);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -1548,6 +1576,12 @@ namespace TokuchoBugyoK2
             chosabuHaibun_Zeikomi_Goukei.Text = "0";
             chosabuHaibun_Zeinuki_Goukei.Refresh();
             chosabuHaibun_Zeikomi_Goukei.Refresh();
+
+            //えんとり君修正STEP2（事業普及部の配分額合計を表示する。）
+            jigyobuHaibun_Zeinuki_Goukei.Text = "0";
+            jigyobuHaibun_Zeikomi_Goukei.Text = "0";
+            jigyobuHaibun_Zeinuki_Goukei.Refresh();
+            jigyobuHaibun_Zeikomi_Goukei.Refresh();
 
             //レイアウトロジックを停止する
             this.SuspendLayout();
@@ -1689,6 +1723,10 @@ namespace TokuchoBugyoK2
             src_26.SelectedIndex = 0;
             src_27.Checked = true;
             src_28.SelectedIndex = 1;
+
+            // えんとり君修正STEP2
+            src_29.Checked = false;
+            src_30.Checked = false;
 
             //グリッドコントロールを初期化
             c1FlexGrid1.Styles.Normal.WordWrap = true;
@@ -1905,9 +1943,14 @@ namespace TokuchoBugyoK2
                                 // 27：HyouziKensuu              検索条件.表示件数                             src_28 表示件数
                                 // 28：KoukiKaishiNendo          検索条件.工期開始年度                         item1_KoukiNendo 工期開始年度
                                 // 29：KoukiKaishiNendoOption    当年度の場合、1 3年以内の場合、2              item1_1_Tounendo(当年度) or item1_2_SanNen(3年以内)
+                                // 30：Ribicyou                  検索条件.RIBC用単価データ有                   src_29 RIBC用単価データ有             ※えんとり君修正STEP2
+                                // 31：SashaKeiyu                検索条件.サ社経由                             src_30 RIBC検索条件.サ社経由          ※えんとり君修正STEP2
 
-                                // 29個分先に用意
-                                string[] report_data = new string[29] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+                                //// 29個分先に用意
+                                //string[] report_data = new string[29] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+                                //えんとり君修正STEP2　パラメータ追加
+                                // 31個分先に用意
+                                string[] report_data = new string[31] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
                                 report_data[0] = src_1.SelectedValue.ToString();
                                 // 売上年度オプション
                                 if (src_2.Checked)
@@ -2062,6 +2105,23 @@ namespace TokuchoBugyoK2
                                     report_data[28] = "2";
                                 }
 
+                                //えんとり君修正STEP2　案件情報一覧検索画面のエントリくん一覧帳票のパラメータ追加
+                                if (src_29.Checked)
+                                {
+                                    report_data[29] = "1";
+                                }
+                                else
+                                {
+                                    report_data[29] = "0";
+                                }
+                                if (src_30.Checked)
+                                {
+                                    report_data[30] = "1";
+                                }
+                                else
+                                {
+                                    report_data[30] = "0";
+                                }
                                 string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
 
                                 // result

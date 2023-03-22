@@ -118,32 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="c1FlexGrid5.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
-        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
-        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
-        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
-        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
-        GDCDuoSBlKdRpk0nJrTJs2pAADs=
-</value>
-  </data>
-  <data name="c1FlexGrid5.ColumnInfo" xml:space="preserve">
-    <value>4,0,0,0,0,-1,Columns:0{Width:58;Caption:"削除";AllowEditing:False;Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:LeftCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;BackgroundImage:iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAYAAAD0f5bSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAV0lEQVQoU5XLwQ0AIAgDQPffxgFcw3XQPkgsVtHHhbShxcy+yTIjy8xW1NbnOWeggAensqMRrI9qABTcbQBbAd+jdXAaUoiPMTsaQXyIGSi8kmVGlndWBt6+KL0ClrZcAAAAAElFTkSuQmCC;BackgroundImageLayout:Scale;";StyleFixed:"Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;WordWrap:True;";}	1{Caption:"ID";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	2{Width:198;Caption:"担当部所";Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";StyleFixed:"TextAlign:CenterCenter;";}	3{Width:250;Caption:"担当者";Style:"ComboList:""..."";DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";StyleFixed:"TextAlign:CenterCenter;";}	</value>
-  </data>
-  <data name="c1FlexGrid5.StyleInfo" xml:space="preserve">
-    <value>Normal{ForeColor:Black;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ForeColor:Black;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
-  </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAALUAAAAuCAYAAABu8lgpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -356,6 +330,32 @@
         671U4Hxmzskngs+thPexxSgvOPnn60bXzg8Nr9/fkTdH4qzzv7i2qRElbMcvCXQ7/G3PiUIAAAAASUVO
         RK5CYII=
 </value>
+  </data>
+  <data name="c1FlexGrid5.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
+        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
+        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
+        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
+        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
+        GDCDuoSBlKdRpk0nJrTJs2pAADs=
+</value>
+  </data>
+  <data name="c1FlexGrid5.ColumnInfo" xml:space="preserve">
+    <value>4,0,0,0,0,-1,Columns:0{Width:58;Caption:"削除";AllowEditing:False;Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:LeftCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;BackgroundImage:iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAYAAAD0f5bSAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABXSURBVChTlcvBDQAgCANA99/GAVzDddA+SCxW0ceFtKHFzL7JMiPLzFbU1uc5Z6CAB6eyoxGsj2oAFNxtAFsB36N1cBpSiI8xOxpBfIgZKLySZUaWd1YG3r4ovQKWtlwAAAAASUVORK5CYII=;BackgroundImageLayout:Scale;";StyleFixed:"Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;WordWrap:True;";}	1{Caption:"ID";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	2{Width:198;Caption:"担当部所";Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";StyleFixed:"TextAlign:CenterCenter;";}	3{Width:250;Caption:"担当者";Style:"ComboList:""..."";DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";StyleFixed:"TextAlign:CenterCenter;";}	</value>
+  </data>
+  <data name="c1FlexGrid5.StyleInfo" xml:space="preserve">
+    <value>Normal{ForeColor:Black;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ForeColor:Black;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
   </data>
   <data name="c1FlexGrid1.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -576,9 +576,6 @@
         8kFKSopiYmLU0dHx5yeE6/BHw/X7d+TmEH+u/4/79vb2j/CXfgGwNxEKxKblPgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="shibuBikouBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>198, 23</value>
-  </metadata>
   <data name="BikoGrid.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
@@ -602,18 +599,15 @@
   <data name="BikoGrid.ColumnInfo" xml:space="preserve">
     <value>16,0,0,0,0,-1,Columns:0{Name:"ShibuBikouID";Caption:"ShibuBikouID";Visible:False;Style:"DataType:System.Decimal;TextAlign:GeneralCenter;";}	1{Name:"MadoguchiID";Caption:"MadoguchiID";Visible:False;Style:"DataType:System.Decimal;TextAlign:GeneralCenter;";}	2{Name:"ShibuBikouBushoKanriboBushoCD";Caption:"ShibuBikouBushoKanriboBushoCD";Visible:False;Style:"DataType:System.String;TextAlign:LeftCenter;";}	3{Width:100;Name:"ShibuBikouRyakumei";Caption:"部所";AllowEditing:False;Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";StyleFixed:"TextAlign:CenterCenter;";}	4{Width:50;Name:"ShibuBikouChousaBusho";Caption:"部所管理";MaxLength:1;Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:CenterCenter;";StyleFixed:"Margins:1, 0, 0, 0;TextAlign:CenterCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;WordWrap:True;";}	5{Width:100;Name:"ShibuBikouKanriNo";Caption:"部所連番";Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftTop;";StyleFixed:"TextAlign:CenterCenter;";}	6{Width:300;Name:"ShibuBikou";Caption:"部所備考";Style:"DataType:System.String;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftTop;";StyleFixed:"TextAlign:CenterCenter;";}	7{Name:"ShibuBikouCreateDate";Caption:"ShibuBikouCreateDate";Visible:False;Style:"Format:""d"";DataType:System.DateTime;TextAlign:LeftCenter;";}	8{Name:"ShibuBikouCreateUser";Caption:"ShibuBikouCreateUser";Visible:False;Style:"DataType:System.String;TextAlign:LeftCenter;";}	9{Name:"ShibuBikouCreateProgram";Caption:"ShibuBikouCreateProgram";Visible:False;Style:"DataType:System.String;TextAlign:LeftCenter;";}	10{Name:"ShibuBikouUpdateDate";Caption:"ShibuBikouUpdateDate";Visible:False;Style:"Format:""d"";DataType:System.DateTime;TextAlign:LeftCenter;";}	11{Name:"ShibuBikouUpdateUser";Caption:"ShibuBikouUpdateUser";Visible:False;Style:"DataType:System.String;TextAlign:LeftCenter;";}	12{Name:"ShibuBikouUpdateProgram";Caption:"ShibuBikouUpdateProgram";Visible:False;Style:"DataType:System.String;TextAlign:LeftCenter;";}	13{Name:"ShinDeleteFlag";Caption:"ShinDeleteFlag";Visible:False;Style:"DataType:System.Int16;TextAlign:GeneralCenter;";}	14{Name:"ShibuBushokanriboKameiRakuOld";Caption:"ShibuBushokanriboKameiRakuOld";Visible:False;Style:"DataType:System.String;TextAlign:LeftCenter;";}	15{Name:"ShibuBushoKanriboShibuMeiOld";Caption:"ShibuBushoKanriboShibuMeiOld";Visible:False;Style:"DataType:System.String;TextAlign:LeftCenter;";}	</value>
   </data>
-  <data name="BikoGrid.StyleInfo" xml:space="preserve">
-    <value>Normal{ForeColor:Black;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ForeColor:Black;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
-  </data>
   <metadata name="shibuBikouBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>198, 23</value>
   </metadata>
   <metadata name="tokuchoBugyoKDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>18, 23</value>
   </metadata>
-  <metadata name="tokuchoBugyoKDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>18, 23</value>
-  </metadata>
+  <data name="BikoGrid.StyleInfo" xml:space="preserve">
+    <value>Normal{ForeColor:Black;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ForeColor:Black;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
+  </data>
   <metadata name="shibuBikouTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>395, 23</value>
   </metadata>

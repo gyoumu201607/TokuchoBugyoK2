@@ -54,6 +54,9 @@
             this.item1_GaroonUpdateDisp = new System.Windows.Forms.Label();
             this.item1_GaroonRenkeiBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel100 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
             this.label107 = new System.Windows.Forms.Label();
@@ -224,6 +227,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel100.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.ErrorBox.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tab.SuspendLayout();
@@ -459,7 +463,7 @@
             this.tableLayoutPanel2.Controls.Add(this.item1_GaroonUpdateDisp, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.item1_GaroonRenkeiBtn, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 119);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 184);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(4);
@@ -629,6 +633,7 @@
             this.tableLayoutPanel100.ColumnCount = 2;
             this.tableLayoutPanel100.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel100.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel100.Controls.Add(this.tableLayoutPanel8, 1, 2);
             this.tableLayoutPanel100.Controls.Add(this.ErrorBox, 0, 1);
             this.tableLayoutPanel100.Controls.Add(this.label107, 1, 0);
             this.tableLayoutPanel100.Controls.Add(this.label4, 0, 0);
@@ -636,11 +641,56 @@
             this.tableLayoutPanel100.Location = new System.Drawing.Point(0, 80);
             this.tableLayoutPanel100.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel100.Name = "tableLayoutPanel100";
-            this.tableLayoutPanel100.RowCount = 2;
+            this.tableLayoutPanel100.RowCount = 3;
             this.tableLayoutPanel100.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel100.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel100.Size = new System.Drawing.Size(1884, 37);
+            this.tableLayoutPanel100.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel100.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel100.Size = new System.Drawing.Size(1884, 102);
             this.tableLayoutPanel100.TabIndex = 35;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel8.Controls.Add(this.label30, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.linkLabel1, 1, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(154, 37);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1730, 65);
+            this.tableLayoutPanel8.TabIndex = 39;
+            this.tableLayoutPanel8.Visible = false;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label30.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9F);
+            this.label30.Location = new System.Drawing.Point(105, 1);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(1621, 48);
+            this.label30.TabIndex = 67;
+            this.label30.Text = "特調奉行の取込エラーで次の場合に使用してくだい。\r\n　・左上のエラーメッセージ欄　「取込ファイルにエラーがありました」と表示され、「単価取込結果」ボタン押下後、リ" +
+    "ストに何も表されない場合\r\n　・単価取込ボタンの下の「単価取込結果」ボタンを押してポップアップされるメッセージに「集計表ファイルが開けません」と表示される\r\n " +
+    "   ";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(105, 50);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(174, 12);
+            this.linkLabel1.TabIndex = 68;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Cybozeへのリカバリマニュアルのリンク";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // ErrorBox
             // 
@@ -702,13 +752,13 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Controls.Add(this.tab, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 219);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 284);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.Padding = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1880, 728);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1880, 663);
             this.tableLayoutPanel7.TabIndex = 14;
             // 
             // tab
@@ -725,7 +775,7 @@
             this.tab.Name = "tab";
             this.tab.Padding = new System.Drawing.Point(5, 4);
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(1854, 708);
+            this.tab.Size = new System.Drawing.Size(1854, 643);
             this.tab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tab.TabIndex = 14;
             this.tab.TabStop = false;
@@ -741,7 +791,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1846, 670);
+            this.tabPage1.Size = new System.Drawing.Size(1846, 605);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "調査概要";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1303,7 +1353,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1846, 670);
+            this.tabPage2.Size = new System.Drawing.Size(1846, 605);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "担当部所";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1927,7 +1977,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1846, 670);
+            this.tabPage3.Size = new System.Drawing.Size(1846, 605);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "調査品目明細";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2820,7 +2870,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 34);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1846, 670);
+            this.tabPage8.Size = new System.Drawing.Size(1846, 605);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "備考";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -2920,6 +2970,8 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel100.ResumeLayout(false);
             this.tableLayoutPanel100.PerformLayout();
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.ErrorBox.ResumeLayout(false);
             this.ErrorBox.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -3167,5 +3219,8 @@
         private System.Windows.Forms.Label lblBootMode;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Button btnRowSizeChange;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

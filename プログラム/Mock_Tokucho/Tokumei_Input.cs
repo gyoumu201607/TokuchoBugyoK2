@@ -109,6 +109,9 @@ namespace TokuchoBugyoK2
             this.item_Hyoujikensuu.MouseWheel += item_MouseWheel;
 
             this.c1FlexGrid4.MouseWheel += c1FlexGrid4_MouseWheel; // 調査品目明細のGrid
+
+            //エントリ君修正STEP2
+            this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
         }
 
         private void Tokumei_Input_Load(object sender, EventArgs e)

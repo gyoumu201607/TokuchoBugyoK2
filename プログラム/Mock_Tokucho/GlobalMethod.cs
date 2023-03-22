@@ -1219,7 +1219,9 @@ namespace TokuchoBugyoK2
                 cmd.ExecuteNonQuery();
 
                 // ListID 2:エントリーチェックシート出力
-                if (ListID == 1 || ListID == 2)
+                // えんとり君修正STEP2 赤黒まとめ出力
+                //if (ListID == 1 || ListID == 2)
+                if (ListID == 1 || ListID == 2 || ListID == 352 || ListID == 353)
                 {
                     cmd.CommandText = "INSERT INTO T_ReportWorkDetail(" +
                     "ReportWorkID, ReportWorkDetailID, ReportWorkDetailColumn, ReportWorkDetailType, ReportWorkDetailStr, ReportWorkDetailInt, ReportWorkDetailDate " +
@@ -1320,7 +1322,10 @@ namespace TokuchoBugyoK2
                     "(" + WorkID + ",26" + ",'SaishinDenpyou'" + ",2" + ",null" + "," + data[25] + "" + ",null" + ")," +
                     "(" + WorkID + ",27" + ",'HyouziKensuu'" + ",2" + ",null" + "," + data[26] + "" + ",null" + ")," +
                     "(" + WorkID + ",28" + ",'KoukiKaishiNendo'" + ",1" + ",N'" + ChangeSqlText(data[27], 0, 0) + "'" + ",null" + ",null" + ")," +
-                    "(" + WorkID + ",29" + ",'KoukiKaishiNendoOption'" + ",2" + ",null" + "," + data[28] + "" + ",null" + ")";
+                    "(" + WorkID + ",29" + ",'KoukiKaishiNendoOption'" + ",2" + ",null" + "," + data[28] + "" + ",null" + ")," +
+                    //えんとり君修正STEP2　案件情報一覧検索画面のエントリくん一覧帳票のパラメータ追加
+                    "(" + WorkID + ",30" + ",'Ribicyou'" + ",1" + ",null" + "," + data[29] + "" + ",null" + ")," +
+                    "(" + WorkID + ",31" + ",'SashaKeiyu'" + ",1" + ",null" + "," + data[30] + "" + ",null" + ")";
 
                     cmd.ExecuteNonQuery();
 
@@ -1503,6 +1508,12 @@ namespace TokuchoBugyoK2
                     "(" + WorkID + ",15" + ",'HizukeKubun'" + ",2" + ",null" + "," + data[14] + ",null" + ")," +
                     "(" + WorkID + ",16" + ",'Memo1'" + ",1" + ", N'" + ChangeSqlText(data[15], 0, 0) + "',null" + ",null" + ")," +
                     "(" + WorkID + ",17" + ",'Memo2'" + ",1" + ", N'" + ChangeSqlText(data[16], 0, 0) + "',null" + ",null" + ")";
+
+                    // えんとり君修正STEP2 報告書共通化
+                    if (ListID == 802 || ListID == 803)
+                    {
+                        cmd.CommandText = cmd.CommandText + ",(" + WorkID + ",18" + ",'ChuushiYouhi'" + ",2" + ",null" + "," + data[17] + ",null" + ")";
+                    }
                 }
 
                 // 工程表
@@ -1661,6 +1672,20 @@ namespace TokuchoBugyoK2
                     "(" + WorkID + ",1" + ",'IkkatsuTorikomi'" + ",2" + ",null" + "," + data[0] + ",null" + ")";
                 }
 
+                // えんとり君修正STEP2：単価契約の報告書共通化
+                if ("TankaHoukokusho".Equals(reportType))
+                {
+                    cmd.CommandText = "INSERT INTO T_ReportWorkDetail(" +
+                    "ReportWorkID, ReportWorkDetailID, ReportWorkDetailColumn, ReportWorkDetailType, ReportWorkDetailStr, ReportWorkDetailInt, ReportWorkDetailDate " +
+                    ") VALUES " +
+                    "(" + WorkID + ",1" + ",'TankaKeiyakuID'" + ",2" + ",null" + "," + data[0] + ",null" + ")," +
+                    "(" + WorkID + ",2" + ",'HoukokuSentaku'" + ",2" + ",null" + "," + data[1] + ",null" + ")," +
+                    "(" + WorkID + ",3" + ",'KikanStart'" + ",3" + ",null" + ",null" + "," + data[2] + ")," +
+                    "(" + WorkID + ",4" + ",'KikanEnd'" + ",3" + ",null" + ",null" + "," + data[3] + ")," +
+                    "(" + WorkID + ",5" + ",'seikyuuGetsu'" + ",1" + ", N'" + ChangeSqlText(data[4], 0, 0) + "',null" + ",null" + ")," +
+                    "(" + WorkID + ",6" + ",'HoukokuSentaku2'" + ",2" + ",null" + "," + data[5] + ",null" + ")," +
+                    "(" + WorkID + ",7" + ",'ChuushiYouhi'" + ",2" + ",null" + "," + data[6] + ",null" + ")";
+                }
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
             }
