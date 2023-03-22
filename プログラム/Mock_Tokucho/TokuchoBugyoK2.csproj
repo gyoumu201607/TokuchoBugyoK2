@@ -7,14 +7,14 @@
     <ProjectGuid>{0AA1DAEB-7746-4D4F-8B66-55281FA32BFE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TokuchoBugyoK2</RootNamespace>
-    <AssemblyName>TokuchoBugyoK2_ST</AssemblyName>
+    <AssemblyName>TokuchoBugyoK2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\deploy_app\ステージング環境_デプロイモジュール_20230213\</PublishUrl>
+    <PublishUrl>C:\deploy_app\本番環境_デプロイモジュール_yyyymmdd\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,8 +24,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://HON-VM-135/TokuchoBugyoK2_ST/</InstallUrl>
-    <ProductName>TokuchoBugyoK2_ST</ProductName>
+    <InstallUrl>http://HON-VM-135/TokuchoBugyoK2/</InstallUrl>
+    <ProductName>TokuchoBugyoK2</ProductName>
     <PublisherName>Construction Research Institute</PublisherName>
     <MinimumRequiredVersion>2.0.0.86</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
@@ -37,7 +37,7 @@
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
-    <BootstrapperComponentsUrl>http://HON-VM-135/TokuchoBugyoK2_ST/</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>http://HON-VM-135/TokuchoBugyoK2/</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
