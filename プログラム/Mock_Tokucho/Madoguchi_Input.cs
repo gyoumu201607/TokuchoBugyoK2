@@ -3767,15 +3767,30 @@ namespace TokuchoBugyoK2
                 SQLData[0, 13] = item6_TanpinShijisho.SelectedValue.ToString();     // 13.指示書
                 if (item6_TanpinSaishuuKensa.Checked == true)
                 {
-                    SQLData[0, 14] = "1";                           // 14.最終検査
+                    SQLData[0, 14] = "1";                           // 14.設計変更
+                }
+                else
+                {
+                    // えんとり君修正STEP2　不具合1412
+                    SQLData[0, 14] = "0";                           // 14.設計変更
                 }
                 if (item6_TanpinMitsumoriTeishutu.Checked == true)
                 {
                     SQLData[0, 15] = "1";                           // 15.見積提出方式
                 }
+                else
+                {
+                    // えんとり君修正STEP2　不具合1412
+                    SQLData[0, 15] = "0";                           // 15.見積提出方式
+                }
                 if (item6_TanpinTeinyuusatsu.Checked == true)
                 {
                     SQLData[0, 16] = "1";                           // 16.低入札
+                }
+                else
+                {
+                    // えんとり君修正STEP2　不具合1412
+                    SQLData[0, 16] = "0";                           // 16.低入札
                 }
                 SQLData[0, 18] = item6_TanpinSeikyuuGetsu.Text;      // 18.単品請求月
                 SQLData[0, 23] = item6_TanpinSonotaShuukei.Text;    // 23.その他集計
