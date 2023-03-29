@@ -452,7 +452,9 @@ namespace TokuchoBugyoK2
                 if (src_3.Checked)
                 {
                     //FromNendo -= 3;
-                    ToNendo -= 2;
+                    // 課題No1188　計画案件の検索を　３年⇒５年
+                    //ToNendo -= 2;
+                    ToNendo -= 4;
                 }
                 //where += "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
                 //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
@@ -3477,7 +3479,9 @@ namespace TokuchoBugyoK2
                 nendo2 = nendo1;
                 if (src_3.Checked)
                 {
-                    nendo2 = (int.Parse(nendo1) - 2).ToString();
+                    // 課題No1188　計画案件の検索を　３年⇒５年
+                    //nendo2 = (int.Parse(nendo1) - 2).ToString();
+                    nendo2 = (int.Parse(nendo1) - 4).ToString();
                 }
             }
             else
@@ -3498,7 +3502,9 @@ namespace TokuchoBugyoK2
                 kouki_kaishi_nendo2 = kouki_kaishi_nendo1;
                 if (src_16.Checked)
                 {
-                    kouki_kaishi_nendo2 = (int.Parse(kouki_kaishi_nendo1) - 2).ToString();
+                    // 課題No1188　計画案件の検索を　３年⇒５年
+                    //kouki_kaishi_nendo2 = (int.Parse(kouki_kaishi_nendo1) - 2).ToString();
+                    kouki_kaishi_nendo2 = (int.Parse(kouki_kaishi_nendo1) - 4).ToString();
                 }
             }
             else
@@ -4080,7 +4086,9 @@ namespace TokuchoBugyoK2
                         nendo2 = nendo1;
                         if (src_3.Checked)
                         {
-                            nendo2 = (int.Parse(nendo1) - 2).ToString();
+                            // 課題No1188　計画案件の検索を　３年⇒５年
+                            //nendo2 = (int.Parse(nendo1) - 2).ToString();
+                            nendo2 = (int.Parse(nendo1) - 4).ToString();
                         }
                     }
                     else
@@ -4111,7 +4119,9 @@ namespace TokuchoBugyoK2
                         kouki_kaishi_nendo2 = kouki_kaishi_nendo1;
                         if (src_16.Checked)
                         {
-                            kouki_kaishi_nendo2 = (int.Parse(kouki_kaishi_nendo1) - 2).ToString();
+                            // 課題No1188　計画案件の検索を　３年⇒５年
+                            //kouki_kaishi_nendo2 = (int.Parse(kouki_kaishi_nendo1) - 2).ToString();
+                            kouki_kaishi_nendo2 = (int.Parse(kouki_kaishi_nendo1) - 4).ToString();
                         }
                     }
                     else
@@ -4493,7 +4503,9 @@ namespace TokuchoBugyoK2
                     String nendo2 = nendo1;
                     if (src_3.Checked)
                     {
-                        nendo2 = (int.Parse(nendo1) - 2).ToString();
+                        // 課題No1188　計画案件の検索を　３年⇒５年
+                        //nendo2 = (int.Parse(nendo1) - 2).ToString();
+                        nendo2 = (int.Parse(nendo1) - 4).ToString();
                     }
                     cmd.CommandText = "SELECT"
                                     + " '更新'"                                                                 // 0.処理区分

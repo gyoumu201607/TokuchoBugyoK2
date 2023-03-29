@@ -734,7 +734,7 @@
             this.src_16.Name = "src_16";
             this.src_16.Size = new System.Drawing.Size(76, 21);
             this.src_16.TabIndex = 4;
-            this.src_16.Text = "3年以内";
+            this.src_16.Text = "5年以内";
             this.src_16.UseVisualStyleBackColor = true;
             // 
             // label13
@@ -840,7 +840,7 @@
             this.src_3.Name = "src_3";
             this.src_3.Size = new System.Drawing.Size(76, 21);
             this.src_3.TabIndex = 4;
-            this.src_3.Text = "3年以内";
+            this.src_3.Text = "5年以内";
             this.src_3.UseVisualStyleBackColor = true;
             this.src_3.Click += new System.EventHandler(this.src_3_Click);
             // 
