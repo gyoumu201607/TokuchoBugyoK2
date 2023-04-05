@@ -45,6 +45,8 @@ namespace TokuchoBugyoK2
 
         private string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
         private DataTable MadoguchiData = new DataTable();
+        //不具合一覧No1365　1147【自分大臣】ガルーンメールへの直リンクの追加
+        private string LinkMadoguchiMailMessageID = "";
         private DataTable DT_MadoguchiL1Chou = new DataTable();
         private DataTable DT_KyouryokuIraisho = new DataTable();
         private DataTable DT_Ouenuketsuke = new DataTable();
@@ -1140,6 +1142,29 @@ namespace TokuchoBugyoK2
                         var sda = new SqlDataAdapter(cmd);
                         MadoguchiData.Clear();
                         sda.Fill(MadoguchiData);
+
+                        //不具合一覧No1365　1147【自分大臣】ガルーンメールへの直リンクの追加
+                        LinkMadoguchiMailMessageID = "";
+                        if (MadoguchiData != null && MadoguchiData.Rows.Count > 0) {
+                            // URL取得
+                            LinkMadoguchiMailMessageID = GlobalMethod.GetCommonValue1("GAROON_MESSAGE_URL");
+                            // MadoguchiMailのIDを取得
+                            string discript = "MadoguchiMailMessageID ";
+                            string value = "TOP 1 MadoguchiMailMessageID ";
+                            string table = "MadoguchiMail ";
+                            string where = "MadoguchiMailTokuchoBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + MadoguchiData.Rows[0][14].ToString() + "' AND MadoguchiMailTokuchoBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + MadoguchiData.Rows[0][15].ToString() + "' ";
+
+                            // データ取得
+                            DataTable tmpMail = GlobalMethod.getData(discript, value, table, where);
+                            if (tmpMail != null && tmpMail.Rows.Count > 0)
+                            {
+                                LinkMadoguchiMailMessageID = LinkMadoguchiMailMessageID + tmpMail.Rows[0][0].ToString();
+                            }
+                            else
+                            {
+                                LinkMadoguchiMailMessageID = "";
+                            }
+                        }
                     }
 
                     // 担当部所タブ
@@ -1572,7 +1597,7 @@ namespace TokuchoBugyoK2
                 // 管理番号
                 item1_MadoguchiKanriBangou.Text = MadoguchiData.Rows[0][17].ToString();
                 // 調査種別
-                item1_MadoguchiChousaShubetsu .SelectedValue = MadoguchiData.Rows[0][25].ToString();
+                item1_MadoguchiChousaShubetsu.SelectedValue = MadoguchiData.Rows[0][25].ToString();
                 // 単価適用地域
                 item1_MadoguchiTankaTekiyou.Text = MadoguchiData.Rows[0][30].ToString();
                 // 荷渡場所
@@ -1580,7 +1605,7 @@ namespace TokuchoBugyoK2
                 // 窓口担当者
                 item1_MadoguchiTantousha.Text = MadoguchiData.Rows[0][4].ToString();
                 // 発注者詳細名
-                item1_MadoguchiHachuuKikanmei.Text= MadoguchiData.Rows[0][16].ToString();
+                item1_MadoguchiHachuuKikanmei.Text = MadoguchiData.Rows[0][16].ToString();
                 // 業務名称
                 item1_MadoguchiGyoumuMeishou.Text = MadoguchiData.Rows[0][18].ToString();
                 // 工事件名
@@ -1599,6 +1624,9 @@ namespace TokuchoBugyoK2
                 item1_MadoguchiTantoushaCD.Text = MadoguchiData.Rows[0][7].ToString();
                 //Garoon連携
                 item1_GaroonRenkei.Checked = bool_str(MadoguchiData.Rows[0][46].ToString());
+
+                //不具合一覧No1365　1147【自分大臣】ガルーンメールへの直リンクの追加
+                lnkGaroonMail.Text = LinkMadoguchiMailMessageID;
             }
 
             //担当部所タブ
@@ -8569,6 +8597,15 @@ namespace TokuchoBugyoK2
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(GlobalMethod.GetCommonValue1("CHOUSA_CYBOZE_LINK"));
+        }
+
+        //不具合一覧No1365　1147【自分大臣】ガルーンメールへの直リンクの追加
+        private void lnkGaroonMail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(lnkGaroonMail.Text) == false)
+            {
+                System.Diagnostics.Process.Start(((LinkLabel)sender).Text);
+            }
         }
     }
 }

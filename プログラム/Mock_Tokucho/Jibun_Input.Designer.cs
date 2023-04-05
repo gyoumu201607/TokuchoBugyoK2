@@ -220,6 +220,7 @@
             this.label143 = new System.Windows.Forms.Label();
             this.BikoUpdateBtn = new System.Windows.Forms.Button();
             this.shibuBikouTableAdapter = new TokuchoBugyoK2.TokuchoBugyoKDataSetTableAdapters.ShibuBikouTableAdapter();
+            this.lnkGaroonMail = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -672,9 +673,9 @@
             this.label30.AutoSize = true;
             this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label30.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9F);
-            this.label30.Location = new System.Drawing.Point(105, 1);
+            this.label30.Location = new System.Drawing.Point(103, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(1621, 48);
+            this.label30.Size = new System.Drawing.Size(1624, 48);
             this.label30.TabIndex = 67;
             this.label30.Text = "特調奉行の取込エラーで次の場合に使用してくだい。\r\n　・左上のエラーメッセージ欄　「取込ファイルにエラーがありました」と表示され、「単価取込結果」ボタン押下後、リ" +
     "ストに何も表されない場合\r\n　・単価取込ボタンの下の「単価取込結果」ボタンを押してポップアップされるメッセージに「集計表ファイルが開けません」と表示される\r\n " +
@@ -684,7 +685,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(105, 50);
+            this.linkLabel1.Location = new System.Drawing.Point(103, 48);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(174, 12);
             this.linkLabel1.TabIndex = 68;
@@ -798,6 +799,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.lnkGaroonMail);
             this.groupBox6.Controls.Add(this.groupBox8);
             this.groupBox6.Controls.Add(this.groupBox7);
             this.groupBox6.Controls.Add(this.groupBox9);
@@ -2946,6 +2948,15 @@
             // 
             this.shibuBikouTableAdapter.ClearBeforeFill = true;
             // 
+            // lnkGaroonMail
+            // 
+            this.lnkGaroonMail.AutoSize = true;
+            this.lnkGaroonMail.Location = new System.Drawing.Point(760, 455);
+            this.lnkGaroonMail.Name = "lnkGaroonMail";
+            this.lnkGaroonMail.Size = new System.Drawing.Size(0, 18);
+            this.lnkGaroonMail.TabIndex = 56;
+            this.lnkGaroonMail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGaroonMail_LinkClicked);
+            // 
             // Jibun_Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3222,5 +3233,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel lnkGaroonMail;
     }
 }
