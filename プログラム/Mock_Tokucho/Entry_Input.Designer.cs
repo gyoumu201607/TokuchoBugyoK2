@@ -4294,6 +4294,7 @@ namespace TokuchoBugyoK2
             // 
             // tableLayoutPanel69
             // 
+            this.tableLayoutPanel69.AutoSize = true;
             this.tableLayoutPanel69.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel69.ColumnCount = 7;
             this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
@@ -4302,7 +4303,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
+            this.tableLayoutPanel69.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel69.Controls.Add(this.label164, 0, 0);
             this.tableLayoutPanel69.Controls.Add(this.label167, 2, 1);
             this.tableLayoutPanel69.Controls.Add(this.label168, 3, 1);
@@ -4536,6 +4537,7 @@ namespace TokuchoBugyoK2
             // 
             // tableLayoutPanel70
             // 
+            this.tableLayoutPanel70.AutoSize = true;
             this.tableLayoutPanel70.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel70.ColumnCount = 15;
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
@@ -4552,7 +4554,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
+            this.tableLayoutPanel70.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel70.Controls.Add(this.label180, 2, 1);
             this.tableLayoutPanel70.Controls.Add(this.label182, 3, 1);
             this.tableLayoutPanel70.Controls.Add(this.label183, 4, 1);
@@ -5143,13 +5145,14 @@ namespace TokuchoBugyoK2
             // 
             // tableLayoutPanel76
             // 
+            this.tableLayoutPanel76.AutoSize = true;
             this.tableLayoutPanel76.BackColor = System.Drawing.Color.Silver;
             this.tableLayoutPanel76.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel76.ColumnCount = 4;
             this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 424F));
             this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 491F));
-            this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1406F));
+            this.tableLayoutPanel76.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel76.Controls.Add(this.label263, 0, 1);
             this.tableLayoutPanel76.Controls.Add(this.label295, 1, 0);
             this.tableLayoutPanel76.Controls.Add(this.label296, 2, 0);
