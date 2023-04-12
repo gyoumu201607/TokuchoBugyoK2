@@ -2956,6 +2956,8 @@
             this.lnkGaroonMail.Size = new System.Drawing.Size(0, 18);
             this.lnkGaroonMail.TabIndex = 56;
             this.lnkGaroonMail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGaroonMail_LinkClicked);
+            this.lnkGaroonMail.Text = "ガルーンメールへのリンク";
+            this.lnkGaroonMail.Visible = false;
             // 
             // Jibun_Input
             // 

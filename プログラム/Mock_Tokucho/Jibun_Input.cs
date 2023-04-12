@@ -45,8 +45,6 @@ namespace TokuchoBugyoK2
 
         private string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
         private DataTable MadoguchiData = new DataTable();
-        //不具合一覧No1365　1147【自分大臣】ガルーンメールへの直リンクの追加
-        private string LinkMadoguchiMailMessageID = "";
         private DataTable DT_MadoguchiL1Chou = new DataTable();
         private DataTable DT_KyouryokuIraisho = new DataTable();
         private DataTable DT_Ouenuketsuke = new DataTable();
@@ -1144,7 +1142,7 @@ namespace TokuchoBugyoK2
                         sda.Fill(MadoguchiData);
 
                         //不具合一覧No1365　1147【自分大臣】ガルーンメールへの直リンクの追加
-                        LinkMadoguchiMailMessageID = "";
+                        string LinkMadoguchiMailMessageID = "";
                         if (MadoguchiData != null && MadoguchiData.Rows.Count > 0) {
                             // URL取得
                             LinkMadoguchiMailMessageID = GlobalMethod.GetCommonValue1("GAROON_MESSAGE_URL");
@@ -1159,12 +1157,19 @@ namespace TokuchoBugyoK2
                             if (tmpMail != null && tmpMail.Rows.Count > 0)
                             {
                                 LinkMadoguchiMailMessageID = LinkMadoguchiMailMessageID + tmpMail.Rows[0][0].ToString();
+                                lnkGaroonMail.Visible = true;
                             }
                             else
                             {
                                 LinkMadoguchiMailMessageID = "";
+                                lnkGaroonMail.Visible = false;
                             }
                         }
+                        else
+                        {
+                            lnkGaroonMail.Visible = false;
+                        }
+                        lnkGaroonMail.Tag = LinkMadoguchiMailMessageID;
                     }
 
                     // 担当部所タブ
@@ -1624,9 +1629,6 @@ namespace TokuchoBugyoK2
                 item1_MadoguchiTantoushaCD.Text = MadoguchiData.Rows[0][7].ToString();
                 //Garoon連携
                 item1_GaroonRenkei.Checked = bool_str(MadoguchiData.Rows[0][46].ToString());
-
-                //不具合一覧No1365　1147【自分大臣】ガルーンメールへの直リンクの追加
-                lnkGaroonMail.Text = LinkMadoguchiMailMessageID;
             }
 
             //担当部所タブ
@@ -8602,10 +8604,15 @@ namespace TokuchoBugyoK2
         //不具合一覧No1365　1147【自分大臣】ガルーンメールへの直リンクの追加
         private void lnkGaroonMail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (string.IsNullOrEmpty(lnkGaroonMail.Text) == false)
+            if(lnkGaroonMail.Tag != null)
             {
-                System.Diagnostics.Process.Start(((LinkLabel)sender).Text);
+                string linkUrl = lnkGaroonMail.Tag.ToString();
+                if (string.IsNullOrEmpty(linkUrl) == false)
+                {
+                    System.Diagnostics.Process.Start(linkUrl);
+                }
             }
+            
         }
     }
 }
