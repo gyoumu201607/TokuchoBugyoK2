@@ -1157,16 +1157,19 @@ namespace TokuchoBugyoK2
                             if (tmpMail != null && tmpMail.Rows.Count > 0)
                             {
                                 LinkMadoguchiMailMessageID = LinkMadoguchiMailMessageID + tmpMail.Rows[0][0].ToString();
+                                //groupBox11.Visible = true;
                                 lnkGaroonMail.Visible = true;
                             }
                             else
                             {
                                 LinkMadoguchiMailMessageID = "";
                                 lnkGaroonMail.Visible = false;
+                                //groupBox11.Visible = false;
                             }
                         }
                         else
                         {
+                            //groupBox11.Visible = false;
                             lnkGaroonMail.Visible = false;
                         }
                         lnkGaroonMail.Tag = LinkMadoguchiMailMessageID;

@@ -65,6 +65,8 @@
             this.tab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.lnkGaroonMail = new System.Windows.Forms.LinkLabel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.item1_MadoguchiShiryouHolder_icon = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -220,7 +222,6 @@
             this.label143 = new System.Windows.Forms.Label();
             this.BikoUpdateBtn = new System.Windows.Forms.Button();
             this.shibuBikouTableAdapter = new TokuchoBugyoK2.TokuchoBugyoKDataSetTableAdapters.ShibuBikouTableAdapter();
-            this.lnkGaroonMail = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -234,6 +235,7 @@
             this.tab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.item1_MadoguchiShiryouHolder_icon)).BeginInit();
             this.groupBox7.SuspendLayout();
@@ -799,7 +801,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.lnkGaroonMail);
+            this.groupBox6.Controls.Add(this.groupBox11);
             this.groupBox6.Controls.Add(this.groupBox8);
             this.groupBox6.Controls.Add(this.groupBox7);
             this.groupBox6.Controls.Add(this.groupBox9);
@@ -840,6 +842,28 @@
             this.groupBox6.Size = new System.Drawing.Size(1827, 506);
             this.groupBox6.TabIndex = 38;
             this.groupBox6.TabStop = false;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.lnkGaroonMail);
+            this.groupBox11.Location = new System.Drawing.Point(783, 428);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(226, 66);
+            this.groupBox11.TabIndex = 56;
+            this.groupBox11.TabStop = false;
+            // 
+            // lnkGaroonMail
+            // 
+            this.lnkGaroonMail.AutoSize = true;
+            this.lnkGaroonMail.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lnkGaroonMail.Location = new System.Drawing.Point(16, 24);
+            this.lnkGaroonMail.Name = "lnkGaroonMail";
+            this.lnkGaroonMail.Size = new System.Drawing.Size(202, 24);
+            this.lnkGaroonMail.TabIndex = 56;
+            this.lnkGaroonMail.TabStop = true;
+            this.lnkGaroonMail.Text = "ガルーンメールへのリンク";
+            this.lnkGaroonMail.Visible = false;
+            this.lnkGaroonMail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGaroonMail_LinkClicked);
             // 
             // groupBox8
             // 
@@ -2948,17 +2972,6 @@
             // 
             this.shibuBikouTableAdapter.ClearBeforeFill = true;
             // 
-            // lnkGaroonMail
-            // 
-            this.lnkGaroonMail.AutoSize = true;
-            this.lnkGaroonMail.Location = new System.Drawing.Point(760, 455);
-            this.lnkGaroonMail.Name = "lnkGaroonMail";
-            this.lnkGaroonMail.Size = new System.Drawing.Size(0, 18);
-            this.lnkGaroonMail.TabIndex = 56;
-            this.lnkGaroonMail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGaroonMail_LinkClicked);
-            this.lnkGaroonMail.Text = "ガルーンメールへのリンク";
-            this.lnkGaroonMail.Visible = false;
-            // 
             // Jibun_Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2993,6 +3006,8 @@
             this.tabPage1.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.item1_MadoguchiShiryouHolder_icon)).EndInit();
@@ -3236,5 +3251,6 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel lnkGaroonMail;
+        private System.Windows.Forms.GroupBox groupBox11;
     }
 }
