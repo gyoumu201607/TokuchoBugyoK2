@@ -867,6 +867,8 @@ namespace TokuchoBugyoK2
                 label51.Visible = false;
                 item1_37.Visible = false;
                 item1_38.Visible = false;
+                // No.1422 1196 案件番号の変更履歴を保存する
+                item1_39.Visible = false;
                 label82.Visible = false;
                 label84.Visible = false;
 
@@ -7224,6 +7226,11 @@ namespace TokuchoBugyoK2
                         // 受託フォルダも変更する
                         item1_6.Text = ankenNo;
                         Header1.Text = ankenNo;
+                        // No.1422 1196 案件番号の変更履歴を保存する
+                        item1_37_kojinCD.Text = UserInfos[0];
+                        item1_37.Text = UserInfos[1];
+                        item1_38.Text = System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                        item1_39.Text = ori_ankenNo;
                     }
                 }
                 // 受託番号
@@ -7466,6 +7473,8 @@ namespace TokuchoBugyoK2
                                     //えんとり君修正STEP２
                                     ",AnkenFolderHenkouDatetime = " + (string.IsNullOrEmpty(item1_38.Text) ? "NULL " : "'" + item1_38.Text + "' ") +
                                     ",AnkenFolderHenkouTantoushaCD = '" + item1_37_kojinCD.Text + "' " +
+                                    // No.1422 1196 案件番号の変更履歴を保存する
+                                    ",AnkenHenkoumaeAnkenBangou = " + (string.IsNullOrEmpty(item1_39.Text) ? "NULL " : "'" + item1_39.Text + "' ") +
                                     " WHERE AnkenJouhouID = " + AnkenID;
 
                         Console.WriteLine(cmd.CommandText);
@@ -11746,16 +11755,29 @@ namespace TokuchoBugyoK2
         {
             // えんとり君修正STEP2
             bool isMoveOk = false;
-            string folderTo = GlobalMethod.ChangeSqlText(item1_12.Text, 0, 0);
+            string folderTo = GlobalMethod.ChangeSqlText(txt_renamedfolder.Text, 0, 0);
             string sJigyoubuHeadCD = getJigyoubuHeadCD();
             int isRename = 0; // 0:何もしない、1:リネーム、2:削除のみ、3：新規作成
-            if (sFolderRenameBef.Equals(folderTo) == false)
-            {   
+            //if (sFolderRenameBef.Equals(folderTo) == false)
+            if (string.IsNullOrEmpty(folderTo) == false && sFolderRenameBef.Equals(folderTo) == false)
+            {
                 // リネームボタン押下時
+                if (string.IsNullOrEmpty(item3_1_20_reset_ankenno.Text) == false)
+                {
+                    folderTo = folderTo.Replace(item3_1_20_reset_ankenno.Text, item1_6.Text);
+                }
                 if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
                 {
-                    // リネーム前後、すべて調査部の場合、リネームを実施する
-                    isRename = 1;
+                    //もっとファイル
+                    if (item1_12.Text.Contains(ori_ankenNo))
+                    {
+                        // リネーム前後、すべて調査部の場合、リネームを実施する
+                        isRename = 1;
+                    }
+                    else
+                    {
+                        isRename = 3;
+                    }
                 }
                 else if (sJigyoubuHeadCD_ori.Equals("T"))
                 {
@@ -11771,6 +11793,7 @@ namespace TokuchoBugyoK2
             }
             else if (ori_ankenNo.Equals(item1_6.Text) == false)
             {
+                folderTo = GlobalMethod.ChangeSqlText(item1_12.Text, 0, 0);
                 // リネームボタン押下しない　AND　案件番号自動変更
                 if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
                 {
@@ -11785,11 +11808,21 @@ namespace TokuchoBugyoK2
                 else if (sJigyoubuHeadCD_ori.Equals("T"))
                 {
                     // リネームボタン押下しない、契約部署のみ変更する場合
-                    isRename = 4;
+                    if (folderTo.Equals(sFolderRenameBef) == false)
+                    {
+                        isRename = 4;
+                    }
+                    else
+                    {
+                        txt_renamedfolder.Text = "";
+                        item3_1_20_reset_ankenno.Text = "";
+                        isRename = 5;
+                    }
                 }
                 else
                 {
-                    if (item1_12.Text.Contains(ori_ankenNo)) { 
+                    if (folderTo.Contains(ori_ankenNo))
+                    {
                         isRename = 4;
                     }
                     else
@@ -11802,11 +11835,11 @@ namespace TokuchoBugyoK2
             {
                 isRename = 5;
             }
-            
+
             //案件番号も変更する場合
             if (ori_ankenNo.Equals(item1_6.Text) == false && (isRename == 1 || isRename == 3 || isRename == 4))
             {
-                folderTo = GlobalMethod.ChangeSqlText(item1_12.Text.Replace("\\" + ori_ankenNo, "\\" + item1_6.Text), 0, 0);
+                folderTo = GlobalMethod.ChangeSqlText(folderTo.Replace("\\" + ori_ankenNo, "\\" + item1_6.Text), 0, 0);
             }
 
             // リネームを実行する
@@ -11888,7 +11921,7 @@ namespace TokuchoBugyoK2
                 {
                     // 案件テーブルにすでに登録されているか
                     string where = "";
-                    where = "AnkenKeiyakusho = N'" + GlobalMethod.ChangeSqlText(item1_12.Text, 0, 0) + "'" +
+                    where = "AnkenKeiyakusho = N'" + GlobalMethod.ChangeSqlText(folderTo, 0, 0) + "'" +
                         " AND AnkenDeleteFlag = 0 AND AnkenAnkenBangou <> '" + ori_ankenNo + "' ";
                     DataTable dtFolder = GlobalMethod.getData("AnkenKeiyakusho", "AnkenKeiyakusho", "AnkenJouhou", where);
                     if (dtFolder is null || dtFolder.Rows.Count <= 0)
@@ -11924,7 +11957,7 @@ namespace TokuchoBugyoK2
                     }
                 }
             }
-            else if(isRename == 5)
+            else if (isRename == 5)
             {
                 //何もしない
             }
@@ -11974,10 +12007,13 @@ namespace TokuchoBugyoK2
                         GlobalMethod.outputLogger("UpdateEntory->FileDelete", ex.Message, AnkenID, UserInfos[1]);
                     }
                 }
-                item1_37_kojinCD.Text = UserInfos[0];
-                item1_37.Text = UserInfos[1];
-                item1_38.Text = System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                // No.1422 1196 案件番号の変更履歴を保存する
+                //item1_37_kojinCD.Text = UserInfos[0];
+                //item1_37.Text = UserInfos[1];
+                //item1_38.Text = System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 item1_12.Text = folderTo;
+                txt_renamedfolder.Text = "";
+                item3_1_20_reset_ankenno.Text = "";
 
                 // 現在フォルダを更新
                 sFolderRenameBef = item1_12.Text;
@@ -11989,6 +12025,7 @@ namespace TokuchoBugyoK2
             }
             return isMoveOk;
         }
+
         // えんとり君修正STEP2 確認シートのダミーデータ作成
         private int Create_DummyData()
         {
@@ -14823,6 +14860,8 @@ namespace TokuchoBugyoK2
                             ",CASE WHEN AnkenFolderHenkouDatetime IS NULL THEN '' ELSE FORMAT(AnkenFolderHenkouDatetime,'yyyy/MM/dd HH:mm:ss') END " +
                             // えんとり君修正STEP2(INDEX:60～) 
                             ",ISNULL(mb.JigyoubuHeadCD,'') " +
+                            // No.1422 1196 案件番号の変更履歴を保存する
+                            ",ISNULL(AnkenHenkoumaeAnkenBangou,'') " + 
 
                     //参照テーブル
                     "FROM AnkenJouhou " +
@@ -15432,6 +15471,8 @@ namespace TokuchoBugyoK2
                 item1_37.Text = AnkenData_H.Rows[0][57].ToString();
                 item1_37_kojinCD.Text = AnkenData_H.Rows[0][58].ToString();
                 item1_38.Text = AnkenData_H.Rows[0][59].ToString();
+                // No.1422 1196 案件番号の変更履歴を保存する
+                item1_39.Text = AnkenData_H.Rows[0][61].ToString();
                 sJigyoubuHeadCD_ori = AnkenData_H.Rows[0][60].ToString();
                 //案件情報
                 item1_13.Text = AnkenData_H.Rows[0][12].ToString();
@@ -18158,8 +18199,55 @@ namespace TokuchoBugyoK2
                     {
                         sGyomu = sGyomu.Substring(0, 20);
                     }
-                    string AnkenBangou = item1_6.Text;
-                    FolderPath = FolderPath + "\\" + AnkenBangou + "_" + sGOrder + "_" + sGyomu;
+                    string ankenNo = item1_6.Text;
+                    if (sItem1_10_ori.Equals(item1_10.SelectedValue.ToString()) == false || sItem1_2_KoukiNendo_ori.Equals(item1_2_KoukiNendo.SelectedValue.ToString()) == false)
+                    {
+                        string jigyoubuHeadCD = "";
+                        // 契約区分で業務分類CDを判定
+                        // Mst_Jigyoubu に問い合わせる方法が無い為、
+                        // 調査部が見つかった場合、T と判断
+                        if (item1_14.Text.IndexOf("調査部") > -1)
+                        {
+                            jigyoubuHeadCD = "T";
+                        }
+                        else if (item1_14.Text.IndexOf("事業普及部") > -1)
+                        {
+                            jigyoubuHeadCD = "B";
+                        }
+                        else if (item1_14.Text.IndexOf("情シス部") > -1)
+                        {
+                            jigyoubuHeadCD = "J";
+                        }
+                        else if (item1_14.Text.IndexOf("総合研究所") > -1)
+                        {
+                            jigyoubuHeadCD = "K";
+                        }
+                        var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                        using (var conn = new SqlConnection(connStr))
+                        {
+                            conn.Open();
+                            var cmd = conn.CreateCommand();
+
+                            // 業務分類CD + 年度下2桁
+                            ankenNo = jigyoubuHeadCD + item1_2_KoukiNendo.SelectedValue.ToString().Substring(2, 2);
+
+                            // KashoShibuCD
+                            cmd.CommandText = "SELECT  " +
+                                    "KashoShibuCD " +
+
+                                    //参照テーブル
+                                    "FROM Mst_Busho " +
+                                    "WHERE GyoumuBushoCD = '" + item1_10.SelectedValue.ToString() + "' ";
+                            var sda = new SqlDataAdapter(cmd);
+                            var dtB = new DataTable();
+                            sda.Fill(dtB);
+                            // KashoShibuCDが正しい
+                            ankenNo = ankenNo + dtB.Rows[0][0].ToString();
+                        }
+                        ankenNo = ankenNo + "●●●";
+                    }
+                    FolderPath = FolderPath + "\\" + ankenNo + "_" + sGOrder + "_" + sGyomu;
+                    item3_1_20_reset_ankenno.Text = ankenNo;
                 }
             }
             else
@@ -18168,7 +18256,8 @@ namespace TokuchoBugyoK2
                 FolderPath = FolderPath.Replace("/", @"\");
             }
             // 案件（受託）フォルダ
-            item1_12.Text = FolderPath;
+            //item1_12.Text = FolderPath;
+            txt_renamedfolder.Text = FolderPath;
         }
 
 

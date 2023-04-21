@@ -1351,57 +1351,84 @@ namespace TokuchoBugyoK2
 
                     }
 
-                    if (PrintList.SelectedValue.ToString() == "800" || PrintList.SelectedValue.ToString() == "801")
+                    // No.1423 1197 報告書共通化の報告書追加時に条件が表示されない。
+                    //if (PrintList.SelectedValue.ToString() == "800" || PrintList.SelectedValue.ToString() == "801")
+                    if (PrintList.SelectedValue.ToString() != "89" || PrintList.SelectedValue.ToString() == "229")
                     {
                         // 報告書共通化
-                        if (KikanStart.CustomFormat == "" && KikanEnd.CustomFormat == "")
+                        using (var conn = new SqlConnection(connStr))
                         {
-                            if (KikanStart.Value > KikanEnd.Value)
+                            try
                             {
-                                ErrorFlag = true;
-                                set_error("期間指定が不正です。");
-                            }
-                        }
-                        else if (KikanStart.CustomFormat != "" && KikanEnd.CustomFormat != "")
-                        {
-                            ErrorFlag = true;
-                            set_error("期間指定を入力してください。");
-                        }
-                        else
-                        {
-                            // 窓口存在チェック
-                            DataTable MadoguchiJouhou = new DataTable();
-                            using (var conn = new SqlConnection(connStr))
-                            {
-                                try
+                                conn.Open();
+                                var cmd = conn.CreateCommand();
+                                var Dt = new System.Data.DataTable();
+                                //SQL生成
+                                cmd.CommandText = "SELECT " +
+                                  "PrintDataPattern,PrintKikanFlg " +
+                                  "FROM " + "Mst_PrintList " +
+                                  "WHERE PrintListID = '" + PrintList.SelectedValue + "'";
+
+                                //データ取得
+                                var sda = new SqlDataAdapter(cmd);
+                                sda.Fill(Dt);
+                                //Boolean errorFLG = false;
+
+                                if (Dt.Rows.Count > 0 && (Dt.Rows[0][0].ToString() == "800" || Dt.Rows[0][0].ToString() == "801"))
                                 {
-                                    conn.Open();
-                                    var cmd = conn.CreateCommand();
-
-                                    // 受託番号から窓口IDを取得する
-                                    cmd.CommandText = "SELECT TOP 1 MadoguchiID FROM MadoguchiJouhou WHERE MadoguchiJutakuBangou = '" + JutakuBangou + "' ORDER BY MadoguchiID DESC";
-
-                                    var sda = new SqlDataAdapter(cmd);
-                                    MadoguchiJouhou.Clear();
-                                    sda.Fill(MadoguchiJouhou);
-
-                                    if (MadoguchiJouhou.Rows[0][0] == null)
+                                    // 報告書共通化
+                                    if (KikanStart.CustomFormat == "" && KikanEnd.CustomFormat == "")
+                                    {
+                                        if (KikanStart.Value > KikanEnd.Value)
+                                        {
+                                            ErrorFlag = true;
+                                            set_error("期間指定が不正です。");
+                                        }
+                                    }
+                                    else if (KikanStart.CustomFormat != "" && KikanEnd.CustomFormat != "")
                                     {
                                         ErrorFlag = true;
-                                        set_error("窓口の登録がありません。");
+                                        set_error("期間指定を入力してください。");
                                     }
+                                    else
+                                    {
+                                        try
+                                        {
+                                            DataTable MadoguchiJouhou = new DataTable();
+                                            // 受託番号から窓口IDを取得する
+                                            cmd.CommandText = "SELECT TOP 1 MadoguchiID FROM MadoguchiJouhou WHERE MadoguchiJutakuBangou = '" + JutakuBangou + "' ORDER BY MadoguchiID DESC";
 
+                                            sda = new SqlDataAdapter(cmd);
+                                            MadoguchiJouhou.Clear();
+                                            sda.Fill(MadoguchiJouhou);
+
+                                            if (MadoguchiJouhou.Rows[0][0] == null)
+                                            {
+                                                ErrorFlag = true;
+                                                set_error("窓口の登録がありません。");
+                                            }
+
+                                        }
+                                        catch (Exception)
+                                        {
+                                            ErrorFlag = true;
+                                        }
+                                    }
                                 }
-                                catch (Exception)
+                                else
                                 {
                                     ErrorFlag = true;
                                 }
-                                finally
-                                {
-                                    conn.Close();
-                                }
-
                             }
+                            catch (Exception)
+                            {
+                                ErrorFlag = true;
+                            }
+                            finally
+                            {
+                                conn.Close();
+                            }
+
                         }
 
                         if (!ErrorFlag)

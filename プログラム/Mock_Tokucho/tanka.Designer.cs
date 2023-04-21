@@ -346,7 +346,7 @@
             this.tableLayoutPanel6.Controls.Add(this.label10, 6, 0);
             this.tableLayoutPanel6.Controls.Add(this.SeikyuuGetsu, 7, 0);
             this.tableLayoutPanel6.Controls.Add(this.PrintList, 1, 3);
-            this.tableLayoutPanel6.Controls.Add(this.button_Print, 2, 3);
+            this.tableLayoutPanel6.Controls.Add(this.button_Print, 3, 3);
             this.tableLayoutPanel6.Controls.Add(this.label14, 0, 3);
             this.tableLayoutPanel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(10, 244);
@@ -635,6 +635,7 @@
             // PrintList
             // 
             this.PrintList.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanel6.SetColumnSpan(this.PrintList, 2);
             this.PrintList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.PrintList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PrintList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -644,7 +645,7 @@
             "関東地整-請求一覧"});
             this.PrintList.Location = new System.Drawing.Point(230, 153);
             this.PrintList.Name = "PrintList";
-            this.PrintList.Size = new System.Drawing.Size(173, 22);
+            this.PrintList.Size = new System.Drawing.Size(255, 22);
             this.PrintList.TabIndex = 5;
             this.PrintList.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             this.PrintList.SelectedIndexChanged += new System.EventHandler(this.PrintList_SelectedIndexChanged);
@@ -659,7 +660,7 @@
             this.button_Print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button_Print.ForeColor = System.Drawing.Color.White;
             this.button_Print.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Print.Location = new System.Drawing.Point(444, 147);
+            this.button_Print.Location = new System.Drawing.Point(497, 147);
             this.button_Print.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.button_Print.Name = "button_Print";
             this.button_Print.Size = new System.Drawing.Size(184, 34);

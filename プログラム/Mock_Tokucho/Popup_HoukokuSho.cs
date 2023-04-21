@@ -462,20 +462,66 @@ namespace TokuchoBugyoK2
                 listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
             }
 
-            // えんとり君修正STEP2 報告書共通化
-            if(listID == 802 || listID == 803)
+            // No.1423 1197 報告書共通化の報告書追加時に条件が表示されない。
+            string printDataPattern = "";
+            var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+            using (var conn = new SqlConnection(connStr))
             {
-                Array.Resize(ref report_data, 18);
-                report_data[17] = "null";
-                if (radioButton_No.Checked)
+                try
                 {
-                    report_data[17] = "0";
+                    conn.Open();
+                    var cmd = conn.CreateCommand();
+                    var Dt = new System.Data.DataTable();
+                    //SQL生成
+                    cmd.CommandText = "SELECT " +
+                      "PrintDataPattern,PrintKikanFlg " +
+                      "FROM " + "Mst_PrintList " +
+                      "WHERE PrintListID = '" + listID + "'";
+
+                    //データ取得
+                    var sda = new SqlDataAdapter(cmd);
+                    sda.Fill(Dt);
+                    //Boolean errorFLG = false;
+
+                    if (Dt.Rows.Count > 0 && (Dt.Rows[0][0].ToString() == "800" || Dt.Rows[0][0].ToString() == "801"))
+                    {
+                        printDataPattern = Dt.Rows[0][0].ToString();
+                        Array.Resize(ref report_data, 18);
+                        report_data[17] = "null";
+                        if (radioButton_No.Checked)
+                        {
+                            report_data[17] = "0";
+                        }
+                        else
+                        {
+                            report_data[17] = "1";
+                        }
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    report_data[17] = "1";
+                    // 何もしない
                 }
+                finally
+                {
+                    conn.Close();
+                }
+
             }
+            // えんとり君修正STEP2 報告書共通化
+            //if (listID == 802 || listID == 803)
+            //{
+            //    Array.Resize(ref report_data, 18);
+            //    report_data[17] = "null";
+            //    if (radioButton_No.Checked)
+            //    {
+            //        report_data[17] = "0";
+            //    }
+            //    else
+            //    {
+            //        report_data[17] = "1";
+            //    }
+            //}
             //// ファイル名の取得
             //string w_PritFileName = get_PritFileName();
 
@@ -489,7 +535,7 @@ namespace TokuchoBugyoK2
                 printName = "Houkokusho";
             }
 
-            string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data, printName);
+            string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data, printName, printDataPattern);
             // result
             // 成否判定 0:正常 1：エラー
             // メッセージ（主にエラー用）

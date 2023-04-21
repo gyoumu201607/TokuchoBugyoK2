@@ -1424,7 +1424,8 @@ namespace TokuchoBugyoK2
             return result;
         }
 
-        public string[] InsertMadoguchiReportWork(int ListID, string UserID, string[] data, string reportType)
+        //public string[] InsertMadoguchiReportWork(int ListID, string UserID, string[] data, string reportType)
+        public string[] InsertMadoguchiReportWork(int ListID, string UserID, string[] data, string reportType, string printDataPattern = "")
         {
             SqlConnection sqlconn = new SqlConnection(connStr);
             sqlconn.Open();
@@ -1510,7 +1511,7 @@ namespace TokuchoBugyoK2
                     "(" + WorkID + ",17" + ",'Memo2'" + ",1" + ", N'" + ChangeSqlText(data[16], 0, 0) + "',null" + ",null" + ")";
 
                     // えんとり君修正STEP2 報告書共通化
-                    if (ListID == 802 || ListID == 803)
+                    if (printDataPattern.Equals("800") || printDataPattern.Equals("801"))
                     {
                         cmd.CommandText = cmd.CommandText + ",(" + WorkID + ",18" + ",'ChuushiYouhi'" + ",2" + ",null" + "," + data[17] + ",null" + ")";
                     }
