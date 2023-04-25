@@ -3173,7 +3173,7 @@ namespace TokuchoBugyoK2
             this.label51.AutoSize = true;
             this.label51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
             this.label51.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label51.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label51.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
             this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label51.ForeColor = System.Drawing.Color.White;
             this.label51.Location = new System.Drawing.Point(3, 184);

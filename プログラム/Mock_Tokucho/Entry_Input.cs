@@ -530,15 +530,21 @@ namespace TokuchoBugyoK2
                     if (item3_1_2.Checked)
                     {
                         label51.Visible = false;
+                        txt_renamedfolder.Visible = false;
+                        label115.Visible = false;
                     }
                     else
                     {
                         label51.Visible = true;
+                        txt_renamedfolder.Visible = true;
+                        label115.Visible = true;
                     }
                 }
                 else
                 {
                     label51.Visible = false;
+                    txt_renamedfolder.Visible = false;
+                    label115.Visible = false;
                 }
             }
             else
@@ -865,6 +871,8 @@ namespace TokuchoBugyoK2
                 button12.Visible = false;
                 //えんとり君修正STEP2
                 label51.Visible = false;
+                txt_renamedfolder.Visible = false;
+                label115.Visible = false;
                 item1_37.Visible = false;
                 item1_38.Visible = false;
                 // No.1422 1196 案件番号の変更履歴を保存する
@@ -5654,6 +5662,17 @@ namespace TokuchoBugyoK2
                 varidateFlag = false;
             }
 
+            // No1209 要望ほか、６件 アラートからエラーメッセージへ変更する
+            if (item2_2_3.SelectedValue != null && item2_2_3.SelectedValue.ToString().Equals("3") == false)
+            {
+                if ((item2_2_1.SelectedValue != null && (item2_2_1.SelectedValue.ToString().Equals("3") || item2_2_1.SelectedValue.ToString().Equals("4"))) ||
+                    (item1_34.SelectedValue != null && item1_34.SelectedValue.ToString().Equals("4")))
+                {
+                    set_error(GlobalMethod.GetMessage("E10730", "(入札タブ)(引合タブ)"));
+                    varidateFlag = false;
+                }
+            }
+
             if (requiredFlag && varidateFlag)
             {
                 // 税込
@@ -5683,18 +5702,19 @@ namespace TokuchoBugyoK2
                         GlobalMethod.outputMessage("E10729", "(入札タブ)");
                     }
 
-                    //②受注意欲（入札タブ）を「なし」以外にした状態で、当会応札（入札タブ）が「不参加」「辞退」、または参考見積（引合タブ）が「辞退」の場合にアラート表示してほしい
-                    if (item2_2_3.SelectedValue != null && item2_2_3.SelectedValue.ToString().Equals("3") == false)
-                    {
-                        if((item2_2_1.SelectedValue != null && (item2_2_1.SelectedValue.ToString().Equals("3") || item2_2_1.SelectedValue.ToString().Equals("4"))) ||
-                            (item1_34.SelectedValue != null && item1_34.SelectedValue.ToString().Equals("4")))
-                        {
-                            if (GlobalMethod.outputMessage("E10730", "(入札タブ)(引合タブ)",1) == DialogResult.Cancel)
-                            {
-                                varidateFlag = false;
-                            }
-                        }
-                    }
+                    // No1209 要望ほか、６件 アラートからエラーメッセージへ変更する
+                    ////②受注意欲（入札タブ）を「なし」以外にした状態で、当会応札（入札タブ）が「不参加」「辞退」、または参考見積（引合タブ）が「辞退」の場合にアラート表示してほしい
+                    //if (item2_2_3.SelectedValue != null && item2_2_3.SelectedValue.ToString().Equals("3") == false)
+                    //{
+                    //    if((item2_2_1.SelectedValue != null && (item2_2_1.SelectedValue.ToString().Equals("3") || item2_2_1.SelectedValue.ToString().Equals("4"))) ||
+                    //        (item1_34.SelectedValue != null && item1_34.SelectedValue.ToString().Equals("4")))
+                    //    {
+                    //        if (GlobalMethod.outputMessage("E10730", "(入札タブ)(引合タブ)",1) == DialogResult.Cancel)
+                    //        {
+                    //            varidateFlag = false;
+                    //        }
+                    //    }
+                    //}
                 }
             }
             //// エラーがなければワーニングのチェックを行う
@@ -8663,10 +8683,14 @@ namespace TokuchoBugyoK2
                         if (item1_7.Text == "")
                         {
                             label51.Visible = true;
+                            txt_renamedfolder.Visible = true;
+                            label115.Visible = true;
                         }
                         else
                         {
                             label51.Visible = false;
+                            txt_renamedfolder.Visible = false;
+                            label115.Visible = false;
                         }
 
                         return true;
@@ -15490,11 +15514,12 @@ namespace TokuchoBugyoK2
                 item1_17.SelectedValue = AnkenData_H.Rows[0][16].ToString();
                 //えんとり君修正STEP2
                 //案件メモ・参考見積額をコピーしない。
-                //item1_18.Text = AnkenData_H.Rows[0][17].ToString();
-                if (CopyMode != "1")
-                {
-                    item1_18.Text = AnkenData_H.Rows[0][17].ToString();
-                }
+                // No1209 要望ほか、６件 案件メモは残す
+                item1_18.Text = AnkenData_H.Rows[0][17].ToString();
+                //if (CopyMode != "1")
+                //{
+                //    item1_18.Text = AnkenData_H.Rows[0][17].ToString();
+                //}
                 //発注者情報
                 item1_19.Text = AnkenData_H.Rows[0][18].ToString();
                 item1_20.Text = AnkenData_H.Rows[0][19].ToString();

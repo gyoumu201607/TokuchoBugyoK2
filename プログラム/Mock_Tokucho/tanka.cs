@@ -1710,13 +1710,41 @@ namespace TokuchoBugyoK2
 
         private void PrintList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (PrintList.SelectedValue.ToString() == "800" || PrintList.SelectedValue.ToString() == "801")
+            using (var conn = new SqlConnection(connStr))
             {
-                tableLayoutPanel13.Visible = true;
-            }
-            else
-            {
-                tableLayoutPanel13.Visible = false;
+                try
+                {
+                    conn.Open();
+                    var cmd = conn.CreateCommand();
+                    var Dt = new System.Data.DataTable();
+                    //SQL生成
+                    cmd.CommandText = "SELECT " +
+                      "PrintDataPattern,PrintKikanFlg " +
+                      "FROM " + "Mst_PrintList " +
+                      "WHERE PrintListID = '" + PrintList.SelectedValue + "'";
+
+                    //データ取得
+                    var sda = new SqlDataAdapter(cmd);
+                    sda.Fill(Dt);
+                    //Boolean errorFLG = false;
+
+                    if (Dt.Rows.Count > 0 && (Dt.Rows[0][0].ToString() == "800" || Dt.Rows[0][0].ToString() == "801"))
+                    {
+                        tableLayoutPanel13.Visible = true;
+                    }
+                    else
+                    {
+                        tableLayoutPanel13.Visible = false;
+                    }
+                }
+                catch (Exception)
+                {
+                    tableLayoutPanel13.Visible = false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
 
