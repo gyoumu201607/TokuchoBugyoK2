@@ -12044,8 +12044,9 @@ namespace TokuchoBugyoK2
             }
             else
             {
-                //元フォルダへ戻す
-                item1_12.Text = sFolderRenameBef;
+                // No1420（差戻） もっとの更新機能が残す
+                ////元フォルダへ戻す
+                //item1_12.Text = sFolderRenameBef;
             }
             return isMoveOk;
         }
