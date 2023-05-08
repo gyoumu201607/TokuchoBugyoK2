@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -271,6 +271,14 @@ namespace TokuchoBugyoK2
             string PrintFileName = get_Mst_Print("PrintDownloadFileName");
 
             return PrintFileName;
+        }
+
+        // プリントマスタのプリントデータ番号の取得
+        private string get_PrintDataPattern()
+        {
+            string PrintDataPattern = get_Mst_Print("PrintDataPattern");
+
+            return PrintDataPattern;
         }
 
         // プリントマスタから指定した項目の値を取得する
@@ -713,7 +721,8 @@ namespace TokuchoBugyoK2
             }
 
             // えんとり君修正STEP2 報告書共通化
-            if(w_PrintHinagataBangou == "21")
+            string w_PrintDataPattern = get_PrintDataPattern();
+            if (w_PrintDataPattern == "800" || w_PrintDataPattern == "801")
             {
                 tableLayoutPanel5.Visible = true;
             }
