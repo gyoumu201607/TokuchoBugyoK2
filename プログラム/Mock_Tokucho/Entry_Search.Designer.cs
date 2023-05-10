@@ -43,6 +43,14 @@ namespace TokuchoBugyoK2
             this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.src_16_copy = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.label35 = new System.Windows.Forms.Label();
+            this.src_30 = new System.Windows.Forms.CheckBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.src_29 = new System.Windows.Forms.CheckBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.src_4 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -107,6 +115,10 @@ namespace TokuchoBugyoK2
             this.label31 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.jigyobuHaibun_Zeikomi_Goukei = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.jigyobuHaibun_Zeinuki_Goukei = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.chosabuHaibun_Zeikomi_Goukei = new System.Windows.Forms.Label();
             this.chosabuHaibun_Zeinuki_Goukei = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -133,22 +145,14 @@ namespace TokuchoBugyoK2
             this.label10 = new System.Windows.Forms.Label();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
-            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.label33 = new System.Windows.Forms.Label();
-            this.src_29 = new System.Windows.Forms.CheckBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.src_30 = new System.Windows.Forms.CheckBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.jigyobuHaibun_Zeinuki_Goukei = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.jigyobuHaibun_Zeikomi_Goukei = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -164,7 +168,6 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.ErrorBox.SuspendLayout();
-            this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // button2
@@ -366,6 +369,9 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel9.Controls.Add(this.label39, 2, 5);
+            this.tableLayoutPanel9.Controls.Add(this.src_16_copy, 1, 5);
+            this.tableLayoutPanel9.Controls.Add(this.label37, 0, 5);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel14, 8, 4);
             this.tableLayoutPanel9.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.src_4, 3, 0);
@@ -426,14 +432,119 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel9.Location = new System.Drawing.Point(10, 43);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 5;
+            this.tableLayoutPanel9.RowCount = 6;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1864, 148);
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1864, 173);
             this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // src_16_copy
+            // 
+            this.src_16_copy.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_16_copy.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.src_16_copy.Location = new System.Drawing.Point(102, 150);
+            this.src_16_copy.Margin = new System.Windows.Forms.Padding(2);
+            this.src_16_copy.MaxLength = 11;
+            this.src_16_copy.Name = "src_16_copy";
+            this.src_16_copy.Size = new System.Drawing.Size(107, 21);
+            this.src_16_copy.TabIndex = 34;
+            // 
+            // label37
+            // 
+            this.label37.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label37.Location = new System.Drawing.Point(2, 152);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(64, 17);
+            this.label37.TabIndex = 33;
+            this.label37.Text = "案件番号";
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.AutoSize = true;
+            this.tableLayoutPanel14.ColumnCount = 5;
+            this.tableLayoutPanel9.SetColumnSpan(this.tableLayoutPanel14, 4);
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 194F));
+            this.tableLayoutPanel14.Controls.Add(this.label35, 3, 0);
+            this.tableLayoutPanel14.Controls.Add(this.src_30, 4, 0);
+            this.tableLayoutPanel14.Controls.Add(this.label34, 2, 0);
+            this.tableLayoutPanel14.Controls.Add(this.src_29, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.label33, 0, 0);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(1267, 125);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 1;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(594, 20);
+            this.tableLayoutPanel14.TabIndex = 32;
+            // 
+            // label35
+            // 
+            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label35.Location = new System.Drawing.Point(322, 1);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(61, 17);
+            this.label35.TabIndex = 30;
+            this.label35.Text = "サ社経由";
+            // 
+            // src_30
+            // 
+            this.src_30.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_30.AutoSize = true;
+            this.src_30.Location = new System.Drawing.Point(402, 3);
+            this.src_30.Margin = new System.Windows.Forms.Padding(2);
+            this.src_30.Name = "src_30";
+            this.src_30.Size = new System.Drawing.Size(15, 14);
+            this.src_30.TabIndex = 29;
+            this.src_30.UseVisualStyleBackColor = true;
+            // 
+            // label34
+            // 
+            this.label34.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label34.Location = new System.Drawing.Point(242, 1);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(73, 17);
+            this.label34.TabIndex = 28;
+            this.label34.Text = "管理者のみ";
+            // 
+            // src_29
+            // 
+            this.src_29.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_29.AutoSize = true;
+            this.src_29.Location = new System.Drawing.Point(162, 3);
+            this.src_29.Margin = new System.Windows.Forms.Padding(2);
+            this.src_29.Name = "src_29";
+            this.src_29.Size = new System.Drawing.Size(15, 14);
+            this.src_29.TabIndex = 27;
+            this.src_29.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label33.Location = new System.Drawing.Point(2, 1);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(127, 17);
+            this.label33.TabIndex = 1;
+            this.label33.Text = "RIBC用単価データ有";
             // 
             // label5
             // 
@@ -1338,13 +1449,13 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.c1FlexGrid1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 251);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 276);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1884, 628);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1884, 603);
             this.tableLayoutPanel2.TabIndex = 38;
             // 
             // tableLayoutPanel12
@@ -1389,6 +1500,68 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(1592, 30);
             this.tableLayoutPanel12.TabIndex = 38;
+            // 
+            // jigyobuHaibun_Zeikomi_Goukei
+            // 
+            this.jigyobuHaibun_Zeikomi_Goukei.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.jigyobuHaibun_Zeikomi_Goukei.BackColor = System.Drawing.Color.White;
+            this.jigyobuHaibun_Zeikomi_Goukei.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.jigyobuHaibun_Zeikomi_Goukei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.jigyobuHaibun_Zeikomi_Goukei.ForeColor = System.Drawing.Color.Black;
+            this.jigyobuHaibun_Zeikomi_Goukei.Location = new System.Drawing.Point(1472, 5);
+            this.jigyobuHaibun_Zeikomi_Goukei.Margin = new System.Windows.Forms.Padding(0);
+            this.jigyobuHaibun_Zeikomi_Goukei.MaximumSize = new System.Drawing.Size(120, 20);
+            this.jigyobuHaibun_Zeikomi_Goukei.MinimumSize = new System.Drawing.Size(120, 20);
+            this.jigyobuHaibun_Zeikomi_Goukei.Name = "jigyobuHaibun_Zeikomi_Goukei";
+            this.jigyobuHaibun_Zeikomi_Goukei.Size = new System.Drawing.Size(120, 20);
+            this.jigyobuHaibun_Zeikomi_Goukei.TabIndex = 74;
+            this.jigyobuHaibun_Zeikomi_Goukei.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label38
+            // 
+            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label38.BackColor = System.Drawing.Color.SteelBlue;
+            this.label38.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label38.ForeColor = System.Drawing.Color.White;
+            this.label38.Location = new System.Drawing.Point(1292, 5);
+            this.label38.Margin = new System.Windows.Forms.Padding(0);
+            this.label38.MaximumSize = new System.Drawing.Size(0, 20);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(180, 20);
+            this.label38.TabIndex = 73;
+            this.label38.Text = "事業普及部配分額(税込)合計";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // jigyobuHaibun_Zeinuki_Goukei
+            // 
+            this.jigyobuHaibun_Zeinuki_Goukei.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.jigyobuHaibun_Zeinuki_Goukei.BackColor = System.Drawing.Color.White;
+            this.jigyobuHaibun_Zeinuki_Goukei.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.jigyobuHaibun_Zeinuki_Goukei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.jigyobuHaibun_Zeinuki_Goukei.ForeColor = System.Drawing.Color.Black;
+            this.jigyobuHaibun_Zeinuki_Goukei.Location = new System.Drawing.Point(1172, 5);
+            this.jigyobuHaibun_Zeinuki_Goukei.Margin = new System.Windows.Forms.Padding(0);
+            this.jigyobuHaibun_Zeinuki_Goukei.MaximumSize = new System.Drawing.Size(120, 20);
+            this.jigyobuHaibun_Zeinuki_Goukei.MinimumSize = new System.Drawing.Size(120, 20);
+            this.jigyobuHaibun_Zeinuki_Goukei.Name = "jigyobuHaibun_Zeinuki_Goukei";
+            this.jigyobuHaibun_Zeinuki_Goukei.Size = new System.Drawing.Size(120, 20);
+            this.jigyobuHaibun_Zeinuki_Goukei.TabIndex = 72;
+            this.jigyobuHaibun_Zeinuki_Goukei.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label36
+            // 
+            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label36.BackColor = System.Drawing.Color.SteelBlue;
+            this.label36.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label36.ForeColor = System.Drawing.Color.White;
+            this.label36.Location = new System.Drawing.Point(992, 5);
+            this.label36.Margin = new System.Windows.Forms.Padding(0);
+            this.label36.MaximumSize = new System.Drawing.Size(0, 20);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(180, 20);
+            this.label36.TabIndex = 71;
+            this.label36.Text = "事業普及部配分額(税抜)合計";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chosabuHaibun_Zeikomi_Goukei
             // 
@@ -1597,7 +1770,7 @@ namespace TokuchoBugyoK2
             this.c1FlexGrid1.Name = "c1FlexGrid1";
             this.c1FlexGrid1.Rows.Count = 2;
             this.c1FlexGrid1.Rows.Fixed = 2;
-            this.c1FlexGrid1.Size = new System.Drawing.Size(1864, 572);
+            this.c1FlexGrid1.Size = new System.Drawing.Size(1864, 547);
             this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
             this.c1FlexGrid1.TabIndex = 39;
             this.c1FlexGrid1.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid1_BeforeMouseDown);
@@ -1625,7 +1798,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel3.Controls.Add(this.button5, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.comboBox13, 4, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 201);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 226);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -1808,148 +1981,19 @@ namespace TokuchoBugyoK2
             this.ErrorMessage.Size = new System.Drawing.Size(1874, 13);
             this.ErrorMessage.TabIndex = 1;
             // 
-            // tableLayoutPanel14
+            // label39
             // 
-            this.tableLayoutPanel14.AutoSize = true;
-            this.tableLayoutPanel14.ColumnCount = 5;
-            this.tableLayoutPanel9.SetColumnSpan(this.tableLayoutPanel14, 4);
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel14.Controls.Add(this.label35, 3, 0);
-            this.tableLayoutPanel14.Controls.Add(this.src_30, 4, 0);
-            this.tableLayoutPanel14.Controls.Add(this.label34, 2, 0);
-            this.tableLayoutPanel14.Controls.Add(this.src_29, 1, 0);
-            this.tableLayoutPanel14.Controls.Add(this.label33, 0, 0);
-            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(1267, 125);
-            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            this.tableLayoutPanel14.RowCount = 1;
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(594, 20);
-            this.tableLayoutPanel14.TabIndex = 32;
-            // 
-            // label33
-            // 
-            this.label33.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label33.Location = new System.Drawing.Point(2, 1);
-            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(127, 17);
-            this.label33.TabIndex = 1;
-            this.label33.Text = "RIBC用単価データ有";
-            // 
-            // src_29
-            // 
-            this.src_29.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.src_29.AutoSize = true;
-            this.src_29.Location = new System.Drawing.Point(162, 3);
-            this.src_29.Margin = new System.Windows.Forms.Padding(2);
-            this.src_29.Name = "src_29";
-            this.src_29.Size = new System.Drawing.Size(15, 14);
-            this.src_29.TabIndex = 27;
-            this.src_29.UseVisualStyleBackColor = true;
-            // 
-            // label34
-            // 
-            this.label34.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label34.Location = new System.Drawing.Point(242, 1);
-            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(73, 17);
-            this.label34.TabIndex = 28;
-            this.label34.Text = "管理者のみ";
-            // 
-            // src_30
-            // 
-            this.src_30.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.src_30.AutoSize = true;
-            this.src_30.Location = new System.Drawing.Point(402, 3);
-            this.src_30.Margin = new System.Windows.Forms.Padding(2);
-            this.src_30.Name = "src_30";
-            this.src_30.Size = new System.Drawing.Size(15, 14);
-            this.src_30.TabIndex = 29;
-            this.src_30.UseVisualStyleBackColor = true;
-            // 
-            // label35
-            // 
-            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label35.Location = new System.Drawing.Point(322, 1);
-            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(61, 17);
-            this.label35.TabIndex = 30;
-            this.label35.Text = "サ社経由";
-            // 
-            // label36
-            // 
-            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label36.BackColor = System.Drawing.Color.SteelBlue;
-            this.label36.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label36.ForeColor = System.Drawing.Color.White;
-            this.label36.Location = new System.Drawing.Point(992, 5);
-            this.label36.Margin = new System.Windows.Forms.Padding(0);
-            this.label36.MaximumSize = new System.Drawing.Size(0, 20);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(180, 20);
-            this.label36.TabIndex = 71;
-            this.label36.Text = "事業普及部配分額(税抜)合計";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // jigyobuHaibun_Zeinuki_Goukei
-            // 
-            this.jigyobuHaibun_Zeinuki_Goukei.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.jigyobuHaibun_Zeinuki_Goukei.BackColor = System.Drawing.Color.White;
-            this.jigyobuHaibun_Zeinuki_Goukei.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.jigyobuHaibun_Zeinuki_Goukei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.jigyobuHaibun_Zeinuki_Goukei.ForeColor = System.Drawing.Color.Black;
-            this.jigyobuHaibun_Zeinuki_Goukei.Location = new System.Drawing.Point(1172, 5);
-            this.jigyobuHaibun_Zeinuki_Goukei.Margin = new System.Windows.Forms.Padding(0);
-            this.jigyobuHaibun_Zeinuki_Goukei.MaximumSize = new System.Drawing.Size(120, 20);
-            this.jigyobuHaibun_Zeinuki_Goukei.MinimumSize = new System.Drawing.Size(120, 20);
-            this.jigyobuHaibun_Zeinuki_Goukei.Name = "jigyobuHaibun_Zeinuki_Goukei";
-            this.jigyobuHaibun_Zeinuki_Goukei.Size = new System.Drawing.Size(120, 20);
-            this.jigyobuHaibun_Zeinuki_Goukei.TabIndex = 72;
-            this.jigyobuHaibun_Zeinuki_Goukei.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label38
-            // 
-            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label38.BackColor = System.Drawing.Color.SteelBlue;
-            this.label38.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label38.ForeColor = System.Drawing.Color.White;
-            this.label38.Location = new System.Drawing.Point(1292, 5);
-            this.label38.Margin = new System.Windows.Forms.Padding(0);
-            this.label38.MaximumSize = new System.Drawing.Size(0, 20);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(180, 20);
-            this.label38.TabIndex = 73;
-            this.label38.Text = "事業普及部配分額(税込)合計";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // jigyobuHaibun_Zeikomi_Goukei
-            // 
-            this.jigyobuHaibun_Zeikomi_Goukei.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.jigyobuHaibun_Zeikomi_Goukei.BackColor = System.Drawing.Color.White;
-            this.jigyobuHaibun_Zeikomi_Goukei.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.jigyobuHaibun_Zeikomi_Goukei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.jigyobuHaibun_Zeikomi_Goukei.ForeColor = System.Drawing.Color.Black;
-            this.jigyobuHaibun_Zeikomi_Goukei.Location = new System.Drawing.Point(1472, 5);
-            this.jigyobuHaibun_Zeikomi_Goukei.Margin = new System.Windows.Forms.Padding(0);
-            this.jigyobuHaibun_Zeikomi_Goukei.MaximumSize = new System.Drawing.Size(120, 20);
-            this.jigyobuHaibun_Zeikomi_Goukei.MinimumSize = new System.Drawing.Size(120, 20);
-            this.jigyobuHaibun_Zeikomi_Goukei.Name = "jigyobuHaibun_Zeikomi_Goukei";
-            this.jigyobuHaibun_Zeikomi_Goukei.Size = new System.Drawing.Size(120, 20);
-            this.jigyobuHaibun_Zeikomi_Goukei.TabIndex = 74;
-            this.jigyobuHaibun_Zeikomi_Goukei.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label39.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label39.AutoSize = true;
+            this.tableLayoutPanel9.SetColumnSpan(this.label39, 5);
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label39.ForeColor = System.Drawing.Color.Blue;
+            this.label39.Location = new System.Drawing.Point(364, 152);
+            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(278, 17);
+            this.label39.TabIndex = 35;
+            this.label39.Text = "※ 案件番号のみで検索(3桁以上の場合に使用)";
             // 
             // Entry_Search
             // 
@@ -1975,6 +2019,8 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel10.ResumeLayout(false);
@@ -1999,8 +2045,6 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel8.PerformLayout();
             this.ErrorBox.ResumeLayout(false);
             this.ErrorBox.PerformLayout();
-            this.tableLayoutPanel14.ResumeLayout(false);
-            this.tableLayoutPanel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2118,5 +2162,8 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label jigyobuHaibun_Zeinuki_Goukei;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox src_16_copy;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label39;
     }
 }

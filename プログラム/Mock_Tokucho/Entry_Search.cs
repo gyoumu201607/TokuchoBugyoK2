@@ -1104,31 +1104,31 @@ namespace TokuchoBugyoK2
                             ",ISNULL(KeiyakuHaibunChoZeinuki,0) " +    // 調査部配分額(税抜)
 
                             ",ISNULL(KeiyakuUriageHaibunCho,0) " +     // 調査部配分額(税込)
-                            //",ISNULL(AnkenKeiyakuUriageHaibunGakuC,0) " +     // 調査部配分額(税込)
+                                                                       //",ISNULL(AnkenKeiyakuUriageHaibunGakuC,0) " +     // 調査部配分額(税込)
 
                             ",ISNULL(KeiyakuTankeiMikomiCho,0) " +     // 調査部単契等の見込補正額(税抜)
-                            
+
                             //",ISNULL(AnkenKeiyakuZeikomiKingaku,0) " +
                             ",ISNULL(KeiyakuZeikomiKingaku,0) " + // 契約金額（税込）
 
                             ",ISNULL(NyuusatsuMitsumorigaku,0) " +
                             ",NyuusatsuKekkaMemo " +
                             ",ISNULL(KeiyakuHaibunJoZeinuki,0) " +     // 事業普及部配分額(税抜)
-                            
+
                             ",ISNULL(KeiyakuUriageHaibunJo,0) " +      // 事業普及部配分額(税込)
-                            //",ISNULL(AnkenKeiyakuUriageHaibunGakuJ,0) " +      // 事業普及部配分額(税込)
+                                                                       //",ISNULL(AnkenKeiyakuUriageHaibunGakuJ,0) " +      // 事業普及部配分額(税込)
 
                             ",ISNULL(KeiyakuTankeiMikomiJo,0) " +      // 事業普及部単契等の
                             ",ISNULL(KeiyakuHaibunJosysZeinuki,0) " +  // 情報システム配分額(税抜)
 
                             ",ISNULL(KeiyakuUriageHaibunJosys,0) " +   // 情報システム配分額(税込)
-                            //",ISNULL(AnkenKeiyakuUriageHaibunGakuJs,0) " +   // 情報システム配分額(税込)
+                                                                       //",ISNULL(AnkenKeiyakuUriageHaibunGakuJs,0) " +   // 情報システム配分額(税込)
 
                             ",ISNULL(KeiyakuTankeiMikomiJosys,0) " +   // 情報システム単契等の
                             ",ISNULL(KeiyakuHaibunKeiZeinuki,0) " +    // 総合研究所配分額(税抜)
-                            
+
                             ",ISNULL(KeiyakuUriageHaibunKei,0) " +     // 総合研究所配分額(税込)
-                            //",ISNULL(AnkenKeiyakuUriageHaibunGakuK,0) " +     // 総合研究所配分額(税込)
+                                                                       //",ISNULL(AnkenKeiyakuUriageHaibunGakuK,0) " +     // 総合研究所配分額(税込)
 
                             ",ISNULL(KeiyakuTankeiMikomiKei,0) " +     // 総合研究所単契等の
                             ",AnkenTantoushaMei " +
@@ -1143,7 +1143,7 @@ namespace TokuchoBugyoK2
                             //"      ELSE '無' END AS 'NendoKurikoshi' " +
                             ",ISNULL(KeiyakuKurikoshiCho,0) " +
                             ",AnkenHachushaCD " +
-                            ",AnkenSaishinFlg " +                           
+                            ",AnkenSaishinFlg " +
                             "FROM AnkenJouhou " +
                             "LEFT JOIN NyuusatsuJouhou ON AnkenJouhou.AnkenJouhouID = NyuusatsuJouhou.AnkenJouhouID " +
                             "LEFT JOIN KeiyakuJouhouEntory ON KeiyakuJouhouEntory.AnkenJouhouID = AnkenJouhou.AnkenJouhouID " +
@@ -1153,11 +1153,23 @@ namespace TokuchoBugyoK2
                             "LEFT JOIN Mst_Hachusha ON AnkenHachushaCD = HachushaCD " +
                             "LEFT JOIN NyuusatsuJouhouOusatsusha ON NyuusatsuJouhouOusatsusha.NyuusatsuJouhouID = NyuusatsuJouhou.NyuusatsuJouhouID AND NyuusatsuRakusatsuJokyou = 1 " +
                             "LEFT JOIN KeikakuJouhou ON KeikakuBangou = AnkenKeikakuBangou " +
-                            "LEFT JOIN GyoumuHaibun ON GyoumuHaibun.GyoumuAnkenJouhouID = AnkenJouhou.AnkenJouhouID and GyoumuHaibun.GyoumuHibunKubun = '10'" +
-                            "WHERE AnkenUriageNendo <= '" + nendo1 + "' and AnkenUriageNendo >= '" + nendo2 + "' " +
-                            "AND AnkenKoukiNendo <= '" + koukinendo1 + "' and AnkenKoukiNendo >= '" + koukinendo2 + "' " + 
-                            "AND AnkenDeleteFlag = 0 ";
+                            "LEFT JOIN GyoumuHaibun ON GyoumuHaibun.GyoumuAnkenJouhouID = AnkenJouhou.AnkenJouhouID and GyoumuHaibun.GyoumuHibunKubun = '10'";
 
+                    //・No1429　1209３桁以上入力の場合は、案件番号でのみ（前方一致）で検索
+                    //"WHERE AnkenUriageNendo <= '" + nendo1 + "' and AnkenUriageNendo >= '" + nendo2 + "' " +
+                    //"AND AnkenKoukiNendo <= '" + koukinendo1 + "' and AnkenKoukiNendo >= '" + koukinendo2 + "' " + 
+                    //"AND AnkenDeleteFlag = 0 ";
+                    if (src_16_copy.Text.Length >= 3) {
+                        cmd.CommandText +=
+
+                            " WHERE AnkenAnkenBangou LIKE '" + src_16_copy.Text + "%'";
+
+                    }
+                    else {
+                        cmd.CommandText += "WHERE AnkenUriageNendo <= '" + nendo1 + "' and AnkenUriageNendo >= '" + nendo2 + "' " +
+                    "AND AnkenKoukiNendo <= '" + koukinendo1 + "' and AnkenKoukiNendo >= '" + koukinendo2 + "' " +
+                    "AND AnkenDeleteFlag = 0 ";
+                
                     // 受託課所支部が空ではない場合
                     if (src_4.Text != "")
                     {
@@ -1184,8 +1196,8 @@ namespace TokuchoBugyoK2
                                 //if (int.Parse(src_1.SelectedValue.ToString()) < 2021) {
                                 if (item1_KoukiNendo.Text != null && item1_KoukiNendo.Text != "" && int.Parse(item1_KoukiNendo.SelectedValue.ToString()) < 2021)
                                 {
-                                        // 127000 本部 調査部門の場合、 1279 情報システム部関連は除外
-                                        cmd.CommandText += "  and NOT AnkenJutakubushoCD LIKE '1279%'";
+                                    // 127000 本部 調査部門の場合、 1279 情報システム部関連は除外
+                                    cmd.CommandText += "  and NOT AnkenJutakubushoCD LIKE '1279%'";
                                 }
                             }
                         }
@@ -1322,6 +1334,7 @@ namespace TokuchoBugyoK2
                     {
                         cmd.CommandText += "  and KeiyakuSashaKeiyu = 1";
                     }
+                }
                     // 499 業務日報用の案件を除外する
                     //cmd.CommandText += " and AnkenAnkenBangou not like '%999' ";
                     // 業務日報のデータは60000～70000の間で登録している為、除外

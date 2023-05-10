@@ -1362,7 +1362,6 @@ namespace TokuchoBugyoK2
                                    " , ChousaIraiHonsuu " +
                                    " , ChousaHinmokuShimekiribi " +
                                    " , ChousaHoukokuzumi " +
-
                                    //" , ChousaTankaCD1 " + // 50:発注品目コード
                                    " , ChousaDeleteFlag " + // 50
                                    " , ChousaHinmokuID " + // 51:調査品目ID
@@ -1370,6 +1369,12 @@ namespace TokuchoBugyoK2
                                    " , 1 " + // 53:0:Insert/1:Select/2:Update
                                    " , ChousaTankaCD1 " + // 54:発注品目コード
                                    " , '' " + // 55:並び順
+                                   " , ISNULL(MC0.RetireFlg, 0) AS RetireFlg " + //担当者退職フラグ
+                                   " , ISNULL(MC1.RetireFlg, 0) AS RetireFlg1 " + //副担当者1退職フラグ
+                                   " , ISNULL(MC2.RetireFlg, 0) AS RetireFlg2 " + //副担当者2退職フラグ
+                                   " , MC0.ChousainMei " + // 調査員名
+                                   " , MC1.ChousainMei AS FukuChousainMei1 " + // 副調査員名1
+                                   " , MC2.ChousainMei AS FukuChousainMei2 " + // 副調査員名2
                                    "FROM " +
                                    " ChousaHinmoku  " +
                                    "LEFT JOIN MadoguchiJouhou ON MadoguchiJouhou.MadoguchiID = ChousaHinmoku.MadoguchiID " +
@@ -1945,16 +1950,30 @@ namespace TokuchoBugyoK2
                     c1FlexGrid4.Rows[RowCount]["ChousaLinkSakliFolder"] = DT_ChousaHinmoku.Rows[i]["ChousaLinkSakli"];
                     // 調査担当部所
                     c1FlexGrid4.Rows[RowCount]["HinmokuRyakuBushoCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuRyakuBushoCD"];
-                    // 調査担当者
-                    c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuChousainCD"];
+                    // 調査担当者（修正後）No1427　1201 嘱託に転籍された方が個人CDで表示される
+                    //// 調査担当者（修正前）名前でなくコードで表示
+                    //c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuChousainCD"];
+                    if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg"])
+                        c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["ChousainMei"];
+                    else
+                        c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuChousainCD"];
                     // 副調査担当部所1
                     c1FlexGrid4.Rows[RowCount]["HinmokuRyakuBushoFuku1CD"] = DT_ChousaHinmoku.Rows[i]["HinmokuRyakuBushoFuku1CD"];
-                    // 副調査担当者1
-                    c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD1"];
+                    // 副調査担当者1（修正後）No1427 1201 嘱託に転籍された方が個人CDで表示される
+                    ////副調査担当者1（修正前）名前でなくコードで表示
+                    //c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD1"];
+                    if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg1"])
+                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei1"];
+                    else
+                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD1"];
                     // 副調査担当部所2
                     c1FlexGrid4.Rows[RowCount]["HinmokuRyakuBushoFuku2CD"] = DT_ChousaHinmoku.Rows[i]["HinmokuRyakuBushoFuku2CD"];
-                    // 副調査担当者2
-                    c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD2"];
+                    //// 副調査担当者2（修正前）名前でなくコードで表示
+                    //c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD2"];
+                    if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg2"])
+                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei2"];
+                    else
+                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD2"];
                     // 報告数
                     c1FlexGrid4.Rows[RowCount]["ChousaHoukokuHonsuu"] = DT_ChousaHinmoku.Rows[i]["ChousaHoukokuHonsuu"];
                     // 報告ランク

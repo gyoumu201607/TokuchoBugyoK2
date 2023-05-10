@@ -1168,19 +1168,20 @@ namespace TokuchoBugyoK2
                                 ErrorMsg += "・" + GlobalMethod.GetMessage("E70045", "");
                             }
 
-                            if (longChousabuKei == 0 && intGyomuHaibunKei > 0)
-                            {
-                                // 落札見込額と変更見込額で相殺して0円になったケースを除くため、落札見込額が0かチェックする
-                                if (longChousabu == 0)
-                                {
-                                    // E70045:調査業務別　配分を入力するには、業務別配分の入力をしてください。
-                                    ErrorMsg += "・" + GlobalMethod.GetMessage("E70056", "");
-                                }
-                            }
+                            //No1432　1212 計画案件の登録を、計画額　０円でも登録・更新できるようにしてほしい。
+                            //if (longChousabuKei == 0 && intGyomuHaibunKei > 0)
+                            //{
+                            //    // 落札見込額と変更見込額で相殺して0円になったケースを除くため、落札見込額が0かチェックする
+                            //    if (longChousabu == 0)
+                            //    {
+                            //        // E70045:調査業務別　配分を入力するには、業務別配分の入力をしてください。
+                            //        ErrorMsg += "・" + GlobalMethod.GetMessage("E70056", "");
+                            //    }
+                            //}
 
                         }
 
-                        
+
                         //計画番号形式チェック
                         //計画開始年度が追加になったため、10桁→13桁に変更
                         //Boolean PlanNoChk = true;
