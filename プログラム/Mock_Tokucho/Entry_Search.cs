@@ -966,7 +966,7 @@ namespace TokuchoBugyoK2
             }
         }
 
-        private void get_date()
+        private void get_date(int flg=0)
         {
             String nendo1 = "";
             String nendo2 = "";
@@ -1159,11 +1159,11 @@ namespace TokuchoBugyoK2
                     //"WHERE AnkenUriageNendo <= '" + nendo1 + "' and AnkenUriageNendo >= '" + nendo2 + "' " +
                     //"AND AnkenKoukiNendo <= '" + koukinendo1 + "' and AnkenKoukiNendo >= '" + koukinendo2 + "' " + 
                     //"AND AnkenDeleteFlag = 0 ";
-                    if (src_16_copy.Text.Length >= 3) {
-                        cmd.CommandText +=
-
-                            " WHERE AnkenAnkenBangou LIKE '" + src_16_copy.Text + "%'";
-
+                    if (flg == 1)
+                    {
+                        cmd.CommandText += "　WHERE AnkenAnkenBangou LIKE '" + src_16.Text + "%'";
+                        cmd.CommandText += "  and AnkenSaishinFlg = 1"; //最新伝票＝チェックあり
+                        //起案状況＝全て
                     }
                     else {
                         cmd.CommandText += "WHERE AnkenUriageNendo <= '" + nendo1 + "' and AnkenUriageNendo >= '" + nendo2 + "' " +
@@ -2426,6 +2426,54 @@ namespace TokuchoBugyoK2
         private void src_1_SelectedIndexChanged(object sender, EventArgs e)
         {
             set_combo_shibu(src_1.SelectedValue.ToString());
+        }
+
+               //No1427　1201案件番号のみでの検索ができるように変更
+        private void button8_Click(object sender, EventArgs e)
+        {
+                //検索中に0を表示
+                chosabuHaibun_Zeinuki_Goukei.Text = "0";
+                chosabuHaibun_Zeikomi_Goukei.Text = "0";
+                chosabuHaibun_Zeinuki_Goukei.Refresh();
+                chosabuHaibun_Zeikomi_Goukei.Refresh();
+
+                jigyobuHaibun_Zeinuki_Goukei.Text = "0";
+                jigyobuHaibun_Zeikomi_Goukei.Text = "0";
+                jigyobuHaibun_Zeinuki_Goukei.Refresh();
+                jigyobuHaibun_Zeikomi_Goukei.Refresh();
+
+                //レイアウトロジックを停止する
+                this.SuspendLayout();
+                //描画停止
+                c1FlexGrid1.BeginUpdate();
+
+                set_error("", 0);
+
+                if (src_16.Text.Length >= 3)
+                {
+                get_date(1);
+                }
+                else 
+                {
+                // エラー　3桁以上の案件番号を入力してください。
+                set_error(GlobalMethod.GetMessage("E10731", ""));
+                   }
+
+                // エラーフラグ true：正常 false：エラー
+                //Boolean errorflg = false;
+                // errorflg = uriagebi_Check();
+
+                // if (errorflg != false)
+                // {
+                //     set_error("", 0);
+                //     get_date();
+                // }
+
+                //描画再開
+                c1FlexGrid1.EndUpdate();
+                //レイアウトロジックを再開する
+                this.ResumeLayout();
+            
         }
     }
 }

@@ -43,8 +43,6 @@ namespace TokuchoBugyoK2
             this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.src_16_copy = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label35 = new System.Windows.Forms.Label();
             this.src_30 = new System.Windows.Forms.CheckBox();
@@ -138,14 +136,14 @@ namespace TokuchoBugyoK2
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -369,9 +367,6 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel9.Controls.Add(this.label39, 2, 5);
-            this.tableLayoutPanel9.Controls.Add(this.src_16_copy, 1, 5);
-            this.tableLayoutPanel9.Controls.Add(this.label37, 0, 5);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel14, 8, 4);
             this.tableLayoutPanel9.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.src_4, 3, 0);
@@ -439,31 +434,8 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1864, 173);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1864, 148);
             this.tableLayoutPanel9.TabIndex = 1;
-            // 
-            // src_16_copy
-            // 
-            this.src_16_copy.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.src_16_copy.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.src_16_copy.Location = new System.Drawing.Point(102, 150);
-            this.src_16_copy.Margin = new System.Windows.Forms.Padding(2);
-            this.src_16_copy.MaxLength = 11;
-            this.src_16_copy.Name = "src_16_copy";
-            this.src_16_copy.Size = new System.Drawing.Size(107, 21);
-            this.src_16_copy.TabIndex = 34;
-            // 
-            // label37
-            // 
-            this.label37.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label37.Location = new System.Drawing.Point(2, 152);
-            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(64, 17);
-            this.label37.TabIndex = 33;
-            this.label37.Text = "案件番号";
             // 
             // tableLayoutPanel14
             // 
@@ -1449,13 +1421,13 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.c1FlexGrid1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 276);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 251);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1884, 603);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1884, 628);
             this.tableLayoutPanel2.TabIndex = 38;
             // 
             // tableLayoutPanel12
@@ -1783,14 +1755,16 @@ namespace TokuchoBugyoK2
             // 
             this.tableLayoutPanel3.AutoScroll = true;
             this.tableLayoutPanel3.AutoSize = true;
-            this.tableLayoutPanel3.ColumnCount = 7;
+            this.tableLayoutPanel3.ColumnCount = 8;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 674F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 474F));
+            this.tableLayoutPanel3.Controls.Add(this.button8, 6, 0);
             this.tableLayoutPanel3.Controls.Add(this.button4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.button2, 2, 0);
@@ -1798,7 +1772,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel3.Controls.Add(this.button5, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.comboBox13, 4, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 226);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 201);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -1859,27 +1833,6 @@ namespace TokuchoBugyoK2
             this.button3.Text = "変更伝票";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button5
-            // 
-            this.button5.AutoSize = true;
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(1010, 10);
-            this.button5.Margin = new System.Windows.Forms.Padding(10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(180, 30);
-            this.button5.TabIndex = 37;
-            this.button5.Text = " 帳票出力";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // comboBox13
             // 
@@ -1981,19 +1934,47 @@ namespace TokuchoBugyoK2
             this.ErrorMessage.Size = new System.Drawing.Size(1874, 13);
             this.ErrorMessage.TabIndex = 1;
             // 
-            // label39
+            // button5
             // 
-            this.label39.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label39.AutoSize = true;
-            this.tableLayoutPanel9.SetColumnSpan(this.label39, 5);
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label39.ForeColor = System.Drawing.Color.Blue;
-            this.label39.Location = new System.Drawing.Point(364, 152);
-            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(278, 17);
-            this.label39.TabIndex = 35;
-            this.label39.Text = "※ 案件番号のみで検索(3桁以上の場合に使用)";
+            this.button5.AutoSize = true;
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(1010, 10);
+            this.button5.Margin = new System.Windows.Forms.Padding(10);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(180, 30);
+            this.button5.TabIndex = 37;
+            this.button5.Text = " 帳票出力";
+            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button8
+            // 
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Location = new System.Drawing.Point(1210, 10);
+            this.button8.Margin = new System.Windows.Forms.Padding(10);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(180, 30);
+            this.button8.TabIndex = 38;
+            this.button8.Text = "案件番号のみで検索";
+            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Entry_Search
             // 
@@ -2089,7 +2070,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label1;
         private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid1;
         private System.Windows.Forms.Button button7;
@@ -2162,8 +2142,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label jigyobuHaibun_Zeinuki_Goukei;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox src_16_copy;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button5;
     }
 }

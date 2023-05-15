@@ -1160,26 +1160,27 @@ namespace TokuchoBugyoK2
                                 }
                             }
                         }
-                        if (longChousabuKei != 0 || intGyomuHaibunKei != 0)
-                        {
-                            if (longChousabuKei > 0 && intGyomuHaibunKei != 100)
-                            {
-                                // E70045:調査業務別　配分の合計が100になるように入力してください。
-                                ErrorMsg += "・" + GlobalMethod.GetMessage("E70045", "");
-                            }
+                        //No1212 計画案件の登録を、計画額　０円でも登録・更新できるようにしてほしい。
+                        //if (longChousabuKei != 0 || intGyomuHaibunKei != 0)
+                        //{
+                        //    if (longChousabuKei > 0 && intGyomuHaibunKei != 100)
+                        //    {
+                        //        // E70045:調査業務別　配分の合計が100になるように入力してください。
+                        //        ErrorMsg += "・" + GlobalMethod.GetMessage("E70045", "");
+                        //    }
 
-                            //No1432　1212 計画案件の登録を、計画額　０円でも登録・更新できるようにしてほしい。
-                            //if (longChousabuKei == 0 && intGyomuHaibunKei > 0)
-                            //{
-                            //    // 落札見込額と変更見込額で相殺して0円になったケースを除くため、落札見込額が0かチェックする
-                            //    if (longChousabu == 0)
-                            //    {
-                            //        // E70045:調査業務別　配分を入力するには、業務別配分の入力をしてください。
-                            //        ErrorMsg += "・" + GlobalMethod.GetMessage("E70056", "");
-                            //    }
-                            //}
+                        //    //No1432　1212 計画案件の登録を、計画額　０円でも登録・更新できるようにしてほしい。
+                        //    //if (longChousabuKei == 0 && intGyomuHaibunKei > 0)
+                        //    //{
+                        //    //    // 落札見込額と変更見込額で相殺して0円になったケースを除くため、落札見込額が0かチェックする
+                        //    //    if (longChousabu == 0)
+                        //    //    {
+                        //    //        // E70045:調査業務別　配分を入力するには、業務別配分の入力をしてください。
+                        //    //        ErrorMsg += "・" + GlobalMethod.GetMessage("E70056", "");
+                        //    //    }
+                        //    //}
 
-                        }
+                        //}
 
 
                         //計画番号形式チェック
