@@ -1325,7 +1325,10 @@ namespace TokuchoBugyoK2
                     "(" + WorkID + ",29" + ",'KoukiKaishiNendoOption'" + ",2" + ",null" + "," + data[28] + "" + ",null" + ")," +
                     //えんとり君修正STEP2　案件情報一覧検索画面のエントリくん一覧帳票のパラメータ追加
                     "(" + WorkID + ",30" + ",'Ribicyou'" + ",1" + ",null" + "," + data[29] + "" + ",null" + ")," +
-                    "(" + WorkID + ",31" + ",'SashaKeiyu'" + ",1" + ",null" + "," + data[30] + "" + ",null" + ")";
+                    "(" + WorkID + ",31" + ",'SashaKeiyu'" + ",1" + ",null" + "," + data[30] + "" + ",null" + ")," +
+                    //AnkenBangou2パラメータ追加
+                    "(" + WorkID + ",32" + ",'AnkenBangou2'" + ",1" + ",N'" + ChangeSqlText(data[14], 0, 0) + "'" + ",null" + ",null)" 
+                    ;
 
                     cmd.ExecuteNonQuery();
 

@@ -23,7 +23,6 @@ namespace TokuchoBugyoK2
         public string[] UserInfos;
         private DataTable ListData = new DataTable();
         public Boolean ReSearch = true;
-        int KensakuFlg;
         GlobalMethod GlobalMethod = new GlobalMethod();
         public Entry_Search()
         {
@@ -967,7 +966,7 @@ namespace TokuchoBugyoK2
             }
         }
 
-        private void get_date(int flg=0)
+        private void get_date()
         {
             String nendo1 = "";
             String nendo2 = "";
@@ -1105,31 +1104,31 @@ namespace TokuchoBugyoK2
                             ",ISNULL(KeiyakuHaibunChoZeinuki,0) " +    // 調査部配分額(税抜)
 
                             ",ISNULL(KeiyakuUriageHaibunCho,0) " +     // 調査部配分額(税込)
-                                                                       //",ISNULL(AnkenKeiyakuUriageHaibunGakuC,0) " +     // 調査部配分額(税込)
+                            //",ISNULL(AnkenKeiyakuUriageHaibunGakuC,0) " +     // 調査部配分額(税込)
 
                             ",ISNULL(KeiyakuTankeiMikomiCho,0) " +     // 調査部単契等の見込補正額(税抜)
-
+                            
                             //",ISNULL(AnkenKeiyakuZeikomiKingaku,0) " +
                             ",ISNULL(KeiyakuZeikomiKingaku,0) " + // 契約金額（税込）
 
                             ",ISNULL(NyuusatsuMitsumorigaku,0) " +
                             ",NyuusatsuKekkaMemo " +
                             ",ISNULL(KeiyakuHaibunJoZeinuki,0) " +     // 事業普及部配分額(税抜)
-
+                            
                             ",ISNULL(KeiyakuUriageHaibunJo,0) " +      // 事業普及部配分額(税込)
-                                                                       //",ISNULL(AnkenKeiyakuUriageHaibunGakuJ,0) " +      // 事業普及部配分額(税込)
+                            //",ISNULL(AnkenKeiyakuUriageHaibunGakuJ,0) " +      // 事業普及部配分額(税込)
 
                             ",ISNULL(KeiyakuTankeiMikomiJo,0) " +      // 事業普及部単契等の
                             ",ISNULL(KeiyakuHaibunJosysZeinuki,0) " +  // 情報システム配分額(税抜)
 
                             ",ISNULL(KeiyakuUriageHaibunJosys,0) " +   // 情報システム配分額(税込)
-                                                                       //",ISNULL(AnkenKeiyakuUriageHaibunGakuJs,0) " +   // 情報システム配分額(税込)
+                            //",ISNULL(AnkenKeiyakuUriageHaibunGakuJs,0) " +   // 情報システム配分額(税込)
 
                             ",ISNULL(KeiyakuTankeiMikomiJosys,0) " +   // 情報システム単契等の
                             ",ISNULL(KeiyakuHaibunKeiZeinuki,0) " +    // 総合研究所配分額(税抜)
-
+                            
                             ",ISNULL(KeiyakuUriageHaibunKei,0) " +     // 総合研究所配分額(税込)
-                                                                       //",ISNULL(AnkenKeiyakuUriageHaibunGakuK,0) " +     // 総合研究所配分額(税込)
+                            //",ISNULL(AnkenKeiyakuUriageHaibunGakuK,0) " +     // 総合研究所配分額(税込)
 
                             ",ISNULL(KeiyakuTankeiMikomiKei,0) " +     // 総合研究所単契等の
                             ",AnkenTantoushaMei " +
@@ -1144,7 +1143,7 @@ namespace TokuchoBugyoK2
                             //"      ELSE '無' END AS 'NendoKurikoshi' " +
                             ",ISNULL(KeiyakuKurikoshiCho,0) " +
                             ",AnkenHachushaCD " +
-                            ",AnkenSaishinFlg " +
+                            ",AnkenSaishinFlg " +                           
                             "FROM AnkenJouhou " +
                             "LEFT JOIN NyuusatsuJouhou ON AnkenJouhou.AnkenJouhouID = NyuusatsuJouhou.AnkenJouhouID " +
                             "LEFT JOIN KeiyakuJouhouEntory ON KeiyakuJouhouEntory.AnkenJouhouID = AnkenJouhou.AnkenJouhouID " +
@@ -1154,204 +1153,174 @@ namespace TokuchoBugyoK2
                             "LEFT JOIN Mst_Hachusha ON AnkenHachushaCD = HachushaCD " +
                             "LEFT JOIN NyuusatsuJouhouOusatsusha ON NyuusatsuJouhouOusatsusha.NyuusatsuJouhouID = NyuusatsuJouhou.NyuusatsuJouhouID AND NyuusatsuRakusatsuJokyou = 1 " +
                             "LEFT JOIN KeikakuJouhou ON KeikakuBangou = AnkenKeikakuBangou " +
-                            "LEFT JOIN GyoumuHaibun ON GyoumuHaibun.GyoumuAnkenJouhouID = AnkenJouhou.AnkenJouhouID and GyoumuHaibun.GyoumuHibunKubun = '10'";
+                            "LEFT JOIN GyoumuHaibun ON GyoumuHaibun.GyoumuAnkenJouhouID = AnkenJouhou.AnkenJouhouID and GyoumuHaibun.GyoumuHibunKubun = '10'" +
+                            "WHERE AnkenUriageNendo <= '" + nendo1 + "' and AnkenUriageNendo >= '" + nendo2 + "' " +
+                            "AND AnkenKoukiNendo <= '" + koukinendo1 + "' and AnkenKoukiNendo >= '" + koukinendo2 + "' " + 
+                            "AND AnkenDeleteFlag = 0 ";
 
-                    //・No1429　1209３桁以上入力の場合は、案件番号でのみ（前方一致）で検索
-                    //"WHERE AnkenUriageNendo <= '" + nendo1 + "' and AnkenUriageNendo >= '" + nendo2 + "' " +
-                    //"AND AnkenKoukiNendo <= '" + koukinendo1 + "' and AnkenKoukiNendo >= '" + koukinendo2 + "' " + 
-                    //"AND AnkenDeleteFlag = 0 ";
-                    if (flg == 1)
+                    // 受託課所支部が空ではない場合
+                    if (src_4.Text != "")
                     {
-                        cmd.CommandText += "　WHERE AnkenAnkenBangou LIKE '" + src_16.Text + "%'";
-                        //最新伝票有無を検索条件とする
-                        if (src_27.Checked == true) 
+                        if (src_4.SelectedValue.ToString() != "127100")
                         {
-                            cmd.CommandText += "  and AnkenSaishinFlg = 1"; //最新伝票＝チェックあり
-                        }
-                        else if (src_27.Checked == false)
-                        {
-                            cmd.CommandText += "  and AnkenSaishinFlg = 0"; //最新伝票＝チェックなし
-                        }
-                        //案件起案状態を検索条件とする
-                        if (src_26.Text == "未")
-                        {
-                            cmd.CommandText += "  and ISNULL(AnkenKianZumi,0) = 0";
-                        }
-                        else if (src_26.Text == "済")
-                        {
-                            cmd.CommandText += "  and AnkenKianZumi = 1";
-                        }
-                    }
-                    else {
-                        cmd.CommandText += "WHERE AnkenUriageNendo <= '" + nendo1 + "' and AnkenUriageNendo >= '" + nendo2 + "' " +
-                        "AND AnkenKoukiNendo <= '" + koukinendo1 + "' and AnkenKoukiNendo >= '" + koukinendo2 + "' " +
-                        "AND AnkenDeleteFlag = 0 ";
-                
-                        // 受託課所支部が空ではない場合
-                        if (src_4.Text != "")
-                        {
-                            if (src_4.SelectedValue.ToString() != "127100")
+                            // 128400 情報システム部関連で、2021年度よりも前の場合
+                            if (src_4.SelectedValue.ToString().Substring(0, 4) == "1284" && item1_KoukiNendo.Text != null && item1_KoukiNendo.Text != "" && int.Parse(item1_KoukiNendo.SelectedValue.ToString()) < 2021)
                             {
-                                // 128400 情報システム部関連で、2021年度よりも前の場合
-                                if (src_4.SelectedValue.ToString().Substring(0, 4) == "1284" && item1_KoukiNendo.Text != null && item1_KoukiNendo.Text != "" && int.Parse(item1_KoukiNendo.SelectedValue.ToString()) < 2021)
-                                {
-                                    // 127900 情報システム部【旧】を見る
-                                    cmd.CommandText += "  and AnkenJutakubushoCD LIKE '127900'";
-                                }
-                                else if (src_4.SelectedValue.ToString().Substring(0, 4) == "1292")
-                                {
-                                    cmd.CommandText += "  and AnkenJutakubushoCD LIKE '129230'";
-                                }
-                                else
-                                {
-                                    cmd.CommandText += "  and AnkenJutakubushoCD LIKE '" + src_4.SelectedValue.ToString().TrimEnd('0') + "%'";
-                                }
-
-                                if (src_4.SelectedValue.ToString() == "127000")
-                                {
-                                    // 2021年度より前は、1279は除外する
-                                    //if (int.Parse(src_1.SelectedValue.ToString()) < 2021) {
-                                    if (item1_KoukiNendo.Text != null && item1_KoukiNendo.Text != "" && int.Parse(item1_KoukiNendo.SelectedValue.ToString()) < 2021)
-                                    {
-                                        // 127000 本部 調査部門の場合、 1279 情報システム部関連は除外
-                                        cmd.CommandText += "  and NOT AnkenJutakubushoCD LIKE '1279%'";
-                                    }
-                                }
+                                // 127900 情報システム部【旧】を見る
+                                cmd.CommandText += "  and AnkenJutakubushoCD LIKE '127900'";
+                            }
+                            else if (src_4.SelectedValue.ToString().Substring(0, 4) == "1292")
+                            {
+                                cmd.CommandText += "  and AnkenJutakubushoCD LIKE '129230'";
                             }
                             else
                             {
-                                cmd.CommandText += "  and AnkenJutakubushoCD like '1271%' ";
+                                cmd.CommandText += "  and AnkenJutakubushoCD LIKE '" + src_4.SelectedValue.ToString().TrimEnd('0') + "%'";
+                            }
+
+                            if (src_4.SelectedValue.ToString() == "127000")
+                            {
+                                // 2021年度より前は、1279は除外する
+                                //if (int.Parse(src_1.SelectedValue.ToString()) < 2021) {
+                                if (item1_KoukiNendo.Text != null && item1_KoukiNendo.Text != "" && int.Parse(item1_KoukiNendo.SelectedValue.ToString()) < 2021)
+                                {
+                                        // 127000 本部 調査部門の場合、 1279 情報システム部関連は除外
+                                        cmd.CommandText += "  and NOT AnkenJutakubushoCD LIKE '1279%'";
+                                }
                             }
                         }
+                        else
+                        {
+                            cmd.CommandText += "  and AnkenJutakubushoCD like '1271%' ";
+                        }
+                    }
 
-                        if (src_5.Text == "調査部")
-                        {
-                            //cmd.CommandText += "  and ((KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuC <> 0 ) or (AnkenGyoumuKubunCD <> '04' AND AnkenGyoumuKubunCD <> '05' AND AnkenGyoumuKubunCD <> '11' AND AnkenGyoumuKubunCD <> '12' AND AnkenGyoumuKubunCD <> '13')) ";
-                            cmd.CommandText += "  and ((AnkenKeiyakuUriageHaibunGakuC <> 0 ) or (AnkenGyoumuKubunCD <> '04' AND AnkenGyoumuKubunCD <> '05' AND AnkenGyoumuKubunCD <> '11' AND AnkenGyoumuKubunCD <> '12' AND AnkenGyoumuKubunCD <> '13')) ";
-                        }
-                        else if (src_5.Text == "事業普及部")
-                        {
-                            //cmd.CommandText += "  and ((KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuJ <> 0 ) or (KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuR <> 0 ) or (AnkenGyoumuKubunCD = '12' or AnkenGyoumuKubunCD = '13')) ";
-                            cmd.CommandText += "  and ((AnkenKeiyakuUriageHaibunGakuJ <> 0 ) or (AnkenGyoumuKubunCD = '12' or AnkenGyoumuKubunCD = '13')) ";
-                        }
-                        else if (src_5.Text == "情報システム部")
-                        {
-                            //cmd.CommandText += "  and ((KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuJs <> 0 ) or (AnkenGyoumuKubunCD = '04' OR AnkenGyoumuKubunCD = '11' )) ";
-                            cmd.CommandText += "  and ((AnkenKeiyakuUriageHaibunGakuJs <> 0 ) or (AnkenGyoumuKubunCD = '04' OR AnkenGyoumuKubunCD = '11' )) ";
-                        }
-                        else if (src_5.Text == "総合研究所")
-                        {
-                            //cmd.CommandText += "  and ((KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuK <> 0 ) or (AnkenGyoumuKubunCD = '05')) ";
-                            cmd.CommandText += "  and ((AnkenKeiyakuUriageHaibunGakuK <> 0 ) or (AnkenGyoumuKubunCD = '05')) ";
-                        }
-                        if (src_6.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenSakuseiKubun = '" + src_6.SelectedValue + "'";
-                        }
-                        if (src_7.CustomFormat == "")
-                        {
-                            cmd.CommandText += "  and AnkenNyuusatsuYoteibi >= '" + src_7.Text + "'";
-                        }
-                        if (src_8.CustomFormat == "")
-                        {
-                            cmd.CommandText += "  and AnkenNyuusatsuYoteibi <= '" + src_8.Text + "'";
-                        }
-                        if (src_9.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenGyoumuKubun = " + src_9.SelectedValue + "";
-                        }
-                        if (src_10.Text != "")
-                        {
-                            cmd.CommandText += "  and NyuusatsuRakusatsushaID = " + src_10.SelectedValue + "";
-                        }
-                        if (src_11.Text != "")
-                        {
-                            cmd.CommandText += "  and NyuusatsuRakusatsusha COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_11.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
+                    if (src_5.Text == "調査部")
+                    {
+                        //cmd.CommandText += "  and ((KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuC <> 0 ) or (AnkenGyoumuKubunCD <> '04' AND AnkenGyoumuKubunCD <> '05' AND AnkenGyoumuKubunCD <> '11' AND AnkenGyoumuKubunCD <> '12' AND AnkenGyoumuKubunCD <> '13')) ";
+                        cmd.CommandText += "  and ((AnkenKeiyakuUriageHaibunGakuC <> 0 ) or (AnkenGyoumuKubunCD <> '04' AND AnkenGyoumuKubunCD <> '05' AND AnkenGyoumuKubunCD <> '11' AND AnkenGyoumuKubunCD <> '12' AND AnkenGyoumuKubunCD <> '13')) ";
+                    }
+                    else if (src_5.Text == "事業普及部")
+                    {
+                        //cmd.CommandText += "  and ((KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuJ <> 0 ) or (KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuR <> 0 ) or (AnkenGyoumuKubunCD = '12' or AnkenGyoumuKubunCD = '13')) ";
+                        cmd.CommandText += "  and ((AnkenKeiyakuUriageHaibunGakuJ <> 0 ) or (AnkenGyoumuKubunCD = '12' or AnkenGyoumuKubunCD = '13')) ";
+                    }
+                    else if (src_5.Text == "情報システム部")
+                    {
+                        //cmd.CommandText += "  and ((KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuJs <> 0 ) or (AnkenGyoumuKubunCD = '04' OR AnkenGyoumuKubunCD = '11' )) ";
+                        cmd.CommandText += "  and ((AnkenKeiyakuUriageHaibunGakuJs <> 0 ) or (AnkenGyoumuKubunCD = '04' OR AnkenGyoumuKubunCD = '11' )) ";
+                    }
+                    else if (src_5.Text == "総合研究所")
+                    {
+                        //cmd.CommandText += "  and ((KeiyakuJouhouEntory.KeiyakuUriageHaibunGakuK <> 0 ) or (AnkenGyoumuKubunCD = '05')) ";
+                        cmd.CommandText += "  and ((AnkenKeiyakuUriageHaibunGakuK <> 0 ) or (AnkenGyoumuKubunCD = '05')) ";
+                    }
+                    if (src_6.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenSakuseiKubun = '" + src_6.SelectedValue + "'";
+                    }
+                    if (src_7.CustomFormat == "")
+                    {
+                        cmd.CommandText += "  and AnkenNyuusatsuYoteibi >= '" + src_7.Text + "'";
+                    }
+                    if (src_8.CustomFormat == "")
+                    {
+                        cmd.CommandText += "  and AnkenNyuusatsuYoteibi <= '" + src_8.Text + "'";
+                    }
+                    if (src_9.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenGyoumuKubun = " + src_9.SelectedValue + "";
+                    }
+                    if (src_10.Text != "")
+                    {
+                        cmd.CommandText += "  and NyuusatsuRakusatsushaID = " + src_10.SelectedValue + "";
+                    }
+                    if (src_11.Text != "")
+                    {
+                        cmd.CommandText += "  and NyuusatsuRakusatsusha COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_11.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
 
-                        if (src_12.Text != "")
-                        {
-                            cmd.CommandText += "  and HachushaKubun1CD = '" + src_12.SelectedValue + "'";
-                        }
-                        if (src_13.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenKeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_13.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
-                        if (src_14.Text != "")
-                        {
-                            //cmd.CommandText += "  and AnkenKeikakuAnkenMei like '%" + GlobalMethod.ChangeSqlText(src_14.Text, 1, 0) + "%' ESCAPE '\\' ";
-                            cmd.CommandText += "  and KeikakuAnkenMei COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_14.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
+                    if (src_12.Text != "")
+                    {
+                        cmd.CommandText += "  and HachushaKubun1CD = '" + src_12.SelectedValue + "'";
+                    }
+                    if (src_13.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenKeikakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_13.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
+                    if (src_14.Text != "")
+                    {
+                        //cmd.CommandText += "  and AnkenKeikakuAnkenMei like '%" + GlobalMethod.ChangeSqlText(src_14.Text, 1, 0) + "%' ESCAPE '\\' ";
+                        cmd.CommandText += "  and KeikakuAnkenMei COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_14.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
 
-                        if (src_15.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_15.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
-                        if (src_16.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenAnkenBangou COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_16.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
-                        if (src_17.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenGyoumuMei COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_17.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
-                        if (src_18.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenHachuushaKaMei COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_18.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
-                        if (src_19.Text != "")
-                        {
-                            cmd.CommandText += "  and CONVERT(NVARCHAR, AnkenUriagebi, 111) COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_19.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
+                    if (src_15.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_15.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
+                    if (src_16.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenAnkenBangou COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_16.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
+                    if (src_17.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenGyoumuMei COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_17.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
+                    if (src_18.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenHachuushaKaMei COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_18.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
+                    if (src_19.Text != "")
+                    {
+                        cmd.CommandText += "  and CONVERT(NVARCHAR, AnkenUriagebi, 111) COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_19.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
 
-                        if (src_20.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenToukaiSankouMitsumori = N'" + src_20.SelectedIndex + "'";
-                        }
-                        if (src_21.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenToukaiJyutyuIyoku = N'" + src_21.SelectedIndex + "'";
-                        }
-                        if (src_22.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenHikiaijhokyo = N'" + src_22.SelectedIndex + "'";
-                        }
-                        if (src_23.Text != "")
-                        {
-                            cmd.CommandText += "  and AnkenToukaiOusatu = N'" + src_23.SelectedIndex + "'";
-                        }
-                        if (src_24.Checked == true)
-                        {
-                            cmd.CommandText += "  and ( ISNULL(KeiyakuKurikoshiCho,0) > 0 or ISNULL(KeiyakuKurikoshiJo,0) > 0 or ISNULL(KeiyakuKurikoshiJosys,0) > 0 or ISNULL(KeiyakuKurikoshiKei,0) > 0 ) ";
-                        }
-                        if (src_25.Text != "")
-                        {
-                            //cmd.CommandText += "  and AnkenHachuushaCodeID like '%" + GlobalMethod.ChangeSqlText(src_25.Text, 1, 0) + "%' ESCAPE '\\' ";
-                            cmd.CommandText += "  and AnkenHachushaCD COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_25.Text, 1, 0) + "%' ESCAPE '\\' ";
-                        }
-                        if (src_26.Text == "未")
-                        {
-                            cmd.CommandText += "  and ISNULL(AnkenKianZumi,0) = 0";
-                        }
-                        else if (src_26.Text == "済")
-                        {
-                            cmd.CommandText += "  and AnkenKianZumi = 1";
-                        }
-                        if (src_27.Checked == true)
-                        {
-                            cmd.CommandText += "  and AnkenSaishinFlg = 1";
-                        }
+                    if (src_20.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenToukaiSankouMitsumori = N'" + src_20.SelectedIndex + "'";
+                    }
+                    if (src_21.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenToukaiJyutyuIyoku = N'" + src_21.SelectedIndex + "'";
+                    }
+                    if (src_22.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenHikiaijhokyo = N'" + src_22.SelectedIndex + "'";
+                    }
+                    if (src_23.Text != "")
+                    {
+                        cmd.CommandText += "  and AnkenToukaiOusatu = N'" + src_23.SelectedIndex + "'";
+                    }
+                    if (src_24.Checked == true)
+                    {
+                        cmd.CommandText += "  and ( ISNULL(KeiyakuKurikoshiCho,0) > 0 or ISNULL(KeiyakuKurikoshiJo,0) > 0 or ISNULL(KeiyakuKurikoshiJosys,0) > 0 or ISNULL(KeiyakuKurikoshiKei,0) > 0 ) ";
+                    }
+                    if (src_25.Text != "")
+                    {
+                        //cmd.CommandText += "  and AnkenHachuushaCodeID like '%" + GlobalMethod.ChangeSqlText(src_25.Text, 1, 0) + "%' ESCAPE '\\' ";
+                        cmd.CommandText += "  and AnkenHachushaCD COLLATE Japanese_XJIS_100_CI_AS_SC like N'%" + GlobalMethod.ChangeSqlText(src_25.Text, 1, 0) + "%' ESCAPE '\\' ";
+                    }
+                    if (src_26.Text == "未")
+                    {
+                        cmd.CommandText += "  and ISNULL(AnkenKianZumi,0) = 0";
+                    }
+                    else if (src_26.Text == "済")
+                    {
+                        cmd.CommandText += "  and AnkenKianZumi = 1";
+                    }
+                    if (src_27.Checked == true)
+                    {
+                        cmd.CommandText += "  and AnkenSaishinFlg = 1";
+                    }
 
-                        // えんとり君修正STEP2
-                        if (src_29.Checked)
-                        {
-                            cmd.CommandText += "  and KeiyakuRIBCYouTankaDataMoushikomisho = 1";
-                        }
-                        if (src_30.Checked)
-                        {
-                            cmd.CommandText += "  and KeiyakuSashaKeiyu = 1";
-                        }
-
+                    // えんとり君修正STEP2
+                    if (src_29.Checked)
+                    {
+                        cmd.CommandText += "  and KeiyakuRIBCYouTankaDataMoushikomisho = 1";
+                    }
+                    if (src_30.Checked)
+                    {
+                        cmd.CommandText += "  and KeiyakuSashaKeiyu = 1";
                     }
                     // 499 業務日報用の案件を除外する
                     //cmd.CommandText += " and AnkenAnkenBangou not like '%999' ";
@@ -1601,8 +1570,6 @@ namespace TokuchoBugyoK2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //どの検索ボタンを押したかのフラグを立てる
-            KensakuFlg = 0;
             // VIPS　20220413　課題管理表No1303(984)　ADD　検索結果の調査部配分金額合計欄を追加
             //検索中に0を表示
             chosabuHaibun_Zeinuki_Goukei.Text = "0";
@@ -1628,7 +1595,6 @@ namespace TokuchoBugyoK2
 
             if (errorflg != false) {
                 //set_error("", 0);
-
                 get_date();
             }
 
@@ -1979,141 +1945,129 @@ namespace TokuchoBugyoK2
                                 // 29：KoukiKaishiNendoOption    当年度の場合、1 3年以内の場合、2              item1_1_Tounendo(当年度) or item1_2_SanNen(3年以内)
                                 // 30：Ribicyou                  検索条件.RIBC用単価データ有                   src_29 RIBC用単価データ有             ※えんとり君修正STEP2
                                 // 31：SashaKeiyu                検索条件.サ社経由                             src_30 RIBC検索条件.サ社経由          ※えんとり君修正STEP2
-                                // 32：AnkenBangou2              検索条件.案件番号                             src_16 案件番号で検索の場合の案件番号
 
                                 //// 29個分先に用意
                                 //string[] report_data = new string[29] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
                                 //えんとり君修正STEP2　パラメータ追加
-                                //No1429　1209 要望ほか、６件　案件番号のみで検索　パラメータ再追加
-                                // 32個分先に用意
-                                string[] report_data = new string[32] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
                                 // 31個分先に用意
-                                //string[] report_data = new string[31] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
-                                if (KensakuFlg == 0)
+                                string[] report_data = new string[31] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+                                report_data[0] = src_1.SelectedValue.ToString();
+                                // 売上年度オプション
+                                if (src_2.Checked)
                                 {
-                                    report_data[0] = src_1.SelectedValue.ToString();
-                                    // 売上年度オプション
-                                    if (src_2.Checked)
-                                    {
-                                        report_data[1] = "1";
-                                    }
-                                    else
-                                    {
-                                        report_data[1] = "2";
-                                    }
-                                    report_data[2] = src_4.SelectedValue.ToString();   // 受託課所支部
-                                    if (src_5.Text != null && src_5.Text != "")
-                                    {
-                                        report_data[3] = src_5.SelectedValue.ToString();   // 事業部
-                                    }
-                                    if (src_6.Text != null && src_6.Text != "")
-                                    {
-                                        report_data[4] = src_6.SelectedValue.ToString();   // 案件区分
-                                    }
-                                    if (src_7.CustomFormat == "")
-                                    {
-                                        report_data[5] = "'" + src_7.Text + "'";   // 入札（予定）日From
-                                    }
-                                    else
-                                    {
-                                        report_data[5] = "null";
-                                    }
-                                    if (src_8.CustomFormat == "")
-                                    {
-                                        report_data[6] = "'" + src_8.Text + "'";   // 入札（予定）日To
-                                    }
-                                    else
-                                    {
-                                        report_data[6] = "null";
-                                    }
-                                    if (src_9.Text != null && src_9.Text != "")
-                                    {
-                                        report_data[7] = src_9.SelectedValue.ToString();   // 契約区分
-                                    }
-                                    else
-                                    {
-                                        report_data[7] = "0";
-                                    }
-                                    if (src_10.Text != null && src_10.Text != "")
-                                    {
-                                        report_data[8] = src_10.SelectedValue.ToString();  // 入札状況
-                                    }
-                                    else
-                                    {
-                                        report_data[8] = "0";
-                                    }
-                                    report_data[9] = src_11.Text;  // 落札者
-                                    if (src_12.Text != null && src_12.Text != "")
-                                    {
-                                        report_data[10] = src_12.SelectedValue.ToString(); // 発注者区分1
-                                    }
-                                    else
-                                    {
-                                        report_data[10] = "0";
-                                    }
-                                    report_data[11] = src_13.Text; // 計画番号
-                                    report_data[12] = src_14.Text; // 計画案件名
-                                    report_data[13] = src_15.Text; // 受託番号
-                                    report_data[14] = src_16.Text; // 案件番号
+                                    report_data[1] = "1";
                                 }
-                                //案件番号で検索時のエントリくん一覧帳票のパラメータ追加
-                                report_data[31] = src_16.Text; // 案件番号検索時の案件番号 
-                                if (KensakuFlg == 0)
+                                else
                                 {
-                                    report_data[15] = src_17.Text; // 業務名称
-                                    report_data[16] = src_18.Text; // 発注者名・課名
-                                    if (src_19.Text != null && src_19.Text != "")
-                                    {
-                                        report_data[17] = "'" + src_19.Text + "/1" + "'"; // 管理月
-                                    }
-                                    else
-                                    {
-                                        report_data[17] = "null";
-                                    }
+                                    report_data[1] = "2";
+                                }
+                                report_data[2] = src_4.SelectedValue.ToString();   // 受託課所支部
+                                if (src_5.Text != null && src_5.Text != "")
+                                {
+                                    report_data[3] = src_5.SelectedValue.ToString();   // 事業部
+                                }
+                                if (src_6.Text != null && src_6.Text != "")
+                                {
+                                    report_data[4] = src_6.SelectedValue.ToString();   // 案件区分
+                                }
+                                if (src_7.CustomFormat == "")
+                                {
+                                    report_data[5] = "'" + src_7.Text + "'";   // 入札（予定）日From
+                                }
+                                else
+                                {
+                                    report_data[5] = "null";
+                                }
+                                if (src_8.CustomFormat == "")
+                                {
+                                    report_data[6] = "'" + src_8.Text + "'";   // 入札（予定）日To
+                                }
+                                else
+                                {
+                                    report_data[6] = "null";
+                                }
+                                if (src_9.Text != null && src_9.Text != "")
+                                {
+                                    report_data[7] = src_9.SelectedValue.ToString();   // 契約区分
+                                }
+                                else
+                                {
+                                    report_data[7] = "0";
+                                }
+                                if (src_10.Text != null && src_10.Text != "")
+                                {
+                                    report_data[8] = src_10.SelectedValue.ToString();  // 入札状況
+                                }
+                                else
+                                {
+                                    report_data[8] = "0";
+                                }
+                                report_data[9] = src_11.Text;  // 落札者
+                                if (src_12.Text != null && src_12.Text != "")
+                                {
+                                    report_data[10] = src_12.SelectedValue.ToString(); // 発注者区分1
+                                }
+                                else
+                                {
+                                    report_data[10] = "0";
+                                }
+                                report_data[11] = src_13.Text; // 計画番号
+                                report_data[12] = src_14.Text; // 計画案件名
+                                report_data[13] = src_15.Text; // 受託番号
+                                report_data[14] = src_16.Text; // 案件番号
+                                report_data[15] = src_17.Text; // 業務名称
+                                report_data[16] = src_18.Text; // 発注者名・課名
+                                if (src_19.Text != null && src_19.Text != "")
+                                {
+                                    report_data[17] = "'" + src_19.Text + "/1" + "'"; // 管理月
+                                }
+                                else
+                                {
+                                    report_data[17] = "null";
+                                }
 
-                                    if (src_20.Text != null && src_20.Text != "")
-                                    {
-                                        report_data[18] = src_20.SelectedValue.ToString(); // 参考見積
-                                    }
-                                    else
-                                    {
-                                        report_data[18] = "0";
-                                    }
-                                    if (src_21.Text != null && src_21.Text != "")
-                                    {
-                                        report_data[19] = src_21.SelectedValue.ToString(); // 受注意欲
-                                    }
-                                    else
-                                    {
-                                        report_data[19] = "0";
-                                    }
-                                    if (src_22.Text != null && src_22.Text != "")
-                                    {
-                                        report_data[20] = src_22.SelectedValue.ToString(); // 引合状況
-                                    }
-                                    else
-                                    {
-                                        report_data[20] = "0";
-                                    }
-                                    if (src_23.Text != null && src_23.Text != "")
-                                    {
-                                        report_data[21] = src_23.SelectedValue.ToString(); // 当会応札
-                                    }
-                                    else
-                                    {
-                                        report_data[21] = "0";
-                                    }
-                                    // 年度越え配分有
-                                    if (src_24.Checked)
-                                    {
-                                        report_data[22] = "1";
-                                    }
-                                    else
-                                    {
-                                        report_data[22] = "2";
-                                    }
-                                    report_data[23] = src_25.Text; // 発注者コード
+                                if (src_20.Text != null && src_20.Text != "")
+                                {
+                                    report_data[18] = src_20.SelectedValue.ToString(); // 参考見積
                                 }
+                                else
+                                {
+                                    report_data[18] = "0";
+                                }
+                                if (src_21.Text != null && src_21.Text != "")
+                                {
+                                    report_data[19] = src_21.SelectedValue.ToString(); // 受注意欲
+                                }
+                                else
+                                {
+                                    report_data[19] = "0";
+                                }
+                                if (src_22.Text != null && src_22.Text != "")
+                                {
+                                    report_data[20] = src_22.SelectedValue.ToString(); // 引合状況
+                                }
+                                else
+                                {
+                                    report_data[20] = "0";
+                                }
+                                if (src_23.Text != null && src_23.Text != "")
+                                {
+                                    report_data[21] = src_23.SelectedValue.ToString(); // 当会応札
+                                }
+                                else
+                                {
+                                    report_data[21] = "0";
+                                }
+                                // 年度越え配分有
+                                if (src_24.Checked)
+                                {
+                                    report_data[22] = "1";
+                                }
+                                else
+                                {
+                                    report_data[22] = "2";
+                                }
+                                report_data[23] = src_25.Text; // 発注者コード
 
                                 // 起案状況
                                 if (src_26.Text == "未")
@@ -2139,39 +2093,36 @@ namespace TokuchoBugyoK2
                                     //report_data[25] = "2";    // CHG 20220217
                                     report_data[25] = "0";      // CHG 20220217
                                 }
-                                if (KensakuFlg == 0)
+                                report_data[26] = src_28.Text; // 表示件数
+                                report_data[27] = item1_KoukiNendo.SelectedValue.ToString();
+                                // 売上年度オプション
+                                if (item1_1_Tounendo.Checked)
                                 {
-                                    report_data[26] = src_28.Text; // 表示件数
-                                    report_data[27] = item1_KoukiNendo.SelectedValue.ToString();
-                                    // 売上年度オプション
-                                    if (item1_1_Tounendo.Checked)
-                                    {
-                                        report_data[28] = "1";
-                                    }
-                                    else
-                                    {
-                                        report_data[28] = "2";
-                                    }
-
-                                    //えんとり君修正STEP2　案件情報一覧検索画面のエントリくん一覧帳票のパラメータ追加
-                                    if (src_29.Checked)
-                                    {
-                                        report_data[29] = "1";
-                                    }
-                                    else
-                                    {
-                                        report_data[29] = "0";
-                                    }
-                                    if (src_30.Checked)
-                                    {
-                                        report_data[30] = "1";
-                                    }
-                                    else
-                                    {
-                                        report_data[30] = "0";
-                                    }
+                                    report_data[28] = "1";
                                 }
-                                    string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
+                                else
+                                {
+                                    report_data[28] = "2";
+                                }
+
+                                //えんとり君修正STEP2　案件情報一覧検索画面のエントリくん一覧帳票のパラメータ追加
+                                if (src_29.Checked)
+                                {
+                                    report_data[29] = "1";
+                                }
+                                else
+                                {
+                                    report_data[29] = "0";
+                                }
+                                if (src_30.Checked)
+                                {
+                                    report_data[30] = "1";
+                                }
+                                else
+                                {
+                                    report_data[30] = "0";
+                                }
+                                string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
 
                                 // result
                                 // 成否判定 0:正常 1：エラー
@@ -2462,57 +2413,6 @@ namespace TokuchoBugyoK2
         private void src_1_SelectedIndexChanged(object sender, EventArgs e)
         {
             set_combo_shibu(src_1.SelectedValue.ToString());
-        }
-
-               //No1427　1201案件番号のみでの検索ができるように変更
-        private void button8_Click(object sender, EventArgs e)
-        {
-            //どの検索ボタンを押したかのフラグを立てる
-            KensakuFlg = 1;
-            //検索中に0を表示
-            chosabuHaibun_Zeinuki_Goukei.Text = "0";
-            chosabuHaibun_Zeikomi_Goukei.Text = "0";
-            chosabuHaibun_Zeinuki_Goukei.Refresh();
-            chosabuHaibun_Zeikomi_Goukei.Refresh();
-
-            jigyobuHaibun_Zeinuki_Goukei.Text = "0";
-            jigyobuHaibun_Zeikomi_Goukei.Text = "0";
-            jigyobuHaibun_Zeinuki_Goukei.Refresh();
-            jigyobuHaibun_Zeikomi_Goukei.Refresh();
-
-            //レイアウトロジックを停止する
-            this.SuspendLayout();
-            //描画停止
-            c1FlexGrid1.BeginUpdate();
-
-            set_error("", 0);
-
-            if (src_16.Text.Length >= 3)
-            {
-                get_date(1);
-            }
-            else
-            {
-                // エラー　3桁以上の案件番号を入力してください。
-                set_error(GlobalMethod.GetMessage("E10731", ""));
-
-            }
-
-                // エラーフラグ true：正常 false：エラー
-                //Boolean errorflg = false;
-                // errorflg = uriagebi_Check();
-
-                // if (errorflg != false)
-                // {
-                //     set_error("", 0);
-                //     get_date();
-                // }
-
-                //描画再開
-                c1FlexGrid1.EndUpdate();
-                //レイアウトロジックを再開する
-                this.ResumeLayout();
-            
         }
     }
 }
