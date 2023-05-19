@@ -879,6 +879,8 @@ namespace TokuchoBugyoK2
                 item1_39.Visible = false;
                 label82.Visible = false;
                 label84.Visible = false;
+                // No.1434 不要な項目名「案件番号変更履歴」を非表示にする
+                label124.Visible = false;
 
                 //不具合No1310(1028)
                 //コピペテキストと反映するボタンが配置されたテールブルレイアウトパネルを表示有効化する

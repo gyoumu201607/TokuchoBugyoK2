@@ -1989,9 +1989,10 @@ namespace TokuchoBugyoK2
                                 string[] report_data = new string[32] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
                                 // 31個分先に用意
                                 //string[] report_data = new string[31] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+                               
+                                report_data[0] = src_1.SelectedValue.ToString();
                                 if (KensakuFlg == 0)
                                 {
-                                    report_data[0] = src_1.SelectedValue.ToString();
                                     // 売上年度オプション
                                     if (src_2.Checked)
                                     {
@@ -2001,11 +2002,20 @@ namespace TokuchoBugyoK2
                                     {
                                         report_data[1] = "2";
                                     }
-                                    report_data[2] = src_4.SelectedValue.ToString();   // 受託課所支部
+                                }
+                                //エラー対応案
+                                else
+                                {
+                                    report_data[1] = "null";
+                                }
+                                report_data[2] = src_4.SelectedValue.ToString();   // 受託課所支部
+                                if (KensakuFlg == 0)
+                                {
                                     if (src_5.Text != null && src_5.Text != "")
                                     {
                                         report_data[3] = src_5.SelectedValue.ToString();   // 事業部
                                     }
+
                                     if (src_6.Text != null && src_6.Text != "")
                                     {
                                         report_data[4] = src_6.SelectedValue.ToString();   // 案件区分
@@ -2051,15 +2061,15 @@ namespace TokuchoBugyoK2
                                     {
                                         report_data[10] = "0";
                                     }
+
                                     report_data[11] = src_13.Text; // 計画番号
                                     report_data[12] = src_14.Text; // 計画案件名
                                     report_data[13] = src_15.Text; // 受託番号
                                     report_data[14] = src_16.Text; // 案件番号
-                                }
-                                //案件番号で検索時のエントリくん一覧帳票のパラメータ追加
-                                report_data[31] = src_16.Text; // 案件番号検索時の案件番号 
-                                if (KensakuFlg == 0)
-                                {
+
+                                    //案件番号で検索時のエントリくん一覧帳票のパラメータ追加
+                                    report_data[31] = src_16.Text; // 案件番号検索時の案件番号 
+
                                     report_data[15] = src_17.Text; // 業務名称
                                     report_data[16] = src_18.Text; // 発注者名・課名
                                     if (src_19.Text != null && src_19.Text != "")
@@ -2103,56 +2113,60 @@ namespace TokuchoBugyoK2
                                     {
                                         report_data[21] = "0";
                                     }
-                                    // 年度越え配分有
-                                    if (src_24.Checked)
+                                }
+                              
+                             // 年度越え配分有
+                             if (src_24.Checked)
+                             {
+                                report_data[22] = "1";
+                             }
+                            else
+                            {
+                                report_data[22] = "2";
+                            }
+                            if (KensakuFlg == 0)
+                            {
+                                    report_data[23] = src_25.Text; // 発注者コード
+
+                                    // 起案状況
+                                    if (src_26.Text == "未")
                                     {
-                                        report_data[22] = "1";
+                                        report_data[24] = "0";
+                                    }
+                                    else if (src_26.Text == "済")
+                                    {
+                                        report_data[24] = "1";
                                     }
                                     else
                                     {
-                                        report_data[22] = "2";
+                                        report_data[24] = "";
                                     }
-                                    report_data[23] = src_25.Text; // 発注者コード
-                                }
 
-                                // 起案状況
-                                if (src_26.Text == "未")
-                                {
-                                    report_data[24] = "0";
-                                }
-                                else if (src_26.Text == "済")
-                                {
-                                    report_data[24] = "1";
-                                }
-                                else
-                                {
-                                    report_data[24] = "";
-                                }
+                                    if (src_27.Checked)
+                                    {
+                                        report_data[25] = "1";
+                                    }
+                                    else
+                                    {
+                                        // SE 20220217 No.1278 設定値の誤りを修正
+                                        //report_data[25] = "2";    // CHG 20220217
+                                        report_data[25] = "0";      // CHG 20220217
+                                    }
 
-                                if (src_27.Checked)
-                                {
-                                    report_data[25] = "1";
+                                    report_data[26] = src_28.Text; // 表示件数
                                 }
-                                else
+                                report_data[27] = item1_KoukiNendo.SelectedValue.ToString();
+                                // 売上年度オプション
+                                if (item1_1_Tounendo.Checked)
                                 {
-                                    // SE 20220217 No.1278 設定値の誤りを修正
-                                    //report_data[25] = "2";    // CHG 20220217
-                                    report_data[25] = "0";      // CHG 20220217
+                                    report_data[28] = "1";
+                                }
+                                else                                
+                                {
+                                    report_data[28] = "2";
                                 }
                                 if (KensakuFlg == 0)
                                 {
-                                    report_data[26] = src_28.Text; // 表示件数
-                                    report_data[27] = item1_KoukiNendo.SelectedValue.ToString();
-                                    // 売上年度オプション
-                                    if (item1_1_Tounendo.Checked)
-                                    {
-                                        report_data[28] = "1";
-                                    }
-                                    else
-                                    {
-                                        report_data[28] = "2";
-                                    }
-
                                     //えんとり君修正STEP2　案件情報一覧検索画面のエントリくん一覧帳票のパラメータ追加
                                     if (src_29.Checked)
                                     {
@@ -2170,7 +2184,7 @@ namespace TokuchoBugyoK2
                                     {
                                         report_data[30] = "0";
                                     }
-                                }
+                                }                                
                                     string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
 
                                 // result

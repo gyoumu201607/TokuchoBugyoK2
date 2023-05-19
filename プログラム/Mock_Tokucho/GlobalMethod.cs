@@ -1327,7 +1327,7 @@ namespace TokuchoBugyoK2
                     "(" + WorkID + ",30" + ",'Ribicyou'" + ",1" + ",null" + "," + data[29] + "" + ",null" + ")," +
                     "(" + WorkID + ",31" + ",'SashaKeiyu'" + ",1" + ",null" + "," + data[30] + "" + ",null" + ")," +
                     //AnkenBangou2パラメータ追加
-                    "(" + WorkID + ",32" + ",'AnkenBangou2'" + ",1" + ",N'" + ChangeSqlText(data[14], 0, 0) + "'" + ",null" + ",null)" 
+                    "(" + WorkID + ",32" + ",'AnkenBangou2'" + ",1" + ",N'" + ChangeSqlText(data[31], 0, 0) + "'" + ",null" + ",null)" 
                     ;
 
                     cmd.ExecuteNonQuery();
