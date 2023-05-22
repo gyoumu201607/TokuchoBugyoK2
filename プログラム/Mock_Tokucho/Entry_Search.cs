@@ -1162,16 +1162,16 @@ namespace TokuchoBugyoK2
                     //"AND AnkenDeleteFlag = 0 ";
                     if (flg == 1)
                     {
-                        cmd.CommandText += "　WHERE AnkenAnkenBangou LIKE '" + src_16.Text + "%'";
+                        cmd.CommandText += "　WHERE AnkenAnkenBangou LIKE '" + ankenInput2.Text + "%'";
                         //最新伝票有無を検索条件とする
                         if (src_27.Checked == true) 
                         {
                             cmd.CommandText += "  and AnkenSaishinFlg = 1"; //最新伝票＝チェックあり
                         }
-                        else if (src_27.Checked == false)
-                        {
-                            cmd.CommandText += "  and AnkenSaishinFlg = 0"; //最新伝票＝チェックなし
-                        }
+                        //else if (src_27.Checked == false)
+                        //{
+                        //    cmd.CommandText += "  and AnkenSaishinFlg = 0"; //最新伝票＝チェックなし
+                        //}
                         //案件起案状態を検索条件とする
                         if (src_26.Text == "未")
                         {
@@ -1624,14 +1624,25 @@ namespace TokuchoBugyoK2
             set_error("", 0);
             // エラーフラグ true：正常 false：エラー
             Boolean errorflg = false;
-            errorflg = uriagebi_Check();
-
-            if (errorflg != false) {
-                //set_error("", 0);
-
-                get_date();
+            if (this.ankenInput2.TextLength >= 3)
+            {
+                KensakuFlg = 1;
+                get_date(1);
             }
+            else if (this.ankenInput2.TextLength > 0)
+            {
+                // エラー　3桁以上の案件番号を入力してください。
+                set_error(GlobalMethod.GetMessage("E10731", ""));
+            }
+            else
+            {
+                errorflg = uriagebi_Check();
+                if (errorflg != false) {
+                    //set_error("", 0);
 
+                    get_date();
+                }
+            }
             //描画再開
             c1FlexGrid1.EndUpdate();
             //レイアウトロジックを再開する
@@ -1761,6 +1772,9 @@ namespace TokuchoBugyoK2
             // えんとり君修正STEP2
             src_29.Checked = false;
             src_30.Checked = false;
+
+            //No1429　1209案件番号のみでの検索対応
+            ankenInput2.Text = "";
 
             //グリッドコントロールを初期化
             c1FlexGrid1.Styles.Normal.WordWrap = true;
@@ -1979,7 +1993,7 @@ namespace TokuchoBugyoK2
                                 // 29：KoukiKaishiNendoOption    当年度の場合、1 3年以内の場合、2              item1_1_Tounendo(当年度) or item1_2_SanNen(3年以内)
                                 // 30：Ribicyou                  検索条件.RIBC用単価データ有                   src_29 RIBC用単価データ有             ※えんとり君修正STEP2
                                 // 31：SashaKeiyu                検索条件.サ社経由                             src_30 RIBC検索条件.サ社経由          ※えんとり君修正STEP2
-                                // 32：AnkenBangou2              検索条件.案件番号                             src_16 案件番号で検索の場合の案件番号
+                                // 32：AnkenBangou2              検索条件.案件番号                             ankenInput2 案件番号のみで検索の場合の案件番号
 
                                 //// 29個分先に用意
                                 //string[] report_data = new string[29] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
@@ -1989,7 +2003,6 @@ namespace TokuchoBugyoK2
                                 string[] report_data = new string[32] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
                                 // 31個分先に用意
                                 //string[] report_data = new string[31] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
-                               
                                 report_data[0] = src_1.SelectedValue.ToString();
                                 if (KensakuFlg == 0)
                                 {
@@ -2002,190 +2015,201 @@ namespace TokuchoBugyoK2
                                     {
                                         report_data[1] = "2";
                                     }
+                                    report_data[2] = src_4.SelectedValue.ToString();   // 受託課所支部
                                 }
-                                //エラー対応案
                                 else
                                 {
                                     report_data[1] = "null";
+                                    report_data[2] = "";
                                 }
-                                report_data[2] = src_4.SelectedValue.ToString();   // 受託課所支部
+                                if (src_5.Text != null && src_5.Text != "")
+                                {
+                                    report_data[3] = src_5.SelectedValue.ToString();   // 事業部
+                                }
+                                if (src_6.Text != null && src_6.Text != "")
+                                {
+                                    report_data[4] = src_6.SelectedValue.ToString();   // 案件区分
+                                }
+                                if (src_7.CustomFormat == "")
+                                {
+                                    report_data[5] = "'" + src_7.Text + "'";   // 入札（予定）日From
+                                }
+                                else
+                                {
+                                    report_data[5] = "null";
+                                }
+                                if (src_8.CustomFormat == "")
+                                {
+                                    report_data[6] = "'" + src_8.Text + "'";   // 入札（予定）日To
+                                }
+                                else
+                                {
+                                    report_data[6] = "null";
+                                }
+                                if (src_9.Text != null && src_9.Text != "")
+                                {
+                                    report_data[7] = src_9.SelectedValue.ToString();   // 契約区分
+                                }
+                                else
+                                {
+                                    report_data[7] = "0";
+                                }
+                                if (src_10.Text != null && src_10.Text != "")
+                                {
+                                    report_data[8] = src_10.SelectedValue.ToString();  // 入札状況
+                                }
+                                else
+                                {
+                                    report_data[8] = "0";
+                                }
+                                report_data[9] = src_11.Text;  // 落札者
+                                if (src_12.Text != null && src_12.Text != "")
+                                {
+                                    report_data[10] = src_12.SelectedValue.ToString(); // 発注者区分1
+                                }
+                                else
+                                {
+                                    report_data[10] = "0";
+                                }
+                                report_data[11] = src_13.Text; // 計画番号
+                                report_data[12] = src_14.Text; // 計画案件名
+                                report_data[13] = src_15.Text; // 受託番号
+                                //report_data[14] = src_16.Text; // 案件番号
+
+                                //案件番号で検索時のエントリくん一覧帳票のパラメータ追加
                                 if (KensakuFlg == 0)
                                 {
-                                    if (src_5.Text != null && src_5.Text != "")
-                                    {
-                                        report_data[3] = src_5.SelectedValue.ToString();   // 事業部
-                                    }
-
-                                    if (src_6.Text != null && src_6.Text != "")
-                                    {
-                                        report_data[4] = src_6.SelectedValue.ToString();   // 案件区分
-                                    }
-                                    if (src_7.CustomFormat == "")
-                                    {
-                                        report_data[5] = "'" + src_7.Text + "'";   // 入札（予定）日From
-                                    }
-                                    else
-                                    {
-                                        report_data[5] = "null";
-                                    }
-                                    if (src_8.CustomFormat == "")
-                                    {
-                                        report_data[6] = "'" + src_8.Text + "'";   // 入札（予定）日To
-                                    }
-                                    else
-                                    {
-                                        report_data[6] = "null";
-                                    }
-                                    if (src_9.Text != null && src_9.Text != "")
-                                    {
-                                        report_data[7] = src_9.SelectedValue.ToString();   // 契約区分
-                                    }
-                                    else
-                                    {
-                                        report_data[7] = "0";
-                                    }
-                                    if (src_10.Text != null && src_10.Text != "")
-                                    {
-                                        report_data[8] = src_10.SelectedValue.ToString();  // 入札状況
-                                    }
-                                    else
-                                    {
-                                        report_data[8] = "0";
-                                    }
-                                    report_data[9] = src_11.Text;  // 落札者
-                                    if (src_12.Text != null && src_12.Text != "")
-                                    {
-                                        report_data[10] = src_12.SelectedValue.ToString(); // 発注者区分1
-                                    }
-                                    else
-                                    {
-                                        report_data[10] = "0";
-                                    }
-
-                                    report_data[11] = src_13.Text; // 計画番号
-                                    report_data[12] = src_14.Text; // 計画案件名
-                                    report_data[13] = src_15.Text; // 受託番号
                                     report_data[14] = src_16.Text; // 案件番号
-
-                                    //案件番号で検索時のエントリくん一覧帳票のパラメータ追加
-                                    report_data[31] = src_16.Text; // 案件番号検索時の案件番号 
-
-                                    report_data[15] = src_17.Text; // 業務名称
-                                    report_data[16] = src_18.Text; // 発注者名・課名
-                                    if (src_19.Text != null && src_19.Text != "")
-                                    {
-                                        report_data[17] = "'" + src_19.Text + "/1" + "'"; // 管理月
-                                    }
-                                    else
-                                    {
-                                        report_data[17] = "null";
-                                    }
-
-                                    if (src_20.Text != null && src_20.Text != "")
-                                    {
-                                        report_data[18] = src_20.SelectedValue.ToString(); // 参考見積
-                                    }
-                                    else
-                                    {
-                                        report_data[18] = "0";
-                                    }
-                                    if (src_21.Text != null && src_21.Text != "")
-                                    {
-                                        report_data[19] = src_21.SelectedValue.ToString(); // 受注意欲
-                                    }
-                                    else
-                                    {
-                                        report_data[19] = "0";
-                                    }
-                                    if (src_22.Text != null && src_22.Text != "")
-                                    {
-                                        report_data[20] = src_22.SelectedValue.ToString(); // 引合状況
-                                    }
-                                    else
-                                    {
-                                        report_data[20] = "0";
-                                    }
-                                    if (src_23.Text != null && src_23.Text != "")
-                                    {
-                                        report_data[21] = src_23.SelectedValue.ToString(); // 当会応札
-                                    }
-                                    else
-                                    {
-                                        report_data[21] = "0";
-                                    }
                                 }
-                              
-                             // 年度越え配分有
-                             if (src_24.Checked)
-                             {
-                                report_data[22] = "1";
-                             }
-                            else
-                            {
-                                report_data[22] = "2";
-                            }
-                            if (KensakuFlg == 0)
-                            {
-                                    report_data[23] = src_25.Text; // 発注者コード
-
-                                    // 起案状況
-                                    if (src_26.Text == "未")
-                                    {
-                                        report_data[24] = "0";
-                                    }
-                                    else if (src_26.Text == "済")
-                                    {
-                                        report_data[24] = "1";
-                                    }
-                                    else
-                                    {
-                                        report_data[24] = "";
-                                    }
-
-                                    if (src_27.Checked)
-                                    {
-                                        report_data[25] = "1";
-                                    }
-                                    else
-                                    {
-                                        // SE 20220217 No.1278 設定値の誤りを修正
-                                        //report_data[25] = "2";    // CHG 20220217
-                                        report_data[25] = "0";      // CHG 20220217
-                                    }
-
-                                    report_data[26] = src_28.Text; // 表示件数
-                                }
-                                report_data[27] = item1_KoukiNendo.SelectedValue.ToString();
-                                // 売上年度オプション
-                                if (item1_1_Tounendo.Checked)
+                                else
                                 {
-                                    report_data[28] = "1";
+                                    report_data[14] = ankenInput2.Text; // 案件番号のみで検索時の案件番号
                                 }
-                                else                                
+                                report_data[15] = src_17.Text; // 業務名称
+                                report_data[16] = src_18.Text; // 発注者名・課名
+                                if (src_19.Text != null && src_19.Text != "")
                                 {
-                                    report_data[28] = "2";
+                                    report_data[17] = "'" + src_19.Text + "/1" + "'"; // 管理月
+                                }
+                                else
+                                {
+                                    report_data[17] = "null";
+                                }
+
+                                if (src_20.Text != null && src_20.Text != "")
+                                {
+                                    report_data[18] = src_20.SelectedValue.ToString(); // 参考見積
+                                }
+                                else
+                                {
+                                    report_data[18] = "0";
+                                }
+                                if (src_21.Text != null && src_21.Text != "")
+                                {
+                                    report_data[19] = src_21.SelectedValue.ToString(); // 受注意欲
+                                }
+                                else
+                                {
+                                    report_data[19] = "0";
+                                }
+                                if (src_22.Text != null && src_22.Text != "")
+                                {
+                                    report_data[20] = src_22.SelectedValue.ToString(); // 引合状況
+                                }
+                                else
+                                {
+                                    report_data[20] = "0";
+                                }
+                                if (src_23.Text != null && src_23.Text != "")
+                                {
+                                    report_data[21] = src_23.SelectedValue.ToString(); // 当会応札
+                                }
+                                else
+                                {
+                                    report_data[21] = "0";
                                 }
                                 if (KensakuFlg == 0)
                                 {
-                                    //えんとり君修正STEP2　案件情報一覧検索画面のエントリくん一覧帳票のパラメータ追加
-                                    if (src_29.Checked)
+                                    // 年度越え配分有
+                                    if (src_24.Checked)
                                     {
-                                        report_data[29] = "1";
+                                        report_data[22] = "1";
                                     }
                                     else
                                     {
-                                        report_data[29] = "0";
+                                        report_data[22] = "2";
                                     }
-                                    if (src_30.Checked)
+                                }
+                                else
+                                {
+                                    report_data[22] = "null";
+                                }
+                                report_data[23] = src_25.Text; // 発注者コード
+
+                                // 起案状況
+                                if (src_26.Text == "未")
+                                {
+                                    report_data[24] = "0";
+                                }
+                                else if (src_26.Text == "済")
+                                {
+                                    report_data[24] = "1";
+                                }
+                                else
+                                {
+                                    report_data[24] = "";
+                                }
+
+                                if (src_27.Checked)
+                                {
+                                    report_data[25] = "1";
+                                }
+                                else
+                                {
+                                    // SE 20220217 No.1278 設定値の誤りを修正
+                                    //report_data[25] = "2";    // CHG 20220217
+                                    report_data[25] = "0";      // CHG 20220217
+                                }
+                                report_data[26] = src_28.Text; // 表示件数
+                                if (KensakuFlg == 0)
+                                {
+                                    report_data[27] = item1_KoukiNendo.SelectedValue.ToString();
+                                    // 売上年度オプション
+                                    if (item1_1_Tounendo.Checked)
                                     {
-                                        report_data[30] = "1";
+                                        report_data[28] = "1";
                                     }
                                     else
                                     {
-                                        report_data[30] = "0";
+                                        report_data[28] = "2";
                                     }
-                                }                                
-                                    string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
+                                }
+                                else
+                                {
+                                    report_data[27] = "";
+                                    report_data[28] = "null";
+                                }
+
+                                //えんとり君修正STEP2　案件情報一覧検索画面のエントリくん一覧帳票のパラメータ追加
+                                if (src_29.Checked)
+                                {
+                                    report_data[29] = "1";
+                                }
+                                else
+                                {
+                                    report_data[29] = "0";
+                                }
+                                if (src_30.Checked)
+                                {
+                                    report_data[30] = "1";
+                                }
+                                else
+                                {
+                                    report_data[30] = "0";
+                                }
+                                report_data[31] = ankenInput2.Text; // 案件番号のみで検索時の案件番号
+
+                                string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
 
                                 // result
                                 // 成否判定 0:正常 1：エラー
@@ -2478,55 +2502,5 @@ namespace TokuchoBugyoK2
             set_combo_shibu(src_1.SelectedValue.ToString());
         }
 
-               //No1427　1201案件番号のみでの検索ができるように変更
-        private void button8_Click(object sender, EventArgs e)
-        {
-            //どの検索ボタンを押したかのフラグを立てる
-            KensakuFlg = 1;
-            //検索中に0を表示
-            chosabuHaibun_Zeinuki_Goukei.Text = "0";
-            chosabuHaibun_Zeikomi_Goukei.Text = "0";
-            chosabuHaibun_Zeinuki_Goukei.Refresh();
-            chosabuHaibun_Zeikomi_Goukei.Refresh();
-
-            jigyobuHaibun_Zeinuki_Goukei.Text = "0";
-            jigyobuHaibun_Zeikomi_Goukei.Text = "0";
-            jigyobuHaibun_Zeinuki_Goukei.Refresh();
-            jigyobuHaibun_Zeikomi_Goukei.Refresh();
-
-            //レイアウトロジックを停止する
-            this.SuspendLayout();
-            //描画停止
-            c1FlexGrid1.BeginUpdate();
-
-            set_error("", 0);
-
-            if (src_16.Text.Length >= 3)
-            {
-                get_date(1);
-            }
-            else
-            {
-                // エラー　3桁以上の案件番号を入力してください。
-                set_error(GlobalMethod.GetMessage("E10731", ""));
-
-            }
-
-                // エラーフラグ true：正常 false：エラー
-                //Boolean errorflg = false;
-                // errorflg = uriagebi_Check();
-
-                // if (errorflg != false)
-                // {
-                //     set_error("", 0);
-                //     get_date();
-                // }
-
-                //描画再開
-                c1FlexGrid1.EndUpdate();
-                //レイアウトロジックを再開する
-                this.ResumeLayout();
-            
-        }
     }
 }
