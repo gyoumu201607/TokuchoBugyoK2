@@ -1954,7 +1954,7 @@ namespace TokuchoBugyoK2
                     //// 調査担当者（修正前）名前でなくコードで表示
                     //c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuChousainCD"];
                     if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg"])
-                        c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["ChousainMei"];
+                        c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["ChousainMei"] + "（退職）";
                     else
                         c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuChousainCD"];
                     // 副調査担当部所1
@@ -1963,7 +1963,7 @@ namespace TokuchoBugyoK2
                     ////副調査担当者1（修正前）名前でなくコードで表示
                     //c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD1"];
                     if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg1"])
-                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei1"];
+                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei1"] + "（退職）";
                     else
                         c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD1"];
                     // 副調査担当部所2
@@ -1971,7 +1971,7 @@ namespace TokuchoBugyoK2
                     //// 副調査担当者2（修正前）名前でなくコードで表示
                     //c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD2"];
                     if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg2"])
-                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei2"];
+                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei2"] + "（退職）";
                     else
                         c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD2"];
                     // 報告数

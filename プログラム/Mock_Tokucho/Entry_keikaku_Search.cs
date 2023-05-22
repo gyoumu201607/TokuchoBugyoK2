@@ -1160,6 +1160,14 @@ namespace TokuchoBugyoK2
                                 }
                             }
                         }
+
+                        //調査業務別　配分が100％未満の場合（0％では無い）場合はエラー表示
+                        if (longChousabuKei > 0 && intGyomuHaibunKei < 100 && intGyomuHaibunKei > 0)
+                        {
+                            // E70045:調査業務別　配分の合計が100になるように入力してください。
+                            ErrorMsg += "・" + GlobalMethod.GetMessage("E70045", "");
+                        }
+
                         //No1212 計画案件の登録を、計画額　０円でも登録・更新できるようにしてほしい。
                         //if (longChousabuKei != 0 || intGyomuHaibunKei != 0)
                         //{
