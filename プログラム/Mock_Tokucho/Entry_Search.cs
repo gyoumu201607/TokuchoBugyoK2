@@ -1163,6 +1163,8 @@ namespace TokuchoBugyoK2
                     if (flg == 1)
                     {
                         cmd.CommandText += "　WHERE AnkenAnkenBangou LIKE '" + ankenInput2.Text + "%'";
+                        //No1429 案件番号で検索時の検索条件追加
+                        cmd.CommandText += "AND AnkenDeleteFlag = 0 ";
                         //最新伝票有無を検索条件とする
                         if (src_27.Checked == true) 
                         {
