@@ -5129,13 +5129,17 @@ namespace TokuchoBugyoK2
             //エントリ君修正STEP2
             if (item3_1_2.Checked == false)
             {
-                // 調査部 業務別配分が100でないとエラー
-                if (item3_7_2_26_1.Text != "100.00%")
+                //No.1440 ②調査部　業務配分がある場合にエラーを出す
+                if (item3_7_1_1_1.Text != "0.00%")
                 {
-                    // 調査業務別　配分の合計が100になるように入力してください。
-                    item3_7_2_26_1.BackColor = Color.FromArgb(255, 204, 255);
-                    label502.BackColor = Color.FromArgb(255, 204, 255);
-                    errorFlg = true;
+                    // 調査部 業務別配分が100でないとエラー
+                    if (item3_7_2_26_1.Text != "100.00%")
+                    {
+                        // 調査業務別　配分の合計が100になるように入力してください。
+                        item3_7_2_26_1.BackColor = Color.FromArgb(255, 204, 255);
+                        label502.BackColor = Color.FromArgb(255, 204, 255);
+                        errorFlg = true;
+                    }
                 }
                 Double total1 = 0;
                 Double total2 = 0;
@@ -5642,13 +5646,16 @@ namespace TokuchoBugyoK2
 
             Double haibunTotal = GetDouble(item3_2_5_1.Text);   // 2.配分情報の配分額(税込)の合計額
 
-            //契約タブの1.契約情報の契約金額の税込と、2.配分情報の配分額(税込)の合計額一致していない
-            if (!Double.Equals(keiyakuTax, haibunTotal))
-            {
-                set_error(GlobalMethod.GetMessage("E10720", ""));
-                varidateFlag = false;
-            }
 
+            //No1440 修正
+            ////契約タブの1.契約情報の契約金額の税込と、2.配分情報の配分額(税込)の合計額一致していない
+            //if (!Double.Equals(keiyakuTax, haibunTotal))
+            //{
+            //    set_error(GlobalMethod.GetMessage("E10720", ""));
+            //    varidateFlag = false;
+            //}
+
+            //No.1440 ・売上情報と契約金額（税込）の合計額が一致しているか？→NG・・・受託金額と売上情報の一致を確認
             // 売上情報と契約金額（税込）の合計額が一致しない
             Double uriageTotal = 0;
             for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
@@ -5658,11 +5665,17 @@ namespace TokuchoBugyoK2
                 if (c1FlexGrid4[i, 19] != null) uriageTotal += GetDouble(c1FlexGrid4[i, 19].ToString());
                 if (c1FlexGrid4[i, 27] != null) uriageTotal += GetDouble(c1FlexGrid4[i, 27].ToString());
             }
-            if (!Double.Equals(keiyakuTax, uriageTotal))
+            ////No.1440 受託金額と売上情報の一致を確認に変更
+            if (!Double.Equals(jutakuTax, uriageTotal))
             {
-                set_error(GlobalMethod.GetMessage("E10728", ""));
+                set_error(GlobalMethod.GetMessage("E10731", ""));
                 varidateFlag = false;
             }
+            //if (!Double.Equals(keiyakuTax, uriageTotal))
+            //{
+            //    set_error(GlobalMethod.GetMessage("E10728", ""));
+            //    varidateFlag = false;
+            //}
 
             // No1209 要望ほか、６件 アラートからエラーメッセージへ変更する
             if (item2_2_3.SelectedValue != null && item2_2_3.SelectedValue.ToString().Equals("3") == false)
