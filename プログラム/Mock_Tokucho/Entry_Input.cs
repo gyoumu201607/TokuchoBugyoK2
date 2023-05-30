@@ -5668,7 +5668,7 @@ namespace TokuchoBugyoK2
             ////No.1440 受託金額と売上情報の一致を確認に変更
             if (!Double.Equals(jutakuTax, uriageTotal))
             {
-                set_error(GlobalMethod.GetMessage("E10731", ""));
+                set_error(GlobalMethod.GetMessage("E10732", ""));
                 varidateFlag = false;
             }
             //if (!Double.Equals(keiyakuTax, uriageTotal))
