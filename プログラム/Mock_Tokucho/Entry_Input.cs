@@ -5641,7 +5641,8 @@ namespace TokuchoBugyoK2
             if (!Double.Equals(keiyakuTax, seikyuTotal))
             {
                 set_error(GlobalMethod.GetMessage("E10707", ""));
-                varidateFlag = false;
+                //No.1440 修正（一時的対応　メッセージは出すがエラーとしない）
+                //varidateFlag = false;
             }
 
             Double haibunTotal = GetDouble(item3_2_5_1.Text);   // 2.配分情報の配分額(税込)の合計額
@@ -5668,7 +5669,7 @@ namespace TokuchoBugyoK2
             ////No.1440 受託金額と売上情報の一致を確認に変更
             if (!Double.Equals(jutakuTax, uriageTotal))
             {
-                set_error(GlobalMethod.GetMessage("E10731", ""));
+                set_error(GlobalMethod.GetMessage("E10732", ""));
                 varidateFlag = false;
             }
             //if (!Double.Equals(keiyakuTax, uriageTotal))
