@@ -1759,30 +1759,32 @@ namespace TokuchoBugyoK2
                 set_error("業務が選択されていませんので、集計できません。");
                 return;
             }
-            SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-            var cmd = conn.CreateCommand();
-            DataTable MadoguchiJouhou = new DataTable();
-            try
+            //No1435　1215　業務完了報告書の単品入力集計を行う　ボタンを押したときに、確認画面を出力
+            if (GlobalMethod.outputMessage("I00099", "", 1) == DialogResult.OK)
             {
-
-                // 受託番号から窓口IDを取得する
-                cmd.CommandText = "SELECT MadoguchiID,MadoguchiTourokubi FROM MadoguchiJouhou WHERE MadoguchiJutakuBangou = '" + JutakuBangou + "' ORDER BY MadoguchiID DESC";
-
-                var sda = new SqlDataAdapter(cmd);
-                MadoguchiJouhou.Clear();
-                sda.Fill(MadoguchiJouhou);
-
-                if (MadoguchiJouhou != null && MadoguchiJouhou.Rows.Count > 0)
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
+                var cmd = conn.CreateCommand();
+                DataTable MadoguchiJouhou = new DataTable();
+                try
                 {
-                    StringBuilder sb = new StringBuilder();
-                    String strComma = ", ";
-                    String strEqual = " = ";
-                    string strTanPinSql = "";
-                    
-                    // テーブル定義（項目名、属性）
-                    string[,] TanpinNyuuryoku = new string[,]
+                    // 受託番号から窓口IDを取得する
+                    cmd.CommandText = "SELECT MadoguchiID,MadoguchiTourokubi FROM MadoguchiJouhou WHERE MadoguchiJutakuBangou = '" + JutakuBangou + "' ORDER BY MadoguchiID DESC";
+
+                    var sda = new SqlDataAdapter(cmd);
+                    MadoguchiJouhou.Clear();
+                    sda.Fill(MadoguchiJouhou);
+
+                    if (MadoguchiJouhou != null && MadoguchiJouhou.Rows.Count > 0)
                     {
+                        StringBuilder sb = new StringBuilder();
+                        String strComma = ", ";
+                        String strEqual = " = ";
+                        string strTanPinSql = "";
+
+                        // テーブル定義（項目名、属性）
+                        string[,] TanpinNyuuryoku = new string[,]
+                        {
                         {"TanpinNyuuryokuID", "Numeric"}	            // 0.単品入力項目ID
                         ,{"TanpinJutakuDate", "Date"}	                // 1.受託日（依頼日）
                         ,{"TanpinHoukokuDate", "Date"}	                // 2.報告日
@@ -1820,27 +1822,27 @@ namespace TokuchoBugyoK2
                         ,{"TanpinUpdateUser", "String"}	                // 34.更新ユーザ
                         ,{"TanpinUpdateProgram", "String"}	            // 35.更新機能
                         ,{"TanpinDeleteFlag", "Numeric"}                // 36.削除フラグ
-                    };
+                        };
 
-                    sb.Clear();
-                    sb.Append("SELECT ");
-                    for (int i = 0; i < TanpinNyuuryoku.GetLength(0); i++)
-                    {
-                        if (i != 0)
+                        sb.Clear();
+                        sb.Append("SELECT ");
+                        for (int i = 0; i < TanpinNyuuryoku.GetLength(0); i++)
                         {
-                            sb.Append(strComma);
+                            if (i != 0)
+                            {
+                                sb.Append(strComma);
+                            }
+                            sb.Append(TanpinNyuuryoku[i, 0]);
                         }
-                        sb.Append(TanpinNyuuryoku[i, 0]);
-                    }
 
-                    // 条件式の設定
-                    sb.Append(" FROM TanpinNyuuryoku");
-                    sb.Append(" WHERE ");
-                    sb.Append(TanpinNyuuryoku[26, 0]);   // 単品入力項目ID
-                    sb.Append(strEqual);
-                    strTanPinSql = sb.ToString();
-                    string[,] TanpinNyuuryokuRank = new string[,]
-                    {
+                        // 条件式の設定
+                        sb.Append(" FROM TanpinNyuuryoku");
+                        sb.Append(" WHERE ");
+                        sb.Append(TanpinNyuuryoku[26, 0]);   // 単品入力項目ID
+                        sb.Append(strEqual);
+                        strTanPinSql = sb.ToString();
+                        string[,] TanpinNyuuryokuRank = new string[,]
+                        {
                         {"TanpinNyuuryokuID", "Numeric"}               // 0.単品入力項目ID
                         ,{"TanpinL1RankID", "Numeric"}                  // 1.ランクID
                         ,{"TanpinL1RankMei", "String"}                  // 2.ランク名
@@ -1849,88 +1851,91 @@ namespace TokuchoBugyoK2
                         ,{"TanpinL1HoukokuHonsuu", "Numeric"}           // 5.報告本数
                         ,{"TanpinL1Tanka", "Numeric"}                   // 6.単価
                         ,{"TanpinL1Kingaku", "Numeric"}                 // 7.金額
-                    };
+                        };
 
-                    
-                    var dt = new DataTable();
-                    foreach (DataRow dr in MadoguchiJouhou.Rows)
-                    {
-                        string MadoguchiID = dr[0].ToString();
-                        // 窓口ごと集計実施 -----------------------------------------------
-                        // 単品入力データ検索
-                        try {
-                            cmd.CommandText = strTanPinSql + MadoguchiID;
-                            Console.WriteLine(cmd.CommandText);
-                            sda = new SqlDataAdapter(cmd);
-                            dt.Clear();
-                            sda.Fill(dt);
-                        }
-                        catch (Exception)
+
+                        var dt = new DataTable();
+                        foreach (DataRow dr in MadoguchiJouhou.Rows)
                         {
-                            throw;
-                        }
-                        string[,] SQLData = new string[1, 37];
-                        // 初期値として取得した値をセットする
-                        for (int i = 0; i < dt.Columns.Count; i++)
-                        {
-                            SQLData[0, i] = "";
-                            if (dt.Rows[0][i] != null && dt.Rows[0][i].ToString() != "")
+                            string MadoguchiID = dr[0].ToString();
+                            // 窓口ごと集計実施 -----------------------------------------------
+                            // 単品入力データ検索
+                            try
                             {
-                                SQLData[0, i] = dt.Rows[0][i].ToString();
+                                cmd.CommandText = strTanPinSql + MadoguchiID;
+                                Console.WriteLine(cmd.CommandText);
+                                sda = new SqlDataAdapter(cmd);
+                                dt.Clear();
+                                sda.Fill(dt);
                             }
-                        }
-                        // 1.受託日（依頼日）
-                        if (SQLData[0, 1] == "")
-                        {
-                            SQLData[0, 1] = dr[1].ToString();
-                        }
-
-                        string mes = "";
-                        if (GlobalMethod.MadoguchiUpdate_ErrorCheck(6, SQLData, out string[] ErrorMes))
-                        {
-                            DataTable rRank = GetAggregateRankList(MadoguchiID, cmd);
-
-                            string[,] SQLData2 = new string[rRank.Rows.Count, 8];
-
-                            for (int i = 0; i < rRank.Rows.Count; i++)
+                            catch (Exception)
                             {
-
-                                SQLData2[i, 0] = SQLData[0, 0];               // 0.単品入力項目ID
-                                SQLData2[i, 1] = rRank.Rows[i][6].ToString(); // 1.ランクID
-                                SQLData2[i, 2] = rRank.Rows[i][0].ToString(); // 2.ランク名
-                                SQLData2[i, 3] = rRank.Rows[i][5].ToString(); // 3.ランク種別（集計方法）
-                                SQLData2[i, 4] = rRank.Rows[i][2].ToString(); // 4.依頼本数
-                                SQLData2[i, 5] = rRank.Rows[i][1].ToString(); // 5.報告本数
-                                SQLData2[i, 6] = "0";
-                                if (rRank.Rows[i][3] != null && rRank.Rows[i][3].ToString() != "")
+                                throw;
+                            }
+                            string[,] SQLData = new string[1, 37];
+                            // 初期値として取得した値をセットする
+                            for (int i = 0; i < dt.Columns.Count; i++)
+                            {
+                                SQLData[0, i] = "";
+                                if (dt.Rows[0][i] != null && dt.Rows[0][i].ToString() != "")
                                 {
-                                    SQLData2[i, 6] = rRank.Rows[i][3].ToString();     // 6.単価
-                                }
-                                // 金額
-                                SQLData2[i, 7] = "0";
-                                if (rRank.Rows[i][4] != null && rRank.Rows[i][4].ToString() != "")
-                                {
-                                    SQLData2[i, 7] = rRank.Rows[i][4].ToString();     // 7.金額
+                                    SQLData[0, i] = dt.Rows[0][i].ToString();
                                 }
                             }
-                            string mesR = "";
-                            GlobalMethod.MadoguchiUpdate_SQL(6, MadoguchiID, SQLData, out mesR, UserInfos, SQLData2);
+                            // 1.受託日（依頼日）
+                            if (SQLData[0, 1] == "")
+                            {
+                                SQLData[0, 1] = dr[1].ToString();
+                            }
+
+                            string mes = "";
+                            if (GlobalMethod.MadoguchiUpdate_ErrorCheck(6, SQLData, out string[] ErrorMes))
+                            {
+                                DataTable rRank = GetAggregateRankList(MadoguchiID, cmd);
+
+                                string[,] SQLData2 = new string[rRank.Rows.Count, 8];
+
+                                for (int i = 0; i < rRank.Rows.Count; i++)
+                                {
+
+                                    SQLData2[i, 0] = SQLData[0, 0];               // 0.単品入力項目ID
+                                    SQLData2[i, 1] = rRank.Rows[i][6].ToString(); // 1.ランクID
+                                    SQLData2[i, 2] = rRank.Rows[i][0].ToString(); // 2.ランク名
+                                    SQLData2[i, 3] = rRank.Rows[i][5].ToString(); // 3.ランク種別（集計方法）
+                                    SQLData2[i, 4] = rRank.Rows[i][2].ToString(); // 4.依頼本数
+                                    SQLData2[i, 5] = rRank.Rows[i][1].ToString(); // 5.報告本数
+                                    SQLData2[i, 6] = "0";
+                                    if (rRank.Rows[i][3] != null && rRank.Rows[i][3].ToString() != "")
+                                    {
+                                        SQLData2[i, 6] = rRank.Rows[i][3].ToString();     // 6.単価
+                                    }
+                                    // 金額
+                                    SQLData2[i, 7] = "0";
+                                    if (rRank.Rows[i][4] != null && rRank.Rows[i][4].ToString() != "")
+                                    {
+                                        SQLData2[i, 7] = rRank.Rows[i][4].ToString();     // 7.金額
+                                    }
+                                }
+                                string mesR = "";
+                                GlobalMethod.MadoguchiUpdate_SQL(6, MadoguchiID, SQLData, out mesR, UserInfos, SQLData2);
+                            }
                         }
+                        set_error("業務完了報告書の単品入力集計を実施しました。");
                     }
-                    set_error("業務完了報告書の単品入力集計を実施しました。");
+                    else
+                    {
+                        set_error("窓口の登録がありません。");
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    set_error("窓口の登録がありません。");
+                    set_error("業務完了報告書の単品入力集計に失敗しました。");
                 }
-            }
-            catch (Exception)
-            {
-                set_error("業務完了報告書の単品入力集計に失敗しました。");
-            }
-            finally
-            {
-                conn.Close();
+                finally
+                {
+                    conn.Close();
+                }
+
             }
         }
 

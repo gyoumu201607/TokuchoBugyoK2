@@ -18328,5 +18328,6 @@ namespace TokuchoBugyoK2
                 return "";
             }
         }
+    
     }
 }
