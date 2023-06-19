@@ -1904,7 +1904,7 @@ namespace TokuchoBugyoK2
                 //えんとり君修正STEP2 END
                 // 帳票に渡すAnkenJouhouID
                 string ankenJouhouID = "";
-                
+
                 if (item3_1_1.Text != null && item3_1_1.Text != "" && item3_1_1.SelectedValue.ToString() == "04")
                 {
                     // 案件区分が04：中止の場合、帳票プログラムには赤伝のAnkenJouhouIDを渡す
@@ -5711,9 +5711,9 @@ namespace TokuchoBugyoK2
                 }
 
                 //えんとり君修正STEP2
-                if(dummyFlag == 0) {
+                if (dummyFlag == 0) {
                     //①当会応札（入札タブ）が「対応前」のままで起案しようとしたらアラート表示する。
-                    if(item2_2_1.SelectedValue != null && item2_2_1.SelectedValue.ToString().Equals("1"))
+                    if (item2_2_1.SelectedValue != null && item2_2_1.SelectedValue.ToString().Equals("1"))
                     {
                         GlobalMethod.outputMessage("E10729", "(入札タブ)");
                     }
@@ -7189,7 +7189,7 @@ namespace TokuchoBugyoK2
                 ori_ankenNo = item1_6.Text;
                 //えんとり君修正STEP2
                 //案件番号変更機能
-                if (sItem1_10_ori.Equals(item1_10.SelectedValue.ToString()) == false || sItem1_2_KoukiNendo_ori.Equals(item1_2_KoukiNendo.SelectedValue.ToString()) == false) { 
+                if (sItem1_10_ori.Equals(item1_10.SelectedValue.ToString()) == false || sItem1_2_KoukiNendo_ori.Equals(item1_2_KoukiNendo.SelectedValue.ToString()) == false) {
                     string jigyoubuHeadCD = "";
                     // 契約区分で業務分類CDを判定
                     // Mst_Jigyoubu に問い合わせる方法が無い為、
@@ -7356,7 +7356,7 @@ namespace TokuchoBugyoK2
                     // エントリ君修正STEP2
                     //・受託番号を解除する為、受注チェックを外すことにより、受託番号を削除する。
                     //・受託番号削除は、起案後には行えない。起案後に行う場合は、起案解除後に行える。（システム管理者のみ）
-                    if (UserInfos[4].Equals("2")) { 
+                    if (UserInfos[4].Equals("2")) {
                         if (item3_1_2.Checked == false && (item2_3_7.Text == GlobalMethod.GetCommonValue2("ENTORY_TOUKAI")) == false)
                         {
                             string checkBangou = Header2.Text;
@@ -12930,7 +12930,7 @@ namespace TokuchoBugyoK2
                     }
 
                     transaction.Commit();
-                    
+
                     GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "確認シートのダミー赤伝を作成しました ID:" + ankenNo, pgmName + methodName, "");
                     if (SakuseiKubun == "03" || int.Parse(SakuseiKubun) > 5)
                     {
@@ -13145,7 +13145,7 @@ namespace TokuchoBugyoK2
                 sb.Append(",0 ");       //",AnkenKishuKeikakakugakuJf
                 sb.Append(",0 ");       //",AnkenKishuKeikakugakuJ "
             }
-            if (flag == 0) { 
+            if (flag == 0) {
                 sb.Append(",- AnkenKeikakuZangaku ");
                 sb.Append(",- AnkenkeikakuZangakuJF ");
                 sb.Append(",- AnkenkeikakuZangakuJ ");
@@ -13343,7 +13343,7 @@ namespace TokuchoBugyoK2
             sb.Append(",KeiyakuZenkaiRakusatsushaID ");
             sb.Append(" ) SELECT ");
             sb.Append(ankenNo);
-            if(flag == 0)
+            if (flag == 0)
             {
                 sb.Append(",-AnkenZenkaiJutakuKingaku ");
             }
@@ -13614,7 +13614,7 @@ namespace TokuchoBugyoK2
         private string getKeiyakuJouhouEntoryInsertSql(int ankenNo, int flag = 0)
         {
             string sFix = "- ";
-            if(flag == 1)
+            if (flag == 1)
             {
                 sFix = "";
             }
@@ -14321,7 +14321,7 @@ namespace TokuchoBugyoK2
                         if (!ErrorFLG) {
                             // 単価契約
                             DataTable tankaData = GlobalMethod.getData("AnkenJouhouID", "TankaKeiyakuID", "TankaKeiyaku", "AnkenJouhouID = " + AnkenID.ToString());
-                            if(tankaData!= null && tankaData.Rows.Count > 0)
+                            if (tankaData != null && tankaData.Rows.Count > 0)
                             {
                                 set_error(GlobalMethod.GetMessage("E10608", ""));
                                 ErrorFLG = true;
@@ -14904,7 +14904,7 @@ namespace TokuchoBugyoK2
                             // えんとり君修正STEP2(INDEX:60～) 
                             ",ISNULL(mb.JigyoubuHeadCD,'') " +
                             // No.1422 1196 案件番号の変更履歴を保存する
-                            ",ISNULL(AnkenHenkoumaeAnkenBangou,'') " + 
+                            ",ISNULL(AnkenHenkoumaeAnkenBangou,'') " +
 
                     //参照テーブル
                     "FROM AnkenJouhou " +
@@ -18150,6 +18150,7 @@ namespace TokuchoBugyoK2
             }
             else if (GyoumuCD == "7")
             {
+
                 if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
                 c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
@@ -18161,6 +18162,168 @@ namespace TokuchoBugyoK2
                 c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
             }
         }
+
+        //No.1441
+        private void label43_chosa_Click(object sender, EventArgs e)
+        {
+            string sDt = item3_1_7.Text.Trim();
+            string sYm = "";
+            try
+            {
+                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+            }
+            catch (Exception)
+            {
+                // 何もしない
+            }
+            string GyoumuCD = item3_1_8.SelectedValue.ToString();
+            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
+                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "5" || GyoumuCD == "6")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
+                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "7")
+            {
+
+                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
+                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "8")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
+                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+            }
+
+        }
+        private void label43_jigyoHukyu_Click(object sender, EventArgs e)
+        {
+            string sDt = item3_1_7.Text.Trim();
+            string sYm = "";
+            try
+            {
+                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+            }
+            catch (Exception)
+            {
+                // 何もしない
+            }
+            string GyoumuCD = item3_1_8.SelectedValue.ToString();
+            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
+                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "5" || GyoumuCD == "6")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
+                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "7")
+            {
+
+                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
+                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "8")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
+                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+            }
+        }
+
+        private void label43_johoSystem_Click(object sender, EventArgs e)
+        {
+            string sDt = item3_1_7.Text.Trim();
+            string sYm = "";
+            try
+            {
+                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+            }
+            catch (Exception)
+            {
+                // 何もしない
+            }
+            string GyoumuCD = item3_1_8.SelectedValue.ToString();
+            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
+                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "5" || GyoumuCD == "6")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
+                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "7")
+            {
+
+                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
+                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "8")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
+                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+            }
+        }
+
+        private void label43_sogoKenkyu_Click(object sender, EventArgs e)
+        {
+            string sDt = item3_1_7.Text.Trim();
+            string sYm = "";
+            try
+            {
+                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+            }
+            catch (Exception)
+            {
+                // 何もしない
+            }
+            string GyoumuCD = item3_1_8.SelectedValue.ToString();
+            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
+                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "5" || GyoumuCD == "6")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
+                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "7")
+            {
+
+                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
+                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+            }
+            else if (GyoumuCD == "8")
+            {
+                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
+                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
+                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+            }
+        }
+
 
         //エントリ君修正STEP2
         private void label326_Click(object sender, EventArgs e)
@@ -18180,6 +18343,55 @@ namespace TokuchoBugyoK2
             // 全部計算指せる
             SetKeiyakuHaibunKingaku();
         }
+        //No1441
+        private void label326_chosa_Click(object sender, EventArgs e)
+        {
+            //契約金額（税込）　item3_1_13
+            //契約金額（税抜）　item3_1_12
+            //配分額（税込）
+            item3_2_1_1.Text = item3_1_15.Text;
+            TotalMoney("item3_2_", "_1", 5);
+
+            //配分額（税抜）
+            //時抜き＝税込み/（1+税率）
+            //decimal percent = 1 + (GetInt(item3_1_10.Text) / 100);
+            //int intDump = (int)(GetInt(item3_2_1_1.Text)/ percent);
+            //string stringDump = intDump.ToString();
+            //item3_2_1_2.Text =  stringDump ;
+            item3_2_1_2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(item3_2_1_1.Text)));
+            TotalMoney("item3_2_", "_2", 5);
+        }
+
+        private void label326_jigyoHukyu_Click(object sender, EventArgs e)
+        {
+            //契約金額（税込み）
+            item3_2_2_1.Text = item3_1_15.Text;
+            TotalMoney("item3_2_", "_1", 5);
+            //契約金額（税抜き）
+            item3_2_2_2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(item3_2_2_1.Text)));
+            TotalMoney("item3_2_", "_2", 5);
+
+        }
+
+        private void label326_johoSystem_Click(object sender, EventArgs e)
+        {
+            //契約金額（税込み）
+            item3_2_3_1.Text = item3_1_15.Text;
+            TotalMoney("item3_2_", "_1", 5);
+            //契約金額（税抜き）
+            item3_2_3_2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(item3_2_3_1.Text)));
+            TotalMoney("item3_2_", "_2", 5);
+        }
+
+        private void label326_sogoKenkyu_Click(object sender, EventArgs e)
+        {
+            //契約金額（税込み）
+            item3_2_4_1.Text = item3_1_15.Text;
+            TotalMoney("item3_2_", "_1", 5);
+            //契約金額（税抜き）
+            item3_2_4_2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(item3_2_4_1.Text)));
+            TotalMoney("item3_2_", "_2", 5);
+        }
 
         //エントリ君修正STEP2
         private void item3_1_27_Leave(object sender, EventArgs e)
@@ -18187,7 +18399,6 @@ namespace TokuchoBugyoK2
             long zeinuki = GetLong(item3_1_12.Text) + GetLong(item3_1_27.Text);
             item3_1_12.Text = string.Format("{0:C}", zeinuki);
         }
-
         //エントリ君修正STEP2
         private void label51_Click(object sender, EventArgs e)
         {
@@ -18222,6 +18433,27 @@ namespace TokuchoBugyoK2
             {
                 // $FOLDER_BASE$/004 本部
                 FolderPath = dt.Rows[0][0].ToString();
+
+                // No.1444 フォルダ変更機能で、北海道でエラーがでる
+                // 867
+                // 工期開始年度　2021年度まで、　010北道
+                // 工期開始年度　2022年度から　　010北海
+                int koukinendo = 0;
+                if (int.TryParse(item1_2_KoukiNendo.SelectedValue.ToString(), out koukinendo))
+                {
+                    if (koukinendo > 2021)
+                    {
+                        // 010北道
+                        string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+                        // 010北海
+                        string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+
+                        if (str1 != null && str2 != null)
+                        {
+                            FolderPath = FolderPath.Replace(str1, str2);
+                        }
+                    }
+                }
             }
             if (FolderBase != "" && FolderPath != "")
             {
@@ -18303,6 +18535,121 @@ namespace TokuchoBugyoK2
             //item1_12.Text = FolderPath;
             txt_renamedfolder.Text = FolderPath;
         }
+        //エントリ君修正STEP2
+        //private void label51_Click(object sender, EventArgs e)
+        //{
+        //     フォルダリネーム========================================================
+        //    string sBushoCd = item1_10.SelectedValue.ToString();//受託課所支部（契約部所）
+        //    string sYear = item1_2_KoukiNendo.SelectedValue.ToString();   // 工期開始年度
+        //    string sGyomu = item1_13.Text;   // 業務名称
+        //    string sGOrder = item1_23.Text;//発注者名
+        //    if(sBushoCd.Equals(sFolderBushoCDRenameBef) && sYear.Equals(sFolderYearRenameBef) && sGyomu.Equals(sFolderGyomuRenameBef) && sGOrder.Equals(sFolderOrderRenameBef))
+        //    {
+        //        return;
+        //    }
+        //    sFolderBushoCDRenameBef = sBushoCd;    //受託課所支部（契約部所）
+        //    sFolderYearRenameBef = sYear;   // 工期開始年度
+        //    sFolderGyomuRenameBef = sGyomu;   // 業務名称
+        //    sFolderOrderRenameBef = sGOrder;//発注者名
+
+        //     案件（受託）フォルダ初期値設定 取得
+        //    String discript = "FolderPath";
+        //    String value = "FolderPath ";
+        //    String table = "M_Folder";
+        //    String where = "MENU_ID = 100 AND FolderBunruiCD = 1 AND FolderBushoCD = '" + sBushoCd + "' ";
+
+        //     //xxxx/00Cyousa/00調査情報部門共有/$NENDO$/200受託調査関連
+        //     フォルダ関連は工期開始年度で作成する
+        //    string FolderBase = GlobalMethod.GetCommonValue1("FOLDER_BASE").Replace(@"$NENDO$", sYear);
+        //    string FolderPath = "";
+
+        //    DataTable dt = new System.Data.DataTable();
+        //    dt = GlobalMethod.getData(discript, value, table, where);
+        //    if (dt != null && dt.Rows.Count > 0)
+        //    {
+        //         $FOLDER_BASE$/004 本部
+        //        FolderPath = dt.Rows[0][0].ToString();
+        //    }
+        //    if (FolderBase != "" && FolderPath != "")
+        //    {
+        //        FolderPath = FolderPath.Replace(@"$FOLDER_BASE$", FolderBase);
+        //        FolderPath = FolderPath.Replace("/", @"\");
+
+        //        string jCd = getJigyoubuHeadCD();
+
+        //        if (jCd.Equals("T"))
+        //        {
+        //             空白はトリム
+        //            sGOrder = System.Text.RegularExpressions.Regex.Replace(sGOrder, @"\s", "");
+        //            if (sGOrder.Length > 10)
+        //            {
+        //                sGOrder = sGOrder.Substring(0, 10);
+        //            }
+        //            sGyomu = System.Text.RegularExpressions.Regex.Replace(sGyomu, @"\s", "");
+        //            if (sGyomu.Length > 20)
+        //            {
+        //                sGyomu = sGyomu.Substring(0, 20);
+        //            }
+        //            string ankenNo = item1_6.Text;
+        //            if (sItem1_10_ori.Equals(item1_10.SelectedValue.ToString()) == false || sItem1_2_KoukiNendo_ori.Equals(item1_2_KoukiNendo.SelectedValue.ToString()) == false)
+        //            {
+        //                string jigyoubuHeadCD = "";
+        //                 契約区分で業務分類CDを判定
+        //                 Mst_Jigyoubu に問い合わせる方法が無い為、
+        //                 調査部が見つかった場合、T と判断
+        //                if (item1_14.Text.IndexOf("調査部") > -1)
+        //                {
+        //                    jigyoubuHeadCD = "T";
+        //                }
+        //                else if (item1_14.Text.IndexOf("事業普及部") > -1)
+        //                {
+        //                    jigyoubuHeadCD = "B";
+        //                }
+        //                else if (item1_14.Text.IndexOf("情シス部") > -1)
+        //                {
+        //                    jigyoubuHeadCD = "J";
+        //                }
+        //                else if (item1_14.Text.IndexOf("総合研究所") > -1)
+        //                {
+        //                    jigyoubuHeadCD = "K";
+        //                }
+        //                var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+        //                using (var conn = new SqlConnection(connStr))
+        //                {
+        //                    conn.Open();
+        //                    var cmd = conn.CreateCommand();
+
+        //                     業務分類CD + 年度下2桁
+        //                    ankenNo = jigyoubuHeadCD + item1_2_KoukiNendo.SelectedValue.ToString().Substring(2, 2);
+
+        //                     KashoShibuCD
+        //                    cmd.CommandText = "SELECT  " +
+        //                            "KashoShibuCD " +
+
+        //                            参照テーブル
+        //                            "FROM Mst_Busho " +
+        //                            "WHERE GyoumuBushoCD = '" + item1_10.SelectedValue.ToString() + "' ";
+        //                    var sda = new SqlDataAdapter(cmd);
+        //                    var dtB = new DataTable();
+        //                    sda.Fill(dtB);
+        //                     KashoShibuCDが正しい
+        //                    ankenNo = ankenNo + dtB.Rows[0][0].ToString();
+        //                }
+        //                ankenNo = ankenNo + "●●●";
+        //            }
+        //            FolderPath = FolderPath + "\\" + ankenNo + "_" + sGOrder + "_" + sGyomu;
+        //            item3_1_20_reset_ankenno.Text = ankenNo;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        FolderPath = FolderBase;
+        //        FolderPath = FolderPath.Replace("/", @"\");
+        //    }
+        //     案件（受託）フォルダ
+        //    item1_12.Text = FolderPath;
+        //    txt_renamedfolder.Text = FolderPath;
+        //}
 
 
         //エントリ君修正STEP2:部署のヘッダーマックを取得する
