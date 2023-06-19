@@ -18181,26 +18181,26 @@ namespace TokuchoBugyoK2
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
-                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
             }
             else if (GyoumuCD == "5" || GyoumuCD == "6")
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
-                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
             }
             else if (GyoumuCD == "7")
             {
 
                 if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
-                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
             }
             else if (GyoumuCD == "8")
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
-                c1FlexGrid4.Rows[2][3] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
             }
 
         }
@@ -18221,26 +18221,26 @@ namespace TokuchoBugyoK2
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
-                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
             }
             else if (GyoumuCD == "5" || GyoumuCD == "6")
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
-                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
             }
             else if (GyoumuCD == "7")
             {
 
                 if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
-                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
             }
             else if (GyoumuCD == "8")
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
-                c1FlexGrid4.Rows[2][11] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
             }
         }
 
@@ -18261,26 +18261,26 @@ namespace TokuchoBugyoK2
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
-                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
             }
             else if (GyoumuCD == "5" || GyoumuCD == "6")
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
-                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
             }
             else if (GyoumuCD == "7")
             {
 
                 if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
-                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
             }
             else if (GyoumuCD == "8")
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
-                c1FlexGrid4.Rows[2][19] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
             }
         }
 
@@ -18301,26 +18301,26 @@ namespace TokuchoBugyoK2
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
-                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
             }
             else if (GyoumuCD == "5" || GyoumuCD == "6")
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
-                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
             }
             else if (GyoumuCD == "7")
             {
 
                 if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
-                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
             }
             else if (GyoumuCD == "8")
             {
                 if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
                 if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
-                c1FlexGrid4.Rows[2][27] = item3_1_13.Text;
+                c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
             }
         }
 
@@ -18353,7 +18353,7 @@ namespace TokuchoBugyoK2
             TotalMoney("item3_2_", "_1", 5);
 
             //配分額（税抜）
-            //時抜き＝税込み/（1+税率）
+            //税抜き＝税込み/（1+税率）
             //decimal percent = 1 + (GetInt(item3_1_10.Text) / 100);
             //int intDump = (int)(GetInt(item3_2_1_1.Text)/ percent);
             //string stringDump = intDump.ToString();
