@@ -18166,162 +18166,69 @@ namespace TokuchoBugyoK2
         //No.1441
         private void label43_chosa_Click(object sender, EventArgs e)
         {
-            string sDt = item3_1_7.Text.Trim();
-            string sYm = "";
+            string sDt = item3_1_7.Text;
+            string sDm = "";
+            if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
             try
             {
-                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+                sDm = DateTime.Parse(sDt).ToString("yyyy/MM");
             }
-            catch (Exception)
+            catch(Exception)
             {
-                // 何もしない
+                //何もしない
             }
-            string GyoumuCD = item3_1_8.SelectedValue.ToString();
-            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
-                c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "5" || GyoumuCD == "6")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
-                c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "7")
-            {
-
-                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
-                c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "8")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
-                c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
-            }
-
+            if (sDm!= "") c1FlexGrid4.Rows[2][2] = sDm;
+            c1FlexGrid4.Rows[2][3] = item3_1_15.Text;
         }
         private void label43_jigyoHukyu_Click(object sender, EventArgs e)
         {
-            string sDt = item3_1_7.Text.Trim();
-            string sYm = "";
+            string sDt = item3_1_7.Text;
+            string sDm = "";
+            if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
             try
             {
-                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+                sDm = DateTime.Parse(sDt).ToString("yyyy/MM");
             }
             catch (Exception)
             {
-                // 何もしない
+                //何もしない
             }
-            string GyoumuCD = item3_1_8.SelectedValue.ToString();
-            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
-                c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "5" || GyoumuCD == "6")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
-                c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "7")
-            {
-
-                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
-                c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "8")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
-                c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
-            }
+            if (sDm != "") c1FlexGrid4.Rows[2][10] = sDm;
+            c1FlexGrid4.Rows[2][11] = item3_1_15.Text;
         }
 
         private void label43_johoSystem_Click(object sender, EventArgs e)
         {
-            string sDt = item3_1_7.Text.Trim();
-            string sYm = "";
+            string sDt = item3_1_7.Text;
+            string sDm = "";
+            if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
             try
             {
-                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+                sDm = DateTime.Parse(sDt).ToString("yyyy/MM");
             }
             catch (Exception)
             {
-                // 何もしない
+                //何もしない
             }
-            string GyoumuCD = item3_1_8.SelectedValue.ToString();
-            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
-                c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "5" || GyoumuCD == "6")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
-                c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "7")
-            {
-
-                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
-                c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "8")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
-                c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
-            }
+            if (sDm != "") c1FlexGrid4.Rows[2][18] = sDm;
+            c1FlexGrid4.Rows[2][19] = item3_1_15.Text;
         }
 
         private void label43_sogoKenkyu_Click(object sender, EventArgs e)
         {
-            string sDt = item3_1_7.Text.Trim();
-            string sYm = "";
+            string sDt = item3_1_7.Text;
+            string sDm = "";
+            if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
             try
             {
-                sYm = DateTime.Parse(sDt).ToString("yyyy/MM");
+                sDm = DateTime.Parse(sDt).ToString("yyyy/MM");
             }
             catch (Exception)
             {
-                // 何もしない
+                //何もしない
             }
-            string GyoumuCD = item3_1_8.SelectedValue.ToString();
-            if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][1] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][2] = sYm;
-                c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "5" || GyoumuCD == "6")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][9] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][10] = sYm;
-                c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "7")
-            {
-
-                if (sDt != "") c1FlexGrid4.Rows[2][17] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][18] = sYm;
-                c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
-            }
-            else if (GyoumuCD == "8")
-            {
-                if (sDt != "") c1FlexGrid4.Rows[2][25] = sDt;
-                if (sYm != "") c1FlexGrid4.Rows[2][26] = sYm;
-                c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
-            }
+            if (sDm != "") c1FlexGrid4.Rows[2][26] = sDm;
+            c1FlexGrid4.Rows[2][27] = item3_1_15.Text;
         }
 
 
