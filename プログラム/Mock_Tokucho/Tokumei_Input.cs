@@ -442,13 +442,41 @@ namespace TokuchoBugyoK2
             Header4.Text = item1_MadoguchiGyoumuMeishou.Text;
         }
 
-        public ToolStripMenuItem Set_ContextMenu(ToolStripMenuItem item, DataTable dt)
+        //public ToolStripMenuItem Set_ContextMenu(ToolStripMenuItem item, DataTable dt)
+        //{
+        //    for (int i = 0; i < dt.Rows.Count; i++)
+        //    {
+        //        if (dt.Rows[i][1].ToString() != "")
+        //        {
+        //            item.DropDownItems.Add(dt.Rows[i][1].ToString(), null, ContextMenuEvent);
+        //        }
+        //    }
+        //    return item;
+        //}
+        //No.1443
+        public ToolStripMenuItem Set_ContextMenu(ToolStripMenuItem item, DataTable dt, bool isEscape = false)
         {
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 if (dt.Rows[i][1].ToString() != "")
                 {
-                    item.DropDownItems.Add(dt.Rows[i][1].ToString(), null, ContextMenuEvent);
+                    // No.1443 対応
+                    //item.DropDownItems.Add(dt.Rows[i][1].ToString(), null, ContextMenuEvent);
+                    if (isEscape)
+                    {
+                        if (dt.Rows[i][1].ToString() == "-")
+                        {
+                            item.DropDownItems.Add("[" + dt.Rows[i][1].ToString() + "]", null, ContextMenuEvent);
+                        }
+                        else
+                        {
+                            item.DropDownItems.Add(dt.Rows[i][1].ToString(), null, ContextMenuEvent);
+                        }
+                    }
+                    else
+                    {
+                        item.DropDownItems.Add(dt.Rows[i][1].ToString(), null, ContextMenuEvent);
+                    }
                 }
             }
             return item;
@@ -623,7 +651,8 @@ namespace TokuchoBugyoK2
                 }
                 contextMenuHoukoku = new ToolStripMenuItem();
                 contextMenuHoukoku.Text = "報告ランク";
-                contextMenuHoukoku = Set_ContextMenu(contextMenuHoukoku, houkokuDt);
+                //No.1443
+                contextMenuHoukoku = Set_ContextMenu(contextMenuHoukoku, houkokuDt, true);
 
                 // 依頼ランク
                 DataTable iraiDt = new DataTable();
@@ -646,7 +675,8 @@ namespace TokuchoBugyoK2
                 }
                 contextMenuIrai = new ToolStripMenuItem();
                 contextMenuIrai.Text = "依頼ランク";
-                contextMenuIrai = Set_ContextMenu(contextMenuIrai, iraiDt);
+                //No.1443
+                contextMenuIrai = Set_ContextMenu(contextMenuIrai, iraiDt, true);
                 gridSizeChange();
                 tabChousahinmokuFlg = "1"; // 0:調査品目明細を開いたことが無い 1:調査品目明細を開いたことがある
                 tabChangeFlg = "0"; // 0:タブ移動してない 1:タブ移動した
@@ -6646,6 +6676,12 @@ namespace TokuchoBugyoK2
                         discript = "TankaRankHinmoku ";
                         value = "TankaRankHinmoku ";
                         table = "TankaKeiyakuRank ";
+                        //No.1443
+                        string sRank = c1FlexGrid4.Rows[e.Row][ColName].ToString();
+                        if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "[-]")
+                        {
+                            sRank = "-";
+                        }
                         where = "TankaRankDeleteFlag != 1 AND TankaKeiyakuID = (SELECT TanpinGyoumuCD FROM TanpinNyuuryoku WHERE MadoguchiID = " + MadoguchiID + ") " +
                                 "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[e.Row][ColName].ToString(), 0, 0) + "' ";
 
@@ -6654,6 +6690,11 @@ namespace TokuchoBugyoK2
                         if (combodt != null && combodt.Rows.Count > 0)
                         {
                             // 取得出来た場合はスルー
+                            //No.1443
+                            if (sRank == "-")
+                            {
+                                c1FlexGrid4.Rows[e.Row][ColName] = sRank;
+                            }
                         }
                         else
                         {
