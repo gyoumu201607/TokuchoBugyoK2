@@ -2494,6 +2494,18 @@ namespace TokuchoBugyoK2
                             transaction = conn.BeginTransaction();
                             cmd.Transaction = transaction;
 
+                            //No1419対応：メモ更新内容の出力
+                            string memoBeforeChg = memoData;
+                            string memoAfterChg = gamenMemo;
+                            if (memoData.Length > 30)
+                            {
+                                memoBeforeChg = memoData.Substring(0, 30);
+                            }
+                            if (gamenMemo.Length > 30)
+                            {
+                                memoAfterChg = gamenMemo.Substring(0, 30);
+                            }
+
                             cmd.CommandText = "INSERT INTO T_HISTORY(" +
                             "H_DATE_KEY " +
                             ",H_NO_KEY " +
@@ -2518,7 +2530,9 @@ namespace TokuchoBugyoK2
                             ",N'" + UserInfos[1] + "' " +
                             ",'" + UserInfos[2] + "' " +
                             ",N'" + UserInfos[3] + "' " +
-                            ",'自分大臣で更新を行いました。進捗状況:" + gamenShinchoku + "' " +
+                            //No1419対応：メモ更新内容の出力
+                            //",'自分大臣で更新を行いました。進捗状況:" + gamenShinchoku + "' " +
+                            ",'自分大臣で更新を行いました。進捗状況:" + gamenShinchoku + " 変更前メモ:" + memoBeforeChg + " 変更後メモ:" + memoAfterChg + "' " +
                             ",'" + pgmName + methodName + "' " +
                             ",N'" + c1FlexGrid1.Rows[i][tokucyo_no_index].ToString() + "' " + // 特調番号
                             "," + c1FlexGrid1.Rows[i][madoguchi_id_index].ToString() + " " + // MadoguchiID

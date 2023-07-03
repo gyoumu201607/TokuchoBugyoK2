@@ -175,7 +175,17 @@ namespace TokuchoBugyoK2
             cr.Image = bmpSort;
 
             // えんとり君修正STEP2
-            bool bVisible = UserInfos[4].Equals("2");
+            // No1447対応　チェックボックス表示権限変更
+            //bool bVisible = UserInfos[4].Equals("2");
+            bool bVisible;
+            if (UserInfos[4].Equals("0"))
+            {
+                bVisible = false;
+            }
+            else
+            {
+                bVisible = true;
+            }
             label34.Visible = bVisible;
             label35.Visible = bVisible;
             src_30.Visible = bVisible;
