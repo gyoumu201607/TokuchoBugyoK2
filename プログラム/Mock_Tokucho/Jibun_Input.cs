@@ -8096,9 +8096,32 @@ namespace TokuchoBugyoK2
                     // 絶対にこの処理を通す
                     if (HinmokuCol <= HinmokuColSel || HinmokuCol >= HinmokuColSel)
                     {
-                        if (copyData == null)
+                        //No.1417 1182 奉行上でもコピペについて
+                        bool isWinCopy = false;
+                        IDataObject data = Clipboard.GetDataObject();
+                        string strWinCopyText = "";
+                        if (data.GetDataPresent(DataFormats.Text))
                         {
-                            return;
+                            string str;
+                            //クリップボードからデータを取得
+                            str = (string)data.GetData(DataFormats.Text);
+                            //クリップボードにある最後の開業コードを削除
+                            strWinCopyText = str.TrimEnd('\r', '\n');
+                            isWinCopy = true;
+                        }
+                        if (isWinCopy)
+                        {
+                            //選択範囲、データを貼り付け
+                            c1FlexGrid4.Select(HinmokuRow, HinmokuCol, HinmokuRowSel, HinmokuColSel, false);
+                            c1FlexGrid4.Clip = strWinCopyText;
+                            c1FlexGrid4.Select(HinmokuRow, HinmokuCol, HinmokuRowSel, HinmokuColSel);
+                        }
+                        else
+                        {
+                            if (copyData == null)
+                            {
+                                return;
+                            }
                         }
                         // ペースト時に取り直されるので、このタイミングで保持しておく
                         int row = HinmokuRow; // 選択している開始行
