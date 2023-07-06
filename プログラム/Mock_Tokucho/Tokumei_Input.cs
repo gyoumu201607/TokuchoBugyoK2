@@ -6676,15 +6676,16 @@ namespace TokuchoBugyoK2
                         discript = "TankaRankHinmoku ";
                         value = "TankaRankHinmoku ";
                         table = "TankaKeiyakuRank ";
+                        where = "TankaRankDeleteFlag != 1 AND TankaKeiyakuID = (SELECT TanpinGyoumuCD FROM TanpinNyuuryoku WHERE MadoguchiID = " + MadoguchiID + ") " +
+                               "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[e.Row][ColName].ToString(), 0, 0) + "' ";
                         //No.1443
                         string sRank = c1FlexGrid4.Rows[e.Row][ColName].ToString();
                         if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "[-]")
                         {
                             sRank = "-";
+                            where = "TankaRankDeleteFlag != 1 AND TankaKeiyakuID = (SELECT TanpinGyoumuCD FROM TanpinNyuuryoku WHERE MadoguchiID = " + MadoguchiID + ") " +
+                               "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'-'";
                         }
-                        where = "TankaRankDeleteFlag != 1 AND TankaKeiyakuID = (SELECT TanpinGyoumuCD FROM TanpinNyuuryoku WHERE MadoguchiID = " + MadoguchiID + ") " +
-                                "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[e.Row][ColName].ToString(), 0, 0) + "' ";
-
                         combodt = new DataTable();
                         combodt = GlobalMethod.getData(discript, value, table, where);
                         if (combodt != null && combodt.Rows.Count > 0)
