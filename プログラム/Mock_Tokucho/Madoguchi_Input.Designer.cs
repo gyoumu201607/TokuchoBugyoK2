@@ -3293,7 +3293,7 @@
             this.c1FlexGrid4.Rows.DefaultSize = 44;
             this.c1FlexGrid4.Rows.Fixed = 2;
             this.c1FlexGrid4.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid4.Size = new System.Drawing.Size(2767, 457);
+            this.c1FlexGrid4.Size = new System.Drawing.Size(2922, 457);
             this.c1FlexGrid4.StyleInfo = resources.GetString("c1FlexGrid4.StyleInfo");
             this.c1FlexGrid4.TabIndex = 57;
             this.c1FlexGrid4.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid4_BeforeMouseDown);
@@ -4131,7 +4131,7 @@
             // 
             this.item4_Mail_icon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.item4_Mail_icon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.item4_Mail_icon.Location = new System.Drawing.Point(268, 1790);
+            this.item4_Mail_icon.Location = new System.Drawing.Point(350, 1818);
             this.item4_Mail_icon.Margin = new System.Windows.Forms.Padding(5);
             this.item4_Mail_icon.Name = "item4_Mail_icon";
             this.item4_Mail_icon.Size = new System.Drawing.Size(30, 30);
@@ -7269,7 +7269,7 @@
             this.tableLayoutPanel56.ColumnCount = 2;
             this.tableLayoutPanel56.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel56.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel56.Location = new System.Drawing.Point(343, 14259);
+            this.tableLayoutPanel56.Location = new System.Drawing.Point(439, 14575);
             this.tableLayoutPanel56.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel56.Name = "tableLayoutPanel56";
             this.tableLayoutPanel56.RowCount = 3;

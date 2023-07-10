@@ -466,7 +466,8 @@ namespace TokuchoBugyoK2
                     {
                         if (dt.Rows[i][1].ToString() == "-")
                         {
-                            item.DropDownItems.Add("[" + dt.Rows[i][1].ToString() + "]", null, ContextMenuEvent);
+                            item.DropDownItems.Add("半角ハイフン", null, ContextMenuEvent);
+                            //item.DropDownItems.Add("[" + dt.Rows[i][1].ToString() + "]", null, ContextMenuEvent);
                         }
                         else
                         {
@@ -6680,7 +6681,7 @@ namespace TokuchoBugyoK2
                                "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[e.Row][ColName].ToString(), 0, 0) + "' ";
                         //No.1443
                         string sRank = c1FlexGrid4.Rows[e.Row][ColName].ToString();
-                        if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "[-]")
+                        if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "半角ハイフン")
                         {
                             sRank = "-";
                             where = "TankaRankDeleteFlag != 1 AND TankaKeiyakuID = (SELECT TanpinGyoumuCD FROM TanpinNyuuryoku WHERE MadoguchiID = " + MadoguchiID + ") " +
