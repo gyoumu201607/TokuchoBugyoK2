@@ -6543,9 +6543,15 @@ namespace TokuchoBugyoK2
 
                     //不具合No1332(1084)
                     // 部所が削除されてもGaroon連携の担当が削除されない　ここは物理削除のはず。更新時に画面から消えたら物理削除しているので。
+                    //cmd.CommandText = "DELETE FROM GaroonTsuikaAtesaki Where GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "' " +
+                    //                  "AND GaroonTsuikaAtesakiGamenFlag = 0 " +
+                    //                  "AND GaroonTsuikaAtesakiBushoCD not in (SELECT DISTINCT MadoguchiL1ChousaBushoCD FROM MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiID = '" + MadoguchiID + "') ";
+                    //不具合No1448(1237)
+                    //窓口部署はGaroon連携から外さない対応
                     cmd.CommandText = "DELETE FROM GaroonTsuikaAtesaki Where GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "' " +
                                       "AND GaroonTsuikaAtesakiGamenFlag = 0 " +
-                                      "AND GaroonTsuikaAtesakiBushoCD not in (SELECT DISTINCT MadoguchiL1ChousaBushoCD FROM MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiID = '" + MadoguchiID + "') ";
+                                      "AND GaroonTsuikaAtesakiBushoCD not in (SELECT DISTINCT MadoguchiL1ChousaBushoCD FROM MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiID = '" + MadoguchiID + "') " +
+                                      "AND GaroonTsuikaAtesakiBushoCD not in (SELECT DISTINCT MadoguchiTantoushaBushoCD FROM MadoguchiJouhou WHERE MadoguchiID = '" + MadoguchiID + "') ";
                     //cmd.CommandText = "UPDATE GaroonTsuikaAtesaki SET GaroonTsuikaAtesakiDeleteFlag=1 Where GaroonTsuikaAtesakiMadoguchiID = '" + MadoguchiID + "' " +
                     //                  "AND GaroonTsuikaAtesakiBushoCD not in (SELECT DISTINCT MadoguchiL1ChousaBushoCD FROM MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiID = '" + MadoguchiID + "') ";
                     cmd.ExecuteNonQuery();
