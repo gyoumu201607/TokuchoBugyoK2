@@ -2991,7 +2991,7 @@ namespace TokuchoBugyoK2
                     {
                         if (dt.Rows[i][1].ToString() == "-")
                         {
-                            item.DropDownItems.Add("半角ハイフン", null, ContextMenuEvent);
+                            item.DropDownItems.Add("半角ハイフン ", null, ContextMenuEvent);
                             //item.DropDownItems.Add("[" + dt.Rows[i][1].ToString() + "]", null, ContextMenuEvent);
                         }
                         else
@@ -15339,11 +15339,11 @@ namespace TokuchoBugyoK2
                                 "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[e.Row][ColName].ToString(), 0, 0) + "' ";
                         //No.1443
                         string sRank = c1FlexGrid4.Rows[e.Row][ColName].ToString();
-                        if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "半角ハイフン")
+                        if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "半角ハイフン ")
                         {
                             sRank = "-";
                             where = "TankaRankDeleteFlag != 1 AND TankaKeiyakuID = (SELECT TanpinGyoumuCD FROM TanpinNyuuryoku WHERE MadoguchiID = " + MadoguchiID + ") " +
-                                "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'-'";
+                                "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'-'" ;
                         }
                         combodt = new DataTable();
                         combodt = GlobalMethod.getData(discript, value, table, where);
@@ -15644,59 +15644,59 @@ namespace TokuchoBugyoK2
                             {
                                 return;
                             }
-                        }
-                        // ペースト時に取り直されるので、このタイミングで保持しておく
-                        int row = HinmokuRow; // 選択している開始行
-                        int rowSel = HinmokuRowSel; // 選択している最終行
-                        int col = HinmokuCol; // 選択している開始列
-                        int colSel = HinmokuColSel; // 選択している最終列
+                            // ペースト時に取り直されるので、このタイミングで保持しておく
+                            int row = HinmokuRow; // 選択している開始行
+                            int rowSel = HinmokuRowSel; // 選択している最終行
+                            int col = HinmokuCol; // 選択している開始列
+                            int colSel = HinmokuColSel; // 選択している最終列
 
-                        int num = 0;
+                            int num = 0;
 
-                        // 下から上対応（右から左に複数選択には未対応）
-                        if (row > rowSel)
-                        {
-                            num = row;
-                            row = rowSel;
-                            rowSel = num;
-                            num = 0;
-                        }
-
-                        // 右から左対応
-                        if (col > colSel)
-                        {
-                            num = col;
-                            col = colSel;
-                            colSel = num;
-                            num = 0;
-                        }
-
-                        // ▼行
-                        // 範囲選択している行までペーストを繰り返す
-                        //  i < rowSel ・・・選択開始行から終了行まで
-                        //  i < c1FlexGrid4.Rows.Count・・・Gridの最終行まで
-                        for (int i = row; i <= rowSel && i < c1FlexGrid4.Rows.Count; i++)
-                        {
-                            // ▼列
-                            //for (int colIndex = 0; colIndex < copyData[num].Count && HinmokuColSel + colIndex < c1FlexGrid4.Cols.Count; colIndex++)
-                            for (int j = 0; j + HinmokuCol < c1FlexGrid4.Cols.Count; j++)
+                            // 下から上対応（右から左に複数選択には未対応）
+                            if (row > rowSel)
                             {
-                                // コピー列が超えたら
-                                if (j > copyData[0].Count - 1)
-                                {
-                                    break;
-                                }
+                                num = row;
+                                row = rowSel;
+                                rowSel = num;
+                                num = 0;
+                            }
 
-                                // 列データが存在しない場合、終了
-                                if (copyData[0][j] == null)
+                            // 右から左対応
+                            if (col > colSel)
+                            {
+                                num = col;
+                                col = colSel;
+                                colSel = num;
+                                num = 0;
+                            }
+
+                            // ▼行
+                            // 範囲選択している行までペーストを繰り返す
+                            //  i < rowSel ・・・選択開始行から終了行まで
+                            //  i < c1FlexGrid4.Rows.Count・・・Gridの最終行まで
+                            for (int i = row; i <= rowSel && i < c1FlexGrid4.Rows.Count; i++)
+                            {
+                                // ▼列
+                                //for (int colIndex = 0; colIndex < copyData[num].Count && HinmokuColSel + colIndex < c1FlexGrid4.Cols.Count; colIndex++)
+                                for (int j = 0; j + HinmokuCol < c1FlexGrid4.Cols.Count; j++)
                                 {
-                                    break;
+                                    // コピー列が超えたら
+                                    if (j > copyData[0].Count - 1)
+                                    {
+                                        break;
+                                    }
+
+                                    // 列データが存在しない場合、終了
+                                    if (copyData[0][j] == null)
+                                    {
+                                        break;
+                                    }
+                                    c1FlexGrid4[i, col + j] = copyData[0][j];
                                 }
-                                c1FlexGrid4[i, col + j] = copyData[0][j];
                             }
                         }
                     }
-                    // イベントをキャンセルする
+                        // イベントをキャンセルする
                     e.Handled = true;
                 }
 
