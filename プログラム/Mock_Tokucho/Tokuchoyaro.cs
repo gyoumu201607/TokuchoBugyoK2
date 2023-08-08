@@ -353,6 +353,12 @@ namespace TokuchoBugyoK2
                         {
                             return;
                         }
+                        //1449_1242
+                        if (checkBox2.Checked == false && checkBox3.Checked == false)
+                        {
+                            c1FlexGrid4.Rows.Count = 1;
+                            return;
+                        }
                         int CHOUSA_CHRNGE = 0;
                         if (GlobalMethod.GetCommonValue1("CHOUSA_CHRNGE") == "1")
                         {
@@ -501,6 +507,23 @@ namespace TokuchoBugyoK2
                                                 " OR (HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') " +
                                                 " OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "'))) ";
                         }
+                        // 1449_1242対応
+                        //チェックボックス両方
+                        if (checkBox2.Checked == true && checkBox3.Checked == true)
+                        {
+                            cmd.CommandText += "AND (MadoguchiTantoushaCD IS NULL OR HinmokuChousainCD IS NULL)";
+                        }
+                        //窓口部所
+                        else if (checkBox2.Checked == true)
+                        {
+                            cmd.CommandText += "AND ISNULL(MadoguchiTantoushaCD, '') = ''";
+                        }
+                        //調査部所
+                        else if (checkBox3.Checked == true)
+                        {
+                            cmd.CommandText += "AND ISNULL(HinmokuChousainCD, '') =''";
+                        }
+                    
                         // 808 担当者空白リストから、部所のみで中止の場合、表示しない。
                         // →中止を抽出しない
                         //cmd.CommandText += "AND (ChousaChuushi != 1) ";

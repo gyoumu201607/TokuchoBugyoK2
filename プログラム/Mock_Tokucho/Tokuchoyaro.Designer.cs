@@ -65,8 +65,10 @@
             this.c1FlexGrid4 = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.tlpHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.lblVersion = new System.Windows.Forms.Label();
             this.lblBootMode = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -445,12 +447,12 @@
             this.c1FlexGrid1.CellButtonImage = ((System.Drawing.Image)(resources.GetObject("c1FlexGrid1.CellButtonImage")));
             this.c1FlexGrid1.ColumnInfo = resources.GetString("c1FlexGrid1.ColumnInfo");
             this.c1FlexGrid1.HighLight = C1.Win.C1FlexGrid.HighLightEnum.WithFocus;
-            this.c1FlexGrid1.Location = new System.Drawing.Point(10, 217);
+            this.c1FlexGrid1.Location = new System.Drawing.Point(11, 217);
             this.c1FlexGrid1.Name = "c1FlexGrid1";
             this.c1FlexGrid1.Rows.Count = 2;
             this.c1FlexGrid1.Rows.DefaultSize = 25;
             this.c1FlexGrid1.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid1.Size = new System.Drawing.Size(1191, 345);
+            this.c1FlexGrid1.Size = new System.Drawing.Size(985, 345);
             this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
             this.c1FlexGrid1.TabIndex = 52;
             this.c1FlexGrid1.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid1_BeforeMouseDown);
@@ -554,19 +556,6 @@
             this.tlpHeader.Size = new System.Drawing.Size(1358, 40);
             this.tlpHeader.TabIndex = 56;
             // 
-            // lblVersion
-            // 
-            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblVersion.Location = new System.Drawing.Point(5, 18);
-            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(12, 17);
-            this.lblVersion.TabIndex = 6;
-            this.lblVersion.Text = " ";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // lblBootMode
             // 
             this.lblBootMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -581,12 +570,49 @@
             this.lblBootMode.Text = " ";
             this.lblBootMode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblVersion.Location = new System.Drawing.Point(5, 18);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(12, 17);
+            this.lblVersion.TabIndex = 6;
+            this.lblVersion.Text = " ";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(1405, 578);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(72, 16);
+            this.checkBox2.TabIndex = 58;
+            this.checkBox2.Text = "窓口部所";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(1516, 578);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(72, 16);
+            this.checkBox3.TabIndex = 59;
+            this.checkBox3.Text = "調査部所";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
             // Tokuchoyaro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1884, 1021);
+            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.tlpHeader);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.c1FlexGrid4);
@@ -682,5 +708,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblBootMode;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }
