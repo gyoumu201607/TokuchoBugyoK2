@@ -18267,6 +18267,12 @@ namespace TokuchoBugyoK2
             //item3_2_1_2.Text =  stringDump ;
             item3_2_1_2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(item3_2_1_1.Text)));
             TotalMoney("item3_2_", "_2", 5);
+
+            //No1450対応（%操作が金額に反映しないケース対応）
+            set_keiyaku_haibun();
+
+            SetKeiyakuHaibunKingaku();
+
         }
 
         private void label326_jigyoHukyu_Click(object sender, EventArgs e)
@@ -18278,6 +18284,11 @@ namespace TokuchoBugyoK2
             item3_2_2_2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(item3_2_2_1.Text)));
             TotalMoney("item3_2_", "_2", 5);
 
+            //No1450対応（%操作が金額に反映しないケース対応）
+            set_keiyaku_haibun();
+
+            SetKeiyakuHaibunKingaku();
+
         }
 
         private void label326_johoSystem_Click(object sender, EventArgs e)
@@ -18288,6 +18299,12 @@ namespace TokuchoBugyoK2
             //契約金額（税抜き）
             item3_2_3_2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(item3_2_3_1.Text)));
             TotalMoney("item3_2_", "_2", 5);
+
+            //No1450対応（%操作が金額に反映しないケース対応）
+            set_keiyaku_haibun();
+
+            SetKeiyakuHaibunKingaku();
+
         }
 
         private void label326_sogoKenkyu_Click(object sender, EventArgs e)
@@ -18298,6 +18315,12 @@ namespace TokuchoBugyoK2
             //契約金額（税抜き）
             item3_2_4_2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(item3_2_4_1.Text)));
             TotalMoney("item3_2_", "_2", 5);
+
+            //No1450対応（%操作が金額に反映しないケース対応）
+            set_keiyaku_haibun();
+
+            SetKeiyakuHaibunKingaku();
+
         }
 
         //エントリ君修正STEP2
