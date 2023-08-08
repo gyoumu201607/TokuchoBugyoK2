@@ -15598,9 +15598,9 @@ namespace TokuchoBugyoK2
                 }
             }
         }
-
+        #region 廃棄
         // 調査品目明細GridのKeyDown
-        private void c1FlexGrid4_KeyDown(object sender, KeyEventArgs e)
+        private void c1FlexGrid4_KeyDown_1(object sender, KeyEventArgs e)
         {
             //調査品目編集モード 0:表示 1:編集
             if (ChousaHinmokuMode == 1)
@@ -15696,6 +15696,276 @@ namespace TokuchoBugyoK2
                             }
                         }
                     }
+                    // イベントをキャンセルする
+                    e.Handled = true;
+                }
+
+                // Ctrl + Z
+                if (e.KeyData == (Keys.Control | Keys.Z))
+                {
+
+                }
+
+            }
+            else
+            {
+                return;
+            }
+        }
+        #endregion
+
+        #region No.1417戻し
+        // 調査品目明細GridのKeyDown
+        private void c1FlexGrid4_KeyDown_0(object sender, KeyEventArgs e)
+        {
+            //調査品目編集モード 0:表示 1:編集
+            if (ChousaHinmokuMode == 1)
+            {
+                // Ctrl + V
+                if (e.KeyData == (Keys.Control | Keys.V))
+                {
+                    // 範囲選択時のペースト
+                    // 750 行を複数行選択しペーストしたが1行分のみしかペースト出来ない対応
+
+                    // 範囲選択が1列のみを選択している場合
+                    //if (HinmokuCol == HinmokuColSel)
+                    // 1列に限らずに貼り付ける
+                    //if (HinmokuCol <= HinmokuColSel)
+                    // 絶対にこの処理を通す
+                    if (HinmokuCol <= HinmokuColSel || HinmokuCol >= HinmokuColSel)
+                    {
+                        if (copyData == null)
+                        {
+                            return;
+                        }
+                        // ペースト時に取り直されるので、このタイミングで保持しておく
+                        int row = HinmokuRow; // 選択している開始行
+                        int rowSel = HinmokuRowSel; // 選択している最終行
+                        int col = HinmokuCol; // 選択している開始列
+                        int colSel = HinmokuColSel; // 選択している最終列
+
+                        int num = 0;
+
+                        // 下から上対応（右から左に複数選択には未対応）
+                        if (row > rowSel)
+                        {
+                            num = row;
+                            row = rowSel;
+                            rowSel = num;
+                            num = 0;
+                        }
+
+                        // 右から左対応
+                        if (col > colSel)
+                        {
+                            num = col;
+                            col = colSel;
+                            colSel = num;
+                            num = 0;
+                        }
+
+                        // ▼行
+                        // 範囲選択している行までペーストを繰り返す
+                        //  i < rowSel ・・・選択開始行から終了行まで
+                        //  i < c1FlexGrid4.Rows.Count・・・Gridの最終行まで
+                        for (int i = row; i <= rowSel && i < c1FlexGrid4.Rows.Count; i++)
+                        {
+                            // ▼列
+                            //for (int colIndex = 0; colIndex < copyData[num].Count && HinmokuColSel + colIndex < c1FlexGrid4.Cols.Count; colIndex++)
+                            for (int j = 0; j + HinmokuCol < c1FlexGrid4.Cols.Count; j++)
+                            {
+                                // コピー列が超えたら
+                                if (j > copyData[0].Count - 1)
+                                {
+                                    break;
+                                }
+
+                                // 列データが存在しない場合、終了
+                                if (copyData[0][j] == null)
+                                {
+                                    break;
+                                }
+                                c1FlexGrid4[i, col + j] = copyData[0][j];
+                            }
+                        }
+                    }
+                    // イベントをキャンセルする
+                    e.Handled = true;
+                }
+
+                // Ctrl + Z
+                if (e.KeyData == (Keys.Control | Keys.Z))
+                {
+
+                }
+
+            }
+            else
+            {
+                return;
+            }
+        }
+        #endregion
+
+        #region 最新
+        // 調査品目明細GridのKeyDown
+        private void c1FlexGrid4_KeyDown(object sender, KeyEventArgs e)
+        {
+            //調査品目編集モード 0:表示 1:編集
+            if (ChousaHinmokuMode == 1)
+            {
+                // Ctrl + V
+                if (e.KeyData == (Keys.Control | Keys.V))
+                {
+                    // 範囲選択時のペースト
+                    // 750 行を複数行選択しペーストしたが1行分のみしかペースト出来ない対応
+
+                    // 範囲選択が1列のみを選択している場合
+                    //if (HinmokuCol == HinmokuColSel)
+                    // 1列に限らずに貼り付ける
+                    //if (HinmokuCol <= HinmokuColSel)
+                    // 絶対にこの処理を通す
+                    if (HinmokuCol <= HinmokuColSel || HinmokuCol >= HinmokuColSel)
+                    {
+                        //No.1417 1182 奉行上でもコピペについて
+                        bool isWinCopy = false;
+                        IDataObject data = Clipboard.GetDataObject();
+                        string strWinCopyText = "";
+                        if (data.GetDataPresent(DataFormats.Text))
+                        {
+                            string str;
+                            //クリップボードからデータを取得
+                            str = (string)data.GetData(DataFormats.Text);
+                            //クリップボードにある最後の開業コードを削除
+                            strWinCopyText = str.TrimEnd('\r', '\n');
+
+                            string strGridCopyText = "";
+                            if (copyData != null && copyData.Count > 0)
+                            {
+                                for (int i = 0; i < copyData.Count; i++)
+                                {
+                                    string sLineText = "";
+                                    for (int j = 0; j < copyData[i].Count; j++)
+                                    {
+                                        sLineText = sLineText + copyData[i][j];
+                                    }
+                                    strGridCopyText = strGridCopyText + sLineText;
+                                }
+                                strGridCopyText = strGridCopyText.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "").Replace("\t","").Replace(" ", "");
+                            }
+                            string strWin = strWinCopyText.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace(" ","");
+                            if (!strWin.Equals(strGridCopyText))
+                                isWinCopy = true;
+                        }
+                        if (isWinCopy)
+                        {
+                            if (copyData == null)
+                            {
+                                copyData = new List<List<string>>();
+                            }
+                            copyData.Clear();
+                            string[] lines = strWinCopyText.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+                            for(int i = 0; i < lines.Length; i++)
+                            {
+                                copyData.Add(new List<string>());
+                                string[] cols = lines[i].Split('\t');
+                                for (int j = 0; j < cols.Length; j++)
+                                {
+                                    copyData[i].Add(cols[j]);
+                                }
+                            }
+                        }
+                        if (copyData == null)
+                        {
+                            return;
+                        }
+                        // ペースト時に取り直されるので、このタイミングで保持しておく
+                        int row = HinmokuRow; // 選択している開始行
+                        int rowSel = HinmokuRowSel; // 選択している最終行
+                        int col = HinmokuCol; // 選択している開始列
+                        int colSel = HinmokuColSel; // 選択している最終列
+
+                        int num = 0;
+
+                        // 下から上対応（右から左に複数選択には未対応）
+                        if (row > rowSel)
+                        {
+                            num = row;
+                            row = rowSel;
+                            rowSel = num;
+                            num = 0;
+                        }
+
+                        // 右から左対応
+                        if (col > colSel)
+                        {
+                            num = col;
+                            col = colSel;
+                            colSel = num;
+                            num = 0;
+                        }
+                        bool isRowBreak = false;
+                        bool isColBreak = false;
+                        // 貼り付け列数＜＝コピー列数
+                        num = copyData[0].Count;
+                        if ((colSel - col + 1) % num == 0)
+                        {
+                            isColBreak = true;
+                        }
+                        else
+                        {
+                            colSel = num + col - 1;
+                        }
+
+                        // 貼り付け行数＜＝コピー行数
+                        num = copyData.Count;
+                        // 貼り付け行数＞コピー行数
+                        if ((rowSel - row + 1) % num == 0)
+                        {
+                            // 倍数行を選択する場合
+                            isRowBreak = true;
+                        }
+                        else
+                        {
+                            rowSel = num + row - 1;
+                        }
+
+                        // ▼行
+                        // 範囲選択している行までペーストを繰り返す
+                        //  i < rowSel ・・・選択開始行から終了行まで
+                        //  i < c1FlexGrid4.Rows.Count・・・Gridの最終行まで
+                        num = 0;
+                        for (int i = row; i <= rowSel && i < c1FlexGrid4.Rows.Count; i++)
+                        {
+                            // 選択行は
+                            if (num >= copyData.Count) {
+                                if(isRowBreak) num = 0;
+                                else break;
+                            }
+                            // ▼列
+                            // コピー列の倍数を選択する場合
+                            int iCol = 0;
+                            for (int j = col; j<= colSel && j < c1FlexGrid4.Cols.Count; j++)
+                            {
+                                // コピー列が超えたら
+                                if (iCol > copyData[num].Count - 1)
+                                {
+                                    if (isColBreak) iCol = 0;
+                                    else break;
+                                }
+
+                                // 列データが存在しない場合、終了
+                                if (copyData[num][iCol] == null)
+                                {
+                                    break;
+                                }
+                                c1FlexGrid4[i, j] = copyData[num][iCol];
+                                iCol++;
+                            }
+                            num++;
+                        }
+                        //}
+                    }
                         // イベントをキャンセルする
                     e.Handled = true;
                 }
@@ -15712,6 +15982,7 @@ namespace TokuchoBugyoK2
                 return;
             }
         }
+        #endregion
 
         private void src_Busho_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -17656,6 +17927,7 @@ namespace TokuchoBugyoK2
             HinmokuColSel = c1FlexGrid4.ColSel; // 選択範囲の下端列番号
         }
 
+        private string sGridCopyStrings = "";
         // 調査品目明細
         private void c1FlexGrid4_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -17671,6 +17943,7 @@ namespace TokuchoBugyoK2
                     copyData = new List<List<string>>();
                 }
                 copyData.Clear();
+                sGridCopyStrings = "";
                 for (int rowIndex = c1FlexGrid4.Selection.TopRow; rowIndex <= c1FlexGrid4.Selection.BottomRow; rowIndex++)
                 {
                     copyData.Add(new List<string>());
@@ -17800,21 +18073,22 @@ namespace TokuchoBugyoK2
             // Ctrl + V
             else if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
             {
-                if (copyData == null || ChousaHinmokuMode != 1)
-                {
-                    return;
-                }
-                for (int rowIndex = 0; rowIndex < copyData.Count && c1FlexGrid4.Selection.TopRow + rowIndex < c1FlexGrid4.Rows.Count; rowIndex++)
-                {
-                    //for (int colIndex = 0; colIndex < copyData[rowIndex].Count && c1FlexGrid4.Selection.RightCol + colIndex < c1FlexGrid4.Cols.Count; colIndex++)
-                    //{
-                    //    c1FlexGrid4[c1FlexGrid4.Selection.TopRow + rowIndex, c1FlexGrid4.Selection.RightCol + colIndex] = copyData[rowIndex][colIndex];
-                    //}
-                    for (int colIndex = 0; colIndex < copyData[rowIndex].Count && c1FlexGrid4.Selection.LeftCol + colIndex < c1FlexGrid4.Cols.Count; colIndex++)
-                    {
-                        c1FlexGrid4[c1FlexGrid4.Selection.TopRow + rowIndex, c1FlexGrid4.Selection.LeftCol + colIndex] = copyData[rowIndex][colIndex];
-                    }
-                }
+                // No.1417 1182 奉行上でのコピペについて
+                //if (copyData == null || ChousaHinmokuMode != 1)
+                //{
+                //    return;
+                //}
+                //for (int rowIndex = 0; rowIndex < copyData.Count && c1FlexGrid4.Selection.TopRow + rowIndex < c1FlexGrid4.Rows.Count; rowIndex++)
+                //{
+                //    //for (int colIndex = 0; colIndex < copyData[rowIndex].Count && c1FlexGrid4.Selection.RightCol + colIndex < c1FlexGrid4.Cols.Count; colIndex++)
+                //    //{
+                //    //    c1FlexGrid4[c1FlexGrid4.Selection.TopRow + rowIndex, c1FlexGrid4.Selection.RightCol + colIndex] = copyData[rowIndex][colIndex];
+                //    //}
+                //    for (int colIndex = 0; colIndex < copyData[rowIndex].Count && c1FlexGrid4.Selection.LeftCol + colIndex < c1FlexGrid4.Cols.Count; colIndex++)
+                //    {
+                //        c1FlexGrid4[c1FlexGrid4.Selection.TopRow + rowIndex, c1FlexGrid4.Selection.LeftCol + colIndex] = copyData[rowIndex][colIndex];
+                //    }
+                //}
             }
         }
 
