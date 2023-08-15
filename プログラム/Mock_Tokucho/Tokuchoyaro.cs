@@ -484,46 +484,85 @@ namespace TokuchoBugyoK2
                         //担当者主副コンボ　0：主担当
                         if (src_ShuFuku.SelectedValue.ToString() == "0")
                         {
-                            cmd.CommandText += "AND ISNULL(HinmokuChousainCD, '') = '' AND (HinmokuRyakuBushoCD = '" + UserInfos[2] + "' OR MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "') ";
-
+                            //cmd.CommandText += "AND ISNULL(HinmokuChousainCD, '') = '' AND (HinmokuRyakuBushoCD = '" + UserInfos[2] + "' OR MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "') ";
+                            // 1449_1242対応
+                            //チェックボックス両方
+                            if (checkBox2.Checked == true && checkBox3.Checked == true)
+                            {
+                                cmd.CommandText += "AND ((ISNULL(HinmokuChousainCD, '') = ''" + "AND ISNULL(HinmokuRyakuBushoCD, '') <> ''" + "AND" + "(MadoguchiTantoushaBushoCD ='" + UserInfos[2] + "'))" + " OR ISNULL(HinmokuChousainCD, '') = ''" + "AND" + "(HinmokuRyakuBushoCD ='" + UserInfos[2] + "')) ";
+                            }
+                            //窓口部所 窓口担当部署CD
+                            else if (checkBox2.Checked == true)
+                            {
+                                //cmd.CommandText += "AND ISNULL(HinmokuChousainCD, '') = ''" + " AND " + "(HinmokuRyakuBushoCD = '" + UserInfos[2] + "' AND MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "') ";
+                                cmd.CommandText += "AND ISNULL(HinmokuChousainCD, '') = ''" + " AND " + "(ISNULL(HinmokuRyakuBushoCD, '') <> ''" + " AND MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "') ";
+                            }
+                            //調査部所　品目略部署CD
+                            else if (checkBox3.Checked == true)
+                            {
+                                cmd.CommandText += "AND ISNULL(HinmokuChousainCD, '') = ''" + " AND " + "(HinmokuRyakuBushoCD = '" + UserInfos[2] + "') ";
+                            }
                         }
                         // 1:副担当
                         else if (src_ShuFuku.SelectedValue.ToString() == "1")
                         {
-                            cmd.CommandText += "AND ((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "' AND (" +
-                                                "(HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR " +
-                                                "(HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> '') )) " +
-                                                " OR (HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') " +
-                                                " OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "')) ";
+                            //cmd.CommandText += "AND ((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "' AND (" +
+                            //                    "(HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR " +
+                            //                    "(HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> '') )) " +
+                            //                    " OR (HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') " +
+                            //                    " OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "')) ";
+                            // 1449_1242対応
+                            //チェックボックス両方
+                            if (checkBox2.Checked == true && checkBox3.Checked == true)
+                            {
+                                cmd.CommandText +=
+                                    "AND (((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "') AND ((HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR (HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> ''))) " +
+                                    "OR ((HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "'))) ";
+                            }
+                            //窓口部所 品目副調査員CD
+                            else if (checkBox2.Checked == true)
+                            {
+                                cmd.CommandText +=
+                                    "AND ((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "') AND ((HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR (HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> ''))) ";
+                            }
+                            //調査部所　品目略部署CD
+                            else if (checkBox3.Checked == true)
+                            {
+                                cmd.CommandText += "AND ((HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "')) ";
+                            }
                         }
+                        //主＋副担当
                         else if (src_ShuFuku.SelectedValue.ToString() == "4")
                         {
-                            cmd.CommandText += "AND ((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "' AND (" +
-                                                // SE 20220217 No.1272 窓口部所の空白リストの出力漏れ対応
-                                                "(ISNULL(HinmokuChousainCD, '') = '') OR " +    // ADD 20220217
-                                                "(HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR " +
-                                                "(HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> '') )) " +
-                                                " OR ( (ISNULL(HinmokuChousainCD, '') = '' AND HinmokuRyakuBushoCD = '" + UserInfos[2] + "') " +
-                                                " OR (HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') " +
-                                                " OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "'))) ";
+                            //cmd.CommandText += "AND ((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "' AND (" +
+                            //                    // SE 20220217 No.1272 窓口部所の空白リストの出力漏れ対応
+                            //                    "(ISNULL(HinmokuChousainCD, '') = '') OR " +    // ADD 20220217
+                            //                    "(HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR " +
+                            //                    "(HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> '') )) " +
+                            //                    " OR ( (ISNULL(HinmokuChousainCD, '') = '' AND HinmokuRyakuBushoCD = '" + UserInfos[2] + "') " +
+                            //                    " OR (HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') " +
+                            //                    " OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "'))) ";
+                            //チェックボックス両方
+                            if (checkBox2.Checked == true && checkBox3.Checked == true)
+                            {
+                                cmd.CommandText += "AND (((ISNULL(HinmokuChousainCD, '') = ''" + "AND ISNULL(HinmokuRyakuBushoCD, '') <> ''" + "AND" + "(MadoguchiTantoushaBushoCD ='" + UserInfos[2] + "'))" + " OR ISNULL(HinmokuChousainCD, '') = ''" + "AND " + "(HinmokuRyakuBushoCD ='" + UserInfos[2] + "')) " +
+                                    "OR (((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "') AND ((HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR (HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> ''))) " +
+                                    "OR ((HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "')))) ";
+                            }
+                            //窓口部所 窓口担当部署CD
+                            else if (checkBox2.Checked == true)
+                            {
+                                cmd.CommandText += "AND ((ISNULL(HinmokuChousainCD, '') = ''" + " AND " + "(ISNULL(HinmokuRyakuBushoCD, '') <> ''" + " AND MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "')) " +
+                                    "OR ((MadoguchiTantoushaBushoCD = '" + UserInfos[2] + "') AND ((HinmokuFukuChousainCD1 IS NULL AND ISNULL(HinmokuRyakuBushoFuku1CD, '') <> '') OR (HinmokuFukuChousainCD2 IS NULL AND ISNULL(HinmokuRyakuBushoFuku2CD, '') <> '')))) ";
+                            }
+                            //調査部所　品目略部署CD
+                            else if (checkBox3.Checked == true)
+                            {
+                                cmd.CommandText += "AND (ISNULL(HinmokuChousainCD, '') = ''" + " AND " + "(HinmokuRyakuBushoCD = '" + UserInfos[2] + "')) " +
+                                "OR ((HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "')) ";
+                            }
                         }
-                        // 1449_1242対応
-                        //チェックボックス両方
-                        if (checkBox2.Checked == true && checkBox3.Checked == true)
-                        {
-                            cmd.CommandText += "AND (MadoguchiTantoushaCD IS NULL OR HinmokuChousainCD IS NULL)";
-                        }
-                        //窓口部所
-                        else if (checkBox2.Checked == true)
-                        {
-                            cmd.CommandText += "AND ISNULL(MadoguchiTantoushaCD, '') = ''";
-                        }
-                        //調査部所
-                        else if (checkBox3.Checked == true)
-                        {
-                            cmd.CommandText += "AND ISNULL(HinmokuChousainCD, '') =''";
-                        }
-                    
+
                         // 808 担当者空白リストから、部所のみで中止の場合、表示しない。
                         // →中止を抽出しない
                         //cmd.CommandText += "AND (ChousaChuushi != 1) ";
