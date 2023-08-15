@@ -417,7 +417,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1224, 190);
+            this.label5.Location = new System.Drawing.Point(998, 190);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(204, 24);
@@ -429,12 +429,12 @@
             this.c1FlexGrid2.CellButtonImage = ((System.Drawing.Image)(resources.GetObject("c1FlexGrid2.CellButtonImage")));
             this.c1FlexGrid2.ColumnInfo = resources.GetString("c1FlexGrid2.ColumnInfo");
             this.c1FlexGrid2.HighLight = C1.Win.C1FlexGrid.HighLightEnum.WithFocus;
-            this.c1FlexGrid2.Location = new System.Drawing.Point(1228, 217);
+            this.c1FlexGrid2.Location = new System.Drawing.Point(1002, 217);
             this.c1FlexGrid2.Name = "c1FlexGrid2";
             this.c1FlexGrid2.Rows.Count = 2;
             this.c1FlexGrid2.Rows.DefaultSize = 25;
             this.c1FlexGrid2.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid2.Size = new System.Drawing.Size(646, 345);
+            this.c1FlexGrid2.Size = new System.Drawing.Size(879, 345);
             this.c1FlexGrid2.StyleInfo = resources.GetString("c1FlexGrid2.StyleInfo");
             this.c1FlexGrid2.TabIndex = 51;
             this.c1FlexGrid2.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid2_BeforeMouseDown);
@@ -452,7 +452,7 @@
             this.c1FlexGrid1.Rows.Count = 2;
             this.c1FlexGrid1.Rows.DefaultSize = 25;
             this.c1FlexGrid1.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid1.Size = new System.Drawing.Size(985, 345);
+            this.c1FlexGrid1.Size = new System.Drawing.Size(952, 345);
             this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
             this.c1FlexGrid1.TabIndex = 52;
             this.c1FlexGrid1.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid1_BeforeMouseDown);
