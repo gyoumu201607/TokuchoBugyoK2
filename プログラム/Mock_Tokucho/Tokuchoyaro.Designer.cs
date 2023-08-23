@@ -592,6 +592,7 @@
             this.checkBox2.TabIndex = 58;
             this.checkBox2.Text = "窓口部所";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBox3
             // 
@@ -604,6 +605,7 @@
             this.checkBox3.TabIndex = 59;
             this.checkBox3.Text = "調査部所";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // Tokuchoyaro
             // 
