@@ -1072,5 +1072,17 @@ namespace TokuchoBugyoK2
                 ReSearch = false;
             }
         }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox2.Refresh();
+            get_data(4);
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox3.Refresh();
+            get_data(4);
+        }
     }
 }
