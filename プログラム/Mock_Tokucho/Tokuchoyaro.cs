@@ -558,8 +558,8 @@ namespace TokuchoBugyoK2
                             //調査部所　品目略部署CD
                             else if (checkBox3.Checked == true)
                             {
-                                cmd.CommandText += "AND (ISNULL(HinmokuChousainCD, '') = ''" + " AND " + "(HinmokuRyakuBushoCD = '" + UserInfos[2] + "')) " +
-                                "OR ((HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "')) ";
+                                cmd.CommandText += "AND ((ISNULL(HinmokuChousainCD, '') = ''" + " AND " + "(HinmokuRyakuBushoCD = '" + UserInfos[2] + "')) " +
+                                "OR ((HinmokuFukuChousainCD1 IS NULL AND HinmokuRyakuBushoFuku1CD = '" + UserInfos[2] + "') OR (HinmokuFukuChousainCD2 IS NULL AND HinmokuRyakuBushoFuku2CD = '" + UserInfos[2] + "'))) ";
                             }
                         }
 
