@@ -152,6 +152,13 @@
     <Compile Include="CYomiTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Entry_Input_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry_Input_New.designer.cs">
+      <DependentUpon>Entry_Input_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entry_Input_New_DbClass.cs" />
     <Compile Include="Entry_keikaku_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -511,6 +518,9 @@
     </Content>
     <EmbeddedResource Include="CustomDateTimePicker.resx">
       <DependentUpon>CustomDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entry_Input_New.resx">
+      <DependentUpon>Entry_Input_New.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry_keikaku_Detail.resx">
       <DependentUpon>Entry_keikaku_Detail.cs</DependentUpon>

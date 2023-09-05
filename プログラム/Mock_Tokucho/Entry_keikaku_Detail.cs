@@ -19,6 +19,7 @@ namespace TokuchoBugyoK2
         private DataTable ListData = new DataTable();
         GlobalMethod GlobalMethod = new GlobalMethod();
         public string KeikakuID;
+        private string IsEntry_Input_New = "0"; // エントリ君修正STEP3
 
         public Entry_keikaku_Detail()
         {
@@ -27,6 +28,12 @@ namespace TokuchoBugyoK2
 
         private void Entry_keikaku_Detail_Load(object sender, EventArgs e)
         {
+            // エントリ君修正STEP3
+            if (ConfigurationManager.AppSettings.AllKeys.Contains("Entry_Input_New"))
+            {
+                IsEntry_Input_New = ConfigurationManager.AppSettings["Entry_Input_New"].ToString();
+            }
+
             //ヘッダーユーザ
             label3.Text = UserInfos[3] + "：" + UserInfos[1];
             label20.Text = GlobalMethod.GetCommonValue1("APL_VERSION");
@@ -166,12 +173,25 @@ namespace TokuchoBugyoK2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Entry_Input form = new Entry_Input();
-            form.KeikakuID = KeikakuID;
-            form.mode = "keikaku";
-            form.UserInfos = this.UserInfos;
-            this.Hide();
-            form.Show(this);
+            if (IsEntry_Input_New.Equals("1"))
+            {
+                //エントリ君修正STEP3
+                Entry_Input_New form = new Entry_Input_New();
+                form.KeikakuID = KeikakuID;
+                form.mode = Entry_Input_New.MODE.PLAN;
+                form.UserInfos = this.UserInfos;
+                this.Hide();
+                form.Show(this);
+            }
+            else
+            {
+                Entry_Input form = new Entry_Input();
+                form.KeikakuID = KeikakuID;
+                form.mode = "keikaku";
+                form.UserInfos = this.UserInfos;
+                this.Hide();
+                form.Show(this);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -292,17 +312,35 @@ namespace TokuchoBugyoK2
                     String AnkenID;
                     //TOPのデータのAnkenIDを渡す。
                     AnkenID = dt.Rows[0][0].ToString();
-                    Entry_Input form = new Entry_Input();
-                    form.KeikakuID = KeikakuID;
-                    form.mode = "keikaku";
-                    form.UserInfos = this.UserInfos;
-                    form.CopyMode = "1";
-                    form.AnkenID = AnkenID;
-                    //計画画面から案件番号でコピーする場合のフラグ
-                    form.isKeikakuAnkenNew = true;
+                    if (IsEntry_Input_New.Equals("1"))
+                    {
+                        //エントリ君修正STEP3
+                        Entry_Input_New form = new Entry_Input_New();
+                        form.KeikakuID = KeikakuID;
+                        form.mode = Entry_Input_New.MODE.PLAN;
+                        form.UserInfos = this.UserInfos;
+                        form.copy = Entry_Input_New.COPY.GM;
+                        form.AnkenID = AnkenID;
+                        //計画画面から案件番号でコピーする場合のフラグ
+                        form.isKeikakuAnkenNew = true;
 
-                    this.Hide();
-                    form.ShowDialog(this);
+                        this.Hide();
+                        form.ShowDialog(this);
+                    }
+                    else
+                    {
+                        Entry_Input form = new Entry_Input();
+                        form.KeikakuID = KeikakuID;
+                        form.mode = "keikaku";
+                        form.UserInfos = this.UserInfos;
+                        form.CopyMode = "1";
+                        form.AnkenID = AnkenID;
+                        //計画画面から案件番号でコピーする場合のフラグ
+                        form.isKeikakuAnkenNew = true;
+
+                        this.Hide();
+                        form.ShowDialog(this);
+                    }
                     //計画情報のカウント取得する
                     cmd.CommandText = "SELECT KeikakuAnkensu FROM KeikakuJouhou WHERE KeikakuID = " + KeikakuID;
                     sda = new SqlDataAdapter(cmd);

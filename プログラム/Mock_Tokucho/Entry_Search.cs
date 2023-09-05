@@ -25,6 +25,7 @@ namespace TokuchoBugyoK2
         public Boolean ReSearch = true;
         int KensakuFlg;
         GlobalMethod GlobalMethod = new GlobalMethod();
+        private string IsEntry_Input_New = "0"; // エントリ君修正STEP3
         public Entry_Search()
         {
             InitializeComponent();
@@ -35,6 +36,10 @@ namespace TokuchoBugyoK2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // エントリ君修正STEP3
+            if (ConfigurationManager.AppSettings.AllKeys.Contains("Entry_Input_New")){
+                IsEntry_Input_New = ConfigurationManager.AppSettings["Entry_Input_New"].ToString();
+            }
             //不具合No1355（1123）
             lblVersion.Text = GlobalMethod.GetCommonValue1("APL_VERSION");
             if (GlobalMethod.GetCommonValue1("BOOT_MODE") == "1")
@@ -281,48 +286,91 @@ namespace TokuchoBugyoK2
 
             if (hti.Column == 2 & hti.Row > 1 && c1FlexGrid1[hti.Row, hti.Column].ToString() == "1")
             {
-                string mode;
-                mode = "view";
-
-                // Role:2システム管理者
-                if (UserInfos[4].Equals("2"))
+                if (IsEntry_Input_New.Equals("1"))
                 {
-                    mode = "";
-                }
-                if (UserInfos[2].Equals(c1FlexGrid1[hti.Row, 21].ToString()))
-                {
-                    mode = "";
+                    //エントリ君修正STEP3
+                    Entry_Input_New.MODE mode = Entry_Input_New.MODE.VIEW;
+                    // Role:2システム管理者
+                    if (UserInfos[4].Equals("2"))
+                    {
+                        mode = Entry_Input_New.MODE.SPACE;
+                    }
+                    if (UserInfos[2].Equals(c1FlexGrid1[hti.Row, 21].ToString()))
+                    {
+                        mode = Entry_Input_New.MODE.SPACE;
+                    }
+                    else
+                    {
+                        if (UserInfos[2].Substring(0, 4).Equals("1284") && (c1FlexGrid1[hti.Row, 21].ToString() == "127800" || c1FlexGrid1[hti.Row, 21].ToString() == "127910"))
+                        {
+                            mode = Entry_Input_New.MODE.SPACE;
+                        }
+                        if (UserInfos[2].Substring(0, 4).Equals("1292"))
+                        {
+                            mode = Entry_Input_New.MODE.SPACE;
+                        }
+                        if (UserInfos[2].Substring(0, 4).Equals("1502"))
+                        {
+                            mode = Entry_Input_New.MODE.SPACE;
+                        }
+                        if (UserInfos[2].Substring(0, 4).Equals("1504"))
+                        {
+                            mode = Entry_Input_New.MODE.SPACE;
+                        }
+                    }
+                    this.ReSearch = true;
+                    string AnkenID = c1FlexGrid1[hti.Row, hti.Column + 1].ToString();
+                    Entry_Input_New form = new Entry_Input_New();
+                    form.mode = mode;
+                    form.AnkenID = AnkenID;
+                    form.UserInfos = this.UserInfos;
+                    form.Show(this);
                 }
                 else
                 {
-                    if (UserInfos[2].Substring(0, 4).Equals("1284") && (c1FlexGrid1[hti.Row, 21].ToString() == "127800" || c1FlexGrid1[hti.Row, 21].ToString() == "127910"))
+                    string mode;
+                    mode = "view";
+
+                    // Role:2システム管理者
+                    if (UserInfos[4].Equals("2"))
                     {
                         mode = "";
                     }
-                    if (UserInfos[2].Substring(0, 4).Equals("1292"))
+                    if (UserInfos[2].Equals(c1FlexGrid1[hti.Row, 21].ToString()))
                     {
                         mode = "";
                     }
-                    if (UserInfos[2].Substring(0, 4).Equals("1502"))
+                    else
                     {
-                        mode = "";
+                        if (UserInfos[2].Substring(0, 4).Equals("1284") && (c1FlexGrid1[hti.Row, 21].ToString() == "127800" || c1FlexGrid1[hti.Row, 21].ToString() == "127910"))
+                        {
+                            mode = "";
+                        }
+                        if (UserInfos[2].Substring(0, 4).Equals("1292"))
+                        {
+                            mode = "";
+                        }
+                        if (UserInfos[2].Substring(0, 4).Equals("1502"))
+                        {
+                            mode = "";
+                        }
+                        if (UserInfos[2].Substring(0, 4).Equals("1504"))
+                        {
+                            mode = "";
+                        }
                     }
-                    if (UserInfos[2].Substring(0, 4).Equals("1504"))
-                    {
-                        mode = "";
-                    }
+                    this.ReSearch = true;
+                    string AnkenID = c1FlexGrid1[hti.Row, hti.Column + 1].ToString();
+                    //GlobalMethod.outputLogger("entory new", "new 開始 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
+                    Entry_Input form = new Entry_Input();
+                    //GlobalMethod.outputLogger("entory new", "new 終了 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
+                    form.mode = mode;
+                    form.AnkenID = AnkenID;
+                    form.UserInfos = this.UserInfos;
+                    //GlobalMethod.outputLogger("form.Show", "form.Show 開始 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
+                    form.Show(this);
+                    //GlobalMethod.outputLogger("form.Show", "form.Show 終了 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
                 }
-                this.ReSearch = true;
-                string AnkenID = c1FlexGrid1[hti.Row, hti.Column + 1].ToString();
-                //GlobalMethod.outputLogger("entory new", "new 開始 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
-                Entry_Input form = new Entry_Input();
-                //GlobalMethod.outputLogger("entory new", "new 終了 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
-                form.mode = mode;
-                form.AnkenID = AnkenID;
-                form.UserInfos = this.UserInfos;
-                //GlobalMethod.outputLogger("form.Show", "form.Show 開始 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
-                form.Show(this);
-                //GlobalMethod.outputLogger("form.Show", "form.Show 終了 " + DateTime.Now, "GetAnkenJouhou", UserInfos[1]);
             }
             // 契約図書
             if (hti.Column == 15 & hti.Row > 1)
@@ -342,11 +390,23 @@ namespace TokuchoBugyoK2
         private void button2_Click(object sender, EventArgs e)
         {
             this.ReSearch = true;
-            Entry_Input form = new Entry_Input();
-            form.mode = "insert";
-            form.UserInfos = this.UserInfos;
+            if (IsEntry_Input_New.Equals("1"))
+            {
+                //エントリ君修正STEP3
+                Entry_Input_New form = new Entry_Input_New();
+                form.mode = Entry_Input_New.MODE.INSERT;
+                form.UserInfos = this.UserInfos;
 
-            form.Show(this);
+                form.Show(this);
+            }
+            else
+            {
+                Entry_Input form = new Entry_Input();
+                form.mode = "insert";
+                form.UserInfos = this.UserInfos;
+
+                form.Show(this);
+            }
         }
 
         //「変更伝票」ボタン押下処理
@@ -411,11 +471,23 @@ namespace TokuchoBugyoK2
             if (checkflg)
             {
                 this.ReSearch = true;
-                Entry_Input form = new Entry_Input();
-                form.mode = "change";
-                form.AnkenID = checkNo;
-                form.UserInfos = UserInfos;
-                form.Show(this);
+                if (IsEntry_Input_New.Equals("1"))
+                {
+                    //エントリ君修正STEP3
+                    Entry_Input_New form = new Entry_Input_New();
+                    form.mode = Entry_Input_New.MODE.CHANGE;
+                    form.AnkenID = checkNo;
+                    form.UserInfos = UserInfos;
+                    form.Show(this);
+                }
+                else
+                {
+                    Entry_Input form = new Entry_Input();
+                    form.mode = "change";
+                    form.AnkenID = checkNo;
+                    form.UserInfos = UserInfos;
+                    form.Show(this);
+                }
             }
         }
 
