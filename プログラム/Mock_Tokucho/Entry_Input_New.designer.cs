@@ -4264,7 +4264,7 @@ namespace TokuchoBugyoK2
             // base_tbl02_lblKeikakuNo
             // 
             this.base_tbl02_lblKeikakuNo.AutoSize = true;
-            this.base_tbl02_lblKeikakuNo.BackColor = System.Drawing.Color.White;
+            this.base_tbl02_lblKeikakuNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(228)))), ((int)(((byte)(214)))));
             this.base_tbl02_lblKeikakuNo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl02_lblKeikakuNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.base_tbl02_lblKeikakuNo.Location = new System.Drawing.Point(3, 42);
