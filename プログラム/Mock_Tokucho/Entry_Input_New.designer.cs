@@ -10471,6 +10471,12 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_numChangeAmt.Text = "¥0";
             this.ca_tbl01_numChangeAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ca_tbl01_numChangeAmt.Visible = false;
+            this.ca_tbl01_numChangeAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.ca_tbl01_numChangeAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.ca_tbl01_numChangeAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.ca_tbl01_numChangeAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
+            this.ca_tbl01_numChangeAmt.Validated += new System.EventHandler(this.textBox_Validated);
+
             // 
             // ca_tbl01_lblChangeAmtComment
             // 
@@ -10969,7 +10975,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_txtTax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
             this.ca_tbl01_txtTax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.ca_tbl01_txtTax.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
-            this.ca_tbl01_txtTax.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // ca_tbl01_lblTaxUnit
             // 
@@ -11063,11 +11068,11 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_txtZeikomiAmt.TabIndex = 1;
             this.ca_tbl01_txtZeikomiAmt.Text = "¥0";
             this.ca_tbl01_txtZeikomiAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl01_txtZeikomiAmt.Enter += new System.EventHandler(this.textBox_Enter);
-            this.ca_tbl01_txtZeikomiAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
-            this.ca_tbl01_txtZeikomiAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
-            this.ca_tbl01_txtZeikomiAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
-            this.ca_tbl01_txtZeikomiAmt.Validated += new System.EventHandler(this.textBox_Validated);
+            //this.ca_tbl01_txtZeikomiAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            //this.ca_tbl01_txtZeikomiAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            //this.ca_tbl01_txtZeikomiAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            //this.ca_tbl01_txtZeikomiAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
+            //this.ca_tbl01_txtZeikomiAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // ca_tbl01_lblZeinukiAmt
             // 

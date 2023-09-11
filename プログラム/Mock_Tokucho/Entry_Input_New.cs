@@ -848,30 +848,33 @@ namespace TokuchoBugyoK2
                 base_tbl03_txtGyomuName.Text = AnkenData_H.Rows[0]["AnkenGyoumuMei"].ToString();
                 //契約区分
                 base_tbl03_cmbKeiyakuKubun.SelectedValue = AnkenData_H.Rows[0]["AnkenGyoumuKubun"].ToString();
-                //工期自
-                sDt = AnkenData_H.Rows[0]["KeiyakuKoukiKaishibi"].ToString();
-                if (sDt != "")
+                if (copy != COPY.GM)
                 {
-                    base_tbl03_dtpKokiFrom.Text = sDt;
+                    //工期自
+                    sDt = AnkenData_H.Rows[0]["KeiyakuKoukiKaishibi"].ToString();
+                    if (sDt != "")
+                    {
+                        base_tbl03_dtpKokiFrom.Text = sDt;
+                    }
+                    else
+                    {
+                        base_tbl03_dtpKokiFrom.CustomFormat = " ";
+                    }
+                    //工期至
+                    sDt = AnkenData_H.Rows[0]["KeiyakuKoukiKanryoubi"].ToString();
+                    if (sDt != "")
+                    {
+                        base_tbl03_dtpKokiTo.Text = sDt;
+                    }
+                    else
+                    {
+                        base_tbl03_dtpKokiTo.CustomFormat = " ";
+                    }
+                    //工期開始年度
+                    base_tbl03_cmbKokiStartYear.SelectedValue = AnkenData_H.Rows[0]["AnkenKoukiNendo"].ToString();
+                    //売上年度
+                    base_tbl03_cmbKokiSalesYear.SelectedValue = AnkenData_H.Rows[0]["AnkenUriageNendo"].ToString();
                 }
-                else
-                {
-                    base_tbl03_dtpKokiFrom.CustomFormat = " ";
-                }
-                //工期至
-                sDt = AnkenData_H.Rows[0]["KeiyakuKoukiKanryoubi"].ToString();
-                if (sDt != "")
-                {
-                    base_tbl03_dtpKokiTo.Text = sDt;
-                }
-                else
-                {
-                    base_tbl03_dtpKokiTo.CustomFormat = " ";
-                }
-                //工期開始年度
-                base_tbl03_cmbKokiStartYear.SelectedValue = AnkenData_H.Rows[0]["AnkenKoukiNendo"].ToString();
-                //売上年度
-                base_tbl03_cmbKokiSalesYear.SelectedValue = AnkenData_H.Rows[0]["AnkenUriageNendo"].ToString();
                 //案件メモ(基本情報) 
                 base_tbl03_txtAnkenMemo.Text = AnkenData_H.Rows[0]["AnkenAnkenMemoKihon"].ToString();
             }
@@ -4122,8 +4125,8 @@ namespace TokuchoBugyoK2
         private void numAmtTextBox_Leave(object sender, EventArgs e)
         {
             System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
-            tb.Text = GetMoneyTextLong(GetLong(tb.Text));
             string sName = tb.Name;
+            if (ca_tbl01_txtTax.Name.Equals(sName) == false) tb.Text = GetMoneyTextLong(GetLong(tb.Text));
             if (sName.Contains("ca_tbl07_txtRequst"))
             {
                 // 契約：７．請求書情報：請求金額
@@ -4230,13 +4233,13 @@ namespace TokuchoBugyoK2
                 if(sName.Equals("ca_tbl02_AftCaBmZeikomi_numAmt1"))
                 return;
             }
-            if (sName.Contains("ca_tbl01_txtZeinukiAmt"))
+            if (ca_tbl01_txtZeinukiAmt.Name.Equals(sName))
             {
                 // 契約：税抜(自動計算用)
                 calc_kingaku();
                 return;
             }
-            if (sName.Contains("ca_tbl01_txtTax"))
+            if (ca_tbl01_txtTax.Name.Equals(sName))
             {
                 // 契約：消費税率
                 calc_kingaku();
@@ -4250,7 +4253,7 @@ namespace TokuchoBugyoK2
                 GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
                 return;
             }
-            if (sName.Contains("ca_tbl01_txtJyutakuGaiAmt") || sName.Contains("ca_tbl01_txtZeikomiAmt"))
+            if (ca_tbl01_txtJyutakuGaiAmt.Name.Equals(sName))
             {
                 // 契約：受託外金額(税込)
                 long kingaku = GetLong(ca_tbl01_txtZeikomiAmt.Text) - GetLong(ca_tbl01_txtJyutakuGaiAmt.Text);
@@ -4258,6 +4261,16 @@ namespace TokuchoBugyoK2
                 return;
             }
 
+            if (ca_tbl01_numChangeAmt.Name.Equals(sName))
+            {
+                // 変更伝票　の　契約金額変更（税抜）
+                // 契約金額（税抜）
+                long zeinuki = GetLong(ca_tbl01_txtZeinukiAmt.Text) + GetLong(tb.Text);
+                ca_tbl01_txtZeinukiAmt.Text = string.Format("{0:C}", zeinuki);
+                // 契約：税抜(自動計算用)
+                calc_kingaku();
+                return;
+            }
             
             // 連動
             switch (sName)
@@ -7875,12 +7888,12 @@ namespace TokuchoBugyoK2
                     errorFlg = true;
                 }
                 // ３．入札結果	全て	案件メモ以外の未登録があれば登録不可。
-                ////入札結果登録日
-                //if (bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
-                //{
-                //    errorFlg = true;
-                //    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
-                //}
+                //入札結果登録日
+                if (bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+                {
+                    errorFlg = true;
+                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                }
                 //入札状況
                 if (this.IsNotSelected(bid_tbl03_1_cmbBidStatus))
                 {
@@ -8134,52 +8147,44 @@ namespace TokuchoBugyoK2
                 base_tbl07_2_numPercentAll.BackColor = errorColor;
             }
 
-            // ９．事前打診・参考見積	事前打診登録日が設定された場合、未設定の場合登録不可。
-            if (base_tbl01_dtpDtPrior.CustomFormat == "")
-            {
-                // 参考見積対応
-                object obj = base_tbl09_cmbSankomitumori.SelectedValue;
-                //「検討中」のまま「入札情報登録日」ありは登録不可。
-                if (this.IsSpecifiedValue(obj, "1") && base_tbl01_dtpDtBid.CustomFormat == "")
-                {
-                    set_error(GlobalMethod.GetMessage("E10735", "基本情報等一覧"));
-                    errorFlg = true;
-                    base_tbl09_lblSankomitumori.BackColor = errorColor;
-                }
-            }
-
+            // 新規登録時のみチェックする
             if (flg == 0)
             {
-                // １０．入札状況・入札結果 、入札情報登録日が設定された場合、未設定の場合登録不可。
-                if (base_tbl01_dtpDtBid.CustomFormat == "")
+                object obj = null;
+                // ９．事前打診・参考見積	事前打診登録日が設定された場合、未設定の場合登録不可。
+                if (base_tbl01_dtpDtPrior.CustomFormat == "")
                 {
-
-                    // 入札状況
-                    object obj = base_tbl10_cmbNyusatuStats.SelectedValue;
-                    if (obj != null && obj.ToString().Equals("1"))
+                    // 参考見積対応
+                    obj = base_tbl09_cmbSankomitumori.SelectedValue;
+                    //「検討中」のまま「入札情報登録日」ありは登録不可。
+                    if (base_tbl01_dtpDtBid.CustomFormat == "" && this.IsSpecifiedValue(obj, "1"))
                     {
-                        // １０．入札状況・入札結果 入札状況    初期値空欄、入札情報登録日が設定された場合、未設定の場合登録不可。「入札中」のまま「入札結果登録日」が登録は登録不可。 
-                        // ★★★ 入札結果登録日は新規の場合、入力項目なし？
+                        set_error(GlobalMethod.GetMessage("E10735", "基本情報等一覧"));
+                        errorFlg = true;
+                        base_tbl09_lblSankomitumori.BackColor = errorColor;
                     }
                 }
-            }
-            //else
-            //{
-            //    // 受注意欲（入札タブ）を「なし」以外にした状態で、当会応札（入札タブ）が「不参加」「辞退」、または参考見積（事前打診）が「辞退」の場合に更新不可
-            //    if(IsSpecifiedValue(bid_tbl01_cmbOrderIyoku.SelectedValue, "3") == false)
-            //    {
-            //        bool isErr1 = (IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "3") || IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "4"));
-            //        bool isErr2 = IsSpecifiedValue(prior_tbl01_cmbMitumori.SelectedValue, "4");
-            //        if(isErr1 || isErr1)
-            //        {
-            //            set_error(GlobalMethod.GetMessage("E10730", "(入札タブ)(引合タブ)"));
-            //            if (isErr1) bid_tbl01_lblTokaiOsatu.BackColor = errorColor;
-            //            if (isErr2) prior_tbl01_lblMitumori.BackColor = errorColor;
-            //            errorFlg = true;
-            //        }
-            //    }
-            //}
 
+                // １０．入札状況・入札結果　初期値空欄、入札情報登録日が設定された場合、未設定の場合登録不可。「検討中」のまま「入札情報登録日」が未登録は登録不可
+                // 参考見積対応
+                obj = base_tbl10_cmbSankoMitumori.SelectedValue;
+                //「検討中」のまま「入札情報登録日」が未登録は登録不可
+                if (base_tbl01_dtpDtBid.CustomFormat != "" && this.IsSpecifiedValue(obj, "1"))
+                {
+                    set_error(GlobalMethod.GetMessage("E10736", "基本情報等一覧"));
+                    errorFlg = true;
+                    base_tbl10_lblSankoMitumori.BackColor = errorColor;
+                }
+
+                // 入札状況 「入札中」のまま「入札情報登録日」が登録は登録不可。★★★
+                obj = base_tbl10_cmbNyusatuStats.SelectedValue;
+                if (bid_tbl03_1_dtpBidResultDt.CustomFormat.Trim() == "" && IsSpecifiedValue(obj, "1"))
+                {
+                    set_error(GlobalMethod.GetMessage("E10737", "基本情報等一覧"));
+                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                    errorFlg = true;
+                }
+            }
             return errorFlg;
         }
 
@@ -8197,7 +8202,7 @@ namespace TokuchoBugyoK2
             if (this.IsSpecifiedValue(obj, "1") && base_tbl01_dtpDtBid.CustomFormat == "")
             {
                 set_error(GlobalMethod.GetMessage("E10735", "事前打診"));
-                prior_tbl01_lblMitumori.BackColor = errorColor;
+                base_tbl01_lblDtBid.BackColor = errorColor;
                 errorFlg = true;
             }
 
@@ -8228,7 +8233,7 @@ namespace TokuchoBugyoK2
             if (IsSpecifiedValue(bid_tbl01_cmbOrderIyoku.SelectedValue, "3") == false && isErr)
             {
                 set_error(GlobalMethod.GetMessage("E10730", "入札"));
-                prior_tbl01_lblMitumori.BackColor = errorColor;
+                bid_tbl01_lblTokaiOsatu.BackColor = errorColor;
                 errorFlg = true;
             }
             return errorFlg;
@@ -8470,10 +8475,26 @@ namespace TokuchoBugyoK2
         {
             bool requiredFlag = true;
             bool varidateFlag = true;
-
             Color errorColor = Color.FromArgb(255, 204, 255);
+
+            // エラー背景色　クリア
+            Color clearColor = Color.FromArgb(255, 255, 255);
+            Color clearRequestColor = Color.FromArgb(252, 228, 214);
+            ca_tbl01_lblChangeDt.BackColor = clearRequestColor;
+            ca_tbl01_lblKianDt.BackColor = clearRequestColor;
+            ca_tbl01_txtRiyu.BackColor = clearRequestColor;
+            ca_tbl01_lblAnkenKubun.BackColor = clearColor;
+            ca_tbl01_txtZeikomiAmt.BackColor = clearColor;
+            ca_tbl02_AftCaBmZeikomi_numAmtAll.BackColor = clearColor;
+            ca_tbl02_AftCaBm_numAmtAll.BackColor = clearColor;
+            ca_tbl02_AftCaBm_numPercentAll.BackColor = clearColor;
+            ca_tbl05_txtGyomu.BackColor = clearColor;
+            ca_tbl05_txtMadoguchi.BackColor = clearColor;
+
+            set_error("", 0);
+
             // １．契約情報	契約締結(変更)日、契約金額、受託外金額(税込)の未登録があれば更新不可。
-            if(ca_tbl01_dtpChangeDt.CustomFormat != "")
+            if (ca_tbl01_dtpChangeDt.CustomFormat != "")
             {
                 ca_tbl01_lblChangeDt.BackColor = errorColor;
                 requiredFlag = false;
@@ -8489,11 +8510,12 @@ namespace TokuchoBugyoK2
                 ca_tbl01_txtZeikomiAmt.BackColor = errorColor;
                 requiredFlag = false;
             }
-            if (GetLong(ca_tbl01_txtJyutakuGaiAmt.Text) == 0)
-            {
-                ca_tbl01_txtJyutakuGaiAmt.BackColor = errorColor;
-                requiredFlag = false;
-            }
+            // 受託外金額(税込)の未登録があれば更新不可。 ★★★
+            //if (GetLong(ca_tbl01_txtJyutakuGaiAmt.Text) == 0)
+            //{
+            //    ca_tbl01_txtJyutakuGaiAmt.BackColor = errorColor;
+            //    requiredFlag = false;
+            //}
             // 変更伝票の場合は、変更・中止理由未入力で更新不可。
             if (mode == MODE.CHANGE)
             {
@@ -8541,7 +8563,7 @@ namespace TokuchoBugyoK2
             if (String.IsNullOrEmpty(ca_tbl05_txtMadoguchi.Text))
             {
                 requiredFlag = false;
-                ca_tbl05_txtMadoguchi.BackColor = Color.FromArgb(255, 204, 255);
+                ca_tbl05_txtMadoguchi.BackColor = errorColor;
             }
 
             //必須項目エラーの出力
@@ -8550,18 +8572,206 @@ namespace TokuchoBugyoK2
                 set_error(GlobalMethod.GetMessage("E10010", ""));
             }
 
+            //受託番号
+            if ((mode == MODE.SPACE || mode == MODE.UPDATE) && String.IsNullOrEmpty(base_tbl02_txtJyutakuNo.Text))
+            {
+                varidateFlag = false;
+                set_error(GlobalMethod.GetMessage("E10722", ""));
+            }
+
+            if (mode != MODE.CHANGE)
+            {
+                //入札状況が入札成立でなければ起案エラー
+                if (!GlobalMethod.GetCommonValue1("NYUUSATSU_SEIRITSU").Equals(bid_tbl03_1_cmbBidStatus.SelectedValue.ToString()))
+                {
+                    varidateFlag = false;
+                    set_error(GlobalMethod.GetMessage("E10702", ""));
+                }
+                //落札者が建設物価調査会でなければ起案エラー
+                if (!GlobalMethod.GetCommonValue2("ENTORY_TOUKAI").Equals(bid_tbl03_1_txtRakusatuSya.Text))
+                {
+                    varidateFlag = false;
+                    set_error(GlobalMethod.GetMessage("E70048", ""));
+                }
+            }
+            //契約金額の税込
+            //契約タブの1.契約情報の契約金額の税込が0円の場合
+            long item13 = GetLong(ca_tbl01_txtZeikomiAmt.Text);
+            if (item13 == 0)
+            {
+                // 0円起案です。
+                set_error(GlobalMethod.GetMessage("W10701", ""));
+                varidateFlag = false;
+            }
+
+            //契約工期至
+            String format = "yyyy/MM/dd";       //日付フォーマット
+            //契約タブの1.契約情報の契約工期至と売上年度が空でない場合
+            if (ca_tbl01_dtpKokiTo.CustomFormat == "" && !String.IsNullOrEmpty(ca_tbl01_cmbSalesYear.Text))
+            {
+                //売上年度 +1年 の3月31日
+                int year = Int32.Parse(ca_tbl01_cmbSalesYear.SelectedValue.ToString()) + 1;
+                String date = year + "/03/31";
+                //日付型
+                DateTime nextYear = DateTime.ParseExact(date, format, null);
+                DateTime keiyaku = DateTime.ParseExact(ca_tbl01_dtpKokiTo.Text, format, null);
+                //売上年度+1/03/31よりも、契約工期の完了日が未来日付の場合エラー
+                if (nextYear.Date < keiyaku.Date)
+                {
+                    varidateFlag = false;
+                    set_error(GlobalMethod.GetMessage("E10706", ""));
+                }
+            }
+
+            //契約タブの1.契約情報の契約工期至と契約工期自が空でない
+            if (ca_tbl01_dtpKokiFrom.CustomFormat != " " && ca_tbl01_dtpKokiTo.CustomFormat != " ")
+            {
+                //日付型
+
+                DateTime keiyakuFrom = DateTime.ParseExact(ca_tbl01_dtpKokiFrom.Text, format, null);
+                DateTime keiyakuEnd = DateTime.ParseExact(ca_tbl01_dtpKokiTo.Text, format, null);
+                if (keiyakuFrom.Date > keiyakuEnd.Date)
+                {
+                    varidateFlag = false;
+                    set_error(GlobalMethod.GetMessage("E10011", "(契約工期自・至)"));
+                }
+            }
+
+            //契約タブの6.売上計上情報の工期末日付が空でなく
+            C1FlexGrid c1FlexGrid4 = ca_tbl06_c1FlexGrid;
+            for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
+            {
+                if (c1FlexGrid4[i, 1] != null && c1FlexGrid4[i, 1].ToString() != "")
+                {
+                    DateTime kokiDate;
+                    if (DateTime.TryParse(c1FlexGrid4[i, 1].ToString(), out kokiDate))
+                    {
+                        //契約工期自が工期末日付より大きい、または、契約工期至が工期末日付より小さい場合
+                        if (ca_tbl01_dtpKokiFrom.Value > kokiDate || ca_tbl01_dtpKokiTo.Value < kokiDate)
+                        {
+                            varidateFlag = false;
+                            // 工期末日付は契約工期の期間内で設定して下さい。
+                            set_error(GlobalMethod.GetMessage("E10708", ""));
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        // 工期末日付は契約工期の期間内で設定して下さい。
+                        set_error(GlobalMethod.GetMessage("E10708", ""));
+                        break;
+                    }
+                }
+                if (c1FlexGrid4[i, 9] != null && c1FlexGrid4[i, 9].ToString() != "")
+                {
+                    DateTime kokiDate;
+                    if (DateTime.TryParse(c1FlexGrid4[i, 9].ToString(), out kokiDate))
+                    {
+                        //契約工期自が工期末日付より大きい、または、契約工期至が工期末日付より小さい場合
+                        if (ca_tbl01_dtpKokiFrom.Value > kokiDate || ca_tbl01_dtpKokiTo.Value < kokiDate)
+                        {
+                            varidateFlag = false;
+                            // 工期末日付は契約工期の期間内で設定して下さい。
+                            set_error(GlobalMethod.GetMessage("E10708", ""));
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        // 工期末日付は契約工期の期間内で設定して下さい。
+                        set_error(GlobalMethod.GetMessage("E10708", ""));
+                        break;
+                    }
+                }
+                if (c1FlexGrid4[i, 17] != null && c1FlexGrid4[i, 17].ToString() != "")
+                {
+                    DateTime kokiDate;
+                    if (DateTime.TryParse(c1FlexGrid4[i, 17].ToString(), out kokiDate))
+                    {
+                        //契約工期自が工期末日付より大きい、または、契約工期至が工期末日付より小さい場合
+                        if (ca_tbl01_dtpKokiFrom.Value > kokiDate || ca_tbl01_dtpKokiTo.Value < kokiDate)
+                        {
+                            varidateFlag = false;
+                            // 工期末日付は契約工期の期間内で設定して下さい。
+                            set_error(GlobalMethod.GetMessage("E10708", ""));
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        // 工期末日付は契約工期の期間内で設定して下さい。
+                        set_error(GlobalMethod.GetMessage("E10708", ""));
+                        break;
+                    }
+                }
+                if (c1FlexGrid4[i, 25] != null && c1FlexGrid4[i, 25].ToString() != "")
+                {
+                    DateTime kokiDate;
+                    if (DateTime.TryParse(c1FlexGrid4[i, 25].ToString(), out kokiDate))
+                    {
+                        //契約工期自が工期末日付より大きい、または、契約工期至が工期末日付より小さい場合
+                        if (ca_tbl01_dtpKokiFrom.Value > kokiDate || ca_tbl01_dtpKokiTo.Value < kokiDate)
+                        {
+                            varidateFlag = false;
+                            // 工期末日付は契約工期の期間内で設定して下さい。
+                            set_error(GlobalMethod.GetMessage("E10708", ""));
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        // 工期末日付は契約工期の期間内で設定して下さい。
+                        set_error(GlobalMethod.GetMessage("E10708", ""));
+                        break;
+                    }
+                }
+            }
+
+            //契約タブの調査部配分率が0ではない場合
+            // 調査部 業務別配分が100でないとエラー
+            //if (item3_7_2_26_1.Text != "100.00%" && item3_7_2_26_1.Text != "0.00%")
+            if (GetDouble(ca_tbl02_1_numPercent1.Text) > 0)
+            {
+                if (ca_tbl02_2_numPercentAll.Text != "100.00%")
+                {
+                    // 調査業務別　配分の合計が100になるように入力してください。
+                    set_error(GlobalMethod.GetMessage("E70045", "(契約タブ)"));
+                    varidateFlag = false;
+                }
+            }
+            // 契約タブの調査部配分が0の場合
+            // 調査部 業務別配分の合計が0でないとエラー
+            else
+            {
+                if (ca_tbl02_2_numPercentAll.Text != "0.00%")
+                {
+                    // 調査部　業務別配分の合計が不正です。
+                    set_error(GlobalMethod.GetMessage("E10725", "(契約タブ)"));
+                    varidateFlag = false;
+                }
+            }
+
             // ２．配分情報・業務内容 配分額と契約金額（税込）が一致しない場合更新不可。
-            if(GetLong(ca_tbl02_AftCaBmZeikomi_numAmtAll.Text) != GetLong(ca_tbl01_txtJyutakuAmt.Text))
+            if (GetLong(ca_tbl02_AftCaBmZeikomi_numAmtAll.Text) != GetLong(ca_tbl01_txtJyutakuAmt.Text))
             {
                 set_error(GlobalMethod.GetMessage("E10705", ""));
                 varidateFlag = false;
             }
+
+            // ７．請求書情報 請求金額と契約金額（税込）が一致しない場合
+            if (GetLong(ca_tbl07_txtRequstAll.Text) != GetLong(ca_tbl01_txtJyutakuAmt.Text))
+            {
+                set_error(GlobalMethod.GetMessage("E10707", ""));
+                varidateFlag = false;
+            }
+
             // ２．配分情報・業務内容 請求金額と配分額合計が一致しない場合更新不可。
             if (GetLong(ca_tbl02_AftCaBmZeikomi_numAmtAll.Text) != GetLong(ca_tbl07_txtRequstAll.Text))
             {
                 set_error(GlobalMethod.GetMessage("E10720", ""));
                 varidateFlag = false;
             }
+
             // ６．売上計上情報 売上情報と契約金額（税込）の合計額が一致しない場合、更新不可。
             Double uriageTotal = 0;
             for (int i = 2; i < ca_tbl06_c1FlexGrid.Rows.Count; i++)
@@ -8576,18 +8786,51 @@ namespace TokuchoBugyoK2
                 set_error(GlobalMethod.GetMessage("E10732", ""));
                 varidateFlag = false;
             }
-            // ７．請求書情報 請求金額と契約金額（税込）が一致しない場合
-            if (GetLong(ca_tbl07_txtRequstAll.Text) != GetLong(ca_tbl01_txtJyutakuAmt.Text))
-            {
-                set_error(GlobalMethod.GetMessage("E10707", ""));
-                varidateFlag = false;
-            }
+
+            // No1209 要望ほか、６件 アラートからエラーメッセージへ変更する
+            // ⇒データチェックに移動しました。
+
             // 入札情報    当会応札（入札タブ）が「対応前」のままで起案しようとしたら更新不可。
             if (bid_tbl01_cmbTokaiOsatu.SelectedValue != null && bid_tbl01_cmbTokaiOsatu.SelectedValue.ToString().Equals("1"))
             {
-                GlobalMethod.outputMessage("E10729", "(入札タブ)");
+                //GlobalMethod.outputMessage("E10729", "(入札タブ)");
+                set_error(GlobalMethod.GetMessage("E10729", "入札"));
                 varidateFlag = false;
             }
+
+            if (requiredFlag && varidateFlag)
+            {
+                // 税込
+                // 契約タブの1.契約情報の消費税率が空ではない場合
+                if (!String.IsNullOrEmpty(ca_tbl01_txtTax.Text))
+                {
+                    Double keiyakuAmount = GetDouble(ca_tbl01_txtZeikomiAmt.Text);  // 契約金額の税込 
+                    Double taxAmount = GetDouble(ca_tbl01_txtTax.Text);      // 消費税 
+                    Double inTaxAmount = GetDouble(ca_tbl01_txtSyohizeiAmt.Text);    // 内消費税
+                    Double taxPercent = GetDouble(ca_tbl01_txtTax.Text);     // 消費税率
+                    Double totalHundred = Convert.ToDouble(100);
+
+                    // 契約金額の税込 / (100 + 消費税率))* 消費税率, 0) の小数点切り捨て　amount
+                    Double amount = Math.Floor(keiyakuAmount / (totalHundred + taxPercent) * taxPercent);
+
+                    // 内消費税がamountと一致しない
+                    if (!Double.Equals(inTaxAmount, amount))
+                    {
+                        GlobalMethod.outputMessage("E10704", "");
+                    }
+                }
+
+                //えんとり君修正STEP2
+                if (iDummy == 0)
+                {
+                    //①当会応札（入札タブ）が「対応前」のままで起案しようとしたらアラート表示する。
+                    if (IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue,"1"))
+                    {
+                        GlobalMethod.outputMessage("E10729", "入札");
+                    }
+                }
+            }
+
             if (!requiredFlag || !varidateFlag)
             {
                 return false;
@@ -9307,7 +9550,6 @@ namespace TokuchoBugyoK2
                     }
                     catch (Exception)
                     {
-
                         throw;
                     }
                 }
@@ -12021,7 +12263,7 @@ namespace TokuchoBugyoK2
                 sSql.Append("    AnkenUpdateDate = GETDATE() ");
                 sSql.Append("    ,AnkenUpdateUser = '" + UserInfos[0] + "' ");
                 sSql.Append("    ,AnkenSaishinFlg = 0 ");
-                sSql.Append("    ,,AnkenUpdateProgram = 'ChangeKianEntry' ");
+                sSql.Append("    ,AnkenUpdateProgram = 'ChangeKianEntry' ");
             }
             else
             {
