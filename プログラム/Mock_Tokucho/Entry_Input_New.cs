@@ -231,10 +231,7 @@ namespace TokuchoBugyoK2
         private string c1FlexGrid2Data = "";
         private string beforeKeikakuBangou = "";
         private string sFolderRenameBef = "";    //ファイルを移動するため、変更前のフォルダを保存する
-        private string sFolderBushoCDRenameBef = "";    //受託課所支部（契約部所）
         private string sFolderYearRenameBef = "";   // 工期開始年度
-        private string sFolderGyomuRenameBef = "";   // 業務名称
-        private string sFolderOrderRenameBef = "";//発注者名
         private string sAnkenSakuseiKubun_ori = ""; // 案件区分変更前の値
         private string sJigyoubuHeadCD_ori = "";    // 事業部ヘッダーコード
         //計画詳細画面の「前回案件番号を元に新規登録」ボタンから遷移してきたときTrue
@@ -624,7 +621,6 @@ namespace TokuchoBugyoK2
             }
 
             sFolderRenameBef = base_tbl02_txtRenameFolder.Text;
-            sFolderBushoCDRenameBef = UserInfos[2];    //受託課所支部（契約部所）
             if (base_tbl03_cmbKokiStartYear.SelectedValue == null)
             {
                 sFolderYearRenameBef = base_tbl03_cmbKokiStartYear.Text.Substring(0, 4);
@@ -633,8 +629,6 @@ namespace TokuchoBugyoK2
             {
                 sFolderYearRenameBef = base_tbl03_cmbKokiStartYear.SelectedValue.ToString();   // 工期開始年度
             }
-            sFolderGyomuRenameBef = base_tbl03_txtGyomuName.Text;   // 業務名称
-            sFolderOrderRenameBef = base_tbl04_txtOrderName.Text;//発注者名
 
             if(AnkenData_H.Rows.Count > 0)
             {
@@ -1192,8 +1186,7 @@ namespace TokuchoBugyoK2
                         base_tbl11_1_dtpKianDt.Text = "";
                         base_tbl11_1_dtpKianDt.CustomFormat = " ";
                     }
-                    //契約金額(税抜)
-                    base_tbl11_1_txtKeiyakuAmt.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_K.Rows[0]["KeiyakuKeiyakuAmt"]));
+                    
                     //単契等の見込補正額(年度内)
                     base_tbl11_2_numAmt1.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_K.Rows[0]["Mikomi1"]));
                     base_tbl11_2_numAmt2.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_K.Rows[0]["Mikomi2"]));
@@ -1580,6 +1573,8 @@ namespace TokuchoBugyoK2
             ca_tbl01_txtJyutakuAmt.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_K.Rows[0]["KeiyakukeiyakuAmtkukei"]));
             //受託外金額(税込)
             ca_tbl01_txtJyutakuGaiAmt.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_K.Rows[0]["KeiyakuBetsuKeiyakuAmt"]));
+            //基本情報等一覧へ連動：契約金額(税抜)※受託外をのぞく
+            base_tbl11_1_txtKeiyakuAmt.Text = string.Format("{0:C}", Get_Zeinuki(Convert.ToInt64(AnkenData_K.Rows[0]["KeiyakuBetsuKeiyakuAmt"])));
             //変更・中止理由
             ca_tbl01_txtRiyu.Text = AnkenData_K.Rows[0]["KeiyakuHenkouChuushiRiyuu"].ToString();
             //案件メモ(契約)
@@ -3177,288 +3172,6 @@ namespace TokuchoBugyoK2
             }
         }
 
-        #region 1しばらくいらない
-        /*
-        private void set_data_of_insert()
-        {
-            // 案件区分
-            base_tbl02_cmbAnkenKubun.SelectedValue = "01";
-            // 年度
-            string sYear = GlobalMethod.GetTodayNendo();
-            base_tbl03_cmbKokiStartYear.SelectedValue = sYear;
-            base_tbl03_cmbKokiSalesYear.SelectedValue = sYear;
-
-            // 新規時 受託課所支部を自部所にセット
-            if (AnkenID != null && AnkenID != "")
-            {
-                DataTable ankenDt = GlobalMethod.getData("AnkenJutakubushoCD", "AnkenJutakubushoCD", "AnkenJouhou", "AnkenJouhouID = " + AnkenID);
-                if (ankenDt != null && ankenDt.Rows.Count > 0)
-                {
-                    base_tbl02_cmbJyutakuKasyoSibu.SelectedValue = ankenDt.Rows[0][0].ToString();
-                }
-            }
-            else
-            {
-                base_tbl02_cmbJyutakuKasyoSibu.SelectedValue = UserInfos[2];
-            }
-
-            // 案件（受託）フォルダ初期値設定
-            if (AnkenbaBangou == "")
-            {
-                // 案件（受託）フォルダ
-                base_tbl02_txtAnkenFolder.Text = getBaseFolderPath(UserInfos[2]);
-            }
-
-            //元にする案件あり
-            if (AnkenID != "")
-            {
-                //「この発注者を元に新規登録」
-                if (Hatyusya != "")
-                {
-                    // ★★★
-                }
-                else
-                {
-                    if (AnkenbaBangou == null || AnkenbaBangou == "")
-                    {
-                        //「この案件を元に新規登録」
-                        base_tbl02_txtAnkenNo.Text = "";    // 案件番号
-                        base_tbl02_txtJyutakuNo.Text = "";  // 受託番号
-
-                        //item1_8.Text = ""; // 受託枝番 ★★★
-                        base_tbl10_dtpNyusatuDt.Text = "";  // 入札予定日
-                        base_tbl10_dtpNyusatuDt.CustomFormat = " ";
-                        base_tbl10_cmbNyusatuStats.SelectedValue = "1"; // 入札状況
-                        base_tbl10_cmbOrderIyoku.SelectedValue = "1";   // 受注意欲
-                    }
-                    else
-                    {
-                        //「この案件番号の枝番で受託番号を作成する」
-                        base_tbl08_c1FlexGrid.Rows.Count = 2;
-                        Resize_Grid("base_tbl08_c1FlexGrid");
-
-                        // 過去案件情報のRakusatushaIDに1をセット
-                        base_tbl08_c1FlexGrid.Rows[1][16] = 1;
-
-                        int Eda = 0;
-                        // 案件番号の中で、枝番が数値で構成されていて、最大の物を取得する
-                        DataTable AnkenEdadt = GlobalMethod.getData("' '", "max(AnkenJutakuBangouEda)", "AnkenJouhou", "AnkenAnkenBangou = '" + base_tbl02_txtAnkenNo.Text + "' AND AnkenJutakuBangouEda LIKE '%[0-9]%' AND AnkenDeleteFlag = 0");
-                        if (AnkenEdadt != null && AnkenEdadt.Rows.Count > 0)
-                        {
-                            // 取得できた場合、最大値+1する
-                            string EdaStr = AnkenEdadt.Rows[0][0].ToString();
-                            if (int.TryParse(EdaStr, out Eda))
-                            {
-                                Eda += 1;
-                            }
-                            else
-                            {
-                                // 変換できなかった場合、1とする（MAXで取ってるので、Whereで引っかかるものがなければNULL）
-                                Eda = 1;
-                            }
-                        }
-                        else
-                        {
-                            // 取得できなかった場合、1とする
-                            Eda = 1;
-                        }
-
-                        //item1_8.Text = string.Format("{0:D2}", Eda);
-                        base_tbl02_txtJyutakuNo.Text = base_tbl02_txtAnkenNo.Text + "-" + string.Format("{0:D2}", Eda);
-                    }
-                    //「この案件を元に新規登録」「この案件番号の枝番で受託番号を作成する」共通初期化
-                    base_tbl10_cmbSankoMitumori.SelectedValue = "1"; //参考見積
-                }
-                //// 過去案件からコピーした情報を引用する
-                //Copy_Anken();
-            }
-            else
-            {
-                // 新規時
-                // 過去案件情報のRakusatushaIDに1をセット
-                base_tbl08_c1FlexGrid.Rows[1][16] = 1;
-            }
-
-            //計画詳細の「新規案件」ボタン押下時
-            if (mode == MODE.PLAN)
-            {
-                //「計画」から引用 の設定
-                Quote_Plan();
-            }
-
-            // 事前打診登録日
-            base_tbl01_dtpDtPrior.CustomFormat = " ";
-            base_tbl01_dtpDtPrior.Text = "";
-
-            base_tbl01_dtpDtBid.CustomFormat = " ";
-            base_tbl01_dtpDtBid.Text = "";
-
-            base_tbl01_dtpDtCa.CustomFormat = " ";
-            base_tbl01_dtpDtCa.Text = "";
-            // フォルダチェック
-            FolderPathCheck();
-        }
-
-        /// <summary>
-        /// 「計画」から「新規登録」
-        /// 　　引用項目の設定処理
-        /// </summary>
-        private void Quote_Plan()
-        {
-            DataTable dt = EntryInputDbClass.Get_KeikakuJouhou_ById(KeikakuID);
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                DataRow dr = dt.Rows[0];
-                // 基本情報：２．基本情報
-                base_tbl02_txtKeikakuNo.Text = dr["KeikakuBangou"].ToString();          // 計画番号
-                base_tbl02_txtKeikakuAKName.Text = dr["KeikakuAnkenMei"].ToString();    // 計画案件名
-                // 基本情報：３．案件情報
-                base_tbl03_txtGyomuName.Text = dr["KeikakuZenkaiGyoumuMei"].ToString();         // 業務名称 ★★★
-                base_tbl03_cmbKeiyakuKubun.SelectedValue = dr["KeikakuGyoumuKubun"].ToString(); // 契約区分
-                base_tbl03_dtpKokiFrom.Text = dr["KeikakuKoukiKaishibi"].ToString();            // 工期自
-                base_tbl03_dtpKokiFrom.Text = dr["KeikakuKoukiShuryoubi"].ToString();           // 工期至
-                base_tbl03_cmbKokiStartYear.SelectedValue = dr["KeikakuKaishiNendo"].ToString();// 工期開始年度
-                base_tbl03_cmbKokiSalesYear.SelectedValue = dr["KeikakuUriageNendo"].ToString();// 売上年度
-
-                // 基本情報：７．業務配分
-                // 部門配分 ★★★
-                base_tbl07_2_numPercent1.Text = GetMoneyTextLong(GetLong(dr["KeikakuShizaiChousa"].ToString()));// 資材調査
-                base_tbl07_2_numPercent2.Text = GetMoneyTextLong(GetLong(dr["KeikakuEizen"].ToString())); // 営繕調査
-                base_tbl07_2_numPercent3.Text = GetMoneyTextLong(GetLong(dr["KeikakuKikiruiChousa"].ToString())); // 機器類調査
-                base_tbl07_2_numPercent4.Text = GetMoneyTextLong(GetLong(dr["KeikakuKoujiChousahi"].ToString())); // 工事費調査
-                base_tbl07_2_numPercent5.Text = GetMoneyTextLong(GetLong(dr["KeikakuSanpaiChousa"].ToString()));// 産廃調査
-                base_tbl07_2_numPercent6.Text = GetMoneyTextLong(GetLong(dr["KeikakuHokakeChousa"].ToString()));// 歩掛調査
-                base_tbl07_2_numPercent7.Text = GetMoneyTextLong(GetLong(dr["KeikakuShokeihiChousa"].ToString()));// 諸経費調査
-                base_tbl07_2_numPercent8.Text = GetMoneyTextLong(GetLong(dr["KeikakuGenkaBunseki"].ToString()));// 原価分析調査                                                                                                 
-                base_tbl07_2_numPercent9.Text = GetMoneyTextLong(GetLong(dr["KeikakuKijunsakusei"].ToString()));// 基準作成改訂
-                base_tbl07_2_numPercent10.Text = GetMoneyTextLong(GetLong(dr["KeikakuKoukyouRoumuhi"].ToString())); // 公共労務費調査
-                base_tbl07_2_numPercent11.Text = GetMoneyTextLong(GetLong(dr["KeikakuRoumuhiKoukyouigai"].ToString()));// 労務費公共以外
-                base_tbl07_2_numPercent12.Text = GetMoneyTextLong(GetLong(dr["KeikakuSonotaChousabu"].ToString()));// その他調査部
-                base_tbl07_2_numPercentAll.Text = GetMoneyTextLong(GetLong(dr["KeikakuHaibunGoukei"].ToString()));// 合計
-            }
-        }
-
-        /// <summary>
-        /// 過去「案件」から
-        /// 　「この業務を元に新規登録」、「この発注者を元に新規登録」
-        /// </summary>
-        private void Copy_Anken()
-        {
-            // 過去案件がない場合、何もしない
-            if (AnkenData_H == null || AnkenData_H.Rows.Count <= 0) return;
-
-            DataRow dr = AnkenData_H.Rows[0];
-            //「この業務を元に新規登録」、「この発注者を元に新規登録」両方共通設定 -------------------------
-            //基本情報：２．基本情報
-            base_tbl02_cmbJyutakuKasyoSibu.SelectedValue = dr["AnkenJutakubushoCD"].ToString(); //受託課所支部
-            base_tbl02_txtKeiyakuTanto.Text = dr["AnkenTantoushaMei"].ToString();               //契約担当者
-            //４．発注者情報
-            base_tbl04_txtOrderCd.Text = dr["AnkenHachushaCD"].ToString();          //発注者コード
-            base_tbl04_txtOrderKubun1.Text = dr["HachushaKubun1Mei"].ToString();    //発注者区分1
-            base_tbl04_txtOrderKubun2.Text = dr["HachushaKubun2Mei"].ToString();    //発注者区分2
-            base_tbl04_txtTodofuken.Text = dr["TodouhukenMei"].ToString();          //都道府県名
-            base_tbl04_txtOrderName.Text = dr["HachushaMei"].ToString();            //発注者名
-            base_tbl04_txtOrderKamei.Text = dr["AnkenHachushaKaMei"].ToString();    //発注者課名
-
-            //５．発注担当者情報（調査窓口）
-            base_tbl05_txtBusho.Text = dr["AnkenHachuushaKeiyakuBusho"].ToString();     //部署
-            base_tbl05_txtTanto.Text = dr["AnkenHachuushaKeiyakuTantou"].ToString();    //担当者名
-            base_tbl05_txtTel.Text = dr["AnkenHachuushaKeiyakuTEL"].ToString();         //電話
-            base_tbl05_txtFax.Text = dr["AnkenHachuushaKeiyakuFAX"].ToString();         //FAX
-            base_tbl05_txtEmail.Text = dr["AnkenHachuushaKeiyakuMail"].ToString();      //E - Mail
-            base_tbl05_txtZip.Text = dr["AnkenHachuushaKeiyakuYuubin"].ToString();      //郵便番号
-            base_tbl05_txtAddress.Text = dr["AnkenHachuushaKeiyakuJuusho"].ToString();  //住所
-
-            //６．発注担当者情報（契約窓口）★★★
-            base_tbl06_chkTyosaMadoguchi.Checked = true;    //調査窓口と同じ
-            base_tbl06_txtBusho.Text = dr["AnkenHachuushaKeiyakuBusho"].ToString();             //部署
-            base_tbl06_txtTanto.Text = dr["AnkenHachuushaKeiyakuTantou"].ToString();            //担当者名
-            base_tbl06_txtTel.Text = dr["AnkenHachuushaKeiyakuTEL"].ToString();                 //電話
-            base_tbl06_txtFax.Text = dr["AnkenHachuushaKeiyakuFAX"].ToString();                 //FAX
-            base_tbl06_txtEmail.Text = dr["AnkenHachuushaKeiyakuMail"].ToString();              //E - Mail
-            base_tbl06_txtZip.Text = dr["AnkenHachuushaKeiyakuYuubin"].ToString();              //郵便番号
-            base_tbl06_txtAddress.Text = dr["AnkenHachuushaKeiyakuJuusho"].ToString();          //住所
-            base_tbl06_txtOrderYakusyoku.Text = dr["AnkenHachuuDaihyouYakushoku"].ToString();   //発注者元代表者_役職
-            base_tbl06_txtOrderSimei.Text = dr["AnkenHachuuDaihyousha"].ToString();             //発注者元代表者_氏名
-
-            //「この業務を元に新規登録」のみ設定 -----------------------------------------------------------
-            if(copy == COPY.GM)
-            {
-                //３．案件情報
-                base_tbl03_txtGyomuName.Text = dr["AnkenGyoumuMei"].ToString();                 //業務名称
-                base_tbl03_cmbKeiyakuKubun.SelectedValue = dr["AnkenGyoumuMei"].ToString();     //契約区分
-                base_tbl03_txtAnkenMemo.Text = dr["NyuusatsuGyoumuBikou"].ToString();           //案件メモ(基本情報)
-
-                //７．業務配分
-                //-- 部門配分：【事前打診・入札】配分率(%)
-                base_tbl07_1_numPercent1.Text = GetPercentText(Convert.ToDouble(dr["BuRitsu1"]));           //調査部
-                base_tbl07_1_numPercent2.Text = GetPercentText(Convert.ToDouble(dr["BuRitsu2"]));           //事業普及部
-                base_tbl07_1_numPercent3.Text = GetPercentText(Convert.ToDouble(dr["BuRitsu3"]));           //情報システム部
-                base_tbl07_1_numPercent4.Text = GetPercentText(Convert.ToDouble(dr["BuRitsu4"]));           //総合研究所
-                GetTotalPercent("base_tbl07_1_numPercent",5);                          //合計
-
-                //-- 調査部　業務別配分
-                base_tbl07_2_numPercent1.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu1"]));       //資材調査
-                base_tbl07_2_numPercent2.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu2"]));       //営繕調査
-                base_tbl07_2_numPercent3.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu3"]));       //機器類調査
-                base_tbl07_2_numPercent4.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu4"]));       //工事費調査
-                base_tbl07_2_numPercent5.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu5"]));       //産廃調査
-                base_tbl07_2_numPercent6.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu6"]));       //歩掛調査
-                base_tbl07_2_numPercent7.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu7"]));       //諸経費調査
-                base_tbl07_2_numPercent8.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu8"]));       //原価分析調査
-                base_tbl07_2_numPercent9.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu9"]));       //基準作成改訂
-                base_tbl07_2_numPercent10.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu10"]));     //公共労務費調査
-                base_tbl07_2_numPercent11.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu11"]));     //労務費公共以外
-                base_tbl07_2_numPercent12.Text = GetPercentText(Convert.ToDouble(dr["ChousaRitsu12"]));     //その他調査部
-                GetTotalPercent("base_tbl07_2_numPercent", 13);                       //合計
-
-                //８．過去案件情報
-                setOldAnkenGrid();
-
-                //１０．入札状況・入札結果
-                base_tbl10_cmbOrderKubun.SelectedValue = dr["ChousaRitsu12"].ToString(); //業務発注区分 ★★★
-                base_tbl10_cmbNyusatuHosiki.SelectedValue = dr["AnkenNyuusatsuHoushiki"].ToString();//入札方式
-                base_tbl10_cmbLowestUmu.SelectedValue = dr["AnkenNyuusatsuHoushiki"].ToString();//最低制限価格有無 ★★★
-                base_tbl10_cmbKinsiUmu.SelectedValue = dr["AnkenNyuusatsuHoushiki"].ToString();//再委託禁止条項の記載有無 ★★★
-                base_tbl10_cmbKinsiNaiyo.SelectedValue = dr["AnkenNyuusatsuHoushiki"].ToString();//再委託禁止条項の内容 ★★★
-                base_tbl10_txtOtherNaiyo.Text = dr["AnkenNyuusatsuHoushiki"].ToString();//その他の内容 ★★★
-            }
-        }
-        */
-        #endregion
-
-        /// <summary>
-        /// 過去案件リスト設定処理
-        /// </summary>
-        private void setOldAnkenGrid()
-        {
-            if(AnkenData_Grid1 == null || AnkenData_Grid1.Rows.Count == 0)
-            {
-                // 過去案件情報の前回受託番号IDに1を入れておく
-                base_tbl08_c1FlexGrid.Rows[1][16] = 1;
-            }
-            else
-            {
-                for (int k = 0; k < AnkenData_Grid1.Rows.Count; k++)
-                {
-                    if (k > 0)
-                    {
-                        base_tbl08_c1FlexGrid.Rows.Add();
-                    }
-                    if (k >= 5)
-                    {
-                        break;
-                    }
-                    //【過去案件】
-                    // SortKey 以外をbase_tbl08_c1FlexGridにセットする
-                    for (int i = 0; i < AnkenData_Grid1.Columns.Count - 1; i++)
-                    {
-                        base_tbl08_c1FlexGrid.Rows[k + 1][i + 2] = AnkenData_Grid1.Rows[k][i];
-                    }
-                }
-            }
-        }
-
         /// <summary>
         /// フォーム閉じる
         /// </summary>
@@ -3548,6 +3261,9 @@ namespace TokuchoBugyoK2
         private void setCmbEvent()
         {
             bid_tbl02_cmbKinsiUmu.SelectedValueChanged += cmb_SelectedValueChanged;
+            bid_tbl02_cmbKinsiNaiyo.SelectedValueChanged += cmb_SelectedValueChanged;
+            ca_tbl01_cmbKinsiUmu.SelectedValueChanged += cmb_SelectedValueChanged;
+            ca_tbl01_cmbKinsiNaiyo.SelectedValueChanged += cmb_SelectedValueChanged;
         }
 
         /// <summary>
@@ -3560,26 +3276,10 @@ namespace TokuchoBugyoK2
             ComboBox cmb = (ComboBox)sender;
 
             // 入札：再委託禁止条項の記載有無
-            if (cmb.Name.Equals("bid_tbl02_cmbKinsiUmu"))
-            {
-                // 契約の
-                bool isSpace = true;
-                if (cmb.SelectedValue == null || "1".Equals(cmb.SelectedValue.ToString()) == false) isSpace = false;
-                if (isSpace)
-                {
-                    ca_tbl01_txtOtherNaiyo.Text = "";
-                    ca_tbl01_cmbKinsiUmu.SelectedIndex = 0;
-                    ca_tbl01_cmbKinsiNaiyo.SelectedIndex = 0;
-                }
-                else
-                {
-                    ca_tbl01_txtOtherNaiyo.Text = bid_tbl02_txtOtherNaiyo.Text;
-                    ca_tbl01_cmbKinsiUmu.SelectedValue = bid_tbl02_cmbKinsiUmu.SelectedValue;
-                    ca_tbl01_cmbKinsiNaiyo.SelectedValue = bid_tbl02_cmbKinsiNaiyo.SelectedValue;
-                }
-                return;
-            }
+            // 契約：再委託禁止条項の記載有無
+            reset_base_kinsiItems();
         }
+
         /// <summary>
         /// 日付KeyDown
         /// </summary>
@@ -3794,88 +3494,6 @@ namespace TokuchoBugyoK2
             }
         }
 
-        ///// <summary>
-        ///// 基本情報：工期終了
-        ///// 契約：契約締結(変更)日
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void dateTimePicker_Leave(object sender, EventArgs e)
-        //{
-        //    //DateTimePicker dtp = (DateTimePicker)sender;
-        //    //if (dtp.Name.Equals("ca_tbl01_dtpChangeDt"))
-        //    //{
-        //    //    //　契約：契約締結(変更)日
-        //    //    if (ca_tbl01_dtpChangeDt.CustomFormat != "")
-        //    //    {
-        //    //        // 契約締結変更日を入力しないと消費税率を取得できません。
-        //    //        set_error(GlobalMethod.GetMessage("I10713", ""));
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        string where = "(TaxStartDay <= '" + dtp.Text + "' ) AND (ISNULL(TaxEndDay,'9999/12/31') >= '" + dtp.Text + "' ) " +
-        //    //                        " AND TaxKuni = 'JPN' AND ISNULL(TaxDeleteFlag,0) = 0 ";
-        //    //        DataTable dt = GlobalMethod.getData("TaxZeiritsu", "TaxZeiritsu", "M_Tax", where);
-
-        //    //        if (dt != null && dt.Rows.Count > 0)
-        //    //        {
-        //    //            ca_tbl01_txtTax.Text = dt.Rows[0][0].ToString();
-        //    //            // 小数点以下を削り取る
-        //    //            int comma = ca_tbl01_txtTax.Text.IndexOf(".");
-        //    //            ca_tbl01_txtTax.Text = ca_tbl01_txtTax.Text.Substring(0, comma);
-        //    //        }
-        //    //        else
-        //    //        {
-        //    //            where = "(TaxStartDay IS null OR TaxStartDay <= '" + dtp.Text + "' ) AND (TaxEndDay IS null OR TaxEndDay >= '" + dtp.Text + "' ) " +
-        //    //                        " AND TaxKuni = 'JPN' AND ISNULL(TaxDeleteFlag,0) = 0 ";
-        //    //            dt.Clear();
-        //    //            dt = GlobalMethod.getData("TaxZeiritsu", "TaxZeiritsu", "M_Tax", where);
-
-        //    //            if (dt != null && dt.Rows.Count > 0)
-        //    //            {
-        //    //                ca_tbl01_txtTax.Text = dt.Rows[0][0].ToString();
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                ca_tbl01_txtTax.Text = "0";
-        //    //            }
-        //    //        }
-        //    //    }
-        //    //}
-        //    //else if (dtp.Name.Equals("base_tbl03_dtpKokiTo"))
-        //    //{
-        //    //    //// 基本情報：工期終了
-        //    //    //if (base_tbl03_dtpKokiFrom.CustomFormat == "" && base_tbl03_dtpKokiTo.CustomFormat == "")
-        //    //    //{
-        //    //    //    if (base_tbl03_dtpKokiFrom.Value > base_tbl03_dtpKokiTo.Value)
-        //    //    //    {
-        //    //    //        set_error("", 0);
-        //    //    //        set_error(GlobalMethod.GetMessage("E10011", "(工期 開始・終了)"));
-        //    //    //        base_tbl03_dtpKokiTo.CustomFormat = " ";
-        //    //    //    }
-        //    //    //}
-
-        //    //    //if (base_tbl03_dtpKokiTo.CustomFormat == "")
-        //    //    //{
-        //    //    //    DataTable dt = GlobalMethod.getData("NendoID", "NendoID", "Mst_Nendo", "Nendo_Sdate <= '" + base_tbl03_dtpKokiTo.Text + "' AND Nendo_EDate >= '" + base_tbl03_dtpKokiTo.Text + "' ");
-        //    //    //    if (dt != null && dt.Rows.Count > 0)
-        //    //    //    {
-        //    //    //        // 売上年度
-        //    //    //        if(mode != MODE.INSERT && mode != MODE.PLAN)
-        //    //    //        {
-        //    //    //            ca_tbl01_cmbSalesYear.SelectedValue = dt.Rows[0][0].ToString();
-        //    //    //        }
-        //    //    //        if (mode != MODE.CHANGE)
-        //    //    //        {
-        //    //    //            base_tbl03_cmbKokiStartYear.DrawItem -= new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
-        //    //    //            base_tbl03_cmbKokiSalesYear.SelectedValue = dt.Rows[0][0].ToString();
-        //    //    //            base_tbl03_cmbKokiStartYear.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
-        //    //    //        }
-        //    //    //    }
-        //    //    //}
-        //    //}
-        //}
-
         /// <summary>
         /// フォーカスで、数字のフォマードがなくなる処理
         /// </summary>
@@ -4027,46 +3645,72 @@ namespace TokuchoBugyoK2
             string sNo = words[1];  // 入力配分率の連番
             if (tb.Name.Contains("ca_tbl02_AftCaTs_numPercent"))
             {
+                // ２．配分情報・業務内容 ⇒ 調査部　業務別配分⇒【契約後】配分率(%)
                 //　合計
                 GetTotalPercent("ca_tbl02_AftCaTs_numPercent", 13);
 
                 System.Windows.Forms.Label lblAmt = ca_tbl02_AftCaTs_numAmt1;
+                //基本情報一覧　７　調査部　業務配分　契約後
+                System.Windows.Forms.Label lblBaseP = base_tbl07_5_lblRate1;
+                System.Windows.Forms.Label lblBaseA = base_tbl07_5_lblAmt1;
                 switch (sNo)
                 {
                     case "1":
                         break;
                     case "2":
                         lblAmt = ca_tbl02_AftCaTs_numAmt2;
+                        lblBaseP = base_tbl07_5_lblRate2;
+                        lblBaseA = base_tbl07_5_lblAmt2;
                         break;
                     case "3":
                         lblAmt = ca_tbl02_AftCaTs_numAmt3;
+                        lblBaseP = base_tbl07_5_lblRate3;
+                        lblBaseA = base_tbl07_5_lblAmt3;
                         break;
                     case "4":
                         lblAmt = ca_tbl02_AftCaTs_numAmt4;
+                        lblBaseP = base_tbl07_5_lblRate4;
+                        lblBaseA = base_tbl07_5_lblAmt4;
                         break;
                     case "5":
                         lblAmt = ca_tbl02_AftCaTs_numAmt5;
+                        lblBaseP = base_tbl07_5_lblRate5;
+                        lblBaseA = base_tbl07_5_lblAmt5;
                         break;
                     case "6":
                         lblAmt = ca_tbl02_AftCaTs_numAmt6;
+                        lblBaseP = base_tbl07_5_lblRate6;
+                        lblBaseA = base_tbl07_5_lblAmt6;
                         break;
                     case "7":
                         lblAmt = ca_tbl02_AftCaTs_numAmt7;
+                        lblBaseP = base_tbl07_5_lblRate7;
+                        lblBaseA = base_tbl07_5_lblAmt7;
                         break;
                     case "8":
                         lblAmt = ca_tbl02_AftCaTs_numAmt8;
+                        lblBaseP = base_tbl07_5_lblRate8;
+                        lblBaseA = base_tbl07_5_lblAmt8;
                         break;
                     case "9":
                         lblAmt = ca_tbl02_AftCaTs_numAmt9;
+                        lblBaseP = base_tbl07_5_lblRate9;
+                        lblBaseA = base_tbl07_5_lblAmt9;
                         break;
                     case "10":
                         lblAmt = ca_tbl02_AftCaTs_numAmt10;
+                        lblBaseP = base_tbl07_5_lblRate10;
+                        lblBaseA = base_tbl07_5_lblAmt10;
                         break;
                     case "11":
                         lblAmt = ca_tbl02_AftCaTs_numAmt11;
+                        lblBaseP = base_tbl07_5_lblRate11;
+                        lblBaseA = base_tbl07_5_lblAmt11;
                         break;
                     case "12":
                         lblAmt = ca_tbl02_AftCaTs_numAmt12;
+                        lblBaseP = base_tbl07_5_lblRate12;
+                        lblBaseA = base_tbl07_5_lblAmt12;
                         break;
                 }
                 // 調査部 業務配分別配分 契約 配分額(税抜)
@@ -4081,12 +3725,35 @@ namespace TokuchoBugyoK2
                 lblAmt.Text = GetMoneyTextLong(haibun);
                 GetTotalMoney("ca_tbl02_AftCaTs_numAmt", 13);
 
+                // 基本情報等一覧へ連動
+                lblBaseP.Text = tb.Text;
+                lblBaseA.Text = lblAmt.Text;
+                base_tbl07_5_lblRateAll.Text = ca_tbl02_AftCaTs_numPercentAll.Text;
+                base_tbl07_5_lblAmtAll.Text = ca_tbl02_AftCaTs_numAmtAll.Text;
                 return;
             }
 
             if (tb.Name.Contains("ca_tbl02_AftCaBm_numPercent"))
             {
                 GetTotalPercent("ca_tbl02_AftCaBm_numPercent", 5);
+                System.Windows.Forms.Label lblBaseP = base_tbl07_4_lblRate1;
+                switch (sNo)
+                {
+                    case "1":
+                        break;
+                    case "2":
+                        lblBaseP = base_tbl07_4_lblRate2;
+                        break;
+                    case "3":
+                        lblBaseP = base_tbl07_4_lblRate3;
+                        break;
+                    case "4":
+                        lblBaseP = base_tbl07_4_lblRate4;
+                        break;
+                }
+                // 基本情報等一覧へ連動
+                lblBaseP.Text = tb.Text;
+                base_tbl07_4_lblRateAll.Text = ca_tbl02_AftCaBm_numPercentAll.Text;
                 return;
             }
             string sParentName = words[0] + sFiexd;  // 入力配分率の親情報部分のName
@@ -4106,7 +3773,7 @@ namespace TokuchoBugyoK2
             if (num > 0)
             {
                 GetTotalPercent(sParentName, num);
-                if (mode != MODE.INSERT && mode == MODE.PLAN)
+                if (mode != MODE.INSERT && mode != MODE.PLAN)
                 {
                     // 連動コントロールの合計も計算する
                     GetTotalPercent(sGearing, num);
@@ -4142,6 +3809,8 @@ namespace TokuchoBugyoK2
                 {
                     case "1":
                         base_tbl11_2_numAmt1.Text = tb.Text;
+                        // 調査部　業務配分再計算
+                        cal_aftCaTsFreeTax();
                         break;
                     case "2":
                         base_tbl11_2_numAmt2.Text = tb.Text;
@@ -4166,6 +3835,8 @@ namespace TokuchoBugyoK2
                 {
                     case "1":
                         base_tbl11_3_numAmt1.Text = tb.Text;
+                        // 調査部　業務配分再計算
+                        cal_aftCaTsFreeTax();
                         break;
                     case "2":
                         base_tbl11_3_numAmt2.Text = tb.Text;
@@ -4182,21 +3853,6 @@ namespace TokuchoBugyoK2
             }
             if (sName.Contains("ca_tbl02_AftCaBmZeikomi_numAmt"))
             {
-                //// 契約：２．配分情報・業務内容　部門配分
-                //if (sName.Contains("ca_tbl02_AftCaBm_numAmt")){
-                //    // 配分額(税抜) 合計
-                //    GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
-                //    // 税込算出
-                //    Control[] cs = this.Controls.Find(tb.Name.Replace("ca_tbl02_AftCaBm_numAmt", "ca_tbl02_AftCaBmZeikomi_numAmt"), true);
-                //    if (cs.Length > 0)
-                //    {
-                //        ((System.Windows.Forms.TextBox)cs[0]).Text = GetMoneyTextLong(Get_Zeikomi(GetLong(tb.Text)));
-                //    }
-                //    // 配分額(税込) 合計
-                //    GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
-                //}
-                //else
-                //{
                 // 配分額(税込) 合計
                 GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
                 //税抜算出
@@ -4207,30 +3863,25 @@ namespace TokuchoBugyoK2
                         ca_tbl02_AftCaBm_numAmt1.Text = GetMoneyTextLong(Get_Zeinuki(num));
                         // 調査部 業務配分別配分 契約 配分額(税抜)
                         cal_aftCaTsFreeTax();
+                        //基本情報等一覧へも反映する
+                        base_tbl07_4_lblAmt1.Text = ca_tbl02_AftCaBm_numAmt1.Text;
                         break;
                     case "2":
                         ca_tbl02_AftCaBm_numAmt2.Text = GetMoneyTextLong(Get_Zeinuki(num));
+                        base_tbl07_4_lblAmt2.Text = ca_tbl02_AftCaBm_numAmt2.Text;
                         break;
                     case "3":
                         ca_tbl02_AftCaBm_numAmt3.Text = GetMoneyTextLong(Get_Zeinuki(num));
+                        base_tbl07_4_lblAmt3.Text = ca_tbl02_AftCaBm_numAmt3.Text;
                         break;
                     case "4":
                         ca_tbl02_AftCaBm_numAmt4.Text = GetMoneyTextLong(Get_Zeinuki(num));
+                        base_tbl07_4_lblAmt4.Text = ca_tbl02_AftCaBm_numAmt4.Text;
                         break;
                 }
                 // 配分額(税抜) 合計
                 GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
-                //}
-
-                //// 契約金額再計算
-                //ca_tbl01_txtZeinukiAmt.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
-                //ca_tbl01_txtZeikomiAmt.Text = ca_tbl02_AftCaBmZeikomi_numAmtAll.Text;
-                //// 消費税
-                //ca_tbl01_txtSyohizeiAmt.Text = GetMoneyTextLong(GetLong(ca_tbl01_txtZeikomiAmt.Text) - GetLong(ca_tbl01_txtZeinukiAmt.Text));
-                //// 受託金額(税込)再計算
-                //ca_tbl01_txtJyutakuAmt.Text = GetMoneyTextLong(GetLong(ca_tbl01_txtZeikomiAmt.Text) - GetLong(ca_tbl01_txtJyutakuGaiAmt.Text));
-
-                if(sName.Equals("ca_tbl02_AftCaBmZeikomi_numAmt1"))
+                base_tbl07_4_lblAmtAll.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
                 return;
             }
             if (ca_tbl01_txtZeinukiAmt.Name.Equals(sName))
@@ -4256,8 +3907,7 @@ namespace TokuchoBugyoK2
             if (ca_tbl01_txtJyutakuGaiAmt.Name.Equals(sName))
             {
                 // 契約：受託外金額(税込)
-                long kingaku = GetLong(ca_tbl01_txtZeikomiAmt.Text) - GetLong(ca_tbl01_txtJyutakuGaiAmt.Text);
-                ca_tbl01_txtJyutakuAmt.Text = GetMoneyTextLong(kingaku);
+                calc_jyutakuAmt();
                 return;
             }
 
@@ -4302,17 +3952,17 @@ namespace TokuchoBugyoK2
         {
             System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
             string sName = tb.Name;
+            if(sName.Equals(bid_tbl02_txtOtherNaiyo.Name) || sName.Equals(ca_tbl01_txtOtherNaiyo.Name))
+            {
+                reset_base_kinsiItems();
+                return;
+            }
             // 連動
             switch (sName)
             {
                 // 事前打診タブ⇒９．事前打診・参考見積
                 case "prior_tbl02_txtOtherNaiyo"://「その他」の内容
                     base_tbl09_txtOthenComment.Text = tb.Text;
-                    break;
-
-                // 入札タブ⇒１０．入札情報・入札結果（基本情報）
-                case "bid_tbl02_txtOtherNaiyo"://その他の内容
-                    base_tbl10_txtOtherNaiyo.Text = tb.Text;
                     break;
                 case "bid_tbl03_1_txtOsatuNum"://応札数
                     base_tbl10_txtOsatuNum.Text = tb.Text;
@@ -4323,6 +3973,24 @@ namespace TokuchoBugyoK2
             }
         }
 
+        /// <summary>
+        /// 基本情報等一覧：再委託禁止条項の連動設定
+        /// </summary>
+        private void reset_base_kinsiItems()
+        {
+            if (string.IsNullOrEmpty(ca_tbl01_cmbKinsiUmu.Text))
+            {
+                base_tbl10_cmbKinsiUmu.SelectedValue = bid_tbl02_cmbKinsiUmu.SelectedValue;
+                base_tbl10_cmbKinsiNaiyo.SelectedValue = bid_tbl02_cmbKinsiNaiyo.SelectedValue;
+                base_tbl10_txtOtherNaiyo.Text = bid_tbl02_txtOtherNaiyo.Text;
+            }
+            else
+            {
+                base_tbl10_cmbKinsiUmu.SelectedValue = ca_tbl01_cmbKinsiUmu.SelectedValue;
+                base_tbl10_cmbKinsiNaiyo.SelectedValue = ca_tbl01_cmbKinsiNaiyo.SelectedValue;
+                base_tbl10_txtOtherNaiyo.Text = ca_tbl01_txtOtherNaiyo.Text;
+            }
+        }
         /// <summary>
         /// 調査部 業務配分別配分 契約 配分額(税抜) 自動計算
         /// </summary>
@@ -4359,6 +4027,24 @@ namespace TokuchoBugyoK2
             ca_tbl02_AftCaTs_numAmt12.Text = GetMoneyTextLong((long)Math.Round(total * percent12 / 100));
             // 契約 配分額(税抜)
             GetTotalMoney("ca_tbl02_AftCaTs_numAmt", 13);
+
+            // 基本情報等一覧へ連動する
+            if(mode != MODE.CHANGE)
+            {
+                base_tbl07_5_lblAmt1.Text = ca_tbl02_AftCaTs_numAmt1.Text;
+                base_tbl07_5_lblAmt2.Text = ca_tbl02_AftCaTs_numAmt2.Text;
+                base_tbl07_5_lblAmt3.Text = ca_tbl02_AftCaTs_numAmt3.Text;
+                base_tbl07_5_lblAmt4.Text = ca_tbl02_AftCaTs_numAmt4.Text;
+                base_tbl07_5_lblAmt5.Text = ca_tbl02_AftCaTs_numAmt5.Text;
+                base_tbl07_5_lblAmt6.Text = ca_tbl02_AftCaTs_numAmt6.Text;
+                base_tbl07_5_lblAmt7.Text = ca_tbl02_AftCaTs_numAmt7.Text;
+                base_tbl07_5_lblAmt8.Text = ca_tbl02_AftCaTs_numAmt8.Text;
+                base_tbl07_5_lblAmt9.Text = ca_tbl02_AftCaTs_numAmt9.Text;
+                base_tbl07_5_lblAmt10.Text = ca_tbl02_AftCaTs_numAmt10.Text;
+                base_tbl07_5_lblAmt11.Text = ca_tbl02_AftCaTs_numAmt11.Text;
+                base_tbl07_5_lblAmt12.Text = ca_tbl02_AftCaTs_numAmt12.Text;
+                base_tbl07_5_lblAmtAll.Text = ca_tbl02_AftCaTs_numAmtAll.Text;
+            }
         }
         #endregion
 
@@ -4622,6 +4308,10 @@ namespace TokuchoBugyoK2
                             grid.Rows[e.Row][6] = 0;
                         }
                         bid_tbl03_1_numRakusatuAmt.Text = GetMoneyTextLong(GetLong(grid.Rows[e.Row][6].ToString()));
+
+                        //　基本情報等一覧へ連動
+                        base_tbl10_txtRakusatuSya.Text = bid_tbl03_1_txtRakusatuSya.Text;
+                        base_tbl10_txtRakusatuAmt.Text = bid_tbl03_1_numRakusatuAmt.Text;
                     }
                 }
             }
@@ -5707,10 +5397,7 @@ namespace TokuchoBugyoK2
             string sGyomu = base_tbl03_txtGyomuName.Text;   // 業務名称
             string sGOrder = base_tbl04_txtOrderName.Text;//発注者名
 
-            sFolderBushoCDRenameBef = sBushoCd;    //受託課所支部（契約部所）
             sFolderYearRenameBef = sYear;   // 工期開始年度
-            sFolderGyomuRenameBef = sGyomu;   // 業務名称
-            sFolderOrderRenameBef = sGOrder;//発注者名
 
             // 案件（受託）フォルダ初期値設定 取得
             String discript = "FolderPath";
@@ -5857,101 +5544,71 @@ namespace TokuchoBugyoK2
 
         #region 契約 イベント --------------------------------------------------------
         /// <summary>
-        /// 調査部コピーボタン押下
+        /// ２．配分情報・業務内容 契約金額コピーボタン処理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ca_tbl02_btnTSbu_Click(object sender, EventArgs e)
+        private void ca_tbl02_btnCopy_Click(object sender, EventArgs e)
         {
-            //契約金額（税込）　item3_1_13
-            //契約金額（税抜）　item3_1_12
-            //配分額（税込）
-            ca_tbl02_AftCaBmZeikomi_numAmt1.Text = ca_tbl01_txtJyutakuAmt.Text;
-            //ca_tbl02_AftCaBmZeikomi_numAmt1.Text = ca_tbl01_txtZeikomiAmt.Text;
-            GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
-            //配分額（税抜）
-            if (GetLong(ca_tbl01_txtJyutakuGaiAmt.Text) == 0)
-            {
-                ca_tbl02_AftCaBm_numAmt1.Text = ca_tbl01_txtZeinukiAmt.Text;
-                
-            }
-            else
-            {
-                ca_tbl02_AftCaBm_numAmt1.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(ca_tbl02_AftCaBmZeikomi_numAmt1.Text)));
-            }
-            GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
-        }
+            System.Windows.Forms.Button btn = (System.Windows.Forms.Button)sender;
+            System.Windows.Forms.TextBox txt = null;//配分額（税込）
+            System.Windows.Forms.TextBox txtCal = null;//配分額（税抜）
+            System.Windows.Forms.Label lblBase = null;//基本情報等一覧：配分額（税抜）
 
-        /// <summary>
-        /// 事業普及部コピーボタン押下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ca_tbl02_btnJGbu_Click(object sender, EventArgs e)
-        {
-            //配分額（税込）
-            ca_tbl02_AftCaBmZeikomi_numAmt2.Text = ca_tbl01_txtJyutakuAmt.Text;
-            //ca_tbl02_AftCaBmZeikomi_numAmt2.Text = ca_tbl01_txtZeikomiAmt.Text;
-            GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
-            //配分額（税抜）
-            if (GetLong(ca_tbl01_txtJyutakuGaiAmt.Text) == 0)
+            if (btn.Name.Equals(ca_tbl02_btnTSbu.Name))
             {
-                ca_tbl02_AftCaBm_numAmt2.Text = ca_tbl01_txtZeinukiAmt.Text;
+                // 調査部コピーボタン押下
+                txt = ca_tbl02_AftCaBmZeikomi_numAmt1;
+                txtCal = ca_tbl02_AftCaBm_numAmt1;
+                lblBase = base_tbl07_4_lblAmt1;
+            }
 
-            }
-            else
+            if (btn.Name.Equals(ca_tbl02_btnJGbu.Name))
             {
-                ca_tbl02_AftCaBm_numAmt2.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(ca_tbl02_AftCaBmZeikomi_numAmt2.Text)));
+                // 事業普及部コピーボタン押下
+                txt = ca_tbl02_AftCaBmZeikomi_numAmt2;
+                txtCal = ca_tbl02_AftCaBm_numAmt2;
+                lblBase = base_tbl07_4_lblAmt2;
             }
-            GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
-        }
 
-        /// <summary>
-        /// 情報システム部コピーボタン押下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ca_tbl02_btnJHbu_Click(object sender, EventArgs e)
-        {
-            //配分額（税込）
-            ca_tbl02_AftCaBmZeikomi_numAmt3.Text = ca_tbl01_txtJyutakuAmt.Text;
-            //ca_tbl02_AftCaBmZeikomi_numAmt3.Text = ca_tbl01_txtZeikomiAmt.Text;
-            GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
-            //配分額（税抜）
-            if (GetLong(ca_tbl01_txtJyutakuGaiAmt.Text) == 0)
+            if (btn.Name.Equals(ca_tbl02_btnJHbu.Name))
             {
-                ca_tbl02_AftCaBm_numAmt3.Text = ca_tbl01_txtZeinukiAmt.Text;
+                // 情報システム部コピーボタン押下
+                txt = ca_tbl02_AftCaBmZeikomi_numAmt3;
+                txtCal = ca_tbl02_AftCaBm_numAmt3;
+                lblBase = base_tbl07_4_lblAmt3;
+            }
 
-            }
-            else
+            if (btn.Name.Equals(ca_tbl02_btnSGSyo.Name))
             {
-                ca_tbl02_AftCaBm_numAmt3.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(ca_tbl02_AftCaBmZeikomi_numAmt3.Text)));
+                // 総合研究所コピーボタン押下
+                txt = ca_tbl02_AftCaBmZeikomi_numAmt4;
+                txtCal = ca_tbl02_AftCaBm_numAmt4;
+                lblBase = base_tbl07_4_lblAmt4;
             }
-            GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
-        }
 
-        /// <summary>
-        /// 総合研究所コピーボタン押下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ca_tbl02_btnSGSyo_Click(object sender, EventArgs e)
-        {
-            //配分額（税込）
-            ca_tbl02_AftCaBmZeikomi_numAmt4.Text = ca_tbl01_txtJyutakuAmt.Text;
-            //ca_tbl02_AftCaBmZeikomi_numAmt4.Text = ca_tbl01_txtZeikomiAmt.Text;
-            GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
-            //配分額（税抜）
-            if (GetLong(ca_tbl01_txtJyutakuGaiAmt.Text) == 0)
+            if (txt != null)
             {
-                ca_tbl02_AftCaBm_numAmt4.Text = ca_tbl01_txtZeinukiAmt.Text;
+                //配分額（税込）
+                txt.Text = ca_tbl01_txtJyutakuAmt.Text;
+                GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
 
+                //配分額（税抜）
+                if (GetLong(ca_tbl01_txtJyutakuGaiAmt.Text) == 0)
+                {
+                    txtCal.Text = ca_tbl01_txtZeinukiAmt.Text;
+
+                }
+                else
+                {
+                    txtCal.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(txt.Text)));
+                }
+                GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
+                lblBase.Text = txtCal.Text;
+                base_tbl07_4_lblAmtAll.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
+                // 調査部業務別配分（No.1450）
+                cal_aftCaTsFreeTax();
             }
-            else
-            {
-                ca_tbl02_AftCaBm_numAmt4.Text = GetMoneyTextLong(Get_Zeinuki(GetLong(ca_tbl02_AftCaBmZeikomi_numAmt4.Text)));
-            }
-            GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
         }
 
         /// <summary>
@@ -5974,8 +5631,8 @@ namespace TokuchoBugyoK2
                 // 何もしない
             }
             //計上額
-            long amt = GetLong(ca_tbl01_txtZeikomiAmt.Text);
-            string sAmt = ca_tbl01_txtZeikomiAmt.Text;
+            //string sAmt = ca_tbl01_txtZeikomiAmt.Text;
+            string sAmt = ca_tbl01_txtJyutakuAmt.Text;
 
             string sName = btn.Name;
             if (sName.Equals("ca_tbl06_btnChosa"))
@@ -6089,6 +5746,22 @@ namespace TokuchoBugyoK2
             }
             ca_tbl01_txtZeikomiAmt.Text = string.Format("{0:C}", zeikomi);
             ca_tbl01_txtSyohizeiAmt.Text = string.Format("{0:C}", syouhizei);
+            calc_jyutakuAmt();
+        }
+
+        /// <summary>
+        /// 受託金額（税込）再計算
+        /// </summary>
+        private void calc_jyutakuAmt()
+        {
+            // 受託金額(税込)再計算
+            long kingaku = GetLong(ca_tbl01_txtZeikomiAmt.Text) - GetLong(ca_tbl01_txtJyutakuGaiAmt.Text);
+            ca_tbl01_txtJyutakuAmt.Text = GetMoneyTextLong(kingaku);
+            // 基本情報等一覧への連動
+            if (mode != MODE.CHANGE)
+            {
+                base_tbl11_1_txtKeiyakuAmt.Text = GetMoneyTextLong(Get_Zeinuki(kingaku));
+            }
         }
 
         /// <summary>
@@ -7637,6 +7310,76 @@ namespace TokuchoBugyoK2
             }
 
             // ７．業務配分	全て	応援依頼の有無、応援依頼メモ、応援依頼先以外が無ければ登録不可、100%以外で登録不可。
+            // 　　ただし、部門配分の調査部配分は0以上（0を含めない）の場合、応援依頼の有無、応援依頼メモ、応援依頼先がなければ登録不可 (No.1458)
+            if(GetDouble(base_tbl07_1_numPercent1.Text) > 0)
+            {
+                if (String.IsNullOrEmpty(base_tbl07_3_cmbOen.Text))
+                {
+                    errorFlg = true;
+                    base_tbl07_3_lblOen.BackColor = errorColor;
+                }
+                if (String.IsNullOrEmpty(base_tbl07_3_txtOenMemo.Text))
+                {
+                    errorFlg = true;
+                    base_tbl07_3_txtOenMemo.BackColor = errorColor;
+                }
+                bool bOen1 = false;
+                bool bOen2 = false;
+                bool bOen3 = false;
+                if(base_tbl07_3_tblOenIrai1.Height > 0)
+                {
+                    foreach (Control child in base_tbl07_3_tblOenIrai1.Controls)
+                    {
+                        //特定のコントロール型内部の子情報は取得しない
+                        if (child is System.Windows.Forms.CheckBox)
+                        {
+                            if (((System.Windows.Forms.CheckBox)child).Checked)
+                            {
+                                bOen1 = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(!bOen1 && base_tbl07_3_tblOenIrai2.Height > 0)
+                    {
+                        foreach (Control child in base_tbl07_3_tblOenIrai2.Controls)
+                        {
+                            //特定のコントロール型内部の子情報は取得しない
+                            if (child is System.Windows.Forms.CheckBox)
+                            {
+                                if (((System.Windows.Forms.CheckBox)child).Checked)
+                                {
+                                    bOen2 = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!bOen1 && !bOen2 && base_tbl07_3_tblOenIrai3.Height > 0)
+                    {
+                        foreach (Control child in base_tbl07_3_tblOenIrai3.Controls)
+                        {
+                            //特定のコントロール型内部の子情報は取得しない
+                            if (child is System.Windows.Forms.CheckBox)
+                            {
+                                if (((System.Windows.Forms.CheckBox)child).Checked)
+                                {
+                                    bOen3 = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (!(bOen1 || bOen2 || bOen3))
+                {
+                    base_tbl07_3_lblOenIrai.BackColor = errorColor;
+                    errorFlg = true;
+                }
+            }
+
             if (flg == 0)
             {
                 // ９．事前打診・参考見積	事前打診登録日が設定された場合、未設定の場合登録不可。
@@ -8759,18 +8502,18 @@ namespace TokuchoBugyoK2
             }
 
             // ７．請求書情報 請求金額と契約金額（税込）が一致しない場合
-            if (GetLong(ca_tbl07_txtRequstAll.Text) != GetLong(ca_tbl01_txtJyutakuAmt.Text))
+            if (GetLong(ca_tbl07_txtRequstAll.Text) != GetLong(ca_tbl01_txtZeikomiAmt.Text))
             {
                 set_error(GlobalMethod.GetMessage("E10707", ""));
                 varidateFlag = false;
             }
 
-            // ２．配分情報・業務内容 請求金額と配分額合計が一致しない場合更新不可。
-            if (GetLong(ca_tbl02_AftCaBmZeikomi_numAmtAll.Text) != GetLong(ca_tbl07_txtRequstAll.Text))
-            {
-                set_error(GlobalMethod.GetMessage("E10720", ""));
-                varidateFlag = false;
-            }
+            //// ２．配分情報・業務内容 請求金額と配分額合計が一致しない場合更新不可。
+            //if (GetLong(ca_tbl02_AftCaBmZeikomi_numAmtAll.Text) != GetLong(ca_tbl07_txtRequstAll.Text))
+            //{
+            //    set_error(GlobalMethod.GetMessage("E10720", ""));
+            //    varidateFlag = false;
+            //}
 
             // ６．売上計上情報 売上情報と契約金額（税込）の合計額が一致しない場合、更新不可。
             Double uriageTotal = 0;
@@ -8868,6 +8611,10 @@ namespace TokuchoBugyoK2
 
             base_tbl07_1_numPercentAll.BackColor = clearColor;
             base_tbl07_2_numPercentAll.BackColor = clearColor;
+
+            base_tbl07_3_lblOen.BackColor = clearColor;
+            base_tbl07_3_txtOenMemo.BackColor = clearColor;
+            base_tbl07_3_lblOenIrai.BackColor = clearColor;
 
             if (flg == 0)
             {

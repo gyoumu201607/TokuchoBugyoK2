@@ -10378,6 +10378,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_txtOtherNaiyo.Name = "ca_tbl01_txtOtherNaiyo";
             this.ca_tbl01_txtOtherNaiyo.Size = new System.Drawing.Size(1102, 48);
             this.ca_tbl01_txtOtherNaiyo.TabIndex = 80;
+            this.ca_tbl01_txtOtherNaiyo.Leave += new System.EventHandler(this.txtTextBox_Leave);
             // 
             // ca_tbl01_lblOtherNaiyo
             // 
@@ -14079,7 +14080,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_btnTSbu.TabIndex = 43;
             this.ca_tbl02_btnTSbu.Text = "契約金額（税込）をコピーする。";
             this.ca_tbl02_btnTSbu.UseVisualStyleBackColor = false;
-            this.ca_tbl02_btnTSbu.Click += new System.EventHandler(this.ca_tbl02_btnTSbu_Click);
+            this.ca_tbl02_btnTSbu.Click += new System.EventHandler(this.ca_tbl02_btnCopy_Click);
             // 
             // ca_tbl02_btnJGbu
             // 
@@ -14091,7 +14092,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_btnJGbu.TabIndex = 44;
             this.ca_tbl02_btnJGbu.Text = "契約金額（税込）をコピーする。";
             this.ca_tbl02_btnJGbu.UseVisualStyleBackColor = false;
-            this.ca_tbl02_btnJGbu.Click += new System.EventHandler(this.ca_tbl02_btnJGbu_Click);
+            this.ca_tbl02_btnJGbu.Click += new System.EventHandler(this.ca_tbl02_btnCopy_Click);
             // 
             // ca_tbl02_btnJHbu
             // 
@@ -14103,7 +14104,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_btnJHbu.TabIndex = 45;
             this.ca_tbl02_btnJHbu.Text = "契約金額（税込）をコピーする。";
             this.ca_tbl02_btnJHbu.UseVisualStyleBackColor = false;
-            this.ca_tbl02_btnJHbu.Click += new System.EventHandler(this.ca_tbl02_btnJHbu_Click);
+            this.ca_tbl02_btnJHbu.Click += new System.EventHandler(this.ca_tbl02_btnCopy_Click);
             // 
             // ca_tbl02_btnSGSyo
             // 
@@ -14115,7 +14116,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_btnSGSyo.TabIndex = 46;
             this.ca_tbl02_btnSGSyo.Text = "契約金額（税込）をコピーする。";
             this.ca_tbl02_btnSGSyo.UseVisualStyleBackColor = false;
-            this.ca_tbl02_btnSGSyo.Click += new System.EventHandler(this.ca_tbl02_btnSGSyo_Click);
+            this.ca_tbl02_btnSGSyo.Click += new System.EventHandler(this.ca_tbl02_btnCopy_Click);
             // 
             // ca_tbl04_parent
             // 
