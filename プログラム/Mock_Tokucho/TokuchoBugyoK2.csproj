@@ -466,6 +466,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resource\Image\After_Page.png" />
+    <Content Include="Resource\Image\alert_icon_20.png" />
     <Content Include="Resource\Image\blank.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

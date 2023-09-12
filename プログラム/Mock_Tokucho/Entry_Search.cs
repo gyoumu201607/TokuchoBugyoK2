@@ -2033,8 +2033,10 @@ namespace TokuchoBugyoK2
                                 src_15.BackColor = Color.FromArgb(255, 204, 255);
                             }
                         }
-                        // 75:エントリくん一覧出力(新）
-                        if (Dt.Rows[0][0].ToString() == "75")
+                        // エントリくん修正STEP3では、「エントリくん一覧帳票」（フラット版）、「経理向け帳票」を追加する。
+                        //// 75:エントリくん一覧出力(新）
+                        //if (Dt.Rows[0][0].ToString() == "75")
+                        if (Dt.Rows[0][0].ToString() == "75" || Dt.Rows[0][0].ToString() == "1200" || Dt.Rows[0][0].ToString() == "1201")
                         {
                             set_error("", 0);
                             // エラーフラグ true：正常 false：エラー
@@ -2292,9 +2294,10 @@ namespace TokuchoBugyoK2
                                     report_data[30] = "0";
                                 }
                                 report_data[31] = ankenInput2.Text; // 案件番号のみで検索時の案件番号
-
-                                string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
-
+                                
+                                // えんとり君修正STEP3
+                                //string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
+                                string[] result = GlobalMethod.InsertReportWork(int.Parse(comboBox13.SelectedValue.ToString()), UserInfos[0], report_data);
                                 // result
                                 // 成否判定 0:正常 1：エラー
                                 // メッセージ（主にエラー用）

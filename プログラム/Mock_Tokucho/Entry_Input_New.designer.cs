@@ -58,7 +58,6 @@ namespace TokuchoBugyoK2
             this.btnBack = new System.Windows.Forms.Button();
             this.tblTayori = new System.Windows.Forms.TableLayoutPanel();
             this.btnHanei = new System.Windows.Forms.Button();
-            this.txtTayoriData = new TokuchoBugyoK2.PlaceholderTextBox();
             this.tblTitleAndInputComent = new System.Windows.Forms.TableLayoutPanel();
             this.lblInputComment = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -66,7 +65,7 @@ namespace TokuchoBugyoK2
             this.tab = new System.Windows.Forms.TabControl();
             this.tabBase = new System.Windows.Forms.TabPage();
             this.tblBase = new System.Windows.Forms.TableLayoutPanel();
-            this.base_tbl07_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl07_parent = new System.Windows.Forms.Panel();
             this.base_tbl07 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl07_input5 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl07_5_lblAmtAll = new System.Windows.Forms.Label();
@@ -188,7 +187,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblOtherTyosa = new System.Windows.Forms.Label();
             this.base_tbl07_2_lblGokei = new System.Windows.Forms.Label();
             this.base_tbl07_2_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl03_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl03_parent = new System.Windows.Forms.Panel();
             this.base_tbl03 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl03_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl03_lblKokiNote2 = new System.Windows.Forms.Label();
@@ -208,7 +207,7 @@ namespace TokuchoBugyoK2
             this.base_tbl03_lblAnkenMemo = new System.Windows.Forms.Label();
             this.base_tbl03_txtAnkenMemo = new System.Windows.Forms.TextBox();
             this.base_tbl03_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl02_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl02_parent = new System.Windows.Forms.Panel();
             this.base_tbl02 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl02_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl02_txtAnkenChangerCD = new System.Windows.Forms.TextBox();
@@ -253,13 +252,13 @@ namespace TokuchoBugyoK2
             this.base_tbl02_lblRenameFolder = new System.Windows.Forms.Label();
             this.base_tbl02_txtRenameFolder = new System.Windows.Forms.TextBox();
             this.base_tbl02_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl08_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl08_parent = new System.Windows.Forms.Panel();
             this.base_tbl08 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl08_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl08_btnAdd = new System.Windows.Forms.Button();
             this.base_tbl08_c1FlexGrid = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.base_tbl08_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl01_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl01_parent = new System.Windows.Forms.Panel();
             this.base_tbl01 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl01_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl01_dtpDtCa = new System.Windows.Forms.DateTimePicker();
@@ -273,7 +272,7 @@ namespace TokuchoBugyoK2
             this.base_tbl01_chkNyusatu = new System.Windows.Forms.CheckBox();
             this.base_tbl01_chkJizendasin = new System.Windows.Forms.CheckBox();
             this.base_tbl01_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl05_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl05_parent = new System.Windows.Forms.Panel();
             this.base_tbl05 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl05_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl05_lblBushu = new System.Windows.Forms.Label();
@@ -295,7 +294,7 @@ namespace TokuchoBugyoK2
             this.base_tbl05_lblZipNote = new System.Windows.Forms.Label();
             this.base_tbl05_picZip = new System.Windows.Forms.PictureBox();
             this.base_tbl05_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl04_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl04_parent = new System.Windows.Forms.Panel();
             this.base_tbl04 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl04_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl04_lblOrderKubun1 = new System.Windows.Forms.Label();
@@ -314,40 +313,13 @@ namespace TokuchoBugyoK2
             this.base_tbl04_txtOrderKubun2 = new System.Windows.Forms.TextBox();
             this.base_tbl04_txtOrderKubun1 = new System.Windows.Forms.TextBox();
             this.base_tbl04_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl06 = new System.Windows.Forms.TableLayoutPanel();
-            this.base_tbl06_parent = new System.Windows.Forms.TableLayoutPanel();
-            this.base_tbl06_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl06_input = new System.Windows.Forms.TableLayoutPanel();
-            this.base_tbl06_lblBusho = new System.Windows.Forms.Label();
-            this.base_tbl06_lblTyosaMadoguchi = new System.Windows.Forms.Label();
-            this.base_tbl06_chkTyosaMadoguchi = new System.Windows.Forms.CheckBox();
-            this.base_tbl06_lblTanto = new System.Windows.Forms.Label();
-            this.base_tbl06_lblTel = new System.Windows.Forms.Label();
-            this.base_tbl06_lblFax = new System.Windows.Forms.Label();
-            this.base_tbl06_lblEmail = new System.Windows.Forms.Label();
-            this.base_tbl06_txtTanto = new System.Windows.Forms.TextBox();
-            this.base_tbl06_txtTel = new System.Windows.Forms.TextBox();
-            this.base_tbl06_txtFax = new System.Windows.Forms.TextBox();
-            this.base_tbl06_txtEmail = new System.Windows.Forms.TextBox();
-            this.base_tbl06_txtBusho = new System.Windows.Forms.TextBox();
-            this.base_tbl06_lblZip = new System.Windows.Forms.Label();
-            this.base_tbl06_lblAddress = new System.Windows.Forms.Label();
-            this.base_tbl06_lblOrderYakusyoku = new System.Windows.Forms.Label();
-            this.base_tbl06_lblOrderSimei = new System.Windows.Forms.Label();
-            this.base_tbl06_txtAddress = new System.Windows.Forms.TextBox();
-            this.base_tbl06_txtOrderYakusyoku = new System.Windows.Forms.TextBox();
-            this.base_tbl06_txtOrderSimei = new System.Windows.Forms.TextBox();
-            this.base_tbl06_tblAddress = new System.Windows.Forms.TableLayoutPanel();
-            this.base_tbl06_txtZip = new System.Windows.Forms.TextBox();
-            this.base_tbl06_lblZipNote = new System.Windows.Forms.Label();
-            this.base_tbl06_picZip = new System.Windows.Forms.PictureBox();
-            this.base_tblMemo_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tblMemo_parent = new System.Windows.Forms.Panel();
             this.base_tblMemo = new System.Windows.Forms.TableLayoutPanel();
             this.base_tblMemo_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tblMemo_lblRow2Note = new System.Windows.Forms.Label();
             this.base_tblMemo_lblRow1Note = new System.Windows.Forms.Label();
             this.base_tblMemo_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl09_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl09_parent = new System.Windows.Forms.Panel();
             this.base_tbl09 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl09_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl09_lblOthenComment = new System.Windows.Forms.Label();
@@ -367,7 +339,7 @@ namespace TokuchoBugyoK2
             this.base_tbl09_lblJizenDasinIraiDt = new System.Windows.Forms.Label();
             this.base_tbl09_txtOthenComment = new System.Windows.Forms.TextBox();
             this.base_tbl09_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl10_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl10_parent = new System.Windows.Forms.Panel();
             this.base_tbl10 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl10_input = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl10_lblRakusatuAmtStats = new System.Windows.Forms.Label();
@@ -409,7 +381,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_lblOrderKubun = new System.Windows.Forms.Label();
             this.base_tbl10_txtOtherNaiyo = new System.Windows.Forms.TextBox();
             this.base_tbl10_lblTitle = new System.Windows.Forms.Label();
-            this.base_tbl11_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl11_parent = new System.Windows.Forms.Panel();
             this.base_tbl11 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl11_input3 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl11_3_lblTitle = new System.Windows.Forms.Label();
@@ -452,7 +424,7 @@ namespace TokuchoBugyoK2
             this.base_tbl11_lblTitle = new System.Windows.Forms.Label();
             this.tabPrior = new System.Windows.Forms.TabPage();
             this.tblPrior = new System.Windows.Forms.TableLayoutPanel();
-            this.prior_tbl02_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.prior_tbl02_parent = new System.Windows.Forms.Panel();
             this.prior_tbl02 = new System.Windows.Forms.TableLayoutPanel();
             this.prior_tbl02_input = new System.Windows.Forms.TableLayoutPanel();
             this.prior_tbl02_txtOtherNaiyo = new System.Windows.Forms.TextBox();
@@ -466,7 +438,7 @@ namespace TokuchoBugyoK2
             this.prior_tbl02_lblNotOrderReason = new System.Windows.Forms.Label();
             this.prior_tbl02_cmbNotOrderReason = new System.Windows.Forms.ComboBox();
             this.prior_tbl02_lblTitle = new System.Windows.Forms.Label();
-            this.prior_tbl01_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.prior_tbl01_parent = new System.Windows.Forms.Panel();
             this.prior_tbl01 = new System.Windows.Forms.TableLayoutPanel();
             this.prior_tbl01_input = new System.Windows.Forms.TableLayoutPanel();
             this.prior_tbl01_lblMitumoriAmtComment = new System.Windows.Forms.Label();
@@ -486,7 +458,7 @@ namespace TokuchoBugyoK2
             this.prior_tbl01_lblTitle = new System.Windows.Forms.Label();
             this.tabBid = new System.Windows.Forms.TabPage();
             this.tblBid = new System.Windows.Forms.TableLayoutPanel();
-            this.bid_tbl02_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl02_parent = new System.Windows.Forms.Panel();
             this.bid_tbl02 = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl02_input = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl02_txtOtherNaiyo = new System.Windows.Forms.TextBox();
@@ -496,7 +468,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl02_cmbKinsiNaiyo = new System.Windows.Forms.ComboBox();
             this.bid_tbl02_lblKinsiNaiyo = new System.Windows.Forms.Label();
             this.bid_tbl02_lblTitle = new System.Windows.Forms.Label();
-            this.bid_tbl03_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl03_parent = new System.Windows.Forms.Panel();
             this.bid_tbl03 = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl03_lblTitle = new System.Windows.Forms.Label();
             this.bid_tbl03_input1 = new System.Windows.Forms.TableLayoutPanel();
@@ -535,7 +507,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_input5 = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl03_4_c1FlexGrid = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.bid_tbl03_5_lblTitle = new System.Windows.Forms.Label();
-            this.bid_tbl01_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl01_parent = new System.Windows.Forms.Panel();
             this.bid_tbl01 = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl01_lblTitle = new System.Windows.Forms.Label();
             this.bid_tbl01_input = new System.Windows.Forms.TableLayoutPanel();
@@ -561,7 +533,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl01_dtpBidYoteiDt = new System.Windows.Forms.DateTimePicker();
             this.tabCA = new System.Windows.Forms.TabPage();
             this.tblCa = new System.Windows.Forms.TableLayoutPanel();
-            this.ca_tbl07_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl07_parent = new System.Windows.Forms.Panel();
             this.ca_tbl07 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl07_btnCopy = new System.Windows.Forms.Label();
             this.ca_tbl07_lblTitle = new System.Windows.Forms.Label();
@@ -588,7 +560,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_dtpRequst5 = new System.Windows.Forms.DateTimePicker();
             this.ca_tbl07_txtRequst5 = new System.Windows.Forms.TextBox();
             this.ca_tbl07_txtRequstAll = new System.Windows.Forms.Label();
-            this.ca_tbl03_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl03_parent = new System.Windows.Forms.Panel();
             this.ca_tbl03 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl03_lblTitle = new System.Windows.Forms.Label();
             this.ca_tbl03_input = new System.Windows.Forms.TableLayoutPanel();
@@ -604,7 +576,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl03_numAmt3 = new System.Windows.Forms.TextBox();
             this.ca_tbl03_tblComment = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl03_lblComment = new System.Windows.Forms.Label();
-            this.ca_tbl06_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl06_parent = new System.Windows.Forms.Panel();
             this.ca_tbl06 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl06_lblTitle = new System.Windows.Forms.Label();
             this.ca_tbl06_c1FlexGrid = new C1.Win.C1FlexGrid.C1FlexGrid();
@@ -614,7 +586,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl06_btnJigyoHukyu = new System.Windows.Forms.Label();
             this.ca_tbl06_btnJohoSystem = new System.Windows.Forms.Label();
             this.ca_tbl06_btnSogoKenkyu = new System.Windows.Forms.Label();
-            this.ca_tbl01_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl01_parent = new System.Windows.Forms.Panel();
             this.ca_tbl01 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl01_lblTitle = new System.Windows.Forms.Label();
             this.ca_tbl01_input = new System.Windows.Forms.TableLayoutPanel();
@@ -708,7 +680,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_chkRibcAri = new System.Windows.Forms.CheckBox();
             this.ca_tbl01_hidResetAnkenno = new System.Windows.Forms.TextBox();
             this.ca_tbl01_hidAkaden = new System.Windows.Forms.TextBox();
-            this.ca_tbl05_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl05_parent = new System.Windows.Forms.Panel();
             this.ca_tbl05 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl05_lblTitle = new System.Windows.Forms.Label();
             this.ca_tbl05_input = new System.Windows.Forms.TableLayoutPanel();
@@ -770,7 +742,7 @@ namespace TokuchoBugyoK2
             this.ca_lblComment2 = new System.Windows.Forms.Label();
             this.ca_lblComment3 = new System.Windows.Forms.Label();
             this.ca_lblChangeCnt = new System.Windows.Forms.Label();
-            this.ca_tbl02_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl02_parent = new System.Windows.Forms.Panel();
             this.ca_tbl02 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl02_lblComent2 = new System.Windows.Forms.Label();
             this.ca_tbl02_input2 = new System.Windows.Forms.TableLayoutPanel();
@@ -873,7 +845,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_btnJGbu = new System.Windows.Forms.Button();
             this.ca_tbl02_btnJHbu = new System.Windows.Forms.Button();
             this.ca_tbl02_btnSGSyo = new System.Windows.Forms.Button();
-            this.ca_tbl04_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl04_parent = new System.Windows.Forms.Panel();
             this.ca_tbl04 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl04_lblTitle = new System.Windows.Forms.Label();
             this.ca_tbl04_input = new System.Windows.Forms.TableLayoutPanel();
@@ -928,6 +900,35 @@ namespace TokuchoBugyoK2
             this.te_picKanri = new System.Windows.Forms.PictureBox();
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
+            this.base_tbl06 = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl06_lblTitle = new System.Windows.Forms.Label();
+            this.base_tbl06_input = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl06_lblBusho = new System.Windows.Forms.Label();
+            this.base_tbl06_lblTyosaMadoguchi = new System.Windows.Forms.Label();
+            this.base_tbl06_chkTyosaMadoguchi = new System.Windows.Forms.CheckBox();
+            this.base_tbl06_lblTanto = new System.Windows.Forms.Label();
+            this.base_tbl06_lblTel = new System.Windows.Forms.Label();
+            this.base_tbl06_lblFax = new System.Windows.Forms.Label();
+            this.base_tbl06_lblEmail = new System.Windows.Forms.Label();
+            this.base_tbl06_txtTanto = new System.Windows.Forms.TextBox();
+            this.base_tbl06_txtTel = new System.Windows.Forms.TextBox();
+            this.base_tbl06_txtFax = new System.Windows.Forms.TextBox();
+            this.base_tbl06_txtEmail = new System.Windows.Forms.TextBox();
+            this.base_tbl06_txtBusho = new System.Windows.Forms.TextBox();
+            this.base_tbl06_lblZip = new System.Windows.Forms.Label();
+            this.base_tbl06_lblAddress = new System.Windows.Forms.Label();
+            this.base_tbl06_lblOrderYakusyoku = new System.Windows.Forms.Label();
+            this.base_tbl06_lblOrderSimei = new System.Windows.Forms.Label();
+            this.base_tbl06_txtAddress = new System.Windows.Forms.TextBox();
+            this.base_tbl06_txtOrderYakusyoku = new System.Windows.Forms.TextBox();
+            this.base_tbl06_txtOrderSimei = new System.Windows.Forms.TextBox();
+            this.base_tbl06_tblAddress = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl06_txtZip = new System.Windows.Forms.TextBox();
+            this.base_tbl06_lblZipNote = new System.Windows.Forms.Label();
+            this.base_tbl06_picZip = new System.Windows.Forms.PictureBox();
+            this.base_tbl06_parent = new System.Windows.Forms.Panel();
+            this.base_tbl01_pic_alert_prior = new System.Windows.Forms.PictureBox();
+            this.txtTayoriData = new TokuchoBugyoK2.PlaceholderTextBox();
             this.formTbl.SuspendLayout();
             this.titleTbl.SuspendLayout();
             this.menuTbl.SuspendLayout();
@@ -979,11 +980,6 @@ namespace TokuchoBugyoK2
             this.base_tbl04_input.SuspendLayout();
             this.base_tbl04_tblOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.base_tbl04_picOrderCd)).BeginInit();
-            this.base_tbl06.SuspendLayout();
-            this.base_tbl06_parent.SuspendLayout();
-            this.base_tbl06_input.SuspendLayout();
-            this.base_tbl06_tblAddress.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.base_tbl06_picZip)).BeginInit();
             this.base_tblMemo_parent.SuspendLayout();
             this.base_tblMemo.SuspendLayout();
             this.base_tblMemo_input.SuspendLayout();
@@ -1093,6 +1089,12 @@ namespace TokuchoBugyoK2
             ((System.ComponentModel.ISupportInitialize)(this.te_picKanriDel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picKanri)).BeginInit();
             this.ErrorBox.SuspendLayout();
+            this.base_tbl06.SuspendLayout();
+            this.base_tbl06_input.SuspendLayout();
+            this.base_tbl06_tblAddress.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl06_picZip)).BeginInit();
+            this.base_tbl06_parent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl01_pic_alert_prior)).BeginInit();
             this.SuspendLayout();
             // 
             // formTbl
@@ -1532,18 +1534,6 @@ namespace TokuchoBugyoK2
             this.btnHanei.UseVisualStyleBackColor = false;
             this.btnHanei.Click += new System.EventHandler(this.btnHanei_Click);
             // 
-            // txtTayoriData
-            // 
-            this.txtTayoriData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTayoriData.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtTayoriData.Location = new System.Drawing.Point(10, 14);
-            this.txtTayoriData.Margin = new System.Windows.Forms.Padding(10);
-            this.txtTayoriData.Name = "txtTayoriData";
-            this.txtTayoriData.PlaceholderColor = System.Drawing.Color.Red;
-            this.txtTayoriData.PlaceholderText = "Tayoriから出力したデータを貼り付けてください（行ごとコピーしたもの）";
-            this.txtTayoriData.Size = new System.Drawing.Size(229, 22);
-            this.txtTayoriData.TabIndex = 5;
-            // 
             // tblTitleAndInputComent
             // 
             this.tblTitleAndInputComent.AutoSize = true;
@@ -1647,7 +1637,6 @@ namespace TokuchoBugyoK2
             this.tblBase.Controls.Add(this.base_tbl01_parent, 0, 0);
             this.tblBase.Controls.Add(this.base_tbl05_parent, 0, 4);
             this.tblBase.Controls.Add(this.base_tbl04_parent, 0, 3);
-            this.tblBase.Controls.Add(this.base_tbl06, 1, 4);
             this.tblBase.Controls.Add(this.base_tblMemo_parent, 0, 7);
             this.tblBase.Controls.Add(this.base_tbl09_parent, 0, 8);
             this.tblBase.Controls.Add(this.base_tbl10_parent, 0, 9);
@@ -1669,24 +1658,20 @@ namespace TokuchoBugyoK2
             this.tblBase.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblBase.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblBase.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblBase.Size = new System.Drawing.Size(1823, 3734);
+            this.tblBase.Size = new System.Drawing.Size(1823, 3680);
             this.tblBase.TabIndex = 15;
             // 
             // base_tbl07_parent
             // 
             this.base_tbl07_parent.AutoScroll = true;
             this.base_tbl07_parent.AutoSize = true;
-            this.base_tbl07_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl07_parent.ColumnCount = 1;
+            this.base_tbl07_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl07_parent, 2);
-            this.base_tbl07_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl07_parent.Controls.Add(this.base_tbl07, 0, 0);
+            this.base_tbl07_parent.Controls.Add(this.base_tbl07);
             this.base_tbl07_parent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl07_parent.Location = new System.Drawing.Point(10, 1524);
+            this.base_tbl07_parent.Location = new System.Drawing.Point(10, 1470);
             this.base_tbl07_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl07_parent.Name = "base_tbl07_parent";
-            this.base_tbl07_parent.RowCount = 1;
-            this.base_tbl07_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.base_tbl07_parent.Size = new System.Drawing.Size(1803, 705);
             this.base_tbl07_parent.TabIndex = 6;
             // 
@@ -1704,7 +1689,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07.Controls.Add(this.base_tbl07_input1, 0, 3);
             this.base_tbl07.Controls.Add(this.base_tbl07_input2, 0, 4);
             this.base_tbl07.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl07.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl07.Location = new System.Drawing.Point(0, 0);
             this.base_tbl07.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07.Name = "base_tbl07";
             this.base_tbl07.Padding = new System.Windows.Forms.Padding(10);
@@ -2395,7 +2380,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 474F));
+            this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 481F));
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblTitle, 0, 0);
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblTyosabu, 2, 1);
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblJgyobu, 3, 1);
@@ -2424,7 +2409,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.base_tbl07_input4.Size = new System.Drawing.Size(1123, 117);
+            this.base_tbl07_input4.Size = new System.Drawing.Size(1130, 117);
             this.base_tbl07_input4.TabIndex = 48;
             // 
             // base_tbl07_4_lblTitle
@@ -2435,7 +2420,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblTitle.Location = new System.Drawing.Point(5, 1);
             this.base_tbl07_4_lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.base_tbl07_4_lblTitle.Name = "base_tbl07_4_lblTitle";
-            this.base_tbl07_4_lblTitle.Size = new System.Drawing.Size(1113, 28);
+            this.base_tbl07_4_lblTitle.Size = new System.Drawing.Size(1120, 28);
             this.base_tbl07_4_lblTitle.TabIndex = 15;
             this.base_tbl07_4_lblTitle.Text = "部門配分";
             this.base_tbl07_4_lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2532,7 +2517,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblGokei.Location = new System.Drawing.Point(648, 30);
             this.base_tbl07_4_lblGokei.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_4_lblGokei.Name = "base_tbl07_4_lblGokei";
-            this.base_tbl07_4_lblGokei.Size = new System.Drawing.Size(474, 28);
+            this.base_tbl07_4_lblGokei.Size = new System.Drawing.Size(481, 28);
             this.base_tbl07_4_lblGokei.TabIndex = 15;
             this.base_tbl07_4_lblGokei.Text = "合計";
             this.base_tbl07_4_lblGokei.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2620,7 +2605,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblRateAll.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_4_lblRateAll.Name = "base_tbl07_4_lblRateAll";
             this.base_tbl07_4_lblRateAll.Padding = new System.Windows.Forms.Padding(4);
-            this.base_tbl07_4_lblRateAll.Size = new System.Drawing.Size(474, 28);
+            this.base_tbl07_4_lblRateAll.Size = new System.Drawing.Size(481, 28);
             this.base_tbl07_4_lblRateAll.TabIndex = 23;
             this.base_tbl07_4_lblRateAll.Text = "0.00%";
             this.base_tbl07_4_lblRateAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2685,7 +2670,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblAmtAll.Location = new System.Drawing.Point(651, 88);
             this.base_tbl07_4_lblAmtAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.base_tbl07_4_lblAmtAll.Name = "base_tbl07_4_lblAmtAll";
-            this.base_tbl07_4_lblAmtAll.Size = new System.Drawing.Size(468, 25);
+            this.base_tbl07_4_lblAmtAll.Size = new System.Drawing.Size(475, 25);
             this.base_tbl07_4_lblAmtAll.TabIndex = 40;
             this.base_tbl07_4_lblAmtAll.Text = "¥0";
             this.base_tbl07_4_lblAmtAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3600,17 +3585,13 @@ namespace TokuchoBugyoK2
             // base_tbl03_parent
             // 
             this.base_tbl03_parent.AutoSize = true;
-            this.base_tbl03_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl03_parent.ColumnCount = 1;
+            this.base_tbl03_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl03_parent, 2);
-            this.base_tbl03_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl03_parent.Controls.Add(this.base_tbl03, 0, 0);
+            this.base_tbl03_parent.Controls.Add(this.base_tbl03);
             this.base_tbl03_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl03_parent.Location = new System.Drawing.Point(10, 610);
             this.base_tbl03_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl03_parent.Name = "base_tbl03_parent";
-            this.base_tbl03_parent.RowCount = 1;
-            this.base_tbl03_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.base_tbl03_parent.Size = new System.Drawing.Size(1803, 327);
             this.base_tbl03_parent.TabIndex = 2;
             // 
@@ -3623,7 +3604,7 @@ namespace TokuchoBugyoK2
             this.base_tbl03.Controls.Add(this.base_tbl03_input, 0, 1);
             this.base_tbl03.Controls.Add(this.base_tbl03_lblTitle, 0, 0);
             this.base_tbl03.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl03.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl03.Location = new System.Drawing.Point(0, 0);
             this.base_tbl03.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl03.Name = "base_tbl03";
             this.base_tbl03.Padding = new System.Windows.Forms.Padding(10);
@@ -3914,17 +3895,13 @@ namespace TokuchoBugyoK2
             // base_tbl02_parent
             // 
             this.base_tbl02_parent.AutoSize = true;
-            this.base_tbl02_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl02_parent.ColumnCount = 1;
+            this.base_tbl02_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl02_parent, 2);
-            this.base_tbl02_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl02_parent.Controls.Add(this.base_tbl02, 0, 0);
+            this.base_tbl02_parent.Controls.Add(this.base_tbl02);
             this.base_tbl02_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl02_parent.Location = new System.Drawing.Point(10, 208);
             this.base_tbl02_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl02_parent.Name = "base_tbl02_parent";
-            this.base_tbl02_parent.RowCount = 1;
-            this.base_tbl02_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.base_tbl02_parent.Size = new System.Drawing.Size(1803, 382);
             this.base_tbl02_parent.TabIndex = 1;
             // 
@@ -3938,7 +3915,7 @@ namespace TokuchoBugyoK2
             this.base_tbl02.Controls.Add(this.base_tbl02_input, 0, 1);
             this.base_tbl02.Controls.Add(this.base_tbl02_lblTitle, 0, 0);
             this.base_tbl02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl02.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl02.Location = new System.Drawing.Point(0, 0);
             this.base_tbl02.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl02.Name = "base_tbl02";
             this.base_tbl02.Padding = new System.Windows.Forms.Padding(10);
@@ -4558,19 +4535,13 @@ namespace TokuchoBugyoK2
             // base_tbl08_parent
             // 
             this.base_tbl08_parent.AutoSize = true;
-            this.base_tbl08_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl08_parent.ColumnCount = 1;
+            this.base_tbl08_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl08_parent, 2);
-            this.base_tbl08_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl08_parent.Controls.Add(this.base_tbl08, 0, 0);
+            this.base_tbl08_parent.Controls.Add(this.base_tbl08);
             this.base_tbl08_parent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl08_parent.Location = new System.Drawing.Point(10, 2249);
+            this.base_tbl08_parent.Location = new System.Drawing.Point(10, 2195);
             this.base_tbl08_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl08_parent.Name = "base_tbl08_parent";
-            this.base_tbl08_parent.RowCount = 1;
-            this.base_tbl08_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl08_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 183F));
-            this.base_tbl08_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 183F));
             this.base_tbl08_parent.Size = new System.Drawing.Size(1803, 184);
             this.base_tbl08_parent.TabIndex = 7;
             // 
@@ -4583,7 +4554,7 @@ namespace TokuchoBugyoK2
             this.base_tbl08.Controls.Add(this.base_tbl08_input, 0, 1);
             this.base_tbl08.Controls.Add(this.base_tbl08_lblTitle, 0, 0);
             this.base_tbl08.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl08.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl08.Location = new System.Drawing.Point(0, 0);
             this.base_tbl08.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl08.Name = "base_tbl08";
             this.base_tbl08.Padding = new System.Windows.Forms.Padding(10);
@@ -4669,17 +4640,13 @@ namespace TokuchoBugyoK2
             // base_tbl01_parent
             // 
             this.base_tbl01_parent.AutoSize = true;
-            this.base_tbl01_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl01_parent.ColumnCount = 1;
+            this.base_tbl01_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl01_parent, 2);
-            this.base_tbl01_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl01_parent.Controls.Add(this.base_tbl01, 0, 0);
+            this.base_tbl01_parent.Controls.Add(this.base_tbl01);
             this.base_tbl01_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl01_parent.Location = new System.Drawing.Point(10, 10);
             this.base_tbl01_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl01_parent.Name = "base_tbl01_parent";
-            this.base_tbl01_parent.RowCount = 1;
-            this.base_tbl01_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.base_tbl01_parent.Size = new System.Drawing.Size(1803, 178);
             this.base_tbl01_parent.TabIndex = 0;
             // 
@@ -4692,7 +4659,7 @@ namespace TokuchoBugyoK2
             this.base_tbl01.Controls.Add(this.base_tbl01_input, 0, 1);
             this.base_tbl01.Controls.Add(this.base_tbl01_lblTitle, 0, 0);
             this.base_tbl01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl01.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl01.Location = new System.Drawing.Point(0, 0);
             this.base_tbl01.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl01.Name = "base_tbl01";
             this.base_tbl01.Padding = new System.Windows.Forms.Padding(10);
@@ -4705,15 +4672,17 @@ namespace TokuchoBugyoK2
             // base_tbl01_input
             // 
             this.base_tbl01_input.AutoSize = true;
-            this.base_tbl01_input.ColumnCount = 4;
+            this.base_tbl01_input.ColumnCount = 5;
             this.base_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.base_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.base_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.base_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl01_input.Controls.Add(this.base_tbl01_pic_alert_prior, 3, 0);
             this.base_tbl01_input.Controls.Add(this.base_tbl01_dtpDtCa, 2, 2);
             this.base_tbl01_input.Controls.Add(this.base_tbl01_lblDtCa, 1, 2);
             this.base_tbl01_input.Controls.Add(this.base_tbl01_chkKeiyaku, 0, 2);
-            this.base_tbl01_input.Controls.Add(this.base_tbl01_lblComment, 3, 0);
+            this.base_tbl01_input.Controls.Add(this.base_tbl01_lblComment, 4, 0);
             this.base_tbl01_input.Controls.Add(this.base_tbl01_dtpDtBid, 2, 1);
             this.base_tbl01_input.Controls.Add(this.base_tbl01_dtpDtPrior, 2, 0);
             this.base_tbl01_input.Controls.Add(this.base_tbl01_lblDtBid, 1, 1);
@@ -4725,10 +4694,10 @@ namespace TokuchoBugyoK2
             this.base_tbl01_input.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
             this.base_tbl01_input.Name = "base_tbl01_input";
             this.base_tbl01_input.RowCount = 3;
+            this.base_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.base_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.base_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.base_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.base_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.base_tbl01_input.Size = new System.Drawing.Size(894, 96);
+            this.base_tbl01_input.Size = new System.Drawing.Size(918, 96);
             this.base_tbl01_input.TabIndex = 5;
             // 
             // base_tbl01_dtpDtCa
@@ -4777,7 +4746,7 @@ namespace TokuchoBugyoK2
             this.base_tbl01_lblComment.AutoSize = true;
             this.base_tbl01_lblComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.base_tbl01_lblComment.ForeColor = System.Drawing.Color.Red;
-            this.base_tbl01_lblComment.Location = new System.Drawing.Point(403, 0);
+            this.base_tbl01_lblComment.Location = new System.Drawing.Point(427, 0);
             this.base_tbl01_lblComment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.base_tbl01_lblComment.Name = "base_tbl01_lblComment";
             this.base_tbl01_input.SetRowSpan(this.base_tbl01_lblComment, 2);
@@ -4792,7 +4761,7 @@ namespace TokuchoBugyoK2
             this.base_tbl01_dtpDtBid.CustomFormat = " ";
             this.base_tbl01_dtpDtBid.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl01_dtpDtBid.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.base_tbl01_dtpDtBid.Location = new System.Drawing.Point(203, 35);
+            this.base_tbl01_dtpDtBid.Location = new System.Drawing.Point(203, 34);
             this.base_tbl01_dtpDtBid.Name = "base_tbl01_dtpDtBid";
             this.base_tbl01_dtpDtBid.Size = new System.Drawing.Size(195, 21);
             this.base_tbl01_dtpDtBid.TabIndex = 45;
@@ -4819,10 +4788,10 @@ namespace TokuchoBugyoK2
             this.base_tbl01_lblDtBid.BackColor = System.Drawing.Color.White;
             this.base_tbl01_lblDtBid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl01_lblDtBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl01_lblDtBid.Location = new System.Drawing.Point(103, 35);
+            this.base_tbl01_lblDtBid.Location = new System.Drawing.Point(103, 34);
             this.base_tbl01_lblDtBid.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl01_lblDtBid.Name = "base_tbl01_lblDtBid";
-            this.base_tbl01_lblDtBid.Size = new System.Drawing.Size(94, 26);
+            this.base_tbl01_lblDtBid.Size = new System.Drawing.Size(94, 27);
             this.base_tbl01_lblDtBid.TabIndex = 43;
             this.base_tbl01_lblDtBid.Text = "登録日時";
             this.base_tbl01_lblDtBid.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4836,7 +4805,7 @@ namespace TokuchoBugyoK2
             this.base_tbl01_lblDtPrior.Location = new System.Drawing.Point(103, 3);
             this.base_tbl01_lblDtPrior.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl01_lblDtPrior.Name = "base_tbl01_lblDtPrior";
-            this.base_tbl01_lblDtPrior.Size = new System.Drawing.Size(94, 26);
+            this.base_tbl01_lblDtPrior.Size = new System.Drawing.Size(94, 25);
             this.base_tbl01_lblDtPrior.TabIndex = 42;
             this.base_tbl01_lblDtPrior.Text = "登録日時";
             this.base_tbl01_lblDtPrior.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4884,21 +4853,13 @@ namespace TokuchoBugyoK2
             // base_tbl05_parent
             // 
             this.base_tbl05_parent.AutoSize = true;
-            this.base_tbl05_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl05_parent.ColumnCount = 1;
-            this.base_tbl05_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl05_parent.Controls.Add(this.base_tbl05, 0, 0);
+            this.base_tbl05_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.base_tbl05_parent.Controls.Add(this.base_tbl05);
             this.base_tbl05_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl05_parent.Location = new System.Drawing.Point(10, 1148);
             this.base_tbl05_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl05_parent.Name = "base_tbl05_parent";
-            this.base_tbl05_parent.RowCount = 1;
-            this.base_tbl05_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl05_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 355F));
-            this.base_tbl05_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 355F));
-            this.base_tbl05_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 355F));
-            this.base_tbl05_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 355F));
-            this.base_tbl05_parent.Size = new System.Drawing.Size(891, 356);
+            this.base_tbl05_parent.Size = new System.Drawing.Size(891, 302);
             this.base_tbl05_parent.TabIndex = 3;
             // 
             // base_tbl05
@@ -4910,14 +4871,14 @@ namespace TokuchoBugyoK2
             this.base_tbl05.Controls.Add(this.base_tbl05_input, 0, 1);
             this.base_tbl05.Controls.Add(this.base_tbl05_lblTitle, 0, 0);
             this.base_tbl05.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl05.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl05.Location = new System.Drawing.Point(0, 0);
             this.base_tbl05.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl05.Name = "base_tbl05";
             this.base_tbl05.Padding = new System.Windows.Forms.Padding(10);
             this.base_tbl05.RowCount = 2;
             this.base_tbl05.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.base_tbl05.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl05.Size = new System.Drawing.Size(889, 354);
+            this.base_tbl05.Size = new System.Drawing.Size(889, 300);
             this.base_tbl05.TabIndex = 3;
             // 
             // base_tbl05_input
@@ -5198,20 +5159,13 @@ namespace TokuchoBugyoK2
             // base_tbl04_parent
             // 
             this.base_tbl04_parent.AutoSize = true;
-            this.base_tbl04_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl04_parent.ColumnCount = 1;
+            this.base_tbl04_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl04_parent, 2);
-            this.base_tbl04_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl04_parent.Controls.Add(this.base_tbl04, 0, 0);
+            this.base_tbl04_parent.Controls.Add(this.base_tbl04);
             this.base_tbl04_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl04_parent.Location = new System.Drawing.Point(10, 957);
             this.base_tbl04_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl04_parent.Name = "base_tbl04_parent";
-            this.base_tbl04_parent.RowCount = 1;
-            this.base_tbl04_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl04_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 170F));
-            this.base_tbl04_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 170F));
-            this.base_tbl04_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 170F));
             this.base_tbl04_parent.Size = new System.Drawing.Size(1803, 171);
             this.base_tbl04_parent.TabIndex = 5;
             // 
@@ -5224,7 +5178,7 @@ namespace TokuchoBugyoK2
             this.base_tbl04.Controls.Add(this.base_tbl04_input, 0, 2);
             this.base_tbl04.Controls.Add(this.base_tbl04_lblTitle, 0, 0);
             this.base_tbl04.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl04.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl04.Location = new System.Drawing.Point(0, 0);
             this.base_tbl04.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl04.Name = "base_tbl04";
             this.base_tbl04.Padding = new System.Windows.Forms.Padding(10);
@@ -5479,397 +5433,16 @@ namespace TokuchoBugyoK2
             this.base_tbl04_lblTitle.TabIndex = 3;
             this.base_tbl04_lblTitle.Text = "4. 発注者情報";
             // 
-            // base_tbl06
-            // 
-            this.base_tbl06.AutoSize = true;
-            this.base_tbl06.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl06.ColumnCount = 1;
-            this.base_tbl06.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl06.Controls.Add(this.base_tbl06_parent, 0, 0);
-            this.base_tbl06.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl06.Location = new System.Drawing.Point(921, 1148);
-            this.base_tbl06.Margin = new System.Windows.Forms.Padding(10);
-            this.base_tbl06.Name = "base_tbl06";
-            this.base_tbl06.RowCount = 1;
-            this.base_tbl06.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl06.Size = new System.Drawing.Size(892, 356);
-            this.base_tbl06.TabIndex = 4;
-            // 
-            // base_tbl06_parent
-            // 
-            this.base_tbl06_parent.AutoSize = true;
-            this.base_tbl06_parent.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_parent.ColumnCount = 1;
-            this.base_tbl06_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl06_parent.Controls.Add(this.base_tbl06_lblTitle, 0, 0);
-            this.base_tbl06_parent.Controls.Add(this.base_tbl06_input, 0, 1);
-            this.base_tbl06_parent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl06_parent.Location = new System.Drawing.Point(1, 1);
-            this.base_tbl06_parent.Margin = new System.Windows.Forms.Padding(0);
-            this.base_tbl06_parent.Name = "base_tbl06_parent";
-            this.base_tbl06_parent.Padding = new System.Windows.Forms.Padding(10);
-            this.base_tbl06_parent.RowCount = 2;
-            this.base_tbl06_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.base_tbl06_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl06_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.base_tbl06_parent.Size = new System.Drawing.Size(890, 354);
-            this.base_tbl06_parent.TabIndex = 4;
-            // 
-            // base_tbl06_lblTitle
-            // 
-            this.base_tbl06_lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.base_tbl06_lblTitle.AutoSize = true;
-            this.base_tbl06_lblTitle.BackColor = System.Drawing.Color.SteelBlue;
-            this.base_tbl06_lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.base_tbl06_lblTitle.ForeColor = System.Drawing.Color.White;
-            this.base_tbl06_lblTitle.Location = new System.Drawing.Point(14, 20);
-            this.base_tbl06_lblTitle.Margin = new System.Windows.Forms.Padding(4);
-            this.base_tbl06_lblTitle.Name = "base_tbl06_lblTitle";
-            this.base_tbl06_lblTitle.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.base_tbl06_lblTitle.Size = new System.Drawing.Size(862, 30);
-            this.base_tbl06_lblTitle.TabIndex = 3;
-            this.base_tbl06_lblTitle.Text = "6. 発注担当者情報（契約窓口）";
-            // 
-            // base_tbl06_input
-            // 
-            this.base_tbl06_input.AutoSize = true;
-            this.base_tbl06_input.ColumnCount = 2;
-            this.base_tbl06_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl06_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblBusho, 0, 1);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblTyosaMadoguchi, 0, 0);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_chkTyosaMadoguchi, 1, 0);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblTanto, 0, 2);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblTel, 0, 3);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblFax, 0, 4);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblEmail, 0, 5);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtTanto, 1, 2);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtTel, 1, 3);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtFax, 1, 4);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtEmail, 1, 5);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtBusho, 1, 1);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblZip, 0, 6);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblAddress, 0, 7);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblOrderYakusyoku, 0, 8);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblOrderSimei, 0, 9);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtAddress, 1, 7);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtOrderYakusyoku, 1, 8);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtOrderSimei, 1, 9);
-            this.base_tbl06_input.Controls.Add(this.base_tbl06_tblAddress, 1, 6);
-            this.base_tbl06_input.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl06_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_input.Location = new System.Drawing.Point(25, 65);
-            this.base_tbl06_input.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            this.base_tbl06_input.Name = "base_tbl06_input";
-            this.base_tbl06_input.RowCount = 10;
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.base_tbl06_input.Size = new System.Drawing.Size(840, 274);
-            this.base_tbl06_input.TabIndex = 5;
-            // 
-            // base_tbl06_lblBusho
-            // 
-            this.base_tbl06_lblBusho.AutoSize = true;
-            this.base_tbl06_lblBusho.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblBusho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl06_lblBusho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblBusho.Location = new System.Drawing.Point(3, 26);
-            this.base_tbl06_lblBusho.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblBusho.Name = "base_tbl06_lblBusho";
-            this.base_tbl06_lblBusho.Size = new System.Drawing.Size(128, 21);
-            this.base_tbl06_lblBusho.TabIndex = 41;
-            this.base_tbl06_lblBusho.Text = "部署";
-            this.base_tbl06_lblBusho.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_lblTyosaMadoguchi
-            // 
-            this.base_tbl06_lblTyosaMadoguchi.AutoSize = true;
-            this.base_tbl06_lblTyosaMadoguchi.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblTyosaMadoguchi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl06_lblTyosaMadoguchi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblTyosaMadoguchi.Location = new System.Drawing.Point(3, 3);
-            this.base_tbl06_lblTyosaMadoguchi.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblTyosaMadoguchi.Name = "base_tbl06_lblTyosaMadoguchi";
-            this.base_tbl06_lblTyosaMadoguchi.Size = new System.Drawing.Size(128, 17);
-            this.base_tbl06_lblTyosaMadoguchi.TabIndex = 40;
-            this.base_tbl06_lblTyosaMadoguchi.Text = "調査窓口と同じ";
-            this.base_tbl06_lblTyosaMadoguchi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_chkTyosaMadoguchi
-            // 
-            this.base_tbl06_chkTyosaMadoguchi.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.base_tbl06_chkTyosaMadoguchi.AutoSize = true;
-            this.base_tbl06_chkTyosaMadoguchi.Location = new System.Drawing.Point(137, 4);
-            this.base_tbl06_chkTyosaMadoguchi.Name = "base_tbl06_chkTyosaMadoguchi";
-            this.base_tbl06_chkTyosaMadoguchi.Size = new System.Drawing.Size(15, 14);
-            this.base_tbl06_chkTyosaMadoguchi.TabIndex = 39;
-            this.base_tbl06_chkTyosaMadoguchi.UseVisualStyleBackColor = true;
-            this.base_tbl06_chkTyosaMadoguchi.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
-            // 
-            // base_tbl06_lblTanto
-            // 
-            this.base_tbl06_lblTanto.AutoSize = true;
-            this.base_tbl06_lblTanto.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblTanto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl06_lblTanto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblTanto.Location = new System.Drawing.Point(3, 53);
-            this.base_tbl06_lblTanto.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblTanto.Name = "base_tbl06_lblTanto";
-            this.base_tbl06_lblTanto.Size = new System.Drawing.Size(128, 21);
-            this.base_tbl06_lblTanto.TabIndex = 34;
-            this.base_tbl06_lblTanto.Text = "担当者名";
-            this.base_tbl06_lblTanto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_lblTel
-            // 
-            this.base_tbl06_lblTel.AutoSize = true;
-            this.base_tbl06_lblTel.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblTel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl06_lblTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblTel.Location = new System.Drawing.Point(3, 80);
-            this.base_tbl06_lblTel.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblTel.Name = "base_tbl06_lblTel";
-            this.base_tbl06_lblTel.Size = new System.Drawing.Size(128, 21);
-            this.base_tbl06_lblTel.TabIndex = 35;
-            this.base_tbl06_lblTel.Text = "電話";
-            this.base_tbl06_lblTel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_lblFax
-            // 
-            this.base_tbl06_lblFax.AutoSize = true;
-            this.base_tbl06_lblFax.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblFax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl06_lblFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblFax.Location = new System.Drawing.Point(3, 107);
-            this.base_tbl06_lblFax.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblFax.Name = "base_tbl06_lblFax";
-            this.base_tbl06_lblFax.Size = new System.Drawing.Size(128, 21);
-            this.base_tbl06_lblFax.TabIndex = 36;
-            this.base_tbl06_lblFax.Text = "FAX";
-            this.base_tbl06_lblFax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_lblEmail
-            // 
-            this.base_tbl06_lblEmail.AutoSize = true;
-            this.base_tbl06_lblEmail.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblEmail.Location = new System.Drawing.Point(3, 134);
-            this.base_tbl06_lblEmail.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblEmail.Name = "base_tbl06_lblEmail";
-            this.base_tbl06_lblEmail.Size = new System.Drawing.Size(47, 17);
-            this.base_tbl06_lblEmail.TabIndex = 37;
-            this.base_tbl06_lblEmail.Text = "E-Mail";
-            this.base_tbl06_lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_txtTanto
-            // 
-            this.base_tbl06_txtTanto.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtTanto.Location = new System.Drawing.Point(137, 53);
-            this.base_tbl06_txtTanto.MaxLength = 50;
-            this.base_tbl06_txtTanto.Name = "base_tbl06_txtTanto";
-            this.base_tbl06_txtTanto.Size = new System.Drawing.Size(309, 21);
-            this.base_tbl06_txtTanto.TabIndex = 1;
-            // 
-            // base_tbl06_txtTel
-            // 
-            this.base_tbl06_txtTel.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtTel.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl06_txtTel.Location = new System.Drawing.Point(137, 80);
-            this.base_tbl06_txtTel.MaxLength = 25;
-            this.base_tbl06_txtTel.Name = "base_tbl06_txtTel";
-            this.base_tbl06_txtTel.Size = new System.Drawing.Size(165, 21);
-            this.base_tbl06_txtTel.TabIndex = 2;
-            // 
-            // base_tbl06_txtFax
-            // 
-            this.base_tbl06_txtFax.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtFax.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl06_txtFax.Location = new System.Drawing.Point(137, 107);
-            this.base_tbl06_txtFax.MaxLength = 25;
-            this.base_tbl06_txtFax.Name = "base_tbl06_txtFax";
-            this.base_tbl06_txtFax.Size = new System.Drawing.Size(165, 21);
-            this.base_tbl06_txtFax.TabIndex = 3;
-            // 
-            // base_tbl06_txtEmail
-            // 
-            this.base_tbl06_txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.base_tbl06_txtEmail.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtEmail.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl06_txtEmail.Location = new System.Drawing.Point(137, 134);
-            this.base_tbl06_txtEmail.MaxLength = 50;
-            this.base_tbl06_txtEmail.Name = "base_tbl06_txtEmail";
-            this.base_tbl06_txtEmail.Size = new System.Drawing.Size(570, 21);
-            this.base_tbl06_txtEmail.TabIndex = 4;
-            // 
-            // base_tbl06_txtBusho
-            // 
-            this.base_tbl06_txtBusho.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtBusho.Location = new System.Drawing.Point(137, 26);
-            this.base_tbl06_txtBusho.MaxLength = 50;
-            this.base_tbl06_txtBusho.Name = "base_tbl06_txtBusho";
-            this.base_tbl06_txtBusho.Size = new System.Drawing.Size(570, 21);
-            this.base_tbl06_txtBusho.TabIndex = 0;
-            // 
-            // base_tbl06_lblZip
-            // 
-            this.base_tbl06_lblZip.AutoSize = true;
-            this.base_tbl06_lblZip.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblZip.Location = new System.Drawing.Point(3, 161);
-            this.base_tbl06_lblZip.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblZip.Name = "base_tbl06_lblZip";
-            this.base_tbl06_lblZip.Size = new System.Drawing.Size(64, 17);
-            this.base_tbl06_lblZip.TabIndex = 37;
-            this.base_tbl06_lblZip.Text = "郵便番号";
-            this.base_tbl06_lblZip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_lblAddress
-            // 
-            this.base_tbl06_lblAddress.AutoSize = true;
-            this.base_tbl06_lblAddress.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblAddress.Location = new System.Drawing.Point(3, 196);
-            this.base_tbl06_lblAddress.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblAddress.Name = "base_tbl06_lblAddress";
-            this.base_tbl06_lblAddress.Size = new System.Drawing.Size(36, 17);
-            this.base_tbl06_lblAddress.TabIndex = 37;
-            this.base_tbl06_lblAddress.Text = "住所";
-            this.base_tbl06_lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_lblOrderYakusyoku
-            // 
-            this.base_tbl06_lblOrderYakusyoku.AutoSize = true;
-            this.base_tbl06_lblOrderYakusyoku.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblOrderYakusyoku.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblOrderYakusyoku.Location = new System.Drawing.Point(3, 223);
-            this.base_tbl06_lblOrderYakusyoku.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblOrderYakusyoku.Name = "base_tbl06_lblOrderYakusyoku";
-            this.base_tbl06_lblOrderYakusyoku.Size = new System.Drawing.Size(128, 17);
-            this.base_tbl06_lblOrderYakusyoku.TabIndex = 37;
-            this.base_tbl06_lblOrderYakusyoku.Text = "発注元代表者_役職";
-            this.base_tbl06_lblOrderYakusyoku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_lblOrderSimei
-            // 
-            this.base_tbl06_lblOrderSimei.AutoSize = true;
-            this.base_tbl06_lblOrderSimei.BackColor = System.Drawing.Color.White;
-            this.base_tbl06_lblOrderSimei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl06_lblOrderSimei.Location = new System.Drawing.Point(3, 250);
-            this.base_tbl06_lblOrderSimei.Margin = new System.Windows.Forms.Padding(3);
-            this.base_tbl06_lblOrderSimei.Name = "base_tbl06_lblOrderSimei";
-            this.base_tbl06_lblOrderSimei.Size = new System.Drawing.Size(128, 17);
-            this.base_tbl06_lblOrderSimei.TabIndex = 37;
-            this.base_tbl06_lblOrderSimei.Text = "発注元代表者_氏名";
-            this.base_tbl06_lblOrderSimei.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_txtAddress
-            // 
-            this.base_tbl06_txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.base_tbl06_txtAddress.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtAddress.Location = new System.Drawing.Point(137, 196);
-            this.base_tbl06_txtAddress.MaxLength = 100;
-            this.base_tbl06_txtAddress.Name = "base_tbl06_txtAddress";
-            this.base_tbl06_txtAddress.Size = new System.Drawing.Size(570, 21);
-            this.base_tbl06_txtAddress.TabIndex = 6;
-            // 
-            // base_tbl06_txtOrderYakusyoku
-            // 
-            this.base_tbl06_txtOrderYakusyoku.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.base_tbl06_txtOrderYakusyoku.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtOrderYakusyoku.Location = new System.Drawing.Point(137, 223);
-            this.base_tbl06_txtOrderYakusyoku.MaxLength = 20;
-            this.base_tbl06_txtOrderYakusyoku.Name = "base_tbl06_txtOrderYakusyoku";
-            this.base_tbl06_txtOrderYakusyoku.Size = new System.Drawing.Size(570, 21);
-            this.base_tbl06_txtOrderYakusyoku.TabIndex = 7;
-            // 
-            // base_tbl06_txtOrderSimei
-            // 
-            this.base_tbl06_txtOrderSimei.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.base_tbl06_txtOrderSimei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtOrderSimei.Location = new System.Drawing.Point(137, 250);
-            this.base_tbl06_txtOrderSimei.MaxLength = 20;
-            this.base_tbl06_txtOrderSimei.Name = "base_tbl06_txtOrderSimei";
-            this.base_tbl06_txtOrderSimei.Size = new System.Drawing.Size(570, 21);
-            this.base_tbl06_txtOrderSimei.TabIndex = 8;
-            // 
-            // base_tbl06_tblAddress
-            // 
-            this.base_tbl06_tblAddress.ColumnCount = 3;
-            this.base_tbl06_tblAddress.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl06_tblAddress.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl06_tblAddress.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl06_tblAddress.Controls.Add(this.base_tbl06_txtZip, 0, 0);
-            this.base_tbl06_tblAddress.Controls.Add(this.base_tbl06_lblZipNote, 2, 0);
-            this.base_tbl06_tblAddress.Controls.Add(this.base_tbl06_picZip, 1, 0);
-            this.base_tbl06_tblAddress.Location = new System.Drawing.Point(134, 158);
-            this.base_tbl06_tblAddress.Margin = new System.Windows.Forms.Padding(0);
-            this.base_tbl06_tblAddress.Name = "base_tbl06_tblAddress";
-            this.base_tbl06_tblAddress.RowCount = 1;
-            this.base_tbl06_tblAddress.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl06_tblAddress.Size = new System.Drawing.Size(451, 35);
-            this.base_tbl06_tblAddress.TabIndex = 5;
-            // 
-            // base_tbl06_txtZip
-            // 
-            this.base_tbl06_txtZip.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl06_txtZip.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl06_txtZip.Location = new System.Drawing.Point(3, 3);
-            this.base_tbl06_txtZip.MaxLength = 10;
-            this.base_tbl06_txtZip.Name = "base_tbl06_txtZip";
-            this.base_tbl06_txtZip.Size = new System.Drawing.Size(94, 21);
-            this.base_tbl06_txtZip.TabIndex = 0;
-            // 
-            // base_tbl06_lblZipNote
-            // 
-            this.base_tbl06_lblZipNote.AutoSize = true;
-            this.base_tbl06_lblZipNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.base_tbl06_lblZipNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.base_tbl06_lblZipNote.ForeColor = System.Drawing.Color.Gray;
-            this.base_tbl06_lblZipNote.Location = new System.Drawing.Point(123, 0);
-            this.base_tbl06_lblZipNote.Name = "base_tbl06_lblZipNote";
-            this.base_tbl06_lblZipNote.Size = new System.Drawing.Size(325, 35);
-            this.base_tbl06_lblZipNote.TabIndex = 46;
-            this.base_tbl06_lblZipNote.Text = "※〒から住所を自動入力";
-            this.base_tbl06_lblZipNote.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // base_tbl06_picZip
-            // 
-            this.base_tbl06_picZip.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.base_tbl06_picZip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.base_tbl06_picZip.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl06_picZip.Image")));
-            this.base_tbl06_picZip.Location = new System.Drawing.Point(102, 9);
-            this.base_tbl06_picZip.Margin = new System.Windows.Forms.Padding(2);
-            this.base_tbl06_picZip.Name = "base_tbl06_picZip";
-            this.base_tbl06_picZip.Size = new System.Drawing.Size(16, 16);
-            this.base_tbl06_picZip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.base_tbl06_picZip.TabIndex = 19;
-            this.base_tbl06_picZip.TabStop = false;
-            this.base_tbl06_picZip.Click += new System.EventHandler(this.PictureBoxZip_Click);
-            // 
             // base_tblMemo_parent
             // 
             this.base_tblMemo_parent.AutoSize = true;
-            this.base_tblMemo_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tblMemo_parent.ColumnCount = 1;
+            this.base_tblMemo_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tblMemo_parent, 2);
-            this.base_tblMemo_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tblMemo_parent.Controls.Add(this.base_tblMemo, 0, 0);
+            this.base_tblMemo_parent.Controls.Add(this.base_tblMemo);
             this.base_tblMemo_parent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tblMemo_parent.Location = new System.Drawing.Point(10, 2453);
+            this.base_tblMemo_parent.Location = new System.Drawing.Point(10, 2399);
             this.base_tblMemo_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tblMemo_parent.Name = "base_tblMemo_parent";
-            this.base_tblMemo_parent.RowCount = 1;
-            this.base_tblMemo_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tblMemo_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
             this.base_tblMemo_parent.Size = new System.Drawing.Size(1803, 128);
             this.base_tblMemo_parent.TabIndex = 9;
             // 
@@ -5882,7 +5455,7 @@ namespace TokuchoBugyoK2
             this.base_tblMemo.Controls.Add(this.base_tblMemo_input, 0, 1);
             this.base_tblMemo.Controls.Add(this.base_tblMemo_lblTitle, 0, 0);
             this.base_tblMemo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tblMemo.Location = new System.Drawing.Point(1, 1);
+            this.base_tblMemo.Location = new System.Drawing.Point(0, 0);
             this.base_tblMemo.Margin = new System.Windows.Forms.Padding(0);
             this.base_tblMemo.Name = "base_tblMemo";
             this.base_tblMemo.Padding = new System.Windows.Forms.Padding(10);
@@ -5958,18 +5531,13 @@ namespace TokuchoBugyoK2
             // base_tbl09_parent
             // 
             this.base_tbl09_parent.AutoSize = true;
-            this.base_tbl09_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl09_parent.ColumnCount = 1;
+            this.base_tbl09_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl09_parent, 2);
-            this.base_tbl09_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl09_parent.Controls.Add(this.base_tbl09, 0, 0);
+            this.base_tbl09_parent.Controls.Add(this.base_tbl09);
             this.base_tbl09_parent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl09_parent.Location = new System.Drawing.Point(10, 2601);
+            this.base_tbl09_parent.Location = new System.Drawing.Point(10, 2547);
             this.base_tbl09_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl09_parent.Name = "base_tbl09_parent";
-            this.base_tbl09_parent.RowCount = 1;
-            this.base_tbl09_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl09_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 275F));
             this.base_tbl09_parent.Size = new System.Drawing.Size(1803, 276);
             this.base_tbl09_parent.TabIndex = 8;
             // 
@@ -5982,7 +5550,7 @@ namespace TokuchoBugyoK2
             this.base_tbl09.Controls.Add(this.base_tbl09_input, 0, 1);
             this.base_tbl09.Controls.Add(this.base_tbl09_lblTitle, 0, 0);
             this.base_tbl09.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl09.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl09.Location = new System.Drawing.Point(0, 0);
             this.base_tbl09.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl09.Name = "base_tbl09";
             this.base_tbl09.Padding = new System.Windows.Forms.Padding(10);
@@ -6282,18 +5850,13 @@ namespace TokuchoBugyoK2
             // base_tbl10_parent
             // 
             this.base_tbl10_parent.AutoSize = true;
-            this.base_tbl10_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl10_parent.ColumnCount = 1;
+            this.base_tbl10_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl10_parent, 2);
-            this.base_tbl10_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl10_parent.Controls.Add(this.base_tbl10, 0, 0);
+            this.base_tbl10_parent.Controls.Add(this.base_tbl10);
             this.base_tbl10_parent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl10_parent.Location = new System.Drawing.Point(10, 2897);
+            this.base_tbl10_parent.Location = new System.Drawing.Point(10, 2843);
             this.base_tbl10_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl10_parent.Name = "base_tbl10_parent";
-            this.base_tbl10_parent.RowCount = 1;
-            this.base_tbl10_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl10_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 470F));
             this.base_tbl10_parent.Size = new System.Drawing.Size(1803, 471);
             this.base_tbl10_parent.TabIndex = 9;
             // 
@@ -6306,7 +5869,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10.Controls.Add(this.base_tbl10_input, 0, 1);
             this.base_tbl10.Controls.Add(this.base_tbl10_lblTitle, 0, 0);
             this.base_tbl10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl10.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl10.Location = new System.Drawing.Point(0, 0);
             this.base_tbl10.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl10.Name = "base_tbl10";
             this.base_tbl10.Padding = new System.Windows.Forms.Padding(10);
@@ -6968,24 +6531,13 @@ namespace TokuchoBugyoK2
             // base_tbl11_parent
             // 
             this.base_tbl11_parent.AutoSize = true;
-            this.base_tbl11_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl11_parent.ColumnCount = 1;
+            this.base_tbl11_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblBase.SetColumnSpan(this.base_tbl11_parent, 2);
-            this.base_tbl11_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl11_parent.Controls.Add(this.base_tbl11, 0, 0);
+            this.base_tbl11_parent.Controls.Add(this.base_tbl11);
             this.base_tbl11_parent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl11_parent.Location = new System.Drawing.Point(10, 3388);
+            this.base_tbl11_parent.Location = new System.Drawing.Point(10, 3334);
             this.base_tbl11_parent.Margin = new System.Windows.Forms.Padding(10);
             this.base_tbl11_parent.Name = "base_tbl11_parent";
-            this.base_tbl11_parent.RowCount = 1;
-            this.base_tbl11_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.base_tbl11_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 335F));
-            this.base_tbl11_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 335F));
-            this.base_tbl11_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 335F));
-            this.base_tbl11_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 335F));
-            this.base_tbl11_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 335F));
-            this.base_tbl11_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 335F));
-            this.base_tbl11_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 335F));
             this.base_tbl11_parent.Size = new System.Drawing.Size(1803, 336);
             this.base_tbl11_parent.TabIndex = 9;
             // 
@@ -7000,7 +6552,7 @@ namespace TokuchoBugyoK2
             this.base_tbl11.Controls.Add(this.base_tbl11_input1, 0, 1);
             this.base_tbl11.Controls.Add(this.base_tbl11_lblTitle, 0, 0);
             this.base_tbl11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.base_tbl11.Location = new System.Drawing.Point(1, 1);
+            this.base_tbl11.Location = new System.Drawing.Point(0, 0);
             this.base_tbl11.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl11.Name = "base_tbl11";
             this.base_tbl11.Padding = new System.Windows.Forms.Padding(10);
@@ -7638,17 +7190,13 @@ namespace TokuchoBugyoK2
             // prior_tbl02_parent
             // 
             this.prior_tbl02_parent.AutoSize = true;
-            this.prior_tbl02_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.prior_tbl02_parent.ColumnCount = 1;
+            this.prior_tbl02_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblPrior.SetColumnSpan(this.prior_tbl02_parent, 2);
-            this.prior_tbl02_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.prior_tbl02_parent.Controls.Add(this.prior_tbl02, 0, 0);
+            this.prior_tbl02_parent.Controls.Add(this.prior_tbl02);
             this.prior_tbl02_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prior_tbl02_parent.Location = new System.Drawing.Point(10, 352);
             this.prior_tbl02_parent.Margin = new System.Windows.Forms.Padding(10);
             this.prior_tbl02_parent.Name = "prior_tbl02_parent";
-            this.prior_tbl02_parent.RowCount = 1;
-            this.prior_tbl02_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.prior_tbl02_parent.Size = new System.Drawing.Size(1803, 304);
             this.prior_tbl02_parent.TabIndex = 1;
             // 
@@ -7662,7 +7210,7 @@ namespace TokuchoBugyoK2
             this.prior_tbl02.Controls.Add(this.prior_tbl02_input, 0, 1);
             this.prior_tbl02.Controls.Add(this.prior_tbl02_lblTitle, 0, 0);
             this.prior_tbl02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prior_tbl02.Location = new System.Drawing.Point(1, 1);
+            this.prior_tbl02.Location = new System.Drawing.Point(0, 0);
             this.prior_tbl02.Margin = new System.Windows.Forms.Padding(0);
             this.prior_tbl02.Name = "prior_tbl02";
             this.prior_tbl02.Padding = new System.Windows.Forms.Padding(10);
@@ -7868,17 +7416,13 @@ namespace TokuchoBugyoK2
             // prior_tbl01_parent
             // 
             this.prior_tbl01_parent.AutoSize = true;
-            this.prior_tbl01_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.prior_tbl01_parent.ColumnCount = 1;
+            this.prior_tbl01_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblPrior.SetColumnSpan(this.prior_tbl01_parent, 2);
-            this.prior_tbl01_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.prior_tbl01_parent.Controls.Add(this.prior_tbl01, 0, 0);
+            this.prior_tbl01_parent.Controls.Add(this.prior_tbl01);
             this.prior_tbl01_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prior_tbl01_parent.Location = new System.Drawing.Point(10, 10);
             this.prior_tbl01_parent.Margin = new System.Windows.Forms.Padding(10);
             this.prior_tbl01_parent.Name = "prior_tbl01_parent";
-            this.prior_tbl01_parent.RowCount = 1;
-            this.prior_tbl01_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.prior_tbl01_parent.Size = new System.Drawing.Size(1803, 322);
             this.prior_tbl01_parent.TabIndex = 5;
             // 
@@ -7891,7 +7435,7 @@ namespace TokuchoBugyoK2
             this.prior_tbl01.Controls.Add(this.prior_tbl01_input, 0, 1);
             this.prior_tbl01.Controls.Add(this.prior_tbl01_lblTitle, 0, 0);
             this.prior_tbl01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prior_tbl01.Location = new System.Drawing.Point(1, 1);
+            this.prior_tbl01.Location = new System.Drawing.Point(0, 0);
             this.prior_tbl01.Margin = new System.Windows.Forms.Padding(0);
             this.prior_tbl01.Name = "prior_tbl01";
             this.prior_tbl01.Padding = new System.Windows.Forms.Padding(10);
@@ -8198,16 +7742,12 @@ namespace TokuchoBugyoK2
             // bid_tbl02_parent
             // 
             this.bid_tbl02_parent.AutoSize = true;
-            this.bid_tbl02_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.bid_tbl02_parent.ColumnCount = 1;
-            this.bid_tbl02_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bid_tbl02_parent.Controls.Add(this.bid_tbl02, 0, 0);
+            this.bid_tbl02_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bid_tbl02_parent.Controls.Add(this.bid_tbl02);
             this.bid_tbl02_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bid_tbl02_parent.Location = new System.Drawing.Point(20, 372);
             this.bid_tbl02_parent.Margin = new System.Windows.Forms.Padding(10);
             this.bid_tbl02_parent.Name = "bid_tbl02_parent";
-            this.bid_tbl02_parent.RowCount = 1;
-            this.bid_tbl02_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.bid_tbl02_parent.Size = new System.Drawing.Size(1783, 149);
             this.bid_tbl02_parent.TabIndex = 3;
             // 
@@ -8220,7 +7760,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl02.Controls.Add(this.bid_tbl02_input, 0, 1);
             this.bid_tbl02.Controls.Add(this.bid_tbl02_lblTitle, 0, 0);
             this.bid_tbl02.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bid_tbl02.Location = new System.Drawing.Point(1, 1);
+            this.bid_tbl02.Location = new System.Drawing.Point(0, 0);
             this.bid_tbl02.Margin = new System.Windows.Forms.Padding(0);
             this.bid_tbl02.Name = "bid_tbl02";
             this.bid_tbl02.Padding = new System.Windows.Forms.Padding(10);
@@ -8278,7 +7818,7 @@ namespace TokuchoBugyoK2
             // 
             this.bid_tbl02_lblOtherNaiyo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl02_lblOtherNaiyo.AutoSize = true;
-            this.bid_tbl02_lblOtherNaiyo.Location = new System.Drawing.Point(372, 47);
+            this.bid_tbl02_lblOtherNaiyo.Location = new System.Drawing.Point(372, 39);
             this.bid_tbl02_lblOtherNaiyo.Margin = new System.Windows.Forms.Padding(3);
             this.bid_tbl02_lblOtherNaiyo.Name = "bid_tbl02_lblOtherNaiyo";
             this.bid_tbl02_lblOtherNaiyo.Size = new System.Drawing.Size(82, 17);
@@ -8356,16 +7896,12 @@ namespace TokuchoBugyoK2
             // bid_tbl03_parent
             // 
             this.bid_tbl03_parent.AutoSize = true;
-            this.bid_tbl03_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.bid_tbl03_parent.ColumnCount = 1;
-            this.bid_tbl03_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bid_tbl03_parent.Controls.Add(this.bid_tbl03, 0, 0);
+            this.bid_tbl03_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bid_tbl03_parent.Controls.Add(this.bid_tbl03);
             this.bid_tbl03_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bid_tbl03_parent.Location = new System.Drawing.Point(20, 541);
             this.bid_tbl03_parent.Margin = new System.Windows.Forms.Padding(10);
             this.bid_tbl03_parent.Name = "bid_tbl03_parent";
-            this.bid_tbl03_parent.RowCount = 1;
-            this.bid_tbl03_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.bid_tbl03_parent.Size = new System.Drawing.Size(1783, 486);
             this.bid_tbl03_parent.TabIndex = 2;
             // 
@@ -8380,7 +7916,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03.Controls.Add(this.bid_tbl03_input4, 0, 4);
             this.bid_tbl03.Controls.Add(this.bid_tbl03_input5, 0, 5);
             this.bid_tbl03.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bid_tbl03.Location = new System.Drawing.Point(1, 1);
+            this.bid_tbl03.Location = new System.Drawing.Point(0, 0);
             this.bid_tbl03.Margin = new System.Windows.Forms.Padding(0);
             this.bid_tbl03.Name = "bid_tbl03";
             this.bid_tbl03.Padding = new System.Windows.Forms.Padding(10);
@@ -8970,16 +8506,12 @@ namespace TokuchoBugyoK2
             // bid_tbl01_parent
             // 
             this.bid_tbl01_parent.AutoSize = true;
-            this.bid_tbl01_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.bid_tbl01_parent.ColumnCount = 1;
-            this.bid_tbl01_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bid_tbl01_parent.Controls.Add(this.bid_tbl01, 0, 0);
+            this.bid_tbl01_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bid_tbl01_parent.Controls.Add(this.bid_tbl01);
             this.bid_tbl01_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bid_tbl01_parent.Location = new System.Drawing.Point(20, 20);
             this.bid_tbl01_parent.Margin = new System.Windows.Forms.Padding(10);
             this.bid_tbl01_parent.Name = "bid_tbl01_parent";
-            this.bid_tbl01_parent.RowCount = 1;
-            this.bid_tbl01_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.bid_tbl01_parent.Size = new System.Drawing.Size(1783, 332);
             this.bid_tbl01_parent.TabIndex = 0;
             // 
@@ -8992,7 +8524,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl01.Controls.Add(this.bid_tbl01_lblTitle, 0, 0);
             this.bid_tbl01.Controls.Add(this.bid_tbl01_input, 0, 1);
             this.bid_tbl01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bid_tbl01.Location = new System.Drawing.Point(1, 1);
+            this.bid_tbl01.Location = new System.Drawing.Point(0, 0);
             this.bid_tbl01.Margin = new System.Windows.Forms.Padding(0);
             this.bid_tbl01.Name = "bid_tbl01";
             this.bid_tbl01.Padding = new System.Windows.Forms.Padding(10);
@@ -9375,16 +8907,12 @@ namespace TokuchoBugyoK2
             // ca_tbl07_parent
             // 
             this.ca_tbl07_parent.AutoSize = true;
-            this.ca_tbl07_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ca_tbl07_parent.ColumnCount = 1;
-            this.ca_tbl07_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl07_parent.Controls.Add(this.ca_tbl07, 0, 0);
+            this.ca_tbl07_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ca_tbl07_parent.Controls.Add(this.ca_tbl07);
             this.ca_tbl07_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl07_parent.Location = new System.Drawing.Point(10, 2571);
             this.ca_tbl07_parent.Margin = new System.Windows.Forms.Padding(10);
             this.ca_tbl07_parent.Name = "ca_tbl07_parent";
-            this.ca_tbl07_parent.RowCount = 1;
-            this.ca_tbl07_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl07_parent.Size = new System.Drawing.Size(1809, 228);
             this.ca_tbl07_parent.TabIndex = 7;
             // 
@@ -9398,7 +8926,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07.Controls.Add(this.ca_tbl07_lblTitle, 0, 0);
             this.ca_tbl07.Controls.Add(this.ca_tbl07_input, 0, 2);
             this.ca_tbl07.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl07.Location = new System.Drawing.Point(1, 1);
+            this.ca_tbl07.Location = new System.Drawing.Point(0, 0);
             this.ca_tbl07.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl07.Name = "ca_tbl07";
             this.ca_tbl07.Padding = new System.Windows.Forms.Padding(10);
@@ -9451,7 +8979,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 822F));
+            this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 843F));
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequstAll, 7, 0);
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequst1, 1, 0);
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequst3, 3, 0);
@@ -9482,7 +9010,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.ca_tbl07_input.Size = new System.Drawing.Size(1689, 102);
+            this.ca_tbl07_input.Size = new System.Drawing.Size(1710, 102);
             this.ca_tbl07_input.TabIndex = 4;
             // 
             // ca_tbl07_lblRequstAll
@@ -9496,7 +9024,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_lblRequstAll.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl07_lblRequstAll.Name = "ca_tbl07_lblRequstAll";
             this.ca_tbl07_lblRequstAll.Padding = new System.Windows.Forms.Padding(3);
-            this.ca_tbl07_lblRequstAll.Size = new System.Drawing.Size(822, 30);
+            this.ca_tbl07_lblRequstAll.Size = new System.Drawing.Size(843, 30);
             this.ca_tbl07_lblRequstAll.TabIndex = 50;
             this.ca_tbl07_lblRequstAll.Text = "請求合計額";
             this.ca_tbl07_lblRequstAll.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -9791,7 +9319,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_txtRequstAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.ca_tbl07_txtRequstAll.Location = new System.Drawing.Point(867, 69);
             this.ca_tbl07_txtRequstAll.Name = "ca_tbl07_txtRequstAll";
-            this.ca_tbl07_txtRequstAll.Size = new System.Drawing.Size(816, 30);
+            this.ca_tbl07_txtRequstAll.Size = new System.Drawing.Size(837, 30);
             this.ca_tbl07_txtRequstAll.TabIndex = 76;
             this.ca_tbl07_txtRequstAll.Text = "¥0";
             this.ca_tbl07_txtRequstAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -9799,16 +9327,12 @@ namespace TokuchoBugyoK2
             // ca_tbl03_parent
             // 
             this.ca_tbl03_parent.AutoSize = true;
-            this.ca_tbl03_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ca_tbl03_parent.ColumnCount = 1;
-            this.ca_tbl03_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl03_parent.Controls.Add(this.ca_tbl03, 0, 0);
+            this.ca_tbl03_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ca_tbl03_parent.Controls.Add(this.ca_tbl03);
             this.ca_tbl03_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl03_parent.Location = new System.Drawing.Point(10, 1525);
             this.ca_tbl03_parent.Margin = new System.Windows.Forms.Padding(10);
             this.ca_tbl03_parent.Name = "ca_tbl03_parent";
-            this.ca_tbl03_parent.RowCount = 1;
-            this.ca_tbl03_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl03_parent.Size = new System.Drawing.Size(1809, 220);
             this.ca_tbl03_parent.TabIndex = 3;
             // 
@@ -9823,7 +9347,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl03.Controls.Add(this.ca_tbl03_tblComment, 0, 1);
             this.ca_tbl03.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl03.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl03.Location = new System.Drawing.Point(1, 1);
+            this.ca_tbl03.Location = new System.Drawing.Point(0, 0);
             this.ca_tbl03.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl03.Name = "ca_tbl03";
             this.ca_tbl03.Padding = new System.Windows.Forms.Padding(10);
@@ -10067,16 +9591,12 @@ namespace TokuchoBugyoK2
             // ca_tbl06_parent
             // 
             this.ca_tbl06_parent.AutoSize = true;
-            this.ca_tbl06_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ca_tbl06_parent.ColumnCount = 1;
-            this.ca_tbl06_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl06_parent.Controls.Add(this.ca_tbl06, 0, 0);
+            this.ca_tbl06_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ca_tbl06_parent.Controls.Add(this.ca_tbl06);
             this.ca_tbl06_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl06_parent.Location = new System.Drawing.Point(10, 2316);
             this.ca_tbl06_parent.Margin = new System.Windows.Forms.Padding(10);
             this.ca_tbl06_parent.Name = "ca_tbl06_parent";
-            this.ca_tbl06_parent.RowCount = 1;
-            this.ca_tbl06_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl06_parent.Size = new System.Drawing.Size(1809, 235);
             this.ca_tbl06_parent.TabIndex = 6;
             // 
@@ -10092,7 +9612,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl06.Controls.Add(this.ca_tbl06_tblCopy, 0, 1);
             this.ca_tbl06.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl06.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ca_tbl06.Location = new System.Drawing.Point(1, 1);
+            this.ca_tbl06.Location = new System.Drawing.Point(0, 0);
             this.ca_tbl06.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl06.Name = "ca_tbl06";
             this.ca_tbl06.Padding = new System.Windows.Forms.Padding(10);
@@ -10231,16 +9751,12 @@ namespace TokuchoBugyoK2
             // ca_tbl01_parent
             // 
             this.ca_tbl01_parent.AutoSize = true;
-            this.ca_tbl01_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ca_tbl01_parent.ColumnCount = 1;
-            this.ca_tbl01_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl01_parent.Controls.Add(this.ca_tbl01, 0, 0);
+            this.ca_tbl01_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ca_tbl01_parent.Controls.Add(this.ca_tbl01);
             this.ca_tbl01_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl01_parent.Location = new System.Drawing.Point(10, 145);
             this.ca_tbl01_parent.Margin = new System.Windows.Forms.Padding(10);
             this.ca_tbl01_parent.Name = "ca_tbl01_parent";
-            this.ca_tbl01_parent.RowCount = 1;
-            this.ca_tbl01_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl01_parent.Size = new System.Drawing.Size(1809, 790);
             this.ca_tbl01_parent.TabIndex = 1;
             // 
@@ -10253,7 +9769,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01.Controls.Add(this.ca_tbl01_lblTitle, 0, 0);
             this.ca_tbl01.Controls.Add(this.ca_tbl01_input, 0, 1);
             this.ca_tbl01.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl01.Location = new System.Drawing.Point(1, 1);
+            this.ca_tbl01.Location = new System.Drawing.Point(0, 0);
             this.ca_tbl01.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl01.Name = "ca_tbl01";
             this.ca_tbl01.Padding = new System.Windows.Forms.Padding(10);
@@ -10477,7 +9993,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_numChangeAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.ca_tbl01_numChangeAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
             this.ca_tbl01_numChangeAmt.Validated += new System.EventHandler(this.textBox_Validated);
-
             // 
             // ca_tbl01_lblChangeAmtComment
             // 
@@ -11069,11 +10584,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_txtZeikomiAmt.TabIndex = 1;
             this.ca_tbl01_txtZeikomiAmt.Text = "¥0";
             this.ca_tbl01_txtZeikomiAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            //this.ca_tbl01_txtZeikomiAmt.Enter += new System.EventHandler(this.textBox_Enter);
-            //this.ca_tbl01_txtZeikomiAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
-            //this.ca_tbl01_txtZeikomiAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
-            //this.ca_tbl01_txtZeikomiAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
-            //this.ca_tbl01_txtZeikomiAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // ca_tbl01_lblZeinukiAmt
             // 
@@ -11547,16 +11057,12 @@ namespace TokuchoBugyoK2
             // ca_tbl05_parent
             // 
             this.ca_tbl05_parent.AutoSize = true;
-            this.ca_tbl05_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ca_tbl05_parent.ColumnCount = 1;
-            this.ca_tbl05_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_parent.Controls.Add(this.ca_tbl05, 0, 0);
+            this.ca_tbl05_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ca_tbl05_parent.Controls.Add(this.ca_tbl05);
             this.ca_tbl05_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl05_parent.Location = new System.Drawing.Point(10, 1992);
             this.ca_tbl05_parent.Margin = new System.Windows.Forms.Padding(10);
             this.ca_tbl05_parent.Name = "ca_tbl05_parent";
-            this.ca_tbl05_parent.RowCount = 1;
-            this.ca_tbl05_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl05_parent.Size = new System.Drawing.Size(1809, 304);
             this.ca_tbl05_parent.TabIndex = 5;
             // 
@@ -11569,7 +11075,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05.Controls.Add(this.ca_tbl05_lblTitle, 0, 0);
             this.ca_tbl05.Controls.Add(this.ca_tbl05_input, 0, 1);
             this.ca_tbl05.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl05.Location = new System.Drawing.Point(1, 1);
+            this.ca_tbl05.Location = new System.Drawing.Point(0, 0);
             this.ca_tbl05.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl05.Name = "ca_tbl05";
             this.ca_tbl05.Padding = new System.Windows.Forms.Padding(10);
@@ -11748,7 +11254,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 338F));
+            this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_picKanriDel, 2, 0);
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_txtKanri, 0, 0);
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_picKanri, 1, 0);
@@ -11759,7 +11265,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblKanri.Name = "ca_tbl05_tblKanri";
             this.ca_tbl05_tblKanri.RowCount = 1;
             this.ca_tbl05_tblKanri.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblKanri.Size = new System.Drawing.Size(663, 28);
+            this.ca_tbl05_tblKanri.Size = new System.Drawing.Size(670, 28);
             this.ca_tbl05_tblKanri.TabIndex = 0;
             // 
             // ca_tbl05_picKanriDel
@@ -11821,7 +11327,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 338F));
+            this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_picSyosaDel, 2, 0);
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_txtSyosa, 0, 0);
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_picSyosa, 1, 0);
@@ -11832,7 +11338,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSyosa.Name = "ca_tbl05_tblSyosa";
             this.ca_tbl05_tblSyosa.RowCount = 1;
             this.ca_tbl05_tblSyosa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblSyosa.Size = new System.Drawing.Size(663, 28);
+            this.ca_tbl05_tblSyosa.Size = new System.Drawing.Size(670, 28);
             this.ca_tbl05_tblSyosa.TabIndex = 1;
             // 
             // ca_tbl05_picSyosaDel
@@ -11893,7 +11399,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 383F));
+            this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 390F));
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_picSinsaDel, 2, 0);
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_txtSinsa, 0, 0);
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_picSinsa, 1, 0);
@@ -11903,7 +11409,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSinsa.Name = "ca_tbl05_tblSinsa";
             this.ca_tbl05_tblSinsa.RowCount = 1;
             this.ca_tbl05_tblSinsa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblSinsa.Size = new System.Drawing.Size(643, 28);
+            this.ca_tbl05_tblSinsa.Size = new System.Drawing.Size(650, 28);
             this.ca_tbl05_tblSinsa.TabIndex = 3;
             // 
             // ca_tbl05_picSinsaDel
@@ -11956,7 +11462,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 383F));
+            this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 390F));
             this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomuDel, 2, 0);
             this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_txtGyomu, 0, 0);
             this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomu, 1, 0);
@@ -11966,7 +11472,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblGyomu.Name = "ca_tbl05_tblGyomu";
             this.ca_tbl05_tblGyomu.RowCount = 1;
             this.ca_tbl05_tblGyomu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblGyomu.Size = new System.Drawing.Size(643, 28);
+            this.ca_tbl05_tblGyomu.Size = new System.Drawing.Size(650, 28);
             this.ca_tbl05_tblGyomu.TabIndex = 4;
             // 
             // ca_tbl05_picGyomuDel
@@ -12022,7 +11528,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 383F));
+            this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 390F));
             this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchiDel, 2, 0);
             this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchi, 0, 0);
             this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchi, 1, 0);
@@ -12035,7 +11541,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblMadoguchi.Name = "ca_tbl05_tblMadoguchi";
             this.ca_tbl05_tblMadoguchi.RowCount = 1;
             this.ca_tbl05_tblMadoguchi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblMadoguchi.Size = new System.Drawing.Size(703, 28);
+            this.ca_tbl05_tblMadoguchi.Size = new System.Drawing.Size(710, 28);
             this.ca_tbl05_tblMadoguchi.TabIndex = 5;
             // 
             // ca_tbl05_picMadoguchiDel
@@ -12431,16 +11937,12 @@ namespace TokuchoBugyoK2
             // ca_tbl02_parent
             // 
             this.ca_tbl02_parent.AutoSize = true;
-            this.ca_tbl02_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ca_tbl02_parent.ColumnCount = 1;
-            this.ca_tbl02_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl02_parent.Controls.Add(this.ca_tbl02, 0, 0);
+            this.ca_tbl02_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ca_tbl02_parent.Controls.Add(this.ca_tbl02);
             this.ca_tbl02_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl02_parent.Location = new System.Drawing.Point(10, 955);
             this.ca_tbl02_parent.Margin = new System.Windows.Forms.Padding(10);
             this.ca_tbl02_parent.Name = "ca_tbl02_parent";
-            this.ca_tbl02_parent.RowCount = 1;
-            this.ca_tbl02_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl02_parent.Size = new System.Drawing.Size(1809, 550);
             this.ca_tbl02_parent.TabIndex = 2;
             // 
@@ -12458,7 +11960,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl02.Controls.Add(this.ca_tbl02_input1, 0, 2);
             this.ca_tbl02.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl02.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02.Location = new System.Drawing.Point(1, 1);
+            this.ca_tbl02.Location = new System.Drawing.Point(0, 0);
             this.ca_tbl02.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl02.Name = "ca_tbl02";
             this.ca_tbl02.Padding = new System.Windows.Forms.Padding(10);
@@ -14121,16 +13623,12 @@ namespace TokuchoBugyoK2
             // ca_tbl04_parent
             // 
             this.ca_tbl04_parent.AutoSize = true;
-            this.ca_tbl04_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ca_tbl04_parent.ColumnCount = 1;
-            this.ca_tbl04_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl04_parent.Controls.Add(this.ca_tbl04, 0, 0);
+            this.ca_tbl04_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ca_tbl04_parent.Controls.Add(this.ca_tbl04);
             this.ca_tbl04_parent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl04_parent.Location = new System.Drawing.Point(10, 1765);
             this.ca_tbl04_parent.Margin = new System.Windows.Forms.Padding(10);
             this.ca_tbl04_parent.Name = "ca_tbl04_parent";
-            this.ca_tbl04_parent.RowCount = 1;
-            this.ca_tbl04_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl04_parent.Size = new System.Drawing.Size(1809, 207);
             this.ca_tbl04_parent.TabIndex = 4;
             // 
@@ -14145,7 +13643,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl04.Controls.Add(this.ca_tbl04_tblComment, 0, 1);
             this.ca_tbl04.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl04.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl04.Location = new System.Drawing.Point(1, 1);
+            this.ca_tbl04.Location = new System.Drawing.Point(0, 0);
             this.ca_tbl04.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl04.Name = "ca_tbl04";
             this.ca_tbl04.Padding = new System.Windows.Forms.Padding(10);
@@ -14893,6 +14391,404 @@ namespace TokuchoBugyoK2
             this.ErrorMessage.Size = new System.Drawing.Size(1874, 13);
             this.ErrorMessage.TabIndex = 0;
             // 
+            // base_tbl06
+            // 
+            this.base_tbl06.AutoSize = true;
+            this.base_tbl06.BackColor = System.Drawing.Color.White;
+            this.base_tbl06.ColumnCount = 1;
+            this.base_tbl06.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.base_tbl06.Controls.Add(this.base_tbl06_lblTitle, 0, 0);
+            this.base_tbl06.Controls.Add(this.base_tbl06_input, 0, 1);
+            this.base_tbl06.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl06.Location = new System.Drawing.Point(0, 0);
+            this.base_tbl06.Margin = new System.Windows.Forms.Padding(0);
+            this.base_tbl06.Name = "base_tbl06";
+            this.base_tbl06.Padding = new System.Windows.Forms.Padding(10);
+            this.base_tbl06.RowCount = 2;
+            this.base_tbl06.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.base_tbl06.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.base_tbl06.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.base_tbl06.Size = new System.Drawing.Size(890, 354);
+            this.base_tbl06.TabIndex = 4;
+            // 
+            // base_tbl06_lblTitle
+            // 
+            this.base_tbl06_lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.base_tbl06_lblTitle.AutoSize = true;
+            this.base_tbl06_lblTitle.BackColor = System.Drawing.Color.SteelBlue;
+            this.base_tbl06_lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.base_tbl06_lblTitle.ForeColor = System.Drawing.Color.White;
+            this.base_tbl06_lblTitle.Location = new System.Drawing.Point(14, 20);
+            this.base_tbl06_lblTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.base_tbl06_lblTitle.Name = "base_tbl06_lblTitle";
+            this.base_tbl06_lblTitle.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.base_tbl06_lblTitle.Size = new System.Drawing.Size(862, 30);
+            this.base_tbl06_lblTitle.TabIndex = 3;
+            this.base_tbl06_lblTitle.Text = "6. 発注担当者情報（契約窓口）";
+            // 
+            // base_tbl06_input
+            // 
+            this.base_tbl06_input.AutoSize = true;
+            this.base_tbl06_input.ColumnCount = 2;
+            this.base_tbl06_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl06_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblBusho, 0, 1);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblTyosaMadoguchi, 0, 0);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_chkTyosaMadoguchi, 1, 0);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblTanto, 0, 2);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblTel, 0, 3);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblFax, 0, 4);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblEmail, 0, 5);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtTanto, 1, 2);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtTel, 1, 3);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtFax, 1, 4);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtEmail, 1, 5);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtBusho, 1, 1);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblZip, 0, 6);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblAddress, 0, 7);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblOrderYakusyoku, 0, 8);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_lblOrderSimei, 0, 9);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtAddress, 1, 7);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtOrderYakusyoku, 1, 8);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_txtOrderSimei, 1, 9);
+            this.base_tbl06_input.Controls.Add(this.base_tbl06_tblAddress, 1, 6);
+            this.base_tbl06_input.Dock = System.Windows.Forms.DockStyle.Top;
+            this.base_tbl06_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_input.Location = new System.Drawing.Point(25, 65);
+            this.base_tbl06_input.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            this.base_tbl06_input.Name = "base_tbl06_input";
+            this.base_tbl06_input.RowCount = 10;
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.base_tbl06_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.base_tbl06_input.Size = new System.Drawing.Size(840, 274);
+            this.base_tbl06_input.TabIndex = 5;
+            // 
+            // base_tbl06_lblBusho
+            // 
+            this.base_tbl06_lblBusho.AutoSize = true;
+            this.base_tbl06_lblBusho.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblBusho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl06_lblBusho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblBusho.Location = new System.Drawing.Point(3, 26);
+            this.base_tbl06_lblBusho.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblBusho.Name = "base_tbl06_lblBusho";
+            this.base_tbl06_lblBusho.Size = new System.Drawing.Size(128, 21);
+            this.base_tbl06_lblBusho.TabIndex = 41;
+            this.base_tbl06_lblBusho.Text = "部署";
+            this.base_tbl06_lblBusho.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_lblTyosaMadoguchi
+            // 
+            this.base_tbl06_lblTyosaMadoguchi.AutoSize = true;
+            this.base_tbl06_lblTyosaMadoguchi.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblTyosaMadoguchi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl06_lblTyosaMadoguchi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblTyosaMadoguchi.Location = new System.Drawing.Point(3, 3);
+            this.base_tbl06_lblTyosaMadoguchi.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblTyosaMadoguchi.Name = "base_tbl06_lblTyosaMadoguchi";
+            this.base_tbl06_lblTyosaMadoguchi.Size = new System.Drawing.Size(128, 17);
+            this.base_tbl06_lblTyosaMadoguchi.TabIndex = 40;
+            this.base_tbl06_lblTyosaMadoguchi.Text = "調査窓口と同じ";
+            this.base_tbl06_lblTyosaMadoguchi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_chkTyosaMadoguchi
+            // 
+            this.base_tbl06_chkTyosaMadoguchi.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl06_chkTyosaMadoguchi.AutoSize = true;
+            this.base_tbl06_chkTyosaMadoguchi.Location = new System.Drawing.Point(137, 4);
+            this.base_tbl06_chkTyosaMadoguchi.Name = "base_tbl06_chkTyosaMadoguchi";
+            this.base_tbl06_chkTyosaMadoguchi.Size = new System.Drawing.Size(15, 14);
+            this.base_tbl06_chkTyosaMadoguchi.TabIndex = 39;
+            this.base_tbl06_chkTyosaMadoguchi.UseVisualStyleBackColor = true;
+            this.base_tbl06_chkTyosaMadoguchi.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            // 
+            // base_tbl06_lblTanto
+            // 
+            this.base_tbl06_lblTanto.AutoSize = true;
+            this.base_tbl06_lblTanto.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblTanto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl06_lblTanto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblTanto.Location = new System.Drawing.Point(3, 53);
+            this.base_tbl06_lblTanto.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblTanto.Name = "base_tbl06_lblTanto";
+            this.base_tbl06_lblTanto.Size = new System.Drawing.Size(128, 21);
+            this.base_tbl06_lblTanto.TabIndex = 34;
+            this.base_tbl06_lblTanto.Text = "担当者名";
+            this.base_tbl06_lblTanto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_lblTel
+            // 
+            this.base_tbl06_lblTel.AutoSize = true;
+            this.base_tbl06_lblTel.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblTel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl06_lblTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblTel.Location = new System.Drawing.Point(3, 80);
+            this.base_tbl06_lblTel.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblTel.Name = "base_tbl06_lblTel";
+            this.base_tbl06_lblTel.Size = new System.Drawing.Size(128, 21);
+            this.base_tbl06_lblTel.TabIndex = 35;
+            this.base_tbl06_lblTel.Text = "電話";
+            this.base_tbl06_lblTel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_lblFax
+            // 
+            this.base_tbl06_lblFax.AutoSize = true;
+            this.base_tbl06_lblFax.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblFax.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl06_lblFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblFax.Location = new System.Drawing.Point(3, 107);
+            this.base_tbl06_lblFax.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblFax.Name = "base_tbl06_lblFax";
+            this.base_tbl06_lblFax.Size = new System.Drawing.Size(128, 21);
+            this.base_tbl06_lblFax.TabIndex = 36;
+            this.base_tbl06_lblFax.Text = "FAX";
+            this.base_tbl06_lblFax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_lblEmail
+            // 
+            this.base_tbl06_lblEmail.AutoSize = true;
+            this.base_tbl06_lblEmail.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblEmail.Location = new System.Drawing.Point(3, 134);
+            this.base_tbl06_lblEmail.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblEmail.Name = "base_tbl06_lblEmail";
+            this.base_tbl06_lblEmail.Size = new System.Drawing.Size(47, 17);
+            this.base_tbl06_lblEmail.TabIndex = 37;
+            this.base_tbl06_lblEmail.Text = "E-Mail";
+            this.base_tbl06_lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_txtTanto
+            // 
+            this.base_tbl06_txtTanto.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtTanto.Location = new System.Drawing.Point(137, 53);
+            this.base_tbl06_txtTanto.MaxLength = 50;
+            this.base_tbl06_txtTanto.Name = "base_tbl06_txtTanto";
+            this.base_tbl06_txtTanto.Size = new System.Drawing.Size(309, 21);
+            this.base_tbl06_txtTanto.TabIndex = 1;
+            // 
+            // base_tbl06_txtTel
+            // 
+            this.base_tbl06_txtTel.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtTel.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.base_tbl06_txtTel.Location = new System.Drawing.Point(137, 80);
+            this.base_tbl06_txtTel.MaxLength = 25;
+            this.base_tbl06_txtTel.Name = "base_tbl06_txtTel";
+            this.base_tbl06_txtTel.Size = new System.Drawing.Size(165, 21);
+            this.base_tbl06_txtTel.TabIndex = 2;
+            // 
+            // base_tbl06_txtFax
+            // 
+            this.base_tbl06_txtFax.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtFax.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.base_tbl06_txtFax.Location = new System.Drawing.Point(137, 107);
+            this.base_tbl06_txtFax.MaxLength = 25;
+            this.base_tbl06_txtFax.Name = "base_tbl06_txtFax";
+            this.base_tbl06_txtFax.Size = new System.Drawing.Size(165, 21);
+            this.base_tbl06_txtFax.TabIndex = 3;
+            // 
+            // base_tbl06_txtEmail
+            // 
+            this.base_tbl06_txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl06_txtEmail.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtEmail.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.base_tbl06_txtEmail.Location = new System.Drawing.Point(137, 134);
+            this.base_tbl06_txtEmail.MaxLength = 50;
+            this.base_tbl06_txtEmail.Name = "base_tbl06_txtEmail";
+            this.base_tbl06_txtEmail.Size = new System.Drawing.Size(570, 21);
+            this.base_tbl06_txtEmail.TabIndex = 4;
+            // 
+            // base_tbl06_txtBusho
+            // 
+            this.base_tbl06_txtBusho.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtBusho.Location = new System.Drawing.Point(137, 26);
+            this.base_tbl06_txtBusho.MaxLength = 50;
+            this.base_tbl06_txtBusho.Name = "base_tbl06_txtBusho";
+            this.base_tbl06_txtBusho.Size = new System.Drawing.Size(570, 21);
+            this.base_tbl06_txtBusho.TabIndex = 0;
+            // 
+            // base_tbl06_lblZip
+            // 
+            this.base_tbl06_lblZip.AutoSize = true;
+            this.base_tbl06_lblZip.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblZip.Location = new System.Drawing.Point(3, 161);
+            this.base_tbl06_lblZip.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblZip.Name = "base_tbl06_lblZip";
+            this.base_tbl06_lblZip.Size = new System.Drawing.Size(64, 17);
+            this.base_tbl06_lblZip.TabIndex = 37;
+            this.base_tbl06_lblZip.Text = "郵便番号";
+            this.base_tbl06_lblZip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_lblAddress
+            // 
+            this.base_tbl06_lblAddress.AutoSize = true;
+            this.base_tbl06_lblAddress.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblAddress.Location = new System.Drawing.Point(3, 196);
+            this.base_tbl06_lblAddress.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblAddress.Name = "base_tbl06_lblAddress";
+            this.base_tbl06_lblAddress.Size = new System.Drawing.Size(36, 17);
+            this.base_tbl06_lblAddress.TabIndex = 37;
+            this.base_tbl06_lblAddress.Text = "住所";
+            this.base_tbl06_lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_lblOrderYakusyoku
+            // 
+            this.base_tbl06_lblOrderYakusyoku.AutoSize = true;
+            this.base_tbl06_lblOrderYakusyoku.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblOrderYakusyoku.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblOrderYakusyoku.Location = new System.Drawing.Point(3, 223);
+            this.base_tbl06_lblOrderYakusyoku.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblOrderYakusyoku.Name = "base_tbl06_lblOrderYakusyoku";
+            this.base_tbl06_lblOrderYakusyoku.Size = new System.Drawing.Size(128, 17);
+            this.base_tbl06_lblOrderYakusyoku.TabIndex = 37;
+            this.base_tbl06_lblOrderYakusyoku.Text = "発注元代表者_役職";
+            this.base_tbl06_lblOrderYakusyoku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_lblOrderSimei
+            // 
+            this.base_tbl06_lblOrderSimei.AutoSize = true;
+            this.base_tbl06_lblOrderSimei.BackColor = System.Drawing.Color.White;
+            this.base_tbl06_lblOrderSimei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.base_tbl06_lblOrderSimei.Location = new System.Drawing.Point(3, 250);
+            this.base_tbl06_lblOrderSimei.Margin = new System.Windows.Forms.Padding(3);
+            this.base_tbl06_lblOrderSimei.Name = "base_tbl06_lblOrderSimei";
+            this.base_tbl06_lblOrderSimei.Size = new System.Drawing.Size(128, 17);
+            this.base_tbl06_lblOrderSimei.TabIndex = 37;
+            this.base_tbl06_lblOrderSimei.Text = "発注元代表者_氏名";
+            this.base_tbl06_lblOrderSimei.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_txtAddress
+            // 
+            this.base_tbl06_txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl06_txtAddress.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtAddress.Location = new System.Drawing.Point(137, 196);
+            this.base_tbl06_txtAddress.MaxLength = 100;
+            this.base_tbl06_txtAddress.Name = "base_tbl06_txtAddress";
+            this.base_tbl06_txtAddress.Size = new System.Drawing.Size(570, 21);
+            this.base_tbl06_txtAddress.TabIndex = 6;
+            // 
+            // base_tbl06_txtOrderYakusyoku
+            // 
+            this.base_tbl06_txtOrderYakusyoku.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl06_txtOrderYakusyoku.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtOrderYakusyoku.Location = new System.Drawing.Point(137, 223);
+            this.base_tbl06_txtOrderYakusyoku.MaxLength = 20;
+            this.base_tbl06_txtOrderYakusyoku.Name = "base_tbl06_txtOrderYakusyoku";
+            this.base_tbl06_txtOrderYakusyoku.Size = new System.Drawing.Size(570, 21);
+            this.base_tbl06_txtOrderYakusyoku.TabIndex = 7;
+            // 
+            // base_tbl06_txtOrderSimei
+            // 
+            this.base_tbl06_txtOrderSimei.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl06_txtOrderSimei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtOrderSimei.Location = new System.Drawing.Point(137, 250);
+            this.base_tbl06_txtOrderSimei.MaxLength = 20;
+            this.base_tbl06_txtOrderSimei.Name = "base_tbl06_txtOrderSimei";
+            this.base_tbl06_txtOrderSimei.Size = new System.Drawing.Size(570, 21);
+            this.base_tbl06_txtOrderSimei.TabIndex = 8;
+            // 
+            // base_tbl06_tblAddress
+            // 
+            this.base_tbl06_tblAddress.ColumnCount = 3;
+            this.base_tbl06_tblAddress.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl06_tblAddress.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl06_tblAddress.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl06_tblAddress.Controls.Add(this.base_tbl06_txtZip, 0, 0);
+            this.base_tbl06_tblAddress.Controls.Add(this.base_tbl06_lblZipNote, 2, 0);
+            this.base_tbl06_tblAddress.Controls.Add(this.base_tbl06_picZip, 1, 0);
+            this.base_tbl06_tblAddress.Location = new System.Drawing.Point(134, 158);
+            this.base_tbl06_tblAddress.Margin = new System.Windows.Forms.Padding(0);
+            this.base_tbl06_tblAddress.Name = "base_tbl06_tblAddress";
+            this.base_tbl06_tblAddress.RowCount = 1;
+            this.base_tbl06_tblAddress.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.base_tbl06_tblAddress.Size = new System.Drawing.Size(451, 35);
+            this.base_tbl06_tblAddress.TabIndex = 5;
+            // 
+            // base_tbl06_txtZip
+            // 
+            this.base_tbl06_txtZip.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.base_tbl06_txtZip.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.base_tbl06_txtZip.Location = new System.Drawing.Point(3, 3);
+            this.base_tbl06_txtZip.MaxLength = 10;
+            this.base_tbl06_txtZip.Name = "base_tbl06_txtZip";
+            this.base_tbl06_txtZip.Size = new System.Drawing.Size(94, 21);
+            this.base_tbl06_txtZip.TabIndex = 0;
+            // 
+            // base_tbl06_lblZipNote
+            // 
+            this.base_tbl06_lblZipNote.AutoSize = true;
+            this.base_tbl06_lblZipNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl06_lblZipNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.base_tbl06_lblZipNote.ForeColor = System.Drawing.Color.Gray;
+            this.base_tbl06_lblZipNote.Location = new System.Drawing.Point(123, 0);
+            this.base_tbl06_lblZipNote.Name = "base_tbl06_lblZipNote";
+            this.base_tbl06_lblZipNote.Size = new System.Drawing.Size(325, 35);
+            this.base_tbl06_lblZipNote.TabIndex = 46;
+            this.base_tbl06_lblZipNote.Text = "※〒から住所を自動入力";
+            this.base_tbl06_lblZipNote.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // base_tbl06_picZip
+            // 
+            this.base_tbl06_picZip.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.base_tbl06_picZip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl06_picZip.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl06_picZip.Image")));
+            this.base_tbl06_picZip.Location = new System.Drawing.Point(102, 9);
+            this.base_tbl06_picZip.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl06_picZip.Name = "base_tbl06_picZip";
+            this.base_tbl06_picZip.Size = new System.Drawing.Size(16, 16);
+            this.base_tbl06_picZip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl06_picZip.TabIndex = 19;
+            this.base_tbl06_picZip.TabStop = false;
+            this.base_tbl06_picZip.Click += new System.EventHandler(this.PictureBoxZip_Click);
+            // 
+            // base_tbl06_parent
+            // 
+            this.base_tbl06_parent.AutoSize = true;
+            this.base_tbl06_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.base_tbl06_parent.Controls.Add(this.base_tbl06);
+            this.base_tbl06_parent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl06_parent.Location = new System.Drawing.Point(921, 1148);
+            this.base_tbl06_parent.Margin = new System.Windows.Forms.Padding(10);
+            this.base_tbl06_parent.Name = "base_tbl06_parent";
+            this.base_tbl06_parent.Size = new System.Drawing.Size(892, 356);
+            this.base_tbl06_parent.TabIndex = 4;
+            // 
+            // base_tbl01_pic_alert_prior
+            // 
+            this.base_tbl01_pic_alert_prior.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl01_pic_alert_prior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl01_pic_alert_prior.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl01_pic_alert_prior.Image")));
+            this.base_tbl01_pic_alert_prior.Location = new System.Drawing.Point(403, 5);
+            this.base_tbl01_pic_alert_prior.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl01_pic_alert_prior.Name = "base_tbl01_pic_alert_prior";
+            this.base_tbl01_pic_alert_prior.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl01_pic_alert_prior.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl01_pic_alert_prior.TabIndex = 50;
+            this.base_tbl01_pic_alert_prior.TabStop = false;
+            this.base_tbl01_pic_alert_prior.Visible = false;
+            // 
+            // txtTayoriData
+            // 
+            this.txtTayoriData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTayoriData.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.txtTayoriData.Location = new System.Drawing.Point(10, 14);
+            this.txtTayoriData.Margin = new System.Windows.Forms.Padding(10);
+            this.txtTayoriData.Name = "txtTayoriData";
+            this.txtTayoriData.PlaceholderColor = System.Drawing.Color.Red;
+            this.txtTayoriData.PlaceholderText = "Tayoriから出力したデータを貼り付けてください（行ごとコピーしたもの）";
+            this.txtTayoriData.Size = new System.Drawing.Size(229, 22);
+            this.txtTayoriData.TabIndex = 5;
+            // 
             // Entry_Input_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -14997,15 +14893,6 @@ namespace TokuchoBugyoK2
             this.base_tbl04_tblOrder.ResumeLayout(false);
             this.base_tbl04_tblOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.base_tbl04_picOrderCd)).EndInit();
-            this.base_tbl06.ResumeLayout(false);
-            this.base_tbl06.PerformLayout();
-            this.base_tbl06_parent.ResumeLayout(false);
-            this.base_tbl06_parent.PerformLayout();
-            this.base_tbl06_input.ResumeLayout(false);
-            this.base_tbl06_input.PerformLayout();
-            this.base_tbl06_tblAddress.ResumeLayout(false);
-            this.base_tbl06_tblAddress.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.base_tbl06_picZip)).EndInit();
             this.base_tblMemo_parent.ResumeLayout(false);
             this.base_tblMemo_parent.PerformLayout();
             this.base_tblMemo.ResumeLayout(false);
@@ -15202,6 +15089,16 @@ namespace TokuchoBugyoK2
             ((System.ComponentModel.ISupportInitialize)(this.te_picKanri)).EndInit();
             this.ErrorBox.ResumeLayout(false);
             this.ErrorBox.PerformLayout();
+            this.base_tbl06.ResumeLayout(false);
+            this.base_tbl06.PerformLayout();
+            this.base_tbl06_input.ResumeLayout(false);
+            this.base_tbl06_input.PerformLayout();
+            this.base_tbl06_tblAddress.ResumeLayout(false);
+            this.base_tbl06_tblAddress.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl06_picZip)).EndInit();
+            this.base_tbl06_parent.ResumeLayout(false);
+            this.base_tbl06_parent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl01_pic_alert_prior)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -15227,7 +15124,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TabControl tab;
         private System.Windows.Forms.TabPage tabPrior;
         private System.Windows.Forms.TableLayoutPanel tblPrior;
-        private System.Windows.Forms.TableLayoutPanel prior_tbl02_parent;
+        private System.Windows.Forms.Panel prior_tbl02_parent;
         private System.Windows.Forms.TableLayoutPanel prior_tbl02;
         private System.Windows.Forms.Label prior_tbl02_lblTitle;
         private System.Windows.Forms.TabPage tabBid;
@@ -15236,7 +15133,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label tblAKInfo_lblJyutakuNoT;
         private System.Windows.Forms.Button btnNewByBranchNo;
         private System.Windows.Forms.TableLayoutPanel tblBid;
-        private System.Windows.Forms.TableLayoutPanel bid_tbl03_parent;
+        private System.Windows.Forms.Panel bid_tbl03_parent;
         private System.Windows.Forms.TableLayoutPanel bid_tbl03;
         private System.Windows.Forms.Label bid_tbl03_lblTitle;
         private System.Windows.Forms.TableLayoutPanel bid_tbl03_input1;
@@ -15252,7 +15149,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label bid_tbl01_lblTokaiOsatu;
         private System.Windows.Forms.ComboBox bid_tbl01_cmbTokaiOsatu;
         private System.Windows.Forms.ComboBox bid_tbl01_cmbOrderIyoku;
-        private System.Windows.Forms.TableLayoutPanel bid_tbl01_parent;
+        private System.Windows.Forms.Panel bid_tbl01_parent;
         private System.Windows.Forms.TableLayoutPanel bid_tbl01;
         private System.Windows.Forms.Label bid_tbl01_lblTitle;
         private System.Windows.Forms.TableLayoutPanel bid_tbl01_input;
@@ -15264,7 +15161,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label tblAKInfo_lblOrderInfo;
         private System.Windows.Forms.Label tblAKInfo_lblAnkenName;
         private C1.Win.C1FlexGrid.C1FlexGrid bid_tbl03_4_c1FlexGrid;
-        private System.Windows.Forms.TableLayoutPanel bid_tbl02_parent;
+        private System.Windows.Forms.Panel bid_tbl02_parent;
         private System.Windows.Forms.TableLayoutPanel bid_tbl02;
         private System.Windows.Forms.Label bid_tbl02_lblTitle;
         private System.Windows.Forms.Label bid_tbl01_lblBidYoteiDt;
@@ -15284,10 +15181,10 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TableLayoutPanel bid_tbl03_input4;
         private System.Windows.Forms.TableLayoutPanel bid_tbl03_input5;
         private System.Windows.Forms.TableLayoutPanel tblCa;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl06_parent;
+        private System.Windows.Forms.Panel ca_tbl06_parent;
         private System.Windows.Forms.TableLayoutPanel ca_tbl06;
         private System.Windows.Forms.Label ca_tbl06_lblTitle;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl03_parent;
+        private System.Windows.Forms.Panel ca_tbl03_parent;
         private System.Windows.Forms.TableLayoutPanel ca_tbl03;
         private System.Windows.Forms.Label ca_tbl03_lblTitle;
         private System.Windows.Forms.TableLayoutPanel ca_tbl03_input;
@@ -15300,7 +15197,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TextBox ca_tbl03_numAmt2;
         private System.Windows.Forms.TextBox ca_tbl03_numAmt3;
         private System.Windows.Forms.Label ca_tbl03_lblAmtHosei;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl01_parent;
+        private System.Windows.Forms.Panel ca_tbl01_parent;
         private System.Windows.Forms.TableLayoutPanel ca_tbl01;
         private System.Windows.Forms.Label ca_tbl01_lblTitle;
         private System.Windows.Forms.TableLayoutPanel ca_tbl01_input;
@@ -15317,7 +15214,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label ca_tbl01_lblZeikomiAmt;
         private System.Windows.Forms.Label ca_tbl01_lblCaAmt;
         private System.Windows.Forms.Label ca_tbl01_lblChangeDt;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl05_parent;
+        private System.Windows.Forms.Panel ca_tbl05_parent;
         private System.Windows.Forms.TableLayoutPanel ca_tbl05;
         private System.Windows.Forms.Label ca_tbl05_lblTitle;
         private System.Windows.Forms.TableLayoutPanel ca_tbl05_input;
@@ -15448,7 +15345,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Button cs_btnKian;
         private System.Windows.Forms.Label ca_lblCsGo2;
         private System.Windows.Forms.Label ca_lblChangeCnt;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl04_parent;
+        private System.Windows.Forms.Panel ca_tbl04_parent;
         private System.Windows.Forms.TableLayoutPanel ca_tbl04;
         private System.Windows.Forms.Label ca_tbl04_lblTitle;
         private System.Windows.Forms.TableLayoutPanel ca_tbl04_input;
@@ -15509,7 +15406,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label ca_tbl06_btnSogoKenkyu;
         private System.Windows.Forms.TabPage tabBase;
         private System.Windows.Forms.TableLayoutPanel tblBase;
-        private System.Windows.Forms.TableLayoutPanel base_tbl07_parent;
+        private System.Windows.Forms.Panel base_tbl07_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl07;
         private System.Windows.Forms.Label base_tbl07_lblComment;
         private System.Windows.Forms.Label base_tbl07_lblTitle;
@@ -15557,7 +15454,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label base_tbl07_2_lblOtherTyosa;
         private System.Windows.Forms.Label base_tbl07_2_lblGokei;
         private System.Windows.Forms.Label base_tbl07_2_lblTitle;
-        private System.Windows.Forms.TableLayoutPanel base_tbl03_parent;
+        private System.Windows.Forms.Panel base_tbl03_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl03;
         private System.Windows.Forms.TableLayoutPanel base_tbl03_input;
         private System.Windows.Forms.TextBox base_tbl03_txtGyomuName;
@@ -15568,7 +15465,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label base_tbl03_lblAnkenMemo;
         private System.Windows.Forms.TextBox base_tbl03_txtAnkenMemo;
         private System.Windows.Forms.Label base_tbl03_lblTitle;
-        private System.Windows.Forms.TableLayoutPanel base_tbl02_parent;
+        private System.Windows.Forms.Panel base_tbl02_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl02;
         private System.Windows.Forms.TableLayoutPanel base_tbl02_input;
         private System.Windows.Forms.TextBox base_tbl02_txtAnkenChangHistory;
@@ -15606,26 +15503,26 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label base_tbl02_lblRenameFolder;
         private System.Windows.Forms.TextBox base_tbl02_txtRenameFolder;
         private System.Windows.Forms.Label base_tbl02_lblTitle;
-        private System.Windows.Forms.TableLayoutPanel base_tbl08_parent;
+        private System.Windows.Forms.Panel base_tbl08_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl08;
         private System.Windows.Forms.TableLayoutPanel base_tbl08_input;
         private System.Windows.Forms.Button base_tbl08_btnAdd;
         private C1.Win.C1FlexGrid.C1FlexGrid base_tbl08_c1FlexGrid;
         private System.Windows.Forms.Label base_tbl08_lblTitle;
-        private System.Windows.Forms.TableLayoutPanel base_tbl01_parent;
+        private System.Windows.Forms.Panel base_tbl01_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl01;
         private System.Windows.Forms.TableLayoutPanel base_tbl01_input;
         private System.Windows.Forms.CheckBox base_tbl01_chkNyusatu;
         private System.Windows.Forms.CheckBox base_tbl01_chkJizendasin;
         private System.Windows.Forms.Label base_tbl01_lblTitle;
-        private System.Windows.Forms.TableLayoutPanel base_tbl05_parent;
+        private System.Windows.Forms.Panel base_tbl05_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl05;
         private System.Windows.Forms.Label base_tbl05_lblTitle;
-        private System.Windows.Forms.TableLayoutPanel base_tbl04_parent;
+        private System.Windows.Forms.Panel base_tbl04_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl04;
         private System.Windows.Forms.Label base_tbl04_lblTitle;
         private System.Windows.Forms.TableLayoutPanel base_tbl06;
-        private System.Windows.Forms.TableLayoutPanel base_tbl06_parent;
+        private System.Windows.Forms.Panel base_tbl06_parent;
         private System.Windows.Forms.Label base_tbl06_lblTitle;
         private System.Windows.Forms.TableLayoutPanel base_tbl06_input;
         private System.Windows.Forms.Label base_tbl06_lblTanto;
@@ -15705,26 +15602,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TableLayoutPanel base_tbl07_input3;
         private System.Windows.Forms.TableLayoutPanel base_tbl07_3_tblOenIrai2;
         private System.Windows.Forms.TableLayoutPanel base_tbl07_3_tblOenIrai3;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkHokaido;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkTohoku;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKitariku;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkChubu;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkOsaka;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkChugoku;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkShikoku;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKyusyu;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkOkinawa;
         private System.Windows.Forms.TableLayoutPanel base_tbl07_3_tblOenIrai1;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKyo1;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKyo2;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKyo3;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKasen;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKyoryo;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkSekisan;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKanji;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKiki;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkKenchiku;
-        //private System.Windows.Forms.CheckBox base_tbl07_3_chkSetubi;
         private System.Windows.Forms.ComboBox base_tbl07_3_cmbOen;
         private System.Windows.Forms.Label base_tbl07_3_lblOenMemo;
         private System.Windows.Forms.Label base_tbl07_3_lblOenIrai;
@@ -15795,17 +15673,17 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label base_tbl07_4_lblAmt3;
         private System.Windows.Forms.Label base_tbl07_4_lblAmt4;
         private System.Windows.Forms.Label base_tbl07_4_lblAmtAll;
-        private System.Windows.Forms.TableLayoutPanel base_tbl09_parent;
+        private System.Windows.Forms.Panel base_tbl09_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl09;
         private System.Windows.Forms.Label base_tbl09_lblTitle;
-        private System.Windows.Forms.TableLayoutPanel base_tblMemo_parent;
+        private System.Windows.Forms.Panel base_tblMemo_parent;
         private System.Windows.Forms.TableLayoutPanel base_tblMemo;
         private System.Windows.Forms.TableLayoutPanel base_tblMemo_input;
         private System.Windows.Forms.Label base_tblMemo_lblTitle;
         private System.Windows.Forms.Label base_tblMemo_lblRow2Note;
         private System.Windows.Forms.Label base_tblMemo_lblRow1Note;
-        private System.Windows.Forms.TableLayoutPanel base_tbl10_parent;
-        private System.Windows.Forms.TableLayoutPanel base_tbl11_parent;
+        private System.Windows.Forms.Panel base_tbl10_parent;
+        private System.Windows.Forms.Panel base_tbl11_parent;
         private System.Windows.Forms.TableLayoutPanel base_tbl11;
         private System.Windows.Forms.TableLayoutPanel base_tbl11_input1;
         private System.Windows.Forms.Label base_tbl11_lblTitle;
@@ -15904,7 +15782,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label base_tbl11_2_lblSpace;
         private System.Windows.Forms.Label base_tbl11_2_lblGokei;
         private System.Windows.Forms.Label base_tbl11_2_numAmtAll;
-        private System.Windows.Forms.TableLayoutPanel prior_tbl01_parent;
+        private System.Windows.Forms.Panel prior_tbl01_parent;
         private System.Windows.Forms.TableLayoutPanel prior_tbl01;
         private System.Windows.Forms.TableLayoutPanel prior_tbl01_input;
         private System.Windows.Forms.TextBox prior_tbl01_txtMitumoriAmt;
@@ -15933,7 +15811,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.ComboBox prior_tbl02_cmbNotOrderReason;
         private System.Windows.Forms.TextBox prior_tbl02_txtOtherNaiyo;
         private System.Windows.Forms.Label prior_tbl02_lblOtherNaiyo;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl02_parent;
+        private System.Windows.Forms.Panel ca_tbl02_parent;
         private System.Windows.Forms.TableLayoutPanel ca_tbl02;
         private System.Windows.Forms.Label ca_tbl02_lblTitle;
         private System.Windows.Forms.TableLayoutPanel ca_tbl02_input1;
@@ -16077,7 +15955,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label ca_tbl02_lblAftCaAmt;
         private System.Windows.Forms.Label ca_tbl02_lblAftCaRate1;
         private System.Windows.Forms.Label ca_tbl02_lblComent2;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl07_parent;
+        private System.Windows.Forms.Panel ca_tbl07_parent;
         private System.Windows.Forms.TableLayoutPanel ca_tbl07;
         private System.Windows.Forms.Label ca_tbl07_btnCopy;
         private System.Windows.Forms.Label ca_tbl07_lblTitle;
@@ -16124,5 +16002,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TextBox base_tbl02_txtKeiyakuTantoBusho;
         private System.Windows.Forms.TextBox base_tbl02_txtAnkenChangerCD;
         private System.Windows.Forms.Button btnNewByOrder;
+        private System.Windows.Forms.PictureBox base_tbl01_pic_alert_prior;
     }
 }

@@ -1287,7 +1287,8 @@ namespace TokuchoBugyoK2
                     cmd.ExecuteNonQuery();
                 }
                 // ListID 230:エントリくん一覧出力(新）
-                if (ListID == 230)
+                // えんとり君修正STEP3 「1002:エントリくん一覧出力(フラット版）」と「1003:経理向け帳票」追加
+                if (ListID == 230 || ListID == 1002 || ListID == 1003)
                 {
                     cmd.CommandText = "INSERT INTO T_ReportWorkDetail(" +
                     "ReportWorkID, ReportWorkDetailID, ReportWorkDetailColumn, ReportWorkDetailType, ReportWorkDetailStr, ReportWorkDetailInt, ReportWorkDetailDate " +

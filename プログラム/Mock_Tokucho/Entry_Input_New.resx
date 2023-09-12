@@ -118,162 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bid_tbl03_4_c1FlexGrid.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
-        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
-        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
-        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
-        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
-        GDCDuoSBlKdRpk0nJrTJs2pAADs=
-</value>
-  </data>
-  <data name="bid_tbl03_4_c1FlexGrid.ColumnInfo" xml:space="preserve">
-    <value>9,1,0,0,0,-1,Columns:0{Width:15;AllowSorting:False;AllowDragging:False;AllowResizing:False;AllowEditing:False;}	1{Width:56;Caption:"削除";Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;ImageAlign:CenterCenter;Trimming:None;BackgroundImage:R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAOAAAIIfkEAQAAAQAsAAAAAA0ADgAAAgyEj6nL7Q+jnLTaVwAAOw==;BackgroundImageLayout:Hide;";}	2{Width:71;Caption:"落札順位";Style:"ComboList:""1|2|3|4|5|6|7|8|9|10"";Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	3{Width:71;Caption:"落札状況";Style:"DataType:System.Boolean;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;ImageAlign:CenterCenter;";}	4{Caption:"応札者ID";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	5{Width:600;Caption:"応札者";Style:"ComboList:""..."";Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;ImageAlign:RightCenter;Trimming:None;BackgroundImageLayout:Hide;";}	6{Width:128;AllowSorting:False;Caption:"応札額(税抜)";MaxLength:15;AllowResizing:False;Style:"Format:""C0"";DataType:System.Int64;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	7{Width:776;Caption:"コメント";Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:LeftCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	8{Caption:"企業CD";Visible:False;}	</value>
-  </data>
-  <data name="bid_tbl03_4_c1FlexGrid.StyleInfo" xml:space="preserve">
-    <value>Normal{TextAlign:CenterCenter;}	Alternate{}	Fixed{Font:Microsoft Sans Serif, 11.111pt;BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{Font:Microsoft Sans Serif, 11.111pt;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
-  </data>
-  <data name="ca_tbl05_picKanriDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
-        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picKanri.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
-        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
-        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
-        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
-        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
-        GDCDuoSBlKdRpk0nJrTJs2pAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picSyosaDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
-        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picSyosa.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
-        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
-        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
-        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
-        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
-        GDCDuoSBlKdRpk0nJrTJs2pAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picSinsaDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
-        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picSinsa.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
-        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
-        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
-        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
-        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
-        GDCDuoSBlKdRpk0nJrTJs2pAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picGyomuDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
-        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picGyomu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
-        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
-        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
-        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
-        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
-        GDCDuoSBlKdRpk0nJrTJs2pAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picMadoguchiDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
-        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
-</value>
-  </data>
-  <data name="ca_tbl05_picMadoguchi.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
-        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
-        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
-        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
-        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
-        GDCDuoSBlKdRpk0nJrTJs2pAADs=
-</value>
-  </data>
   <data name="picLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAALUAAAAuCAYAAABu8lgpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -538,6 +382,20 @@
   <data name="base_tbl08_c1FlexGrid.StyleInfo" xml:space="preserve">
     <value>Normal{}	Alternate{}	Fixed{Font:Microsoft Sans Serif, 10.833pt;BackColor:SteelBlue;ForeColor:White;TextAlign:CenterCenter;ImageAlign:CenterTop;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;Border:Flat,2,White,Both;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
   </data>
+  <data name="base_tbl01_pic_alert_prior.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAdFJREFUOE/dkztIw1AUhusDB3FUUFcR3FQQBRcHcdJZnXSRIi4iiIiimyLiJJVq
+        rFiL1ie+H3X1XRw6+QpIqyi0kEInqU2b33uSa21Nqgid/OBAc849H/eniQlp5h8I/X4/ZixdmJ8bgyzL
+        vJuaX4U2YQRvjzkQL4rgch3xbmp+FHo8HpzulyH2kgHl1QSH0IhQKMSnxqQURiIRFtUM+TkTA32tsFvr
+        IN3mwblk4yeMSSmkeOJlIRNmobOzAxOjTQC75Z6zCl6vl5/SYyikWI6ZRlVA1dPdBmGyXv0d9mVDsA5B
+        URR+OhlD4RKLFWTxPoXDA81YmauNP7uPS+B2u/npZHRCikOxPpepKO7BSmX8WXkxYXaqHeFwmG99kSSk
+        GBTnncVKFFJc+rcTe77rAuzubvPNL5KEFIPiJC5SbSzU4O6sWNd32hogSRLf1mATDbq+wGLQ+/Z98WSv
+        DPfnemHoIRcOu4UbNNhEg67vu87XLUk3eTCbzRjsb9HNqFzr5RBFkVu4kL5Ru1V7z76Xwr6STUc1ro5K
+        DefyUxYW5sdVGcG6QCwWw7SlF4erFXCtlf+pdharsLW1rMoIVUhEo1EEAoE/VzAY5AaNuDBdpFkIfAAG
+        0orkKQNoGgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="base_tbl05_picZip.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
@@ -578,7 +436,7 @@
         GDCDuoSBlKdRpk0nJrTJs2pAADs=
 </value>
   </data>
-  <data name="base_tbl06_picZip.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="bid_tbl03_4_c1FlexGrid.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
         +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
@@ -597,6 +455,12 @@
         NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
         GDCDuoSBlKdRpk0nJrTJs2pAADs=
 </value>
+  </data>
+  <data name="bid_tbl03_4_c1FlexGrid.ColumnInfo" xml:space="preserve">
+    <value>9,1,0,0,0,-1,Columns:0{Width:15;AllowSorting:False;AllowDragging:False;AllowResizing:False;AllowEditing:False;}	1{Width:56;Caption:"削除";Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;ImageAlign:CenterCenter;Trimming:None;BackgroundImage:R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAOAAAIIfkEAQAAAQAsAAAAAA0ADgAAAgyEj6nL7Q+jnLTaVwAAOw==;BackgroundImageLayout:Hide;";}	2{Width:71;Caption:"落札順位";Style:"ComboList:""1|2|3|4|5|6|7|8|9|10"";Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	3{Width:71;Caption:"落札状況";Style:"DataType:System.Boolean;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;ImageAlign:CenterCenter;";}	4{Caption:"応札者ID";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	5{Width:600;Caption:"応札者";Style:"ComboList:""..."";Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;ImageAlign:RightCenter;Trimming:None;BackgroundImageLayout:Hide;";}	6{Width:128;AllowSorting:False;Caption:"応札額(税抜)";MaxLength:15;AllowResizing:False;Style:"Format:""C0"";DataType:System.Int64;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	7{Width:776;Caption:"コメント";Style:"Font:ＭＳ Ｐゴシック, 10pt;Margins:1, 0, 0, 0;TextAlign:LeftCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	8{Caption:"企業CD";Visible:False;}	</value>
+  </data>
+  <data name="bid_tbl03_4_c1FlexGrid.StyleInfo" xml:space="preserve">
+    <value>Normal{TextAlign:CenterCenter;}	Alternate{}	Fixed{Font:Microsoft Sans Serif, 11.111pt;BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{Font:Microsoft Sans Serif, 11.111pt;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
   </data>
   <data name="ca_tbl06_c1FlexGrid.ColumnInfo" xml:space="preserve">
     <value>33,1,0,0,0,-1,Columns:0{Width:59;}	1{AllowSorting:False;Caption:"調査部";AllowDragging:False;AllowResizing:False;Style:"Format:""d"";DataType:System.DateTime;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";}	2{AllowSorting:False;Caption:"調査部";AllowDragging:False;AllowResizing:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	3{Width:128;AllowSorting:False;Caption:"調査部";MaxLength:15;AllowDragging:False;AllowResizing:False;Style:"Format:""C0"";DataType:System.Int64;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	4{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	5{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	6{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	7{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	8{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	9{AllowSorting:False;Caption:"事業普及部";AllowDragging:False;AllowResizing:False;Style:"Format:""d"";DataType:System.DateTime;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";}	10{AllowSorting:False;Caption:"事業普及部";AllowDragging:False;AllowResizing:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	11{Width:128;AllowSorting:False;Caption:"事業普及部";MaxLength:15;AllowDragging:False;AllowResizing:False;Style:"Format:""C0"";DataType:System.Int64;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	12{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	13{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	14{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	15{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	16{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	17{AllowSorting:False;Caption:"情報システム部";AllowDragging:False;AllowResizing:False;Style:"Format:""d"";DataType:System.DateTime;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";}	18{AllowSorting:False;Caption:"情報システム部";AllowDragging:False;AllowResizing:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	19{Width:128;AllowSorting:False;Caption:"情報システム部";MaxLength:15;AllowDragging:False;AllowResizing:False;Style:"Format:""C0"";DataType:System.Int64;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	20{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	21{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	22{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	23{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	24{Visible:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	25{AllowSorting:False;Caption:"総合研究所";AllowDragging:False;AllowResizing:False;Style:"Format:""d"";DataType:System.DateTime;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:LeftCenter;";}	26{AllowSorting:False;Caption:"総合研究所";AllowDragging:False;AllowResizing:False;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 10pt;";}	27{Width:128;AllowSorting:False;Caption:"総合研究所";MaxLength:15;AllowDragging:False;AllowResizing:False;Style:"Format:""C0"";DataType:System.Int64;Font:ＭＳ Ｐゴシック, 10pt;TextAlign:GeneralCenter;";}	28{Visible:False;Style:"Font:Microsoft Sans Serif, 46.143pt;";}	29{Visible:False;Style:"Font:Microsoft Sans Serif, 46.143pt;";}	30{Visible:False;Style:"Font:Microsoft Sans Serif, 46.143pt;";}	31{Visible:False;Style:"Font:Microsoft Sans Serif, 46.143pt;";}	32{Visible:False;Style:"Font:Microsoft Sans Serif, 46.143pt;";}	</value>
@@ -650,6 +514,136 @@
   </data>
   <data name="ca_tbl05_txtTanto_c1FlexGrid.StyleInfo" xml:space="preserve">
     <value>Normal{}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="ca_tbl05_picKanriDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
+        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picKanri.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
+        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
+        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
+        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
+        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
+        GDCDuoSBlKdRpk0nJrTJs2pAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picSyosaDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
+        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picSyosa.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
+        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
+        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
+        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
+        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
+        GDCDuoSBlKdRpk0nJrTJs2pAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picSinsaDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
+        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picSinsa.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
+        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
+        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
+        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
+        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
+        GDCDuoSBlKdRpk0nJrTJs2pAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picGyomuDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
+        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picGyomu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
+        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
+        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
+        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
+        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
+        GDCDuoSBlKdRpk0nJrTJs2pAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picMadoguchiDel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhDQAOAIEBALG91v///wAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAABACwAAAAADQAO
+        AAAILAADCBxIsKDBgwgPAhi40CCAhwEeNiwoESJCiQkjWlRYkeNCjA4ZZhxJMmNAADs=
+</value>
+  </data>
+  <data name="ca_tbl05_picMadoguchi.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
+        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
+        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
+        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
+        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
+        GDCDuoSBlKdRpk0nJrTJs2pAADs=
+</value>
   </data>
   <data name="te_picSyosa.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -710,6 +704,26 @@
 </value>
   </data>
   <data name="te_picKanri.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
+        +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK
+        8pLB8JC/8Lva9srj+dfr+9Ho+7DU9bva94e575bC8KbN87bY9qjO85zG8pzH8bXW9pXD8aDJ89Ho+qzS
+        9YO37tnt+5LA8LjY9qzR9cbg+JC/78De97HU9czl+qTM83207Yy97TyP4P///wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAABGACwAAAAAEAAQAAAIYgCNCBxIsKBBIz2KFOlxkGDCDAsW
+        NkRYBKICBRINPlxwUYGFjAM3drRgISHDgRU5XiTZw4SJIg4VFvFYUubJgkVYvpxoJGfLnRMXugTasMhQ
+        GDCDuoSBlKdRpk0nJrTJs2pAADs=
+</value>
+  </data>
+  <data name="base_tbl06_picZip.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
         +oa676DJ8r3c+Mbh+bfX9sDd98zk+b7c95XD8Nvu/JzH8nyz7Iu979Pp+53I8nqy7MLf+NTq+5vH8qDK

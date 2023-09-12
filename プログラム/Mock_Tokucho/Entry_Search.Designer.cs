@@ -1761,11 +1761,10 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 245F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 469F));
             this.tableLayoutPanel3.Controls.Add(this.button4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.button2, 2, 0);
@@ -1848,7 +1847,7 @@ namespace TokuchoBugyoK2
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(1010, 10);
+            this.button5.Location = new System.Drawing.Point(1060, 10);
             this.button5.Margin = new System.Windows.Forms.Padding(10);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(180, 30);
@@ -1881,7 +1880,7 @@ namespace TokuchoBugyoK2
             this.comboBox13.Location = new System.Drawing.Point(802, 14);
             this.comboBox13.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(196, 22);
+            this.comboBox13.Size = new System.Drawing.Size(246, 22);
             this.comboBox13.TabIndex = 36;
             this.comboBox13.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             // 
@@ -1890,7 +1889,7 @@ namespace TokuchoBugyoK2
             this.label37.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(1203, 17);
+            this.label37.Location = new System.Drawing.Point(1253, 17);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(135, 16);
             this.label37.TabIndex = 39;
@@ -1900,7 +1899,7 @@ namespace TokuchoBugyoK2
             // 
             this.ankenInput2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ankenInput2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ankenInput2.Location = new System.Drawing.Point(1358, 14);
+            this.ankenInput2.Location = new System.Drawing.Point(1408, 14);
             this.ankenInput2.Name = "ankenInput2";
             this.ankenInput2.Size = new System.Drawing.Size(107, 22);
             this.ankenInput2.TabIndex = 40;
