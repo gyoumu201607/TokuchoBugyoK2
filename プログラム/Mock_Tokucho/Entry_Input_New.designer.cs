@@ -133,9 +133,12 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblAmt4 = new System.Windows.Forms.Label();
             this.base_tbl07_4_lblAmtAll = new System.Windows.Forms.Label();
             this.base_tbl07_input3 = new System.Windows.Forms.TableLayoutPanel();
-            this.base_tbl07_3_tblOenIrai3 = new System.Windows.Forms.TableLayoutPanel();
-            this.base_tbl07_3_tblOenIrai2 = new System.Windows.Forms.TableLayoutPanel();
-            this.base_tbl07_3_tblOenIrai1 = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl07_3_picOenIraiAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl07_3_picOenMemoAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl07_3_picOenAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl07_3_tblOenIrai3 = new System.Windows.Forms.Panel();
+            this.base_tbl07_3_tblOenIrai2 = new System.Windows.Forms.Panel();
+            this.base_tbl07_3_tblOenIrai1 = new System.Windows.Forms.Panel();
             this.base_tbl07_3_cmbOen = new System.Windows.Forms.ComboBox();
             this.base_tbl07_3_lblOenMemo = new System.Windows.Forms.Label();
             this.base_tbl07_3_lblOenIrai = new System.Windows.Forms.Label();
@@ -145,6 +148,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_lblComment = new System.Windows.Forms.Label();
             this.base_tbl07_lblTitle = new System.Windows.Forms.Label();
             this.base_tbl07_input1 = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl07_1_picPercentAlert = new System.Windows.Forms.PictureBox();
             this.base_tbl07_1_lblTitle = new System.Windows.Forms.Label();
             this.base_tbl07_1_numPercent1 = new System.Windows.Forms.TextBox();
             this.base_tbl07_1_numPercent2 = new System.Windows.Forms.TextBox();
@@ -159,6 +163,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_1_lblGokei = new System.Windows.Forms.Label();
             this.base_tbl07_1_numPercentAll = new System.Windows.Forms.Label();
             this.base_tbl07_input2 = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl07_2_picPercentAlert = new System.Windows.Forms.PictureBox();
             this.base_tbl07_2_numPercent1 = new System.Windows.Forms.TextBox();
             this.base_tbl07_2_lblSizaiTyosa = new System.Windows.Forms.Label();
             this.base_tbl07_2_lblEizenTyosa = new System.Windows.Forms.Label();
@@ -367,6 +372,13 @@ namespace TokuchoBugyoK2
             this.base_tbl09_parent = new System.Windows.Forms.Panel();
             this.base_tbl09 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl09_input = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl09_picOthenCommentAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl09_picNotOrderReasonAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl09_picOrderYoteiDtAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl09_picJizenDasinIraiDtAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl09_picNotOrderStatsAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl09_picOrderIyokuAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl09_picSankomitumoriAlert = new System.Windows.Forms.PictureBox();
             this.base_tbl09_lblOthenComment = new System.Windows.Forms.Label();
             this.base_tbl09_numSankomitumoriAmt = new System.Windows.Forms.TextBox();
             this.base_tbl09_lblSankomitumoriAmt = new System.Windows.Forms.Label();
@@ -387,6 +399,18 @@ namespace TokuchoBugyoK2
             this.base_tbl10_parent = new System.Windows.Forms.Panel();
             this.base_tbl10 = new System.Windows.Forms.TableLayoutPanel();
             this.base_tbl10_input = new System.Windows.Forms.TableLayoutPanel();
+            this.base_tbl10_picKinsiNaiyoAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picTokaiOsatuAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picRakusatuAmtStatsAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picRakusatuStatsAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picNyusatuStatsAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picKinsiUmuAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picOrderIyokuAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picSankoMitumoriAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picNyusatuDtAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picLowestUmuAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picNyusatuHosikiAlert = new System.Windows.Forms.PictureBox();
+            this.base_tbl10_picOrderKubunAlert = new System.Windows.Forms.PictureBox();
             this.base_tbl10_lblRakusatuAmtStats = new System.Windows.Forms.Label();
             this.base_tbl10_cmbRakusatuAmtStats = new System.Windows.Forms.ComboBox();
             this.base_tbl10_txtRakusatuAmt = new System.Windows.Forms.TextBox();
@@ -472,6 +496,10 @@ namespace TokuchoBugyoK2
             this.prior_tbl02_parent = new System.Windows.Forms.Panel();
             this.prior_tbl02 = new System.Windows.Forms.TableLayoutPanel();
             this.prior_tbl02_input = new System.Windows.Forms.TableLayoutPanel();
+            this.prior_tbl02_picNotOrderStatsAlert = new System.Windows.Forms.PictureBox();
+            this.prior_tbl02_picNotOrderDtAlert = new System.Windows.Forms.PictureBox();
+            this.prior_tbl02_picNotOrderReasonAlert = new System.Windows.Forms.PictureBox();
+            this.prior_tbl02_picOtherNaiyoAlert = new System.Windows.Forms.PictureBox();
             this.prior_tbl02_txtOtherNaiyo = new System.Windows.Forms.TextBox();
             this.prior_tbl02_lblOtherNaiyo = new System.Windows.Forms.Label();
             this.prior_tbl02_txtAnkenMemo = new System.Windows.Forms.TextBox();
@@ -486,6 +514,11 @@ namespace TokuchoBugyoK2
             this.prior_tbl01_parent = new System.Windows.Forms.Panel();
             this.prior_tbl01 = new System.Windows.Forms.TableLayoutPanel();
             this.prior_tbl01_input = new System.Windows.Forms.TableLayoutPanel();
+            this.prior_tbl01_picOrderYoteiDtAlert = new System.Windows.Forms.PictureBox();
+            this.prior_tbl01_picMitumoriAmtAlert = new System.Windows.Forms.PictureBox();
+            this.prior_tbl01_picOrderIyokuAlert = new System.Windows.Forms.PictureBox();
+            this.prior_tbl01_picMitumoriAlert = new System.Windows.Forms.PictureBox();
+            this.prior_tbl01_picDasinIraiDtAlert = new System.Windows.Forms.PictureBox();
             this.prior_tbl01_lblMitumoriAmtComment = new System.Windows.Forms.Label();
             this.prior_tbl01_lblMitumoriComment = new System.Windows.Forms.Label();
             this.prior_tbl01_txtAnkenMemo = new System.Windows.Forms.TextBox();
@@ -506,6 +539,9 @@ namespace TokuchoBugyoK2
             this.bid_tbl02_parent = new System.Windows.Forms.Panel();
             this.bid_tbl02 = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl02_input = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl02_picOtherNaiyoAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl02_picKinsiNaiyoAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl02_picKinsiUmuAlert = new System.Windows.Forms.PictureBox();
             this.bid_tbl02_txtOtherNaiyo = new System.Windows.Forms.TextBox();
             this.bid_tbl02_lblOtherNaiyo = new System.Windows.Forms.Label();
             this.bid_tbl02_cmbKinsiUmu = new System.Windows.Forms.ComboBox();
@@ -517,11 +553,19 @@ namespace TokuchoBugyoK2
             this.bid_tbl03 = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl03_lblTitle = new System.Windows.Forms.Label();
             this.bid_tbl03_input1 = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl03_1_picBidStatusAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl03_1_picBidResultDtAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl03_1_tblRakusatuAmtStatus = new System.Windows.Forms.Panel();
+            this.bid_tbl03_1_cmbRakusatuAmtStatus = new System.Windows.Forms.ComboBox();
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl03_1_tblRakusatuStatus = new System.Windows.Forms.Panel();
+            this.bid_tbl03_1_cmbRakusatuStatus = new System.Windows.Forms.ComboBox();
+            this.bid_tbl03_1_picRakusatuStatusAlert = new System.Windows.Forms.PictureBox();
             this.bid_tbl03_1_lblBidMemo = new System.Windows.Forms.Label();
             this.bid_tbl03_1_txtBidMemo = new System.Windows.Forms.TextBox();
-            this.bid_tbl03_1_cmbRakusatuStatus = new System.Windows.Forms.ComboBox();
             this.bid_tbl03_1_lblBidStatus = new System.Windows.Forms.Label();
-            this.bid_tbl03_1_tblRakusatuSya = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl03_1_tblRakusatuSya = new System.Windows.Forms.Panel();
+            this.bid_tbl03_1_picRakusatuSyaAlert = new System.Windows.Forms.PictureBox();
             this.bid_tbl03_1_lblRakusatuSyaComment = new System.Windows.Forms.Label();
             this.bid_tbl03_1_txtRakusatuSya = new System.Windows.Forms.TextBox();
             this.bid_tbl03_1_lblRakusatuSya = new System.Windows.Forms.Label();
@@ -532,17 +576,19 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_dtpBidResultDt = new System.Windows.Forms.DateTimePicker();
             this.bid_tbl03_1_lblBidResultDt = new System.Windows.Forms.Label();
             this.bid_tbl03_1_cmbBidStatus = new System.Windows.Forms.ComboBox();
-            this.bid_tbl03_1_tblYoteiPrice = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl03_1_tblYoteiPrice = new System.Windows.Forms.Panel();
+            this.bid_tbl03_1_picYoteiPriceAlert = new System.Windows.Forms.PictureBox();
             this.bid_tbl03_1_txtYoteiPrice = new System.Windows.Forms.TextBox();
             this.bid_tbl03_1_lblYoteiPriceComment = new System.Windows.Forms.Label();
-            this.bid_tbl03_1_tblOsatuNum = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl03_1_tblOsatuNum = new System.Windows.Forms.Panel();
+            this.bid_tbl03_1_picOsatuNumAlert = new System.Windows.Forms.PictureBox();
             this.bid_tbl03_1_txtOsatuNum = new System.Windows.Forms.TextBox();
             this.bid_tbl03_1_lblOsatuNumComment = new System.Windows.Forms.Label();
-            this.bid_tbl03_1_tblRakusatuAmt = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl03_1_tblRakusatuAmt = new System.Windows.Forms.Panel();
+            this.bid_tbl03_1_picRakusatuAmtAlert = new System.Windows.Forms.PictureBox();
             this.bid_tbl03_1_numRakusatuAmt = new System.Windows.Forms.TextBox();
             this.bid_tbl03_1_lblRakusatuAmtComment = new System.Windows.Forms.Label();
             this.bid_tbl03_1_lblRakusatuStatus = new System.Windows.Forms.Label();
-            this.bid_tbl03_1_cmbRakusatuAmtStatus = new System.Windows.Forms.ComboBox();
             this.bid_tbl03_input4 = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl03_4_btnAdd = new System.Windows.Forms.Button();
             this.bid_tbl03_4_dtpUpdDate = new System.Windows.Forms.DateTimePicker();
@@ -556,6 +602,15 @@ namespace TokuchoBugyoK2
             this.bid_tbl01 = new System.Windows.Forms.TableLayoutPanel();
             this.bid_tbl01_lblTitle = new System.Windows.Forms.Label();
             this.bid_tbl01_input = new System.Windows.Forms.TableLayoutPanel();
+            this.bid_tbl01_picBidInfoDtAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl01_picTokaiOsatuAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl01_picBidYoteiDtAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl01_picMitumoriAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl01_picOrderIyokuAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl01_picMitumoriAmtAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl01_picLowestUmuAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl01_picOrderKubunAlert = new System.Windows.Forms.PictureBox();
+            this.bid_tbl01_picBidhosikiAlert = new System.Windows.Forms.PictureBox();
             this.bid_tbl01_lblMitumoriAmtComment = new System.Windows.Forms.Label();
             this.bid_tbl01_lblMitumoriComment = new System.Windows.Forms.Label();
             this.bid_tbl01_lblMitumoriAmt = new System.Windows.Forms.Label();
@@ -635,6 +690,22 @@ namespace TokuchoBugyoK2
             this.ca_tbl01 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl01_lblTitle = new System.Windows.Forms.Label();
             this.ca_tbl01_input = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl01_picRiyuAlert = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ca_tbl01_cmbAnkenKubun = new System.Windows.Forms.ComboBox();
+            this.ca_tbl01_picAnkenKubunAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl01_tblKokiTo = new System.Windows.Forms.Panel();
+            this.ca_tbl01_dtpKokiTo = new System.Windows.Forms.DateTimePicker();
+            this.ca_tbl01_picKokiToAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl01_tblKokiFrom = new System.Windows.Forms.Panel();
+            this.ca_tbl01_dtpKokiFrom = new System.Windows.Forms.DateTimePicker();
+            this.ca_tbl01_picKokiFromAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl01_tblChangeDt = new System.Windows.Forms.Panel();
+            this.ca_tbl01_dtpChangeDt = new System.Windows.Forms.DateTimePicker();
+            this.ca_tbl01_picChangeDtAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl01_tblJyutakuGaiAmt = new System.Windows.Forms.Panel();
+            this.ca_tbl01_txtJyutakuGaiAmt = new System.Windows.Forms.TextBox();
+            this.ca_tbl01_picJyutakuGaiAmtAlert = new System.Windows.Forms.PictureBox();
             this.ca_tbl01_txtOtherNaiyo = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblOtherNaiyo = new System.Windows.Forms.Label();
             this.ca_tbl01_cmbKinsiNaiyo = new System.Windows.Forms.ComboBox();
@@ -645,7 +716,8 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_numChangeAmt = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblChangeAmtComment = new System.Windows.Forms.Label();
             this.ca_tbl01_lblChangeAmt = new System.Windows.Forms.Label();
-            this.ca_tbl01_tblKian = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl01_tblKian = new System.Windows.Forms.Panel();
+            this.ca_tbl01_picKianDtAlert = new System.Windows.Forms.PictureBox();
             this.ca_tbl01_dtpKianDt = new System.Windows.Forms.DateTimePicker();
             this.ca_tbl01_lblKianDt = new System.Windows.Forms.Label();
             this.ca_tbl01_chkKian = new System.Windows.Forms.CheckBox();
@@ -660,24 +732,21 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblJyutakuAmt = new System.Windows.Forms.Label();
             this.ca_tbl01_lblAnkenKubun = new System.Windows.Forms.Label();
             this.ca_tbl01_lblChangeDt = new System.Windows.Forms.Label();
-            this.ca_tbl01_dtpChangeDt = new System.Windows.Forms.DateTimePicker();
             this.ca_tbl01_lblSalesYear = new System.Windows.Forms.Label();
             this.ca_tbl01_lblKokiTo = new System.Windows.Forms.Label();
             this.ca_tbl01_lblKokiFrom = new System.Windows.Forms.Label();
-            this.ca_tbl01_dtpKokiFrom = new System.Windows.Forms.DateTimePicker();
-            this.ca_tbl01_dtpKokiTo = new System.Windows.Forms.DateTimePicker();
             this.ca_tbl01_lblCaKubun = new System.Windows.Forms.Label();
             this.ca_tbl01_lblOrder = new System.Windows.Forms.Label();
             this.ca_tbl01_txtOrderKamei = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblAnkenMemo = new System.Windows.Forms.Label();
             this.ca_tbl01_txtAnkenMemo = new System.Windows.Forms.TextBox();
-            this.ca_tbl01_cmbAnkenKubun = new System.Windows.Forms.ComboBox();
             this.ca_tbl01_cmbCaKubun = new System.Windows.Forms.ComboBox();
             this.ca_tbl01_lblTosyo = new System.Windows.Forms.Label();
             this.ca_tbl01_txtAnkenName = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblCaAmt = new System.Windows.Forms.Label();
-            this.ca_tbl01_tblCaAmt_parent = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl01_tblCaAmt_parent = new System.Windows.Forms.Panel();
             this.ca_tbl01_tblCaAmt = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl01_picZeikomiAmtAlert = new System.Windows.Forms.PictureBox();
             this.ca_tbl01_tblTax = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl01_txtTax = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblTaxUnit = new System.Windows.Forms.Label();
@@ -689,7 +758,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_txtZeikomiAmt = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblZeinukiAmt = new System.Windows.Forms.Label();
             this.ca_tbl01_lblJyutakuGaiAmt = new System.Windows.Forms.Label();
-            this.ca_tbl01_txtJyutakuGaiAmt = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblSiryo = new System.Windows.Forms.Label();
             this.ca_tbl01_lblBiko = new System.Windows.Forms.Label();
             this.ca_tbl01_txtBiko = new System.Windows.Forms.TextBox();
@@ -713,18 +781,19 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_txtTosyo = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblRiyuComment = new System.Windows.Forms.Label();
             this.ca_tbl01_lblAnkenName = new System.Windows.Forms.Label();
-            this.ca_tbl01_hidKuroden = new System.Windows.Forms.TextBox();
-            this.ca_tbl01_tblJyutakuAmt = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl01_tblJyutakuAmt = new System.Windows.Forms.Panel();
+            this.ca_tbl01_picJyutakuAmtAlert = new System.Windows.Forms.PictureBox();
             this.ca_tbl01_txtJyutakuAmt = new System.Windows.Forms.TextBox();
             this.ca_tbl01_lblJyutakuAmtComment = new System.Windows.Forms.Label();
-            this.ca_tbl01_tblRibc = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl01_tblRibc = new System.Windows.Forms.Panel();
             this.ca_tbl01_lblRibcAri = new System.Windows.Forms.Label();
             this.ca_tbl01_chkSasya = new System.Windows.Forms.CheckBox();
             this.ca_tbl01_lblSasya = new System.Windows.Forms.Label();
             this.ca_tbl01_lblKanrisya = new System.Windows.Forms.Label();
             this.ca_tbl01_chkRibcAri = new System.Windows.Forms.CheckBox();
-            this.ca_tbl01_hidResetAnkenno = new System.Windows.Forms.TextBox();
             this.ca_tbl01_hidAkaden = new System.Windows.Forms.TextBox();
+            this.ca_tbl01_hidKuroden = new System.Windows.Forms.TextBox();
+            this.ca_tbl01_hidResetAnkenno = new System.Windows.Forms.TextBox();
             this.ca_tbl05_parent = new System.Windows.Forms.Panel();
             this.ca_tbl05 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl05_lblTitle = new System.Windows.Forms.Label();
@@ -755,11 +824,13 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_picSinsa = new System.Windows.Forms.PictureBox();
             this.ca_tbl05_txtSinsaCD = new System.Windows.Forms.TextBox();
             this.ca_tbl05_tblGyomu = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl05_picGyomuAlert = new System.Windows.Forms.PictureBox();
             this.ca_tbl05_picGyomuDel = new System.Windows.Forms.PictureBox();
             this.ca_tbl05_txtGyomu = new System.Windows.Forms.TextBox();
             this.ca_tbl05_picGyomu = new System.Windows.Forms.PictureBox();
             this.ca_tbl05_txtGyomuCD = new System.Windows.Forms.TextBox();
             this.ca_tbl05_tblMadoguchi = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl05_picMadoguchiAlert = new System.Windows.Forms.PictureBox();
             this.ca_tbl05_picMadoguchiDel = new System.Windows.Forms.PictureBox();
             this.ca_tbl05_txtMadoguchi = new System.Windows.Forms.TextBox();
             this.ca_tbl05_picMadoguchi = new System.Windows.Forms.PictureBox();
@@ -853,6 +924,9 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_lblTitle = new System.Windows.Forms.Label();
             this.ca_tbl02_lblComent1 = new System.Windows.Forms.Label();
             this.ca_tbl02_input1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl02_AftCaBm_picPercentAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl02_AftCaBm_picAmtAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert = new System.Windows.Forms.PictureBox();
             this.ca_tbl02_AftCaBm_numPercentAll = new System.Windows.Forms.Label();
             this.ca_tbl02_AftCaBm_numPercent4 = new System.Windows.Forms.TextBox();
             this.ca_tbl02_AftCaBm_numPercent3 = new System.Windows.Forms.TextBox();
@@ -907,6 +981,9 @@ namespace TokuchoBugyoK2
             this.ca_tbl04_tblComment = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl04_lblComment = new System.Windows.Forms.Label();
             this.tabTE = new System.Windows.Forms.TabPage();
+            this.te_picPointAlert = new System.Windows.Forms.PictureBox();
+            this.te_picKanriPointAlert = new System.Windows.Forms.PictureBox();
+            this.te_picSyosaPointAlert = new System.Windows.Forms.PictureBox();
             this.te_lblDetailTitle = new System.Windows.Forms.Label();
             this.te_lblTitle = new System.Windows.Forms.Label();
             this.te_picSyosa = new System.Windows.Forms.PictureBox();
@@ -923,7 +1000,8 @@ namespace TokuchoBugyoK2
             this.te_txtTecris = new System.Windows.Forms.TextBox();
             this.te_lblSeikyusyaDt = new System.Windows.Forms.Label();
             this.te_dtpSeikyusyaDt = new System.Windows.Forms.DateTimePicker();
-            this.te_tblLink = new System.Windows.Forms.TableLayoutPanel();
+            this.te_tblLink = new System.Windows.Forms.Panel();
+            this.te_picSeikyusyoAlert = new System.Windows.Forms.PictureBox();
             this.te_txtSeikyusyo = new System.Windows.Forms.TextBox();
             this.te_picSeikyusyo = new System.Windows.Forms.PictureBox();
             this.te_txtCustomComment = new System.Windows.Forms.TextBox();
@@ -962,8 +1040,13 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input5.SuspendLayout();
             this.base_tbl07_input4.SuspendLayout();
             this.base_tbl07_input3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_3_picOenIraiAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_3_picOenMemoAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_3_picOenAlert)).BeginInit();
             this.base_tbl07_input1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_1_picPercentAlert)).BeginInit();
             this.base_tbl07_input2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_2_picPercentAlert)).BeginInit();
             this.base_tbl03_parent.SuspendLayout();
             this.base_tbl03.SuspendLayout();
             this.base_tbl03_input.SuspendLayout();
@@ -1024,9 +1107,28 @@ namespace TokuchoBugyoK2
             this.base_tbl09_parent.SuspendLayout();
             this.base_tbl09.SuspendLayout();
             this.base_tbl09_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picOthenCommentAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picNotOrderReasonAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picOrderYoteiDtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picJizenDasinIraiDtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picNotOrderStatsAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picOrderIyokuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picSankomitumoriAlert)).BeginInit();
             this.base_tbl10_parent.SuspendLayout();
             this.base_tbl10.SuspendLayout();
             this.base_tbl10_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picKinsiNaiyoAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picTokaiOsatuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picRakusatuAmtStatsAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picRakusatuStatsAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picNyusatuStatsAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picKinsiUmuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picOrderIyokuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picSankoMitumoriAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picNyusatuDtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picLowestUmuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picNyusatuHosikiAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picOrderKubunAlert)).BeginInit();
             this.base_tbl11_parent.SuspendLayout();
             this.base_tbl11.SuspendLayout();
             this.base_tbl11_input3.SuspendLayout();
@@ -1037,27 +1139,58 @@ namespace TokuchoBugyoK2
             this.prior_tbl02_parent.SuspendLayout();
             this.prior_tbl02.SuspendLayout();
             this.prior_tbl02_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl02_picNotOrderStatsAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl02_picNotOrderDtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl02_picNotOrderReasonAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl02_picOtherNaiyoAlert)).BeginInit();
             this.prior_tbl01_parent.SuspendLayout();
             this.prior_tbl01.SuspendLayout();
             this.prior_tbl01_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picOrderYoteiDtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picMitumoriAmtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picOrderIyokuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picMitumoriAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picDasinIraiDtAlert)).BeginInit();
             this.tabBid.SuspendLayout();
             this.tblBid.SuspendLayout();
             this.bid_tbl02_parent.SuspendLayout();
             this.bid_tbl02.SuspendLayout();
             this.bid_tbl02_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl02_picOtherNaiyoAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl02_picKinsiNaiyoAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl02_picKinsiUmuAlert)).BeginInit();
             this.bid_tbl03_parent.SuspendLayout();
             this.bid_tbl03.SuspendLayout();
             this.bid_tbl03_input1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picBidStatusAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picBidResultDtAlert)).BeginInit();
+            this.bid_tbl03_1_tblRakusatuAmtStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picRakusatuAmtStatusAlert)).BeginInit();
+            this.bid_tbl03_1_tblRakusatuStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picRakusatuStatusAlert)).BeginInit();
             this.bid_tbl03_1_tblRakusatuSya.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picRakusatuSyaAlert)).BeginInit();
             this.bid_tbl03_1_tblYoteiPrice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picYoteiPriceAlert)).BeginInit();
             this.bid_tbl03_1_tblOsatuNum.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picOsatuNumAlert)).BeginInit();
             this.bid_tbl03_1_tblRakusatuAmt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picRakusatuAmtAlert)).BeginInit();
             this.bid_tbl03_input4.SuspendLayout();
             this.bid_tbl03_input5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_4_c1FlexGrid)).BeginInit();
             this.bid_tbl01_parent.SuspendLayout();
             this.bid_tbl01.SuspendLayout();
             this.bid_tbl01_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picBidInfoDtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picTokaiOsatuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picBidYoteiDtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picMitumoriAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picOrderIyokuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picMitumoriAmtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picLowestUmuAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picOrderKubunAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picBidhosikiAlert)).BeginInit();
             this.tabCA.SuspendLayout();
             this.tblCa.SuspendLayout();
             this.ca_tbl07_parent.SuspendLayout();
@@ -1074,15 +1207,29 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_parent.SuspendLayout();
             this.ca_tbl01.SuspendLayout();
             this.ca_tbl01_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picRiyuAlert)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picAnkenKubunAlert)).BeginInit();
+            this.ca_tbl01_tblKokiTo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picKokiToAlert)).BeginInit();
+            this.ca_tbl01_tblKokiFrom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picKokiFromAlert)).BeginInit();
+            this.ca_tbl01_tblChangeDt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picChangeDtAlert)).BeginInit();
+            this.ca_tbl01_tblJyutakuGaiAmt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picJyutakuGaiAmtAlert)).BeginInit();
             this.ca_tbl01_tblChangeAmt.SuspendLayout();
             this.ca_tbl01_tblKian.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picKianDtAlert)).BeginInit();
             this.ca_tbl01_tblCaAmt_parent.SuspendLayout();
             this.ca_tbl01_tblCaAmt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picZeikomiAmtAlert)).BeginInit();
             this.ca_tbl01_tblTax.SuspendLayout();
             this.ca_tbl01_tblSiryo.SuspendLayout();
             this.ca_tbl01_tblTosyo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picTosyo)).BeginInit();
             this.ca_tbl01_tblJyutakuAmt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picJyutakuAmtAlert)).BeginInit();
             this.ca_tbl01_tblRibc.SuspendLayout();
             this.ca_tbl05_parent.SuspendLayout();
             this.ca_tbl05.SuspendLayout();
@@ -1099,9 +1246,11 @@ namespace TokuchoBugyoK2
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picSinsaDel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picSinsa)).BeginInit();
             this.ca_tbl05_tblGyomu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picGyomuAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picGyomuDel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picGyomu)).BeginInit();
             this.ca_tbl05_tblMadoguchi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picMadoguchiAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picMadoguchiDel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picMadoguchi)).BeginInit();
             this.ca_tblButton.SuspendLayout();
@@ -1112,16 +1261,23 @@ namespace TokuchoBugyoK2
             this.ca_tbl02.SuspendLayout();
             this.ca_tbl02_input2.SuspendLayout();
             this.ca_tbl02_input1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBm_picPercentAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBm_picAmtAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBmZeikomi_picAmtAlert)).BeginInit();
             this.ca_tbl04_parent.SuspendLayout();
             this.ca_tbl04.SuspendLayout();
             this.ca_tbl04_input.SuspendLayout();
             this.ca_tbl04_tblComment.SuspendLayout();
             this.tabTE.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.te_picPointAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.te_picKanriPointAlert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.te_picSyosaPointAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picSyosa)).BeginInit();
             this.tblTe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.te_c1FlexGrid)).BeginInit();
             this.tblTe_input.SuspendLayout();
             this.te_tblLink.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.te_picSeikyusyoAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picSeikyusyo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picSyosaDel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picKanriDel)).BeginInit();
@@ -2425,7 +2581,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 496F));
+            this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 518F));
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblTitle, 0, 0);
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblTyosabu, 2, 1);
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblJgyobu, 3, 1);
@@ -2454,7 +2610,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.base_tbl07_input4.Size = new System.Drawing.Size(1145, 117);
+            this.base_tbl07_input4.Size = new System.Drawing.Size(1167, 117);
             this.base_tbl07_input4.TabIndex = 48;
             // 
             // base_tbl07_4_lblTitle
@@ -2465,7 +2621,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblTitle.Location = new System.Drawing.Point(5, 1);
             this.base_tbl07_4_lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.base_tbl07_4_lblTitle.Name = "base_tbl07_4_lblTitle";
-            this.base_tbl07_4_lblTitle.Size = new System.Drawing.Size(1135, 28);
+            this.base_tbl07_4_lblTitle.Size = new System.Drawing.Size(1157, 28);
             this.base_tbl07_4_lblTitle.TabIndex = 15;
             this.base_tbl07_4_lblTitle.Text = "部門配分";
             this.base_tbl07_4_lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2562,7 +2718,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblGokei.Location = new System.Drawing.Point(648, 30);
             this.base_tbl07_4_lblGokei.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_4_lblGokei.Name = "base_tbl07_4_lblGokei";
-            this.base_tbl07_4_lblGokei.Size = new System.Drawing.Size(496, 28);
+            this.base_tbl07_4_lblGokei.Size = new System.Drawing.Size(518, 28);
             this.base_tbl07_4_lblGokei.TabIndex = 15;
             this.base_tbl07_4_lblGokei.Text = "合計";
             this.base_tbl07_4_lblGokei.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2650,7 +2806,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblRateAll.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_4_lblRateAll.Name = "base_tbl07_4_lblRateAll";
             this.base_tbl07_4_lblRateAll.Padding = new System.Windows.Forms.Padding(4);
-            this.base_tbl07_4_lblRateAll.Size = new System.Drawing.Size(496, 28);
+            this.base_tbl07_4_lblRateAll.Size = new System.Drawing.Size(518, 28);
             this.base_tbl07_4_lblRateAll.TabIndex = 23;
             this.base_tbl07_4_lblRateAll.Text = "0.00%";
             this.base_tbl07_4_lblRateAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2715,7 +2871,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblAmtAll.Location = new System.Drawing.Point(651, 88);
             this.base_tbl07_4_lblAmtAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.base_tbl07_4_lblAmtAll.Name = "base_tbl07_4_lblAmtAll";
-            this.base_tbl07_4_lblAmtAll.Size = new System.Drawing.Size(490, 25);
+            this.base_tbl07_4_lblAmtAll.Size = new System.Drawing.Size(512, 25);
             this.base_tbl07_4_lblAmtAll.TabIndex = 40;
             this.base_tbl07_4_lblAmtAll.Text = "¥0";
             this.base_tbl07_4_lblAmtAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2723,20 +2879,27 @@ namespace TokuchoBugyoK2
             // base_tbl07_input3
             // 
             this.base_tbl07_input3.AutoSize = true;
-            this.base_tbl07_input3.ColumnCount = 4;
+            this.base_tbl07_input3.ColumnCount = 8;
             this.base_tbl07_input3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl07_input3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl07_input3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl07_input3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_picOenIraiAlert, 5, 1);
+            this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_picOenMemoAlert, 6, 0);
+            this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_picOenAlert, 2, 0);
             this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_tblOenIrai3, 1, 3);
             this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_tblOenIrai2, 1, 2);
             this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_tblOenIrai1, 1, 1);
             this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_cmbOen, 1, 0);
-            this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_lblOenMemo, 2, 0);
+            this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_lblOenMemo, 3, 0);
             this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_lblOenIrai, 0, 1);
             this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_lblOen, 0, 0);
             this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_lblComent, 0, 4);
-            this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_txtOenMemo, 3, 0);
+            this.base_tbl07_input3.Controls.Add(this.base_tbl07_3_txtOenMemo, 4, 0);
             this.base_tbl07_input3.Dock = System.Windows.Forms.DockStyle.Top;
             this.base_tbl07_input3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.base_tbl07_input3.Location = new System.Drawing.Point(25, 285);
@@ -2749,79 +2912,82 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.base_tbl07_input3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.base_tbl07_input3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.base_tbl07_input3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.base_tbl07_input3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.base_tbl07_input3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.base_tbl07_input3.Size = new System.Drawing.Size(1751, 149);
             this.base_tbl07_input3.TabIndex = 47;
+            // 
+            // base_tbl07_3_picOenIraiAlert
+            // 
+            this.base_tbl07_3_picOenIraiAlert.AccessibleName = "base_tbl07_3_picOenAlert";
+            this.base_tbl07_3_picOenIraiAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl07_3_picOenIraiAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl07_3_picOenIraiAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl07_3_picOenIraiAlert.Image")));
+            this.base_tbl07_3_picOenIraiAlert.Location = new System.Drawing.Point(1166, 31);
+            this.base_tbl07_3_picOenIraiAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl07_3_picOenIraiAlert.Name = "base_tbl07_3_picOenIraiAlert";
+            this.base_tbl07_3_picOenIraiAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl07_3_picOenIraiAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl07_3_picOenIraiAlert.TabIndex = 100002;
+            this.base_tbl07_3_picOenIraiAlert.TabStop = false;
+            this.base_tbl07_3_picOenIraiAlert.Visible = false;
+            // 
+            // base_tbl07_3_picOenMemoAlert
+            // 
+            this.base_tbl07_3_picOenMemoAlert.AccessibleName = "base_tbl07_3_picOenAlert";
+            this.base_tbl07_3_picOenMemoAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl07_3_picOenMemoAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl07_3_picOenMemoAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl07_3_picOenMemoAlert.Image")));
+            this.base_tbl07_3_picOenMemoAlert.Location = new System.Drawing.Point(1190, 4);
+            this.base_tbl07_3_picOenMemoAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl07_3_picOenMemoAlert.Name = "base_tbl07_3_picOenMemoAlert";
+            this.base_tbl07_3_picOenMemoAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl07_3_picOenMemoAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl07_3_picOenMemoAlert.TabIndex = 100001;
+            this.base_tbl07_3_picOenMemoAlert.TabStop = false;
+            this.base_tbl07_3_picOenMemoAlert.Visible = false;
+            // 
+            // base_tbl07_3_picOenAlert
+            // 
+            this.base_tbl07_3_picOenAlert.AccessibleName = "base_tbl07_3_picOenAlert";
+            this.base_tbl07_3_picOenAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl07_3_picOenAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl07_3_picOenAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl07_3_picOenAlert.Image")));
+            this.base_tbl07_3_picOenAlert.Location = new System.Drawing.Point(259, 4);
+            this.base_tbl07_3_picOenAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl07_3_picOenAlert.Name = "base_tbl07_3_picOenAlert";
+            this.base_tbl07_3_picOenAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl07_3_picOenAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl07_3_picOenAlert.TabIndex = 100000;
+            this.base_tbl07_3_picOenAlert.TabStop = false;
+            this.base_tbl07_3_picOenAlert.Visible = false;
             // 
             // base_tbl07_3_tblOenIrai3
             // 
             this.base_tbl07_3_tblOenIrai3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.base_tbl07_3_tblOenIrai3.ColumnCount = 10;
-            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_tblOenIrai3, 3);
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_tblOenIrai3, 4);
             this.base_tbl07_3_tblOenIrai3.Location = new System.Drawing.Point(111, 82);
             this.base_tbl07_3_tblOenIrai3.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_3_tblOenIrai3.Name = "base_tbl07_3_tblOenIrai3";
-            this.base_tbl07_3_tblOenIrai3.RowCount = 1;
-            this.base_tbl07_3_tblOenIrai3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl07_3_tblOenIrai3.Size = new System.Drawing.Size(1000, 27);
+            this.base_tbl07_3_tblOenIrai3.Size = new System.Drawing.Size(1050, 27);
             this.base_tbl07_3_tblOenIrai3.TabIndex = 99999;
             // 
             // base_tbl07_3_tblOenIrai2
             // 
             this.base_tbl07_3_tblOenIrai2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.base_tbl07_3_tblOenIrai2.ColumnCount = 10;
-            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_tblOenIrai2, 3);
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_tblOenIrai2, 4);
             this.base_tbl07_3_tblOenIrai2.Location = new System.Drawing.Point(111, 55);
             this.base_tbl07_3_tblOenIrai2.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_3_tblOenIrai2.Name = "base_tbl07_3_tblOenIrai2";
-            this.base_tbl07_3_tblOenIrai2.RowCount = 1;
-            this.base_tbl07_3_tblOenIrai2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl07_3_tblOenIrai2.Size = new System.Drawing.Size(1000, 27);
+            this.base_tbl07_3_tblOenIrai2.Size = new System.Drawing.Size(1050, 27);
             this.base_tbl07_3_tblOenIrai2.TabIndex = 68;
             // 
             // base_tbl07_3_tblOenIrai1
             // 
             this.base_tbl07_3_tblOenIrai1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.base_tbl07_3_tblOenIrai1.ColumnCount = 10;
-            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_tblOenIrai1, 3);
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl07_3_tblOenIrai1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_tblOenIrai1, 4);
             this.base_tbl07_3_tblOenIrai1.Location = new System.Drawing.Point(111, 28);
             this.base_tbl07_3_tblOenIrai1.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_3_tblOenIrai1.Name = "base_tbl07_3_tblOenIrai1";
-            this.base_tbl07_3_tblOenIrai1.RowCount = 1;
-            this.base_tbl07_3_tblOenIrai1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.base_tbl07_3_tblOenIrai1.Size = new System.Drawing.Size(1000, 27);
+            this.base_tbl07_3_tblOenIrai1.Size = new System.Drawing.Size(1050, 27);
             this.base_tbl07_3_tblOenIrai1.TabIndex = 67;
             // 
             // base_tbl07_3_cmbOen
@@ -2842,10 +3008,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_3_lblOenMemo.BackColor = System.Drawing.Color.White;
             this.base_tbl07_3_lblOenMemo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_3_lblOenMemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl07_3_lblOenMemo.Location = new System.Drawing.Point(260, 3);
+            this.base_tbl07_3_lblOenMemo.Location = new System.Drawing.Point(284, 3);
             this.base_tbl07_3_lblOenMemo.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl07_3_lblOenMemo.Name = "base_tbl07_3_lblOenMemo";
-            this.base_tbl07_3_lblOenMemo.Size = new System.Drawing.Size(249, 22);
+            this.base_tbl07_3_lblOenMemo.Size = new System.Drawing.Size(85, 22);
             this.base_tbl07_3_lblOenMemo.TabIndex = 42;
             this.base_tbl07_3_lblOenMemo.Text = "応援依頼メモ";
             this.base_tbl07_3_lblOenMemo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2882,8 +3048,7 @@ namespace TokuchoBugyoK2
             // 
             this.base_tbl07_3_lblComent.AutoSize = true;
             this.base_tbl07_3_lblComent.BackColor = System.Drawing.Color.White;
-            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_lblComent, 3);
-            this.base_tbl07_3_lblComent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_lblComent, 6);
             this.base_tbl07_3_lblComent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.base_tbl07_3_lblComent.ForeColor = System.Drawing.Color.Red;
             this.base_tbl07_3_lblComent.Location = new System.Drawing.Point(3, 112);
@@ -2898,11 +3063,12 @@ namespace TokuchoBugyoK2
             // base_tbl07_3_txtOenMemo
             // 
             this.base_tbl07_3_txtOenMemo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl07_input3.SetColumnSpan(this.base_tbl07_3_txtOenMemo, 2);
             this.base_tbl07_3_txtOenMemo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl07_3_txtOenMemo.Location = new System.Drawing.Point(515, 3);
+            this.base_tbl07_3_txtOenMemo.Location = new System.Drawing.Point(375, 3);
             this.base_tbl07_3_txtOenMemo.MaxLength = 100;
             this.base_tbl07_3_txtOenMemo.Name = "base_tbl07_3_txtOenMemo";
-            this.base_tbl07_3_txtOenMemo.Size = new System.Drawing.Size(1395, 21);
+            this.base_tbl07_3_txtOenMemo.Size = new System.Drawing.Size(810, 21);
             this.base_tbl07_3_txtOenMemo.TabIndex = 6;
             // 
             // base_tbl07_lblComment
@@ -2937,7 +3103,7 @@ namespace TokuchoBugyoK2
             // 
             this.base_tbl07_input1.AllowDrop = true;
             this.base_tbl07_input1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl07_input1.ColumnCount = 7;
+            this.base_tbl07_input1.ColumnCount = 8;
             this.base_tbl07_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.base_tbl07_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.base_tbl07_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
@@ -2945,6 +3111,8 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.base_tbl07_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.base_tbl07_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.base_tbl07_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input1.Controls.Add(this.base_tbl07_1_picPercentAlert, 7, 2);
             this.base_tbl07_input1.Controls.Add(this.base_tbl07_1_lblTitle, 0, 0);
             this.base_tbl07_input1.Controls.Add(this.base_tbl07_1_numPercent1, 2, 2);
             this.base_tbl07_input1.Controls.Add(this.base_tbl07_1_numPercent2, 3, 2);
@@ -2969,6 +3137,20 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input1.Size = new System.Drawing.Size(1040, 90);
             this.base_tbl07_input1.TabIndex = 4;
             // 
+            // base_tbl07_1_picPercentAlert
+            // 
+            this.base_tbl07_1_picPercentAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl07_1_picPercentAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl07_1_picPercentAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl07_1_picPercentAlert.Image")));
+            this.base_tbl07_1_picPercentAlert.Location = new System.Drawing.Point(1017, 64);
+            this.base_tbl07_1_picPercentAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl07_1_picPercentAlert.Name = "base_tbl07_1_picPercentAlert";
+            this.base_tbl07_1_picPercentAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl07_1_picPercentAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl07_1_picPercentAlert.TabIndex = 61;
+            this.base_tbl07_1_picPercentAlert.TabStop = false;
+            this.base_tbl07_1_picPercentAlert.Visible = false;
+            // 
             // base_tbl07_1_lblTitle
             // 
             this.base_tbl07_input1.SetColumnSpan(this.base_tbl07_1_lblTitle, 7);
@@ -2977,7 +3159,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_1_lblTitle.Location = new System.Drawing.Point(5, 1);
             this.base_tbl07_1_lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.base_tbl07_1_lblTitle.Name = "base_tbl07_1_lblTitle";
-            this.base_tbl07_1_lblTitle.Size = new System.Drawing.Size(1030, 28);
+            this.base_tbl07_1_lblTitle.Size = new System.Drawing.Size(1005, 28);
             this.base_tbl07_1_lblTitle.TabIndex = 15;
             this.base_tbl07_1_lblTitle.Text = "部門配分";
             this.base_tbl07_1_lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3134,7 +3316,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_1_lblGokei.Location = new System.Drawing.Point(663, 30);
             this.base_tbl07_1_lblGokei.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_1_lblGokei.Name = "base_tbl07_1_lblGokei";
-            this.base_tbl07_1_lblGokei.Size = new System.Drawing.Size(376, 28);
+            this.base_tbl07_1_lblGokei.Size = new System.Drawing.Size(351, 28);
             this.base_tbl07_1_lblGokei.TabIndex = 15;
             this.base_tbl07_1_lblGokei.Text = "合計";
             this.base_tbl07_1_lblGokei.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3147,7 +3329,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_1_numPercentAll.Location = new System.Drawing.Point(666, 59);
             this.base_tbl07_1_numPercentAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.base_tbl07_1_numPercentAll.Name = "base_tbl07_1_numPercentAll";
-            this.base_tbl07_1_numPercentAll.Size = new System.Drawing.Size(370, 27);
+            this.base_tbl07_1_numPercentAll.Size = new System.Drawing.Size(345, 27);
             this.base_tbl07_1_numPercentAll.TabIndex = 23;
             this.base_tbl07_1_numPercentAll.Text = "0.00%";
             this.base_tbl07_1_numPercentAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3155,22 +3337,24 @@ namespace TokuchoBugyoK2
             // base_tbl07_input2
             // 
             this.base_tbl07_input2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.base_tbl07_input2.ColumnCount = 15;
+            this.base_tbl07_input2.ColumnCount = 16;
             this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.base_tbl07_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl07_input2.Controls.Add(this.base_tbl07_2_picPercentAlert, 15, 2);
             this.base_tbl07_input2.Controls.Add(this.base_tbl07_2_numPercent1, 2, 2);
             this.base_tbl07_input2.Controls.Add(this.base_tbl07_2_lblSizaiTyosa, 2, 1);
             this.base_tbl07_input2.Controls.Add(this.base_tbl07_2_lblEizenTyosa, 3, 1);
@@ -3211,6 +3395,20 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input2.Size = new System.Drawing.Size(1761, 90);
             this.base_tbl07_input2.TabIndex = 4;
             // 
+            // base_tbl07_2_picPercentAlert
+            // 
+            this.base_tbl07_2_picPercentAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl07_2_picPercentAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl07_2_picPercentAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl07_2_picPercentAlert.Image")));
+            this.base_tbl07_2_picPercentAlert.Location = new System.Drawing.Point(1738, 64);
+            this.base_tbl07_2_picPercentAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl07_2_picPercentAlert.Name = "base_tbl07_2_picPercentAlert";
+            this.base_tbl07_2_picPercentAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl07_2_picPercentAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl07_2_picPercentAlert.TabIndex = 62;
+            this.base_tbl07_2_picPercentAlert.TabStop = false;
+            this.base_tbl07_2_picPercentAlert.Visible = false;
+            // 
             // base_tbl07_2_numPercent1
             // 
             this.base_tbl07_2_numPercent1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -3219,7 +3417,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent1.Location = new System.Drawing.Point(187, 63);
             this.base_tbl07_2_numPercent1.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent1.Name = "base_tbl07_2_numPercent1";
-            this.base_tbl07_2_numPercent1.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent1.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent1.TabIndex = 0;
             this.base_tbl07_2_numPercent1.Text = "0.00%";
             this.base_tbl07_2_numPercent1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3235,7 +3433,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblSizaiTyosa.Location = new System.Drawing.Point(183, 30);
             this.base_tbl07_2_lblSizaiTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblSizaiTyosa.Name = "base_tbl07_2_lblSizaiTyosa";
-            this.base_tbl07_2_lblSizaiTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblSizaiTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblSizaiTyosa.TabIndex = 15;
             this.base_tbl07_2_lblSizaiTyosa.Text = "資材調査";
             this.base_tbl07_2_lblSizaiTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3246,10 +3444,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblEizenTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblEizenTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblEizenTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblEizenTyosa.Location = new System.Drawing.Point(303, 30);
+            this.base_tbl07_2_lblEizenTyosa.Location = new System.Drawing.Point(299, 30);
             this.base_tbl07_2_lblEizenTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblEizenTyosa.Name = "base_tbl07_2_lblEizenTyosa";
-            this.base_tbl07_2_lblEizenTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblEizenTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblEizenTyosa.TabIndex = 15;
             this.base_tbl07_2_lblEizenTyosa.Text = "営繕調査";
             this.base_tbl07_2_lblEizenTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3260,10 +3458,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblKikiruiTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblKikiruiTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblKikiruiTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblKikiruiTyosa.Location = new System.Drawing.Point(423, 30);
+            this.base_tbl07_2_lblKikiruiTyosa.Location = new System.Drawing.Point(415, 30);
             this.base_tbl07_2_lblKikiruiTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblKikiruiTyosa.Name = "base_tbl07_2_lblKikiruiTyosa";
-            this.base_tbl07_2_lblKikiruiTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblKikiruiTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblKikiruiTyosa.TabIndex = 15;
             this.base_tbl07_2_lblKikiruiTyosa.Text = "機器類調査";
             this.base_tbl07_2_lblKikiruiTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3274,10 +3472,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblKojihiTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblKojihiTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblKojihiTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblKojihiTyosa.Location = new System.Drawing.Point(543, 30);
+            this.base_tbl07_2_lblKojihiTyosa.Location = new System.Drawing.Point(531, 30);
             this.base_tbl07_2_lblKojihiTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblKojihiTyosa.Name = "base_tbl07_2_lblKojihiTyosa";
-            this.base_tbl07_2_lblKojihiTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblKojihiTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblKojihiTyosa.TabIndex = 15;
             this.base_tbl07_2_lblKojihiTyosa.Text = "工事費調査";
             this.base_tbl07_2_lblKojihiTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3288,10 +3486,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblSanpaiTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblSanpaiTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblSanpaiTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblSanpaiTyosa.Location = new System.Drawing.Point(663, 30);
+            this.base_tbl07_2_lblSanpaiTyosa.Location = new System.Drawing.Point(647, 30);
             this.base_tbl07_2_lblSanpaiTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblSanpaiTyosa.Name = "base_tbl07_2_lblSanpaiTyosa";
-            this.base_tbl07_2_lblSanpaiTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblSanpaiTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblSanpaiTyosa.TabIndex = 15;
             this.base_tbl07_2_lblSanpaiTyosa.Text = "産廃調査";
             this.base_tbl07_2_lblSanpaiTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3302,10 +3500,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblBukakariTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblBukakariTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblBukakariTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblBukakariTyosa.Location = new System.Drawing.Point(783, 30);
+            this.base_tbl07_2_lblBukakariTyosa.Location = new System.Drawing.Point(763, 30);
             this.base_tbl07_2_lblBukakariTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblBukakariTyosa.Name = "base_tbl07_2_lblBukakariTyosa";
-            this.base_tbl07_2_lblBukakariTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblBukakariTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblBukakariTyosa.TabIndex = 15;
             this.base_tbl07_2_lblBukakariTyosa.Text = "歩掛調査";
             this.base_tbl07_2_lblBukakariTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3316,10 +3514,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblSyokeihiTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblSyokeihiTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblSyokeihiTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblSyokeihiTyosa.Location = new System.Drawing.Point(903, 30);
+            this.base_tbl07_2_lblSyokeihiTyosa.Location = new System.Drawing.Point(879, 30);
             this.base_tbl07_2_lblSyokeihiTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblSyokeihiTyosa.Name = "base_tbl07_2_lblSyokeihiTyosa";
-            this.base_tbl07_2_lblSyokeihiTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblSyokeihiTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblSyokeihiTyosa.TabIndex = 15;
             this.base_tbl07_2_lblSyokeihiTyosa.Text = "諸経費調査";
             this.base_tbl07_2_lblSyokeihiTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3330,10 +3528,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblGenkaBunsekiTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblGenkaBunsekiTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblGenkaBunsekiTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblGenkaBunsekiTyosa.Location = new System.Drawing.Point(1023, 30);
+            this.base_tbl07_2_lblGenkaBunsekiTyosa.Location = new System.Drawing.Point(995, 30);
             this.base_tbl07_2_lblGenkaBunsekiTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblGenkaBunsekiTyosa.Name = "base_tbl07_2_lblGenkaBunsekiTyosa";
-            this.base_tbl07_2_lblGenkaBunsekiTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblGenkaBunsekiTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblGenkaBunsekiTyosa.TabIndex = 15;
             this.base_tbl07_2_lblGenkaBunsekiTyosa.Text = "原価分析調査";
             this.base_tbl07_2_lblGenkaBunsekiTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3344,10 +3542,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblKijyunCreateKaitei.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblKijyunCreateKaitei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblKijyunCreateKaitei.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblKijyunCreateKaitei.Location = new System.Drawing.Point(1143, 30);
+            this.base_tbl07_2_lblKijyunCreateKaitei.Location = new System.Drawing.Point(1111, 30);
             this.base_tbl07_2_lblKijyunCreateKaitei.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblKijyunCreateKaitei.Name = "base_tbl07_2_lblKijyunCreateKaitei";
-            this.base_tbl07_2_lblKijyunCreateKaitei.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblKijyunCreateKaitei.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblKijyunCreateKaitei.TabIndex = 15;
             this.base_tbl07_2_lblKijyunCreateKaitei.Text = "基準作成改訂";
             this.base_tbl07_2_lblKijyunCreateKaitei.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3358,10 +3556,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblKokyoRomuhiTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblKokyoRomuhiTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblKokyoRomuhiTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblKokyoRomuhiTyosa.Location = new System.Drawing.Point(1263, 30);
+            this.base_tbl07_2_lblKokyoRomuhiTyosa.Location = new System.Drawing.Point(1227, 30);
             this.base_tbl07_2_lblKokyoRomuhiTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblKokyoRomuhiTyosa.Name = "base_tbl07_2_lblKokyoRomuhiTyosa";
-            this.base_tbl07_2_lblKokyoRomuhiTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblKokyoRomuhiTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblKokyoRomuhiTyosa.TabIndex = 15;
             this.base_tbl07_2_lblKokyoRomuhiTyosa.Text = "公共労務費調査";
             this.base_tbl07_2_lblKokyoRomuhiTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3372,10 +3570,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblWithoutRomu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblWithoutRomu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblWithoutRomu.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblWithoutRomu.Location = new System.Drawing.Point(1383, 30);
+            this.base_tbl07_2_lblWithoutRomu.Location = new System.Drawing.Point(1343, 30);
             this.base_tbl07_2_lblWithoutRomu.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblWithoutRomu.Name = "base_tbl07_2_lblWithoutRomu";
-            this.base_tbl07_2_lblWithoutRomu.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblWithoutRomu.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblWithoutRomu.TabIndex = 15;
             this.base_tbl07_2_lblWithoutRomu.Text = "労務費公共以外";
             this.base_tbl07_2_lblWithoutRomu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3412,10 +3610,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent2.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent2.Location = new System.Drawing.Point(307, 63);
+            this.base_tbl07_2_numPercent2.Location = new System.Drawing.Point(303, 63);
             this.base_tbl07_2_numPercent2.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent2.Name = "base_tbl07_2_numPercent2";
-            this.base_tbl07_2_numPercent2.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent2.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent2.TabIndex = 1;
             this.base_tbl07_2_numPercent2.Text = "0.00%";
             this.base_tbl07_2_numPercent2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3427,10 +3625,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent3.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent3.Location = new System.Drawing.Point(427, 63);
+            this.base_tbl07_2_numPercent3.Location = new System.Drawing.Point(419, 63);
             this.base_tbl07_2_numPercent3.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent3.Name = "base_tbl07_2_numPercent3";
-            this.base_tbl07_2_numPercent3.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent3.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent3.TabIndex = 2;
             this.base_tbl07_2_numPercent3.Text = "0.00%";
             this.base_tbl07_2_numPercent3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3442,10 +3640,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent4.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent4.Location = new System.Drawing.Point(547, 63);
+            this.base_tbl07_2_numPercent4.Location = new System.Drawing.Point(535, 63);
             this.base_tbl07_2_numPercent4.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent4.Name = "base_tbl07_2_numPercent4";
-            this.base_tbl07_2_numPercent4.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent4.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent4.TabIndex = 3;
             this.base_tbl07_2_numPercent4.Text = "0.00%";
             this.base_tbl07_2_numPercent4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3457,10 +3655,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercentAll.AutoSize = true;
             this.base_tbl07_2_numPercentAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercentAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl07_2_numPercentAll.Location = new System.Drawing.Point(1626, 59);
+            this.base_tbl07_2_numPercentAll.Location = new System.Drawing.Point(1578, 59);
             this.base_tbl07_2_numPercentAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.base_tbl07_2_numPercentAll.Name = "base_tbl07_2_numPercentAll";
-            this.base_tbl07_2_numPercentAll.Size = new System.Drawing.Size(131, 27);
+            this.base_tbl07_2_numPercentAll.Size = new System.Drawing.Size(154, 27);
             this.base_tbl07_2_numPercentAll.TabIndex = 23;
             this.base_tbl07_2_numPercentAll.Text = "0.00%";
             this.base_tbl07_2_numPercentAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3470,10 +3668,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent5.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent5.Location = new System.Drawing.Point(667, 63);
+            this.base_tbl07_2_numPercent5.Location = new System.Drawing.Point(651, 63);
             this.base_tbl07_2_numPercent5.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent5.Name = "base_tbl07_2_numPercent5";
-            this.base_tbl07_2_numPercent5.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent5.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent5.TabIndex = 4;
             this.base_tbl07_2_numPercent5.Text = "0.00%";
             this.base_tbl07_2_numPercent5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3485,10 +3683,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent6.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent6.Location = new System.Drawing.Point(787, 63);
+            this.base_tbl07_2_numPercent6.Location = new System.Drawing.Point(767, 63);
             this.base_tbl07_2_numPercent6.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent6.Name = "base_tbl07_2_numPercent6";
-            this.base_tbl07_2_numPercent6.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent6.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent6.TabIndex = 5;
             this.base_tbl07_2_numPercent6.Text = "0.00%";
             this.base_tbl07_2_numPercent6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3500,10 +3698,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent7.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent7.Location = new System.Drawing.Point(907, 63);
+            this.base_tbl07_2_numPercent7.Location = new System.Drawing.Point(883, 63);
             this.base_tbl07_2_numPercent7.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent7.Name = "base_tbl07_2_numPercent7";
-            this.base_tbl07_2_numPercent7.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent7.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent7.TabIndex = 6;
             this.base_tbl07_2_numPercent7.Text = "0.00%";
             this.base_tbl07_2_numPercent7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3515,10 +3713,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent8.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent8.Location = new System.Drawing.Point(1027, 63);
+            this.base_tbl07_2_numPercent8.Location = new System.Drawing.Point(999, 63);
             this.base_tbl07_2_numPercent8.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent8.Name = "base_tbl07_2_numPercent8";
-            this.base_tbl07_2_numPercent8.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent8.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent8.TabIndex = 7;
             this.base_tbl07_2_numPercent8.Text = "0.00%";
             this.base_tbl07_2_numPercent8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3530,10 +3728,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent9.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent9.Location = new System.Drawing.Point(1147, 63);
+            this.base_tbl07_2_numPercent9.Location = new System.Drawing.Point(1115, 63);
             this.base_tbl07_2_numPercent9.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent9.Name = "base_tbl07_2_numPercent9";
-            this.base_tbl07_2_numPercent9.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent9.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent9.TabIndex = 8;
             this.base_tbl07_2_numPercent9.Text = "0.00%";
             this.base_tbl07_2_numPercent9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3545,10 +3743,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent10.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent10.Location = new System.Drawing.Point(1267, 63);
+            this.base_tbl07_2_numPercent10.Location = new System.Drawing.Point(1231, 63);
             this.base_tbl07_2_numPercent10.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent10.Name = "base_tbl07_2_numPercent10";
-            this.base_tbl07_2_numPercent10.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent10.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent10.TabIndex = 9;
             this.base_tbl07_2_numPercent10.Text = "0.00%";
             this.base_tbl07_2_numPercent10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3560,10 +3758,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent11.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent11.Location = new System.Drawing.Point(1387, 63);
+            this.base_tbl07_2_numPercent11.Location = new System.Drawing.Point(1347, 63);
             this.base_tbl07_2_numPercent11.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent11.Name = "base_tbl07_2_numPercent11";
-            this.base_tbl07_2_numPercent11.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent11.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent11.TabIndex = 10;
             this.base_tbl07_2_numPercent11.Text = "0.00%";
             this.base_tbl07_2_numPercent11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3575,10 +3773,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_numPercent12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_numPercent12.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl07_2_numPercent12.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl07_2_numPercent12.Location = new System.Drawing.Point(1507, 63);
+            this.base_tbl07_2_numPercent12.Location = new System.Drawing.Point(1463, 63);
             this.base_tbl07_2_numPercent12.Margin = new System.Windows.Forms.Padding(4);
             this.base_tbl07_2_numPercent12.Name = "base_tbl07_2_numPercent12";
-            this.base_tbl07_2_numPercent12.Size = new System.Drawing.Size(111, 21);
+            this.base_tbl07_2_numPercent12.Size = new System.Drawing.Size(107, 21);
             this.base_tbl07_2_numPercent12.TabIndex = 11;
             this.base_tbl07_2_numPercent12.Text = "0.00%";
             this.base_tbl07_2_numPercent12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3591,10 +3789,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblOtherTyosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblOtherTyosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblOtherTyosa.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblOtherTyosa.Location = new System.Drawing.Point(1503, 30);
+            this.base_tbl07_2_lblOtherTyosa.Location = new System.Drawing.Point(1459, 30);
             this.base_tbl07_2_lblOtherTyosa.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblOtherTyosa.Name = "base_tbl07_2_lblOtherTyosa";
-            this.base_tbl07_2_lblOtherTyosa.Size = new System.Drawing.Size(119, 28);
+            this.base_tbl07_2_lblOtherTyosa.Size = new System.Drawing.Size(115, 28);
             this.base_tbl07_2_lblOtherTyosa.TabIndex = 15;
             this.base_tbl07_2_lblOtherTyosa.Text = "その他調査部";
             this.base_tbl07_2_lblOtherTyosa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3606,10 +3804,10 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblGokei.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl07_2_lblGokei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.base_tbl07_2_lblGokei.ForeColor = System.Drawing.Color.White;
-            this.base_tbl07_2_lblGokei.Location = new System.Drawing.Point(1623, 30);
+            this.base_tbl07_2_lblGokei.Location = new System.Drawing.Point(1575, 30);
             this.base_tbl07_2_lblGokei.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_2_lblGokei.Name = "base_tbl07_2_lblGokei";
-            this.base_tbl07_2_lblGokei.Size = new System.Drawing.Size(137, 28);
+            this.base_tbl07_2_lblGokei.Size = new System.Drawing.Size(160, 28);
             this.base_tbl07_2_lblGokei.TabIndex = 15;
             this.base_tbl07_2_lblGokei.Text = "合計";
             this.base_tbl07_2_lblGokei.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3622,7 +3820,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_2_lblTitle.Location = new System.Drawing.Point(5, 1);
             this.base_tbl07_2_lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.base_tbl07_2_lblTitle.Name = "base_tbl07_2_lblTitle";
-            this.base_tbl07_2_lblTitle.Size = new System.Drawing.Size(1751, 28);
+            this.base_tbl07_2_lblTitle.Size = new System.Drawing.Size(1726, 28);
             this.base_tbl07_2_lblTitle.TabIndex = 15;
             this.base_tbl07_2_lblTitle.Text = "調査部 業務別配分";
             this.base_tbl07_2_lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4146,6 +4344,7 @@ namespace TokuchoBugyoK2
             this.base_tbl02_cmbJyutakuKasyoSibu.Name = "base_tbl02_cmbJyutakuKasyoSibu";
             this.base_tbl02_cmbJyutakuKasyoSibu.Size = new System.Drawing.Size(278, 22);
             this.base_tbl02_cmbJyutakuKasyoSibu.TabIndex = 55;
+            this.base_tbl02_cmbJyutakuKasyoSibu.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             // 
             // base_tbl02_picJyutakuKasyoSibuAlert
             // 
@@ -4386,6 +4585,7 @@ namespace TokuchoBugyoK2
             this.base_tbl02_txtAnkenFolder.Name = "base_tbl02_txtAnkenFolder";
             this.base_tbl02_txtAnkenFolder.Size = new System.Drawing.Size(1490, 21);
             this.base_tbl02_txtAnkenFolder.TabIndex = 11;
+            this.base_tbl02_txtAnkenFolder.Leave += new System.EventHandler(this.txtTextBox_Leave);
             // 
             // base_tbl02_lblAnkenFolderNote
             // 
@@ -6210,14 +6410,25 @@ namespace TokuchoBugyoK2
             // base_tbl09_input
             // 
             this.base_tbl09_input.AutoSize = true;
-            this.base_tbl09_input.ColumnCount = 4;
+            this.base_tbl09_input.ColumnCount = 7;
             this.base_tbl09_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl09_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl09_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl09_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.base_tbl09_input.Controls.Add(this.base_tbl09_lblOthenComment, 2, 5);
-            this.base_tbl09_input.Controls.Add(this.base_tbl09_numSankomitumoriAmt, 3, 1);
-            this.base_tbl09_input.Controls.Add(this.base_tbl09_lblSankomitumoriAmt, 2, 1);
+            this.base_tbl09_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl09_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl09_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl09_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_picOthenCommentAlert, 6, 5);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_picNotOrderReasonAlert, 3, 5);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_picOrderYoteiDtAlert, 3, 3);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_picJizenDasinIraiDtAlert, 3, 0);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_picNotOrderStatsAlert, 2, 4);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_picOrderIyokuAlert, 2, 2);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_picSankomitumoriAlert, 2, 1);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_lblOthenComment, 4, 5);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_numSankomitumoriAmt, 5, 1);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_lblSankomitumoriAmt, 4, 1);
             this.base_tbl09_input.Controls.Add(this.base_tbl09_cmbNotOrderReason, 1, 5);
             this.base_tbl09_input.Controls.Add(this.base_tbl09_cmbNotOrderStats, 1, 4);
             this.base_tbl09_input.Controls.Add(this.base_tbl09_dtpOrderYoteiDt, 1, 3);
@@ -6230,7 +6441,7 @@ namespace TokuchoBugyoK2
             this.base_tbl09_input.Controls.Add(this.base_tbl09_lblOrderIyoku, 0, 2);
             this.base_tbl09_input.Controls.Add(this.base_tbl09_lblSankomitumori, 0, 1);
             this.base_tbl09_input.Controls.Add(this.base_tbl09_lblJizenDasinIraiDt, 0, 0);
-            this.base_tbl09_input.Controls.Add(this.base_tbl09_txtOthenComment, 3, 5);
+            this.base_tbl09_input.Controls.Add(this.base_tbl09_txtOthenComment, 5, 5);
             this.base_tbl09_input.Dock = System.Windows.Forms.DockStyle.Top;
             this.base_tbl09_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.base_tbl09_input.Location = new System.Drawing.Point(25, 65);
@@ -6246,13 +6457,119 @@ namespace TokuchoBugyoK2
             this.base_tbl09_input.Size = new System.Drawing.Size(1751, 194);
             this.base_tbl09_input.TabIndex = 48;
             // 
+            // base_tbl09_picOthenCommentAlert
+            // 
+            this.base_tbl09_picOthenCommentAlert.AccessibleName = "";
+            this.base_tbl09_picOthenCommentAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl09_picOthenCommentAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl09_picOthenCommentAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl09_picOthenCommentAlert.Image")));
+            this.base_tbl09_picOthenCommentAlert.Location = new System.Drawing.Point(1442, 156);
+            this.base_tbl09_picOthenCommentAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl09_picOthenCommentAlert.Name = "base_tbl09_picOthenCommentAlert";
+            this.base_tbl09_picOthenCommentAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl09_picOthenCommentAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl09_picOthenCommentAlert.TabIndex = 100009;
+            this.base_tbl09_picOthenCommentAlert.TabStop = false;
+            this.base_tbl09_picOthenCommentAlert.Visible = false;
+            // 
+            // base_tbl09_picNotOrderReasonAlert
+            // 
+            this.base_tbl09_picNotOrderReasonAlert.AccessibleName = "";
+            this.base_tbl09_picNotOrderReasonAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl09_picNotOrderReasonAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl09_picNotOrderReasonAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl09_picNotOrderReasonAlert.Image")));
+            this.base_tbl09_picNotOrderReasonAlert.Location = new System.Drawing.Point(319, 156);
+            this.base_tbl09_picNotOrderReasonAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl09_picNotOrderReasonAlert.Name = "base_tbl09_picNotOrderReasonAlert";
+            this.base_tbl09_picNotOrderReasonAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl09_picNotOrderReasonAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl09_picNotOrderReasonAlert.TabIndex = 100008;
+            this.base_tbl09_picNotOrderReasonAlert.TabStop = false;
+            this.base_tbl09_picNotOrderReasonAlert.Visible = false;
+            // 
+            // base_tbl09_picOrderYoteiDtAlert
+            // 
+            this.base_tbl09_picOrderYoteiDtAlert.AccessibleName = "";
+            this.base_tbl09_picOrderYoteiDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl09_picOrderYoteiDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl09_picOrderYoteiDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl09_picOrderYoteiDtAlert.Image")));
+            this.base_tbl09_picOrderYoteiDtAlert.Location = new System.Drawing.Point(319, 86);
+            this.base_tbl09_picOrderYoteiDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl09_picOrderYoteiDtAlert.Name = "base_tbl09_picOrderYoteiDtAlert";
+            this.base_tbl09_picOrderYoteiDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl09_picOrderYoteiDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl09_picOrderYoteiDtAlert.TabIndex = 100007;
+            this.base_tbl09_picOrderYoteiDtAlert.TabStop = false;
+            this.base_tbl09_picOrderYoteiDtAlert.Visible = false;
+            // 
+            // base_tbl09_picJizenDasinIraiDtAlert
+            // 
+            this.base_tbl09_picJizenDasinIraiDtAlert.AccessibleName = "";
+            this.base_tbl09_picJizenDasinIraiDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl09_picJizenDasinIraiDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl09_picJizenDasinIraiDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl09_picJizenDasinIraiDtAlert.Image")));
+            this.base_tbl09_picJizenDasinIraiDtAlert.Location = new System.Drawing.Point(319, 3);
+            this.base_tbl09_picJizenDasinIraiDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl09_picJizenDasinIraiDtAlert.Name = "base_tbl09_picJizenDasinIraiDtAlert";
+            this.base_tbl09_picJizenDasinIraiDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl09_picJizenDasinIraiDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl09_picJizenDasinIraiDtAlert.TabIndex = 100006;
+            this.base_tbl09_picJizenDasinIraiDtAlert.TabStop = false;
+            this.base_tbl09_picJizenDasinIraiDtAlert.Visible = false;
+            // 
+            // base_tbl09_picNotOrderStatsAlert
+            // 
+            this.base_tbl09_picNotOrderStatsAlert.AccessibleDescription = "";
+            this.base_tbl09_picNotOrderStatsAlert.AccessibleName = "";
+            this.base_tbl09_picNotOrderStatsAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl09_picNotOrderStatsAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl09_picNotOrderStatsAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl09_picNotOrderStatsAlert.Image")));
+            this.base_tbl09_picNotOrderStatsAlert.Location = new System.Drawing.Point(261, 114);
+            this.base_tbl09_picNotOrderStatsAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl09_picNotOrderStatsAlert.Name = "base_tbl09_picNotOrderStatsAlert";
+            this.base_tbl09_picNotOrderStatsAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl09_picNotOrderStatsAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl09_picNotOrderStatsAlert.TabIndex = 100005;
+            this.base_tbl09_picNotOrderStatsAlert.TabStop = false;
+            this.base_tbl09_picNotOrderStatsAlert.Visible = false;
+            // 
+            // base_tbl09_picOrderIyokuAlert
+            // 
+            this.base_tbl09_picOrderIyokuAlert.AccessibleName = "";
+            this.base_tbl09_picOrderIyokuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl09_picOrderIyokuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl09_picOrderIyokuAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl09_picOrderIyokuAlert.Image")));
+            this.base_tbl09_picOrderIyokuAlert.Location = new System.Drawing.Point(261, 59);
+            this.base_tbl09_picOrderIyokuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl09_picOrderIyokuAlert.Name = "base_tbl09_picOrderIyokuAlert";
+            this.base_tbl09_picOrderIyokuAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl09_picOrderIyokuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl09_picOrderIyokuAlert.TabIndex = 100004;
+            this.base_tbl09_picOrderIyokuAlert.TabStop = false;
+            this.base_tbl09_picOrderIyokuAlert.Visible = false;
+            // 
+            // base_tbl09_picSankomitumoriAlert
+            // 
+            this.base_tbl09_picSankomitumoriAlert.AccessibleName = "";
+            this.base_tbl09_picSankomitumoriAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl09_picSankomitumoriAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl09_picSankomitumoriAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl09_picSankomitumoriAlert.Image")));
+            this.base_tbl09_picSankomitumoriAlert.Location = new System.Drawing.Point(261, 31);
+            this.base_tbl09_picSankomitumoriAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl09_picSankomitumoriAlert.Name = "base_tbl09_picSankomitumoriAlert";
+            this.base_tbl09_picSankomitumoriAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl09_picSankomitumoriAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl09_picSankomitumoriAlert.TabIndex = 100003;
+            this.base_tbl09_picSankomitumoriAlert.TabStop = false;
+            this.base_tbl09_picSankomitumoriAlert.Visible = false;
+            // 
             // base_tbl09_lblOthenComment
             // 
             this.base_tbl09_lblOthenComment.AutoSize = true;
             this.base_tbl09_lblOthenComment.BackColor = System.Drawing.Color.White;
             this.base_tbl09_lblOthenComment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl09_lblOthenComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl09_lblOthenComment.Location = new System.Drawing.Point(323, 141);
+            this.base_tbl09_lblOthenComment.Location = new System.Drawing.Point(344, 141);
             this.base_tbl09_lblOthenComment.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl09_lblOthenComment.Name = "base_tbl09_lblOthenComment";
             this.base_tbl09_lblOthenComment.Size = new System.Drawing.Size(116, 50);
@@ -6264,7 +6581,7 @@ namespace TokuchoBugyoK2
             // 
             this.base_tbl09_numSankomitumoriAmt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl09_numSankomitumoriAmt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl09_numSankomitumoriAmt.Location = new System.Drawing.Point(445, 30);
+            this.base_tbl09_numSankomitumoriAmt.Location = new System.Drawing.Point(466, 30);
             this.base_tbl09_numSankomitumoriAmt.MaxLength = 12;
             this.base_tbl09_numSankomitumoriAmt.Name = "base_tbl09_numSankomitumoriAmt";
             this.base_tbl09_numSankomitumoriAmt.Size = new System.Drawing.Size(107, 21);
@@ -6279,7 +6596,7 @@ namespace TokuchoBugyoK2
             this.base_tbl09_lblSankomitumoriAmt.BackColor = System.Drawing.Color.White;
             this.base_tbl09_lblSankomitumoriAmt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl09_lblSankomitumoriAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl09_lblSankomitumoriAmt.Location = new System.Drawing.Point(323, 30);
+            this.base_tbl09_lblSankomitumoriAmt.Location = new System.Drawing.Point(344, 30);
             this.base_tbl09_lblSankomitumoriAmt.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl09_lblSankomitumoriAmt.Name = "base_tbl09_lblSankomitumoriAmt";
             this.base_tbl09_lblSankomitumoriAmt.Size = new System.Drawing.Size(116, 22);
@@ -6290,6 +6607,7 @@ namespace TokuchoBugyoK2
             // base_tbl09_cmbNotOrderReason
             // 
             this.base_tbl09_cmbNotOrderReason.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl09_input.SetColumnSpan(this.base_tbl09_cmbNotOrderReason, 2);
             this.base_tbl09_cmbNotOrderReason.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.base_tbl09_cmbNotOrderReason.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.base_tbl09_cmbNotOrderReason.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -6301,7 +6619,7 @@ namespace TokuchoBugyoK2
             "辞退"});
             this.base_tbl09_cmbNotOrderReason.Location = new System.Drawing.Point(122, 155);
             this.base_tbl09_cmbNotOrderReason.Name = "base_tbl09_cmbNotOrderReason";
-            this.base_tbl09_cmbNotOrderReason.Size = new System.Drawing.Size(184, 22);
+            this.base_tbl09_cmbNotOrderReason.Size = new System.Drawing.Size(192, 22);
             this.base_tbl09_cmbNotOrderReason.TabIndex = 51;
             this.base_tbl09_cmbNotOrderReason.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             // 
@@ -6325,12 +6643,13 @@ namespace TokuchoBugyoK2
             // 
             // base_tbl09_dtpOrderYoteiDt
             // 
+            this.base_tbl09_input.SetColumnSpan(this.base_tbl09_dtpOrderYoteiDt, 2);
             this.base_tbl09_dtpOrderYoteiDt.CustomFormat = " ";
             this.base_tbl09_dtpOrderYoteiDt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl09_dtpOrderYoteiDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.base_tbl09_dtpOrderYoteiDt.Location = new System.Drawing.Point(122, 86);
             this.base_tbl09_dtpOrderYoteiDt.Name = "base_tbl09_dtpOrderYoteiDt";
-            this.base_tbl09_dtpOrderYoteiDt.Size = new System.Drawing.Size(195, 21);
+            this.base_tbl09_dtpOrderYoteiDt.Size = new System.Drawing.Size(192, 21);
             this.base_tbl09_dtpOrderYoteiDt.TabIndex = 49;
             this.base_tbl09_dtpOrderYoteiDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             this.base_tbl09_dtpOrderYoteiDt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
@@ -6415,12 +6734,13 @@ namespace TokuchoBugyoK2
             // 
             // base_tbl09_dtpJizenDasinIraiDt
             // 
+            this.base_tbl09_input.SetColumnSpan(this.base_tbl09_dtpJizenDasinIraiDt, 2);
             this.base_tbl09_dtpJizenDasinIraiDt.CustomFormat = " ";
             this.base_tbl09_dtpJizenDasinIraiDt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl09_dtpJizenDasinIraiDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.base_tbl09_dtpJizenDasinIraiDt.Location = new System.Drawing.Point(122, 3);
             this.base_tbl09_dtpJizenDasinIraiDt.Name = "base_tbl09_dtpJizenDasinIraiDt";
-            this.base_tbl09_dtpJizenDasinIraiDt.Size = new System.Drawing.Size(195, 21);
+            this.base_tbl09_dtpJizenDasinIraiDt.Size = new System.Drawing.Size(192, 21);
             this.base_tbl09_dtpJizenDasinIraiDt.TabIndex = 43;
             this.base_tbl09_dtpJizenDasinIraiDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             this.base_tbl09_dtpJizenDasinIraiDt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
@@ -6471,11 +6791,11 @@ namespace TokuchoBugyoK2
             // 
             this.base_tbl09_txtOthenComment.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.base_tbl09_txtOthenComment.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl09_txtOthenComment.Location = new System.Drawing.Point(445, 141);
+            this.base_tbl09_txtOthenComment.Location = new System.Drawing.Point(466, 141);
             this.base_tbl09_txtOthenComment.MaxLength = 512;
             this.base_tbl09_txtOthenComment.Multiline = true;
             this.base_tbl09_txtOthenComment.Name = "base_tbl09_txtOthenComment";
-            this.base_tbl09_txtOthenComment.Size = new System.Drawing.Size(1395, 50);
+            this.base_tbl09_txtOthenComment.Size = new System.Drawing.Size(971, 50);
             this.base_tbl09_txtOthenComment.TabIndex = 6;
             // 
             // base_tbl09_lblTitle
@@ -6529,17 +6849,35 @@ namespace TokuchoBugyoK2
             // base_tbl10_input
             // 
             this.base_tbl10_input.AutoSize = true;
-            this.base_tbl10_input.ColumnCount = 4;
+            this.base_tbl10_input.ColumnCount = 10;
             this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl10_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picKinsiNaiyoAlert, 8, 6);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picTokaiOsatuAlert, 6, 5);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picRakusatuAmtStatsAlert, 2, 12);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picRakusatuStatsAlert, 2, 11);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picNyusatuStatsAlert, 2, 8);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picKinsiUmuAlert, 2, 6);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picOrderIyokuAlert, 2, 5);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picSankoMitumoriAlert, 2, 4);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picNyusatuDtAlert, 2, 3);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picLowestUmuAlert, 2, 2);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picNyusatuHosikiAlert, 3, 1);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_picOrderKubunAlert, 2, 0);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblRakusatuAmtStats, 0, 12);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbRakusatuAmtStats, 1, 12);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_txtRakusatuAmt, 3, 12);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblRakusatuAmt, 2, 12);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_txtRakusatuSya, 3, 11);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblRakusatuSya, 2, 11);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_txtRakusatuAmt, 5, 12);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblRakusatuAmt, 4, 12);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_txtRakusatuSya, 5, 11);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblRakusatuSya, 4, 11);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbRakusatuStats, 1, 11);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblRakusatuStats, 0, 11);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblOsatuNumComment, 2, 10);
@@ -6550,16 +6888,16 @@ namespace TokuchoBugyoK2
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblYoteiAmt, 0, 9);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbNyusatuStats, 1, 8);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblNyusatuStats, 0, 8);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbKinsiNaiyo, 3, 6);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblKinsiNaiyo, 2, 6);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbTokaiOsatu, 3, 5);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblTokaiOsatu, 2, 5);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbKinsiNaiyo, 5, 6);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblKinsiNaiyo, 4, 6);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbTokaiOsatu, 5, 5);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblTokaiOsatu, 4, 5);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbKinsiUmu, 1, 6);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblKinsiUmu, 0, 6);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbOrderKubun, 1, 0);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblOtherNaiyo, 2, 7);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_numSankoMitumoriAmt, 3, 4);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblSankoMitumoriAmt, 2, 4);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblOtherNaiyo, 4, 7);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_numSankoMitumoriAmt, 5, 4);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_lblSankoMitumoriAmt, 4, 4);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbOrderIyoku, 1, 5);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_cmbSankoMitumori, 1, 4);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_dtpNyusatuDt, 1, 3);
@@ -6571,7 +6909,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblLowestUmu, 0, 2);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblNyusatuHosiki, 0, 1);
             this.base_tbl10_input.Controls.Add(this.base_tbl10_lblOrderKubun, 0, 0);
-            this.base_tbl10_input.Controls.Add(this.base_tbl10_txtOtherNaiyo, 3, 7);
+            this.base_tbl10_input.Controls.Add(this.base_tbl10_txtOtherNaiyo, 5, 7);
             this.base_tbl10_input.Dock = System.Windows.Forms.DockStyle.Top;
             this.base_tbl10_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.base_tbl10_input.Location = new System.Drawing.Point(25, 65);
@@ -6593,6 +6931,186 @@ namespace TokuchoBugyoK2
             this.base_tbl10_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.base_tbl10_input.Size = new System.Drawing.Size(1751, 389);
             this.base_tbl10_input.TabIndex = 49;
+            // 
+            // base_tbl10_picKinsiNaiyoAlert
+            // 
+            this.base_tbl10_picKinsiNaiyoAlert.AccessibleName = "";
+            this.base_tbl10_picKinsiNaiyoAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picKinsiNaiyoAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picKinsiNaiyoAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picKinsiNaiyoAlert.Image")));
+            this.base_tbl10_picKinsiNaiyoAlert.Location = new System.Drawing.Point(962, 171);
+            this.base_tbl10_picKinsiNaiyoAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picKinsiNaiyoAlert.Name = "base_tbl10_picKinsiNaiyoAlert";
+            this.base_tbl10_picKinsiNaiyoAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picKinsiNaiyoAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picKinsiNaiyoAlert.TabIndex = 100020;
+            this.base_tbl10_picKinsiNaiyoAlert.TabStop = false;
+            this.base_tbl10_picKinsiNaiyoAlert.Visible = false;
+            // 
+            // base_tbl10_picTokaiOsatuAlert
+            // 
+            this.base_tbl10_picTokaiOsatuAlert.AccessibleName = "";
+            this.base_tbl10_picTokaiOsatuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picTokaiOsatuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picTokaiOsatuAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picTokaiOsatuAlert.Image")));
+            this.base_tbl10_picTokaiOsatuAlert.Location = new System.Drawing.Point(786, 143);
+            this.base_tbl10_picTokaiOsatuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picTokaiOsatuAlert.Name = "base_tbl10_picTokaiOsatuAlert";
+            this.base_tbl10_picTokaiOsatuAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picTokaiOsatuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picTokaiOsatuAlert.TabIndex = 100019;
+            this.base_tbl10_picTokaiOsatuAlert.TabStop = false;
+            this.base_tbl10_picTokaiOsatuAlert.Visible = false;
+            // 
+            // base_tbl10_picRakusatuAmtStatsAlert
+            // 
+            this.base_tbl10_picRakusatuAmtStatsAlert.AccessibleName = "";
+            this.base_tbl10_picRakusatuAmtStatsAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picRakusatuAmtStatsAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picRakusatuAmtStatsAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picRakusatuAmtStatsAlert.Image")));
+            this.base_tbl10_picRakusatuAmtStatsAlert.Location = new System.Drawing.Point(371, 365);
+            this.base_tbl10_picRakusatuAmtStatsAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picRakusatuAmtStatsAlert.Name = "base_tbl10_picRakusatuAmtStatsAlert";
+            this.base_tbl10_picRakusatuAmtStatsAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picRakusatuAmtStatsAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picRakusatuAmtStatsAlert.TabIndex = 100018;
+            this.base_tbl10_picRakusatuAmtStatsAlert.TabStop = false;
+            this.base_tbl10_picRakusatuAmtStatsAlert.Visible = false;
+            // 
+            // base_tbl10_picRakusatuStatsAlert
+            // 
+            this.base_tbl10_picRakusatuStatsAlert.AccessibleName = "";
+            this.base_tbl10_picRakusatuStatsAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picRakusatuStatsAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picRakusatuStatsAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picRakusatuStatsAlert.Image")));
+            this.base_tbl10_picRakusatuStatsAlert.Location = new System.Drawing.Point(371, 337);
+            this.base_tbl10_picRakusatuStatsAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picRakusatuStatsAlert.Name = "base_tbl10_picRakusatuStatsAlert";
+            this.base_tbl10_picRakusatuStatsAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picRakusatuStatsAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picRakusatuStatsAlert.TabIndex = 100017;
+            this.base_tbl10_picRakusatuStatsAlert.TabStop = false;
+            this.base_tbl10_picRakusatuStatsAlert.Visible = false;
+            // 
+            // base_tbl10_picNyusatuStatsAlert
+            // 
+            this.base_tbl10_picNyusatuStatsAlert.AccessibleName = "";
+            this.base_tbl10_picNyusatuStatsAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picNyusatuStatsAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picNyusatuStatsAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picNyusatuStatsAlert.Image")));
+            this.base_tbl10_picNyusatuStatsAlert.Location = new System.Drawing.Point(371, 255);
+            this.base_tbl10_picNyusatuStatsAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picNyusatuStatsAlert.Name = "base_tbl10_picNyusatuStatsAlert";
+            this.base_tbl10_picNyusatuStatsAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picNyusatuStatsAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picNyusatuStatsAlert.TabIndex = 100016;
+            this.base_tbl10_picNyusatuStatsAlert.TabStop = false;
+            this.base_tbl10_picNyusatuStatsAlert.Visible = false;
+            // 
+            // base_tbl10_picKinsiUmuAlert
+            // 
+            this.base_tbl10_picKinsiUmuAlert.AccessibleName = "";
+            this.base_tbl10_picKinsiUmuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picKinsiUmuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picKinsiUmuAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picKinsiUmuAlert.Image")));
+            this.base_tbl10_picKinsiUmuAlert.Location = new System.Drawing.Point(371, 171);
+            this.base_tbl10_picKinsiUmuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picKinsiUmuAlert.Name = "base_tbl10_picKinsiUmuAlert";
+            this.base_tbl10_picKinsiUmuAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picKinsiUmuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picKinsiUmuAlert.TabIndex = 100015;
+            this.base_tbl10_picKinsiUmuAlert.TabStop = false;
+            this.base_tbl10_picKinsiUmuAlert.Visible = false;
+            // 
+            // base_tbl10_picOrderIyokuAlert
+            // 
+            this.base_tbl10_picOrderIyokuAlert.AccessibleName = "";
+            this.base_tbl10_picOrderIyokuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picOrderIyokuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picOrderIyokuAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picOrderIyokuAlert.Image")));
+            this.base_tbl10_picOrderIyokuAlert.Location = new System.Drawing.Point(371, 143);
+            this.base_tbl10_picOrderIyokuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picOrderIyokuAlert.Name = "base_tbl10_picOrderIyokuAlert";
+            this.base_tbl10_picOrderIyokuAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picOrderIyokuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picOrderIyokuAlert.TabIndex = 100014;
+            this.base_tbl10_picOrderIyokuAlert.TabStop = false;
+            this.base_tbl10_picOrderIyokuAlert.Visible = false;
+            // 
+            // base_tbl10_picSankoMitumoriAlert
+            // 
+            this.base_tbl10_picSankoMitumoriAlert.AccessibleName = "";
+            this.base_tbl10_picSankoMitumoriAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picSankoMitumoriAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picSankoMitumoriAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picSankoMitumoriAlert.Image")));
+            this.base_tbl10_picSankoMitumoriAlert.Location = new System.Drawing.Point(371, 115);
+            this.base_tbl10_picSankoMitumoriAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picSankoMitumoriAlert.Name = "base_tbl10_picSankoMitumoriAlert";
+            this.base_tbl10_picSankoMitumoriAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picSankoMitumoriAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picSankoMitumoriAlert.TabIndex = 100013;
+            this.base_tbl10_picSankoMitumoriAlert.TabStop = false;
+            this.base_tbl10_picSankoMitumoriAlert.Visible = false;
+            // 
+            // base_tbl10_picNyusatuDtAlert
+            // 
+            this.base_tbl10_picNyusatuDtAlert.AccessibleName = "";
+            this.base_tbl10_picNyusatuDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picNyusatuDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picNyusatuDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picNyusatuDtAlert.Image")));
+            this.base_tbl10_picNyusatuDtAlert.Location = new System.Drawing.Point(371, 87);
+            this.base_tbl10_picNyusatuDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picNyusatuDtAlert.Name = "base_tbl10_picNyusatuDtAlert";
+            this.base_tbl10_picNyusatuDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picNyusatuDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picNyusatuDtAlert.TabIndex = 100012;
+            this.base_tbl10_picNyusatuDtAlert.TabStop = false;
+            this.base_tbl10_picNyusatuDtAlert.Visible = false;
+            // 
+            // base_tbl10_picLowestUmuAlert
+            // 
+            this.base_tbl10_picLowestUmuAlert.AccessibleName = "";
+            this.base_tbl10_picLowestUmuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picLowestUmuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picLowestUmuAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picLowestUmuAlert.Image")));
+            this.base_tbl10_picLowestUmuAlert.Location = new System.Drawing.Point(371, 60);
+            this.base_tbl10_picLowestUmuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picLowestUmuAlert.Name = "base_tbl10_picLowestUmuAlert";
+            this.base_tbl10_picLowestUmuAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picLowestUmuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picLowestUmuAlert.TabIndex = 100011;
+            this.base_tbl10_picLowestUmuAlert.TabStop = false;
+            this.base_tbl10_picLowestUmuAlert.Visible = false;
+            // 
+            // base_tbl10_picNyusatuHosikiAlert
+            // 
+            this.base_tbl10_picNyusatuHosikiAlert.AccessibleName = "";
+            this.base_tbl10_picNyusatuHosikiAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picNyusatuHosikiAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picNyusatuHosikiAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picNyusatuHosikiAlert.Image")));
+            this.base_tbl10_picNyusatuHosikiAlert.Location = new System.Drawing.Point(421, 32);
+            this.base_tbl10_picNyusatuHosikiAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picNyusatuHosikiAlert.Name = "base_tbl10_picNyusatuHosikiAlert";
+            this.base_tbl10_picNyusatuHosikiAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picNyusatuHosikiAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picNyusatuHosikiAlert.TabIndex = 100010;
+            this.base_tbl10_picNyusatuHosikiAlert.TabStop = false;
+            this.base_tbl10_picNyusatuHosikiAlert.Visible = false;
+            // 
+            // base_tbl10_picOrderKubunAlert
+            // 
+            this.base_tbl10_picOrderKubunAlert.AccessibleName = "";
+            this.base_tbl10_picOrderKubunAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_picOrderKubunAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_tbl10_picOrderKubunAlert.Image = ((System.Drawing.Image)(resources.GetObject("base_tbl10_picOrderKubunAlert.Image")));
+            this.base_tbl10_picOrderKubunAlert.Location = new System.Drawing.Point(371, 4);
+            this.base_tbl10_picOrderKubunAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.base_tbl10_picOrderKubunAlert.Name = "base_tbl10_picOrderKubunAlert";
+            this.base_tbl10_picOrderKubunAlert.Size = new System.Drawing.Size(20, 20);
+            this.base_tbl10_picOrderKubunAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.base_tbl10_picOrderKubunAlert.TabIndex = 100009;
+            this.base_tbl10_picOrderKubunAlert.TabStop = false;
+            this.base_tbl10_picOrderKubunAlert.Visible = false;
             // 
             // base_tbl10_lblRakusatuAmtStats
             // 
@@ -6630,7 +7148,7 @@ namespace TokuchoBugyoK2
             // 
             this.base_tbl10_txtRakusatuAmt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl10_txtRakusatuAmt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl10_txtRakusatuAmt.Location = new System.Drawing.Point(573, 364);
+            this.base_tbl10_txtRakusatuAmt.Location = new System.Drawing.Point(597, 364);
             this.base_tbl10_txtRakusatuAmt.MaxLength = 12;
             this.base_tbl10_txtRakusatuAmt.Name = "base_tbl10_txtRakusatuAmt";
             this.base_tbl10_txtRakusatuAmt.ReadOnly = true;
@@ -6646,7 +7164,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_lblRakusatuAmt.BackColor = System.Drawing.Color.White;
             this.base_tbl10_lblRakusatuAmt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl10_lblRakusatuAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl10_lblRakusatuAmt.Location = new System.Drawing.Point(422, 364);
+            this.base_tbl10_lblRakusatuAmt.Location = new System.Drawing.Point(446, 364);
             this.base_tbl10_lblRakusatuAmt.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl10_lblRakusatuAmt.Name = "base_tbl10_lblRakusatuAmt";
             this.base_tbl10_lblRakusatuAmt.Size = new System.Drawing.Size(145, 22);
@@ -6657,8 +7175,9 @@ namespace TokuchoBugyoK2
             // base_tbl10_txtRakusatuSya
             // 
             this.base_tbl10_txtRakusatuSya.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_input.SetColumnSpan(this.base_tbl10_txtRakusatuSya, 5);
             this.base_tbl10_txtRakusatuSya.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl10_txtRakusatuSya.Location = new System.Drawing.Point(573, 336);
+            this.base_tbl10_txtRakusatuSya.Location = new System.Drawing.Point(597, 336);
             this.base_tbl10_txtRakusatuSya.MaxLength = 100;
             this.base_tbl10_txtRakusatuSya.Name = "base_tbl10_txtRakusatuSya";
             this.base_tbl10_txtRakusatuSya.ReadOnly = true;
@@ -6671,7 +7190,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_lblRakusatuSya.BackColor = System.Drawing.Color.White;
             this.base_tbl10_lblRakusatuSya.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl10_lblRakusatuSya.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl10_lblRakusatuSya.Location = new System.Drawing.Point(422, 336);
+            this.base_tbl10_lblRakusatuSya.Location = new System.Drawing.Point(446, 336);
             this.base_tbl10_lblRakusatuSya.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl10_lblRakusatuSya.Name = "base_tbl10_lblRakusatuSya";
             this.base_tbl10_lblRakusatuSya.Size = new System.Drawing.Size(145, 22);
@@ -6714,10 +7233,10 @@ namespace TokuchoBugyoK2
             // base_tbl10_lblOsatuNumComment
             // 
             this.base_tbl10_lblOsatuNumComment.AutoSize = true;
-            this.base_tbl10_input.SetColumnSpan(this.base_tbl10_lblOsatuNumComment, 2);
+            this.base_tbl10_input.SetColumnSpan(this.base_tbl10_lblOsatuNumComment, 4);
             this.base_tbl10_lblOsatuNumComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.base_tbl10_lblOsatuNumComment.ForeColor = System.Drawing.Color.Gray;
-            this.base_tbl10_lblOsatuNumComment.Location = new System.Drawing.Point(422, 309);
+            this.base_tbl10_lblOsatuNumComment.Location = new System.Drawing.Point(372, 309);
             this.base_tbl10_lblOsatuNumComment.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl10_lblOsatuNumComment.Name = "base_tbl10_lblOsatuNumComment";
             this.base_tbl10_lblOsatuNumComment.Size = new System.Drawing.Size(60, 13);
@@ -6755,10 +7274,10 @@ namespace TokuchoBugyoK2
             // base_tbl10_lblYoteiAmtComment
             // 
             this.base_tbl10_lblYoteiAmtComment.AutoSize = true;
-            this.base_tbl10_input.SetColumnSpan(this.base_tbl10_lblYoteiAmtComment, 2);
+            this.base_tbl10_input.SetColumnSpan(this.base_tbl10_lblYoteiAmtComment, 4);
             this.base_tbl10_lblYoteiAmtComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.base_tbl10_lblYoteiAmtComment.ForeColor = System.Drawing.Color.Gray;
-            this.base_tbl10_lblYoteiAmtComment.Location = new System.Drawing.Point(422, 282);
+            this.base_tbl10_lblYoteiAmtComment.Location = new System.Drawing.Point(372, 282);
             this.base_tbl10_lblYoteiAmtComment.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl10_lblYoteiAmtComment.Name = "base_tbl10_lblYoteiAmtComment";
             this.base_tbl10_lblYoteiAmtComment.Size = new System.Drawing.Size(254, 13);
@@ -6828,6 +7347,7 @@ namespace TokuchoBugyoK2
             // base_tbl10_cmbKinsiNaiyo
             // 
             this.base_tbl10_cmbKinsiNaiyo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_input.SetColumnSpan(this.base_tbl10_cmbKinsiNaiyo, 3);
             this.base_tbl10_cmbKinsiNaiyo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.base_tbl10_cmbKinsiNaiyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.base_tbl10_cmbKinsiNaiyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -6837,7 +7357,7 @@ namespace TokuchoBugyoK2
             "提出",
             "依頼なし",
             "辞退"});
-            this.base_tbl10_cmbKinsiNaiyo.Location = new System.Drawing.Point(573, 170);
+            this.base_tbl10_cmbKinsiNaiyo.Location = new System.Drawing.Point(597, 170);
             this.base_tbl10_cmbKinsiNaiyo.Name = "base_tbl10_cmbKinsiNaiyo";
             this.base_tbl10_cmbKinsiNaiyo.Size = new System.Drawing.Size(360, 22);
             this.base_tbl10_cmbKinsiNaiyo.TabIndex = 61;
@@ -6849,7 +7369,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_lblKinsiNaiyo.BackColor = System.Drawing.Color.White;
             this.base_tbl10_lblKinsiNaiyo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl10_lblKinsiNaiyo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl10_lblKinsiNaiyo.Location = new System.Drawing.Point(422, 170);
+            this.base_tbl10_lblKinsiNaiyo.Location = new System.Drawing.Point(446, 170);
             this.base_tbl10_lblKinsiNaiyo.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl10_lblKinsiNaiyo.Name = "base_tbl10_lblKinsiNaiyo";
             this.base_tbl10_lblKinsiNaiyo.Size = new System.Drawing.Size(145, 22);
@@ -6869,7 +7389,7 @@ namespace TokuchoBugyoK2
             "提出",
             "依頼なし",
             "辞退"});
-            this.base_tbl10_cmbTokaiOsatu.Location = new System.Drawing.Point(573, 142);
+            this.base_tbl10_cmbTokaiOsatu.Location = new System.Drawing.Point(597, 142);
             this.base_tbl10_cmbTokaiOsatu.Name = "base_tbl10_cmbTokaiOsatu";
             this.base_tbl10_cmbTokaiOsatu.Size = new System.Drawing.Size(184, 22);
             this.base_tbl10_cmbTokaiOsatu.TabIndex = 59;
@@ -6881,7 +7401,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_lblTokaiOsatu.BackColor = System.Drawing.Color.White;
             this.base_tbl10_lblTokaiOsatu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl10_lblTokaiOsatu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl10_lblTokaiOsatu.Location = new System.Drawing.Point(422, 142);
+            this.base_tbl10_lblTokaiOsatu.Location = new System.Drawing.Point(446, 142);
             this.base_tbl10_lblTokaiOsatu.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl10_lblTokaiOsatu.Name = "base_tbl10_lblTokaiOsatu";
             this.base_tbl10_lblTokaiOsatu.Size = new System.Drawing.Size(145, 22);
@@ -6945,7 +7465,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_lblOtherNaiyo.BackColor = System.Drawing.Color.White;
             this.base_tbl10_lblOtherNaiyo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl10_lblOtherNaiyo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl10_lblOtherNaiyo.Location = new System.Drawing.Point(422, 198);
+            this.base_tbl10_lblOtherNaiyo.Location = new System.Drawing.Point(446, 198);
             this.base_tbl10_lblOtherNaiyo.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl10_lblOtherNaiyo.Name = "base_tbl10_lblOtherNaiyo";
             this.base_tbl10_lblOtherNaiyo.Size = new System.Drawing.Size(145, 50);
@@ -6957,7 +7477,7 @@ namespace TokuchoBugyoK2
             // 
             this.base_tbl10_numSankoMitumoriAmt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.base_tbl10_numSankoMitumoriAmt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.base_tbl10_numSankoMitumoriAmt.Location = new System.Drawing.Point(573, 114);
+            this.base_tbl10_numSankoMitumoriAmt.Location = new System.Drawing.Point(597, 114);
             this.base_tbl10_numSankoMitumoriAmt.MaxLength = 12;
             this.base_tbl10_numSankoMitumoriAmt.Name = "base_tbl10_numSankoMitumoriAmt";
             this.base_tbl10_numSankoMitumoriAmt.Size = new System.Drawing.Size(107, 21);
@@ -6972,7 +7492,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_lblSankoMitumoriAmt.BackColor = System.Drawing.Color.White;
             this.base_tbl10_lblSankoMitumoriAmt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.base_tbl10_lblSankoMitumoriAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.base_tbl10_lblSankoMitumoriAmt.Location = new System.Drawing.Point(422, 114);
+            this.base_tbl10_lblSankoMitumoriAmt.Location = new System.Drawing.Point(446, 114);
             this.base_tbl10_lblSankoMitumoriAmt.Margin = new System.Windows.Forms.Padding(3);
             this.base_tbl10_lblSankoMitumoriAmt.Name = "base_tbl10_lblSankoMitumoriAmt";
             this.base_tbl10_lblSankoMitumoriAmt.Size = new System.Drawing.Size(145, 22);
@@ -7023,7 +7543,7 @@ namespace TokuchoBugyoK2
             this.base_tbl10_dtpNyusatuDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.base_tbl10_dtpNyusatuDt.Location = new System.Drawing.Point(182, 87);
             this.base_tbl10_dtpNyusatuDt.Name = "base_tbl10_dtpNyusatuDt";
-            this.base_tbl10_dtpNyusatuDt.Size = new System.Drawing.Size(195, 21);
+            this.base_tbl10_dtpNyusatuDt.Size = new System.Drawing.Size(184, 21);
             this.base_tbl10_dtpNyusatuDt.TabIndex = 49;
             this.base_tbl10_dtpNyusatuDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             this.base_tbl10_dtpNyusatuDt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
@@ -7049,6 +7569,7 @@ namespace TokuchoBugyoK2
             // base_tbl10_cmbNyusatuHosiki
             // 
             this.base_tbl10_cmbNyusatuHosiki.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_input.SetColumnSpan(this.base_tbl10_cmbNyusatuHosiki, 2);
             this.base_tbl10_cmbNyusatuHosiki.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.base_tbl10_cmbNyusatuHosiki.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.base_tbl10_cmbNyusatuHosiki.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -7151,12 +7672,13 @@ namespace TokuchoBugyoK2
             // base_tbl10_txtOtherNaiyo
             // 
             this.base_tbl10_txtOtherNaiyo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.base_tbl10_input.SetColumnSpan(this.base_tbl10_txtOtherNaiyo, 5);
             this.base_tbl10_txtOtherNaiyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.base_tbl10_txtOtherNaiyo.Location = new System.Drawing.Point(573, 198);
+            this.base_tbl10_txtOtherNaiyo.Location = new System.Drawing.Point(597, 198);
             this.base_tbl10_txtOtherNaiyo.MaxLength = 512;
             this.base_tbl10_txtOtherNaiyo.Multiline = true;
             this.base_tbl10_txtOtherNaiyo.Name = "base_tbl10_txtOtherNaiyo";
-            this.base_tbl10_txtOtherNaiyo.Size = new System.Drawing.Size(1189, 50);
+            this.base_tbl10_txtOtherNaiyo.Size = new System.Drawing.Size(1147, 50);
             this.base_tbl10_txtOtherNaiyo.TabIndex = 6;
             // 
             // base_tbl10_lblTitle
@@ -7869,13 +8391,19 @@ namespace TokuchoBugyoK2
             // prior_tbl02_input
             // 
             this.prior_tbl02_input.AutoSize = true;
-            this.prior_tbl02_input.ColumnCount = 4;
+            this.prior_tbl02_input.ColumnCount = 6;
             this.prior_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.prior_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.prior_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.prior_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.prior_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.prior_tbl02_input.Controls.Add(this.prior_tbl02_txtOtherNaiyo, 3, 2);
-            this.prior_tbl02_input.Controls.Add(this.prior_tbl02_lblOtherNaiyo, 2, 2);
+            this.prior_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.prior_tbl02_input.Controls.Add(this.prior_tbl02_picNotOrderStatsAlert, 2, 1);
+            this.prior_tbl02_input.Controls.Add(this.prior_tbl02_picNotOrderDtAlert, 2, 0);
+            this.prior_tbl02_input.Controls.Add(this.prior_tbl02_picNotOrderReasonAlert, 2, 2);
+            this.prior_tbl02_input.Controls.Add(this.prior_tbl02_picOtherNaiyoAlert, 5, 2);
+            this.prior_tbl02_input.Controls.Add(this.prior_tbl02_txtOtherNaiyo, 4, 2);
+            this.prior_tbl02_input.Controls.Add(this.prior_tbl02_lblOtherNaiyo, 3, 2);
             this.prior_tbl02_input.Controls.Add(this.prior_tbl02_txtAnkenMemo, 1, 3);
             this.prior_tbl02_input.Controls.Add(this.prior_tbl02_lblAnkenMemo, 0, 3);
             this.prior_tbl02_input.Controls.Add(this.prior_tbl02_dtpNotOrderDt, 1, 0);
@@ -7888,21 +8416,81 @@ namespace TokuchoBugyoK2
             this.prior_tbl02_input.Location = new System.Drawing.Point(25, 65);
             this.prior_tbl02_input.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
             this.prior_tbl02_input.Name = "prior_tbl02_input";
-            this.prior_tbl02_input.RowCount = 5;
+            this.prior_tbl02_input.RowCount = 4;
             this.prior_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.prior_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.prior_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.prior_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.prior_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.prior_tbl02_input.Size = new System.Drawing.Size(1348, 222);
+            this.prior_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.prior_tbl02_input.Size = new System.Drawing.Size(1387, 222);
             this.prior_tbl02_input.TabIndex = 6;
+            // 
+            // prior_tbl02_picNotOrderStatsAlert
+            // 
+            this.prior_tbl02_picNotOrderStatsAlert.AccessibleName = "";
+            this.prior_tbl02_picNotOrderStatsAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl02_picNotOrderStatsAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl02_picNotOrderStatsAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl02_picNotOrderStatsAlert.Image")));
+            this.prior_tbl02_picNotOrderStatsAlert.Location = new System.Drawing.Point(311, 31);
+            this.prior_tbl02_picNotOrderStatsAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl02_picNotOrderStatsAlert.Name = "prior_tbl02_picNotOrderStatsAlert";
+            this.prior_tbl02_picNotOrderStatsAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl02_picNotOrderStatsAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl02_picNotOrderStatsAlert.TabIndex = 100029;
+            this.prior_tbl02_picNotOrderStatsAlert.TabStop = false;
+            this.prior_tbl02_picNotOrderStatsAlert.Visible = false;
+            // 
+            // prior_tbl02_picNotOrderDtAlert
+            // 
+            this.prior_tbl02_picNotOrderDtAlert.AccessibleName = "";
+            this.prior_tbl02_picNotOrderDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl02_picNotOrderDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl02_picNotOrderDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl02_picNotOrderDtAlert.Image")));
+            this.prior_tbl02_picNotOrderDtAlert.Location = new System.Drawing.Point(311, 3);
+            this.prior_tbl02_picNotOrderDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl02_picNotOrderDtAlert.Name = "prior_tbl02_picNotOrderDtAlert";
+            this.prior_tbl02_picNotOrderDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl02_picNotOrderDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl02_picNotOrderDtAlert.TabIndex = 100028;
+            this.prior_tbl02_picNotOrderDtAlert.TabStop = false;
+            this.prior_tbl02_picNotOrderDtAlert.Visible = false;
+            // 
+            // prior_tbl02_picNotOrderReasonAlert
+            // 
+            this.prior_tbl02_picNotOrderReasonAlert.AccessibleName = "";
+            this.prior_tbl02_picNotOrderReasonAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl02_picNotOrderReasonAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl02_picNotOrderReasonAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl02_picNotOrderReasonAlert.Image")));
+            this.prior_tbl02_picNotOrderReasonAlert.Location = new System.Drawing.Point(311, 78);
+            this.prior_tbl02_picNotOrderReasonAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl02_picNotOrderReasonAlert.Name = "prior_tbl02_picNotOrderReasonAlert";
+            this.prior_tbl02_picNotOrderReasonAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl02_picNotOrderReasonAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl02_picNotOrderReasonAlert.TabIndex = 100027;
+            this.prior_tbl02_picNotOrderReasonAlert.TabStop = false;
+            this.prior_tbl02_picNotOrderReasonAlert.Visible = false;
+            // 
+            // prior_tbl02_picOtherNaiyoAlert
+            // 
+            this.prior_tbl02_picOtherNaiyoAlert.AccessibleName = "";
+            this.prior_tbl02_picOtherNaiyoAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl02_picOtherNaiyoAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl02_picOtherNaiyoAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl02_picOtherNaiyoAlert.Image")));
+            this.prior_tbl02_picOtherNaiyoAlert.Location = new System.Drawing.Point(1364, 78);
+            this.prior_tbl02_picOtherNaiyoAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl02_picOtherNaiyoAlert.Name = "prior_tbl02_picOtherNaiyoAlert";
+            this.prior_tbl02_picOtherNaiyoAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl02_picOtherNaiyoAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl02_picOtherNaiyoAlert.TabIndex = 100026;
+            this.prior_tbl02_picOtherNaiyoAlert.TabStop = false;
+            this.prior_tbl02_picOtherNaiyoAlert.Visible = false;
             // 
             // prior_tbl02_txtOtherNaiyo
             // 
             this.prior_tbl02_txtOtherNaiyo.BackColor = System.Drawing.Color.White;
             this.prior_tbl02_txtOtherNaiyo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prior_tbl02_txtOtherNaiyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.prior_tbl02_txtOtherNaiyo.Location = new System.Drawing.Point(425, 58);
+            this.prior_tbl02_txtOtherNaiyo.Location = new System.Drawing.Point(439, 58);
             this.prior_tbl02_txtOtherNaiyo.MaxLength = 512;
             this.prior_tbl02_txtOtherNaiyo.Multiline = true;
             this.prior_tbl02_txtOtherNaiyo.Name = "prior_tbl02_txtOtherNaiyo";
@@ -7916,7 +8504,7 @@ namespace TokuchoBugyoK2
             this.prior_tbl02_lblOtherNaiyo.BackColor = System.Drawing.Color.White;
             this.prior_tbl02_lblOtherNaiyo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prior_tbl02_lblOtherNaiyo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.prior_tbl02_lblOtherNaiyo.Location = new System.Drawing.Point(323, 58);
+            this.prior_tbl02_lblOtherNaiyo.Location = new System.Drawing.Point(337, 58);
             this.prior_tbl02_lblOtherNaiyo.Margin = new System.Windows.Forms.Padding(3);
             this.prior_tbl02_lblOtherNaiyo.Name = "prior_tbl02_lblOtherNaiyo";
             this.prior_tbl02_lblOtherNaiyo.Size = new System.Drawing.Size(96, 60);
@@ -7927,14 +8515,14 @@ namespace TokuchoBugyoK2
             // prior_tbl02_txtAnkenMemo
             // 
             this.prior_tbl02_txtAnkenMemo.BackColor = System.Drawing.Color.White;
-            this.prior_tbl02_input.SetColumnSpan(this.prior_tbl02_txtAnkenMemo, 3);
+            this.prior_tbl02_input.SetColumnSpan(this.prior_tbl02_txtAnkenMemo, 4);
             this.prior_tbl02_txtAnkenMemo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prior_tbl02_txtAnkenMemo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.prior_tbl02_txtAnkenMemo.Location = new System.Drawing.Point(122, 124);
             this.prior_tbl02_txtAnkenMemo.MaxLength = 2048;
             this.prior_tbl02_txtAnkenMemo.Multiline = true;
             this.prior_tbl02_txtAnkenMemo.Name = "prior_tbl02_txtAnkenMemo";
-            this.prior_tbl02_txtAnkenMemo.Size = new System.Drawing.Size(1223, 95);
+            this.prior_tbl02_txtAnkenMemo.Size = new System.Drawing.Size(1237, 95);
             this.prior_tbl02_txtAnkenMemo.TabIndex = 32;
             // 
             // prior_tbl02_lblAnkenMemo
@@ -7958,7 +8546,7 @@ namespace TokuchoBugyoK2
             this.prior_tbl02_dtpNotOrderDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.prior_tbl02_dtpNotOrderDt.Location = new System.Drawing.Point(122, 3);
             this.prior_tbl02_dtpNotOrderDt.Name = "prior_tbl02_dtpNotOrderDt";
-            this.prior_tbl02_dtpNotOrderDt.Size = new System.Drawing.Size(195, 21);
+            this.prior_tbl02_dtpNotOrderDt.Size = new System.Drawing.Size(184, 21);
             this.prior_tbl02_dtpNotOrderDt.TabIndex = 27;
             this.prior_tbl02_dtpNotOrderDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             this.prior_tbl02_dtpNotOrderDt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
@@ -7992,7 +8580,7 @@ namespace TokuchoBugyoK2
             "辞退"});
             this.prior_tbl02_cmbNotOrderStats.Location = new System.Drawing.Point(122, 30);
             this.prior_tbl02_cmbNotOrderStats.Name = "prior_tbl02_cmbNotOrderStats";
-            this.prior_tbl02_cmbNotOrderStats.Size = new System.Drawing.Size(134, 22);
+            this.prior_tbl02_cmbNotOrderStats.Size = new System.Drawing.Size(184, 22);
             this.prior_tbl02_cmbNotOrderStats.TabIndex = 0;
             this.prior_tbl02_cmbNotOrderStats.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             this.prior_tbl02_cmbNotOrderStats.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
@@ -8095,13 +8683,19 @@ namespace TokuchoBugyoK2
             // prior_tbl01_input
             // 
             this.prior_tbl01_input.AutoSize = true;
-            this.prior_tbl01_input.ColumnCount = 4;
+            this.prior_tbl01_input.ColumnCount = 5;
             this.prior_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.prior_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.prior_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.prior_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.prior_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_lblMitumoriAmtComment, 2, 2);
-            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_lblMitumoriComment, 2, 1);
+            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_picOrderYoteiDtAlert, 2, 4);
+            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_picMitumoriAmtAlert, 2, 2);
+            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_picOrderIyokuAlert, 2, 3);
+            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_picMitumoriAlert, 2, 1);
+            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_picDasinIraiDtAlert, 2, 0);
+            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_lblMitumoriAmtComment, 3, 2);
+            this.prior_tbl01_input.Controls.Add(this.prior_tbl01_lblMitumoriComment, 3, 1);
             this.prior_tbl01_input.Controls.Add(this.prior_tbl01_txtAnkenMemo, 1, 5);
             this.prior_tbl01_input.Controls.Add(this.prior_tbl01_lblAnkenMemo, 0, 5);
             this.prior_tbl01_input.Controls.Add(this.prior_tbl01_dtpOrderYoteiDt, 1, 4);
@@ -8129,13 +8723,88 @@ namespace TokuchoBugyoK2
             this.prior_tbl01_input.Size = new System.Drawing.Size(1348, 240);
             this.prior_tbl01_input.TabIndex = 5;
             // 
+            // prior_tbl01_picOrderYoteiDtAlert
+            // 
+            this.prior_tbl01_picOrderYoteiDtAlert.AccessibleName = "";
+            this.prior_tbl01_picOrderYoteiDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl01_picOrderYoteiDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl01_picOrderYoteiDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl01_picOrderYoteiDtAlert.Image")));
+            this.prior_tbl01_picOrderYoteiDtAlert.Location = new System.Drawing.Point(341, 115);
+            this.prior_tbl01_picOrderYoteiDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl01_picOrderYoteiDtAlert.Name = "prior_tbl01_picOrderYoteiDtAlert";
+            this.prior_tbl01_picOrderYoteiDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl01_picOrderYoteiDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl01_picOrderYoteiDtAlert.TabIndex = 100025;
+            this.prior_tbl01_picOrderYoteiDtAlert.TabStop = false;
+            this.prior_tbl01_picOrderYoteiDtAlert.Visible = false;
+            // 
+            // prior_tbl01_picMitumoriAmtAlert
+            // 
+            this.prior_tbl01_picMitumoriAmtAlert.AccessibleName = "";
+            this.prior_tbl01_picMitumoriAmtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl01_picMitumoriAmtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl01_picMitumoriAmtAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl01_picMitumoriAmtAlert.Image")));
+            this.prior_tbl01_picMitumoriAmtAlert.Location = new System.Drawing.Point(341, 59);
+            this.prior_tbl01_picMitumoriAmtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl01_picMitumoriAmtAlert.Name = "prior_tbl01_picMitumoriAmtAlert";
+            this.prior_tbl01_picMitumoriAmtAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl01_picMitumoriAmtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl01_picMitumoriAmtAlert.TabIndex = 100024;
+            this.prior_tbl01_picMitumoriAmtAlert.TabStop = false;
+            this.prior_tbl01_picMitumoriAmtAlert.Visible = false;
+            // 
+            // prior_tbl01_picOrderIyokuAlert
+            // 
+            this.prior_tbl01_picOrderIyokuAlert.AccessibleName = "";
+            this.prior_tbl01_picOrderIyokuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl01_picOrderIyokuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl01_picOrderIyokuAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl01_picOrderIyokuAlert.Image")));
+            this.prior_tbl01_picOrderIyokuAlert.Location = new System.Drawing.Point(341, 88);
+            this.prior_tbl01_picOrderIyokuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl01_picOrderIyokuAlert.Name = "prior_tbl01_picOrderIyokuAlert";
+            this.prior_tbl01_picOrderIyokuAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl01_picOrderIyokuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl01_picOrderIyokuAlert.TabIndex = 100023;
+            this.prior_tbl01_picOrderIyokuAlert.TabStop = false;
+            this.prior_tbl01_picOrderIyokuAlert.Visible = false;
+            // 
+            // prior_tbl01_picMitumoriAlert
+            // 
+            this.prior_tbl01_picMitumoriAlert.AccessibleName = "";
+            this.prior_tbl01_picMitumoriAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl01_picMitumoriAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl01_picMitumoriAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl01_picMitumoriAlert.Image")));
+            this.prior_tbl01_picMitumoriAlert.Location = new System.Drawing.Point(341, 31);
+            this.prior_tbl01_picMitumoriAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl01_picMitumoriAlert.Name = "prior_tbl01_picMitumoriAlert";
+            this.prior_tbl01_picMitumoriAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl01_picMitumoriAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl01_picMitumoriAlert.TabIndex = 100022;
+            this.prior_tbl01_picMitumoriAlert.TabStop = false;
+            this.prior_tbl01_picMitumoriAlert.Visible = false;
+            // 
+            // prior_tbl01_picDasinIraiDtAlert
+            // 
+            this.prior_tbl01_picDasinIraiDtAlert.AccessibleName = "";
+            this.prior_tbl01_picDasinIraiDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prior_tbl01_picDasinIraiDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.prior_tbl01_picDasinIraiDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("prior_tbl01_picDasinIraiDtAlert.Image")));
+            this.prior_tbl01_picDasinIraiDtAlert.Location = new System.Drawing.Point(341, 3);
+            this.prior_tbl01_picDasinIraiDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.prior_tbl01_picDasinIraiDtAlert.Name = "prior_tbl01_picDasinIraiDtAlert";
+            this.prior_tbl01_picDasinIraiDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.prior_tbl01_picDasinIraiDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.prior_tbl01_picDasinIraiDtAlert.TabIndex = 100021;
+            this.prior_tbl01_picDasinIraiDtAlert.TabStop = false;
+            this.prior_tbl01_picDasinIraiDtAlert.Visible = false;
+            // 
             // prior_tbl01_lblMitumoriAmtComment
             // 
             this.prior_tbl01_lblMitumoriAmtComment.AutoSize = true;
             this.prior_tbl01_input.SetColumnSpan(this.prior_tbl01_lblMitumoriAmtComment, 2);
             this.prior_tbl01_lblMitumoriAmtComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.prior_tbl01_lblMitumoriAmtComment.ForeColor = System.Drawing.Color.Gray;
-            this.prior_tbl01_lblMitumoriAmtComment.Location = new System.Drawing.Point(342, 58);
+            this.prior_tbl01_lblMitumoriAmtComment.Location = new System.Drawing.Point(367, 58);
             this.prior_tbl01_lblMitumoriAmtComment.Margin = new System.Windows.Forms.Padding(3);
             this.prior_tbl01_lblMitumoriAmtComment.Name = "prior_tbl01_lblMitumoriAmtComment";
             this.prior_tbl01_lblMitumoriAmtComment.Size = new System.Drawing.Size(521, 13);
@@ -8149,7 +8818,7 @@ namespace TokuchoBugyoK2
             this.prior_tbl01_input.SetColumnSpan(this.prior_tbl01_lblMitumoriComment, 2);
             this.prior_tbl01_lblMitumoriComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.prior_tbl01_lblMitumoriComment.ForeColor = System.Drawing.Color.Gray;
-            this.prior_tbl01_lblMitumoriComment.Location = new System.Drawing.Point(342, 30);
+            this.prior_tbl01_lblMitumoriComment.Location = new System.Drawing.Point(367, 30);
             this.prior_tbl01_lblMitumoriComment.Margin = new System.Windows.Forms.Padding(3);
             this.prior_tbl01_lblMitumoriComment.Name = "prior_tbl01_lblMitumoriComment";
             this.prior_tbl01_lblMitumoriComment.Size = new System.Drawing.Size(343, 13);
@@ -8160,7 +8829,7 @@ namespace TokuchoBugyoK2
             // prior_tbl01_txtAnkenMemo
             // 
             this.prior_tbl01_txtAnkenMemo.BackColor = System.Drawing.Color.White;
-            this.prior_tbl01_input.SetColumnSpan(this.prior_tbl01_txtAnkenMemo, 2);
+            this.prior_tbl01_input.SetColumnSpan(this.prior_tbl01_txtAnkenMemo, 3);
             this.prior_tbl01_txtAnkenMemo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prior_tbl01_txtAnkenMemo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.prior_tbl01_txtAnkenMemo.Location = new System.Drawing.Point(141, 142);
@@ -8285,7 +8954,7 @@ namespace TokuchoBugyoK2
             "辞退"});
             this.prior_tbl01_cmbMitumori.Location = new System.Drawing.Point(141, 30);
             this.prior_tbl01_cmbMitumori.Name = "prior_tbl01_cmbMitumori";
-            this.prior_tbl01_cmbMitumori.Size = new System.Drawing.Size(134, 22);
+            this.prior_tbl01_cmbMitumori.Size = new System.Drawing.Size(195, 22);
             this.prior_tbl01_cmbMitumori.TabIndex = 0;
             this.prior_tbl01_cmbMitumori.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             this.prior_tbl01_cmbMitumori.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
@@ -8332,7 +9001,7 @@ namespace TokuchoBugyoK2
             "なし"});
             this.prior_tbl01_cmbOrderIyoku.Location = new System.Drawing.Point(141, 87);
             this.prior_tbl01_cmbOrderIyoku.Name = "prior_tbl01_cmbOrderIyoku";
-            this.prior_tbl01_cmbOrderIyoku.Size = new System.Drawing.Size(148, 22);
+            this.prior_tbl01_cmbOrderIyoku.Size = new System.Drawing.Size(195, 22);
             this.prior_tbl01_cmbOrderIyoku.TabIndex = 1;
             this.prior_tbl01_cmbOrderIyoku.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             this.prior_tbl01_cmbOrderIyoku.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
@@ -8382,7 +9051,7 @@ namespace TokuchoBugyoK2
             this.tblBid.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblBid.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblBid.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblBid.Size = new System.Drawing.Size(1823, 1047);
+            this.tblBid.Size = new System.Drawing.Size(1823, 1049);
             this.tblBid.TabIndex = 1;
             // 
             // bid_tbl02_parent
@@ -8410,11 +9079,11 @@ namespace TokuchoBugyoK2
             this.bid_tbl02.Margin = new System.Windows.Forms.Padding(0);
             this.bid_tbl02.Name = "bid_tbl02";
             this.bid_tbl02.Padding = new System.Windows.Forms.Padding(10);
-            this.bid_tbl02.RowCount = 4;
+            this.bid_tbl02.RowCount = 2;
             this.bid_tbl02.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.bid_tbl02.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.bid_tbl02.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.bid_tbl02.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.bid_tbl02.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.bid_tbl02.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.bid_tbl02.Size = new System.Drawing.Size(1781, 147);
             this.bid_tbl02.TabIndex = 3;
             // 
@@ -8422,41 +9091,91 @@ namespace TokuchoBugyoK2
             // 
             this.bid_tbl02_input.AutoScroll = true;
             this.bid_tbl02_input.AutoSize = true;
-            this.bid_tbl02_input.ColumnCount = 5;
+            this.bid_tbl02_input.ColumnCount = 8;
             this.bid_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.bid_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.bid_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.bid_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.bid_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.bid_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.bid_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_txtOtherNaiyo, 3, 1);
-            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_lblOtherNaiyo, 2, 1);
+            this.bid_tbl02_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_picOtherNaiyoAlert, 7, 1);
+            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_picKinsiNaiyoAlert, 5, 0);
+            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_picKinsiUmuAlert, 2, 0);
+            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_txtOtherNaiyo, 4, 1);
+            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_lblOtherNaiyo, 3, 1);
             this.bid_tbl02_input.Controls.Add(this.bid_tbl02_cmbKinsiUmu, 1, 0);
             this.bid_tbl02_input.Controls.Add(this.bid_tbl02_lblKinsiUmu, 0, 0);
-            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_cmbKinsiNaiyo, 3, 0);
-            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_lblKinsiNaiyo, 2, 0);
-            this.bid_tbl02_input.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_cmbKinsiNaiyo, 4, 0);
+            this.bid_tbl02_input.Controls.Add(this.bid_tbl02_lblKinsiNaiyo, 3, 0);
+            this.bid_tbl02_input.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bid_tbl02_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.bid_tbl02_input.Location = new System.Drawing.Point(25, 65);
             this.bid_tbl02_input.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
             this.bid_tbl02_input.Name = "bid_tbl02_input";
-            this.bid_tbl02_input.RowCount = 4;
+            this.bid_tbl02_input.RowCount = 2;
             this.bid_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.bid_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.bid_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.bid_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.bid_tbl02_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.bid_tbl02_input.Size = new System.Drawing.Size(1731, 67);
             this.bid_tbl02_input.TabIndex = 5;
+            // 
+            // bid_tbl02_picOtherNaiyoAlert
+            // 
+            this.bid_tbl02_picOtherNaiyoAlert.AccessibleName = "";
+            this.bid_tbl02_picOtherNaiyoAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl02_picOtherNaiyoAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl02_picOtherNaiyoAlert.Image")));
+            this.bid_tbl02_picOtherNaiyoAlert.Location = new System.Drawing.Point(1708, 30);
+            this.bid_tbl02_picOtherNaiyoAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl02_picOtherNaiyoAlert.Name = "bid_tbl02_picOtherNaiyoAlert";
+            this.bid_tbl02_picOtherNaiyoAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl02_picOtherNaiyoAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl02_picOtherNaiyoAlert.TabIndex = 100032;
+            this.bid_tbl02_picOtherNaiyoAlert.TabStop = false;
+            this.bid_tbl02_picOtherNaiyoAlert.Visible = false;
+            // 
+            // bid_tbl02_picKinsiNaiyoAlert
+            // 
+            this.bid_tbl02_picKinsiNaiyoAlert.AccessibleName = "";
+            this.bid_tbl02_picKinsiNaiyoAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl02_picKinsiNaiyoAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl02_picKinsiNaiyoAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl02_picKinsiNaiyoAlert.Image")));
+            this.bid_tbl02_picKinsiNaiyoAlert.Location = new System.Drawing.Point(913, 4);
+            this.bid_tbl02_picKinsiNaiyoAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl02_picKinsiNaiyoAlert.Name = "bid_tbl02_picKinsiNaiyoAlert";
+            this.bid_tbl02_picKinsiNaiyoAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl02_picKinsiNaiyoAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl02_picKinsiNaiyoAlert.TabIndex = 100031;
+            this.bid_tbl02_picKinsiNaiyoAlert.TabStop = false;
+            this.bid_tbl02_picKinsiNaiyoAlert.Visible = false;
+            // 
+            // bid_tbl02_picKinsiUmuAlert
+            // 
+            this.bid_tbl02_picKinsiUmuAlert.AccessibleName = "";
+            this.bid_tbl02_picKinsiUmuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl02_picKinsiUmuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl02_picKinsiUmuAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl02_picKinsiUmuAlert.Image")));
+            this.bid_tbl02_picKinsiUmuAlert.Location = new System.Drawing.Point(371, 4);
+            this.bid_tbl02_picKinsiUmuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl02_picKinsiUmuAlert.Name = "bid_tbl02_picKinsiUmuAlert";
+            this.bid_tbl02_picKinsiUmuAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl02_picKinsiUmuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl02_picKinsiUmuAlert.TabIndex = 100030;
+            this.bid_tbl02_picKinsiUmuAlert.TabStop = false;
+            this.bid_tbl02_picKinsiUmuAlert.Visible = false;
             // 
             // bid_tbl02_txtOtherNaiyo
             // 
             this.bid_tbl02_txtOtherNaiyo.BackColor = System.Drawing.Color.White;
-            this.bid_tbl02_input.SetColumnSpan(this.bid_tbl02_txtOtherNaiyo, 2);
+            this.bid_tbl02_input.SetColumnSpan(this.bid_tbl02_txtOtherNaiyo, 3);
             this.bid_tbl02_txtOtherNaiyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.bid_tbl02_txtOtherNaiyo.Location = new System.Drawing.Point(523, 31);
+            this.bid_tbl02_txtOtherNaiyo.Location = new System.Drawing.Point(548, 31);
             this.bid_tbl02_txtOtherNaiyo.MaxLength = 512;
             this.bid_tbl02_txtOtherNaiyo.Multiline = true;
             this.bid_tbl02_txtOtherNaiyo.Name = "bid_tbl02_txtOtherNaiyo";
-            this.bid_tbl02_txtOtherNaiyo.Size = new System.Drawing.Size(1185, 33);
+            this.bid_tbl02_txtOtherNaiyo.Size = new System.Drawing.Size(1155, 33);
             this.bid_tbl02_txtOtherNaiyo.TabIndex = 35;
             this.bid_tbl02_txtOtherNaiyo.Leave += new System.EventHandler(this.txtTextBox_Leave);
             // 
@@ -8464,7 +9183,7 @@ namespace TokuchoBugyoK2
             // 
             this.bid_tbl02_lblOtherNaiyo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl02_lblOtherNaiyo.AutoSize = true;
-            this.bid_tbl02_lblOtherNaiyo.Location = new System.Drawing.Point(372, 39);
+            this.bid_tbl02_lblOtherNaiyo.Location = new System.Drawing.Point(397, 39);
             this.bid_tbl02_lblOtherNaiyo.Margin = new System.Windows.Forms.Padding(3);
             this.bid_tbl02_lblOtherNaiyo.Name = "bid_tbl02_lblOtherNaiyo";
             this.bid_tbl02_lblOtherNaiyo.Size = new System.Drawing.Size(82, 17);
@@ -8506,7 +9225,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl02_cmbKinsiNaiyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bid_tbl02_cmbKinsiNaiyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.bid_tbl02_cmbKinsiNaiyo.FormattingEnabled = true;
-            this.bid_tbl02_cmbKinsiNaiyo.Location = new System.Drawing.Point(523, 3);
+            this.bid_tbl02_cmbKinsiNaiyo.Location = new System.Drawing.Point(548, 3);
             this.bid_tbl02_cmbKinsiNaiyo.Name = "bid_tbl02_cmbKinsiNaiyo";
             this.bid_tbl02_cmbKinsiNaiyo.Size = new System.Drawing.Size(360, 22);
             this.bid_tbl02_cmbKinsiNaiyo.TabIndex = 4;
@@ -8517,7 +9236,7 @@ namespace TokuchoBugyoK2
             // 
             this.bid_tbl02_lblKinsiNaiyo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl02_lblKinsiNaiyo.AutoSize = true;
-            this.bid_tbl02_lblKinsiNaiyo.Location = new System.Drawing.Point(372, 5);
+            this.bid_tbl02_lblKinsiNaiyo.Location = new System.Drawing.Point(397, 5);
             this.bid_tbl02_lblKinsiNaiyo.Margin = new System.Windows.Forms.Padding(3);
             this.bid_tbl02_lblKinsiNaiyo.Name = "bid_tbl02_lblKinsiNaiyo";
             this.bid_tbl02_lblKinsiNaiyo.Size = new System.Drawing.Size(145, 17);
@@ -8548,7 +9267,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_parent.Location = new System.Drawing.Point(20, 541);
             this.bid_tbl03_parent.Margin = new System.Windows.Forms.Padding(10);
             this.bid_tbl03_parent.Name = "bid_tbl03_parent";
-            this.bid_tbl03_parent.Size = new System.Drawing.Size(1783, 486);
+            this.bid_tbl03_parent.Size = new System.Drawing.Size(1783, 488);
             this.bid_tbl03_parent.TabIndex = 2;
             // 
             // bid_tbl03
@@ -8574,7 +9293,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl03.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl03.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.bid_tbl03.Size = new System.Drawing.Size(1781, 484);
+            this.bid_tbl03.Size = new System.Drawing.Size(1781, 486);
             this.bid_tbl03.TabIndex = 2;
             // 
             // bid_tbl03_lblTitle
@@ -8603,9 +9322,12 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.bid_tbl03_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.bid_tbl03_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_picBidStatusAlert, 2, 1);
+            this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_picBidResultDtAlert, 2, 0);
+            this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_tblRakusatuAmtStatus, 1, 5);
+            this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_tblRakusatuStatus, 1, 4);
             this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_lblBidMemo, 0, 6);
             this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_txtBidMemo, 1, 6);
-            this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_cmbRakusatuStatus, 1, 4);
             this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_lblBidStatus, 0, 1);
             this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_tblRakusatuSya, 3, 4);
             this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_lblRakusatuSya, 2, 4);
@@ -8620,13 +9342,12 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_tblOsatuNum, 1, 3);
             this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_tblRakusatuAmt, 3, 5);
             this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_lblRakusatuStatus, 0, 4);
-            this.bid_tbl03_input1.Controls.Add(this.bid_tbl03_1_cmbRakusatuAmtStatus, 1, 5);
             this.bid_tbl03_input1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bid_tbl03_input1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.bid_tbl03_input1.Location = new System.Drawing.Point(25, 65);
             this.bid_tbl03_input1.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
             this.bid_tbl03_input1.Name = "bid_tbl03_input1";
-            this.bid_tbl03_input1.RowCount = 9;
+            this.bid_tbl03_input1.RowCount = 7;
             this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -8634,33 +9355,94 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.bid_tbl03_input1.Size = new System.Drawing.Size(1731, 268);
+            this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.bid_tbl03_input1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.bid_tbl03_input1.Size = new System.Drawing.Size(1731, 270);
             this.bid_tbl03_input1.TabIndex = 0;
             // 
-            // bid_tbl03_1_lblBidMemo
+            // bid_tbl03_1_picBidStatusAlert
             // 
-            this.bid_tbl03_1_lblBidMemo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bid_tbl03_1_lblBidMemo.AutoSize = true;
-            this.bid_tbl03_1_lblBidMemo.Location = new System.Drawing.Point(3, 209);
-            this.bid_tbl03_1_lblBidMemo.Margin = new System.Windows.Forms.Padding(3);
-            this.bid_tbl03_1_lblBidMemo.Name = "bid_tbl03_1_lblBidMemo";
-            this.bid_tbl03_1_lblBidMemo.Size = new System.Drawing.Size(95, 17);
-            this.bid_tbl03_1_lblBidMemo.TabIndex = 32;
-            this.bid_tbl03_1_lblBidMemo.Text = "案件メモ(入札)";
+            this.bid_tbl03_1_picBidStatusAlert.AccessibleName = "";
+            this.bid_tbl03_1_picBidStatusAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_picBidStatusAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl03_1_picBidStatusAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl03_1_picBidStatusAlert.Image")));
+            this.bid_tbl03_1_picBidStatusAlert.Location = new System.Drawing.Point(304, 31);
+            this.bid_tbl03_1_picBidStatusAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl03_1_picBidStatusAlert.Name = "bid_tbl03_1_picBidStatusAlert";
+            this.bid_tbl03_1_picBidStatusAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl03_1_picBidStatusAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl03_1_picBidStatusAlert.TabIndex = 100033;
+            this.bid_tbl03_1_picBidStatusAlert.TabStop = false;
+            this.bid_tbl03_1_picBidStatusAlert.Visible = false;
             // 
-            // bid_tbl03_1_txtBidMemo
+            // bid_tbl03_1_picBidResultDtAlert
             // 
-            this.bid_tbl03_1_txtBidMemo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bid_tbl03_input1.SetColumnSpan(this.bid_tbl03_1_txtBidMemo, 5);
-            this.bid_tbl03_1_txtBidMemo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.bid_tbl03_1_txtBidMemo.Location = new System.Drawing.Point(115, 170);
-            this.bid_tbl03_1_txtBidMemo.MaxLength = 2048;
-            this.bid_tbl03_1_txtBidMemo.Multiline = true;
-            this.bid_tbl03_1_txtBidMemo.Name = "bid_tbl03_1_txtBidMemo";
-            this.bid_tbl03_1_txtBidMemo.Size = new System.Drawing.Size(1611, 95);
-            this.bid_tbl03_1_txtBidMemo.TabIndex = 0;
+            this.bid_tbl03_1_picBidResultDtAlert.AccessibleName = "";
+            this.bid_tbl03_1_picBidResultDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_picBidResultDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl03_1_picBidResultDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl03_1_picBidResultDtAlert.Image")));
+            this.bid_tbl03_1_picBidResultDtAlert.Location = new System.Drawing.Point(304, 3);
+            this.bid_tbl03_1_picBidResultDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl03_1_picBidResultDtAlert.Name = "bid_tbl03_1_picBidResultDtAlert";
+            this.bid_tbl03_1_picBidResultDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl03_1_picBidResultDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl03_1_picBidResultDtAlert.TabIndex = 100032;
+            this.bid_tbl03_1_picBidResultDtAlert.TabStop = false;
+            this.bid_tbl03_1_picBidResultDtAlert.Visible = false;
+            // 
+            // bid_tbl03_1_tblRakusatuAmtStatus
+            // 
+            this.bid_tbl03_1_tblRakusatuAmtStatus.AutoSize = true;
+            this.bid_tbl03_1_tblRakusatuAmtStatus.Controls.Add(this.bid_tbl03_1_cmbRakusatuAmtStatus);
+            this.bid_tbl03_1_tblRakusatuAmtStatus.Controls.Add(this.bid_tbl03_1_picRakusatuAmtStatusAlert);
+            this.bid_tbl03_1_tblRakusatuAmtStatus.Location = new System.Drawing.Point(112, 140);
+            this.bid_tbl03_1_tblRakusatuAmtStatus.Margin = new System.Windows.Forms.Padding(0);
+            this.bid_tbl03_1_tblRakusatuAmtStatus.Name = "bid_tbl03_1_tblRakusatuAmtStatus";
+            this.bid_tbl03_1_tblRakusatuAmtStatus.Size = new System.Drawing.Size(160, 29);
+            this.bid_tbl03_1_tblRakusatuAmtStatus.TabIndex = 34;
+            // 
+            // bid_tbl03_1_cmbRakusatuAmtStatus
+            // 
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.FormattingEnabled = true;
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.Items.AddRange(new object[] {
+            "判明",
+            "不明",
+            "推定"});
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.Location = new System.Drawing.Point(3, 4);
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.Name = "bid_tbl03_1_cmbRakusatuAmtStatus";
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.Size = new System.Drawing.Size(130, 22);
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.TabIndex = 100033;
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
+            this.bid_tbl03_1_cmbRakusatuAmtStatus.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
+            // 
+            // bid_tbl03_1_picRakusatuAmtStatusAlert
+            // 
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.AccessibleName = "";
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl03_1_picRakusatuAmtStatusAlert.Image")));
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.Location = new System.Drawing.Point(138, 4);
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.Name = "bid_tbl03_1_picRakusatuAmtStatusAlert";
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.TabIndex = 100032;
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.TabStop = false;
+            this.bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = false;
+            // 
+            // bid_tbl03_1_tblRakusatuStatus
+            // 
+            this.bid_tbl03_1_tblRakusatuStatus.AutoSize = true;
+            this.bid_tbl03_1_tblRakusatuStatus.Controls.Add(this.bid_tbl03_1_cmbRakusatuStatus);
+            this.bid_tbl03_1_tblRakusatuStatus.Controls.Add(this.bid_tbl03_1_picRakusatuStatusAlert);
+            this.bid_tbl03_1_tblRakusatuStatus.Location = new System.Drawing.Point(112, 111);
+            this.bid_tbl03_1_tblRakusatuStatus.Margin = new System.Windows.Forms.Padding(0);
+            this.bid_tbl03_1_tblRakusatuStatus.Name = "bid_tbl03_1_tblRakusatuStatus";
+            this.bid_tbl03_1_tblRakusatuStatus.Size = new System.Drawing.Size(160, 29);
+            this.bid_tbl03_1_tblRakusatuStatus.TabIndex = 33;
             // 
             // bid_tbl03_1_cmbRakusatuStatus
             // 
@@ -8673,12 +9455,50 @@ namespace TokuchoBugyoK2
             "入札前",
             "発注確定",
             "不調"});
-            this.bid_tbl03_1_cmbRakusatuStatus.Location = new System.Drawing.Point(115, 113);
+            this.bid_tbl03_1_cmbRakusatuStatus.Location = new System.Drawing.Point(3, 4);
             this.bid_tbl03_1_cmbRakusatuStatus.Name = "bid_tbl03_1_cmbRakusatuStatus";
             this.bid_tbl03_1_cmbRakusatuStatus.Size = new System.Drawing.Size(130, 22);
-            this.bid_tbl03_1_cmbRakusatuStatus.TabIndex = 30;
+            this.bid_tbl03_1_cmbRakusatuStatus.TabIndex = 100033;
             this.bid_tbl03_1_cmbRakusatuStatus.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             this.bid_tbl03_1_cmbRakusatuStatus.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
+            // 
+            // bid_tbl03_1_picRakusatuStatusAlert
+            // 
+            this.bid_tbl03_1_picRakusatuStatusAlert.AccessibleName = "";
+            this.bid_tbl03_1_picRakusatuStatusAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_picRakusatuStatusAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl03_1_picRakusatuStatusAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl03_1_picRakusatuStatusAlert.Image")));
+            this.bid_tbl03_1_picRakusatuStatusAlert.Location = new System.Drawing.Point(138, 4);
+            this.bid_tbl03_1_picRakusatuStatusAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl03_1_picRakusatuStatusAlert.Name = "bid_tbl03_1_picRakusatuStatusAlert";
+            this.bid_tbl03_1_picRakusatuStatusAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl03_1_picRakusatuStatusAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl03_1_picRakusatuStatusAlert.TabIndex = 100032;
+            this.bid_tbl03_1_picRakusatuStatusAlert.TabStop = false;
+            this.bid_tbl03_1_picRakusatuStatusAlert.Visible = false;
+            // 
+            // bid_tbl03_1_lblBidMemo
+            // 
+            this.bid_tbl03_1_lblBidMemo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_lblBidMemo.AutoSize = true;
+            this.bid_tbl03_1_lblBidMemo.Location = new System.Drawing.Point(3, 211);
+            this.bid_tbl03_1_lblBidMemo.Margin = new System.Windows.Forms.Padding(3);
+            this.bid_tbl03_1_lblBidMemo.Name = "bid_tbl03_1_lblBidMemo";
+            this.bid_tbl03_1_lblBidMemo.Size = new System.Drawing.Size(95, 17);
+            this.bid_tbl03_1_lblBidMemo.TabIndex = 32;
+            this.bid_tbl03_1_lblBidMemo.Text = "案件メモ(入札)";
+            // 
+            // bid_tbl03_1_txtBidMemo
+            // 
+            this.bid_tbl03_1_txtBidMemo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_input1.SetColumnSpan(this.bid_tbl03_1_txtBidMemo, 5);
+            this.bid_tbl03_1_txtBidMemo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.bid_tbl03_1_txtBidMemo.Location = new System.Drawing.Point(115, 172);
+            this.bid_tbl03_1_txtBidMemo.MaxLength = 2048;
+            this.bid_tbl03_1_txtBidMemo.Multiline = true;
+            this.bid_tbl03_1_txtBidMemo.Name = "bid_tbl03_1_txtBidMemo";
+            this.bid_tbl03_1_txtBidMemo.Size = new System.Drawing.Size(1588, 95);
+            this.bid_tbl03_1_txtBidMemo.TabIndex = 0;
             // 
             // bid_tbl03_1_lblBidStatus
             // 
@@ -8695,28 +9515,37 @@ namespace TokuchoBugyoK2
             // bid_tbl03_1_tblRakusatuSya
             // 
             this.bid_tbl03_1_tblRakusatuSya.AutoSize = true;
-            this.bid_tbl03_1_tblRakusatuSya.ColumnCount = 2;
             this.bid_tbl03_input1.SetColumnSpan(this.bid_tbl03_1_tblRakusatuSya, 3);
-            this.bid_tbl03_1_tblRakusatuSya.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.bid_tbl03_1_tblRakusatuSya.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.bid_tbl03_1_tblRakusatuSya.Controls.Add(this.bid_tbl03_1_lblRakusatuSyaComment, 1, 0);
-            this.bid_tbl03_1_tblRakusatuSya.Controls.Add(this.bid_tbl03_1_txtRakusatuSya, 0, 0);
-            this.bid_tbl03_1_tblRakusatuSya.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bid_tbl03_1_tblRakusatuSya.Location = new System.Drawing.Point(411, 110);
+            this.bid_tbl03_1_tblRakusatuSya.Controls.Add(this.bid_tbl03_1_picRakusatuSyaAlert);
+            this.bid_tbl03_1_tblRakusatuSya.Controls.Add(this.bid_tbl03_1_lblRakusatuSyaComment);
+            this.bid_tbl03_1_tblRakusatuSya.Controls.Add(this.bid_tbl03_1_txtRakusatuSya);
+            this.bid_tbl03_1_tblRakusatuSya.Location = new System.Drawing.Point(400, 111);
             this.bid_tbl03_1_tblRakusatuSya.Margin = new System.Windows.Forms.Padding(0);
             this.bid_tbl03_1_tblRakusatuSya.Name = "bid_tbl03_1_tblRakusatuSya";
-            this.bid_tbl03_1_tblRakusatuSya.RowCount = 1;
-            this.bid_tbl03_1_tblRakusatuSya.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bid_tbl03_1_tblRakusatuSya.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.bid_tbl03_1_tblRakusatuSya.Size = new System.Drawing.Size(1320, 28);
+            this.bid_tbl03_1_tblRakusatuSya.Size = new System.Drawing.Size(738, 26);
             this.bid_tbl03_1_tblRakusatuSya.TabIndex = 5;
+            // 
+            // bid_tbl03_1_picRakusatuSyaAlert
+            // 
+            this.bid_tbl03_1_picRakusatuSyaAlert.AccessibleName = "";
+            this.bid_tbl03_1_picRakusatuSyaAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_picRakusatuSyaAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl03_1_picRakusatuSyaAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl03_1_picRakusatuSyaAlert.Image")));
+            this.bid_tbl03_1_picRakusatuSyaAlert.Location = new System.Drawing.Point(508, 3);
+            this.bid_tbl03_1_picRakusatuSyaAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl03_1_picRakusatuSyaAlert.Name = "bid_tbl03_1_picRakusatuSyaAlert";
+            this.bid_tbl03_1_picRakusatuSyaAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl03_1_picRakusatuSyaAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl03_1_picRakusatuSyaAlert.TabIndex = 100033;
+            this.bid_tbl03_1_picRakusatuSyaAlert.TabStop = false;
+            this.bid_tbl03_1_picRakusatuSyaAlert.Visible = false;
             // 
             // bid_tbl03_1_lblRakusatuSyaComment
             // 
             this.bid_tbl03_1_lblRakusatuSyaComment.AutoSize = true;
             this.bid_tbl03_1_lblRakusatuSyaComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.bid_tbl03_1_lblRakusatuSyaComment.ForeColor = System.Drawing.Color.Gray;
-            this.bid_tbl03_1_lblRakusatuSyaComment.Location = new System.Drawing.Point(509, 0);
+            this.bid_tbl03_1_lblRakusatuSyaComment.Location = new System.Drawing.Point(534, 7);
             this.bid_tbl03_1_lblRakusatuSyaComment.Name = "bid_tbl03_1_lblRakusatuSyaComment";
             this.bid_tbl03_1_lblRakusatuSyaComment.Size = new System.Drawing.Size(201, 13);
             this.bid_tbl03_1_lblRakusatuSyaComment.TabIndex = 47;
@@ -8727,7 +9556,7 @@ namespace TokuchoBugyoK2
             // 
             this.bid_tbl03_1_txtRakusatuSya.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl03_1_txtRakusatuSya.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.bid_tbl03_1_txtRakusatuSya.Location = new System.Drawing.Point(3, 3);
+            this.bid_tbl03_1_txtRakusatuSya.Location = new System.Drawing.Point(3, 2);
             this.bid_tbl03_1_txtRakusatuSya.Name = "bid_tbl03_1_txtRakusatuSya";
             this.bid_tbl03_1_txtRakusatuSya.ReadOnly = true;
             this.bid_tbl03_1_txtRakusatuSya.Size = new System.Drawing.Size(500, 21);
@@ -8739,7 +9568,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_lblRakusatuSya.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl03_1_lblRakusatuSya.AutoSize = true;
             this.bid_tbl03_1_lblRakusatuSya.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.bid_tbl03_1_lblRakusatuSya.Location = new System.Drawing.Point(316, 115);
+            this.bid_tbl03_1_lblRakusatuSya.Location = new System.Drawing.Point(305, 117);
             this.bid_tbl03_1_lblRakusatuSya.Margin = new System.Windows.Forms.Padding(3);
             this.bid_tbl03_1_lblRakusatuSya.Name = "bid_tbl03_1_lblRakusatuSya";
             this.bid_tbl03_1_lblRakusatuSya.Size = new System.Drawing.Size(50, 17);
@@ -8751,7 +9580,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_lblRakusatuAmt.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl03_1_lblRakusatuAmt.AutoSize = true;
             this.bid_tbl03_1_lblRakusatuAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.bid_tbl03_1_lblRakusatuAmt.Location = new System.Drawing.Point(316, 144);
+            this.bid_tbl03_1_lblRakusatuAmt.Location = new System.Drawing.Point(305, 146);
             this.bid_tbl03_1_lblRakusatuAmt.Margin = new System.Windows.Forms.Padding(3);
             this.bid_tbl03_1_lblRakusatuAmt.Name = "bid_tbl03_1_lblRakusatuAmt";
             this.bid_tbl03_1_lblRakusatuAmt.Size = new System.Drawing.Size(92, 17);
@@ -8784,7 +9613,7 @@ namespace TokuchoBugyoK2
             // 
             this.bid_tbl03_1_lblRakusatuAmtStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl03_1_lblRakusatuAmtStatus.AutoSize = true;
-            this.bid_tbl03_1_lblRakusatuAmtStatus.Location = new System.Drawing.Point(3, 144);
+            this.bid_tbl03_1_lblRakusatuAmtStatus.Location = new System.Drawing.Point(3, 146);
             this.bid_tbl03_1_lblRakusatuAmtStatus.Margin = new System.Windows.Forms.Padding(3);
             this.bid_tbl03_1_lblRakusatuAmtStatus.Name = "bid_tbl03_1_lblRakusatuAmtStatus";
             this.bid_tbl03_1_lblRakusatuAmtStatus.Size = new System.Drawing.Size(78, 17);
@@ -8798,7 +9627,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_dtpBidResultDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.bid_tbl03_1_dtpBidResultDt.Location = new System.Drawing.Point(115, 3);
             this.bid_tbl03_1_dtpBidResultDt.Name = "bid_tbl03_1_dtpBidResultDt";
-            this.bid_tbl03_1_dtpBidResultDt.Size = new System.Drawing.Size(195, 21);
+            this.bid_tbl03_1_dtpBidResultDt.Size = new System.Drawing.Size(184, 21);
             this.bid_tbl03_1_dtpBidResultDt.TabIndex = 0;
             this.bid_tbl03_1_dtpBidResultDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             this.bid_tbl03_1_dtpBidResultDt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
@@ -8834,26 +9663,30 @@ namespace TokuchoBugyoK2
             // 
             // bid_tbl03_1_tblYoteiPrice
             // 
-            this.bid_tbl03_1_tblYoteiPrice.ColumnCount = 2;
             this.bid_tbl03_input1.SetColumnSpan(this.bid_tbl03_1_tblYoteiPrice, 3);
-            this.bid_tbl03_1_tblYoteiPrice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.57927F));
-            this.bid_tbl03_1_tblYoteiPrice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.42073F));
-            this.bid_tbl03_1_tblYoteiPrice.Controls.Add(this.bid_tbl03_1_txtYoteiPrice, 0, 0);
-            this.bid_tbl03_1_tblYoteiPrice.Controls.Add(this.bid_tbl03_1_lblYoteiPriceComment, 1, 0);
+            this.bid_tbl03_1_tblYoteiPrice.Controls.Add(this.bid_tbl03_1_picYoteiPriceAlert);
+            this.bid_tbl03_1_tblYoteiPrice.Controls.Add(this.bid_tbl03_1_txtYoteiPrice);
+            this.bid_tbl03_1_tblYoteiPrice.Controls.Add(this.bid_tbl03_1_lblYoteiPriceComment);
             this.bid_tbl03_1_tblYoteiPrice.Location = new System.Drawing.Point(112, 55);
             this.bid_tbl03_1_tblYoteiPrice.Margin = new System.Windows.Forms.Padding(0);
             this.bid_tbl03_1_tblYoteiPrice.Name = "bid_tbl03_1_tblYoteiPrice";
-            this.bid_tbl03_1_tblYoteiPrice.RowCount = 1;
-            this.bid_tbl03_1_tblYoteiPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bid_tbl03_1_tblYoteiPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.bid_tbl03_1_tblYoteiPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.bid_tbl03_1_tblYoteiPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.bid_tbl03_1_tblYoteiPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.bid_tbl03_1_tblYoteiPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.bid_tbl03_1_tblYoteiPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.bid_tbl03_1_tblYoteiPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.bid_tbl03_1_tblYoteiPrice.Size = new System.Drawing.Size(720, 28);
             this.bid_tbl03_1_tblYoteiPrice.TabIndex = 3;
+            // 
+            // bid_tbl03_1_picYoteiPriceAlert
+            // 
+            this.bid_tbl03_1_picYoteiPriceAlert.AccessibleName = "";
+            this.bid_tbl03_1_picYoteiPriceAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_picYoteiPriceAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl03_1_picYoteiPriceAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl03_1_picYoteiPriceAlert.Image")));
+            this.bid_tbl03_1_picYoteiPriceAlert.Location = new System.Drawing.Point(130, 4);
+            this.bid_tbl03_1_picYoteiPriceAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl03_1_picYoteiPriceAlert.Name = "bid_tbl03_1_picYoteiPriceAlert";
+            this.bid_tbl03_1_picYoteiPriceAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl03_1_picYoteiPriceAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl03_1_picYoteiPriceAlert.TabIndex = 100031;
+            this.bid_tbl03_1_picYoteiPriceAlert.TabStop = false;
+            this.bid_tbl03_1_picYoteiPriceAlert.Visible = false;
             // 
             // bid_tbl03_1_txtYoteiPrice
             // 
@@ -8878,7 +9711,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_lblYoteiPriceComment.AutoSize = true;
             this.bid_tbl03_1_lblYoteiPriceComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.bid_tbl03_1_lblYoteiPriceComment.ForeColor = System.Drawing.Color.Gray;
-            this.bid_tbl03_1_lblYoteiPriceComment.Location = new System.Drawing.Point(151, 0);
+            this.bid_tbl03_1_lblYoteiPriceComment.Location = new System.Drawing.Point(159, 7);
             this.bid_tbl03_1_lblYoteiPriceComment.Name = "bid_tbl03_1_lblYoteiPriceComment";
             this.bid_tbl03_1_lblYoteiPriceComment.Size = new System.Drawing.Size(262, 13);
             this.bid_tbl03_1_lblYoteiPriceComment.TabIndex = 46;
@@ -8888,25 +9721,36 @@ namespace TokuchoBugyoK2
             // bid_tbl03_1_tblOsatuNum
             // 
             this.bid_tbl03_1_tblOsatuNum.AutoSize = true;
-            this.bid_tbl03_1_tblOsatuNum.ColumnCount = 2;
-            this.bid_tbl03_1_tblOsatuNum.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.bid_tbl03_1_tblOsatuNum.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.bid_tbl03_1_tblOsatuNum.Controls.Add(this.bid_tbl03_1_txtOsatuNum, 0, 0);
-            this.bid_tbl03_1_tblOsatuNum.Controls.Add(this.bid_tbl03_1_lblOsatuNumComment, 1, 0);
+            this.bid_tbl03_1_tblOsatuNum.Controls.Add(this.bid_tbl03_1_picOsatuNumAlert);
+            this.bid_tbl03_1_tblOsatuNum.Controls.Add(this.bid_tbl03_1_txtOsatuNum);
+            this.bid_tbl03_1_tblOsatuNum.Controls.Add(this.bid_tbl03_1_lblOsatuNumComment);
             this.bid_tbl03_1_tblOsatuNum.Location = new System.Drawing.Point(112, 83);
             this.bid_tbl03_1_tblOsatuNum.Margin = new System.Windows.Forms.Padding(0);
             this.bid_tbl03_1_tblOsatuNum.Name = "bid_tbl03_1_tblOsatuNum";
-            this.bid_tbl03_1_tblOsatuNum.RowCount = 1;
-            this.bid_tbl03_1_tblOsatuNum.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bid_tbl03_1_tblOsatuNum.Size = new System.Drawing.Size(132, 27);
+            this.bid_tbl03_1_tblOsatuNum.Size = new System.Drawing.Size(157, 28);
             this.bid_tbl03_1_tblOsatuNum.TabIndex = 4;
+            // 
+            // bid_tbl03_1_picOsatuNumAlert
+            // 
+            this.bid_tbl03_1_picOsatuNumAlert.AccessibleName = "";
+            this.bid_tbl03_1_picOsatuNumAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_picOsatuNumAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl03_1_picOsatuNumAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl03_1_picOsatuNumAlert.Image")));
+            this.bid_tbl03_1_picOsatuNumAlert.Location = new System.Drawing.Point(68, 4);
+            this.bid_tbl03_1_picOsatuNumAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl03_1_picOsatuNumAlert.Name = "bid_tbl03_1_picOsatuNumAlert";
+            this.bid_tbl03_1_picOsatuNumAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl03_1_picOsatuNumAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl03_1_picOsatuNumAlert.TabIndex = 100032;
+            this.bid_tbl03_1_picOsatuNumAlert.TabStop = false;
+            this.bid_tbl03_1_picOsatuNumAlert.Visible = false;
             // 
             // bid_tbl03_1_txtOsatuNum
             // 
             this.bid_tbl03_1_txtOsatuNum.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl03_1_txtOsatuNum.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.bid_tbl03_1_txtOsatuNum.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.bid_tbl03_1_txtOsatuNum.Location = new System.Drawing.Point(3, 3);
+            this.bid_tbl03_1_txtOsatuNum.Location = new System.Drawing.Point(3, 4);
             this.bid_tbl03_1_txtOsatuNum.MaxLength = 3;
             this.bid_tbl03_1_txtOsatuNum.Name = "bid_tbl03_1_txtOsatuNum";
             this.bid_tbl03_1_txtOsatuNum.Size = new System.Drawing.Size(60, 21);
@@ -8923,7 +9767,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_lblOsatuNumComment.AutoSize = true;
             this.bid_tbl03_1_lblOsatuNumComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.bid_tbl03_1_lblOsatuNumComment.ForeColor = System.Drawing.Color.Gray;
-            this.bid_tbl03_1_lblOsatuNumComment.Location = new System.Drawing.Point(69, 7);
+            this.bid_tbl03_1_lblOsatuNumComment.Location = new System.Drawing.Point(94, 8);
             this.bid_tbl03_1_lblOsatuNumComment.Name = "bid_tbl03_1_lblOsatuNumComment";
             this.bid_tbl03_1_lblOsatuNumComment.Size = new System.Drawing.Size(60, 13);
             this.bid_tbl03_1_lblOsatuNumComment.TabIndex = 46;
@@ -8933,20 +9777,30 @@ namespace TokuchoBugyoK2
             // bid_tbl03_1_tblRakusatuAmt
             // 
             this.bid_tbl03_1_tblRakusatuAmt.AutoSize = true;
-            this.bid_tbl03_1_tblRakusatuAmt.ColumnCount = 2;
             this.bid_tbl03_input1.SetColumnSpan(this.bid_tbl03_1_tblRakusatuAmt, 3);
-            this.bid_tbl03_1_tblRakusatuAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.bid_tbl03_1_tblRakusatuAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.bid_tbl03_1_tblRakusatuAmt.Controls.Add(this.bid_tbl03_1_numRakusatuAmt, 0, 0);
-            this.bid_tbl03_1_tblRakusatuAmt.Controls.Add(this.bid_tbl03_1_lblRakusatuAmtComment, 1, 0);
-            this.bid_tbl03_1_tblRakusatuAmt.Location = new System.Drawing.Point(411, 138);
+            this.bid_tbl03_1_tblRakusatuAmt.Controls.Add(this.bid_tbl03_1_picRakusatuAmtAlert);
+            this.bid_tbl03_1_tblRakusatuAmt.Controls.Add(this.bid_tbl03_1_numRakusatuAmt);
+            this.bid_tbl03_1_tblRakusatuAmt.Controls.Add(this.bid_tbl03_1_lblRakusatuAmtComment);
+            this.bid_tbl03_1_tblRakusatuAmt.Location = new System.Drawing.Point(400, 140);
             this.bid_tbl03_1_tblRakusatuAmt.Margin = new System.Windows.Forms.Padding(0);
             this.bid_tbl03_1_tblRakusatuAmt.Name = "bid_tbl03_1_tblRakusatuAmt";
-            this.bid_tbl03_1_tblRakusatuAmt.RowCount = 1;
-            this.bid_tbl03_1_tblRakusatuAmt.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.bid_tbl03_1_tblRakusatuAmt.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.bid_tbl03_1_tblRakusatuAmt.Size = new System.Drawing.Size(614, 29);
+            this.bid_tbl03_1_tblRakusatuAmt.Size = new System.Drawing.Size(639, 29);
             this.bid_tbl03_1_tblRakusatuAmt.TabIndex = 6;
+            // 
+            // bid_tbl03_1_picRakusatuAmtAlert
+            // 
+            this.bid_tbl03_1_picRakusatuAmtAlert.AccessibleName = "";
+            this.bid_tbl03_1_picRakusatuAmtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl03_1_picRakusatuAmtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl03_1_picRakusatuAmtAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl03_1_picRakusatuAmtAlert.Image")));
+            this.bid_tbl03_1_picRakusatuAmtAlert.Location = new System.Drawing.Point(132, 4);
+            this.bid_tbl03_1_picRakusatuAmtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl03_1_picRakusatuAmtAlert.Name = "bid_tbl03_1_picRakusatuAmtAlert";
+            this.bid_tbl03_1_picRakusatuAmtAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl03_1_picRakusatuAmtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl03_1_picRakusatuAmtAlert.TabIndex = 100034;
+            this.bid_tbl03_1_picRakusatuAmtAlert.TabStop = false;
+            this.bid_tbl03_1_picRakusatuAmtAlert.Visible = false;
             // 
             // bid_tbl03_1_numRakusatuAmt
             // 
@@ -8967,7 +9821,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_lblRakusatuAmtComment.AutoSize = true;
             this.bid_tbl03_1_lblRakusatuAmtComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.bid_tbl03_1_lblRakusatuAmtComment.ForeColor = System.Drawing.Color.Gray;
-            this.bid_tbl03_1_lblRakusatuAmtComment.Location = new System.Drawing.Point(133, 0);
+            this.bid_tbl03_1_lblRakusatuAmtComment.Location = new System.Drawing.Point(158, 7);
             this.bid_tbl03_1_lblRakusatuAmtComment.Name = "bid_tbl03_1_lblRakusatuAmtComment";
             this.bid_tbl03_1_lblRakusatuAmtComment.Size = new System.Drawing.Size(478, 13);
             this.bid_tbl03_1_lblRakusatuAmtComment.TabIndex = 46;
@@ -8978,29 +9832,12 @@ namespace TokuchoBugyoK2
             // 
             this.bid_tbl03_1_lblRakusatuStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bid_tbl03_1_lblRakusatuStatus.AutoSize = true;
-            this.bid_tbl03_1_lblRakusatuStatus.Location = new System.Drawing.Point(3, 115);
+            this.bid_tbl03_1_lblRakusatuStatus.Location = new System.Drawing.Point(3, 117);
             this.bid_tbl03_1_lblRakusatuStatus.Margin = new System.Windows.Forms.Padding(3);
             this.bid_tbl03_1_lblRakusatuStatus.Name = "bid_tbl03_1_lblRakusatuStatus";
             this.bid_tbl03_1_lblRakusatuStatus.Size = new System.Drawing.Size(78, 17);
             this.bid_tbl03_1_lblRakusatuStatus.TabIndex = 26;
             this.bid_tbl03_1_lblRakusatuStatus.Text = "落札者状況";
-            // 
-            // bid_tbl03_1_cmbRakusatuAmtStatus
-            // 
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.FormattingEnabled = true;
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.Items.AddRange(new object[] {
-            "判明",
-            "不明",
-            "推定"});
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.Location = new System.Drawing.Point(115, 141);
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.Name = "bid_tbl03_1_cmbRakusatuAmtStatus";
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.Size = new System.Drawing.Size(121, 22);
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.TabIndex = 1;
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
-            this.bid_tbl03_1_cmbRakusatuAmtStatus.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
             // 
             // bid_tbl03_input4
             // 
@@ -9019,7 +9856,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_input4.Controls.Add(this.bid_tbl03_4_lblInsDate, 2, 0);
             this.bid_tbl03_input4.Controls.Add(this.bid_tbl03_4_dtpInsDate, 3, 0);
             this.bid_tbl03_input4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bid_tbl03_input4.Location = new System.Drawing.Point(25, 353);
+            this.bid_tbl03_input4.Location = new System.Drawing.Point(25, 355);
             this.bid_tbl03_input4.Margin = new System.Windows.Forms.Padding(15, 15, 15, 5);
             this.bid_tbl03_input4.Name = "bid_tbl03_input4";
             this.bid_tbl03_input4.RowCount = 1;
@@ -9101,7 +9938,7 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_input5.Controls.Add(this.bid_tbl03_4_c1FlexGrid, 0, 1);
             this.bid_tbl03_input5.Controls.Add(this.bid_tbl03_5_lblTitle, 0, 0);
             this.bid_tbl03_input5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bid_tbl03_input5.Location = new System.Drawing.Point(25, 395);
+            this.bid_tbl03_input5.Location = new System.Drawing.Point(25, 397);
             this.bid_tbl03_input5.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
             this.bid_tbl03_input5.Name = "bid_tbl03_input5";
             this.bid_tbl03_input5.RowCount = 2;
@@ -9199,15 +10036,23 @@ namespace TokuchoBugyoK2
             // 
             this.bid_tbl01_input.AutoScroll = true;
             this.bid_tbl01_input.AutoSize = true;
-            this.bid_tbl01_input.ColumnCount = 4;
+            this.bid_tbl01_input.ColumnCount = 5;
             this.bid_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.bid_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.bid_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.bid_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.bid_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.bid_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_lblMitumoriAmtComment, 2, 6);
-            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_lblMitumoriComment, 2, 5);
+            this.bid_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picBidInfoDtAlert, 3, 0);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picTokaiOsatuAlert, 3, 8);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picBidYoteiDtAlert, 3, 4);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picMitumoriAlert, 3, 5);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picOrderIyokuAlert, 2, 7);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picMitumoriAmtAlert, 2, 6);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picLowestUmuAlert, 3, 3);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picOrderKubunAlert, 3, 1);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_picBidhosikiAlert, 4, 2);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_lblMitumoriAmtComment, 4, 6);
+            this.bid_tbl01_input.Controls.Add(this.bid_tbl01_lblMitumoriComment, 4, 5);
             this.bid_tbl01_input.Controls.Add(this.bid_tbl01_lblMitumoriAmt, 0, 6);
             this.bid_tbl01_input.Controls.Add(this.bid_tbl01_txtMitumoriAmt, 1, 6);
             this.bid_tbl01_input.Controls.Add(this.bid_tbl01_lblMitumori, 0, 5);
@@ -9241,13 +10086,149 @@ namespace TokuchoBugyoK2
             this.bid_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.bid_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.bid_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.bid_tbl01_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.bid_tbl01_input.Size = new System.Drawing.Size(1731, 250);
             this.bid_tbl01_input.TabIndex = 4;
+            // 
+            // bid_tbl01_picBidInfoDtAlert
+            // 
+            this.bid_tbl01_picBidInfoDtAlert.AccessibleName = "";
+            this.bid_tbl01_picBidInfoDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picBidInfoDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picBidInfoDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picBidInfoDtAlert.Image")));
+            this.bid_tbl01_picBidInfoDtAlert.Location = new System.Drawing.Point(318, 4);
+            this.bid_tbl01_picBidInfoDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picBidInfoDtAlert.Name = "bid_tbl01_picBidInfoDtAlert";
+            this.bid_tbl01_picBidInfoDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picBidInfoDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picBidInfoDtAlert.TabIndex = 100030;
+            this.bid_tbl01_picBidInfoDtAlert.TabStop = false;
+            this.bid_tbl01_picBidInfoDtAlert.Visible = false;
+            // 
+            // bid_tbl01_picTokaiOsatuAlert
+            // 
+            this.bid_tbl01_picTokaiOsatuAlert.AccessibleName = "";
+            this.bid_tbl01_picTokaiOsatuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picTokaiOsatuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picTokaiOsatuAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picTokaiOsatuAlert.Image")));
+            this.bid_tbl01_picTokaiOsatuAlert.Location = new System.Drawing.Point(318, 226);
+            this.bid_tbl01_picTokaiOsatuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picTokaiOsatuAlert.Name = "bid_tbl01_picTokaiOsatuAlert";
+            this.bid_tbl01_picTokaiOsatuAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picTokaiOsatuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picTokaiOsatuAlert.TabIndex = 100029;
+            this.bid_tbl01_picTokaiOsatuAlert.TabStop = false;
+            this.bid_tbl01_picTokaiOsatuAlert.Visible = false;
+            // 
+            // bid_tbl01_picBidYoteiDtAlert
+            // 
+            this.bid_tbl01_picBidYoteiDtAlert.AccessibleName = "";
+            this.bid_tbl01_picBidYoteiDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picBidYoteiDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picBidYoteiDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picBidYoteiDtAlert.Image")));
+            this.bid_tbl01_picBidYoteiDtAlert.Location = new System.Drawing.Point(318, 115);
+            this.bid_tbl01_picBidYoteiDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picBidYoteiDtAlert.Name = "bid_tbl01_picBidYoteiDtAlert";
+            this.bid_tbl01_picBidYoteiDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picBidYoteiDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picBidYoteiDtAlert.TabIndex = 100028;
+            this.bid_tbl01_picBidYoteiDtAlert.TabStop = false;
+            this.bid_tbl01_picBidYoteiDtAlert.Visible = false;
+            // 
+            // bid_tbl01_picMitumoriAlert
+            // 
+            this.bid_tbl01_picMitumoriAlert.AccessibleName = "";
+            this.bid_tbl01_picMitumoriAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picMitumoriAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picMitumoriAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picMitumoriAlert.Image")));
+            this.bid_tbl01_picMitumoriAlert.Location = new System.Drawing.Point(318, 143);
+            this.bid_tbl01_picMitumoriAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picMitumoriAlert.Name = "bid_tbl01_picMitumoriAlert";
+            this.bid_tbl01_picMitumoriAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picMitumoriAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picMitumoriAlert.TabIndex = 100027;
+            this.bid_tbl01_picMitumoriAlert.TabStop = false;
+            this.bid_tbl01_picMitumoriAlert.Visible = false;
+            // 
+            // bid_tbl01_picOrderIyokuAlert
+            // 
+            this.bid_tbl01_picOrderIyokuAlert.AccessibleName = "";
+            this.bid_tbl01_picOrderIyokuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picOrderIyokuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picOrderIyokuAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picOrderIyokuAlert.Image")));
+            this.bid_tbl01_picOrderIyokuAlert.Location = new System.Drawing.Point(260, 198);
+            this.bid_tbl01_picOrderIyokuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picOrderIyokuAlert.Name = "bid_tbl01_picOrderIyokuAlert";
+            this.bid_tbl01_picOrderIyokuAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picOrderIyokuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picOrderIyokuAlert.TabIndex = 100026;
+            this.bid_tbl01_picOrderIyokuAlert.TabStop = false;
+            this.bid_tbl01_picOrderIyokuAlert.Visible = false;
+            // 
+            // bid_tbl01_picMitumoriAmtAlert
+            // 
+            this.bid_tbl01_picMitumoriAmtAlert.AccessibleName = "";
+            this.bid_tbl01_picMitumoriAmtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picMitumoriAmtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picMitumoriAmtAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picMitumoriAmtAlert.Image")));
+            this.bid_tbl01_picMitumoriAmtAlert.Location = new System.Drawing.Point(260, 170);
+            this.bid_tbl01_picMitumoriAmtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picMitumoriAmtAlert.Name = "bid_tbl01_picMitumoriAmtAlert";
+            this.bid_tbl01_picMitumoriAmtAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picMitumoriAmtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picMitumoriAmtAlert.TabIndex = 100025;
+            this.bid_tbl01_picMitumoriAmtAlert.TabStop = false;
+            this.bid_tbl01_picMitumoriAmtAlert.Visible = false;
+            // 
+            // bid_tbl01_picLowestUmuAlert
+            // 
+            this.bid_tbl01_picLowestUmuAlert.AccessibleName = "";
+            this.bid_tbl01_picLowestUmuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picLowestUmuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picLowestUmuAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picLowestUmuAlert.Image")));
+            this.bid_tbl01_picLowestUmuAlert.Location = new System.Drawing.Point(318, 88);
+            this.bid_tbl01_picLowestUmuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picLowestUmuAlert.Name = "bid_tbl01_picLowestUmuAlert";
+            this.bid_tbl01_picLowestUmuAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picLowestUmuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picLowestUmuAlert.TabIndex = 100024;
+            this.bid_tbl01_picLowestUmuAlert.TabStop = false;
+            this.bid_tbl01_picLowestUmuAlert.Visible = false;
+            // 
+            // bid_tbl01_picOrderKubunAlert
+            // 
+            this.bid_tbl01_picOrderKubunAlert.AccessibleName = "";
+            this.bid_tbl01_picOrderKubunAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picOrderKubunAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picOrderKubunAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picOrderKubunAlert.Image")));
+            this.bid_tbl01_picOrderKubunAlert.Location = new System.Drawing.Point(318, 32);
+            this.bid_tbl01_picOrderKubunAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picOrderKubunAlert.Name = "bid_tbl01_picOrderKubunAlert";
+            this.bid_tbl01_picOrderKubunAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picOrderKubunAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picOrderKubunAlert.TabIndex = 100023;
+            this.bid_tbl01_picOrderKubunAlert.TabStop = false;
+            this.bid_tbl01_picOrderKubunAlert.Visible = false;
+            // 
+            // bid_tbl01_picBidhosikiAlert
+            // 
+            this.bid_tbl01_picBidhosikiAlert.AccessibleName = "";
+            this.bid_tbl01_picBidhosikiAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bid_tbl01_picBidhosikiAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bid_tbl01_picBidhosikiAlert.Image = ((System.Drawing.Image)(resources.GetObject("bid_tbl01_picBidhosikiAlert.Image")));
+            this.bid_tbl01_picBidhosikiAlert.Location = new System.Drawing.Point(368, 60);
+            this.bid_tbl01_picBidhosikiAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.bid_tbl01_picBidhosikiAlert.Name = "bid_tbl01_picBidhosikiAlert";
+            this.bid_tbl01_picBidhosikiAlert.Size = new System.Drawing.Size(20, 20);
+            this.bid_tbl01_picBidhosikiAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bid_tbl01_picBidhosikiAlert.TabIndex = 100022;
+            this.bid_tbl01_picBidhosikiAlert.TabStop = false;
+            this.bid_tbl01_picBidhosikiAlert.Visible = false;
             // 
             // bid_tbl01_lblMitumoriAmtComment
             // 
             this.bid_tbl01_lblMitumoriAmtComment.AutoSize = true;
-            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_lblMitumoriAmtComment, 2);
             this.bid_tbl01_lblMitumoriAmtComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.bid_tbl01_lblMitumoriAmtComment.ForeColor = System.Drawing.Color.Red;
             this.bid_tbl01_lblMitumoriAmtComment.Location = new System.Drawing.Point(369, 170);
@@ -9261,7 +10242,6 @@ namespace TokuchoBugyoK2
             // bid_tbl01_lblMitumoriComment
             // 
             this.bid_tbl01_lblMitumoriComment.AutoSize = true;
-            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_lblMitumoriComment, 2);
             this.bid_tbl01_lblMitumoriComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.bid_tbl01_lblMitumoriComment.ForeColor = System.Drawing.Color.Red;
             this.bid_tbl01_lblMitumoriComment.Location = new System.Drawing.Point(369, 142);
@@ -9309,6 +10289,7 @@ namespace TokuchoBugyoK2
             // 
             // bid_tbl01_cmbMitumori
             // 
+            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_cmbMitumori, 2);
             this.bid_tbl01_cmbMitumori.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.bid_tbl01_cmbMitumori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bid_tbl01_cmbMitumori.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -9328,6 +10309,7 @@ namespace TokuchoBugyoK2
             // 
             // bid_tbl01_cmbLowestUmu
             // 
+            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_cmbLowestUmu, 2);
             this.bid_tbl01_cmbLowestUmu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.bid_tbl01_cmbLowestUmu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bid_tbl01_cmbLowestUmu.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -9352,6 +10334,7 @@ namespace TokuchoBugyoK2
             // 
             // bid_tbl01_cmbOrderKubun
             // 
+            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_cmbOrderKubun, 2);
             this.bid_tbl01_cmbOrderKubun.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.bid_tbl01_cmbOrderKubun.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bid_tbl01_cmbOrderKubun.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -9381,12 +10364,13 @@ namespace TokuchoBugyoK2
             // 
             // bid_tbl01_dtpBidInfoDt
             // 
+            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_dtpBidInfoDt, 2);
             this.bid_tbl01_dtpBidInfoDt.CustomFormat = " ";
             this.bid_tbl01_dtpBidInfoDt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.bid_tbl01_dtpBidInfoDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.bid_tbl01_dtpBidInfoDt.Location = new System.Drawing.Point(129, 3);
             this.bid_tbl01_dtpBidInfoDt.Name = "bid_tbl01_dtpBidInfoDt";
-            this.bid_tbl01_dtpBidInfoDt.Size = new System.Drawing.Size(195, 21);
+            this.bid_tbl01_dtpBidInfoDt.Size = new System.Drawing.Size(184, 21);
             this.bid_tbl01_dtpBidInfoDt.TabIndex = 27;
             this.bid_tbl01_dtpBidInfoDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             this.bid_tbl01_dtpBidInfoDt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
@@ -9417,6 +10401,7 @@ namespace TokuchoBugyoK2
             // 
             // bid_tbl01_cmbTokaiOsatu
             // 
+            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_cmbTokaiOsatu, 2);
             this.bid_tbl01_cmbTokaiOsatu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.bid_tbl01_cmbTokaiOsatu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bid_tbl01_cmbTokaiOsatu.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -9446,7 +10431,7 @@ namespace TokuchoBugyoK2
             "なし"});
             this.bid_tbl01_cmbOrderIyoku.Location = new System.Drawing.Point(129, 197);
             this.bid_tbl01_cmbOrderIyoku.Name = "bid_tbl01_cmbOrderIyoku";
-            this.bid_tbl01_cmbOrderIyoku.Size = new System.Drawing.Size(86, 22);
+            this.bid_tbl01_cmbOrderIyoku.Size = new System.Drawing.Size(126, 22);
             this.bid_tbl01_cmbOrderIyoku.TabIndex = 2;
             this.bid_tbl01_cmbOrderIyoku.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             this.bid_tbl01_cmbOrderIyoku.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
@@ -9464,6 +10449,7 @@ namespace TokuchoBugyoK2
             // 
             // bid_tbl01_cmbBidhosiki
             // 
+            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_cmbBidhosiki, 3);
             this.bid_tbl01_cmbBidhosiki.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.bid_tbl01_cmbBidhosiki.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bid_tbl01_cmbBidhosiki.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
@@ -9499,12 +10485,13 @@ namespace TokuchoBugyoK2
             // 
             // bid_tbl01_dtpBidYoteiDt
             // 
+            this.bid_tbl01_input.SetColumnSpan(this.bid_tbl01_dtpBidYoteiDt, 2);
             this.bid_tbl01_dtpBidYoteiDt.CustomFormat = " ";
             this.bid_tbl01_dtpBidYoteiDt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.bid_tbl01_dtpBidYoteiDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.bid_tbl01_dtpBidYoteiDt.Location = new System.Drawing.Point(129, 115);
             this.bid_tbl01_dtpBidYoteiDt.Name = "bid_tbl01_dtpBidYoteiDt";
-            this.bid_tbl01_dtpBidYoteiDt.Size = new System.Drawing.Size(195, 21);
+            this.bid_tbl01_dtpBidYoteiDt.Size = new System.Drawing.Size(184, 21);
             this.bid_tbl01_dtpBidYoteiDt.TabIndex = 3;
             this.bid_tbl01_dtpBidYoteiDt.CloseUp += new System.EventHandler(this.dateTimePicker_CloseUp);
             this.bid_tbl01_dtpBidYoteiDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
@@ -9625,7 +10612,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 888F));
+            this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 954F));
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequstAll, 7, 0);
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequst1, 1, 0);
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequst3, 3, 0);
@@ -9656,7 +10643,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.ca_tbl07_input.Size = new System.Drawing.Size(1755, 102);
+            this.ca_tbl07_input.Size = new System.Drawing.Size(1757, 102);
             this.ca_tbl07_input.TabIndex = 4;
             // 
             // ca_tbl07_lblRequstAll
@@ -9670,7 +10657,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_lblRequstAll.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl07_lblRequstAll.Name = "ca_tbl07_lblRequstAll";
             this.ca_tbl07_lblRequstAll.Padding = new System.Windows.Forms.Padding(3);
-            this.ca_tbl07_lblRequstAll.Size = new System.Drawing.Size(888, 30);
+            this.ca_tbl07_lblRequstAll.Size = new System.Drawing.Size(954, 30);
             this.ca_tbl07_lblRequstAll.TabIndex = 50;
             this.ca_tbl07_lblRequstAll.Text = "請求合計額";
             this.ca_tbl07_lblRequstAll.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -9965,7 +10952,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_txtRequstAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.ca_tbl07_txtRequstAll.Location = new System.Drawing.Point(867, 69);
             this.ca_tbl07_txtRequstAll.Name = "ca_tbl07_txtRequstAll";
-            this.ca_tbl07_txtRequstAll.Size = new System.Drawing.Size(882, 30);
+            this.ca_tbl07_txtRequstAll.Size = new System.Drawing.Size(948, 30);
             this.ca_tbl07_txtRequstAll.TabIndex = 76;
             this.ca_tbl07_txtRequstAll.Text = "¥0";
             this.ca_tbl07_txtRequstAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -10443,7 +11430,7 @@ namespace TokuchoBugyoK2
             // ca_tbl01_input
             // 
             this.ca_tbl01_input.AutoSize = true;
-            this.ca_tbl01_input.ColumnCount = 9;
+            this.ca_tbl01_input.ColumnCount = 7;
             this.ca_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ca_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ca_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -10451,57 +11438,56 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ca_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ca_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ca_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ca_tbl01_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_picRiyuAlert, 2, 11);
+            this.ca_tbl01_input.Controls.Add(this.panel1, 1, 1);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblKokiTo, 3, 5);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblKokiFrom, 1, 5);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblChangeDt, 1, 0);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblJyutakuGaiAmt, 1, 10);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_txtOtherNaiyo, 3, 17);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblOtherNaiyo, 2, 17);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_cmbKinsiNaiyo, 3, 16);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_cmbKinsiUmu, 1, 16);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblKinsiNaiyo, 2, 16);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblKinsiUmu, 0, 16);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblChangeAmt, 4, 7);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblChangeAmt, 5, 7);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblKian, 2, 1);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_cmbStartYear, 1, 6);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblStartYear, 0, 6);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_cmbSalesYear, 3, 6);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblSettingComment, 4, 6);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_btnSetting, 4, 5);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblSettingComment, 5, 6);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_btnSetting, 5, 5);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblRiyu, 0, 11);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_txtRiyu, 1, 11);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblJyutakuAmt, 0, 9);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblAnkenKubun, 0, 1);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblChangeDt, 0, 0);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_dtpChangeDt, 1, 0);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblSalesYear, 2, 6);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblKokiTo, 2, 5);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblKokiFrom, 0, 5);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_dtpKokiFrom, 1, 5);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_dtpKokiTo, 3, 5);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblCaKubun, 0, 4);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblOrder, 0, 2);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_txtOrderKamei, 1, 2);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblAnkenMemo, 0, 12);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_txtAnkenMemo, 1, 12);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_cmbAnkenKubun, 1, 1);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_cmbCaKubun, 1, 4);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblTosyo, 0, 15);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_txtAnkenName, 1, 3);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblCaAmt, 0, 7);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblCaAmt_parent, 1, 7);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblJyutakuGaiAmt, 0, 10);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_txtJyutakuGaiAmt, 1, 10);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblSiryo, 0, 14);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblBiko, 0, 13);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_txtBiko, 1, 13);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblSiryo, 1, 14);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblTosyo, 1, 15);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblRiyuComment, 4, 11);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblRiyuComment, 5, 11);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_lblAnkenName, 0, 3);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_hidKuroden, 6, 12);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblJyutakuAmt, 1, 9);
             this.ca_tbl01_input.Controls.Add(this.ca_tbl01_tblRibc, 2, 4);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_hidResetAnkenno, 6, 13);
-            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_hidAkaden, 6, 11);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_hidAkaden, 6, 2);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_hidKuroden, 6, 3);
+            this.ca_tbl01_input.Controls.Add(this.ca_tbl01_hidResetAnkenno, 6, 4);
             this.ca_tbl01_input.Dock = System.Windows.Forms.DockStyle.Top;
             this.ca_tbl01_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ca_tbl01_input.Location = new System.Drawing.Point(25, 75);
@@ -10529,16 +11515,232 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_input.Size = new System.Drawing.Size(1757, 688);
             this.ca_tbl01_input.TabIndex = 4;
             // 
+            // ca_tbl01_picRiyuAlert
+            // 
+            this.ca_tbl01_picRiyuAlert.AccessibleName = "";
+            this.ca_tbl01_picRiyuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picRiyuAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picRiyuAlert.Image")));
+            this.ca_tbl01_picRiyuAlert.Location = new System.Drawing.Point(929, 347);
+            this.ca_tbl01_picRiyuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picRiyuAlert.Name = "ca_tbl01_picRiyuAlert";
+            this.ca_tbl01_picRiyuAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picRiyuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picRiyuAlert.TabIndex = 100036;
+            this.ca_tbl01_picRiyuAlert.TabStop = false;
+            this.ca_tbl01_picRiyuAlert.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ca_tbl01_cmbAnkenKubun);
+            this.panel1.Controls.Add(this.ca_tbl01_picAnkenKubunAlert);
+            this.panel1.Location = new System.Drawing.Point(179, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(241, 28);
+            this.panel1.TabIndex = 85;
+            // 
+            // ca_tbl01_cmbAnkenKubun
+            // 
+            this.ca_tbl01_cmbAnkenKubun.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ca_tbl01_cmbAnkenKubun.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ca_tbl01_cmbAnkenKubun.Enabled = false;
+            this.ca_tbl01_cmbAnkenKubun.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl01_cmbAnkenKubun.FormattingEnabled = true;
+            this.ca_tbl01_cmbAnkenKubun.Location = new System.Drawing.Point(3, 3);
+            this.ca_tbl01_cmbAnkenKubun.Name = "ca_tbl01_cmbAnkenKubun";
+            this.ca_tbl01_cmbAnkenKubun.Size = new System.Drawing.Size(210, 22);
+            this.ca_tbl01_cmbAnkenKubun.TabIndex = 100037;
+            this.ca_tbl01_cmbAnkenKubun.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
+            this.ca_tbl01_cmbAnkenKubun.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
+            // 
+            // ca_tbl01_picAnkenKubunAlert
+            // 
+            this.ca_tbl01_picAnkenKubunAlert.AccessibleDescription = "";
+            this.ca_tbl01_picAnkenKubunAlert.AccessibleName = "";
+            this.ca_tbl01_picAnkenKubunAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl01_picAnkenKubunAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picAnkenKubunAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picAnkenKubunAlert.Image")));
+            this.ca_tbl01_picAnkenKubunAlert.Location = new System.Drawing.Point(218, 4);
+            this.ca_tbl01_picAnkenKubunAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picAnkenKubunAlert.Name = "ca_tbl01_picAnkenKubunAlert";
+            this.ca_tbl01_picAnkenKubunAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picAnkenKubunAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picAnkenKubunAlert.TabIndex = 100036;
+            this.ca_tbl01_picAnkenKubunAlert.TabStop = false;
+            this.ca_tbl01_picAnkenKubunAlert.Visible = false;
+            // 
+            // ca_tbl01_tblKokiTo
+            // 
+            this.ca_tbl01_tblKokiTo.Controls.Add(this.ca_tbl01_dtpKokiTo);
+            this.ca_tbl01_tblKokiTo.Controls.Add(this.ca_tbl01_picKokiToAlert);
+            this.ca_tbl01_tblKokiTo.Location = new System.Drawing.Point(571, 140);
+            this.ca_tbl01_tblKokiTo.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl01_tblKokiTo.Name = "ca_tbl01_tblKokiTo";
+            this.ca_tbl01_tblKokiTo.Size = new System.Drawing.Size(232, 28);
+            this.ca_tbl01_tblKokiTo.TabIndex = 84;
+            // 
+            // ca_tbl01_dtpKokiTo
+            // 
+            this.ca_tbl01_dtpKokiTo.CustomFormat = " ";
+            this.ca_tbl01_dtpKokiTo.Enabled = false;
+            this.ca_tbl01_dtpKokiTo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl01_dtpKokiTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.ca_tbl01_dtpKokiTo.Location = new System.Drawing.Point(3, 3);
+            this.ca_tbl01_dtpKokiTo.Name = "ca_tbl01_dtpKokiTo";
+            this.ca_tbl01_dtpKokiTo.Size = new System.Drawing.Size(194, 21);
+            this.ca_tbl01_dtpKokiTo.TabIndex = 100037;
+            this.ca_tbl01_dtpKokiTo.CloseUp += new System.EventHandler(this.dateTimePicker_CloseUp);
+            this.ca_tbl01_dtpKokiTo.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+            this.ca_tbl01_dtpKokiTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
+            // 
+            // ca_tbl01_picKokiToAlert
+            // 
+            this.ca_tbl01_picKokiToAlert.AccessibleDescription = "";
+            this.ca_tbl01_picKokiToAlert.AccessibleName = "";
+            this.ca_tbl01_picKokiToAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl01_picKokiToAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picKokiToAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picKokiToAlert.Image")));
+            this.ca_tbl01_picKokiToAlert.Location = new System.Drawing.Point(202, 4);
+            this.ca_tbl01_picKokiToAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picKokiToAlert.Name = "ca_tbl01_picKokiToAlert";
+            this.ca_tbl01_picKokiToAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picKokiToAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picKokiToAlert.TabIndex = 100036;
+            this.ca_tbl01_picKokiToAlert.TabStop = false;
+            this.ca_tbl01_picKokiToAlert.Visible = false;
+            // 
+            // ca_tbl01_tblKokiFrom
+            // 
+            this.ca_tbl01_tblKokiFrom.Controls.Add(this.ca_tbl01_dtpKokiFrom);
+            this.ca_tbl01_tblKokiFrom.Controls.Add(this.ca_tbl01_picKokiFromAlert);
+            this.ca_tbl01_tblKokiFrom.Location = new System.Drawing.Point(179, 140);
+            this.ca_tbl01_tblKokiFrom.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl01_tblKokiFrom.Name = "ca_tbl01_tblKokiFrom";
+            this.ca_tbl01_tblKokiFrom.Size = new System.Drawing.Size(232, 28);
+            this.ca_tbl01_tblKokiFrom.TabIndex = 83;
+            // 
+            // ca_tbl01_dtpKokiFrom
+            // 
+            this.ca_tbl01_dtpKokiFrom.CustomFormat = " ";
+            this.ca_tbl01_dtpKokiFrom.Enabled = false;
+            this.ca_tbl01_dtpKokiFrom.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl01_dtpKokiFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.ca_tbl01_dtpKokiFrom.Location = new System.Drawing.Point(3, 3);
+            this.ca_tbl01_dtpKokiFrom.Name = "ca_tbl01_dtpKokiFrom";
+            this.ca_tbl01_dtpKokiFrom.Size = new System.Drawing.Size(194, 21);
+            this.ca_tbl01_dtpKokiFrom.TabIndex = 100037;
+            this.ca_tbl01_dtpKokiFrom.CloseUp += new System.EventHandler(this.dateTimePicker_CloseUp);
+            this.ca_tbl01_dtpKokiFrom.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+            this.ca_tbl01_dtpKokiFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
+            // 
+            // ca_tbl01_picKokiFromAlert
+            // 
+            this.ca_tbl01_picKokiFromAlert.AccessibleDescription = "";
+            this.ca_tbl01_picKokiFromAlert.AccessibleName = "";
+            this.ca_tbl01_picKokiFromAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl01_picKokiFromAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picKokiFromAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picKokiFromAlert.Image")));
+            this.ca_tbl01_picKokiFromAlert.Location = new System.Drawing.Point(202, 4);
+            this.ca_tbl01_picKokiFromAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picKokiFromAlert.Name = "ca_tbl01_picKokiFromAlert";
+            this.ca_tbl01_picKokiFromAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picKokiFromAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picKokiFromAlert.TabIndex = 100036;
+            this.ca_tbl01_picKokiFromAlert.TabStop = false;
+            this.ca_tbl01_picKokiFromAlert.Visible = false;
+            // 
+            // ca_tbl01_tblChangeDt
+            // 
+            this.ca_tbl01_tblChangeDt.Controls.Add(this.ca_tbl01_dtpChangeDt);
+            this.ca_tbl01_tblChangeDt.Controls.Add(this.ca_tbl01_picChangeDtAlert);
+            this.ca_tbl01_tblChangeDt.Location = new System.Drawing.Point(179, 0);
+            this.ca_tbl01_tblChangeDt.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl01_tblChangeDt.Name = "ca_tbl01_tblChangeDt";
+            this.ca_tbl01_tblChangeDt.Size = new System.Drawing.Size(232, 28);
+            this.ca_tbl01_tblChangeDt.TabIndex = 82;
+            // 
+            // ca_tbl01_dtpChangeDt
+            // 
+            this.ca_tbl01_dtpChangeDt.CustomFormat = " ";
+            this.ca_tbl01_dtpChangeDt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl01_dtpChangeDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.ca_tbl01_dtpChangeDt.Location = new System.Drawing.Point(3, 3);
+            this.ca_tbl01_dtpChangeDt.Name = "ca_tbl01_dtpChangeDt";
+            this.ca_tbl01_dtpChangeDt.Size = new System.Drawing.Size(194, 21);
+            this.ca_tbl01_dtpChangeDt.TabIndex = 100037;
+            this.ca_tbl01_dtpChangeDt.CloseUp += new System.EventHandler(this.dateTimePicker_CloseUp);
+            this.ca_tbl01_dtpChangeDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+            this.ca_tbl01_dtpChangeDt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
+            // 
+            // ca_tbl01_picChangeDtAlert
+            // 
+            this.ca_tbl01_picChangeDtAlert.AccessibleDescription = "";
+            this.ca_tbl01_picChangeDtAlert.AccessibleName = "";
+            this.ca_tbl01_picChangeDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl01_picChangeDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picChangeDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picChangeDtAlert.Image")));
+            this.ca_tbl01_picChangeDtAlert.Location = new System.Drawing.Point(202, 4);
+            this.ca_tbl01_picChangeDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picChangeDtAlert.Name = "ca_tbl01_picChangeDtAlert";
+            this.ca_tbl01_picChangeDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picChangeDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picChangeDtAlert.TabIndex = 100036;
+            this.ca_tbl01_picChangeDtAlert.TabStop = false;
+            this.ca_tbl01_picChangeDtAlert.Visible = false;
+            // 
+            // ca_tbl01_tblJyutakuGaiAmt
+            // 
+            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblJyutakuGaiAmt, 3);
+            this.ca_tbl01_tblJyutakuGaiAmt.Controls.Add(this.ca_tbl01_txtJyutakuGaiAmt);
+            this.ca_tbl01_tblJyutakuGaiAmt.Controls.Add(this.ca_tbl01_picJyutakuGaiAmtAlert);
+            this.ca_tbl01_tblJyutakuGaiAmt.Location = new System.Drawing.Point(179, 317);
+            this.ca_tbl01_tblJyutakuGaiAmt.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl01_tblJyutakuGaiAmt.Name = "ca_tbl01_tblJyutakuGaiAmt";
+            this.ca_tbl01_tblJyutakuGaiAmt.Size = new System.Drawing.Size(191, 28);
+            this.ca_tbl01_tblJyutakuGaiAmt.TabIndex = 81;
+            // 
+            // ca_tbl01_txtJyutakuGaiAmt
+            // 
+            this.ca_tbl01_txtJyutakuGaiAmt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl01_txtJyutakuGaiAmt.Location = new System.Drawing.Point(3, 3);
+            this.ca_tbl01_txtJyutakuGaiAmt.MaxLength = 12;
+            this.ca_tbl01_txtJyutakuGaiAmt.Name = "ca_tbl01_txtJyutakuGaiAmt";
+            this.ca_tbl01_txtJyutakuGaiAmt.Size = new System.Drawing.Size(134, 21);
+            this.ca_tbl01_txtJyutakuGaiAmt.TabIndex = 100037;
+            this.ca_tbl01_txtJyutakuGaiAmt.Text = "¥0";
+            this.ca_tbl01_txtJyutakuGaiAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl01_txtJyutakuGaiAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.ca_tbl01_txtJyutakuGaiAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.ca_tbl01_txtJyutakuGaiAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.ca_tbl01_txtJyutakuGaiAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
+            this.ca_tbl01_txtJyutakuGaiAmt.Validated += new System.EventHandler(this.textBox_Validated);
+            // 
+            // ca_tbl01_picJyutakuGaiAmtAlert
+            // 
+            this.ca_tbl01_picJyutakuGaiAmtAlert.AccessibleDescription = "";
+            this.ca_tbl01_picJyutakuGaiAmtAlert.AccessibleName = "";
+            this.ca_tbl01_picJyutakuGaiAmtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl01_picJyutakuGaiAmtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picJyutakuGaiAmtAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picJyutakuGaiAmtAlert.Image")));
+            this.ca_tbl01_picJyutakuGaiAmtAlert.Location = new System.Drawing.Point(145, 4);
+            this.ca_tbl01_picJyutakuGaiAmtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picJyutakuGaiAmtAlert.Name = "ca_tbl01_picJyutakuGaiAmtAlert";
+            this.ca_tbl01_picJyutakuGaiAmtAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picJyutakuGaiAmtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picJyutakuGaiAmtAlert.TabIndex = 100036;
+            this.ca_tbl01_picJyutakuGaiAmtAlert.TabStop = false;
+            this.ca_tbl01_picJyutakuGaiAmtAlert.Visible = false;
+            // 
             // ca_tbl01_txtOtherNaiyo
             // 
-            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_txtOtherNaiyo, 3);
+            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_txtOtherNaiyo, 4);
             this.ca_tbl01_txtOtherNaiyo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl01_txtOtherNaiyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_txtOtherNaiyo.Location = new System.Drawing.Point(568, 637);
+            this.ca_tbl01_txtOtherNaiyo.Location = new System.Drawing.Point(574, 637);
             this.ca_tbl01_txtOtherNaiyo.MaxLength = 512;
             this.ca_tbl01_txtOtherNaiyo.Multiline = true;
             this.ca_tbl01_txtOtherNaiyo.Name = "ca_tbl01_txtOtherNaiyo";
-            this.ca_tbl01_txtOtherNaiyo.Size = new System.Drawing.Size(1102, 48);
+            this.ca_tbl01_txtOtherNaiyo.Size = new System.Drawing.Size(1180, 48);
             this.ca_tbl01_txtOtherNaiyo.TabIndex = 80;
             this.ca_tbl01_txtOtherNaiyo.Leave += new System.EventHandler(this.txtTextBox_Leave);
             // 
@@ -10546,7 +11748,7 @@ namespace TokuchoBugyoK2
             // 
             this.ca_tbl01_lblOtherNaiyo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ca_tbl01_lblOtherNaiyo.AutoSize = true;
-            this.ca_tbl01_lblOtherNaiyo.Location = new System.Drawing.Point(417, 651);
+            this.ca_tbl01_lblOtherNaiyo.Location = new System.Drawing.Point(423, 651);
             this.ca_tbl01_lblOtherNaiyo.Name = "ca_tbl01_lblOtherNaiyo";
             this.ca_tbl01_lblOtherNaiyo.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.ca_tbl01_lblOtherNaiyo.Size = new System.Drawing.Size(82, 20);
@@ -10560,7 +11762,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_cmbKinsiNaiyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ca_tbl01_cmbKinsiNaiyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.ca_tbl01_cmbKinsiNaiyo.FormattingEnabled = true;
-            this.ca_tbl01_cmbKinsiNaiyo.Location = new System.Drawing.Point(568, 609);
+            this.ca_tbl01_cmbKinsiNaiyo.Location = new System.Drawing.Point(574, 609);
             this.ca_tbl01_cmbKinsiNaiyo.Name = "ca_tbl01_cmbKinsiNaiyo";
             this.ca_tbl01_cmbKinsiNaiyo.Size = new System.Drawing.Size(350, 22);
             this.ca_tbl01_cmbKinsiNaiyo.TabIndex = 78;
@@ -10585,7 +11787,7 @@ namespace TokuchoBugyoK2
             // 
             this.ca_tbl01_lblKinsiNaiyo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ca_tbl01_lblKinsiNaiyo.AutoSize = true;
-            this.ca_tbl01_lblKinsiNaiyo.Location = new System.Drawing.Point(417, 610);
+            this.ca_tbl01_lblKinsiNaiyo.Location = new System.Drawing.Point(423, 610);
             this.ca_tbl01_lblKinsiNaiyo.Name = "ca_tbl01_lblKinsiNaiyo";
             this.ca_tbl01_lblKinsiNaiyo.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.ca_tbl01_lblKinsiNaiyo.Size = new System.Drawing.Size(145, 20);
@@ -10612,7 +11814,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_tblChangeAmt.Controls.Add(this.ca_tbl01_numChangeAmt, 1, 0);
             this.ca_tbl01_tblChangeAmt.Controls.Add(this.ca_tbl01_lblChangeAmtComment, 0, 1);
             this.ca_tbl01_tblChangeAmt.Controls.Add(this.ca_tbl01_lblChangeAmt, 0, 0);
-            this.ca_tbl01_tblChangeAmt.Location = new System.Drawing.Point(924, 212);
+            this.ca_tbl01_tblChangeAmt.Location = new System.Drawing.Point(951, 212);
             this.ca_tbl01_tblChangeAmt.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl01_tblChangeAmt.Name = "ca_tbl01_tblChangeAmt";
             this.ca_tbl01_tblChangeAmt.RowCount = 2;
@@ -10667,30 +11869,39 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl01_tblKian
             // 
-            this.ca_tbl01_tblKian.ColumnCount = 4;
-            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblKian, 3);
-            this.ca_tbl01_tblKian.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ca_tbl01_tblKian.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.ca_tbl01_tblKian.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ca_tbl01_tblKian.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_dtpKianDt, 3, 0);
-            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_lblKianDt, 2, 0);
-            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_chkKian, 1, 0);
-            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_lblKian, 0, 0);
-            this.ca_tbl01_tblKian.Location = new System.Drawing.Point(414, 28);
+            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblKian, 4);
+            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_picKianDtAlert);
+            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_dtpKianDt);
+            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_lblKianDt);
+            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_chkKian);
+            this.ca_tbl01_tblKian.Controls.Add(this.ca_tbl01_lblKian);
+            this.ca_tbl01_tblKian.Location = new System.Drawing.Point(420, 28);
             this.ca_tbl01_tblKian.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl01_tblKian.Name = "ca_tbl01_tblKian";
-            this.ca_tbl01_tblKian.RowCount = 1;
-            this.ca_tbl01_tblKian.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ca_tbl01_tblKian.Size = new System.Drawing.Size(563, 28);
+            this.ca_tbl01_tblKian.Size = new System.Drawing.Size(498, 28);
             this.ca_tbl01_tblKian.TabIndex = 71;
+            // 
+            // ca_tbl01_picKianDtAlert
+            // 
+            this.ca_tbl01_picKianDtAlert.AccessibleName = "";
+            this.ca_tbl01_picKianDtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl01_picKianDtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picKianDtAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picKianDtAlert.Image")));
+            this.ca_tbl01_picKianDtAlert.Location = new System.Drawing.Point(474, 4);
+            this.ca_tbl01_picKianDtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picKianDtAlert.Name = "ca_tbl01_picKianDtAlert";
+            this.ca_tbl01_picKianDtAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picKianDtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picKianDtAlert.TabIndex = 100035;
+            this.ca_tbl01_picKianDtAlert.TabStop = false;
+            this.ca_tbl01_picKianDtAlert.Visible = false;
             // 
             // ca_tbl01_dtpKianDt
             // 
             this.ca_tbl01_dtpKianDt.CustomFormat = " ";
             this.ca_tbl01_dtpKianDt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.ca_tbl01_dtpKianDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ca_tbl01_dtpKianDt.Location = new System.Drawing.Point(375, 3);
+            this.ca_tbl01_dtpKianDt.Location = new System.Drawing.Point(295, 3);
             this.ca_tbl01_dtpKianDt.Name = "ca_tbl01_dtpKianDt";
             this.ca_tbl01_dtpKianDt.Size = new System.Drawing.Size(174, 21);
             this.ca_tbl01_dtpKianDt.TabIndex = 29;
@@ -10701,12 +11912,11 @@ namespace TokuchoBugyoK2
             // 
             this.ca_tbl01_lblKianDt.AutoSize = true;
             this.ca_tbl01_lblKianDt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(228)))), ((int)(((byte)(214)))));
-            this.ca_tbl01_lblKianDt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl01_lblKianDt.Location = new System.Drawing.Point(239, 3);
+            this.ca_tbl01_lblKianDt.Location = new System.Drawing.Point(164, 3);
             this.ca_tbl01_lblKianDt.Margin = new System.Windows.Forms.Padding(3);
             this.ca_tbl01_lblKianDt.Name = "ca_tbl01_lblKianDt";
             this.ca_tbl01_lblKianDt.Padding = new System.Windows.Forms.Padding(0, 3, 80, 3);
-            this.ca_tbl01_lblKianDt.Size = new System.Drawing.Size(130, 22);
+            this.ca_tbl01_lblKianDt.Size = new System.Drawing.Size(130, 23);
             this.ca_tbl01_lblKianDt.TabIndex = 28;
             this.ca_tbl01_lblKianDt.Text = "起案日";
             this.ca_tbl01_lblKianDt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -10717,7 +11927,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_chkKian.AutoCheck = false;
             this.ca_tbl01_chkKian.AutoSize = true;
             this.ca_tbl01_chkKian.Enabled = false;
-            this.ca_tbl01_chkKian.Location = new System.Drawing.Point(139, 7);
+            this.ca_tbl01_chkKian.Location = new System.Drawing.Point(131, 7);
             this.ca_tbl01_chkKian.Name = "ca_tbl01_chkKian";
             this.ca_tbl01_chkKian.Size = new System.Drawing.Size(15, 14);
             this.ca_tbl01_chkKian.TabIndex = 27;
@@ -10725,12 +11935,12 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl01_lblKian
             // 
+            this.ca_tbl01_lblKian.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ca_tbl01_lblKian.AutoSize = true;
-            this.ca_tbl01_lblKian.Location = new System.Drawing.Point(3, 3);
+            this.ca_tbl01_lblKian.Location = new System.Drawing.Point(72, 5);
             this.ca_tbl01_lblKian.Margin = new System.Windows.Forms.Padding(3);
             this.ca_tbl01_lblKian.Name = "ca_tbl01_lblKian";
-            this.ca_tbl01_lblKian.Padding = new System.Windows.Forms.Padding(0, 3, 80, 3);
-            this.ca_tbl01_lblKian.Size = new System.Drawing.Size(130, 22);
+            this.ca_tbl01_lblKian.Size = new System.Drawing.Size(50, 17);
             this.ca_tbl01_lblKian.TabIndex = 26;
             this.ca_tbl01_lblKian.Text = "起案済";
             this.ca_tbl01_lblKian.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -10767,7 +11977,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_cmbSalesYear.Enabled = false;
             this.ca_tbl01_cmbSalesYear.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.ca_tbl01_cmbSalesYear.FormattingEnabled = true;
-            this.ca_tbl01_cmbSalesYear.Location = new System.Drawing.Point(568, 183);
+            this.ca_tbl01_cmbSalesYear.Location = new System.Drawing.Point(574, 183);
             this.ca_tbl01_cmbSalesYear.Name = "ca_tbl01_cmbSalesYear";
             this.ca_tbl01_cmbSalesYear.Size = new System.Drawing.Size(110, 22);
             this.ca_tbl01_cmbSalesYear.TabIndex = 68;
@@ -10780,7 +11990,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_lblSettingComment, 2);
             this.ca_tbl01_lblSettingComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.ca_tbl01_lblSettingComment.ForeColor = System.Drawing.Color.Gray;
-            this.ca_tbl01_lblSettingComment.Location = new System.Drawing.Point(927, 180);
+            this.ca_tbl01_lblSettingComment.Location = new System.Drawing.Point(954, 180);
             this.ca_tbl01_lblSettingComment.Name = "ca_tbl01_lblSettingComment";
             this.ca_tbl01_lblSettingComment.Size = new System.Drawing.Size(386, 13);
             this.ca_tbl01_lblSettingComment.TabIndex = 67;
@@ -10795,7 +12005,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ca_tbl01_btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.ca_tbl01_btnSetting.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl01_btnSetting.Location = new System.Drawing.Point(927, 143);
+            this.ca_tbl01_btnSetting.Location = new System.Drawing.Point(954, 143);
             this.ca_tbl01_btnSetting.Name = "ca_tbl01_btnSetting";
             this.ca_tbl01_btnSetting.Size = new System.Drawing.Size(352, 32);
             this.ca_tbl01_btnSetting.TabIndex = 8;
@@ -10868,24 +12078,11 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblChangeDt.Text = "契約締結（変更）日";
             this.ca_tbl01_lblChangeDt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ca_tbl01_dtpChangeDt
-            // 
-            this.ca_tbl01_dtpChangeDt.CustomFormat = " ";
-            this.ca_tbl01_dtpChangeDt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_dtpChangeDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ca_tbl01_dtpChangeDt.Location = new System.Drawing.Point(182, 3);
-            this.ca_tbl01_dtpChangeDt.Name = "ca_tbl01_dtpChangeDt";
-            this.ca_tbl01_dtpChangeDt.Size = new System.Drawing.Size(194, 21);
-            this.ca_tbl01_dtpChangeDt.TabIndex = 2;
-            this.ca_tbl01_dtpChangeDt.CloseUp += new System.EventHandler(this.dateTimePicker_CloseUp);
-            this.ca_tbl01_dtpChangeDt.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
-            this.ca_tbl01_dtpChangeDt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
-            // 
             // ca_tbl01_lblSalesYear
             // 
             this.ca_tbl01_lblSalesYear.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ca_tbl01_lblSalesYear.AutoSize = true;
-            this.ca_tbl01_lblSalesYear.Location = new System.Drawing.Point(417, 184);
+            this.ca_tbl01_lblSalesYear.Location = new System.Drawing.Point(423, 184);
             this.ca_tbl01_lblSalesYear.Name = "ca_tbl01_lblSalesYear";
             this.ca_tbl01_lblSalesYear.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.ca_tbl01_lblSalesYear.Size = new System.Drawing.Size(64, 23);
@@ -10897,7 +12094,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblKokiTo.AutoSize = true;
             this.ca_tbl01_lblKokiTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(228)))), ((int)(((byte)(214)))));
             this.ca_tbl01_lblKokiTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl01_lblKokiTo.Location = new System.Drawing.Point(417, 143);
+            this.ca_tbl01_lblKokiTo.Location = new System.Drawing.Point(423, 143);
             this.ca_tbl01_lblKokiTo.Margin = new System.Windows.Forms.Padding(3);
             this.ca_tbl01_lblKokiTo.Name = "ca_tbl01_lblKokiTo";
             this.ca_tbl01_lblKokiTo.Padding = new System.Windows.Forms.Padding(0, 3, 52, 3);
@@ -10919,32 +12116,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblKokiFrom.TabIndex = 30;
             this.ca_tbl01_lblKokiFrom.Text = "工期自";
             this.ca_tbl01_lblKokiFrom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ca_tbl01_dtpKokiFrom
-            // 
-            this.ca_tbl01_dtpKokiFrom.CustomFormat = " ";
-            this.ca_tbl01_dtpKokiFrom.Enabled = false;
-            this.ca_tbl01_dtpKokiFrom.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_dtpKokiFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ca_tbl01_dtpKokiFrom.Location = new System.Drawing.Point(182, 143);
-            this.ca_tbl01_dtpKokiFrom.Name = "ca_tbl01_dtpKokiFrom";
-            this.ca_tbl01_dtpKokiFrom.Size = new System.Drawing.Size(194, 21);
-            this.ca_tbl01_dtpKokiFrom.TabIndex = 5;
-            this.ca_tbl01_dtpKokiFrom.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
-            this.ca_tbl01_dtpKokiFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
-            // 
-            // ca_tbl01_dtpKokiTo
-            // 
-            this.ca_tbl01_dtpKokiTo.CustomFormat = " ";
-            this.ca_tbl01_dtpKokiTo.Enabled = false;
-            this.ca_tbl01_dtpKokiTo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_dtpKokiTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ca_tbl01_dtpKokiTo.Location = new System.Drawing.Point(568, 143);
-            this.ca_tbl01_dtpKokiTo.Name = "ca_tbl01_dtpKokiTo";
-            this.ca_tbl01_dtpKokiTo.Size = new System.Drawing.Size(200, 21);
-            this.ca_tbl01_dtpKokiTo.TabIndex = 6;
-            this.ca_tbl01_dtpKokiTo.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
-            this.ca_tbl01_dtpKokiTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_KeyDown);
             // 
             // ca_tbl01_lblCaKubun
             // 
@@ -10970,7 +12141,7 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl01_txtOrderKamei
             // 
-            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_txtOrderKamei, 4);
+            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_txtOrderKamei, 5);
             this.ca_tbl01_txtOrderKamei.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.ca_tbl01_txtOrderKamei.Location = new System.Drawing.Point(182, 59);
             this.ca_tbl01_txtOrderKamei.Name = "ca_tbl01_txtOrderKamei";
@@ -11001,20 +12172,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_txtAnkenMemo.Size = new System.Drawing.Size(736, 50);
             this.ca_tbl01_txtAnkenMemo.TabIndex = 15;
             // 
-            // ca_tbl01_cmbAnkenKubun
-            // 
-            this.ca_tbl01_cmbAnkenKubun.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ca_tbl01_cmbAnkenKubun.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ca_tbl01_cmbAnkenKubun.Enabled = false;
-            this.ca_tbl01_cmbAnkenKubun.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_cmbAnkenKubun.FormattingEnabled = true;
-            this.ca_tbl01_cmbAnkenKubun.Location = new System.Drawing.Point(182, 31);
-            this.ca_tbl01_cmbAnkenKubun.Name = "ca_tbl01_cmbAnkenKubun";
-            this.ca_tbl01_cmbAnkenKubun.Size = new System.Drawing.Size(226, 22);
-            this.ca_tbl01_cmbAnkenKubun.TabIndex = 0;
-            this.ca_tbl01_cmbAnkenKubun.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
-            this.ca_tbl01_cmbAnkenKubun.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.cmb_MouseWheel);
-            // 
             // ca_tbl01_cmbCaKubun
             // 
             this.ca_tbl01_cmbCaKubun.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -11043,7 +12200,7 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl01_txtAnkenName
             // 
-            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_txtAnkenName, 4);
+            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_txtAnkenName, 5);
             this.ca_tbl01_txtAnkenName.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.ca_tbl01_txtAnkenName.Location = new System.Drawing.Point(182, 87);
             this.ca_tbl01_txtAnkenName.Name = "ca_tbl01_txtAnkenName";
@@ -11067,32 +12224,29 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl01_tblCaAmt_parent
             // 
-            this.ca_tbl01_tblCaAmt_parent.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ca_tbl01_tblCaAmt_parent.ColumnCount = 1;
+            this.ca_tbl01_tblCaAmt_parent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblCaAmt_parent, 3);
-            this.ca_tbl01_tblCaAmt_parent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl01_tblCaAmt_parent.Controls.Add(this.ca_tbl01_tblCaAmt, 0, 0);
+            this.ca_tbl01_tblCaAmt_parent.Controls.Add(this.ca_tbl01_tblCaAmt);
             this.ca_tbl01_tblCaAmt_parent.Location = new System.Drawing.Point(182, 215);
             this.ca_tbl01_tblCaAmt_parent.Name = "ca_tbl01_tblCaAmt_parent";
-            this.ca_tbl01_tblCaAmt_parent.RowCount = 1;
             this.ca_tbl01_input.SetRowSpan(this.ca_tbl01_tblCaAmt_parent, 2);
-            this.ca_tbl01_tblCaAmt_parent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.90909F));
             this.ca_tbl01_tblCaAmt_parent.Size = new System.Drawing.Size(719, 64);
             this.ca_tbl01_tblCaAmt_parent.TabIndex = 11;
             // 
             // ca_tbl01_tblCaAmt
             // 
             this.ca_tbl01_tblCaAmt.AutoSize = true;
-            this.ca_tbl01_tblCaAmt.ColumnCount = 6;
-            this.ca_tbl01_tblCaAmt_parent.SetColumnSpan(this.ca_tbl01_tblCaAmt, 5);
-            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
-            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.ca_tbl01_tblCaAmt.ColumnCount = 7;
             this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ca_tbl01_tblCaAmt.Controls.Add(this.ca_tbl01_tblTax, 5, 1);
-            this.ca_tbl01_tblCaAmt.Controls.Add(this.ca_tbl01_lblTax, 4, 1);
+            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl01_tblCaAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl01_tblCaAmt.Controls.Add(this.ca_tbl01_picZeikomiAmtAlert, 4, 0);
+            this.ca_tbl01_tblCaAmt.Controls.Add(this.ca_tbl01_tblTax, 6, 1);
+            this.ca_tbl01_tblCaAmt.Controls.Add(this.ca_tbl01_lblTax, 5, 1);
             this.ca_tbl01_tblCaAmt.Controls.Add(this.ca_tbl01_txtZeinukiAmt, 1, 0);
             this.ca_tbl01_tblCaAmt.Controls.Add(this.ca_tbl01_lblZeikomiAmt, 2, 0);
             this.ca_tbl01_tblCaAmt.Controls.Add(this.ca_tbl01_lblSyohizeiAmt, 2, 1);
@@ -11104,8 +12258,23 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_tblCaAmt.RowCount = 2;
             this.ca_tbl01_tblCaAmt.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl01_tblCaAmt.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl01_tblCaAmt.Size = new System.Drawing.Size(702, 56);
+            this.ca_tbl01_tblCaAmt.Size = new System.Drawing.Size(702, 58);
             this.ca_tbl01_tblCaAmt.TabIndex = 11;
+            // 
+            // ca_tbl01_picZeikomiAmtAlert
+            // 
+            this.ca_tbl01_picZeikomiAmtAlert.AccessibleName = "";
+            this.ca_tbl01_picZeikomiAmtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl01_picZeikomiAmtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picZeikomiAmtAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picZeikomiAmtAlert.Image")));
+            this.ca_tbl01_picZeikomiAmtAlert.Location = new System.Drawing.Point(421, 4);
+            this.ca_tbl01_picZeikomiAmtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picZeikomiAmtAlert.Name = "ca_tbl01_picZeikomiAmtAlert";
+            this.ca_tbl01_picZeikomiAmtAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picZeikomiAmtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picZeikomiAmtAlert.TabIndex = 100037;
+            this.ca_tbl01_picZeikomiAmtAlert.TabStop = false;
+            this.ca_tbl01_picZeikomiAmtAlert.Visible = false;
             // 
             // ca_tbl01_tblTax
             // 
@@ -11114,7 +12283,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_tblTax.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.ca_tbl01_tblTax.Controls.Add(this.ca_tbl01_txtTax, 0, 0);
             this.ca_tbl01_tblTax.Controls.Add(this.ca_tbl01_lblTaxUnit, 1, 0);
-            this.ca_tbl01_tblTax.Location = new System.Drawing.Point(619, 28);
+            this.ca_tbl01_tblTax.Location = new System.Drawing.Point(533, 29);
             this.ca_tbl01_tblTax.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl01_tblTax.Name = "ca_tbl01_tblTax";
             this.ca_tbl01_tblTax.RowCount = 1;
@@ -11155,11 +12324,11 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblTax.AutoSize = true;
             this.ca_tbl01_lblTax.BackColor = System.Drawing.Color.DarkGray;
             this.ca_tbl01_lblTax.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl01_lblTax.Location = new System.Drawing.Point(528, 31);
+            this.ca_tbl01_lblTax.Location = new System.Drawing.Point(446, 32);
             this.ca_tbl01_lblTax.Margin = new System.Windows.Forms.Padding(3);
             this.ca_tbl01_lblTax.Name = "ca_tbl01_lblTax";
             this.ca_tbl01_lblTax.Padding = new System.Windows.Forms.Padding(0, 3, 20, 3);
-            this.ca_tbl01_lblTax.Size = new System.Drawing.Size(84, 22);
+            this.ca_tbl01_lblTax.Size = new System.Drawing.Size(84, 23);
             this.ca_tbl01_lblTax.TabIndex = 33;
             this.ca_tbl01_lblTax.Text = "消費税率";
             this.ca_tbl01_lblTax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -11167,7 +12336,7 @@ namespace TokuchoBugyoK2
             // ca_tbl01_txtZeinukiAmt
             // 
             this.ca_tbl01_txtZeinukiAmt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_txtZeinukiAmt.Location = new System.Drawing.Point(134, 3);
+            this.ca_tbl01_txtZeinukiAmt.Location = new System.Drawing.Point(125, 3);
             this.ca_tbl01_txtZeinukiAmt.MaxLength = 12;
             this.ca_tbl01_txtZeinukiAmt.Name = "ca_tbl01_txtZeinukiAmt";
             this.ca_tbl01_txtZeinukiAmt.Size = new System.Drawing.Size(108, 21);
@@ -11183,11 +12352,11 @@ namespace TokuchoBugyoK2
             // ca_tbl01_lblZeikomiAmt
             // 
             this.ca_tbl01_lblZeikomiAmt.AutoSize = true;
-            this.ca_tbl01_lblZeikomiAmt.Location = new System.Drawing.Point(284, 3);
+            this.ca_tbl01_lblZeikomiAmt.Location = new System.Drawing.Point(239, 3);
             this.ca_tbl01_lblZeikomiAmt.Margin = new System.Windows.Forms.Padding(3);
             this.ca_tbl01_lblZeikomiAmt.Name = "ca_tbl01_lblZeikomiAmt";
             this.ca_tbl01_lblZeikomiAmt.Padding = new System.Windows.Forms.Padding(0, 3, 24, 3);
-            this.ca_tbl01_lblZeikomiAmt.Size = new System.Drawing.Size(60, 22);
+            this.ca_tbl01_lblZeikomiAmt.Size = new System.Drawing.Size(60, 23);
             this.ca_tbl01_lblZeikomiAmt.TabIndex = 32;
             this.ca_tbl01_lblZeikomiAmt.Text = "税込";
             this.ca_tbl01_lblZeikomiAmt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -11195,11 +12364,11 @@ namespace TokuchoBugyoK2
             // ca_tbl01_lblSyohizeiAmt
             // 
             this.ca_tbl01_lblSyohizeiAmt.AutoSize = true;
-            this.ca_tbl01_lblSyohizeiAmt.Location = new System.Drawing.Point(284, 31);
+            this.ca_tbl01_lblSyohizeiAmt.Location = new System.Drawing.Point(239, 32);
             this.ca_tbl01_lblSyohizeiAmt.Margin = new System.Windows.Forms.Padding(3);
             this.ca_tbl01_lblSyohizeiAmt.Name = "ca_tbl01_lblSyohizeiAmt";
             this.ca_tbl01_lblSyohizeiAmt.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.ca_tbl01_lblSyohizeiAmt.Size = new System.Drawing.Size(64, 22);
+            this.ca_tbl01_lblSyohizeiAmt.Size = new System.Drawing.Size(64, 23);
             this.ca_tbl01_lblSyohizeiAmt.TabIndex = 26;
             this.ca_tbl01_lblSyohizeiAmt.Text = "内消費税";
             this.ca_tbl01_lblSyohizeiAmt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -11207,7 +12376,7 @@ namespace TokuchoBugyoK2
             // ca_tbl01_txtSyohizeiAmt
             // 
             this.ca_tbl01_txtSyohizeiAmt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_txtSyohizeiAmt.Location = new System.Drawing.Point(378, 31);
+            this.ca_tbl01_txtSyohizeiAmt.Location = new System.Drawing.Point(309, 32);
             this.ca_tbl01_txtSyohizeiAmt.Name = "ca_tbl01_txtSyohizeiAmt";
             this.ca_tbl01_txtSyohizeiAmt.ReadOnly = true;
             this.ca_tbl01_txtSyohizeiAmt.Size = new System.Drawing.Size(107, 21);
@@ -11222,7 +12391,7 @@ namespace TokuchoBugyoK2
             // ca_tbl01_txtZeikomiAmt
             // 
             this.ca_tbl01_txtZeikomiAmt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_txtZeikomiAmt.Location = new System.Drawing.Point(378, 3);
+            this.ca_tbl01_txtZeikomiAmt.Location = new System.Drawing.Point(309, 3);
             this.ca_tbl01_txtZeikomiAmt.MaxLength = 12;
             this.ca_tbl01_txtZeikomiAmt.Name = "ca_tbl01_txtZeikomiAmt";
             this.ca_tbl01_txtZeikomiAmt.ReadOnly = true;
@@ -11238,7 +12407,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblZeinukiAmt.Margin = new System.Windows.Forms.Padding(3);
             this.ca_tbl01_lblZeinukiAmt.Name = "ca_tbl01_lblZeinukiAmt";
             this.ca_tbl01_lblZeinukiAmt.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.ca_tbl01_lblZeinukiAmt.Size = new System.Drawing.Size(116, 22);
+            this.ca_tbl01_lblZeinukiAmt.Size = new System.Drawing.Size(116, 23);
             this.ca_tbl01_lblZeinukiAmt.TabIndex = 32;
             this.ca_tbl01_lblZeinukiAmt.Text = "税抜(自動計算用)";
             this.ca_tbl01_lblZeinukiAmt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -11256,22 +12425,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblJyutakuGaiAmt.TabIndex = 38;
             this.ca_tbl01_lblJyutakuGaiAmt.Text = "受託外金額（税込）";
             this.ca_tbl01_lblJyutakuGaiAmt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ca_tbl01_txtJyutakuGaiAmt
-            // 
-            this.ca_tbl01_txtJyutakuGaiAmt.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_txtJyutakuGaiAmt.Location = new System.Drawing.Point(182, 320);
-            this.ca_tbl01_txtJyutakuGaiAmt.MaxLength = 12;
-            this.ca_tbl01_txtJyutakuGaiAmt.Name = "ca_tbl01_txtJyutakuGaiAmt";
-            this.ca_tbl01_txtJyutakuGaiAmt.Size = new System.Drawing.Size(134, 21);
-            this.ca_tbl01_txtJyutakuGaiAmt.TabIndex = 13;
-            this.ca_tbl01_txtJyutakuGaiAmt.Text = "¥0";
-            this.ca_tbl01_txtJyutakuGaiAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl01_txtJyutakuGaiAmt.Enter += new System.EventHandler(this.textBox_Enter);
-            this.ca_tbl01_txtJyutakuGaiAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
-            this.ca_tbl01_txtJyutakuGaiAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
-            this.ca_tbl01_txtJyutakuGaiAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
-            this.ca_tbl01_txtJyutakuGaiAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // ca_tbl01_lblSiryo
             // 
@@ -11310,7 +12463,7 @@ namespace TokuchoBugyoK2
             // ca_tbl01_tblSiryo
             // 
             this.ca_tbl01_tblSiryo.ColumnCount = 12;
-            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblSiryo, 5);
+            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblSiryo, 6);
             this.ca_tbl01_tblSiryo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.ca_tbl01_tblSiryo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.ca_tbl01_tblSiryo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
@@ -11322,7 +12475,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_tblSiryo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.ca_tbl01_tblSiryo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.ca_tbl01_tblSiryo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
-            this.ca_tbl01_tblSiryo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 695F));
+            this.ca_tbl01_tblSiryo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 779F));
             this.ca_tbl01_tblSiryo.Controls.Add(this.ca_tbl01_chkRibcSyo, 11, 0);
             this.ca_tbl01_tblSiryo.Controls.Add(this.ca_tbl01_lblRibcSyo, 10, 0);
             this.ca_tbl01_tblSiryo.Controls.Add(this.ca_tbl01_lblCaSyosya, 0, 0);
@@ -11343,7 +12496,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_tblSiryo.RowCount = 2;
             this.ca_tbl01_tblSiryo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl01_tblSiryo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl01_tblSiryo.Size = new System.Drawing.Size(1488, 59);
+            this.ca_tbl01_tblSiryo.Size = new System.Drawing.Size(1572, 59);
             this.ca_tbl01_tblSiryo.TabIndex = 17;
             // 
             // ca_tbl01_chkRibcSyo
@@ -11497,7 +12650,7 @@ namespace TokuchoBugyoK2
             // ca_tbl01_tblTosyo
             // 
             this.ca_tbl01_tblTosyo.ColumnCount = 2;
-            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblTosyo, 5);
+            this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblTosyo, 6);
             this.ca_tbl01_tblTosyo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.730532F));
             this.ca_tbl01_tblTosyo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.26947F));
             this.ca_tbl01_tblTosyo.Controls.Add(this.ca_tbl01_picTosyo, 0, 0);
@@ -11508,7 +12661,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_tblTosyo.Name = "ca_tbl01_tblTosyo";
             this.ca_tbl01_tblTosyo.RowCount = 1;
             this.ca_tbl01_tblTosyo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl01_tblTosyo.Size = new System.Drawing.Size(1494, 28);
+            this.ca_tbl01_tblTosyo.Size = new System.Drawing.Size(1578, 28);
             this.ca_tbl01_tblTosyo.TabIndex = 18;
             // 
             // ca_tbl01_picTosyo
@@ -11517,7 +12670,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_picTosyo.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picTosyo.Image")));
             this.ca_tbl01_picTosyo.Location = new System.Drawing.Point(3, 6);
             this.ca_tbl01_picTosyo.Name = "ca_tbl01_picTosyo";
-            this.ca_tbl01_picTosyo.Size = new System.Drawing.Size(19, 16);
+            this.ca_tbl01_picTosyo.Size = new System.Drawing.Size(21, 16);
             this.ca_tbl01_picTosyo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ca_tbl01_picTosyo.TabIndex = 55;
             this.ca_tbl01_picTosyo.TabStop = false;
@@ -11526,7 +12679,7 @@ namespace TokuchoBugyoK2
             // ca_tbl01_txtTosyo
             // 
             this.ca_tbl01_txtTosyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_txtTosyo.Location = new System.Drawing.Point(28, 3);
+            this.ca_tbl01_txtTosyo.Location = new System.Drawing.Point(30, 3);
             this.ca_tbl01_txtTosyo.Name = "ca_tbl01_txtTosyo";
             this.ca_tbl01_txtTosyo.ReadOnly = true;
             this.ca_tbl01_txtTosyo.Size = new System.Drawing.Size(1039, 21);
@@ -11539,9 +12692,9 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblRiyuComment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl01_lblRiyuComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.ca_tbl01_lblRiyuComment.ForeColor = System.Drawing.Color.Gray;
-            this.ca_tbl01_lblRiyuComment.Location = new System.Drawing.Point(927, 345);
+            this.ca_tbl01_lblRiyuComment.Location = new System.Drawing.Point(954, 345);
             this.ca_tbl01_lblRiyuComment.Name = "ca_tbl01_lblRiyuComment";
-            this.ca_tbl01_lblRiyuComment.Size = new System.Drawing.Size(743, 56);
+            this.ca_tbl01_lblRiyuComment.Size = new System.Drawing.Size(800, 56);
             this.ca_tbl01_lblRiyuComment.TabIndex = 46;
             this.ca_tbl01_lblRiyuComment.Text = "※変更伝票の場合、「変更・中止理由」は必須入力です。";
             this.ca_tbl01_lblRiyuComment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -11557,30 +12710,32 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_lblAnkenName.TabIndex = 26;
             this.ca_tbl01_lblAnkenName.Text = "業務名称(契約)";
             // 
-            // ca_tbl01_hidKuroden
-            // 
-            this.ca_tbl01_hidKuroden.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_hidKuroden.Location = new System.Drawing.Point(1676, 404);
-            this.ca_tbl01_hidKuroden.Name = "ca_tbl01_hidKuroden";
-            this.ca_tbl01_hidKuroden.Size = new System.Drawing.Size(100, 21);
-            this.ca_tbl01_hidKuroden.TabIndex = 60;
-            this.ca_tbl01_hidKuroden.Visible = false;
-            // 
             // ca_tbl01_tblJyutakuAmt
             // 
-            this.ca_tbl01_tblJyutakuAmt.ColumnCount = 2;
             this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblJyutakuAmt, 3);
-            this.ca_tbl01_tblJyutakuAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl01_tblJyutakuAmt.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 574F));
-            this.ca_tbl01_tblJyutakuAmt.Controls.Add(this.ca_tbl01_txtJyutakuAmt, 0, 0);
-            this.ca_tbl01_tblJyutakuAmt.Controls.Add(this.ca_tbl01_lblJyutakuAmtComment, 1, 0);
+            this.ca_tbl01_tblJyutakuAmt.Controls.Add(this.ca_tbl01_picJyutakuAmtAlert);
+            this.ca_tbl01_tblJyutakuAmt.Controls.Add(this.ca_tbl01_txtJyutakuAmt);
+            this.ca_tbl01_tblJyutakuAmt.Controls.Add(this.ca_tbl01_lblJyutakuAmtComment);
             this.ca_tbl01_tblJyutakuAmt.Location = new System.Drawing.Point(179, 282);
             this.ca_tbl01_tblJyutakuAmt.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl01_tblJyutakuAmt.Name = "ca_tbl01_tblJyutakuAmt";
-            this.ca_tbl01_tblJyutakuAmt.RowCount = 1;
-            this.ca_tbl01_tblJyutakuAmt.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ca_tbl01_tblJyutakuAmt.Size = new System.Drawing.Size(742, 28);
             this.ca_tbl01_tblJyutakuAmt.TabIndex = 12;
+            // 
+            // ca_tbl01_picJyutakuAmtAlert
+            // 
+            this.ca_tbl01_picJyutakuAmtAlert.AccessibleName = "";
+            this.ca_tbl01_picJyutakuAmtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl01_picJyutakuAmtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl01_picJyutakuAmtAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl01_picJyutakuAmtAlert.Image")));
+            this.ca_tbl01_picJyutakuAmtAlert.Location = new System.Drawing.Point(145, 4);
+            this.ca_tbl01_picJyutakuAmtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl01_picJyutakuAmtAlert.Name = "ca_tbl01_picJyutakuAmtAlert";
+            this.ca_tbl01_picJyutakuAmtAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl01_picJyutakuAmtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl01_picJyutakuAmtAlert.TabIndex = 100036;
+            this.ca_tbl01_picJyutakuAmtAlert.TabStop = false;
+            this.ca_tbl01_picJyutakuAmtAlert.Visible = false;
             // 
             // ca_tbl01_txtJyutakuAmt
             // 
@@ -11596,12 +12751,11 @@ namespace TokuchoBugyoK2
             // ca_tbl01_lblJyutakuAmtComment
             // 
             this.ca_tbl01_lblJyutakuAmtComment.AutoSize = true;
-            this.ca_tbl01_lblJyutakuAmtComment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl01_lblJyutakuAmtComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.ca_tbl01_lblJyutakuAmtComment.ForeColor = System.Drawing.Color.Gray;
-            this.ca_tbl01_lblJyutakuAmtComment.Location = new System.Drawing.Point(171, 0);
+            this.ca_tbl01_lblJyutakuAmtComment.Location = new System.Drawing.Point(179, 7);
             this.ca_tbl01_lblJyutakuAmtComment.Name = "ca_tbl01_lblJyutakuAmtComment";
-            this.ca_tbl01_lblJyutakuAmtComment.Size = new System.Drawing.Size(568, 28);
+            this.ca_tbl01_lblJyutakuAmtComment.Size = new System.Drawing.Size(311, 13);
             this.ca_tbl01_lblJyutakuAmtComment.TabIndex = 46;
             this.ca_tbl01_lblJyutakuAmtComment.Text = "※契約金額（税込）－受託外金額（税込）が自動設定されます。";
             this.ca_tbl01_lblJyutakuAmtComment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -11609,24 +12763,16 @@ namespace TokuchoBugyoK2
             // ca_tbl01_tblRibc
             // 
             this.ca_tbl01_tblRibc.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ca_tbl01_tblRibc.ColumnCount = 5;
             this.ca_tbl01_input.SetColumnSpan(this.ca_tbl01_tblRibc, 2);
-            this.ca_tbl01_tblRibc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ca_tbl01_tblRibc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.ca_tbl01_tblRibc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.ca_tbl01_tblRibc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.ca_tbl01_tblRibc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
-            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_lblRibcAri, 0, 0);
-            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_chkSasya, 4, 0);
-            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_lblSasya, 3, 0);
-            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_lblKanrisya, 2, 0);
-            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_chkRibcAri, 1, 0);
-            this.ca_tbl01_tblRibc.Location = new System.Drawing.Point(414, 112);
+            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_lblRibcAri);
+            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_chkSasya);
+            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_lblSasya);
+            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_lblKanrisya);
+            this.ca_tbl01_tblRibc.Controls.Add(this.ca_tbl01_chkRibcAri);
+            this.ca_tbl01_tblRibc.Location = new System.Drawing.Point(420, 112);
             this.ca_tbl01_tblRibc.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl01_tblRibc.Name = "ca_tbl01_tblRibc";
-            this.ca_tbl01_tblRibc.RowCount = 1;
-            this.ca_tbl01_tblRibc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ca_tbl01_tblRibc.Size = new System.Drawing.Size(510, 28);
+            this.ca_tbl01_tblRibc.Size = new System.Drawing.Size(498, 28);
             this.ca_tbl01_tblRibc.TabIndex = 66;
             // 
             // ca_tbl01_lblRibcAri
@@ -11644,7 +12790,7 @@ namespace TokuchoBugyoK2
             // 
             this.ca_tbl01_chkSasya.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ca_tbl01_chkSasya.AutoSize = true;
-            this.ca_tbl01_chkSasya.Location = new System.Drawing.Point(375, 7);
+            this.ca_tbl01_chkSasya.Location = new System.Drawing.Point(376, 7);
             this.ca_tbl01_chkSasya.Name = "ca_tbl01_chkSasya";
             this.ca_tbl01_chkSasya.Size = new System.Drawing.Size(15, 14);
             this.ca_tbl01_chkSasya.TabIndex = 28;
@@ -11682,23 +12828,32 @@ namespace TokuchoBugyoK2
             this.ca_tbl01_chkRibcAri.TabIndex = 2;
             this.ca_tbl01_chkRibcAri.UseVisualStyleBackColor = true;
             // 
-            // ca_tbl01_hidResetAnkenno
-            // 
-            this.ca_tbl01_hidResetAnkenno.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_hidResetAnkenno.Location = new System.Drawing.Point(1676, 460);
-            this.ca_tbl01_hidResetAnkenno.Name = "ca_tbl01_hidResetAnkenno";
-            this.ca_tbl01_hidResetAnkenno.Size = new System.Drawing.Size(100, 21);
-            this.ca_tbl01_hidResetAnkenno.TabIndex = 59;
-            this.ca_tbl01_hidResetAnkenno.Visible = false;
-            // 
             // ca_tbl01_hidAkaden
             // 
             this.ca_tbl01_hidAkaden.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl01_hidAkaden.Location = new System.Drawing.Point(1676, 348);
+            this.ca_tbl01_hidAkaden.Location = new System.Drawing.Point(1206, 59);
             this.ca_tbl01_hidAkaden.Name = "ca_tbl01_hidAkaden";
             this.ca_tbl01_hidAkaden.Size = new System.Drawing.Size(100, 21);
             this.ca_tbl01_hidAkaden.TabIndex = 59;
             this.ca_tbl01_hidAkaden.Visible = false;
+            // 
+            // ca_tbl01_hidKuroden
+            // 
+            this.ca_tbl01_hidKuroden.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl01_hidKuroden.Location = new System.Drawing.Point(1206, 87);
+            this.ca_tbl01_hidKuroden.Name = "ca_tbl01_hidKuroden";
+            this.ca_tbl01_hidKuroden.Size = new System.Drawing.Size(100, 21);
+            this.ca_tbl01_hidKuroden.TabIndex = 60;
+            this.ca_tbl01_hidKuroden.Visible = false;
+            // 
+            // ca_tbl01_hidResetAnkenno
+            // 
+            this.ca_tbl01_hidResetAnkenno.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl01_hidResetAnkenno.Location = new System.Drawing.Point(1206, 115);
+            this.ca_tbl01_hidResetAnkenno.Name = "ca_tbl01_hidResetAnkenno";
+            this.ca_tbl01_hidResetAnkenno.Size = new System.Drawing.Size(100, 21);
+            this.ca_tbl01_hidResetAnkenno.TabIndex = 59;
+            this.ca_tbl01_hidResetAnkenno.Visible = false;
             // 
             // ca_tbl05_parent
             // 
@@ -11900,7 +13055,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
+            this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 382F));
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_picKanriDel, 2, 0);
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_txtKanri, 0, 0);
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_picKanri, 1, 0);
@@ -11911,7 +13066,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblKanri.Name = "ca_tbl05_tblKanri";
             this.ca_tbl05_tblKanri.RowCount = 1;
             this.ca_tbl05_tblKanri.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblKanri.Size = new System.Drawing.Size(685, 28);
+            this.ca_tbl05_tblKanri.Size = new System.Drawing.Size(707, 28);
             this.ca_tbl05_tblKanri.TabIndex = 0;
             // 
             // ca_tbl05_picKanriDel
@@ -11973,7 +13128,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
+            this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 382F));
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_picSyosaDel, 2, 0);
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_txtSyosa, 0, 0);
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_picSyosa, 1, 0);
@@ -11984,7 +13139,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSyosa.Name = "ca_tbl05_tblSyosa";
             this.ca_tbl05_tblSyosa.RowCount = 1;
             this.ca_tbl05_tblSyosa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblSyosa.Size = new System.Drawing.Size(685, 28);
+            this.ca_tbl05_tblSyosa.Size = new System.Drawing.Size(707, 28);
             this.ca_tbl05_tblSyosa.TabIndex = 1;
             // 
             // ca_tbl05_picSyosaDel
@@ -12045,7 +13200,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 405F));
+            this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 427F));
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_picSinsaDel, 2, 0);
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_txtSinsa, 0, 0);
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_picSinsa, 1, 0);
@@ -12055,7 +13210,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSinsa.Name = "ca_tbl05_tblSinsa";
             this.ca_tbl05_tblSinsa.RowCount = 1;
             this.ca_tbl05_tblSinsa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblSinsa.Size = new System.Drawing.Size(665, 28);
+            this.ca_tbl05_tblSinsa.Size = new System.Drawing.Size(687, 28);
             this.ca_tbl05_tblSinsa.TabIndex = 3;
             // 
             // ca_tbl05_picSinsaDel
@@ -12104,29 +13259,46 @@ namespace TokuchoBugyoK2
             // ca_tbl05_tblGyomu
             // 
             this.ca_tbl05_tblGyomu.AutoSize = true;
-            this.ca_tbl05_tblGyomu.ColumnCount = 4;
+            this.ca_tbl05_tblGyomu.ColumnCount = 5;
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
+            this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 405F));
-            this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomuDel, 2, 0);
+            this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 427F));
+            this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomuAlert, 1, 0);
+            this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomuDel, 3, 0);
             this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_txtGyomu, 0, 0);
-            this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomu, 1, 0);
-            this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_txtGyomuCD, 3, 0);
+            this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomu, 2, 0);
+            this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_txtGyomuCD, 4, 0);
             this.ca_tbl05_tblGyomu.Location = new System.Drawing.Point(124, 148);
             this.ca_tbl05_tblGyomu.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl05_tblGyomu.Name = "ca_tbl05_tblGyomu";
             this.ca_tbl05_tblGyomu.RowCount = 1;
-            this.ca_tbl05_tblGyomu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblGyomu.Size = new System.Drawing.Size(665, 28);
+            this.ca_tbl05_tblGyomu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ca_tbl05_tblGyomu.Size = new System.Drawing.Size(730, 28);
             this.ca_tbl05_tblGyomu.TabIndex = 4;
+            // 
+            // ca_tbl05_picGyomuAlert
+            // 
+            this.ca_tbl05_picGyomuAlert.AccessibleName = "";
+            this.ca_tbl05_picGyomuAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl05_picGyomuAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl05_picGyomuAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl05_picGyomuAlert.Image")));
+            this.ca_tbl05_picGyomuAlert.Location = new System.Drawing.Point(239, 4);
+            this.ca_tbl05_picGyomuAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl05_picGyomuAlert.Name = "ca_tbl05_picGyomuAlert";
+            this.ca_tbl05_picGyomuAlert.Size = new System.Drawing.Size(19, 20);
+            this.ca_tbl05_picGyomuAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl05_picGyomuAlert.TabIndex = 100035;
+            this.ca_tbl05_picGyomuAlert.TabStop = false;
+            this.ca_tbl05_picGyomuAlert.Visible = false;
             // 
             // ca_tbl05_picGyomuDel
             // 
             this.ca_tbl05_picGyomuDel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ca_tbl05_picGyomuDel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ca_tbl05_picGyomuDel.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl05_picGyomuDel.Image")));
-            this.ca_tbl05_picGyomuDel.Location = new System.Drawing.Point(242, 6);
+            this.ca_tbl05_picGyomuDel.Location = new System.Drawing.Point(285, 6);
             this.ca_tbl05_picGyomuDel.Name = "ca_tbl05_picGyomuDel";
             this.ca_tbl05_picGyomuDel.Size = new System.Drawing.Size(14, 16);
             this.ca_tbl05_picGyomuDel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -12141,14 +13313,14 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_txtGyomu.Location = new System.Drawing.Point(3, 3);
             this.ca_tbl05_txtGyomu.Name = "ca_tbl05_txtGyomu";
             this.ca_tbl05_txtGyomu.ReadOnly = true;
-            this.ca_tbl05_txtGyomu.Size = new System.Drawing.Size(211, 21);
+            this.ca_tbl05_txtGyomu.Size = new System.Drawing.Size(231, 21);
             this.ca_tbl05_txtGyomu.TabIndex = 0;
             // 
             // ca_tbl05_picGyomu
             // 
             this.ca_tbl05_picGyomu.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ca_tbl05_picGyomu.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl05_picGyomu.Image")));
-            this.ca_tbl05_picGyomu.Location = new System.Drawing.Point(220, 6);
+            this.ca_tbl05_picGyomu.Location = new System.Drawing.Point(263, 6);
             this.ca_tbl05_picGyomu.Name = "ca_tbl05_picGyomu";
             this.ca_tbl05_picGyomu.Size = new System.Drawing.Size(16, 16);
             this.ca_tbl05_picGyomu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -12158,7 +13330,7 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl05_txtGyomuCD
             // 
-            this.ca_tbl05_txtGyomuCD.Location = new System.Drawing.Point(262, 3);
+            this.ca_tbl05_txtGyomuCD.Location = new System.Drawing.Point(305, 3);
             this.ca_tbl05_txtGyomuCD.Name = "ca_tbl05_txtGyomuCD";
             this.ca_tbl05_txtGyomuCD.Size = new System.Drawing.Size(15, 23);
             this.ca_tbl05_txtGyomuCD.TabIndex = 1;
@@ -12167,35 +13339,52 @@ namespace TokuchoBugyoK2
             // ca_tbl05_tblMadoguchi
             // 
             this.ca_tbl05_tblMadoguchi.AutoSize = true;
-            this.ca_tbl05_tblMadoguchi.ColumnCount = 7;
+            this.ca_tbl05_tblMadoguchi.ColumnCount = 8;
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
+            this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 405F));
-            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchiDel, 2, 0);
+            this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 427F));
+            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchiAlert, 1, 0);
+            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchiDel, 3, 0);
             this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchi, 0, 0);
-            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchi, 1, 0);
-            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchiKa, 6, 0);
-            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchiShibu, 5, 0);
-            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchiBusho, 4, 0);
-            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchiCD, 3, 0);
+            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchi, 2, 0);
+            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchiKa, 7, 0);
+            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchiShibu, 6, 0);
+            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchiBusho, 5, 0);
+            this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchiCD, 4, 0);
             this.ca_tbl05_tblMadoguchi.Location = new System.Drawing.Point(124, 178);
             this.ca_tbl05_tblMadoguchi.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl05_tblMadoguchi.Name = "ca_tbl05_tblMadoguchi";
             this.ca_tbl05_tblMadoguchi.RowCount = 1;
-            this.ca_tbl05_tblMadoguchi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblMadoguchi.Size = new System.Drawing.Size(725, 28);
+            this.ca_tbl05_tblMadoguchi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ca_tbl05_tblMadoguchi.Size = new System.Drawing.Size(790, 28);
             this.ca_tbl05_tblMadoguchi.TabIndex = 5;
+            // 
+            // ca_tbl05_picMadoguchiAlert
+            // 
+            this.ca_tbl05_picMadoguchiAlert.AccessibleName = "";
+            this.ca_tbl05_picMadoguchiAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl05_picMadoguchiAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl05_picMadoguchiAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl05_picMadoguchiAlert.Image")));
+            this.ca_tbl05_picMadoguchiAlert.Location = new System.Drawing.Point(239, 4);
+            this.ca_tbl05_picMadoguchiAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl05_picMadoguchiAlert.Name = "ca_tbl05_picMadoguchiAlert";
+            this.ca_tbl05_picMadoguchiAlert.Size = new System.Drawing.Size(19, 20);
+            this.ca_tbl05_picMadoguchiAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl05_picMadoguchiAlert.TabIndex = 100035;
+            this.ca_tbl05_picMadoguchiAlert.TabStop = false;
+            this.ca_tbl05_picMadoguchiAlert.Visible = false;
             // 
             // ca_tbl05_picMadoguchiDel
             // 
             this.ca_tbl05_picMadoguchiDel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ca_tbl05_picMadoguchiDel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ca_tbl05_picMadoguchiDel.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl05_picMadoguchiDel.Image")));
-            this.ca_tbl05_picMadoguchiDel.Location = new System.Drawing.Point(242, 6);
+            this.ca_tbl05_picMadoguchiDel.Location = new System.Drawing.Point(285, 6);
             this.ca_tbl05_picMadoguchiDel.Name = "ca_tbl05_picMadoguchiDel";
             this.ca_tbl05_picMadoguchiDel.Size = new System.Drawing.Size(14, 16);
             this.ca_tbl05_picMadoguchiDel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -12210,14 +13399,14 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_txtMadoguchi.Location = new System.Drawing.Point(3, 3);
             this.ca_tbl05_txtMadoguchi.Name = "ca_tbl05_txtMadoguchi";
             this.ca_tbl05_txtMadoguchi.ReadOnly = true;
-            this.ca_tbl05_txtMadoguchi.Size = new System.Drawing.Size(211, 21);
+            this.ca_tbl05_txtMadoguchi.Size = new System.Drawing.Size(231, 21);
             this.ca_tbl05_txtMadoguchi.TabIndex = 0;
             // 
             // ca_tbl05_picMadoguchi
             // 
             this.ca_tbl05_picMadoguchi.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ca_tbl05_picMadoguchi.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl05_picMadoguchi.Image")));
-            this.ca_tbl05_picMadoguchi.Location = new System.Drawing.Point(220, 6);
+            this.ca_tbl05_picMadoguchi.Location = new System.Drawing.Point(263, 6);
             this.ca_tbl05_picMadoguchi.Name = "ca_tbl05_picMadoguchi";
             this.ca_tbl05_picMadoguchi.Size = new System.Drawing.Size(16, 16);
             this.ca_tbl05_picMadoguchi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -12227,7 +13416,7 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl05_txtMadoguchiKa
             // 
-            this.ca_tbl05_txtMadoguchiKa.Location = new System.Drawing.Point(322, 3);
+            this.ca_tbl05_txtMadoguchiKa.Location = new System.Drawing.Point(365, 3);
             this.ca_tbl05_txtMadoguchiKa.Name = "ca_tbl05_txtMadoguchiKa";
             this.ca_tbl05_txtMadoguchiKa.Size = new System.Drawing.Size(14, 23);
             this.ca_tbl05_txtMadoguchiKa.TabIndex = 1;
@@ -12235,7 +13424,7 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl05_txtMadoguchiShibu
             // 
-            this.ca_tbl05_txtMadoguchiShibu.Location = new System.Drawing.Point(302, 3);
+            this.ca_tbl05_txtMadoguchiShibu.Location = new System.Drawing.Point(345, 3);
             this.ca_tbl05_txtMadoguchiShibu.Name = "ca_tbl05_txtMadoguchiShibu";
             this.ca_tbl05_txtMadoguchiShibu.Size = new System.Drawing.Size(14, 23);
             this.ca_tbl05_txtMadoguchiShibu.TabIndex = 1;
@@ -12243,7 +13432,7 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl05_txtMadoguchiBusho
             // 
-            this.ca_tbl05_txtMadoguchiBusho.Location = new System.Drawing.Point(282, 3);
+            this.ca_tbl05_txtMadoguchiBusho.Location = new System.Drawing.Point(325, 3);
             this.ca_tbl05_txtMadoguchiBusho.Name = "ca_tbl05_txtMadoguchiBusho";
             this.ca_tbl05_txtMadoguchiBusho.Size = new System.Drawing.Size(14, 23);
             this.ca_tbl05_txtMadoguchiBusho.TabIndex = 1;
@@ -12251,7 +13440,7 @@ namespace TokuchoBugyoK2
             // 
             // ca_tbl05_txtMadoguchiCD
             // 
-            this.ca_tbl05_txtMadoguchiCD.Location = new System.Drawing.Point(262, 3);
+            this.ca_tbl05_txtMadoguchiCD.Location = new System.Drawing.Point(305, 3);
             this.ca_tbl05_txtMadoguchiCD.Name = "ca_tbl05_txtMadoguchiCD";
             this.ca_tbl05_txtMadoguchiCD.Size = new System.Drawing.Size(14, 23);
             this.ca_tbl05_txtMadoguchiCD.TabIndex = 1;
@@ -13658,6 +14847,9 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.ca_tbl02_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.ca_tbl02_input1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl02_input1.Controls.Add(this.ca_tbl02_AftCaBm_picPercentAlert, 7, 4);
+            this.ca_tbl02_input1.Controls.Add(this.ca_tbl02_AftCaBm_picAmtAlert, 7, 6);
+            this.ca_tbl02_input1.Controls.Add(this.ca_tbl02_AftCaBmZeikomi_picAmtAlert, 7, 5);
             this.ca_tbl02_input1.Controls.Add(this.ca_tbl02_AftCaBm_numPercentAll, 6, 4);
             this.ca_tbl02_input1.Controls.Add(this.ca_tbl02_AftCaBm_numPercent4, 5, 4);
             this.ca_tbl02_input1.Controls.Add(this.ca_tbl02_AftCaBm_numPercent3, 4, 4);
@@ -13707,8 +14899,54 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_input1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.ca_tbl02_input1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.ca_tbl02_input1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.ca_tbl02_input1.Size = new System.Drawing.Size(1348, 212);
+            this.ca_tbl02_input1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ca_tbl02_input1.Size = new System.Drawing.Size(1372, 212);
             this.ca_tbl02_input1.TabIndex = 7;
+            // 
+            // ca_tbl02_AftCaBm_picPercentAlert
+            // 
+            this.ca_tbl02_AftCaBm_picPercentAlert.AccessibleName = "";
+            this.ca_tbl02_AftCaBm_picPercentAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl02_AftCaBm_picPercentAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl02_AftCaBm_picPercentAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl02_AftCaBm_picPercentAlert.Image")));
+            this.ca_tbl02_AftCaBm_picPercentAlert.Location = new System.Drawing.Point(1348, 126);
+            this.ca_tbl02_AftCaBm_picPercentAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl02_AftCaBm_picPercentAlert.Name = "ca_tbl02_AftCaBm_picPercentAlert";
+            this.ca_tbl02_AftCaBm_picPercentAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl02_AftCaBm_picPercentAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl02_AftCaBm_picPercentAlert.TabIndex = 100036;
+            this.ca_tbl02_AftCaBm_picPercentAlert.TabStop = false;
+            this.ca_tbl02_AftCaBm_picPercentAlert.Visible = false;
+            // 
+            // ca_tbl02_AftCaBm_picAmtAlert
+            // 
+            this.ca_tbl02_AftCaBm_picAmtAlert.AccessibleName = "";
+            this.ca_tbl02_AftCaBm_picAmtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl02_AftCaBm_picAmtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl02_AftCaBm_picAmtAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl02_AftCaBm_picAmtAlert.Image")));
+            this.ca_tbl02_AftCaBm_picAmtAlert.Location = new System.Drawing.Point(1348, 186);
+            this.ca_tbl02_AftCaBm_picAmtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl02_AftCaBm_picAmtAlert.Name = "ca_tbl02_AftCaBm_picAmtAlert";
+            this.ca_tbl02_AftCaBm_picAmtAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl02_AftCaBm_picAmtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl02_AftCaBm_picAmtAlert.TabIndex = 100035;
+            this.ca_tbl02_AftCaBm_picAmtAlert.TabStop = false;
+            this.ca_tbl02_AftCaBm_picAmtAlert.Visible = false;
+            // 
+            // ca_tbl02_AftCaBmZeikomi_picAmtAlert
+            // 
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.AccessibleName = "";
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl02_AftCaBmZeikomi_picAmtAlert.Image")));
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.Location = new System.Drawing.Point(1348, 156);
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.Name = "ca_tbl02_AftCaBmZeikomi_picAmtAlert";
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.TabIndex = 100034;
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.TabStop = false;
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert.Visible = false;
             // 
             // ca_tbl02_AftCaBm_numPercentAll
             // 
@@ -14533,6 +15771,9 @@ namespace TokuchoBugyoK2
             // tabTE
             // 
             this.tabTE.AutoScroll = true;
+            this.tabTE.Controls.Add(this.te_picPointAlert);
+            this.tabTE.Controls.Add(this.te_picKanriPointAlert);
+            this.tabTE.Controls.Add(this.te_picSyosaPointAlert);
             this.tabTE.Controls.Add(this.te_lblDetailTitle);
             this.tabTE.Controls.Add(this.te_lblTitle);
             this.tabTE.Controls.Add(this.te_picSyosa);
@@ -14561,10 +15802,55 @@ namespace TokuchoBugyoK2
             this.tabTE.Text = "技術者評価";
             this.tabTE.UseVisualStyleBackColor = true;
             // 
+            // te_picPointAlert
+            // 
+            this.te_picPointAlert.AccessibleName = "";
+            this.te_picPointAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.te_picPointAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.te_picPointAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picPointAlert.Image")));
+            this.te_picPointAlert.Location = new System.Drawing.Point(355, 62);
+            this.te_picPointAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.te_picPointAlert.Name = "te_picPointAlert";
+            this.te_picPointAlert.Size = new System.Drawing.Size(20, 20);
+            this.te_picPointAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.te_picPointAlert.TabIndex = 100034;
+            this.te_picPointAlert.TabStop = false;
+            this.te_picPointAlert.Visible = false;
+            // 
+            // te_picKanriPointAlert
+            // 
+            this.te_picKanriPointAlert.AccessibleName = "";
+            this.te_picKanriPointAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.te_picKanriPointAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.te_picKanriPointAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picKanriPointAlert.Image")));
+            this.te_picKanriPointAlert.Location = new System.Drawing.Point(586, 152);
+            this.te_picKanriPointAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.te_picKanriPointAlert.Name = "te_picKanriPointAlert";
+            this.te_picKanriPointAlert.Size = new System.Drawing.Size(20, 20);
+            this.te_picKanriPointAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.te_picKanriPointAlert.TabIndex = 100033;
+            this.te_picKanriPointAlert.TabStop = false;
+            this.te_picKanriPointAlert.Visible = false;
+            // 
+            // te_picSyosaPointAlert
+            // 
+            this.te_picSyosaPointAlert.AccessibleName = "";
+            this.te_picSyosaPointAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.te_picSyosaPointAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.te_picSyosaPointAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picSyosaPointAlert.Image")));
+            this.te_picSyosaPointAlert.Location = new System.Drawing.Point(586, 183);
+            this.te_picSyosaPointAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.te_picSyosaPointAlert.Name = "te_picSyosaPointAlert";
+            this.te_picSyosaPointAlert.Size = new System.Drawing.Size(20, 20);
+            this.te_picSyosaPointAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.te_picSyosaPointAlert.TabIndex = 100032;
+            this.te_picSyosaPointAlert.TabStop = false;
+            this.te_picSyosaPointAlert.Visible = false;
+            // 
             // te_lblDetailTitle
             // 
             this.te_lblDetailTitle.AutoSize = true;
-            this.te_lblDetailTitle.Location = new System.Drawing.Point(33, 85);
+            this.te_lblDetailTitle.Location = new System.Drawing.Point(33, 91);
             this.te_lblDetailTitle.Margin = new System.Windows.Forms.Padding(3);
             this.te_lblDetailTitle.Name = "te_lblDetailTitle";
             this.te_lblDetailTitle.Size = new System.Drawing.Size(128, 18);
@@ -14577,18 +15863,18 @@ namespace TokuchoBugyoK2
             this.te_lblTitle.BackColor = System.Drawing.Color.SteelBlue;
             this.te_lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.te_lblTitle.ForeColor = System.Drawing.Color.White;
-            this.te_lblTitle.Location = new System.Drawing.Point(7, 6);
+            this.te_lblTitle.Location = new System.Drawing.Point(7, 2);
             this.te_lblTitle.Margin = new System.Windows.Forms.Padding(4);
             this.te_lblTitle.Name = "te_lblTitle";
             this.te_lblTitle.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.te_lblTitle.Size = new System.Drawing.Size(1465, 30);
+            this.te_lblTitle.Size = new System.Drawing.Size(1295, 30);
             this.te_lblTitle.TabIndex = 47;
             this.te_lblTitle.Text = "　　評価・評点";
             // 
             // te_picSyosa
             // 
             this.te_picSyosa.Image = ((System.Drawing.Image)(resources.GetObject("te_picSyosa.Image")));
-            this.te_picSyosa.Location = new System.Drawing.Point(417, 175);
+            this.te_picSyosa.Location = new System.Drawing.Point(417, 181);
             this.te_picSyosa.Name = "te_picSyosa";
             this.te_picSyosa.Size = new System.Drawing.Size(16, 16);
             this.te_picSyosa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -14607,7 +15893,7 @@ namespace TokuchoBugyoK2
             this.tblTe.Controls.Add(this.te_c1FlexGrid, 1, 1);
             this.tblTe.Controls.Add(this.tblTe_input, 0, 2);
             this.tblTe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tblTe.Location = new System.Drawing.Point(31, 201);
+            this.tblTe.Location = new System.Drawing.Point(31, 207);
             this.tblTe.Margin = new System.Windows.Forms.Padding(15, 15, 15, 1);
             this.tblTe.Name = "tblTe";
             this.tblTe.RowCount = 3;
@@ -14784,19 +16070,29 @@ namespace TokuchoBugyoK2
             // 
             // te_tblLink
             // 
-            this.te_tblLink.ColumnCount = 2;
-            this.te_tblLink.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.444444F));
-            this.te_tblLink.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.55556F));
-            this.te_tblLink.Controls.Add(this.te_txtSeikyusyo, 1, 0);
-            this.te_tblLink.Controls.Add(this.te_picSeikyusyo, 0, 0);
+            this.te_tblLink.Controls.Add(this.te_picSeikyusyoAlert);
+            this.te_tblLink.Controls.Add(this.te_txtSeikyusyo);
+            this.te_tblLink.Controls.Add(this.te_picSeikyusyo);
             this.te_tblLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.te_tblLink.Location = new System.Drawing.Point(150, 60);
             this.te_tblLink.Margin = new System.Windows.Forms.Padding(0);
             this.te_tblLink.Name = "te_tblLink";
-            this.te_tblLink.RowCount = 1;
-            this.te_tblLink.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.te_tblLink.Size = new System.Drawing.Size(900, 30);
             this.te_tblLink.TabIndex = 2;
+            // 
+            // te_picSeikyusyoAlert
+            // 
+            this.te_picSeikyusyoAlert.AccessibleName = "";
+            this.te_picSeikyusyoAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.te_picSeikyusyoAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picSeikyusyoAlert.Image")));
+            this.te_picSeikyusyoAlert.Location = new System.Drawing.Point(876, 2);
+            this.te_picSeikyusyoAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.te_picSeikyusyoAlert.Name = "te_picSeikyusyoAlert";
+            this.te_picSeikyusyoAlert.Size = new System.Drawing.Size(20, 20);
+            this.te_picSeikyusyoAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.te_picSeikyusyoAlert.TabIndex = 100032;
+            this.te_picSeikyusyoAlert.TabStop = false;
+            this.te_picSeikyusyoAlert.Visible = false;
             // 
             // te_txtSeikyusyo
             // 
@@ -14804,7 +16100,7 @@ namespace TokuchoBugyoK2
             this.te_txtSeikyusyo.Location = new System.Drawing.Point(33, 3);
             this.te_txtSeikyusyo.Name = "te_txtSeikyusyo";
             this.te_txtSeikyusyo.ReadOnly = true;
-            this.te_txtSeikyusyo.Size = new System.Drawing.Size(864, 21);
+            this.te_txtSeikyusyo.Size = new System.Drawing.Size(838, 21);
             this.te_txtSeikyusyo.TabIndex = 1;
             // 
             // te_picSeikyusyo
@@ -14834,7 +16130,7 @@ namespace TokuchoBugyoK2
             // te_lblSyosaT
             // 
             this.te_lblSyosaT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.te_lblSyosaT.Location = new System.Drawing.Point(34, 171);
+            this.te_lblSyosaT.Location = new System.Drawing.Point(34, 177);
             this.te_lblSyosaT.Margin = new System.Windows.Forms.Padding(3);
             this.te_lblSyosaT.Name = "te_lblSyosaT";
             this.te_lblSyosaT.Size = new System.Drawing.Size(140, 24);
@@ -14846,7 +16142,7 @@ namespace TokuchoBugyoK2
             // 
             this.te_txtSyosaPoint.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.te_txtSyosaPoint.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.te_txtSyosaPoint.Location = new System.Drawing.Point(437, 171);
+            this.te_txtSyosaPoint.Location = new System.Drawing.Point(437, 177);
             this.te_txtSyosaPoint.MaxLength = 3;
             this.te_txtSyosaPoint.Name = "te_txtSyosaPoint";
             this.te_txtSyosaPoint.Size = new System.Drawing.Size(144, 21);
@@ -14857,7 +16153,7 @@ namespace TokuchoBugyoK2
             // te_lblSyosa
             // 
             this.te_lblSyosa.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.te_lblSyosa.Location = new System.Drawing.Point(188, 171);
+            this.te_lblSyosa.Location = new System.Drawing.Point(188, 177);
             this.te_lblSyosa.Margin = new System.Windows.Forms.Padding(3);
             this.te_lblSyosa.Name = "te_lblSyosa";
             this.te_lblSyosa.Size = new System.Drawing.Size(221, 21);
@@ -14866,7 +16162,7 @@ namespace TokuchoBugyoK2
             // te_lblPointUnit
             // 
             this.te_lblPointUnit.AutoSize = true;
-            this.te_lblPointUnit.Location = new System.Drawing.Point(330, 51);
+            this.te_lblPointUnit.Location = new System.Drawing.Point(330, 57);
             this.te_lblPointUnit.Margin = new System.Windows.Forms.Padding(3);
             this.te_lblPointUnit.Name = "te_lblPointUnit";
             this.te_lblPointUnit.Size = new System.Drawing.Size(20, 18);
@@ -14876,7 +16172,7 @@ namespace TokuchoBugyoK2
             // te_lblKanri
             // 
             this.te_lblKanri.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.te_lblKanri.Location = new System.Drawing.Point(188, 140);
+            this.te_lblKanri.Location = new System.Drawing.Point(188, 146);
             this.te_lblKanri.Margin = new System.Windows.Forms.Padding(3);
             this.te_lblKanri.Name = "te_lblKanri";
             this.te_lblKanri.Size = new System.Drawing.Size(221, 22);
@@ -14885,7 +16181,7 @@ namespace TokuchoBugyoK2
             // te_lblKanriT
             // 
             this.te_lblKanriT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.te_lblKanriT.Location = new System.Drawing.Point(34, 140);
+            this.te_lblKanriT.Location = new System.Drawing.Point(34, 146);
             this.te_lblKanriT.Margin = new System.Windows.Forms.Padding(3);
             this.te_lblKanriT.Name = "te_lblKanriT";
             this.te_lblKanriT.Size = new System.Drawing.Size(140, 24);
@@ -14897,7 +16193,7 @@ namespace TokuchoBugyoK2
             // 
             this.te_txtPoint.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.te_txtPoint.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.te_txtPoint.Location = new System.Drawing.Point(182, 48);
+            this.te_txtPoint.Location = new System.Drawing.Point(182, 54);
             this.te_txtPoint.MaxLength = 3;
             this.te_txtPoint.Name = "te_txtPoint";
             this.te_txtPoint.Size = new System.Drawing.Size(142, 21);
@@ -14909,7 +16205,7 @@ namespace TokuchoBugyoK2
             // 
             this.te_txtKanriPoint.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.te_txtKanriPoint.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.te_txtKanriPoint.Location = new System.Drawing.Point(437, 140);
+            this.te_txtKanriPoint.Location = new System.Drawing.Point(437, 146);
             this.te_txtKanriPoint.MaxLength = 3;
             this.te_txtKanriPoint.Name = "te_txtKanriPoint";
             this.te_txtKanriPoint.Size = new System.Drawing.Size(144, 21);
@@ -14921,7 +16217,7 @@ namespace TokuchoBugyoK2
             // 
             this.te_lblDeleteT.BackColor = System.Drawing.Color.DarkGray;
             this.te_lblDeleteT.ForeColor = System.Drawing.Color.White;
-            this.te_lblDeleteT.Location = new System.Drawing.Point(583, 106);
+            this.te_lblDeleteT.Location = new System.Drawing.Point(595, 112);
             this.te_lblDeleteT.Margin = new System.Windows.Forms.Padding(1);
             this.te_lblDeleteT.Name = "te_lblDeleteT";
             this.te_lblDeleteT.Size = new System.Drawing.Size(48, 28);
@@ -14933,10 +16229,10 @@ namespace TokuchoBugyoK2
             // 
             this.te_lblPointT.BackColor = System.Drawing.Color.DarkGray;
             this.te_lblPointT.ForeColor = System.Drawing.Color.White;
-            this.te_lblPointT.Location = new System.Drawing.Point(433, 106);
+            this.te_lblPointT.Location = new System.Drawing.Point(433, 112);
             this.te_lblPointT.Margin = new System.Windows.Forms.Padding(1);
             this.te_lblPointT.Name = "te_lblPointT";
-            this.te_lblPointT.Size = new System.Drawing.Size(148, 28);
+            this.te_lblPointT.Size = new System.Drawing.Size(160, 28);
             this.te_lblPointT.TabIndex = 23;
             this.te_lblPointT.Text = "評点";
             this.te_lblPointT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -14945,7 +16241,7 @@ namespace TokuchoBugyoK2
             // 
             this.te_lblYakuwariT.BackColor = System.Drawing.Color.DarkGray;
             this.te_lblYakuwariT.ForeColor = System.Drawing.Color.White;
-            this.te_lblYakuwariT.Location = new System.Drawing.Point(33, 106);
+            this.te_lblYakuwariT.Location = new System.Drawing.Point(33, 112);
             this.te_lblYakuwariT.Margin = new System.Windows.Forms.Padding(1);
             this.te_lblYakuwariT.Name = "te_lblYakuwariT";
             this.te_lblYakuwariT.Size = new System.Drawing.Size(148, 28);
@@ -14956,7 +16252,7 @@ namespace TokuchoBugyoK2
             // te_lblPoint
             // 
             this.te_lblPoint.AutoSize = true;
-            this.te_lblPoint.Location = new System.Drawing.Point(33, 51);
+            this.te_lblPoint.Location = new System.Drawing.Point(33, 57);
             this.te_lblPoint.Margin = new System.Windows.Forms.Padding(3);
             this.te_lblPoint.Name = "te_lblPoint";
             this.te_lblPoint.Size = new System.Drawing.Size(80, 18);
@@ -14967,7 +16263,7 @@ namespace TokuchoBugyoK2
             // 
             this.te_lblSimeiT.BackColor = System.Drawing.Color.DarkGray;
             this.te_lblSimeiT.ForeColor = System.Drawing.Color.White;
-            this.te_lblSimeiT.Location = new System.Drawing.Point(183, 106);
+            this.te_lblSimeiT.Location = new System.Drawing.Point(183, 112);
             this.te_lblSimeiT.Margin = new System.Windows.Forms.Padding(1);
             this.te_lblSimeiT.Name = "te_lblSimeiT";
             this.te_lblSimeiT.Size = new System.Drawing.Size(248, 28);
@@ -14978,7 +16274,7 @@ namespace TokuchoBugyoK2
             // te_picSyosaDel
             // 
             this.te_picSyosaDel.Image = ((System.Drawing.Image)(resources.GetObject("te_picSyosaDel.Image")));
-            this.te_picSyosaDel.Location = new System.Drawing.Point(599, 176);
+            this.te_picSyosaDel.Location = new System.Drawing.Point(611, 182);
             this.te_picSyosaDel.Name = "te_picSyosaDel";
             this.te_picSyosaDel.Size = new System.Drawing.Size(13, 14);
             this.te_picSyosaDel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -14989,7 +16285,7 @@ namespace TokuchoBugyoK2
             // te_picKanriDel
             // 
             this.te_picKanriDel.Image = ((System.Drawing.Image)(resources.GetObject("te_picKanriDel.Image")));
-            this.te_picKanriDel.Location = new System.Drawing.Point(599, 143);
+            this.te_picKanriDel.Location = new System.Drawing.Point(611, 149);
             this.te_picKanriDel.Name = "te_picKanriDel";
             this.te_picKanriDel.Size = new System.Drawing.Size(13, 14);
             this.te_picKanriDel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -15000,7 +16296,7 @@ namespace TokuchoBugyoK2
             // te_picKanri
             // 
             this.te_picKanri.Image = ((System.Drawing.Image)(resources.GetObject("te_picKanri.Image")));
-            this.te_picKanri.Location = new System.Drawing.Point(417, 142);
+            this.te_picKanri.Location = new System.Drawing.Point(417, 148);
             this.te_picKanri.Name = "te_picKanri";
             this.te_picKanri.Size = new System.Drawing.Size(16, 16);
             this.te_picKanri.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -15081,10 +16377,15 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input4.PerformLayout();
             this.base_tbl07_input3.ResumeLayout(false);
             this.base_tbl07_input3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_3_picOenIraiAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_3_picOenMemoAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_3_picOenAlert)).EndInit();
             this.base_tbl07_input1.ResumeLayout(false);
             this.base_tbl07_input1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_1_picPercentAlert)).EndInit();
             this.base_tbl07_input2.ResumeLayout(false);
             this.base_tbl07_input2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl07_2_picPercentAlert)).EndInit();
             this.base_tbl03_parent.ResumeLayout(false);
             this.base_tbl03_parent.PerformLayout();
             this.base_tbl03.ResumeLayout(false);
@@ -15180,12 +16481,31 @@ namespace TokuchoBugyoK2
             this.base_tbl09.PerformLayout();
             this.base_tbl09_input.ResumeLayout(false);
             this.base_tbl09_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picOthenCommentAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picNotOrderReasonAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picOrderYoteiDtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picJizenDasinIraiDtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picNotOrderStatsAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picOrderIyokuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl09_picSankomitumoriAlert)).EndInit();
             this.base_tbl10_parent.ResumeLayout(false);
             this.base_tbl10_parent.PerformLayout();
             this.base_tbl10.ResumeLayout(false);
             this.base_tbl10.PerformLayout();
             this.base_tbl10_input.ResumeLayout(false);
             this.base_tbl10_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picKinsiNaiyoAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picTokaiOsatuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picRakusatuAmtStatsAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picRakusatuStatsAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picNyusatuStatsAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picKinsiUmuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picOrderIyokuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picSankoMitumoriAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picNyusatuDtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picLowestUmuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picNyusatuHosikiAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.base_tbl10_picOrderKubunAlert)).EndInit();
             this.base_tbl11_parent.ResumeLayout(false);
             this.base_tbl11_parent.PerformLayout();
             this.base_tbl11.ResumeLayout(false);
@@ -15206,12 +16526,21 @@ namespace TokuchoBugyoK2
             this.prior_tbl02.PerformLayout();
             this.prior_tbl02_input.ResumeLayout(false);
             this.prior_tbl02_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl02_picNotOrderStatsAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl02_picNotOrderDtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl02_picNotOrderReasonAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl02_picOtherNaiyoAlert)).EndInit();
             this.prior_tbl01_parent.ResumeLayout(false);
             this.prior_tbl01_parent.PerformLayout();
             this.prior_tbl01.ResumeLayout(false);
             this.prior_tbl01.PerformLayout();
             this.prior_tbl01_input.ResumeLayout(false);
             this.prior_tbl01_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picOrderYoteiDtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picMitumoriAmtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picOrderIyokuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picMitumoriAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prior_tbl01_picDasinIraiDtAlert)).EndInit();
             this.tabBid.ResumeLayout(false);
             this.tabBid.PerformLayout();
             this.tblBid.ResumeLayout(false);
@@ -15222,20 +16551,35 @@ namespace TokuchoBugyoK2
             this.bid_tbl02.PerformLayout();
             this.bid_tbl02_input.ResumeLayout(false);
             this.bid_tbl02_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl02_picOtherNaiyoAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl02_picKinsiNaiyoAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl02_picKinsiUmuAlert)).EndInit();
             this.bid_tbl03_parent.ResumeLayout(false);
             this.bid_tbl03_parent.PerformLayout();
             this.bid_tbl03.ResumeLayout(false);
             this.bid_tbl03.PerformLayout();
             this.bid_tbl03_input1.ResumeLayout(false);
             this.bid_tbl03_input1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picBidStatusAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picBidResultDtAlert)).EndInit();
+            this.bid_tbl03_1_tblRakusatuAmtStatus.ResumeLayout(false);
+            this.bid_tbl03_1_tblRakusatuAmtStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picRakusatuAmtStatusAlert)).EndInit();
+            this.bid_tbl03_1_tblRakusatuStatus.ResumeLayout(false);
+            this.bid_tbl03_1_tblRakusatuStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picRakusatuStatusAlert)).EndInit();
             this.bid_tbl03_1_tblRakusatuSya.ResumeLayout(false);
             this.bid_tbl03_1_tblRakusatuSya.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picRakusatuSyaAlert)).EndInit();
             this.bid_tbl03_1_tblYoteiPrice.ResumeLayout(false);
             this.bid_tbl03_1_tblYoteiPrice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picYoteiPriceAlert)).EndInit();
             this.bid_tbl03_1_tblOsatuNum.ResumeLayout(false);
             this.bid_tbl03_1_tblOsatuNum.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picOsatuNumAlert)).EndInit();
             this.bid_tbl03_1_tblRakusatuAmt.ResumeLayout(false);
             this.bid_tbl03_1_tblRakusatuAmt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl03_1_picRakusatuAmtAlert)).EndInit();
             this.bid_tbl03_input4.ResumeLayout(false);
             this.bid_tbl03_input4.PerformLayout();
             this.bid_tbl03_input5.ResumeLayout(false);
@@ -15247,6 +16591,15 @@ namespace TokuchoBugyoK2
             this.bid_tbl01.PerformLayout();
             this.bid_tbl01_input.ResumeLayout(false);
             this.bid_tbl01_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picBidInfoDtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picTokaiOsatuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picBidYoteiDtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picMitumoriAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picOrderIyokuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picMitumoriAmtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picLowestUmuAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picOrderKubunAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bid_tbl01_picBidhosikiAlert)).EndInit();
             this.tabCA.ResumeLayout(false);
             this.tabCA.PerformLayout();
             this.tblCa.ResumeLayout(false);
@@ -15277,14 +16630,32 @@ namespace TokuchoBugyoK2
             this.ca_tbl01.PerformLayout();
             this.ca_tbl01_input.ResumeLayout(false);
             this.ca_tbl01_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picRiyuAlert)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picAnkenKubunAlert)).EndInit();
+            this.ca_tbl01_tblKokiTo.ResumeLayout(false);
+            this.ca_tbl01_tblKokiTo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picKokiToAlert)).EndInit();
+            this.ca_tbl01_tblKokiFrom.ResumeLayout(false);
+            this.ca_tbl01_tblKokiFrom.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picKokiFromAlert)).EndInit();
+            this.ca_tbl01_tblChangeDt.ResumeLayout(false);
+            this.ca_tbl01_tblChangeDt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picChangeDtAlert)).EndInit();
+            this.ca_tbl01_tblJyutakuGaiAmt.ResumeLayout(false);
+            this.ca_tbl01_tblJyutakuGaiAmt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picJyutakuGaiAmtAlert)).EndInit();
             this.ca_tbl01_tblChangeAmt.ResumeLayout(false);
             this.ca_tbl01_tblChangeAmt.PerformLayout();
             this.ca_tbl01_tblKian.ResumeLayout(false);
             this.ca_tbl01_tblKian.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picKianDtAlert)).EndInit();
             this.ca_tbl01_tblCaAmt_parent.ResumeLayout(false);
             this.ca_tbl01_tblCaAmt_parent.PerformLayout();
             this.ca_tbl01_tblCaAmt.ResumeLayout(false);
             this.ca_tbl01_tblCaAmt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picZeikomiAmtAlert)).EndInit();
             this.ca_tbl01_tblTax.ResumeLayout(false);
             this.ca_tbl01_tblTax.PerformLayout();
             this.ca_tbl01_tblSiryo.ResumeLayout(false);
@@ -15294,6 +16665,7 @@ namespace TokuchoBugyoK2
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picTosyo)).EndInit();
             this.ca_tbl01_tblJyutakuAmt.ResumeLayout(false);
             this.ca_tbl01_tblJyutakuAmt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl01_picJyutakuAmtAlert)).EndInit();
             this.ca_tbl01_tblRibc.ResumeLayout(false);
             this.ca_tbl01_tblRibc.PerformLayout();
             this.ca_tbl05_parent.ResumeLayout(false);
@@ -15318,10 +16690,12 @@ namespace TokuchoBugyoK2
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picSinsa)).EndInit();
             this.ca_tbl05_tblGyomu.ResumeLayout(false);
             this.ca_tbl05_tblGyomu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picGyomuAlert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picGyomuDel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picGyomu)).EndInit();
             this.ca_tbl05_tblMadoguchi.ResumeLayout(false);
             this.ca_tbl05_tblMadoguchi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picMadoguchiAlert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picMadoguchiDel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl05_picMadoguchi)).EndInit();
             this.ca_tblButton.ResumeLayout(false);
@@ -15340,6 +16714,9 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_input2.PerformLayout();
             this.ca_tbl02_input1.ResumeLayout(false);
             this.ca_tbl02_input1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBm_picPercentAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBm_picAmtAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBmZeikomi_picAmtAlert)).EndInit();
             this.ca_tbl04_parent.ResumeLayout(false);
             this.ca_tbl04_parent.PerformLayout();
             this.ca_tbl04.ResumeLayout(false);
@@ -15350,6 +16727,9 @@ namespace TokuchoBugyoK2
             this.ca_tbl04_tblComment.PerformLayout();
             this.tabTE.ResumeLayout(false);
             this.tabTE.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.te_picPointAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.te_picKanriPointAlert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.te_picSyosaPointAlert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picSyosa)).EndInit();
             this.tblTe.ResumeLayout(false);
             this.tblTe.PerformLayout();
@@ -15358,6 +16738,7 @@ namespace TokuchoBugyoK2
             this.tblTe_input.PerformLayout();
             this.te_tblLink.ResumeLayout(false);
             this.te_tblLink.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.te_picSeikyusyoAlert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picSeikyusyo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picSyosaDel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_picKanriDel)).EndInit();
@@ -15441,7 +16822,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label te_lblPoint;
         private System.Windows.Forms.Label bid_tbl03_1_lblRakusatuStatus;
         private System.Windows.Forms.Label bid_tbl03_1_lblRakusatuAmtStatus;
-        private System.Windows.Forms.ComboBox bid_tbl03_1_cmbRakusatuAmtStatus;
         private System.Windows.Forms.ComboBox bid_tbl03_1_cmbBidStatus;
         private System.Windows.Forms.TableLayoutPanel bid_tbl03_input4;
         private System.Windows.Forms.TableLayoutPanel bid_tbl03_input5;
@@ -15468,7 +16848,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TableLayoutPanel ca_tbl01_input;
         private System.Windows.Forms.Label ca_tbl01_lblJyutakuGaiAmt;
         private System.Windows.Forms.TextBox ca_tbl01_txtJyutakuAmt;
-        private System.Windows.Forms.TextBox ca_tbl01_txtJyutakuGaiAmt;
         private System.Windows.Forms.Label ca_tbl01_lblRiyu;
         private System.Windows.Forms.TextBox ca_tbl01_txtRiyu;
         private System.Windows.Forms.Label ca_tbl01_lblKokiTo;
@@ -15492,10 +16871,7 @@ namespace TokuchoBugyoK2
         private C1.Win.C1FlexGrid.C1FlexGrid ca_tbl05_txtTanto_c1FlexGrid;
         private System.Windows.Forms.Label ca_tbl01_lblSyohizeiAmt;
         private System.Windows.Forms.Label ca_tbl01_lblAnkenKubun;
-        private System.Windows.Forms.DateTimePicker ca_tbl01_dtpChangeDt;
         private System.Windows.Forms.Label ca_tbl01_lblSalesYear;
-        private System.Windows.Forms.DateTimePicker ca_tbl01_dtpKokiFrom;
-        private System.Windows.Forms.DateTimePicker ca_tbl01_dtpKokiTo;
         private System.Windows.Forms.Label ca_tbl01_lblCaKubun;
         private System.Windows.Forms.Label ca_tbl01_lblOrder;
         private System.Windows.Forms.TextBox ca_tbl01_txtOrderKamei;
@@ -15508,7 +16884,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label ca_tbl01_lblTosyo;
         private System.Windows.Forms.Label ca_tbl06_btnAddRow;
         private System.Windows.Forms.TextBox ca_tbl01_txtSyohizeiAmt;
-        private System.Windows.Forms.ComboBox ca_tbl01_cmbAnkenKubun;
         private System.Windows.Forms.ComboBox ca_tbl01_cmbCaKubun;
         private System.Windows.Forms.TableLayoutPanel ca_tblButton;
         private System.Windows.Forms.TableLayoutPanel ca_tblCaBtn;
@@ -15521,12 +16896,12 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Button ca_btnChangeSlip;
         private System.Windows.Forms.Button ca_btnKianKaijyo;
         private C1.Win.C1FlexGrid.C1FlexGrid ca_tbl06_c1FlexGrid;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl01_tblCaAmt_parent;
+        private System.Windows.Forms.Panel ca_tbl01_tblCaAmt_parent;
         private System.Windows.Forms.TableLayoutPanel ca_tbl01_tblCaAmt;
         private System.Windows.Forms.Label ca_tbl01_lblZeinukiAmt;
         private System.Windows.Forms.Label ca_tbl01_lblSiryo;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl01_tblJyutakuAmt;
+        private System.Windows.Forms.Panel ca_tbl01_tblJyutakuAmt;
         private System.Windows.Forms.Label ca_tbl01_lblJyutakuAmtComment;
         private System.Windows.Forms.PictureBox ca_tbl01_picTosyo;
         private System.Windows.Forms.TableLayoutPanel tblTitleAndInputComent;
@@ -15559,9 +16934,9 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TableLayoutPanel ca_tbl05_tblGyomu;
         private System.Windows.Forms.TextBox ca_tbl05_txtGyomu;
         private System.Windows.Forms.PictureBox ca_tbl05_picGyomu;
-        private System.Windows.Forms.TableLayoutPanel bid_tbl03_1_tblOsatuNum;
+        private System.Windows.Forms.Panel bid_tbl03_1_tblOsatuNum;
         private System.Windows.Forms.Label bid_tbl03_1_lblOsatuNumComment;
-        private System.Windows.Forms.TableLayoutPanel bid_tbl03_1_tblRakusatuAmt;
+        private System.Windows.Forms.Panel bid_tbl03_1_tblRakusatuAmt;
         private System.Windows.Forms.Label bid_tbl03_1_lblRakusatuAmtComment;
         private System.Windows.Forms.TableLayoutPanel ca_tbl05_tblMadoguchi;
         private System.Windows.Forms.TextBox ca_tbl05_txtMadoguchi;
@@ -15598,7 +16973,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label te_lblCustomComment;
         private System.Windows.Forms.TextBox te_txtTokaiComment;
         private System.Windows.Forms.Label te_lblSeikyusyaDt;
-        private System.Windows.Forms.TableLayoutPanel te_tblLink;
+        private System.Windows.Forms.Panel te_tblLink;
         private System.Windows.Forms.TextBox te_txtSeikyusyo;
         private System.Windows.Forms.PictureBox te_picSeikyusyo;
         private System.Windows.Forms.TextBox te_txtCustomComment;
@@ -15647,16 +17022,16 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TextBox ca_tbl05_txtKanriHyoten;
         private System.Windows.Forms.TextBox ca_tbl05_txtSyosaHyoten;
         private System.Windows.Forms.Label bid_tbl01_lblBidhosiki;
-        private System.Windows.Forms.TableLayoutPanel bid_tbl03_1_tblRakusatuSya;
+        private System.Windows.Forms.Panel bid_tbl03_1_tblRakusatuSya;
         private System.Windows.Forms.DateTimePicker bid_tbl03_1_dtpBidResultDt;
-        private System.Windows.Forms.TableLayoutPanel bid_tbl03_1_tblYoteiPrice;
+        private System.Windows.Forms.Panel bid_tbl03_1_tblYoteiPrice;
         private System.Windows.Forms.TextBox bid_tbl03_1_txtYoteiPrice;
         private System.Windows.Forms.TableLayoutPanel tblTayori;
         private System.Windows.Forms.Button btnHanei;
         private PlaceholderTextBox txtTayoriData;
         private System.Windows.Forms.Label lblBootMode;
         private System.Windows.Forms.Label lblVersion;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl01_tblRibc;
+        private System.Windows.Forms.Panel ca_tbl01_tblRibc;
         private System.Windows.Forms.CheckBox ca_tbl01_chkSasya;
         private System.Windows.Forms.Label ca_tbl01_lblSasya;
         private System.Windows.Forms.Label ca_tbl01_lblKanrisya;
@@ -15864,9 +17239,9 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label base_tbl03_lblKokiNote2;
         private System.Windows.Forms.Label base_tbl03_lblKokiNote1;
         private System.Windows.Forms.TableLayoutPanel base_tbl07_input3;
-        private System.Windows.Forms.TableLayoutPanel base_tbl07_3_tblOenIrai2;
-        private System.Windows.Forms.TableLayoutPanel base_tbl07_3_tblOenIrai3;
-        private System.Windows.Forms.TableLayoutPanel base_tbl07_3_tblOenIrai1;
+        private System.Windows.Forms.Panel base_tbl07_3_tblOenIrai2;
+        private System.Windows.Forms.Panel base_tbl07_3_tblOenIrai3;
+        private System.Windows.Forms.Panel base_tbl07_3_tblOenIrai1;
         private System.Windows.Forms.ComboBox base_tbl07_3_cmbOen;
         private System.Windows.Forms.Label base_tbl07_3_lblOenMemo;
         private System.Windows.Forms.Label base_tbl07_3_lblOenIrai;
@@ -16100,7 +17475,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Button ca_tbl02_btnJGbu;
         private System.Windows.Forms.Button ca_tbl02_btnJHbu;
         private System.Windows.Forms.Button ca_tbl02_btnSGSyo;
-        private System.Windows.Forms.ComboBox bid_tbl03_1_cmbRakusatuStatus;
         private System.Windows.Forms.Label bid_tbl03_1_lblBidStatus;
         private System.Windows.Forms.Label bid_tbl01_lblMitumoriAmtComment;
         private System.Windows.Forms.Label bid_tbl01_lblMitumoriComment;
@@ -16137,7 +17511,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TextBox ca_tbl01_numChangeAmt;
         private System.Windows.Forms.Label ca_tbl01_lblChangeAmtComment;
         private System.Windows.Forms.Label ca_tbl01_lblChangeAmt;
-        private System.Windows.Forms.TableLayoutPanel ca_tbl01_tblKian;
+        private System.Windows.Forms.Panel ca_tbl01_tblKian;
         private System.Windows.Forms.DateTimePicker ca_tbl01_dtpKianDt;
         private System.Windows.Forms.Label ca_tbl01_lblKianDt;
         private System.Windows.Forms.CheckBox ca_tbl01_chkKian;
@@ -16284,5 +17658,90 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.PictureBox base_tbl04_picOrderCdAlert;
         private System.Windows.Forms.PictureBox base_tbl04_picOrderKubun1Alert;
         private System.Windows.Forms.PictureBox base_tbl04_picOrderKubun2Alert;
+        private System.Windows.Forms.PictureBox base_tbl07_1_picPercentAlert;
+        private System.Windows.Forms.PictureBox base_tbl07_2_picPercentAlert;
+        private System.Windows.Forms.PictureBox base_tbl07_3_picOenIraiAlert;
+        private System.Windows.Forms.PictureBox base_tbl07_3_picOenMemoAlert;
+        private System.Windows.Forms.PictureBox base_tbl07_3_picOenAlert;
+        private System.Windows.Forms.PictureBox base_tbl09_picOthenCommentAlert;
+        private System.Windows.Forms.PictureBox base_tbl09_picNotOrderReasonAlert;
+        private System.Windows.Forms.PictureBox base_tbl09_picOrderYoteiDtAlert;
+        private System.Windows.Forms.PictureBox base_tbl09_picJizenDasinIraiDtAlert;
+        private System.Windows.Forms.PictureBox base_tbl09_picNotOrderStatsAlert;
+        private System.Windows.Forms.PictureBox base_tbl09_picOrderIyokuAlert;
+        private System.Windows.Forms.PictureBox base_tbl09_picSankomitumoriAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picOrderKubunAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picKinsiNaiyoAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picTokaiOsatuAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picRakusatuAmtStatsAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picRakusatuStatsAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picNyusatuStatsAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picKinsiUmuAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picOrderIyokuAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picSankoMitumoriAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picNyusatuDtAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picLowestUmuAlert;
+        private System.Windows.Forms.PictureBox base_tbl10_picNyusatuHosikiAlert;
+        private System.Windows.Forms.PictureBox prior_tbl01_picOrderYoteiDtAlert;
+        private System.Windows.Forms.PictureBox prior_tbl01_picMitumoriAmtAlert;
+        private System.Windows.Forms.PictureBox prior_tbl01_picOrderIyokuAlert;
+        private System.Windows.Forms.PictureBox prior_tbl01_picMitumoriAlert;
+        private System.Windows.Forms.PictureBox prior_tbl01_picDasinIraiDtAlert;
+        private System.Windows.Forms.PictureBox prior_tbl02_picNotOrderStatsAlert;
+        private System.Windows.Forms.PictureBox prior_tbl02_picNotOrderDtAlert;
+        private System.Windows.Forms.PictureBox prior_tbl02_picNotOrderReasonAlert;
+        private System.Windows.Forms.PictureBox prior_tbl02_picOtherNaiyoAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picBidInfoDtAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picTokaiOsatuAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picBidYoteiDtAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picMitumoriAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picOrderIyokuAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picMitumoriAmtAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picLowestUmuAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picOrderKubunAlert;
+        private System.Windows.Forms.PictureBox bid_tbl01_picBidhosikiAlert;
+        private System.Windows.Forms.PictureBox bid_tbl02_picOtherNaiyoAlert;
+        private System.Windows.Forms.PictureBox bid_tbl02_picKinsiNaiyoAlert;
+        private System.Windows.Forms.PictureBox bid_tbl02_picKinsiUmuAlert;
+        private System.Windows.Forms.PictureBox bid_tbl03_1_picYoteiPriceAlert;
+        private System.Windows.Forms.PictureBox bid_tbl03_1_picOsatuNumAlert;
+        private System.Windows.Forms.PictureBox bid_tbl03_1_picRakusatuSyaAlert;
+        private System.Windows.Forms.PictureBox bid_tbl03_1_picRakusatuAmtAlert;
+        private System.Windows.Forms.Panel bid_tbl03_1_tblRakusatuAmtStatus;
+        private System.Windows.Forms.PictureBox bid_tbl03_1_picRakusatuAmtStatusAlert;
+        private System.Windows.Forms.Panel bid_tbl03_1_tblRakusatuStatus;
+        private System.Windows.Forms.PictureBox bid_tbl03_1_picRakusatuStatusAlert;
+        private System.Windows.Forms.ComboBox bid_tbl03_1_cmbRakusatuAmtStatus;
+        private System.Windows.Forms.ComboBox bid_tbl03_1_cmbRakusatuStatus;
+        private System.Windows.Forms.PictureBox te_picPointAlert;
+        private System.Windows.Forms.PictureBox te_picKanriPointAlert;
+        private System.Windows.Forms.PictureBox te_picSyosaPointAlert;
+        private System.Windows.Forms.PictureBox te_picSeikyusyoAlert;
+        private System.Windows.Forms.PictureBox ca_tbl01_picKianDtAlert;
+        private System.Windows.Forms.PictureBox ca_tbl01_picJyutakuAmtAlert;
+        private System.Windows.Forms.Panel ca_tbl01_tblJyutakuGaiAmt;
+        private System.Windows.Forms.TextBox ca_tbl01_txtJyutakuGaiAmt;
+        private System.Windows.Forms.PictureBox ca_tbl01_picJyutakuGaiAmtAlert;
+        private System.Windows.Forms.PictureBox ca_tbl01_picZeikomiAmtAlert;
+        private System.Windows.Forms.Panel ca_tbl01_tblKokiTo;
+        private System.Windows.Forms.DateTimePicker ca_tbl01_dtpKokiTo;
+        private System.Windows.Forms.PictureBox ca_tbl01_picKokiToAlert;
+        private System.Windows.Forms.Panel ca_tbl01_tblKokiFrom;
+        private System.Windows.Forms.DateTimePicker ca_tbl01_dtpKokiFrom;
+        private System.Windows.Forms.PictureBox ca_tbl01_picKokiFromAlert;
+        private System.Windows.Forms.Panel ca_tbl01_tblChangeDt;
+        private System.Windows.Forms.DateTimePicker ca_tbl01_dtpChangeDt;
+        private System.Windows.Forms.PictureBox ca_tbl01_picChangeDtAlert;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox ca_tbl01_cmbAnkenKubun;
+        private System.Windows.Forms.PictureBox ca_tbl01_picAnkenKubunAlert;
+        private System.Windows.Forms.PictureBox ca_tbl01_picRiyuAlert;
+        private System.Windows.Forms.PictureBox ca_tbl05_picGyomuAlert;
+        private System.Windows.Forms.PictureBox ca_tbl05_picMadoguchiAlert;
+        private System.Windows.Forms.PictureBox bid_tbl03_1_picBidStatusAlert;
+        private System.Windows.Forms.PictureBox bid_tbl03_1_picBidResultDtAlert;
+        private System.Windows.Forms.PictureBox ca_tbl02_AftCaBm_picAmtAlert;
+        private System.Windows.Forms.PictureBox ca_tbl02_AftCaBmZeikomi_picAmtAlert;
+        private System.Windows.Forms.PictureBox ca_tbl02_AftCaBm_picPercentAlert;
     }
 }
