@@ -861,7 +861,51 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_parent = new System.Windows.Forms.Panel();
             this.ca_tbl02 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl02_lblComent2 = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblTitle = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblComent1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_input1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl02_AftCaBm_picPercentAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl02_AftCaBm_picAmtAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert = new System.Windows.Forms.PictureBox();
+            this.ca_tbl02_AftCaBm_numPercentAll = new System.Windows.Forms.Label();
+            this.ca_tbl02_AftCaBm_numPercent4 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBm_numPercent3 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBm_numPercent2 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBm_numPercent1 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_1_numPercentAll = new System.Windows.Forms.Label();
+            this.ca_tbl02_1_numPercent4 = new System.Windows.Forms.Label();
+            this.ca_tbl02_1_numPercent3 = new System.Windows.Forms.Label();
+            this.ca_tbl02_1_numPercent2 = new System.Windows.Forms.Label();
+            this.ca_tbl02_1_numPercent1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblAftCaAmtZeiNuki1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblAftCaAmt = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblAftCaRate1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblPriorRate1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblSpace1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_AftCaBm_numAmtAll = new System.Windows.Forms.Label();
+            this.ca_tbl02_AftCaBmZeikomi_numAmtAll = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblRowAftCa1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblGokei = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblSGsyo = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblJHbu = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblJGbu = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblTSbu = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblTitle1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_lblRowPrior1 = new System.Windows.Forms.Label();
+            this.ca_tbl02_AftCaBm_numAmt1 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBm_numAmt2 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBm_numAmt3 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBm_numAmt4 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBmZeikomi_numAmt1 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBmZeikomi_numAmt2 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBmZeikomi_numAmt3 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_AftCaBmZeikomi_numAmt4 = new System.Windows.Forms.TextBox();
+            this.ca_tbl02_btnTSbu = new System.Windows.Forms.Button();
+            this.ca_tbl02_btnJGbu = new System.Windows.Forms.Button();
+            this.ca_tbl02_btnJHbu = new System.Windows.Forms.Button();
+            this.ca_tbl02_btnSGSyo = new System.Windows.Forms.Button();
             this.ca_tbl02_input2 = new System.Windows.Forms.TableLayoutPanel();
+            this.ca_tbl02_AftCaTs_picPercentAlert = new System.Windows.Forms.PictureBox();
             this.ca_tbl02_AftCaTs_numAmtAll = new System.Windows.Forms.Label();
             this.ca_tbl02_AftCaTs_numAmt12 = new System.Windows.Forms.Label();
             this.ca_tbl02_AftCaTs_numAmt11 = new System.Windows.Forms.Label();
@@ -921,49 +965,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_2_numPercent12 = new System.Windows.Forms.Label();
             this.ca_tbl02_2_numPercentAll = new System.Windows.Forms.Label();
             this.ca_tbl02_lblRowAftCa2 = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblTitle = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblComent1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_input1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ca_tbl02_AftCaBm_picPercentAlert = new System.Windows.Forms.PictureBox();
-            this.ca_tbl02_AftCaBm_picAmtAlert = new System.Windows.Forms.PictureBox();
-            this.ca_tbl02_AftCaBmZeikomi_picAmtAlert = new System.Windows.Forms.PictureBox();
-            this.ca_tbl02_AftCaBm_numPercentAll = new System.Windows.Forms.Label();
-            this.ca_tbl02_AftCaBm_numPercent4 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBm_numPercent3 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBm_numPercent2 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBm_numPercent1 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_1_numPercentAll = new System.Windows.Forms.Label();
-            this.ca_tbl02_1_numPercent4 = new System.Windows.Forms.Label();
-            this.ca_tbl02_1_numPercent3 = new System.Windows.Forms.Label();
-            this.ca_tbl02_1_numPercent2 = new System.Windows.Forms.Label();
-            this.ca_tbl02_1_numPercent1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblAftCaAmtZeiNuki1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblAftCaAmt = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblAftCaRate1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblPriorRate1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblSpace1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_AftCaBm_numAmtAll = new System.Windows.Forms.Label();
-            this.ca_tbl02_AftCaBmZeikomi_numAmtAll = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblRowAftCa1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblGokei = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblSGsyo = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblJHbu = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblJGbu = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblTSbu = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblTitle1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_lblRowPrior1 = new System.Windows.Forms.Label();
-            this.ca_tbl02_AftCaBm_numAmt1 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBm_numAmt2 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBm_numAmt3 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBm_numAmt4 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBmZeikomi_numAmt1 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBmZeikomi_numAmt2 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBmZeikomi_numAmt3 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_AftCaBmZeikomi_numAmt4 = new System.Windows.Forms.TextBox();
-            this.ca_tbl02_btnTSbu = new System.Windows.Forms.Button();
-            this.ca_tbl02_btnJGbu = new System.Windows.Forms.Button();
-            this.ca_tbl02_btnJHbu = new System.Windows.Forms.Button();
-            this.ca_tbl02_btnSGSyo = new System.Windows.Forms.Button();
             this.ca_tbl04_parent = new System.Windows.Forms.Panel();
             this.ca_tbl04 = new System.Windows.Forms.TableLayoutPanel();
             this.ca_tbl04_lblTitle = new System.Windows.Forms.Label();
@@ -1259,11 +1260,12 @@ namespace TokuchoBugyoK2
             this.ca_tblComment.SuspendLayout();
             this.ca_tbl02_parent.SuspendLayout();
             this.ca_tbl02.SuspendLayout();
-            this.ca_tbl02_input2.SuspendLayout();
             this.ca_tbl02_input1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBm_picPercentAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBm_picAmtAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBmZeikomi_picAmtAlert)).BeginInit();
+            this.ca_tbl02_input2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaTs_picPercentAlert)).BeginInit();
             this.ca_tbl04_parent.SuspendLayout();
             this.ca_tbl04.SuspendLayout();
             this.ca_tbl04_input.SuspendLayout();
@@ -2581,7 +2583,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 519F));
+            this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 529F));
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblTitle, 0, 0);
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblTyosabu, 2, 1);
             this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblJgyobu, 3, 1);
@@ -2610,7 +2612,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.base_tbl07_input4.Size = new System.Drawing.Size(1168, 117);
+            this.base_tbl07_input4.Size = new System.Drawing.Size(1178, 117);
             this.base_tbl07_input4.TabIndex = 48;
             // 
             // base_tbl07_4_lblTitle
@@ -2621,7 +2623,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblTitle.Location = new System.Drawing.Point(5, 1);
             this.base_tbl07_4_lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.base_tbl07_4_lblTitle.Name = "base_tbl07_4_lblTitle";
-            this.base_tbl07_4_lblTitle.Size = new System.Drawing.Size(1158, 28);
+            this.base_tbl07_4_lblTitle.Size = new System.Drawing.Size(1168, 28);
             this.base_tbl07_4_lblTitle.TabIndex = 15;
             this.base_tbl07_4_lblTitle.Text = "部門配分";
             this.base_tbl07_4_lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2718,7 +2720,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblGokei.Location = new System.Drawing.Point(648, 30);
             this.base_tbl07_4_lblGokei.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_4_lblGokei.Name = "base_tbl07_4_lblGokei";
-            this.base_tbl07_4_lblGokei.Size = new System.Drawing.Size(519, 28);
+            this.base_tbl07_4_lblGokei.Size = new System.Drawing.Size(529, 28);
             this.base_tbl07_4_lblGokei.TabIndex = 15;
             this.base_tbl07_4_lblGokei.Text = "合計";
             this.base_tbl07_4_lblGokei.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2806,7 +2808,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblRateAll.Margin = new System.Windows.Forms.Padding(0);
             this.base_tbl07_4_lblRateAll.Name = "base_tbl07_4_lblRateAll";
             this.base_tbl07_4_lblRateAll.Padding = new System.Windows.Forms.Padding(4);
-            this.base_tbl07_4_lblRateAll.Size = new System.Drawing.Size(519, 28);
+            this.base_tbl07_4_lblRateAll.Size = new System.Drawing.Size(529, 28);
             this.base_tbl07_4_lblRateAll.TabIndex = 23;
             this.base_tbl07_4_lblRateAll.Text = "0.00%";
             this.base_tbl07_4_lblRateAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2871,7 +2873,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_4_lblAmtAll.Location = new System.Drawing.Point(651, 88);
             this.base_tbl07_4_lblAmtAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.base_tbl07_4_lblAmtAll.Name = "base_tbl07_4_lblAmtAll";
-            this.base_tbl07_4_lblAmtAll.Size = new System.Drawing.Size(513, 25);
+            this.base_tbl07_4_lblAmtAll.Size = new System.Drawing.Size(523, 25);
             this.base_tbl07_4_lblAmtAll.TabIndex = 40;
             this.base_tbl07_4_lblAmtAll.Text = "¥0";
             this.base_tbl07_4_lblAmtAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -10604,7 +10606,7 @@ namespace TokuchoBugyoK2
             // 
             this.ca_tbl07_input.AutoSize = true;
             this.ca_tbl07_input.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
-            this.ca_tbl07_input.ColumnCount = 8;
+            this.ca_tbl07_input.ColumnCount = 9;
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
@@ -10612,7 +10614,8 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 957F));
+            this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 700F));
+            this.ca_tbl07_input.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequstAll, 7, 0);
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequst1, 1, 0);
             this.ca_tbl07_input.Controls.Add(this.ca_tbl07_lblRequst3, 3, 0);
@@ -10643,7 +10646,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ca_tbl07_input.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.ca_tbl07_input.Size = new System.Drawing.Size(1757, 102);
+            this.ca_tbl07_input.Size = new System.Drawing.Size(1570, 102);
             this.ca_tbl07_input.TabIndex = 4;
             // 
             // ca_tbl07_lblRequstAll
@@ -10657,7 +10660,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_lblRequstAll.Margin = new System.Windows.Forms.Padding(0);
             this.ca_tbl07_lblRequstAll.Name = "ca_tbl07_lblRequstAll";
             this.ca_tbl07_lblRequstAll.Padding = new System.Windows.Forms.Padding(3);
-            this.ca_tbl07_lblRequstAll.Size = new System.Drawing.Size(957, 30);
+            this.ca_tbl07_lblRequstAll.Size = new System.Drawing.Size(700, 30);
             this.ca_tbl07_lblRequstAll.TabIndex = 50;
             this.ca_tbl07_lblRequstAll.Text = "請求合計額";
             this.ca_tbl07_lblRequstAll.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -10952,7 +10955,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl07_txtRequstAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
             this.ca_tbl07_txtRequstAll.Location = new System.Drawing.Point(867, 69);
             this.ca_tbl07_txtRequstAll.Name = "ca_tbl07_txtRequstAll";
-            this.ca_tbl07_txtRequstAll.Size = new System.Drawing.Size(951, 30);
+            this.ca_tbl07_txtRequstAll.Size = new System.Drawing.Size(694, 30);
             this.ca_tbl07_txtRequstAll.TabIndex = 76;
             this.ca_tbl07_txtRequstAll.Text = "¥0";
             this.ca_tbl07_txtRequstAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -13055,7 +13058,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 383F));
+            this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 393F));
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_picKanriDel, 2, 0);
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_txtKanri, 0, 0);
             this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_picKanri, 1, 0);
@@ -13066,7 +13069,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblKanri.Name = "ca_tbl05_tblKanri";
             this.ca_tbl05_tblKanri.RowCount = 1;
             this.ca_tbl05_tblKanri.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblKanri.Size = new System.Drawing.Size(708, 28);
+            this.ca_tbl05_tblKanri.Size = new System.Drawing.Size(718, 28);
             this.ca_tbl05_tblKanri.TabIndex = 0;
             // 
             // ca_tbl05_picKanriDel
@@ -13128,7 +13131,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 383F));
+            this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 393F));
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_picSyosaDel, 2, 0);
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_txtSyosa, 0, 0);
             this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_picSyosa, 1, 0);
@@ -13139,7 +13142,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSyosa.Name = "ca_tbl05_tblSyosa";
             this.ca_tbl05_tblSyosa.RowCount = 1;
             this.ca_tbl05_tblSyosa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblSyosa.Size = new System.Drawing.Size(708, 28);
+            this.ca_tbl05_tblSyosa.Size = new System.Drawing.Size(718, 28);
             this.ca_tbl05_tblSyosa.TabIndex = 1;
             // 
             // ca_tbl05_picSyosaDel
@@ -13200,7 +13203,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
+            this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 438F));
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_picSinsaDel, 2, 0);
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_txtSinsa, 0, 0);
             this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_picSinsa, 1, 0);
@@ -13210,7 +13213,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblSinsa.Name = "ca_tbl05_tblSinsa";
             this.ca_tbl05_tblSinsa.RowCount = 1;
             this.ca_tbl05_tblSinsa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ca_tbl05_tblSinsa.Size = new System.Drawing.Size(688, 28);
+            this.ca_tbl05_tblSinsa.Size = new System.Drawing.Size(698, 28);
             this.ca_tbl05_tblSinsa.TabIndex = 3;
             // 
             // ca_tbl05_picSinsaDel
@@ -13264,7 +13267,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
+            this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 438F));
             this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomuAlert, 1, 0);
             this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomuDel, 3, 0);
             this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_txtGyomu, 0, 0);
@@ -13275,7 +13278,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblGyomu.Name = "ca_tbl05_tblGyomu";
             this.ca_tbl05_tblGyomu.RowCount = 1;
             this.ca_tbl05_tblGyomu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ca_tbl05_tblGyomu.Size = new System.Drawing.Size(731, 28);
+            this.ca_tbl05_tblGyomu.Size = new System.Drawing.Size(741, 28);
             this.ca_tbl05_tblGyomu.TabIndex = 4;
             // 
             // ca_tbl05_picGyomuAlert
@@ -13347,7 +13350,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
+            this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 438F));
             this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchiAlert, 1, 0);
             this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchiDel, 3, 0);
             this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchi, 0, 0);
@@ -13361,7 +13364,7 @@ namespace TokuchoBugyoK2
             this.ca_tbl05_tblMadoguchi.Name = "ca_tbl05_tblMadoguchi";
             this.ca_tbl05_tblMadoguchi.RowCount = 1;
             this.ca_tbl05_tblMadoguchi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ca_tbl05_tblMadoguchi.Size = new System.Drawing.Size(791, 28);
+            this.ca_tbl05_tblMadoguchi.Size = new System.Drawing.Size(801, 28);
             this.ca_tbl05_tblMadoguchi.TabIndex = 5;
             // 
             // ca_tbl05_picMadoguchiAlert
@@ -13789,10 +13792,10 @@ namespace TokuchoBugyoK2
             this.ca_tbl02.ColumnCount = 1;
             this.ca_tbl02.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ca_tbl02.Controls.Add(this.ca_tbl02_lblComent2, 0, 3);
-            this.ca_tbl02.Controls.Add(this.ca_tbl02_input2, 0, 4);
             this.ca_tbl02.Controls.Add(this.ca_tbl02_lblTitle, 0, 0);
             this.ca_tbl02.Controls.Add(this.ca_tbl02_lblComent1, 0, 1);
             this.ca_tbl02.Controls.Add(this.ca_tbl02_input1, 0, 2);
+            this.ca_tbl02.Controls.Add(this.ca_tbl02_input2, 0, 4);
             this.ca_tbl02.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ca_tbl02.ForeColor = System.Drawing.Color.White;
             this.ca_tbl02.Location = new System.Drawing.Point(0, 0);
@@ -13822,986 +13825,6 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_lblComent2.Text = "契約内容を入力。以降、終了までの間に変更があった場合、適宜修正してください。";
             this.ca_tbl02_lblComent2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ca_tbl02_lblComent2.Visible = false;
-            // 
-            // ca_tbl02_input2
-            // 
-            this.ca_tbl02_input2.AutoSize = true;
-            this.ca_tbl02_input2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.ca_tbl02_input2.ColumnCount = 16;
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmtAll, 14, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt12, 13, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt11, 12, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt10, 11, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt9, 10, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt8, 9, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt7, 8, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt6, 7, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt5, 6, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt4, 5, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt3, 4, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt2, 3, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt1, 2, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblAftCaAmtZeiNuki2, 1, 4);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercentAll, 14, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent12, 13, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent11, 12, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent10, 11, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent9, 10, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent8, 9, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent7, 8, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent6, 7, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent5, 6, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent4, 5, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent3, 4, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent2, 3, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent1, 2, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblAftCaRate2, 1, 3);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblPriorRate2, 1, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblSz, 2, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblEz, 3, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblKi, 4, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblKj, 5, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblSp, 6, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblBg, 7, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblSkh, 8, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblGkbs, 9, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblKjsks, 10, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblKkrm, 11, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblRmig, 12, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblRowPrior2, 0, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblSpace2, 0, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblOth, 13, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblGkGm, 14, 1);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblTitle2, 0, 0);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent1, 2, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent2, 3, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent3, 4, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent4, 5, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent5, 6, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent6, 7, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent7, 8, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent8, 9, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent9, 10, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent10, 11, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent11, 12, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent12, 13, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercentAll, 14, 2);
-            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblRowAftCa2, 0, 3);
-            this.ca_tbl02_input2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ca_tbl02_input2.Location = new System.Drawing.Point(25, 381);
-            this.ca_tbl02_input2.Margin = new System.Windows.Forms.Padding(15, 5, 10, 5);
-            this.ca_tbl02_input2.Name = "ca_tbl02_input2";
-            this.ca_tbl02_input2.RowCount = 5;
-            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.ca_tbl02_input2.Size = new System.Drawing.Size(1749, 152);
-            this.ca_tbl02_input2.TabIndex = 8;
-            // 
-            // ca_tbl02_AftCaTs_numAmtAll
-            // 
-            this.ca_tbl02_AftCaTs_numAmtAll.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmtAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmtAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmtAll.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmtAll.Location = new System.Drawing.Point(1633, 122);
-            this.ca_tbl02_AftCaTs_numAmtAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmtAll.Name = "ca_tbl02_AftCaTs_numAmtAll";
-            this.ca_tbl02_AftCaTs_numAmtAll.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmtAll.TabIndex = 52;
-            this.ca_tbl02_AftCaTs_numAmtAll.Text = "¥0";
-            this.ca_tbl02_AftCaTs_numAmtAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt12
-            // 
-            this.ca_tbl02_AftCaTs_numAmt12.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt12.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt12.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt12.Location = new System.Drawing.Point(1516, 122);
-            this.ca_tbl02_AftCaTs_numAmt12.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt12.Name = "ca_tbl02_AftCaTs_numAmt12";
-            this.ca_tbl02_AftCaTs_numAmt12.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt12.TabIndex = 51;
-            this.ca_tbl02_AftCaTs_numAmt12.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt11
-            // 
-            this.ca_tbl02_AftCaTs_numAmt11.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt11.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt11.Location = new System.Drawing.Point(1399, 122);
-            this.ca_tbl02_AftCaTs_numAmt11.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt11.Name = "ca_tbl02_AftCaTs_numAmt11";
-            this.ca_tbl02_AftCaTs_numAmt11.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt11.TabIndex = 50;
-            this.ca_tbl02_AftCaTs_numAmt11.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt10
-            // 
-            this.ca_tbl02_AftCaTs_numAmt10.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt10.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt10.Location = new System.Drawing.Point(1282, 122);
-            this.ca_tbl02_AftCaTs_numAmt10.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt10.Name = "ca_tbl02_AftCaTs_numAmt10";
-            this.ca_tbl02_AftCaTs_numAmt10.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt10.TabIndex = 49;
-            this.ca_tbl02_AftCaTs_numAmt10.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt9
-            // 
-            this.ca_tbl02_AftCaTs_numAmt9.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt9.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt9.Location = new System.Drawing.Point(1165, 122);
-            this.ca_tbl02_AftCaTs_numAmt9.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt9.Name = "ca_tbl02_AftCaTs_numAmt9";
-            this.ca_tbl02_AftCaTs_numAmt9.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt9.TabIndex = 48;
-            this.ca_tbl02_AftCaTs_numAmt9.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt8
-            // 
-            this.ca_tbl02_AftCaTs_numAmt8.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt8.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt8.Location = new System.Drawing.Point(1048, 122);
-            this.ca_tbl02_AftCaTs_numAmt8.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt8.Name = "ca_tbl02_AftCaTs_numAmt8";
-            this.ca_tbl02_AftCaTs_numAmt8.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt8.TabIndex = 47;
-            this.ca_tbl02_AftCaTs_numAmt8.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt7
-            // 
-            this.ca_tbl02_AftCaTs_numAmt7.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt7.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt7.Location = new System.Drawing.Point(931, 122);
-            this.ca_tbl02_AftCaTs_numAmt7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt7.Name = "ca_tbl02_AftCaTs_numAmt7";
-            this.ca_tbl02_AftCaTs_numAmt7.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt7.TabIndex = 46;
-            this.ca_tbl02_AftCaTs_numAmt7.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt6
-            // 
-            this.ca_tbl02_AftCaTs_numAmt6.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt6.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt6.Location = new System.Drawing.Point(814, 122);
-            this.ca_tbl02_AftCaTs_numAmt6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt6.Name = "ca_tbl02_AftCaTs_numAmt6";
-            this.ca_tbl02_AftCaTs_numAmt6.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt6.TabIndex = 45;
-            this.ca_tbl02_AftCaTs_numAmt6.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt5
-            // 
-            this.ca_tbl02_AftCaTs_numAmt5.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt5.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt5.Location = new System.Drawing.Point(697, 122);
-            this.ca_tbl02_AftCaTs_numAmt5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt5.Name = "ca_tbl02_AftCaTs_numAmt5";
-            this.ca_tbl02_AftCaTs_numAmt5.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt5.TabIndex = 44;
-            this.ca_tbl02_AftCaTs_numAmt5.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt4
-            // 
-            this.ca_tbl02_AftCaTs_numAmt4.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt4.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt4.Location = new System.Drawing.Point(580, 122);
-            this.ca_tbl02_AftCaTs_numAmt4.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt4.Name = "ca_tbl02_AftCaTs_numAmt4";
-            this.ca_tbl02_AftCaTs_numAmt4.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt4.TabIndex = 43;
-            this.ca_tbl02_AftCaTs_numAmt4.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt3
-            // 
-            this.ca_tbl02_AftCaTs_numAmt3.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt3.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt3.Location = new System.Drawing.Point(463, 122);
-            this.ca_tbl02_AftCaTs_numAmt3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt3.Name = "ca_tbl02_AftCaTs_numAmt3";
-            this.ca_tbl02_AftCaTs_numAmt3.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt3.TabIndex = 42;
-            this.ca_tbl02_AftCaTs_numAmt3.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt2
-            // 
-            this.ca_tbl02_AftCaTs_numAmt2.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt2.Location = new System.Drawing.Point(346, 122);
-            this.ca_tbl02_AftCaTs_numAmt2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt2.Name = "ca_tbl02_AftCaTs_numAmt2";
-            this.ca_tbl02_AftCaTs_numAmt2.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt2.TabIndex = 41;
-            this.ca_tbl02_AftCaTs_numAmt2.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numAmt1
-            // 
-            this.ca_tbl02_AftCaTs_numAmt1.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numAmt1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numAmt1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numAmt1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ca_tbl02_AftCaTs_numAmt1.Location = new System.Drawing.Point(229, 122);
-            this.ca_tbl02_AftCaTs_numAmt1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numAmt1.Name = "ca_tbl02_AftCaTs_numAmt1";
-            this.ca_tbl02_AftCaTs_numAmt1.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numAmt1.TabIndex = 40;
-            this.ca_tbl02_AftCaTs_numAmt1.Text = "\\0";
-            this.ca_tbl02_AftCaTs_numAmt1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_lblAftCaAmtZeiNuki2
-            // 
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.Location = new System.Drawing.Point(134, 122);
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.Name = "ca_tbl02_lblAftCaAmtZeiNuki2";
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.Size = new System.Drawing.Size(90, 28);
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.TabIndex = 39;
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.Text = "配分額(税抜)";
-            this.ca_tbl02_lblAftCaAmtZeiNuki2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ca_tbl02_AftCaTs_numPercentAll
-            // 
-            this.ca_tbl02_AftCaTs_numPercentAll.AutoSize = true;
-            this.ca_tbl02_AftCaTs_numPercentAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercentAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercentAll.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_AftCaTs_numPercentAll.Location = new System.Drawing.Point(1633, 92);
-            this.ca_tbl02_AftCaTs_numPercentAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ca_tbl02_AftCaTs_numPercentAll.Name = "ca_tbl02_AftCaTs_numPercentAll";
-            this.ca_tbl02_AftCaTs_numPercentAll.Size = new System.Drawing.Size(109, 25);
-            this.ca_tbl02_AftCaTs_numPercentAll.TabIndex = 38;
-            this.ca_tbl02_AftCaTs_numPercentAll.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercentAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_AftCaTs_numPercent12
-            // 
-            this.ca_tbl02_AftCaTs_numPercent12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent12.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent12.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent12.Location = new System.Drawing.Point(1517, 96);
-            this.ca_tbl02_AftCaTs_numPercent12.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent12.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent12.Name = "ca_tbl02_AftCaTs_numPercent12";
-            this.ca_tbl02_AftCaTs_numPercent12.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent12.TabIndex = 11;
-            this.ca_tbl02_AftCaTs_numPercent12.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent12.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent12.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent11
-            // 
-            this.ca_tbl02_AftCaTs_numPercent11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent11.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent11.Location = new System.Drawing.Point(1400, 96);
-            this.ca_tbl02_AftCaTs_numPercent11.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent11.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent11.Name = "ca_tbl02_AftCaTs_numPercent11";
-            this.ca_tbl02_AftCaTs_numPercent11.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent11.TabIndex = 10;
-            this.ca_tbl02_AftCaTs_numPercent11.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent11.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent11.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent10
-            // 
-            this.ca_tbl02_AftCaTs_numPercent10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent10.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent10.Location = new System.Drawing.Point(1283, 96);
-            this.ca_tbl02_AftCaTs_numPercent10.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent10.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent10.Name = "ca_tbl02_AftCaTs_numPercent10";
-            this.ca_tbl02_AftCaTs_numPercent10.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent10.TabIndex = 9;
-            this.ca_tbl02_AftCaTs_numPercent10.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent10.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent10.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent9
-            // 
-            this.ca_tbl02_AftCaTs_numPercent9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent9.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent9.Location = new System.Drawing.Point(1166, 96);
-            this.ca_tbl02_AftCaTs_numPercent9.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent9.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent9.Name = "ca_tbl02_AftCaTs_numPercent9";
-            this.ca_tbl02_AftCaTs_numPercent9.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent9.TabIndex = 8;
-            this.ca_tbl02_AftCaTs_numPercent9.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent9.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent9.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent8
-            // 
-            this.ca_tbl02_AftCaTs_numPercent8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent8.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent8.Location = new System.Drawing.Point(1049, 96);
-            this.ca_tbl02_AftCaTs_numPercent8.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent8.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent8.Name = "ca_tbl02_AftCaTs_numPercent8";
-            this.ca_tbl02_AftCaTs_numPercent8.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent8.TabIndex = 7;
-            this.ca_tbl02_AftCaTs_numPercent8.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent8.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent8.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent7
-            // 
-            this.ca_tbl02_AftCaTs_numPercent7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent7.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent7.Location = new System.Drawing.Point(932, 96);
-            this.ca_tbl02_AftCaTs_numPercent7.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent7.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent7.Name = "ca_tbl02_AftCaTs_numPercent7";
-            this.ca_tbl02_AftCaTs_numPercent7.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent7.TabIndex = 6;
-            this.ca_tbl02_AftCaTs_numPercent7.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent7.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent7.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent6
-            // 
-            this.ca_tbl02_AftCaTs_numPercent6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent6.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent6.Location = new System.Drawing.Point(815, 96);
-            this.ca_tbl02_AftCaTs_numPercent6.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent6.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent6.Name = "ca_tbl02_AftCaTs_numPercent6";
-            this.ca_tbl02_AftCaTs_numPercent6.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent6.TabIndex = 5;
-            this.ca_tbl02_AftCaTs_numPercent6.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent6.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent6.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent5
-            // 
-            this.ca_tbl02_AftCaTs_numPercent5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent5.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent5.Location = new System.Drawing.Point(698, 96);
-            this.ca_tbl02_AftCaTs_numPercent5.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent5.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent5.Name = "ca_tbl02_AftCaTs_numPercent5";
-            this.ca_tbl02_AftCaTs_numPercent5.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent5.TabIndex = 4;
-            this.ca_tbl02_AftCaTs_numPercent5.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent5.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent5.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent4
-            // 
-            this.ca_tbl02_AftCaTs_numPercent4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent4.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent4.Location = new System.Drawing.Point(581, 96);
-            this.ca_tbl02_AftCaTs_numPercent4.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent4.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent4.Name = "ca_tbl02_AftCaTs_numPercent4";
-            this.ca_tbl02_AftCaTs_numPercent4.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent4.TabIndex = 3;
-            this.ca_tbl02_AftCaTs_numPercent4.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent4.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent4.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent3
-            // 
-            this.ca_tbl02_AftCaTs_numPercent3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent3.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent3.Location = new System.Drawing.Point(464, 96);
-            this.ca_tbl02_AftCaTs_numPercent3.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent3.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent3.Name = "ca_tbl02_AftCaTs_numPercent3";
-            this.ca_tbl02_AftCaTs_numPercent3.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent3.TabIndex = 2;
-            this.ca_tbl02_AftCaTs_numPercent3.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent3.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent3.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent2
-            // 
-            this.ca_tbl02_AftCaTs_numPercent2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent2.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent2.Location = new System.Drawing.Point(347, 96);
-            this.ca_tbl02_AftCaTs_numPercent2.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent2.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent2.Name = "ca_tbl02_AftCaTs_numPercent2";
-            this.ca_tbl02_AftCaTs_numPercent2.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent2.TabIndex = 1;
-            this.ca_tbl02_AftCaTs_numPercent2.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent2.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent2.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_AftCaTs_numPercent1
-            // 
-            this.ca_tbl02_AftCaTs_numPercent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_AftCaTs_numPercent1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_AftCaTs_numPercent1.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.ca_tbl02_AftCaTs_numPercent1.Location = new System.Drawing.Point(230, 96);
-            this.ca_tbl02_AftCaTs_numPercent1.Margin = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_AftCaTs_numPercent1.MaxLength = 6;
-            this.ca_tbl02_AftCaTs_numPercent1.Name = "ca_tbl02_AftCaTs_numPercent1";
-            this.ca_tbl02_AftCaTs_numPercent1.Size = new System.Drawing.Size(107, 21);
-            this.ca_tbl02_AftCaTs_numPercent1.TabIndex = 0;
-            this.ca_tbl02_AftCaTs_numPercent1.Text = "0.00%";
-            this.ca_tbl02_AftCaTs_numPercent1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ca_tbl02_AftCaTs_numPercent1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
-            this.ca_tbl02_AftCaTs_numPercent1.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
-            this.ca_tbl02_AftCaTs_numPercent1.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
-            // 
-            // ca_tbl02_lblAftCaRate2
-            // 
-            this.ca_tbl02_lblAftCaRate2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblAftCaRate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ca_tbl02_lblAftCaRate2.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_lblAftCaRate2.Location = new System.Drawing.Point(138, 92);
-            this.ca_tbl02_lblAftCaRate2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ca_tbl02_lblAftCaRate2.Name = "ca_tbl02_lblAftCaRate2";
-            this.ca_tbl02_lblAftCaRate2.Size = new System.Drawing.Size(82, 28);
-            this.ca_tbl02_lblAftCaRate2.TabIndex = 25;
-            this.ca_tbl02_lblAftCaRate2.Text = "配分率(％)";
-            this.ca_tbl02_lblAftCaRate2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ca_tbl02_lblPriorRate2
-            // 
-            this.ca_tbl02_lblPriorRate2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_lblPriorRate2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblPriorRate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ca_tbl02_lblPriorRate2.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_lblPriorRate2.Location = new System.Drawing.Point(134, 62);
-            this.ca_tbl02_lblPriorRate2.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblPriorRate2.Name = "ca_tbl02_lblPriorRate2";
-            this.ca_tbl02_lblPriorRate2.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_lblPriorRate2.Size = new System.Drawing.Size(90, 28);
-            this.ca_tbl02_lblPriorRate2.TabIndex = 15;
-            this.ca_tbl02_lblPriorRate2.Text = "配分率（％）";
-            this.ca_tbl02_lblPriorRate2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ca_tbl02_lblSz
-            // 
-            this.ca_tbl02_lblSz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(190)))), ((int)(((byte)(35)))));
-            this.ca_tbl02_lblSz.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblSz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblSz.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblSz.Location = new System.Drawing.Point(226, 32);
-            this.ca_tbl02_lblSz.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblSz.Name = "ca_tbl02_lblSz";
-            this.ca_tbl02_lblSz.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblSz.TabIndex = 15;
-            this.ca_tbl02_lblSz.Text = "資材調査";
-            this.ca_tbl02_lblSz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblEz
-            // 
-            this.ca_tbl02_lblEz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(190)))), ((int)(((byte)(35)))));
-            this.ca_tbl02_lblEz.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblEz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblEz.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblEz.Location = new System.Drawing.Point(343, 32);
-            this.ca_tbl02_lblEz.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblEz.Name = "ca_tbl02_lblEz";
-            this.ca_tbl02_lblEz.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblEz.TabIndex = 15;
-            this.ca_tbl02_lblEz.Text = "営繕調査";
-            this.ca_tbl02_lblEz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblKi
-            // 
-            this.ca_tbl02_lblKi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(190)))), ((int)(((byte)(35)))));
-            this.ca_tbl02_lblKi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblKi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblKi.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblKi.Location = new System.Drawing.Point(460, 32);
-            this.ca_tbl02_lblKi.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblKi.Name = "ca_tbl02_lblKi";
-            this.ca_tbl02_lblKi.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblKi.TabIndex = 15;
-            this.ca_tbl02_lblKi.Text = "機器類調査";
-            this.ca_tbl02_lblKi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblKj
-            // 
-            this.ca_tbl02_lblKj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(190)))), ((int)(((byte)(35)))));
-            this.ca_tbl02_lblKj.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblKj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblKj.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblKj.Location = new System.Drawing.Point(577, 32);
-            this.ca_tbl02_lblKj.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblKj.Name = "ca_tbl02_lblKj";
-            this.ca_tbl02_lblKj.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblKj.TabIndex = 15;
-            this.ca_tbl02_lblKj.Text = "工事費調査";
-            this.ca_tbl02_lblKj.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblSp
-            // 
-            this.ca_tbl02_lblSp.BackColor = System.Drawing.Color.DarkGray;
-            this.ca_tbl02_lblSp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblSp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblSp.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblSp.Location = new System.Drawing.Point(694, 32);
-            this.ca_tbl02_lblSp.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblSp.Name = "ca_tbl02_lblSp";
-            this.ca_tbl02_lblSp.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblSp.TabIndex = 15;
-            this.ca_tbl02_lblSp.Text = "産廃調査";
-            this.ca_tbl02_lblSp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblBg
-            // 
-            this.ca_tbl02_lblBg.BackColor = System.Drawing.Color.DarkGray;
-            this.ca_tbl02_lblBg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblBg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblBg.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblBg.Location = new System.Drawing.Point(811, 32);
-            this.ca_tbl02_lblBg.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblBg.Name = "ca_tbl02_lblBg";
-            this.ca_tbl02_lblBg.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblBg.TabIndex = 15;
-            this.ca_tbl02_lblBg.Text = "歩掛調査";
-            this.ca_tbl02_lblBg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblSkh
-            // 
-            this.ca_tbl02_lblSkh.BackColor = System.Drawing.Color.DarkGray;
-            this.ca_tbl02_lblSkh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblSkh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblSkh.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblSkh.Location = new System.Drawing.Point(928, 32);
-            this.ca_tbl02_lblSkh.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblSkh.Name = "ca_tbl02_lblSkh";
-            this.ca_tbl02_lblSkh.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblSkh.TabIndex = 15;
-            this.ca_tbl02_lblSkh.Text = "諸経費調査";
-            this.ca_tbl02_lblSkh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblGkbs
-            // 
-            this.ca_tbl02_lblGkbs.BackColor = System.Drawing.Color.DarkGray;
-            this.ca_tbl02_lblGkbs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblGkbs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblGkbs.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblGkbs.Location = new System.Drawing.Point(1045, 32);
-            this.ca_tbl02_lblGkbs.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblGkbs.Name = "ca_tbl02_lblGkbs";
-            this.ca_tbl02_lblGkbs.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblGkbs.TabIndex = 15;
-            this.ca_tbl02_lblGkbs.Text = "原価分析調査";
-            this.ca_tbl02_lblGkbs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblKjsks
-            // 
-            this.ca_tbl02_lblKjsks.BackColor = System.Drawing.Color.DarkGray;
-            this.ca_tbl02_lblKjsks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblKjsks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblKjsks.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblKjsks.Location = new System.Drawing.Point(1162, 32);
-            this.ca_tbl02_lblKjsks.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblKjsks.Name = "ca_tbl02_lblKjsks";
-            this.ca_tbl02_lblKjsks.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblKjsks.TabIndex = 15;
-            this.ca_tbl02_lblKjsks.Text = "基準作成改訂";
-            this.ca_tbl02_lblKjsks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblKkrm
-            // 
-            this.ca_tbl02_lblKkrm.BackColor = System.Drawing.Color.DarkGray;
-            this.ca_tbl02_lblKkrm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblKkrm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblKkrm.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblKkrm.Location = new System.Drawing.Point(1279, 32);
-            this.ca_tbl02_lblKkrm.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblKkrm.Name = "ca_tbl02_lblKkrm";
-            this.ca_tbl02_lblKkrm.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblKkrm.TabIndex = 15;
-            this.ca_tbl02_lblKkrm.Text = "公共労務費調査";
-            this.ca_tbl02_lblKkrm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblRmig
-            // 
-            this.ca_tbl02_lblRmig.BackColor = System.Drawing.Color.DarkGray;
-            this.ca_tbl02_lblRmig.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblRmig.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblRmig.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblRmig.Location = new System.Drawing.Point(1396, 32);
-            this.ca_tbl02_lblRmig.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblRmig.Name = "ca_tbl02_lblRmig";
-            this.ca_tbl02_lblRmig.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblRmig.TabIndex = 15;
-            this.ca_tbl02_lblRmig.Text = "労務費公共以外";
-            this.ca_tbl02_lblRmig.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblRowPrior2
-            // 
-            this.ca_tbl02_lblRowPrior2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_lblRowPrior2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblRowPrior2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ca_tbl02_lblRowPrior2.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_lblRowPrior2.Location = new System.Drawing.Point(2, 62);
-            this.ca_tbl02_lblRowPrior2.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblRowPrior2.Name = "ca_tbl02_lblRowPrior2";
-            this.ca_tbl02_lblRowPrior2.Size = new System.Drawing.Size(130, 28);
-            this.ca_tbl02_lblRowPrior2.TabIndex = 15;
-            this.ca_tbl02_lblRowPrior2.Text = "【事前打診・入札】";
-            this.ca_tbl02_lblRowPrior2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblSpace2
-            // 
-            this.ca_tbl02_input2.SetColumnSpan(this.ca_tbl02_lblSpace2, 2);
-            this.ca_tbl02_lblSpace2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblSpace2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ca_tbl02_lblSpace2.Location = new System.Drawing.Point(2, 32);
-            this.ca_tbl02_lblSpace2.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblSpace2.Name = "ca_tbl02_lblSpace2";
-            this.ca_tbl02_lblSpace2.Size = new System.Drawing.Size(222, 28);
-            this.ca_tbl02_lblSpace2.TabIndex = 15;
-            this.ca_tbl02_lblSpace2.Text = " ";
-            this.ca_tbl02_lblSpace2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ca_tbl02_lblOth
-            // 
-            this.ca_tbl02_lblOth.BackColor = System.Drawing.Color.DarkGray;
-            this.ca_tbl02_lblOth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblOth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblOth.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblOth.Location = new System.Drawing.Point(1513, 32);
-            this.ca_tbl02_lblOth.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblOth.Name = "ca_tbl02_lblOth";
-            this.ca_tbl02_lblOth.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblOth.TabIndex = 15;
-            this.ca_tbl02_lblOth.Text = "その他調査部";
-            this.ca_tbl02_lblOth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblGkGm
-            // 
-            this.ca_tbl02_lblGkGm.AutoSize = true;
-            this.ca_tbl02_lblGkGm.BackColor = System.Drawing.Color.CadetBlue;
-            this.ca_tbl02_lblGkGm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblGkGm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblGkGm.ForeColor = System.Drawing.Color.White;
-            this.ca_tbl02_lblGkGm.Location = new System.Drawing.Point(1630, 32);
-            this.ca_tbl02_lblGkGm.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblGkGm.Name = "ca_tbl02_lblGkGm";
-            this.ca_tbl02_lblGkGm.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_lblGkGm.TabIndex = 15;
-            this.ca_tbl02_lblGkGm.Text = "合計";
-            this.ca_tbl02_lblGkGm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ca_tbl02_lblTitle2
-            // 
-            this.ca_tbl02_input2.SetColumnSpan(this.ca_tbl02_lblTitle2, 15);
-            this.ca_tbl02_lblTitle2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblTitle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ca_tbl02_lblTitle2.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_lblTitle2.Location = new System.Drawing.Point(6, 2);
-            this.ca_tbl02_lblTitle2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ca_tbl02_lblTitle2.Name = "ca_tbl02_lblTitle2";
-            this.ca_tbl02_lblTitle2.Size = new System.Drawing.Size(1735, 28);
-            this.ca_tbl02_lblTitle2.TabIndex = 15;
-            this.ca_tbl02_lblTitle2.Text = "調査部 業務別配分";
-            this.ca_tbl02_lblTitle2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ca_tbl02_2_numPercent1
-            // 
-            this.ca_tbl02_2_numPercent1.AutoSize = true;
-            this.ca_tbl02_2_numPercent1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent1.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent1.Location = new System.Drawing.Point(226, 62);
-            this.ca_tbl02_2_numPercent1.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent1.Name = "ca_tbl02_2_numPercent1";
-            this.ca_tbl02_2_numPercent1.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent1.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent1.TabIndex = 23;
-            this.ca_tbl02_2_numPercent1.Text = "0.00%";
-            this.ca_tbl02_2_numPercent1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent2
-            // 
-            this.ca_tbl02_2_numPercent2.AutoSize = true;
-            this.ca_tbl02_2_numPercent2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent2.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent2.Location = new System.Drawing.Point(343, 62);
-            this.ca_tbl02_2_numPercent2.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent2.Name = "ca_tbl02_2_numPercent2";
-            this.ca_tbl02_2_numPercent2.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent2.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent2.TabIndex = 23;
-            this.ca_tbl02_2_numPercent2.Text = "0.00%";
-            this.ca_tbl02_2_numPercent2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent3
-            // 
-            this.ca_tbl02_2_numPercent3.AutoSize = true;
-            this.ca_tbl02_2_numPercent3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent3.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent3.Location = new System.Drawing.Point(460, 62);
-            this.ca_tbl02_2_numPercent3.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent3.Name = "ca_tbl02_2_numPercent3";
-            this.ca_tbl02_2_numPercent3.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent3.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent3.TabIndex = 23;
-            this.ca_tbl02_2_numPercent3.Text = "0.00%";
-            this.ca_tbl02_2_numPercent3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent4
-            // 
-            this.ca_tbl02_2_numPercent4.AutoSize = true;
-            this.ca_tbl02_2_numPercent4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent4.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent4.Location = new System.Drawing.Point(577, 62);
-            this.ca_tbl02_2_numPercent4.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent4.Name = "ca_tbl02_2_numPercent4";
-            this.ca_tbl02_2_numPercent4.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent4.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent4.TabIndex = 23;
-            this.ca_tbl02_2_numPercent4.Text = "0.00%";
-            this.ca_tbl02_2_numPercent4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent5
-            // 
-            this.ca_tbl02_2_numPercent5.AutoSize = true;
-            this.ca_tbl02_2_numPercent5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent5.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent5.Location = new System.Drawing.Point(694, 62);
-            this.ca_tbl02_2_numPercent5.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent5.Name = "ca_tbl02_2_numPercent5";
-            this.ca_tbl02_2_numPercent5.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent5.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent5.TabIndex = 23;
-            this.ca_tbl02_2_numPercent5.Text = "0.00%";
-            this.ca_tbl02_2_numPercent5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent6
-            // 
-            this.ca_tbl02_2_numPercent6.AutoSize = true;
-            this.ca_tbl02_2_numPercent6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent6.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent6.Location = new System.Drawing.Point(811, 62);
-            this.ca_tbl02_2_numPercent6.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent6.Name = "ca_tbl02_2_numPercent6";
-            this.ca_tbl02_2_numPercent6.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent6.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent6.TabIndex = 23;
-            this.ca_tbl02_2_numPercent6.Text = "0.00%";
-            this.ca_tbl02_2_numPercent6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent7
-            // 
-            this.ca_tbl02_2_numPercent7.AutoSize = true;
-            this.ca_tbl02_2_numPercent7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent7.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent7.Location = new System.Drawing.Point(928, 62);
-            this.ca_tbl02_2_numPercent7.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent7.Name = "ca_tbl02_2_numPercent7";
-            this.ca_tbl02_2_numPercent7.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent7.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent7.TabIndex = 23;
-            this.ca_tbl02_2_numPercent7.Text = "0.00%";
-            this.ca_tbl02_2_numPercent7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent8
-            // 
-            this.ca_tbl02_2_numPercent8.AutoSize = true;
-            this.ca_tbl02_2_numPercent8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent8.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent8.Location = new System.Drawing.Point(1045, 62);
-            this.ca_tbl02_2_numPercent8.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent8.Name = "ca_tbl02_2_numPercent8";
-            this.ca_tbl02_2_numPercent8.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent8.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent8.TabIndex = 23;
-            this.ca_tbl02_2_numPercent8.Text = "0.00%";
-            this.ca_tbl02_2_numPercent8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent9
-            // 
-            this.ca_tbl02_2_numPercent9.AutoSize = true;
-            this.ca_tbl02_2_numPercent9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent9.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent9.Location = new System.Drawing.Point(1162, 62);
-            this.ca_tbl02_2_numPercent9.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent9.Name = "ca_tbl02_2_numPercent9";
-            this.ca_tbl02_2_numPercent9.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent9.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent9.TabIndex = 23;
-            this.ca_tbl02_2_numPercent9.Text = "0.00%";
-            this.ca_tbl02_2_numPercent9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent10
-            // 
-            this.ca_tbl02_2_numPercent10.AutoSize = true;
-            this.ca_tbl02_2_numPercent10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent10.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent10.Location = new System.Drawing.Point(1279, 62);
-            this.ca_tbl02_2_numPercent10.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent10.Name = "ca_tbl02_2_numPercent10";
-            this.ca_tbl02_2_numPercent10.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent10.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent10.TabIndex = 23;
-            this.ca_tbl02_2_numPercent10.Text = "0.00%";
-            this.ca_tbl02_2_numPercent10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent11
-            // 
-            this.ca_tbl02_2_numPercent11.AutoSize = true;
-            this.ca_tbl02_2_numPercent11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent11.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent11.Location = new System.Drawing.Point(1396, 62);
-            this.ca_tbl02_2_numPercent11.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent11.Name = "ca_tbl02_2_numPercent11";
-            this.ca_tbl02_2_numPercent11.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent11.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent11.TabIndex = 23;
-            this.ca_tbl02_2_numPercent11.Text = "0.00%";
-            this.ca_tbl02_2_numPercent11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercent12
-            // 
-            this.ca_tbl02_2_numPercent12.AutoSize = true;
-            this.ca_tbl02_2_numPercent12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercent12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercent12.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercent12.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercent12.Location = new System.Drawing.Point(1513, 62);
-            this.ca_tbl02_2_numPercent12.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercent12.Name = "ca_tbl02_2_numPercent12";
-            this.ca_tbl02_2_numPercent12.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercent12.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercent12.TabIndex = 23;
-            this.ca_tbl02_2_numPercent12.Text = "0.00%";
-            this.ca_tbl02_2_numPercent12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_2_numPercentAll
-            // 
-            this.ca_tbl02_2_numPercentAll.AutoSize = true;
-            this.ca_tbl02_2_numPercentAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ca_tbl02_2_numPercentAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_2_numPercentAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.ca_tbl02_2_numPercentAll.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_2_numPercentAll.Location = new System.Drawing.Point(1630, 62);
-            this.ca_tbl02_2_numPercentAll.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_2_numPercentAll.Name = "ca_tbl02_2_numPercentAll";
-            this.ca_tbl02_2_numPercentAll.Padding = new System.Windows.Forms.Padding(4);
-            this.ca_tbl02_2_numPercentAll.Size = new System.Drawing.Size(115, 28);
-            this.ca_tbl02_2_numPercentAll.TabIndex = 23;
-            this.ca_tbl02_2_numPercentAll.Text = "0.00%";
-            this.ca_tbl02_2_numPercentAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ca_tbl02_lblRowAftCa2
-            // 
-            this.ca_tbl02_lblRowAftCa2.AutoSize = true;
-            this.ca_tbl02_lblRowAftCa2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ca_tbl02_lblRowAftCa2.ForeColor = System.Drawing.Color.Black;
-            this.ca_tbl02_lblRowAftCa2.Location = new System.Drawing.Point(2, 92);
-            this.ca_tbl02_lblRowAftCa2.Margin = new System.Windows.Forms.Padding(0);
-            this.ca_tbl02_lblRowAftCa2.Name = "ca_tbl02_lblRowAftCa2";
-            this.ca_tbl02_input2.SetRowSpan(this.ca_tbl02_lblRowAftCa2, 2);
-            this.ca_tbl02_lblRowAftCa2.Size = new System.Drawing.Size(130, 58);
-            this.ca_tbl02_lblRowAftCa2.TabIndex = 24;
-            this.ca_tbl02_lblRowAftCa2.Text = "【契約後】";
-            this.ca_tbl02_lblRowAftCa2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ca_tbl02_lblTitle
             // 
@@ -15504,6 +14527,1002 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_btnSGSyo.UseVisualStyleBackColor = false;
             this.ca_tbl02_btnSGSyo.Click += new System.EventHandler(this.ca_tbl02_btnCopy_Click);
             // 
+            // ca_tbl02_input2
+            // 
+            this.ca_tbl02_input2.AutoSize = true;
+            this.ca_tbl02_input2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.ca_tbl02_input2.ColumnCount = 16;
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.ca_tbl02_input2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_picPercentAlert, 15, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmtAll, 14, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt12, 13, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt11, 12, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt10, 11, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt9, 10, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt8, 9, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt7, 8, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt6, 7, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt5, 6, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt4, 5, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt3, 4, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt2, 3, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numAmt1, 2, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblAftCaAmtZeiNuki2, 1, 4);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercentAll, 14, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent12, 13, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent11, 12, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent10, 11, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent9, 10, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent8, 9, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent7, 8, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent6, 7, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent5, 6, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent4, 5, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent3, 4, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent2, 3, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_AftCaTs_numPercent1, 2, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblAftCaRate2, 1, 3);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblPriorRate2, 1, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblSz, 2, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblEz, 3, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblKi, 4, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblKj, 5, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblSp, 6, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblBg, 7, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblSkh, 8, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblGkbs, 9, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblKjsks, 10, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblKkrm, 11, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblRmig, 12, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblRowPrior2, 0, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblSpace2, 0, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblOth, 13, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblGkGm, 14, 1);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblTitle2, 0, 0);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent1, 2, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent2, 3, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent3, 4, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent4, 5, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent5, 6, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent6, 7, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent7, 8, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent8, 9, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent9, 10, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent10, 11, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent11, 12, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercent12, 13, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_2_numPercentAll, 14, 2);
+            this.ca_tbl02_input2.Controls.Add(this.ca_tbl02_lblRowAftCa2, 0, 3);
+            this.ca_tbl02_input2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ca_tbl02_input2.Location = new System.Drawing.Point(25, 381);
+            this.ca_tbl02_input2.Margin = new System.Windows.Forms.Padding(15, 5, 10, 5);
+            this.ca_tbl02_input2.Name = "ca_tbl02_input2";
+            this.ca_tbl02_input2.RowCount = 5;
+            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.ca_tbl02_input2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.ca_tbl02_input2.Size = new System.Drawing.Size(1743, 152);
+            this.ca_tbl02_input2.TabIndex = 8;
+            // 
+            // ca_tbl02_AftCaTs_picPercentAlert
+            // 
+            this.ca_tbl02_AftCaTs_picPercentAlert.AccessibleName = "";
+            this.ca_tbl02_AftCaTs_picPercentAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ca_tbl02_AftCaTs_picPercentAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ca_tbl02_AftCaTs_picPercentAlert.Image = ((System.Drawing.Image)(resources.GetObject("ca_tbl02_AftCaTs_picPercentAlert.Image")));
+            this.ca_tbl02_AftCaTs_picPercentAlert.Location = new System.Drawing.Point(1719, 96);
+            this.ca_tbl02_AftCaTs_picPercentAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.ca_tbl02_AftCaTs_picPercentAlert.Name = "ca_tbl02_AftCaTs_picPercentAlert";
+            this.ca_tbl02_AftCaTs_picPercentAlert.Size = new System.Drawing.Size(20, 20);
+            this.ca_tbl02_AftCaTs_picPercentAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ca_tbl02_AftCaTs_picPercentAlert.TabIndex = 100036;
+            this.ca_tbl02_AftCaTs_picPercentAlert.TabStop = false;
+            this.ca_tbl02_AftCaTs_picPercentAlert.Visible = false;
+            // 
+            // ca_tbl02_AftCaTs_numAmtAll
+            // 
+            this.ca_tbl02_AftCaTs_numAmtAll.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmtAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmtAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmtAll.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmtAll.Location = new System.Drawing.Point(1603, 122);
+            this.ca_tbl02_AftCaTs_numAmtAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmtAll.Name = "ca_tbl02_AftCaTs_numAmtAll";
+            this.ca_tbl02_AftCaTs_numAmtAll.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmtAll.TabIndex = 52;
+            this.ca_tbl02_AftCaTs_numAmtAll.Text = "¥0";
+            this.ca_tbl02_AftCaTs_numAmtAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt12
+            // 
+            this.ca_tbl02_AftCaTs_numAmt12.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt12.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt12.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt12.Location = new System.Drawing.Point(1486, 122);
+            this.ca_tbl02_AftCaTs_numAmt12.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt12.Name = "ca_tbl02_AftCaTs_numAmt12";
+            this.ca_tbl02_AftCaTs_numAmt12.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt12.TabIndex = 51;
+            this.ca_tbl02_AftCaTs_numAmt12.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt11
+            // 
+            this.ca_tbl02_AftCaTs_numAmt11.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt11.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt11.Location = new System.Drawing.Point(1369, 122);
+            this.ca_tbl02_AftCaTs_numAmt11.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt11.Name = "ca_tbl02_AftCaTs_numAmt11";
+            this.ca_tbl02_AftCaTs_numAmt11.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt11.TabIndex = 50;
+            this.ca_tbl02_AftCaTs_numAmt11.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt10
+            // 
+            this.ca_tbl02_AftCaTs_numAmt10.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt10.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt10.Location = new System.Drawing.Point(1252, 122);
+            this.ca_tbl02_AftCaTs_numAmt10.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt10.Name = "ca_tbl02_AftCaTs_numAmt10";
+            this.ca_tbl02_AftCaTs_numAmt10.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt10.TabIndex = 49;
+            this.ca_tbl02_AftCaTs_numAmt10.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt9
+            // 
+            this.ca_tbl02_AftCaTs_numAmt9.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt9.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt9.Location = new System.Drawing.Point(1135, 122);
+            this.ca_tbl02_AftCaTs_numAmt9.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt9.Name = "ca_tbl02_AftCaTs_numAmt9";
+            this.ca_tbl02_AftCaTs_numAmt9.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt9.TabIndex = 48;
+            this.ca_tbl02_AftCaTs_numAmt9.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt8
+            // 
+            this.ca_tbl02_AftCaTs_numAmt8.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt8.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt8.Location = new System.Drawing.Point(1018, 122);
+            this.ca_tbl02_AftCaTs_numAmt8.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt8.Name = "ca_tbl02_AftCaTs_numAmt8";
+            this.ca_tbl02_AftCaTs_numAmt8.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt8.TabIndex = 47;
+            this.ca_tbl02_AftCaTs_numAmt8.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt7
+            // 
+            this.ca_tbl02_AftCaTs_numAmt7.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt7.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt7.Location = new System.Drawing.Point(901, 122);
+            this.ca_tbl02_AftCaTs_numAmt7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt7.Name = "ca_tbl02_AftCaTs_numAmt7";
+            this.ca_tbl02_AftCaTs_numAmt7.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt7.TabIndex = 46;
+            this.ca_tbl02_AftCaTs_numAmt7.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt6
+            // 
+            this.ca_tbl02_AftCaTs_numAmt6.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt6.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt6.Location = new System.Drawing.Point(784, 122);
+            this.ca_tbl02_AftCaTs_numAmt6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt6.Name = "ca_tbl02_AftCaTs_numAmt6";
+            this.ca_tbl02_AftCaTs_numAmt6.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt6.TabIndex = 45;
+            this.ca_tbl02_AftCaTs_numAmt6.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt5
+            // 
+            this.ca_tbl02_AftCaTs_numAmt5.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt5.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt5.Location = new System.Drawing.Point(667, 122);
+            this.ca_tbl02_AftCaTs_numAmt5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt5.Name = "ca_tbl02_AftCaTs_numAmt5";
+            this.ca_tbl02_AftCaTs_numAmt5.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt5.TabIndex = 44;
+            this.ca_tbl02_AftCaTs_numAmt5.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt4
+            // 
+            this.ca_tbl02_AftCaTs_numAmt4.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt4.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt4.Location = new System.Drawing.Point(550, 122);
+            this.ca_tbl02_AftCaTs_numAmt4.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt4.Name = "ca_tbl02_AftCaTs_numAmt4";
+            this.ca_tbl02_AftCaTs_numAmt4.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt4.TabIndex = 43;
+            this.ca_tbl02_AftCaTs_numAmt4.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt3
+            // 
+            this.ca_tbl02_AftCaTs_numAmt3.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt3.Location = new System.Drawing.Point(433, 122);
+            this.ca_tbl02_AftCaTs_numAmt3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt3.Name = "ca_tbl02_AftCaTs_numAmt3";
+            this.ca_tbl02_AftCaTs_numAmt3.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt3.TabIndex = 42;
+            this.ca_tbl02_AftCaTs_numAmt3.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt2
+            // 
+            this.ca_tbl02_AftCaTs_numAmt2.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt2.Location = new System.Drawing.Point(316, 122);
+            this.ca_tbl02_AftCaTs_numAmt2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt2.Name = "ca_tbl02_AftCaTs_numAmt2";
+            this.ca_tbl02_AftCaTs_numAmt2.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt2.TabIndex = 41;
+            this.ca_tbl02_AftCaTs_numAmt2.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numAmt1
+            // 
+            this.ca_tbl02_AftCaTs_numAmt1.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numAmt1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numAmt1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numAmt1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ca_tbl02_AftCaTs_numAmt1.Location = new System.Drawing.Point(199, 122);
+            this.ca_tbl02_AftCaTs_numAmt1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numAmt1.Name = "ca_tbl02_AftCaTs_numAmt1";
+            this.ca_tbl02_AftCaTs_numAmt1.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numAmt1.TabIndex = 40;
+            this.ca_tbl02_AftCaTs_numAmt1.Text = "\\0";
+            this.ca_tbl02_AftCaTs_numAmt1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_lblAftCaAmtZeiNuki2
+            // 
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.Location = new System.Drawing.Point(104, 122);
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.Name = "ca_tbl02_lblAftCaAmtZeiNuki2";
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.Size = new System.Drawing.Size(90, 28);
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.TabIndex = 39;
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.Text = "配分額(税抜)";
+            this.ca_tbl02_lblAftCaAmtZeiNuki2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ca_tbl02_AftCaTs_numPercentAll
+            // 
+            this.ca_tbl02_AftCaTs_numPercentAll.AutoSize = true;
+            this.ca_tbl02_AftCaTs_numPercentAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercentAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercentAll.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_AftCaTs_numPercentAll.Location = new System.Drawing.Point(1603, 92);
+            this.ca_tbl02_AftCaTs_numPercentAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ca_tbl02_AftCaTs_numPercentAll.Name = "ca_tbl02_AftCaTs_numPercentAll";
+            this.ca_tbl02_AftCaTs_numPercentAll.Size = new System.Drawing.Size(109, 25);
+            this.ca_tbl02_AftCaTs_numPercentAll.TabIndex = 38;
+            this.ca_tbl02_AftCaTs_numPercentAll.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercentAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_AftCaTs_numPercent12
+            // 
+            this.ca_tbl02_AftCaTs_numPercent12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent12.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent12.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent12.Location = new System.Drawing.Point(1487, 96);
+            this.ca_tbl02_AftCaTs_numPercent12.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent12.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent12.Name = "ca_tbl02_AftCaTs_numPercent12";
+            this.ca_tbl02_AftCaTs_numPercent12.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent12.TabIndex = 11;
+            this.ca_tbl02_AftCaTs_numPercent12.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent12.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent12.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent11
+            // 
+            this.ca_tbl02_AftCaTs_numPercent11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent11.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent11.Location = new System.Drawing.Point(1370, 96);
+            this.ca_tbl02_AftCaTs_numPercent11.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent11.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent11.Name = "ca_tbl02_AftCaTs_numPercent11";
+            this.ca_tbl02_AftCaTs_numPercent11.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent11.TabIndex = 10;
+            this.ca_tbl02_AftCaTs_numPercent11.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent11.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent11.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent10
+            // 
+            this.ca_tbl02_AftCaTs_numPercent10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent10.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent10.Location = new System.Drawing.Point(1253, 96);
+            this.ca_tbl02_AftCaTs_numPercent10.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent10.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent10.Name = "ca_tbl02_AftCaTs_numPercent10";
+            this.ca_tbl02_AftCaTs_numPercent10.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent10.TabIndex = 9;
+            this.ca_tbl02_AftCaTs_numPercent10.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent10.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent10.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent9
+            // 
+            this.ca_tbl02_AftCaTs_numPercent9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent9.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent9.Location = new System.Drawing.Point(1136, 96);
+            this.ca_tbl02_AftCaTs_numPercent9.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent9.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent9.Name = "ca_tbl02_AftCaTs_numPercent9";
+            this.ca_tbl02_AftCaTs_numPercent9.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent9.TabIndex = 8;
+            this.ca_tbl02_AftCaTs_numPercent9.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent9.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent9.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent8
+            // 
+            this.ca_tbl02_AftCaTs_numPercent8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent8.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent8.Location = new System.Drawing.Point(1019, 96);
+            this.ca_tbl02_AftCaTs_numPercent8.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent8.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent8.Name = "ca_tbl02_AftCaTs_numPercent8";
+            this.ca_tbl02_AftCaTs_numPercent8.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent8.TabIndex = 7;
+            this.ca_tbl02_AftCaTs_numPercent8.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent8.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent8.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent7
+            // 
+            this.ca_tbl02_AftCaTs_numPercent7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent7.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent7.Location = new System.Drawing.Point(902, 96);
+            this.ca_tbl02_AftCaTs_numPercent7.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent7.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent7.Name = "ca_tbl02_AftCaTs_numPercent7";
+            this.ca_tbl02_AftCaTs_numPercent7.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent7.TabIndex = 6;
+            this.ca_tbl02_AftCaTs_numPercent7.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent7.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent7.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent6
+            // 
+            this.ca_tbl02_AftCaTs_numPercent6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent6.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent6.Location = new System.Drawing.Point(785, 96);
+            this.ca_tbl02_AftCaTs_numPercent6.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent6.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent6.Name = "ca_tbl02_AftCaTs_numPercent6";
+            this.ca_tbl02_AftCaTs_numPercent6.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent6.TabIndex = 5;
+            this.ca_tbl02_AftCaTs_numPercent6.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent6.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent6.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent5
+            // 
+            this.ca_tbl02_AftCaTs_numPercent5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent5.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent5.Location = new System.Drawing.Point(668, 96);
+            this.ca_tbl02_AftCaTs_numPercent5.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent5.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent5.Name = "ca_tbl02_AftCaTs_numPercent5";
+            this.ca_tbl02_AftCaTs_numPercent5.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent5.TabIndex = 4;
+            this.ca_tbl02_AftCaTs_numPercent5.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent5.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent5.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent4
+            // 
+            this.ca_tbl02_AftCaTs_numPercent4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent4.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent4.Location = new System.Drawing.Point(551, 96);
+            this.ca_tbl02_AftCaTs_numPercent4.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent4.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent4.Name = "ca_tbl02_AftCaTs_numPercent4";
+            this.ca_tbl02_AftCaTs_numPercent4.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent4.TabIndex = 3;
+            this.ca_tbl02_AftCaTs_numPercent4.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent4.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent4.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent3
+            // 
+            this.ca_tbl02_AftCaTs_numPercent3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent3.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent3.Location = new System.Drawing.Point(434, 96);
+            this.ca_tbl02_AftCaTs_numPercent3.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent3.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent3.Name = "ca_tbl02_AftCaTs_numPercent3";
+            this.ca_tbl02_AftCaTs_numPercent3.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent3.TabIndex = 2;
+            this.ca_tbl02_AftCaTs_numPercent3.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent3.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent3.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent2
+            // 
+            this.ca_tbl02_AftCaTs_numPercent2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent2.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent2.Location = new System.Drawing.Point(317, 96);
+            this.ca_tbl02_AftCaTs_numPercent2.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent2.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent2.Name = "ca_tbl02_AftCaTs_numPercent2";
+            this.ca_tbl02_AftCaTs_numPercent2.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent2.TabIndex = 1;
+            this.ca_tbl02_AftCaTs_numPercent2.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent2.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent2.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_AftCaTs_numPercent1
+            // 
+            this.ca_tbl02_AftCaTs_numPercent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_AftCaTs_numPercent1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_AftCaTs_numPercent1.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.ca_tbl02_AftCaTs_numPercent1.Location = new System.Drawing.Point(200, 96);
+            this.ca_tbl02_AftCaTs_numPercent1.Margin = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_AftCaTs_numPercent1.MaxLength = 6;
+            this.ca_tbl02_AftCaTs_numPercent1.Name = "ca_tbl02_AftCaTs_numPercent1";
+            this.ca_tbl02_AftCaTs_numPercent1.Size = new System.Drawing.Size(107, 21);
+            this.ca_tbl02_AftCaTs_numPercent1.TabIndex = 0;
+            this.ca_tbl02_AftCaTs_numPercent1.Text = "0.00%";
+            this.ca_tbl02_AftCaTs_numPercent1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ca_tbl02_AftCaTs_numPercent1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPressPercent);
+            this.ca_tbl02_AftCaTs_numPercent1.Leave += new System.EventHandler(this.numPercentTextBox_Leave);
+            this.ca_tbl02_AftCaTs_numPercent1.Validated += new System.EventHandler(this.textBox_ValidatedPercent);
+            // 
+            // ca_tbl02_lblAftCaRate2
+            // 
+            this.ca_tbl02_lblAftCaRate2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblAftCaRate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ca_tbl02_lblAftCaRate2.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_lblAftCaRate2.Location = new System.Drawing.Point(108, 92);
+            this.ca_tbl02_lblAftCaRate2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ca_tbl02_lblAftCaRate2.Name = "ca_tbl02_lblAftCaRate2";
+            this.ca_tbl02_lblAftCaRate2.Size = new System.Drawing.Size(82, 28);
+            this.ca_tbl02_lblAftCaRate2.TabIndex = 25;
+            this.ca_tbl02_lblAftCaRate2.Text = "配分率(％)";
+            this.ca_tbl02_lblAftCaRate2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ca_tbl02_lblPriorRate2
+            // 
+            this.ca_tbl02_lblPriorRate2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_lblPriorRate2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblPriorRate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ca_tbl02_lblPriorRate2.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_lblPriorRate2.Location = new System.Drawing.Point(104, 62);
+            this.ca_tbl02_lblPriorRate2.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblPriorRate2.Name = "ca_tbl02_lblPriorRate2";
+            this.ca_tbl02_lblPriorRate2.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_lblPriorRate2.Size = new System.Drawing.Size(90, 28);
+            this.ca_tbl02_lblPriorRate2.TabIndex = 15;
+            this.ca_tbl02_lblPriorRate2.Text = "配分率（％）";
+            this.ca_tbl02_lblPriorRate2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ca_tbl02_lblSz
+            // 
+            this.ca_tbl02_lblSz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(190)))), ((int)(((byte)(35)))));
+            this.ca_tbl02_lblSz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblSz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblSz.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblSz.Location = new System.Drawing.Point(196, 32);
+            this.ca_tbl02_lblSz.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblSz.Name = "ca_tbl02_lblSz";
+            this.ca_tbl02_lblSz.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblSz.TabIndex = 15;
+            this.ca_tbl02_lblSz.Text = "資材調査";
+            this.ca_tbl02_lblSz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblEz
+            // 
+            this.ca_tbl02_lblEz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(190)))), ((int)(((byte)(35)))));
+            this.ca_tbl02_lblEz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblEz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblEz.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblEz.Location = new System.Drawing.Point(313, 32);
+            this.ca_tbl02_lblEz.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblEz.Name = "ca_tbl02_lblEz";
+            this.ca_tbl02_lblEz.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblEz.TabIndex = 15;
+            this.ca_tbl02_lblEz.Text = "営繕調査";
+            this.ca_tbl02_lblEz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblKi
+            // 
+            this.ca_tbl02_lblKi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(190)))), ((int)(((byte)(35)))));
+            this.ca_tbl02_lblKi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblKi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblKi.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblKi.Location = new System.Drawing.Point(430, 32);
+            this.ca_tbl02_lblKi.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblKi.Name = "ca_tbl02_lblKi";
+            this.ca_tbl02_lblKi.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblKi.TabIndex = 15;
+            this.ca_tbl02_lblKi.Text = "機器類調査";
+            this.ca_tbl02_lblKi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblKj
+            // 
+            this.ca_tbl02_lblKj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(190)))), ((int)(((byte)(35)))));
+            this.ca_tbl02_lblKj.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblKj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblKj.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblKj.Location = new System.Drawing.Point(547, 32);
+            this.ca_tbl02_lblKj.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblKj.Name = "ca_tbl02_lblKj";
+            this.ca_tbl02_lblKj.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblKj.TabIndex = 15;
+            this.ca_tbl02_lblKj.Text = "工事費調査";
+            this.ca_tbl02_lblKj.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblSp
+            // 
+            this.ca_tbl02_lblSp.BackColor = System.Drawing.Color.DarkGray;
+            this.ca_tbl02_lblSp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblSp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblSp.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblSp.Location = new System.Drawing.Point(664, 32);
+            this.ca_tbl02_lblSp.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblSp.Name = "ca_tbl02_lblSp";
+            this.ca_tbl02_lblSp.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblSp.TabIndex = 15;
+            this.ca_tbl02_lblSp.Text = "産廃調査";
+            this.ca_tbl02_lblSp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblBg
+            // 
+            this.ca_tbl02_lblBg.BackColor = System.Drawing.Color.DarkGray;
+            this.ca_tbl02_lblBg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblBg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblBg.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblBg.Location = new System.Drawing.Point(781, 32);
+            this.ca_tbl02_lblBg.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblBg.Name = "ca_tbl02_lblBg";
+            this.ca_tbl02_lblBg.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblBg.TabIndex = 15;
+            this.ca_tbl02_lblBg.Text = "歩掛調査";
+            this.ca_tbl02_lblBg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblSkh
+            // 
+            this.ca_tbl02_lblSkh.BackColor = System.Drawing.Color.DarkGray;
+            this.ca_tbl02_lblSkh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblSkh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblSkh.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblSkh.Location = new System.Drawing.Point(898, 32);
+            this.ca_tbl02_lblSkh.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblSkh.Name = "ca_tbl02_lblSkh";
+            this.ca_tbl02_lblSkh.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblSkh.TabIndex = 15;
+            this.ca_tbl02_lblSkh.Text = "諸経費調査";
+            this.ca_tbl02_lblSkh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblGkbs
+            // 
+            this.ca_tbl02_lblGkbs.BackColor = System.Drawing.Color.DarkGray;
+            this.ca_tbl02_lblGkbs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblGkbs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblGkbs.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblGkbs.Location = new System.Drawing.Point(1015, 32);
+            this.ca_tbl02_lblGkbs.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblGkbs.Name = "ca_tbl02_lblGkbs";
+            this.ca_tbl02_lblGkbs.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblGkbs.TabIndex = 15;
+            this.ca_tbl02_lblGkbs.Text = "原価分析調査";
+            this.ca_tbl02_lblGkbs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblKjsks
+            // 
+            this.ca_tbl02_lblKjsks.BackColor = System.Drawing.Color.DarkGray;
+            this.ca_tbl02_lblKjsks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblKjsks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblKjsks.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblKjsks.Location = new System.Drawing.Point(1132, 32);
+            this.ca_tbl02_lblKjsks.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblKjsks.Name = "ca_tbl02_lblKjsks";
+            this.ca_tbl02_lblKjsks.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblKjsks.TabIndex = 15;
+            this.ca_tbl02_lblKjsks.Text = "基準作成改訂";
+            this.ca_tbl02_lblKjsks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblKkrm
+            // 
+            this.ca_tbl02_lblKkrm.BackColor = System.Drawing.Color.DarkGray;
+            this.ca_tbl02_lblKkrm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblKkrm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblKkrm.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblKkrm.Location = new System.Drawing.Point(1249, 32);
+            this.ca_tbl02_lblKkrm.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblKkrm.Name = "ca_tbl02_lblKkrm";
+            this.ca_tbl02_lblKkrm.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblKkrm.TabIndex = 15;
+            this.ca_tbl02_lblKkrm.Text = "公共労務費調査";
+            this.ca_tbl02_lblKkrm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblRmig
+            // 
+            this.ca_tbl02_lblRmig.BackColor = System.Drawing.Color.DarkGray;
+            this.ca_tbl02_lblRmig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblRmig.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblRmig.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblRmig.Location = new System.Drawing.Point(1366, 32);
+            this.ca_tbl02_lblRmig.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblRmig.Name = "ca_tbl02_lblRmig";
+            this.ca_tbl02_lblRmig.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblRmig.TabIndex = 15;
+            this.ca_tbl02_lblRmig.Text = "労務費公共以外";
+            this.ca_tbl02_lblRmig.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblRowPrior2
+            // 
+            this.ca_tbl02_lblRowPrior2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_lblRowPrior2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblRowPrior2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ca_tbl02_lblRowPrior2.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_lblRowPrior2.Location = new System.Drawing.Point(2, 62);
+            this.ca_tbl02_lblRowPrior2.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblRowPrior2.Name = "ca_tbl02_lblRowPrior2";
+            this.ca_tbl02_lblRowPrior2.Size = new System.Drawing.Size(100, 28);
+            this.ca_tbl02_lblRowPrior2.TabIndex = 15;
+            this.ca_tbl02_lblRowPrior2.Text = "【事前打診・入札】";
+            this.ca_tbl02_lblRowPrior2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblSpace2
+            // 
+            this.ca_tbl02_input2.SetColumnSpan(this.ca_tbl02_lblSpace2, 2);
+            this.ca_tbl02_lblSpace2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblSpace2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ca_tbl02_lblSpace2.Location = new System.Drawing.Point(2, 32);
+            this.ca_tbl02_lblSpace2.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblSpace2.Name = "ca_tbl02_lblSpace2";
+            this.ca_tbl02_lblSpace2.Size = new System.Drawing.Size(192, 28);
+            this.ca_tbl02_lblSpace2.TabIndex = 15;
+            this.ca_tbl02_lblSpace2.Text = " ";
+            this.ca_tbl02_lblSpace2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ca_tbl02_lblOth
+            // 
+            this.ca_tbl02_lblOth.BackColor = System.Drawing.Color.DarkGray;
+            this.ca_tbl02_lblOth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblOth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblOth.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblOth.Location = new System.Drawing.Point(1483, 32);
+            this.ca_tbl02_lblOth.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblOth.Name = "ca_tbl02_lblOth";
+            this.ca_tbl02_lblOth.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblOth.TabIndex = 15;
+            this.ca_tbl02_lblOth.Text = "その他調査部";
+            this.ca_tbl02_lblOth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblGkGm
+            // 
+            this.ca_tbl02_lblGkGm.AutoSize = true;
+            this.ca_tbl02_lblGkGm.BackColor = System.Drawing.Color.CadetBlue;
+            this.ca_tbl02_lblGkGm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblGkGm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblGkGm.ForeColor = System.Drawing.Color.White;
+            this.ca_tbl02_lblGkGm.Location = new System.Drawing.Point(1600, 32);
+            this.ca_tbl02_lblGkGm.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblGkGm.Name = "ca_tbl02_lblGkGm";
+            this.ca_tbl02_lblGkGm.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_lblGkGm.TabIndex = 15;
+            this.ca_tbl02_lblGkGm.Text = "合計";
+            this.ca_tbl02_lblGkGm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ca_tbl02_lblTitle2
+            // 
+            this.ca_tbl02_input2.SetColumnSpan(this.ca_tbl02_lblTitle2, 15);
+            this.ca_tbl02_lblTitle2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblTitle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ca_tbl02_lblTitle2.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_lblTitle2.Location = new System.Drawing.Point(6, 2);
+            this.ca_tbl02_lblTitle2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ca_tbl02_lblTitle2.Name = "ca_tbl02_lblTitle2";
+            this.ca_tbl02_lblTitle2.Size = new System.Drawing.Size(1705, 28);
+            this.ca_tbl02_lblTitle2.TabIndex = 15;
+            this.ca_tbl02_lblTitle2.Text = "調査部 業務別配分";
+            this.ca_tbl02_lblTitle2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ca_tbl02_2_numPercent1
+            // 
+            this.ca_tbl02_2_numPercent1.AutoSize = true;
+            this.ca_tbl02_2_numPercent1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent1.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent1.Location = new System.Drawing.Point(196, 62);
+            this.ca_tbl02_2_numPercent1.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent1.Name = "ca_tbl02_2_numPercent1";
+            this.ca_tbl02_2_numPercent1.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent1.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent1.TabIndex = 23;
+            this.ca_tbl02_2_numPercent1.Text = "0.00%";
+            this.ca_tbl02_2_numPercent1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent2
+            // 
+            this.ca_tbl02_2_numPercent2.AutoSize = true;
+            this.ca_tbl02_2_numPercent2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent2.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent2.Location = new System.Drawing.Point(313, 62);
+            this.ca_tbl02_2_numPercent2.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent2.Name = "ca_tbl02_2_numPercent2";
+            this.ca_tbl02_2_numPercent2.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent2.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent2.TabIndex = 23;
+            this.ca_tbl02_2_numPercent2.Text = "0.00%";
+            this.ca_tbl02_2_numPercent2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent3
+            // 
+            this.ca_tbl02_2_numPercent3.AutoSize = true;
+            this.ca_tbl02_2_numPercent3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent3.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent3.Location = new System.Drawing.Point(430, 62);
+            this.ca_tbl02_2_numPercent3.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent3.Name = "ca_tbl02_2_numPercent3";
+            this.ca_tbl02_2_numPercent3.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent3.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent3.TabIndex = 23;
+            this.ca_tbl02_2_numPercent3.Text = "0.00%";
+            this.ca_tbl02_2_numPercent3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent4
+            // 
+            this.ca_tbl02_2_numPercent4.AutoSize = true;
+            this.ca_tbl02_2_numPercent4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent4.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent4.Location = new System.Drawing.Point(547, 62);
+            this.ca_tbl02_2_numPercent4.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent4.Name = "ca_tbl02_2_numPercent4";
+            this.ca_tbl02_2_numPercent4.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent4.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent4.TabIndex = 23;
+            this.ca_tbl02_2_numPercent4.Text = "0.00%";
+            this.ca_tbl02_2_numPercent4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent5
+            // 
+            this.ca_tbl02_2_numPercent5.AutoSize = true;
+            this.ca_tbl02_2_numPercent5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent5.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent5.Location = new System.Drawing.Point(664, 62);
+            this.ca_tbl02_2_numPercent5.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent5.Name = "ca_tbl02_2_numPercent5";
+            this.ca_tbl02_2_numPercent5.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent5.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent5.TabIndex = 23;
+            this.ca_tbl02_2_numPercent5.Text = "0.00%";
+            this.ca_tbl02_2_numPercent5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent6
+            // 
+            this.ca_tbl02_2_numPercent6.AutoSize = true;
+            this.ca_tbl02_2_numPercent6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent6.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent6.Location = new System.Drawing.Point(781, 62);
+            this.ca_tbl02_2_numPercent6.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent6.Name = "ca_tbl02_2_numPercent6";
+            this.ca_tbl02_2_numPercent6.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent6.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent6.TabIndex = 23;
+            this.ca_tbl02_2_numPercent6.Text = "0.00%";
+            this.ca_tbl02_2_numPercent6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent7
+            // 
+            this.ca_tbl02_2_numPercent7.AutoSize = true;
+            this.ca_tbl02_2_numPercent7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent7.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent7.Location = new System.Drawing.Point(898, 62);
+            this.ca_tbl02_2_numPercent7.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent7.Name = "ca_tbl02_2_numPercent7";
+            this.ca_tbl02_2_numPercent7.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent7.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent7.TabIndex = 23;
+            this.ca_tbl02_2_numPercent7.Text = "0.00%";
+            this.ca_tbl02_2_numPercent7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent8
+            // 
+            this.ca_tbl02_2_numPercent8.AutoSize = true;
+            this.ca_tbl02_2_numPercent8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent8.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent8.Location = new System.Drawing.Point(1015, 62);
+            this.ca_tbl02_2_numPercent8.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent8.Name = "ca_tbl02_2_numPercent8";
+            this.ca_tbl02_2_numPercent8.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent8.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent8.TabIndex = 23;
+            this.ca_tbl02_2_numPercent8.Text = "0.00%";
+            this.ca_tbl02_2_numPercent8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent9
+            // 
+            this.ca_tbl02_2_numPercent9.AutoSize = true;
+            this.ca_tbl02_2_numPercent9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent9.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent9.Location = new System.Drawing.Point(1132, 62);
+            this.ca_tbl02_2_numPercent9.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent9.Name = "ca_tbl02_2_numPercent9";
+            this.ca_tbl02_2_numPercent9.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent9.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent9.TabIndex = 23;
+            this.ca_tbl02_2_numPercent9.Text = "0.00%";
+            this.ca_tbl02_2_numPercent9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent10
+            // 
+            this.ca_tbl02_2_numPercent10.AutoSize = true;
+            this.ca_tbl02_2_numPercent10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent10.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent10.Location = new System.Drawing.Point(1249, 62);
+            this.ca_tbl02_2_numPercent10.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent10.Name = "ca_tbl02_2_numPercent10";
+            this.ca_tbl02_2_numPercent10.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent10.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent10.TabIndex = 23;
+            this.ca_tbl02_2_numPercent10.Text = "0.00%";
+            this.ca_tbl02_2_numPercent10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent11
+            // 
+            this.ca_tbl02_2_numPercent11.AutoSize = true;
+            this.ca_tbl02_2_numPercent11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent11.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent11.Location = new System.Drawing.Point(1366, 62);
+            this.ca_tbl02_2_numPercent11.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent11.Name = "ca_tbl02_2_numPercent11";
+            this.ca_tbl02_2_numPercent11.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent11.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent11.TabIndex = 23;
+            this.ca_tbl02_2_numPercent11.Text = "0.00%";
+            this.ca_tbl02_2_numPercent11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercent12
+            // 
+            this.ca_tbl02_2_numPercent12.AutoSize = true;
+            this.ca_tbl02_2_numPercent12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercent12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercent12.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercent12.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercent12.Location = new System.Drawing.Point(1483, 62);
+            this.ca_tbl02_2_numPercent12.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercent12.Name = "ca_tbl02_2_numPercent12";
+            this.ca_tbl02_2_numPercent12.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercent12.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercent12.TabIndex = 23;
+            this.ca_tbl02_2_numPercent12.Text = "0.00%";
+            this.ca_tbl02_2_numPercent12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_2_numPercentAll
+            // 
+            this.ca_tbl02_2_numPercentAll.AutoSize = true;
+            this.ca_tbl02_2_numPercentAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.ca_tbl02_2_numPercentAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_2_numPercentAll.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
+            this.ca_tbl02_2_numPercentAll.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_2_numPercentAll.Location = new System.Drawing.Point(1600, 62);
+            this.ca_tbl02_2_numPercentAll.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_2_numPercentAll.Name = "ca_tbl02_2_numPercentAll";
+            this.ca_tbl02_2_numPercentAll.Padding = new System.Windows.Forms.Padding(4);
+            this.ca_tbl02_2_numPercentAll.Size = new System.Drawing.Size(115, 28);
+            this.ca_tbl02_2_numPercentAll.TabIndex = 23;
+            this.ca_tbl02_2_numPercentAll.Text = "0.00%";
+            this.ca_tbl02_2_numPercentAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ca_tbl02_lblRowAftCa2
+            // 
+            this.ca_tbl02_lblRowAftCa2.AutoSize = true;
+            this.ca_tbl02_lblRowAftCa2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ca_tbl02_lblRowAftCa2.ForeColor = System.Drawing.Color.Black;
+            this.ca_tbl02_lblRowAftCa2.Location = new System.Drawing.Point(2, 92);
+            this.ca_tbl02_lblRowAftCa2.Margin = new System.Windows.Forms.Padding(0);
+            this.ca_tbl02_lblRowAftCa2.Name = "ca_tbl02_lblRowAftCa2";
+            this.ca_tbl02_input2.SetRowSpan(this.ca_tbl02_lblRowAftCa2, 2);
+            this.ca_tbl02_lblRowAftCa2.Size = new System.Drawing.Size(100, 58);
+            this.ca_tbl02_lblRowAftCa2.TabIndex = 24;
+            this.ca_tbl02_lblRowAftCa2.Text = "【契約後】";
+            this.ca_tbl02_lblRowAftCa2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ca_tbl04_parent
             // 
             this.ca_tbl04_parent.AutoSize = true;
@@ -15808,7 +15827,7 @@ namespace TokuchoBugyoK2
             this.te_picPointAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.te_picPointAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.te_picPointAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picPointAlert.Image")));
-            this.te_picPointAlert.Location = new System.Drawing.Point(355, 64);
+            this.te_picPointAlert.Location = new System.Drawing.Point(355, 54);
             this.te_picPointAlert.Margin = new System.Windows.Forms.Padding(2);
             this.te_picPointAlert.Name = "te_picPointAlert";
             this.te_picPointAlert.Size = new System.Drawing.Size(20, 20);
@@ -15823,7 +15842,7 @@ namespace TokuchoBugyoK2
             this.te_picKanriPointAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.te_picKanriPointAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.te_picKanriPointAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picKanriPointAlert.Image")));
-            this.te_picKanriPointAlert.Location = new System.Drawing.Point(586, 154);
+            this.te_picKanriPointAlert.Location = new System.Drawing.Point(586, 146);
             this.te_picKanriPointAlert.Margin = new System.Windows.Forms.Padding(2);
             this.te_picKanriPointAlert.Name = "te_picKanriPointAlert";
             this.te_picKanriPointAlert.Size = new System.Drawing.Size(20, 20);
@@ -15838,7 +15857,7 @@ namespace TokuchoBugyoK2
             this.te_picSyosaPointAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.te_picSyosaPointAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.te_picSyosaPointAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picSyosaPointAlert.Image")));
-            this.te_picSyosaPointAlert.Location = new System.Drawing.Point(586, 185);
+            this.te_picSyosaPointAlert.Location = new System.Drawing.Point(586, 177);
             this.te_picSyosaPointAlert.Margin = new System.Windows.Forms.Padding(2);
             this.te_picSyosaPointAlert.Name = "te_picSyosaPointAlert";
             this.te_picSyosaPointAlert.Size = new System.Drawing.Size(20, 20);
@@ -15863,11 +15882,11 @@ namespace TokuchoBugyoK2
             this.te_lblTitle.BackColor = System.Drawing.Color.SteelBlue;
             this.te_lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.te_lblTitle.ForeColor = System.Drawing.Color.White;
-            this.te_lblTitle.Location = new System.Drawing.Point(7, 4);
+            this.te_lblTitle.Location = new System.Drawing.Point(7, 3);
             this.te_lblTitle.Margin = new System.Windows.Forms.Padding(4);
             this.te_lblTitle.Name = "te_lblTitle";
             this.te_lblTitle.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.te_lblTitle.Size = new System.Drawing.Size(1278, 30);
+            this.te_lblTitle.Size = new System.Drawing.Size(1108, 30);
             this.te_lblTitle.TabIndex = 47;
             this.te_lblTitle.Text = "　　評価・評点";
             // 
@@ -16710,13 +16729,14 @@ namespace TokuchoBugyoK2
             this.ca_tbl02_parent.PerformLayout();
             this.ca_tbl02.ResumeLayout(false);
             this.ca_tbl02.PerformLayout();
-            this.ca_tbl02_input2.ResumeLayout(false);
-            this.ca_tbl02_input2.PerformLayout();
             this.ca_tbl02_input1.ResumeLayout(false);
             this.ca_tbl02_input1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBm_picPercentAlert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBm_picAmtAlert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaBmZeikomi_picAmtAlert)).EndInit();
+            this.ca_tbl02_input2.ResumeLayout(false);
+            this.ca_tbl02_input2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ca_tbl02_AftCaTs_picPercentAlert)).EndInit();
             this.ca_tbl04_parent.ResumeLayout(false);
             this.ca_tbl04_parent.PerformLayout();
             this.ca_tbl04.ResumeLayout(false);
@@ -17743,5 +17763,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.PictureBox ca_tbl02_AftCaBm_picAmtAlert;
         private System.Windows.Forms.PictureBox ca_tbl02_AftCaBmZeikomi_picAmtAlert;
         private System.Windows.Forms.PictureBox ca_tbl02_AftCaBm_picPercentAlert;
+        private System.Windows.Forms.PictureBox ca_tbl02_AftCaTs_picPercentAlert;
     }
 }

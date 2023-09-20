@@ -620,7 +620,7 @@ namespace TokuchoBugyoK2
                 btnNewByOrder.Visible = false;
             }
 
-            sFolderRenameBef = base_tbl02_txtRenameFolder.Text;
+            sFolderRenameBef = base_tbl02_txtAnkenFolder.Text;
             if (base_tbl03_cmbKokiStartYear.SelectedValue == null)
             {
                 sFolderYearRenameBef = base_tbl03_cmbKokiStartYear.Text.Substring(0, 4);
@@ -3870,7 +3870,8 @@ namespace TokuchoBugyoK2
                 GetTotalMoney("ca_tbl02_AftCaBmZeikomi_numAmt", 5);
                 //税抜算出
                 long num = GetLong(tb.Text);
-                switch (sName.Replace("ca_tbl02_AftCaBmZeikomi_numAmt", ""))
+                string sNo = sName.Replace("ca_tbl02_AftCaBmZeikomi_numAmt", "");
+                switch (sNo)
                 {
                     case "1":
                         ca_tbl02_AftCaBm_numAmt1.Text = GetMoneyTextLong(Get_Zeinuki(num));
@@ -3895,6 +3896,8 @@ namespace TokuchoBugyoK2
                 // 配分額(税抜) 合計
                 GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
                 base_tbl07_4_lblAmtAll.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
+                // 配分率の計算 No.1467
+                cal_aftCaBmPercent(sNo);
                 return;
             }
             if (ca_tbl01_txtZeinukiAmt.Name.Equals(sName))
@@ -4119,6 +4122,53 @@ namespace TokuchoBugyoK2
             if (sPercentNo.Equals("1"))
             {
                 calc_aftCaTsFreeTax();
+            }
+        }
+
+        /// <summary>
+        /// 契約後配分部門　金額税込より、配分率計算
+        /// </summary>
+        private void cal_aftCaBmPercent(string sPercentNo)
+        {
+            long lngAmtTax = 0;
+            long total = GetLong(ca_tbl01_txtJyutakuAmt.Text);
+            System.Windows.Forms.TextBox txtAftCaBmPercent = ca_tbl02_AftCaBm_numPercent1;    // 配分率
+            System.Windows.Forms.Label lblAftCaBmRate = base_tbl07_4_lblRate1;
+            switch (sPercentNo)
+            {
+                case "1":
+                    lngAmtTax = GetLong(ca_tbl02_AftCaBmZeikomi_numAmt1.Text);
+                    break;
+                case "2":
+                    lngAmtTax = GetLong(ca_tbl02_AftCaBmZeikomi_numAmt2.Text);
+                    txtAftCaBmPercent = ca_tbl02_AftCaBm_numPercent2;
+                    lblAftCaBmRate = base_tbl07_4_lblRate2;
+                    break;
+                case "3":
+                    lngAmtTax = GetLong(ca_tbl02_AftCaBmZeikomi_numAmt3.Text);
+                    txtAftCaBmPercent = ca_tbl02_AftCaBm_numPercent3;
+                    lblAftCaBmRate = base_tbl07_4_lblRate3;
+                    break;
+                case "4":
+                    lngAmtTax = GetLong(ca_tbl02_AftCaBmZeikomi_numAmt4.Text);
+                    txtAftCaBmPercent = ca_tbl02_AftCaBm_numPercent4;
+                    lblAftCaBmRate = base_tbl07_4_lblRate4;
+                    break;
+            }
+            // パセート再計算
+            double dPercent = 0;
+            if(total > 0)
+            {
+                dPercent = (double)(lngAmtTax * 100 / total);
+            }
+            txtAftCaBmPercent.Text = GetPercentText(dPercent);
+            GetTotalPercent("ca_tbl02_AftCaBm_numPercent", 5);
+
+            // 基本情報等一覧へ連動
+            if (mode != MODE.CHANGE)
+            {
+                lblAftCaBmRate.Text = txtAftCaBmPercent.Text;
+                base_tbl07_4_lblRateAll.Text = ca_tbl02_AftCaBm_numPercentAll.Text;
             }
         }
         #endregion
@@ -4887,13 +4937,9 @@ namespace TokuchoBugyoK2
                             sJyutakuKasyoSibuCdOri = base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString(); //受託課所支部（契約部所）DB値
                             sKokiStartYearOri = base_tbl03_cmbKokiStartYear.SelectedValue.ToString(); //工期開始年度DB値
                             sJigyoubuHeadCD_ori = getJigyoubuHeadCD();
-                            //受託番号が採番された場合、「この案件番号の枝番で受託番号を作成する」ボタンを表示
-                            if (base_tbl02_txtJyutakuEdNo.Text != "")
-                            {
-                                btnNewByBranchNo.Visible = true;
-                            }
+                            //受託番号が採番された場合、「この案件番号の枝番で受託番号を作成する」ボタンを表示 No.1484
+                            btnNewByBranchNo.Visible = (base_tbl02_txtJyutakuEdNo.Text != "");
                         }
-
                     }
                 }
 
@@ -5393,7 +5439,7 @@ namespace TokuchoBugyoK2
             System.Windows.Forms.CheckBox ck = (System.Windows.Forms.CheckBox)sender;
             if (!ck.Enabled) return;
             bool bChk = ck.Checked;
-            if (ck.Name == "base_tbl06_chkTyosaMadoguchi")
+            if (ck.Name == "base_tbl06_chkTyosaMadoguchi" && bChk)
             {
                 //部署
                 base_tbl06_txtBusho.Text = base_tbl05_txtBusho.Text;
@@ -5436,10 +5482,6 @@ namespace TokuchoBugyoK2
                 if (ck.Checked)
                 {
                     base_tbl01_dtpDtBid.Text = DateTime.Now.ToString("yyyy/MM/dd");
-                    //if (base_tbl01_dtpDtPrior.CustomFormat != "")
-                    //{
-                    //    base_tbl01_dtpDtPrior.Text = base_tbl01_dtpDtBid.Text;
-                    //}
                 }
                 else
                 {
@@ -5464,6 +5506,11 @@ namespace TokuchoBugyoK2
             }
         }
 
+        /// <summary>
+        /// フォルダ変更ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void base_tbl02_btnRenameFolder_Click(object sender, EventArgs e)
         {
             // フォルダリネーム========================================================
@@ -5629,6 +5676,7 @@ namespace TokuchoBugyoK2
             System.Windows.Forms.TextBox txt = null;//配分額（税込）
             System.Windows.Forms.TextBox txtCal = null;//配分額（税抜）
             System.Windows.Forms.Label lblBase = null;//基本情報等一覧：配分額（税抜）
+            string sNo = "";
 
             if (btn.Name.Equals(ca_tbl02_btnTSbu.Name))
             {
@@ -5636,6 +5684,7 @@ namespace TokuchoBugyoK2
                 txt = ca_tbl02_AftCaBmZeikomi_numAmt1;
                 txtCal = ca_tbl02_AftCaBm_numAmt1;
                 lblBase = base_tbl07_4_lblAmt1;
+                sNo = "1";
             }
 
             if (btn.Name.Equals(ca_tbl02_btnJGbu.Name))
@@ -5644,6 +5693,7 @@ namespace TokuchoBugyoK2
                 txt = ca_tbl02_AftCaBmZeikomi_numAmt2;
                 txtCal = ca_tbl02_AftCaBm_numAmt2;
                 lblBase = base_tbl07_4_lblAmt2;
+                sNo = "2";
             }
 
             if (btn.Name.Equals(ca_tbl02_btnJHbu.Name))
@@ -5652,6 +5702,7 @@ namespace TokuchoBugyoK2
                 txt = ca_tbl02_AftCaBmZeikomi_numAmt3;
                 txtCal = ca_tbl02_AftCaBm_numAmt3;
                 lblBase = base_tbl07_4_lblAmt3;
+                sNo = "3";
             }
 
             if (btn.Name.Equals(ca_tbl02_btnSGSyo.Name))
@@ -5660,6 +5711,7 @@ namespace TokuchoBugyoK2
                 txt = ca_tbl02_AftCaBmZeikomi_numAmt4;
                 txtCal = ca_tbl02_AftCaBm_numAmt4;
                 lblBase = base_tbl07_4_lblAmt4;
+                sNo = "4";
             }
 
             if (txt != null)
@@ -5683,6 +5735,9 @@ namespace TokuchoBugyoK2
                 base_tbl07_4_lblAmtAll.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
                 // 調査部業務別配分（No.1450）
                 calc_aftCaTsFreeTax();
+
+                // 配分率再計算
+                cal_aftCaBmPercent(sNo);
             }
         }
 
@@ -5870,7 +5925,7 @@ namespace TokuchoBugyoK2
         }
 
         /// <summary>
-        /// チェック用帳票出力・内容確認　ボタン押下
+        /// 契約：チェック用帳票出力・内容確認　ボタン押下
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -7358,22 +7413,6 @@ namespace TokuchoBugyoK2
                 }
             }
 
-            //// 工期開始年度
-            //if (String.IsNullOrEmpty(base_tbl03_cmbKokiStartYear.Text))
-            //{
-            //    errorFlg = true;
-            //    //base_tbl03_cmbKokiStartYear.BackColor = errorColor;
-            //    base_tbl03_lblKokiStartYear.BackColor = errorColor;
-            //    base_tbl03_picKokiStartYearAlert = true;
-            //}
-            //// 売上年度
-            //if (String.IsNullOrEmpty(base_tbl03_cmbKokiSalesYear.Text))
-            //{
-            //    errorFlg = true;
-            //    //base_tbl03_cmbKokiSalesYear.BackColor = errorColor;
-            //    base_tbl03_lblKokiSalesYear.BackColor = errorColor;
-            //    base_tbl03_picKokiSalesYearAlert = true;
-            //}
             // 	４．発注者情報	全て	発注者課名以外が無ければ登録不可。
             //発注者コード
             if (String.IsNullOrEmpty(base_tbl04_txtOrderCd.Text))
@@ -7500,13 +7539,35 @@ namespace TokuchoBugyoK2
                         base_tbl09_picOrderYoteiDtAlert.Visible = true;
                         errorFlg = true;
                     }
-                    // 未発注状況
-                    if (this.IsNotSelected(base_tbl09_cmbNotOrderStats))
+                    //// 未発注状況 No.1473
+                    //if (this.IsNotSelected(base_tbl09_cmbNotOrderStats))
+                    //{
+                    //    base_tbl09_lblNotOrderStats.BackColor = errorColor;
+                    //    base_tbl09_picNotOrderStatsAlert.Visible = true;
+                    //    errorFlg = true;
+                    //}
+                    //「発注無し」の理由 未発注状況が発注無しの場合、空欄の場合登録不可。
+                    if (this.IsSpecifiedValue(base_tbl09_cmbNotOrderStats.SelectedValue, "1"))
                     {
-                        base_tbl09_lblNotOrderStats.BackColor = errorColor;
-                        base_tbl09_picNotOrderStatsAlert.Visible = true;
-                        errorFlg = true;
+                        if (this.IsNotSelected(base_tbl09_cmbNotOrderReason))
+                        {
+                            base_tbl09_lblNotOrderReason.BackColor = errorColor;
+                            base_tbl09_picNotOrderReasonAlert.Visible = true;
+                            errorFlg = true;
+                        }
                     }
+
+                    //「その他」の内容 発注無しの理由がその他の場合、空欄の場合、登録不可
+                    if (IsSpecifiedValue(base_tbl09_cmbNotOrderReason.SelectedValue, "4"))
+                    {
+                        if (string.IsNullOrEmpty(base_tbl09_txtOthenComment.Text))
+                        {
+                            base_tbl09_txtOthenComment.BackColor = errorColor;
+                            base_tbl09_picOthenCommentAlert.Visible = true;
+                            errorFlg = true;
+                        }
+                    }
+
                     // 受注意欲
                     if (this.IsNotSelected(base_tbl09_cmbOrderIyoku))
                     {
@@ -7667,18 +7728,31 @@ namespace TokuchoBugyoK2
                     prior_tbl01_lblOrderIyoku.BackColor = errorColor;
                     prior_tbl01_picOrderIyokuAlert.Visible = true;
                 }
-            }
 
-            // １．事前打診状況    「発注なし」の理由 未発注状況が発注無しの場合、「発注なし」の理由が選択されていない場合はエラー。
-            if (this.IsSpecifiedValue(prior_tbl02_cmbNotOrderStats.SelectedValue, "1"))
-            {
-                if (this.IsNotSelected(prior_tbl02_cmbNotOrderReason))
+                // １．事前打診状況    「発注なし」の理由 未発注状況が発注無しの場合、「発注なし」の理由が選択されていない場合はエラー。No.1474
+                if (this.IsSpecifiedValue(prior_tbl02_cmbNotOrderStats.SelectedValue, "1"))
                 {
-                    prior_tbl02_lblNotOrderReason.BackColor = errorColor;
-                    prior_tbl02_picNotOrderReasonAlert.Visible = true;
-                    errorFlg = true;
+                    if (this.IsNotSelected(prior_tbl02_cmbNotOrderReason))
+                    {
+                        prior_tbl02_lblNotOrderReason.BackColor = errorColor;
+                        prior_tbl02_picNotOrderReasonAlert.Visible = true;
+                        errorFlg = true;
+                    }
+                }
+
+                // 事前打診	２．未発注	その他の内容	発注無しの理由「その他」の時、入力欄色付け。更新時警告。→エラーにするか？→警告にする。
+                if (IsSpecifiedValue(prior_tbl02_cmbNotOrderReason.SelectedValue, "4"))
+                {
+                    if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text))
+                    {
+                        prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
+                        prior_tbl02_picOtherNaiyoAlert.Visible = true;
+                        errorFlg = true;
+                    }
                 }
             }
+
+            
             return errorFlg;
         }
 
@@ -7794,7 +7868,7 @@ namespace TokuchoBugyoK2
                 if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuStatus))
                 {
                     bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
+                    bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
                     errorFlg = true;
                 }
                 //落札額状況
@@ -8121,7 +8195,7 @@ namespace TokuchoBugyoK2
             bool errorFlg = false;
             Color errorColor = Color.FromArgb(255, 204, 255);
 
-            // 受注意欲（入札タブ）を「なし」以外にした状態で、参考見積（事前打診）が「辞退」の場合に更新不可
+            // 受注意欲（入札タブ）を「なし」以外にした状態で、参考見積（入札）が「辞退」の場合に更新不可
             bool isErr = IsSpecifiedValue(bid_tbl01_cmbMitumori.SelectedValue, "4");
             if (IsSpecifiedValue(bid_tbl01_cmbOrderIyoku.SelectedValue, "3") == false && isErr)
             {
@@ -8137,7 +8211,7 @@ namespace TokuchoBugyoK2
             isErr = (IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "3") || IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "4"));
             if (IsSpecifiedValue(bid_tbl01_cmbOrderIyoku.SelectedValue, "3") == false && isErr)
             {
-                set_error(GlobalMethod.GetMessage("E10730", "入札"));
+                set_error(GlobalMethod.GetMessage("E10738", "入札"));
                 bid_tbl01_lblTokaiOsatu.BackColor = errorColor;
                 bid_tbl01_picTokaiOsatuAlert.Visible = true;
                 bid_tbl01_lblOrderIyoku.BackColor = errorColor;
@@ -8151,11 +8225,13 @@ namespace TokuchoBugyoK2
         {
             // エラーフラグ true:エラー /false:正常
             bool errorFlg = false;
-
+            Color errorColor = Color.FromArgb(255, 204, 255);
             // 入札状況
             if (bid_tbl03_1_cmbBidStatus.Text != GlobalMethod.GetCommonValue2("NYUUSATSU_SEIRITSU"))
             {
                 set_error(GlobalMethod.GetMessage("E10724", ""));
+                bid_tbl03_1_lblBidStatus.BackColor = errorColor;
+                bid_tbl03_1_picBidStatusAlert.Visible = true;
                 errorFlg = true;
             }
 
@@ -8178,10 +8254,12 @@ namespace TokuchoBugyoK2
             }
 
             // 調査部 業務別配分が100でないとエラー
-            if (ca_tbl02_2_numPercentAll.Text != "100.00%" && ca_tbl02_2_numPercentAll.Text != "0.00%")
+            if (ca_tbl02_AftCaTs_numPercentAll.Text != "100.00%" && ca_tbl02_AftCaTs_numPercentAll.Text != "0.00%")
             {
                 // 調査業務別　配分の合計が100になるように入力してください。
                 set_error(GlobalMethod.GetMessage("E70045", "契約タブ"));
+                ca_tbl02_AftCaTs_numPercentAll.BackColor = errorColor;
+                ca_tbl02_AftCaTs_picPercentAlert.Visible = true;
                 errorFlg = true;
             }
             return errorFlg;
@@ -8271,23 +8349,23 @@ namespace TokuchoBugyoK2
                 }
             }
 
-            // 事前打診	２．未発注	その他の内容	発注無しの理由「その他」の時、入力欄色付け。更新時警告。→エラーにするか？→警告にする。
-            if (IsSpecifiedValue(prior_tbl02_cmbNotOrderReason.SelectedValue, "4"))
-            {
-                if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text))
-                {
-                    //GlobalMethod.outputMessage("W10604", "事前打診");
-                    set_error(GlobalMethod.GetMessage("W10604", "事前打診"));
-                    prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
-                    prior_tbl02_picOtherNaiyoAlert.Visible = true;
-                    prior_tbl02_lblNotOrderReason.BackColor = errorColor;
-                    prior_tbl02_picNotOrderReasonAlert.Visible = true;
-                    //if (GlobalMethod.outputMessage("E10735", "事前打診", 1) == DialogResult.Cancel)
-                    //{
-                    //    return true;
-                    //}
-                }
-            }
+            //// 事前打診	２．未発注	その他の内容	発注無しの理由「その他」の時、入力欄色付け。更新時警告。→エラーにするか？→警告にする。
+            //if (IsSpecifiedValue(prior_tbl02_cmbNotOrderReason.SelectedValue, "4"))
+            //{
+            //    if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text))
+            //    {
+            //        //GlobalMethod.outputMessage("W10604", "事前打診");
+            //        set_error(GlobalMethod.GetMessage("W10604", "事前打診"));
+            //        prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
+            //        prior_tbl02_picOtherNaiyoAlert.Visible = true;
+            //        prior_tbl02_lblNotOrderReason.BackColor = errorColor;
+            //        prior_tbl02_picNotOrderReasonAlert.Visible = true;
+            //        //if (GlobalMethod.outputMessage("E10735", "事前打診", 1) == DialogResult.Cancel)
+            //        //{
+            //        //    return true;
+            //        //}
+            //    }
+            //}
             // １．入札情報	入札状況	「入札中」のまま「入札タブ　入札結果登録日」が登録されたら警告。 入札中⇒入札前
             if (IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1"))
             {
@@ -8431,6 +8509,18 @@ namespace TokuchoBugyoK2
             ca_tbl02_AftCaBm_numPercentAll.BackColor = clearColor;
             ca_tbl05_txtGyomu.BackColor = clearColor;
             ca_tbl05_txtMadoguchi.BackColor = clearColor;
+
+            // アラートアイコン非表示にする
+            ca_tbl01_picChangeDtAlert.Visible = false;
+            ca_tbl01_picKianDtAlert.Visible = false;
+            ca_tbl01_picRiyuAlert.Visible = false;
+            ca_tbl01_picAnkenKubunAlert.Visible = false;
+            ca_tbl01_picZeikomiAmtAlert.Visible = false;
+            ca_tbl02_AftCaBmZeikomi_picAmtAlert.Visible = false;
+            ca_tbl02_AftCaBm_picAmtAlert.Visible = false;
+            ca_tbl02_AftCaBm_picPercentAlert.Visible = false;
+            ca_tbl05_picGyomuAlert.Visible = false;
+            ca_tbl05_picMadoguchiAlert.Visible = false;
 
             set_error("", 0);
 
@@ -8801,7 +8891,6 @@ namespace TokuchoBugyoK2
             base_tbl02_picKeikakuNoAlert.Visible = false;    // 計画番号
             base_tbl02_picJyutakuKasyoSibuAlert.Visible = false;    // 受託部所
             base_tbl02_picKeiyakuTantoAlert.Visible = false;    // 契約担当者
-            base_tbl02_tblJyutakuSibu.Visible = false;    // 受託部所アラートアイコン追加するため追加
             base_tbl02_picAnkenFolderAlert.Visible = false;    // 案件フォルダ
             base_tbl03_picGyomuNameAlert.Visible = false;    // 業務名称
             base_tbl03_picKeiyakuKubunAlert.Visible = false;    // 契約区分
@@ -8865,7 +8954,7 @@ namespace TokuchoBugyoK2
             bid_tbl03_1_picRakusatuSyaAlert.Visible = false;    // 落札者
             bid_tbl03_1_picRakusatuAmtAlert.Visible = false;    // 落札金額
             bid_tbl03_1_picOsatuNumAlert.Visible = false;    // 応札数
-            bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = false;    // 落札者状況
+            bid_tbl03_1_picRakusatuStatusAlert.Visible = false;    // 落札者状況
             bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = false;    // 落札額状況
             //契約
             ca_tbl01_picKianDtAlert.Visible = false;    // 起案日
@@ -8879,6 +8968,7 @@ namespace TokuchoBugyoK2
             ca_tbl05_picGyomuAlert.Visible = false;    // 業務管理者
             ca_tbl05_picMadoguchiAlert.Visible = false;    // 窓口担当者
             ca_tbl01_picAnkenKubunAlert.Visible = false;    // 案件区分
+            ca_tbl02_AftCaTs_picPercentAlert.Visible = false;
             //技術者評価
             te_picPointAlert.Visible = false;    // 業務得点
             te_picKanriPointAlert.Visible = false;    // 管理得点
@@ -8931,8 +9021,9 @@ namespace TokuchoBugyoK2
                 base_tbl09_lblSankomitumori.BackColor = clearColor;
                 base_tbl09_lblOrderYoteiDt.BackColor = clearColor;
                 base_tbl09_lblNotOrderStats.BackColor = clearColor;
+                base_tbl09_lblNotOrderReason.BackColor = clearColor;
+                base_tbl09_txtOthenComment.BackColor = clearColor;
                 base_tbl09_lblOrderIyoku.BackColor = clearColor;
-
                 base_tbl10_lblOrderKubun.BackColor = clearColor;
                 base_tbl10_lblNyusatuHosiki.BackColor = clearColor;
                 base_tbl10_lblLowestUmu.BackColor = clearColor;
