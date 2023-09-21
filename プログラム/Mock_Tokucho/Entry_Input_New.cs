@@ -837,10 +837,10 @@ namespace TokuchoBugyoK2
             }
 
             //３．案件情報　----
+            //業務名称
+            base_tbl03_txtGyomuName.Text = AnkenData_H.Rows[0]["AnkenGyoumuMei"].ToString();
             if (copy != COPY.HC)
             {
-                //業務名称
-                base_tbl03_txtGyomuName.Text = AnkenData_H.Rows[0]["AnkenGyoumuMei"].ToString();
                 //契約区分
                 base_tbl03_cmbKeiyakuKubun.SelectedValue = AnkenData_H.Rows[0]["AnkenGyoumuKubun"].ToString();
                 if (copy != COPY.GM)
@@ -3009,9 +3009,9 @@ namespace TokuchoBugyoK2
                     bid_tbl02_cmbKinsiUmu.Enabled = false;//再委託禁止条項の記載有無
                     bid_tbl02_cmbKinsiNaiyo.Enabled = false;//再委託禁止条項の内容
                     bid_tbl02_txtOtherNaiyo.ReadOnly = true;//その他の内容
-
                     // ３．入札結果
                     bid_tbl03_1_cmbBidStatus.Enabled = false;//入札状況
+                    bid_tbl03_1_txtBidMemo.ReadOnly = true;//案件メモ（入札）
 
                     //契約 ---------------------
                     // チェック用帳票出力・内容確認ボタンは常時使用可とするためコメントアウト
@@ -3045,7 +3045,7 @@ namespace TokuchoBugyoK2
                     ca_tbl01_txtJyutakuGaiAmt.ReadOnly = true; // 受託外金額（税込）
                     ca_tbl01_txtRiyu.ReadOnly = true; // 変更・中止理由
                     ca_tbl01_txtAnkenMemo.ReadOnly = true; // 案件メモ（契約）
-                    ca_tbl01_txtBiko.Enabled = false; // 備考
+                    ca_tbl01_txtBiko.ReadOnly = false; // 備考
                     ca_tbl01_chkCaSyosya.Enabled = false; // 契約書写
                     ca_tbl01_chkSiyosyo.Enabled = false; // 特記仕様書
                     ca_tbl01_chkMitumorisyo.Enabled = false; // 見積書
@@ -3102,7 +3102,6 @@ namespace TokuchoBugyoK2
                     ca_tbl05_txtMadoguchi.Enabled = false;
                     // ６．売上計上情報
                     // 各ボタン
-                    ca_tbl06_btnAddRow.Visible = false;
                     ca_tbl06_btnChosa.Visible = false;
                     ca_tbl06_btnJigyoHukyu.Visible = false;
                     ca_tbl06_btnJohoSystem.Visible = false;
@@ -7027,7 +7026,7 @@ namespace TokuchoBugyoK2
 
                 // 入札タブ
                 // 入札状況が入札成立でなければ起案エラー
-                if (!GlobalMethod.GetCommonValue1("NYUUSATSU_SEIRITSU").Equals(bid_tbl03_1_cmbBidStatus.SelectedValue.ToString()))
+                if (!isNyuusatsu_seiritsu(bid_tbl03_1_cmbBidStatus.SelectedValue.ToString()))
                 {
                     set_error(GlobalMethod.GetMessage("E10702", ""));
                 }
@@ -7448,67 +7447,72 @@ namespace TokuchoBugyoK2
                     base_tbl07_3_lblOen.BackColor = errorColor;
                     base_tbl07_3_picOenAlert.Visible = true;
                 }
-                if (String.IsNullOrEmpty(base_tbl07_3_txtOenMemo.Text))
-                {
-                    errorFlg = true;
-                    base_tbl07_3_txtOenMemo.BackColor = errorColor;
-                    base_tbl07_3_picOenMemoAlert.Visible = true;
-                }
-                bool bOen1 = false;
-                bool bOen2 = false;
-                bool bOen3 = false;
-                if(base_tbl07_3_tblOenIrai1.Height > 0)
-                {
-                    foreach (Control child in base_tbl07_3_tblOenIrai1.Controls)
-                    {
-                        //特定のコントロール型内部の子情報は取得しない
-                        if (child is System.Windows.Forms.CheckBox)
-                        {
-                            if (((System.Windows.Forms.CheckBox)child).Checked)
-                            {
-                                bOen1 = true;
-                                break;
-                            }
-                        }
-                    }
 
-                    if(!bOen1 && base_tbl07_3_tblOenIrai2.Height > 0)
+                // No.1491 エントリくんの新規登録・更新で、基本情報の応援依頼先が【なし】の場合は、「応援依頼メモ」「応援依頼先」が空欄でも良いが、エラーとなってしまう。
+                if (!IsSpecifiedValue(base_tbl07_3_cmbOen.SelectedValue, "2"))
+                {
+                    if (String.IsNullOrEmpty(base_tbl07_3_txtOenMemo.Text))
                     {
-                        foreach (Control child in base_tbl07_3_tblOenIrai2.Controls)
+                        errorFlg = true;
+                        base_tbl07_3_txtOenMemo.BackColor = errorColor;
+                        base_tbl07_3_picOenMemoAlert.Visible = true;
+                    }
+                    bool bOen1 = false;
+                    bool bOen2 = false;
+                    bool bOen3 = false;
+                    if (base_tbl07_3_tblOenIrai1.Height > 0)
+                    {
+                        foreach (Control child in base_tbl07_3_tblOenIrai1.Controls)
                         {
                             //特定のコントロール型内部の子情報は取得しない
                             if (child is System.Windows.Forms.CheckBox)
                             {
                                 if (((System.Windows.Forms.CheckBox)child).Checked)
                                 {
-                                    bOen2 = true;
+                                    bOen1 = true;
                                     break;
                                 }
                             }
                         }
-                    }
 
-                    if (!bOen1 && !bOen2 && base_tbl07_3_tblOenIrai3.Height > 0)
-                    {
-                        foreach (Control child in base_tbl07_3_tblOenIrai3.Controls)
+                        if (!bOen1 && base_tbl07_3_tblOenIrai2.Height > 0)
                         {
-                            //特定のコントロール型内部の子情報は取得しない
-                            if (child is System.Windows.Forms.CheckBox)
+                            foreach (Control child in base_tbl07_3_tblOenIrai2.Controls)
                             {
-                                if (((System.Windows.Forms.CheckBox)child).Checked)
+                                //特定のコントロール型内部の子情報は取得しない
+                                if (child is System.Windows.Forms.CheckBox)
                                 {
-                                    bOen3 = true;
-                                    break;
+                                    if (((System.Windows.Forms.CheckBox)child).Checked)
+                                    {
+                                        bOen2 = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (!bOen1 && !bOen2 && base_tbl07_3_tblOenIrai3.Height > 0)
+                        {
+                            foreach (Control child in base_tbl07_3_tblOenIrai3.Controls)
+                            {
+                                //特定のコントロール型内部の子情報は取得しない
+                                if (child is System.Windows.Forms.CheckBox)
+                                {
+                                    if (((System.Windows.Forms.CheckBox)child).Checked)
+                                    {
+                                        bOen3 = true;
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                if (!(bOen1 || bOen2 || bOen3))
-                {
-                    base_tbl07_3_lblOenIrai.BackColor = errorColor;
-                    base_tbl07_3_picOenIraiAlert.Visible = true;
-                    errorFlg = true;
+                    if (!(bOen1 || bOen2 || bOen3))
+                    {
+                        base_tbl07_3_lblOenIrai.BackColor = errorColor;
+                        base_tbl07_3_picOenIraiAlert.Visible = true;
+                        errorFlg = true;
+                    }
                 }
             }
 
@@ -8227,7 +8231,7 @@ namespace TokuchoBugyoK2
             bool errorFlg = false;
             Color errorColor = Color.FromArgb(255, 204, 255);
             // 入札状況
-            if (bid_tbl03_1_cmbBidStatus.Text != GlobalMethod.GetCommonValue2("NYUUSATSU_SEIRITSU"))
+            if (!isNyuusatsu_seiritsu(bid_tbl03_1_cmbBidStatus.Text,1))
             {
                 set_error(GlobalMethod.GetMessage("E10724", ""));
                 bid_tbl03_1_lblBidStatus.BackColor = errorColor;
@@ -8266,6 +8270,26 @@ namespace TokuchoBugyoK2
         }
 
         /// <summary>
+        /// 入札成立か判定
+        /// </summary>
+        /// <param name="sCompare">比較文字列</param>
+        /// <param name="iFlg">0:SelectedValueで判定、1:Textで判定</param>
+        /// <returns></returns>
+        private bool isNyuusatsu_seiritsu(string sCompare, int iFlg = 0)
+        {
+            bool isSeiritsu = false;
+            string sComValue = iFlg == 0? GlobalMethod.GetCommonValue1("NYUUSATSU_SEIRITSU") : GlobalMethod.GetCommonValue2("NYUUSATSU_SEIRITSU");
+            string[] arrComValue = sComValue.Split(',');
+            if(arrComValue.Length > 0)
+            {
+                // データ設定している場合
+                if(arrComValue.Contains(sCompare)){
+                    isSeiritsu = true;
+                }
+            }
+            return isSeiritsu;
+        }
+        /// <summary>
         /// 技術者評価：入力データの正確性チェック
         /// </summary>
         /// <param name="flg"></param>
@@ -8299,6 +8323,43 @@ namespace TokuchoBugyoK2
                 set_error(GlobalMethod.GetMessage("E10913", "協力担当者評点"));
                 te_picSyosaPointAlert.Visible = true;
                 te_txtSyosaPoint.BackColor = errorColor;
+                errorFlg = true;
+            }
+
+            // 担当技術者評点
+            bool isPoint = true;
+            for (int i = 1; i < te_c1FlexGrid.Rows.Count; i++)
+            {
+                if (te_c1FlexGrid.Rows[i][1] != null && te_c1FlexGrid.Rows[i][1].ToString() != "")
+                {
+                    string Hyouten = "";
+                    if (te_c1FlexGrid.Rows[i][3] != null && te_c1FlexGrid.Rows[i][3].ToString() != "")
+                    {
+                        Hyouten = te_c1FlexGrid.Rows[i][3].ToString();
+                    }
+                    if (!string.IsNullOrEmpty(Hyouten))
+                    {
+                        int iHyouten = 0;
+                        if(int.TryParse(Hyouten, out iHyouten))
+                        {
+                            if(iHyouten < 0 || iHyouten > 100)
+                            {
+                                isPoint = false;
+                                te_c1FlexGrid.GetCellRange(i, 3).StyleNew.BackColor = errorColor;
+                            }
+                        }
+                        else
+                        {
+                            isPoint = false;
+                            te_c1FlexGrid.GetCellRange(i, 3).StyleNew.BackColor = errorColor;
+                        }
+                    }
+                }
+            }
+            if (!isPoint)
+            {
+                set_error(GlobalMethod.GetMessage("E10913", "担当技術者評点"));
+                te_picTantoPointAlert.Visible = true;
                 errorFlg = true;
             }
 
@@ -8623,7 +8684,7 @@ namespace TokuchoBugyoK2
             if (mode != MODE.CHANGE)
             {
                 //入札状況が入札成立でなければ起案エラー
-                if (!GlobalMethod.GetCommonValue1("NYUUSATSU_SEIRITSU").Equals(bid_tbl03_1_cmbBidStatus.SelectedValue.ToString()))
+                if (!isNyuusatsu_seiritsu(bid_tbl03_1_cmbBidStatus.SelectedValue.ToString()))
                 {
                     varidateFlag = false;
                     set_error(GlobalMethod.GetMessage("E10702", ""));
@@ -8973,6 +9034,7 @@ namespace TokuchoBugyoK2
             te_picPointAlert.Visible = false;    // 業務得点
             te_picKanriPointAlert.Visible = false;    // 管理得点
             te_picSyosaPointAlert.Visible = false;    // 照査得点
+            te_picTantoPointAlert.Visible = false;    // 技術者担当者得点
             te_picSeikyusyoAlert.Visible = false;    // 請求書
         }
 
@@ -9098,6 +9160,11 @@ namespace TokuchoBugyoK2
                 te_txtKanriPoint.BackColor = clearColor;
                 te_txtSyosaPoint.BackColor = clearColor;
                 te_txtSeikyusyo.BackColor = clearColor;
+
+                for (int i = 1; i < te_c1FlexGrid.Rows.Count; i++)
+                {
+                    te_c1FlexGrid.GetCellRange(i, 3).StyleNew.BackColor = clearColor;
+                }
             }
         }
         #endregion
@@ -11833,12 +11900,12 @@ namespace TokuchoBugyoK2
                 //・受託番号削除は、起案後には行えない。起案後に行う場合は、起案解除後に行える。（システム管理者のみ）
                 if (UserInfos[4].Equals("2"))
                 {
-                    if (ca_tbl01_chkKian.Checked == false && (bid_tbl03_1_txtRakusatuSya.Text == GlobalMethod.GetCommonValue2("ENTORY_TOUKAI")) == false)
+                    if (ca_tbl01_chkKian.Checked == false && (bid_tbl03_1_txtRakusatuSya.Text.Equals(GlobalMethod.GetCommonValue2("ENTORY_TOUKAI"))) == false)
                     {
                         string checkBangou = tblAKInfo_lblJyutakuNo.Text;
                         bool isDel = false;
                         //・窓口ミハルが登録されている場合は、エラーメッセージを表示し、削除が出来ない。
-                        DataTable dt = GlobalMethod.getData("TOP 1 MadoguchiJutakuBangou", "MadoguchiJutakuBangou", "MadoguchiJouhou",
+                        DataTable dt = GlobalMethod.getData("MadoguchiJutakuBangou", "TOP 1 MadoguchiJutakuBangou", "MadoguchiJouhou",
                             "AnkenJouhouID = " + AnkenID + " AND MadoguchiJutakuBangou = '" + ankenNo + "' AND MadoguchiJutakuBangouEdaban = '" + base_tbl02_txtJyutakuEdNo.Text + "' AND MadoguchiDeleteFlag != 1 ");
 
                         if (dt != null && dt.Rows.Count > 0)
@@ -11856,7 +11923,7 @@ namespace TokuchoBugyoK2
                         //・単価契約が登録されている場合は、エラーメッセージを表示し、削除が出来ない。
                         if (isDel == true)
                         {
-                            dt = GlobalMethod.getData("TOP 1 TankakeiyakuJutakuBangou", "TankakeiyakuJutakuBangou", "TankaKeiyaku",
+                            dt = GlobalMethod.getData("TankakeiyakuJutakuBangou", "TOP 1 TankakeiyakuJutakuBangou", "TankaKeiyaku",
                             "AnkenJouhouID = " + AnkenID + " AND TankakeiyakuJutakuBangou = '" + checkBangou + "' and TankakeiyakuDeleteFlag != 1 ");
 
                             if (dt != null && dt.Rows.Count > 0)
@@ -12150,6 +12217,7 @@ namespace TokuchoBugyoK2
                     }
                 }
                 base_tbl02_txtAnkenFolder.Text = folderTo;
+                te_txtSeikyusyo.Text = folderTo + @"\02契約関係図書";
                 base_tbl02_txtRenameFolder.Text = "";
                 ca_tbl01_hidResetAnkenno.Text = "";
 

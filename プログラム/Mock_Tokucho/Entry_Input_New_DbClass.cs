@@ -260,7 +260,7 @@ namespace TokuchoBugyoK2
                 sSql.Append("    , NyuusatsuJouhou.NyuusatsuJouhouID");
                 sSql.Append("    , NyuusatsuUpdateDate ");
                 //sSql.Append("    , AnkenNyuusatsuHoushiki");
-                sSql.Append("    , NyuusatsuHoushiki");
+                sSql.Append("    , RIGHT('0' + CONVERT(NVARCHAR, NyuusatsuHoushiki), 2) AS NyuusatsuHoushiki");
 
                 sSql.Append("    , NyuusatsuAnkenMemoNuusatsu");//--案件メモ(入札)
                 sSql.Append("    , NyuusatsuSaiitakuSonotaNaiyou");//--その他の内容
