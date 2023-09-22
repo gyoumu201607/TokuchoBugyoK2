@@ -314,8 +314,12 @@ namespace TokuchoBugyoK2
             #region c1FlexGrid　各種設定 --------------------------------------------------
             // 基本情報等一覧 ================================================================================
             // -- １．進捗段階　の　契約の　表示／非表示　設定
-            int iHeight = (mode == MODE.INSERT) ? 0 : 32;
+            int iHeight = (mode == MODE.INSERT || mode == MODE.PLAN) ? 0 : 32;
             base_tbl01_input.RowStyles[2].Height = iHeight;
+            if(iHeight > 0)
+            {
+                base_tbl01_chkKeiyaku.TabStop = true;
+            }
             // -- ２．基本情報 のリネーム情報　表示／非表示　設定
             bool iVisible = (mode == MODE.INSERT || mode == MODE.PLAN) ? false : true;
             setVisibleToRenameFolder(iVisible);
@@ -4438,6 +4442,24 @@ namespace TokuchoBugyoK2
                         base_tbl10_txtRakusatuAmt.Text = bid_tbl03_1_numRakusatuAmt.Text;
                     }
                 }
+                return;
+            }
+            if (grid.Name == "ca_tbl06_c1FlexGrid") {
+                int iCol = ca_tbl06_c1FlexGrid.Col;
+                if (iCol == 1 || iCol == 9 || iCol == 17 || iCol == 25)
+                {
+                    int iRow = ca_tbl06_c1FlexGrid.Row;
+                    // 工期末日付を空にした場合
+                    if (ca_tbl06_c1FlexGrid.Rows[iRow][iCol] == null)
+                    {
+                        ca_tbl06_c1FlexGrid.Rows[iRow][iCol + 1] = null;
+                    }
+                    else
+                    {
+                        ca_tbl06_c1FlexGrid.Rows[iRow][iCol + 1] = DateTime.Parse(ca_tbl06_c1FlexGrid.Rows[iRow][iCol].ToString()).ToString("yyyy/MM");
+
+                    }
+                }
             }
         }
 
@@ -8151,11 +8173,11 @@ namespace TokuchoBugyoK2
 
                 // 入札状況 「入札中」のまま「入札情報登録日」が登録は登録不可。★★★
                 obj = base_tbl10_cmbNyusatuStats.SelectedValue;
-                if (base_tbl01_dtpDtBid.CustomFormat.Trim() == "" && IsSpecifiedValue(obj, "1"))
+                if (base_tbl01_dtpDtBid.CustomFormat == "" && IsSpecifiedValue(obj, "1"))
                 {
                     set_error(GlobalMethod.GetMessage("E10737", "基本情報等一覧"));
                     base_tbl10_lblNyusatuStats.BackColor = errorColor;
-                    base_tbl10_lblNyusatuStats.Visible = true;
+                    base_tbl10_picNyusatuStatsAlert.Visible = true;
                     base_tbl01_lblDtBid.BackColor = errorColor;
                     base_tbl01_picBidAlert.Visible = true;
                     errorFlg = true;
@@ -12218,6 +12240,7 @@ namespace TokuchoBugyoK2
                 }
                 base_tbl02_txtAnkenFolder.Text = folderTo;
                 te_txtSeikyusyo.Text = folderTo + @"\02契約関係図書";
+                ca_tbl01_txtTosyo.Text = folderTo;
                 base_tbl02_txtRenameFolder.Text = "";
                 ca_tbl01_hidResetAnkenno.Text = "";
 

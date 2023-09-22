@@ -118,6 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ca_tbl01_picRiyuAlert.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAdFJREFUOE/dkztIw1AUhusDB3FUUFcR3FQQBRcHcdJZnXSRIi4iiIiimyLiJJVq
+        rFiL1ie+H3X1XRw6+QpIqyi0kEInqU2b33uSa21Nqgid/OBAc849H/eniQlp5h8I/X4/ZixdmJ8bgyzL
+        vJuaX4U2YQRvjzkQL4rgch3xbmp+FHo8HpzulyH2kgHl1QSH0IhQKMSnxqQURiIRFtUM+TkTA32tsFvr
+        IN3mwblk4yeMSSmkeOJlIRNmobOzAxOjTQC75Z6zCl6vl5/SYyikWI6ZRlVA1dPdBmGyXv0d9mVDsA5B
+        URR+OhlD4RKLFWTxPoXDA81YmauNP7uPS+B2u/npZHRCikOxPpepKO7BSmX8WXkxYXaqHeFwmG99kSSk
+        GBTnncVKFFJc+rcTe77rAuzubvPNL5KEFIPiJC5SbSzU4O6sWNd32hogSRLf1mATDbq+wGLQ+/Z98WSv
+        DPfnemHoIRcOu4UbNNhEg67vu87XLUk3eTCbzRjsb9HNqFzr5RBFkVu4kL5Ru1V7z76Xwr6STUc1ro5K
+        DefyUxYW5sdVGcG6QCwWw7SlF4erFXCtlf+pdharsLW1rMoIVUhEo1EEAoE/VzAY5AaNuDBdpFkIfAAG
+        0orkKQNoGgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="picLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAALUAAAAuCAYAAABu8lgpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -1439,20 +1453,6 @@
   </data>
   <data name="ca_tbl06_c1FlexGrid.StyleInfo" xml:space="preserve">
     <value>Normal{}	Alternate{}	Fixed{BackColor:CadetBlue;ForeColor:White;TextAlign:CenterCenter;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	FixedBumon{BackColor:DarkGray;ForeColor:White;TextAlign:CenterCenter;Border:Flat,1,White,Both;}	</value>
-  </data>
-  <data name="ca_tbl01_picRiyuAlert.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAdFJREFUOE/dkztIw1AUhusDB3FUUFcR3FQQBRcHcdJZnXSRIi4iiIiimyLiJJVq
-        rFiL1ie+H3X1XRw6+QpIqyi0kEInqU2b33uSa21Nqgid/OBAc849H/eniQlp5h8I/X4/ZixdmJ8bgyzL
-        vJuaX4U2YQRvjzkQL4rgch3xbmp+FHo8HpzulyH2kgHl1QSH0IhQKMSnxqQURiIRFtUM+TkTA32tsFvr
-        IN3mwblk4yeMSSmkeOJlIRNmobOzAxOjTQC75Z6zCl6vl5/SYyikWI6ZRlVA1dPdBmGyXv0d9mVDsA5B
-        URR+OhlD4RKLFWTxPoXDA81YmauNP7uPS+B2u/npZHRCikOxPpepKO7BSmX8WXkxYXaqHeFwmG99kSSk
-        GBTnncVKFFJc+rcTe77rAuzubvPNL5KEFIPiJC5SbSzU4O6sWNd32hogSRLf1mATDbq+wGLQ+/Z98WSv
-        DPfnemHoIRcOu4UbNNhEg67vu87XLUk3eTCbzRjsb9HNqFzr5RBFkVu4kL5Ru1V7z76Xwr6STUc1ro5K
-        DefyUxYW5sdVGcG6QCwWw7SlF4erFXCtlf+pdharsLW1rMoIVUhEo1EEAoE/VzAY5AaNuDBdpFkIfAAG
-        0orkKQNoGgAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="ca_tbl01_picAnkenKubunAlert.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
