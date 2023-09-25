@@ -2796,7 +2796,7 @@ namespace TokuchoBugyoK2
         private void setVisibleDetails()
         {
             base_tbl08_c1FlexGrid.Height = 4 + 22 * base_tbl08_c1FlexGrid.Rows.Count;
-            // 新規登録以外
+            // 新規登録
             if (mode == MODE.INSERT || mode == MODE.PLAN)
             {
                 // 基本情報 ----------------------------
@@ -2924,10 +2924,7 @@ namespace TokuchoBugyoK2
                     // 09:契約変更(黒伝・その他)
                     // 01以外の場合、変更伝票を行ったと判定
                     ca_tbl01_cmbAnkenKubun.Enabled = (AnkenData_K.Rows[0]["AnkenSakuseiKubun"].ToString() != "01");
-                }
 
-                if (isKian && mode != MODE.CHANGE && mode != MODE.INSERT && mode != MODE.PLAN)
-                {
                     //ヘッダーボタン
                     btnDelete.Visible = true;
 
@@ -3149,6 +3146,11 @@ namespace TokuchoBugyoK2
                     //赤黒作成時に起案日をクリア対応
                     ca_tbl01_dtpKianDt.Text = "";
                     ca_tbl01_dtpKianDt.CustomFormat = " ";
+
+                    // 工期自と工期至活性にする
+                    ca_tbl01_dtpKokiFrom.Enabled = true;
+                    ca_tbl01_dtpKokiTo.Enabled = true;
+
                     //契約：契約金額変更（税抜） 表示設定
                     ca_tbl01_numChangeAmt.Visible = true;
                     ca_tbl01_lblChangeAmt.Visible = true;
@@ -3315,62 +3317,6 @@ namespace TokuchoBugyoK2
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             ((DateTimePicker)sender).CustomFormat = "";
-
-            //DateTimePicker dtp = (DateTimePicker)sender;
-            //if (dtp.Name.Equals("base_tbl03_dtpKokiTo"))
-            //{
-            //    if (base_tbl03_dtpKokiTo.CustomFormat == "")
-            //    {
-            //        DataTable dt = new DataTable();
-            //        dt = GlobalMethod.getData("NendoID", "NendoID", "Mst_Nendo", "Nendo_Sdate <= '" + base_tbl03_dtpKokiTo.Text + "' AND Nendo_EDate >= '" + base_tbl03_dtpKokiTo.Text + "' ");
-            //        if (dt != null && dt.Rows.Count > 0)
-            //        {
-            //            // 売上年度
-            //            if (mode != MODE.INSERT && mode != MODE.PLAN)
-            //            {
-            //                ca_tbl01_cmbSalesYear.SelectedValue = dt.Rows[0][0].ToString();
-            //            }
-            //            if (mode != MODE.CHANGE)
-            //            {
-            //                base_tbl03_cmbKokiSalesYear.SelectedValue = dt.Rows[0][0].ToString();
-            //            }
-            //        }
-            //    }
-            //    return;
-            //}
-            //if (dtp.Name.Equals("base_tbl03_dtpKokiFrom"))
-            //{
-            //    if (base_tbl03_dtpKokiFrom.CustomFormat == "")
-            //    {
-            //        DataTable dt = new DataTable();
-            //        dt = GlobalMethod.getData("NendoID", "NendoID", "Mst_Nendo", "Nendo_Sdate <= '" + base_tbl03_dtpKokiFrom.Text + "' AND Nendo_EDate >= '" + base_tbl03_dtpKokiFrom.Text + "' ");
-            //        if (dt != null && dt.Rows.Count > 0)
-            //        {
-            //            // 工期開始年度
-            //            if (mode != MODE.INSERT && mode != MODE.PLAN)
-            //            {
-            //                ca_tbl01_cmbStartYear.SelectedValue = dt.Rows[0][0].ToString();
-            //            }
-            //            if (mode != MODE.CHANGE)
-            //            {
-            //                base_tbl03_cmbKokiStartYear.SelectedValue = dt.Rows[0][0].ToString();
-            //            }
-            //        }
-            //    }
-            //    return;
-            //}
-            //if (dtp.Name.Equals("prior_tbl01_dtpDasinIraiDt"))
-            //{
-            //    //事前打診依頼日
-            //    base_tbl09_dtpJizenDasinIraiDt.Text = dtp.Text;
-            //    return;
-            //}
-            //if (dtp.Name.Equals("prior_tbl01_dtpOrderYoteiDt"))
-            //{
-            //    //発注予定・見込日
-            //    base_tbl09_dtpOrderYoteiDt.Text = dtp.Text;
-            //    return;
-            //}
         }
 
         /// <summary>
@@ -3382,35 +3328,30 @@ namespace TokuchoBugyoK2
         {
             DateTimePicker dtp = (DateTimePicker)sender;
             dtp.CustomFormat = "";
-            if (dtp.Name.Equals("prior_tbl01_dtpDasinIraiDt"))
+            if (dtp.Name.Equals(prior_tbl01_dtpDasinIraiDt.Name))
             {
                 //事前打診依頼日
                 base_tbl09_dtpJizenDasinIraiDt.Text = dtp.Text;
                 return;
             }
-            if (dtp.Name.Equals("base_tbl01_dtpDtBid"))
+            if (dtp.Name.Equals(base_tbl01_dtpDtBid.Name))
             {
-                //事前打診登録日
-                //if(base_tbl01_dtpDtPrior.CustomFormat != "")
-                //{
-                //    base_tbl01_dtpDtPrior.Text = dtp.Text;
-                //}
                 return;
             }
-            if (dtp.Name.Equals("prior_tbl01_dtpOrderYoteiDt"))
+            if (dtp.Name.Equals(prior_tbl01_dtpOrderYoteiDt.Name))
             {
                 //発注予定・見込日
                 base_tbl09_dtpOrderYoteiDt.Text = dtp.Text;
                 return;
             }
-            if (dtp.Name.Equals("bid_tbl01_dtpBidYoteiDt"))
+            if (dtp.Name.Equals(bid_tbl01_dtpBidYoteiDt.Name))
             {
                 //入札：入札予定日⇒基本情報：入札予定日
                 base_tbl10_dtpNyusatuDt.Text = dtp.Text;
                 return;
             }
 
-            if (dtp.Name.Equals("base_tbl03_dtpKokiTo"))
+            if (dtp.Name.Equals(base_tbl03_dtpKokiTo.Name))
             {
                 // 基本情報：工期終了
                 if (base_tbl03_dtpKokiFrom.CustomFormat == "" && base_tbl03_dtpKokiTo.CustomFormat == "")
@@ -3443,7 +3384,7 @@ namespace TokuchoBugyoK2
                 return;
             }
 
-            if (dtp.Name.Equals("base_tbl03_dtpKokiFrom"))
+            if (dtp.Name.Equals(base_tbl03_dtpKokiFrom.Name))
             {
                 if (base_tbl03_dtpKokiFrom.CustomFormat == "")
                 {
@@ -3465,7 +3406,7 @@ namespace TokuchoBugyoK2
                 return;
             }
 
-            if (dtp.Name.Equals("ca_tbl01_dtpChangeDt"))
+            if (dtp.Name.Equals(ca_tbl01_dtpChangeDt.Name))
             {
                 //　契約：契約締結(変更)日
                 if (ca_tbl01_dtpChangeDt.CustomFormat != "")
@@ -3500,6 +3441,59 @@ namespace TokuchoBugyoK2
                         else
                         {
                             ca_tbl01_txtTax.Text = "0";
+                        }
+                    }
+                }
+                return;
+            }
+
+            if (dtp.Name.Equals(ca_tbl01_dtpKokiTo.Name))
+            {
+                // 契約：工期至
+                if (ca_tbl01_dtpKokiFrom.CustomFormat == "" && ca_tbl01_dtpKokiTo.CustomFormat == "")
+                {
+                    // No.204 工期末日付のコピーボタンが反応しない
+                    // エラーメッセージが消えることでボタンが押せていないので、エラーでない場合はメッセージを消さないように修正
+                    //set_error("", 0);
+                    if (ca_tbl01_dtpKokiFrom.Value > ca_tbl01_dtpKokiTo.Value)
+                    {
+                        set_error("", 0);
+                        set_error(GlobalMethod.GetMessage("E10011", "(契約工期 開始・終了)"));
+                        ca_tbl01_dtpKokiTo.CustomFormat = " ";
+                    }
+                }
+
+                if (ca_tbl01_dtpKokiTo.CustomFormat == "")
+                {
+                    DataTable dt = GlobalMethod.getData("NendoID", "NendoID", "Mst_Nendo", "Nendo_Sdate <= '" + ca_tbl01_dtpKokiTo.Text + "' AND Nendo_EDate >= '" + ca_tbl01_dtpKokiTo.Text + "' ");
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        // 売上年度
+                        ca_tbl01_cmbSalesYear.SelectedValue = dt.Rows[0][0].ToString();
+                        // 変更伝票以外の場合、引合タブの売上年度も更新する
+                        if (mode != MODE.CHANGE)
+                        {
+                            ca_tbl01_cmbSalesYear.SelectedValue = dt.Rows[0][0].ToString();
+                        }
+                    }
+                }
+                return;
+            }
+
+            if (dtp.Name.Equals(ca_tbl01_dtpKokiFrom.Name))
+            {
+                // 契約：工期自
+                if (ca_tbl01_dtpKokiFrom.CustomFormat == "")
+                {
+                    DataTable dt = new DataTable();
+                    dt = GlobalMethod.getData("NendoID", "NendoID", "Mst_Nendo", "Nendo_Sdate <= '" + ca_tbl01_dtpKokiFrom.Text + "' AND Nendo_EDate >= '" + ca_tbl01_dtpKokiFrom.Text + "' ");
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        // 工期開始年度
+                        ca_tbl01_cmbStartYear.SelectedValue = dt.Rows[0][0].ToString();
+                        if (mode != MODE.CHANGE)
+                        {
+                            base_tbl03_cmbKokiStartYear.SelectedValue = dt.Rows[0][0].ToString();
                         }
                     }
                 }
@@ -7700,16 +7694,16 @@ namespace TokuchoBugyoK2
                         errorFlg = true;
                     }
                 }
-                else
-                {
-                    // 参考見積対応
-                    if (this.IsSpecifiedValue(base_tbl10_cmbSankoMitumori.SelectedValue, "1"))
-                    {
-                        base_tbl01_lblDtBid.BackColor = errorColor;
-                        base_tbl01_picBidAlert.Visible = true;
-                        errorFlg = true;
-                    }
-                }
+                //else
+                //{
+                //    // 参考見積対応
+                //    if (this.IsSpecifiedValue(base_tbl10_cmbSankoMitumori.SelectedValue, "1"))
+                //    {
+                //        base_tbl01_lblDtBid.BackColor = errorColor;
+                //        base_tbl01_picBidAlert.Visible = true;
+                //        errorFlg = true;
+                //    }
+                //}
             }
             return errorFlg;
         }
@@ -8171,7 +8165,7 @@ namespace TokuchoBugyoK2
                     base_tbl01_picBidAlert.Visible = true;
                 }
 
-                // 入札状況 「入札中」のまま「入札情報登録日」が登録は登録不可。★★★
+                // 入札状況 「入札中」のまま「入札情報登録日」が登録は登録不可。
                 obj = base_tbl10_cmbNyusatuStats.SelectedValue;
                 if (base_tbl01_dtpDtBid.CustomFormat == "" && IsSpecifiedValue(obj, "1"))
                 {
@@ -8253,7 +8247,7 @@ namespace TokuchoBugyoK2
             bool errorFlg = false;
             Color errorColor = Color.FromArgb(255, 204, 255);
             // 入札状況
-            if (!isNyuusatsu_seiritsu(bid_tbl03_1_cmbBidStatus.Text,1))
+            if (!isNyuusatsu_seiritsu(bid_tbl03_1_cmbBidStatus.SelectedValue.ToString()))
             {
                 set_error(GlobalMethod.GetMessage("E10724", ""));
                 bid_tbl03_1_lblBidStatus.BackColor = errorColor;
@@ -8584,6 +8578,8 @@ namespace TokuchoBugyoK2
             Color clearRequestColor = Color.FromArgb(252, 228, 214);
             ca_tbl01_lblChangeDt.BackColor = clearRequestColor;
             ca_tbl01_lblKianDt.BackColor = clearRequestColor;
+            ca_tbl01_lblKokiFrom.BackColor = clearRequestColor;
+            ca_tbl01_lblKokiTo.BackColor = clearRequestColor;
             ca_tbl01_txtRiyu.BackColor = clearColor;
             ca_tbl01_lblAnkenKubun.BackColor = clearColor;
             ca_tbl01_txtZeikomiAmt.BackColor = clearColor;
@@ -8596,6 +8592,8 @@ namespace TokuchoBugyoK2
             // アラートアイコン非表示にする
             ca_tbl01_picChangeDtAlert.Visible = false;
             ca_tbl01_picKianDtAlert.Visible = false;
+            ca_tbl01_picKokiFromAlert.Visible = false;
+            ca_tbl01_picKokiToAlert.Visible = false;
             ca_tbl01_picRiyuAlert.Visible = false;
             ca_tbl01_picAnkenKubunAlert.Visible = false;
             ca_tbl01_picZeikomiAmtAlert.Visible = false;
@@ -8642,6 +8640,21 @@ namespace TokuchoBugyoK2
                     ca_tbl01_lblAnkenKubun.BackColor = errorColor;
                     ca_tbl01_picAnkenKubunAlert.Visible = true;
                     requiredFlag = false;
+                }
+                //契約工期自
+                if (ca_tbl01_dtpKokiFrom.CustomFormat == " ")
+                {
+                    requiredFlag = false;
+                    ca_tbl01_lblKokiFrom.BackColor = errorColor;
+                    ca_tbl01_picKokiFromAlert.Visible = true;
+                }
+
+                //契約工期至
+                if (ca_tbl01_dtpKokiTo.CustomFormat == " ")
+                {
+                    requiredFlag = false;
+                    ca_tbl01_lblKokiTo.BackColor = errorColor;
+                    ca_tbl01_picKokiToAlert.Visible = true;
                 }
                 if (string.IsNullOrEmpty(ca_tbl01_txtRiyu.Text))
                 {

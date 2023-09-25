@@ -202,7 +202,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "売上年度";
+            this.label1.Text = "登録年度";
             // 
             // src_Nendo
             // 
