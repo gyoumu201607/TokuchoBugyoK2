@@ -1537,6 +1537,7 @@ namespace TokuchoBugyoK2
             if (obj != null && obj.ToString() != "")
             {
                 ca_tbl01_dtpKokiFrom.Text = obj.ToString();
+                ca_tbl01_cmbStartYear.SelectedValue = AnkenData_K.Rows[0]["AnkenKoukiNendo"].ToString();//工期開始年度
             }
             else
             {
@@ -1547,15 +1548,13 @@ namespace TokuchoBugyoK2
             if (obj != null && obj.ToString() != "")
             {
                 ca_tbl01_dtpKokiTo.Text = obj.ToString();
+                ca_tbl01_cmbSalesYear.SelectedValue = AnkenData_K.Rows[0]["AnkenUriageNendo"].ToString();//売上年度
             }
             else
             {
                 ca_tbl01_dtpKokiTo.CustomFormat = " ";
             }
-            //工期開始年度
-            if (AnkenData_K.Rows[0][5].ToString() != "") ca_tbl01_cmbStartYear.SelectedValue = AnkenData_K.Rows[0]["AnkenKoukiNendo"].ToString();
-            //売上年度
-            if (AnkenData_K.Rows[0][5].ToString() != "") ca_tbl01_cmbSalesYear.SelectedValue = AnkenData_K.Rows[0]["AnkenUriageNendo"].ToString(); 
+
             // サ社経由
             if (AnkenData_K.Rows[0]["KeiyakuSashaKeiyu"].ToString() == "1")
             {
@@ -8867,9 +8866,9 @@ namespace TokuchoBugyoK2
             //契約タブの調査部配分率が0ではない場合
             // 調査部 業務別配分が100でないとエラー
             //if (item3_7_2_26_1.Text != "100.00%" && item3_7_2_26_1.Text != "0.00%")
-            if (GetDouble(ca_tbl02_1_numPercent1.Text) > 0)
+            if (GetDouble(ca_tbl02_AftCaBm_numPercent1.Text) > 0)
             {
-                if (ca_tbl02_2_numPercentAll.Text != "100.00%")
+                if (ca_tbl02_AftCaTs_numPercentAll.Text != "100.00%")
                 {
                     // 調査業務別　配分の合計が100になるように入力してください。
                     set_error(GlobalMethod.GetMessage("E70045", "(契約タブ)"));
@@ -8880,7 +8879,7 @@ namespace TokuchoBugyoK2
             // 調査部 業務別配分の合計が0でないとエラー
             else
             {
-                if (ca_tbl02_2_numPercentAll.Text != "0.00%")
+                if (ca_tbl02_AftCaTs_numPercentAll.Text != "0.00%")
                 {
                     // 調査部　業務別配分の合計が不正です。
                     set_error(GlobalMethod.GetMessage("E10725", "(契約タブ)"));
@@ -9479,7 +9478,7 @@ namespace TokuchoBugyoK2
                         createAnkenJouhouZenkaiRakusatsu(base_tbl08_c1FlexGrid, cmd, AnkenID);
 
                         // 契約情報(エントリー)更新
-                        updateKeiyakuJouhouEntory(cmd);
+                        updateKeiyakuJouhouEntory(cmd,AnkenID,mode);
                         GlobalMethod.outputLogger("InsertAnken", "契約情報更新時に案件情報を同時更新します AnkenjouhoID = " + AnkenID, "", UserInfos[1]);
 
                         // 案件情報更新
@@ -9491,8 +9490,8 @@ namespace TokuchoBugyoK2
                         // 業務情報　更新
                         updateGyoumuJouhou(cmd);
                         // 業務配分　更新
-                        updateGyoumuHaibun10(cmd);
-                        updateGyoumuHaibun30(cmd);
+                        updateGyoumuHaibun10(cmd, AnkenID);
+                        updateGyoumuHaibun30(cmd, AnkenID);
 
                         // 応援依頼先
                         createAnkenOuenIraisaki(cmd, AnkenID, 8);
@@ -9810,18 +9809,15 @@ namespace TokuchoBugyoK2
                 var result = 0;
                 // 赤伝：契約情報エントリ　更新
 
-                if (GlobalMethod.Check_Table(AnkenID, "KeiyakuJouhouEntoryID", "KeiyakuJouhouEntory", ""))
-                {
-                    cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET " +
+                cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET " +
                              "KeiyakuHenkouChuushiRiyuu = N'" + ca_tbl01_txtRiyu.Text + "' " +
                             ",KeiyakuSakuseibi = " + Get_DateTimePicker("ca_tbl01_dtpKianDt");
-                    if (SakuseiKubun == "02")
-                    {
-                        cmd.CommandText += ",KeiyakuKeiyakuTeiketsubi = " + Get_DateTimePicker("ca_tbl01_dtpChangeDt");
-                    }
-                    cmd.CommandText += " WHERE KeiyakuJouhouEntoryID = " + ankenNo;
-                    result = cmd.ExecuteNonQuery();
+                if (SakuseiKubun == "02")
+                {
+                    cmd.CommandText += ",KeiyakuKeiyakuTeiketsubi = " + Get_DateTimePicker("ca_tbl01_dtpChangeDt");
                 }
+                cmd.CommandText += " WHERE KeiyakuJouhouEntoryID = " + ankenNo;
+                result = cmd.ExecuteNonQuery();
 
                 if (SakuseiKubun == "03" || int.Parse(SakuseiKubun) > 5)
                 {
@@ -9832,9 +9828,10 @@ namespace TokuchoBugyoK2
                             ",AnkenGyoumuMei = N'" + ca_tbl01_txtAnkenName.Text + "' " +
                             ",AnkenKianzumi = '1' " +
                             ",AnkenUriageNendo = N'" + ca_tbl01_cmbSalesYear.SelectedValue.ToString() + "' " +
+                            ",AnkenKoukiNendo = N'" + ca_tbl01_cmbStartYear.SelectedValue.ToString() + "' " +
                             ",AnkenKeiyakuTeiketsubi = " + Get_DateTimePicker("ca_tbl01_dtpChangeDt") +
-                            //",AnkenKeiyakuKoukiKaishibi = " + Get_DateTimePicker("ca_tbl01_dtpKokiFrom") +
-                            //",AnkenKeiyakuKoukiKanryoubi = " + Get_DateTimePicker("ca_tbl01_dtpKokiTo") +
+                            ",AnkenKeiyakuKoukiKaishibi = " + Get_DateTimePicker("ca_tbl01_dtpKokiFrom") +
+                            ",AnkenKeiyakuKoukiKanryoubi = " + Get_DateTimePicker("ca_tbl01_dtpKokiTo") +
                             ",AnkenKeiyakuZeikomiKingaku = " + getNumToDb(ca_tbl01_txtZeikomiAmt.Text) +
                             ",AnkenKeiyakuUriageHaibunGakuC = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt1.Text) +
                             ",AnkenKeiyakuUriageHaibunGakuJ = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt2.Text) +
@@ -9955,69 +9952,73 @@ namespace TokuchoBugyoK2
 
                     }
 
-                    cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET " +
-                                "KeiyakuKeiyakuTeiketsubi = " + Get_DateTimePicker("ca_tbl01_dtpChangeDt") +
-                                ",KeiyakuSakuseibi = " + Get_DateTimePicker("ca_tbl01_dtpKianDt") +
-                                ",KeiyakuKeiyakuKoukiKaishibi = " + Get_DateTimePicker("ca_tbl01_dtpKokiFrom") +
-                                ",KeiyakuKeiyakuKoukiKanryoubi = " + Get_DateTimePicker("ca_tbl01_dtpKokiTo") +
-                                ",KeiyakuKeiyakuKingaku = " + getNumToDb(ca_tbl01_txtZeinukiAmt.Text) +
-                                ",KeiyakuZeikomiKingaku = " + getNumToDb(ca_tbl01_txtZeikomiAmt.Text) +
-                                ",KeiyakuuchizeiKingaku = " + getNumToDb(ca_tbl01_txtSyohizeiAmt.Text) +
-                                ",KeiyakuShouhizeiritsu = N'" + ca_tbl01_txtTax.Text + "'" +
-                                ",KeiyakuHenkouChuushiRiyuu = " + "N'" + GlobalMethod.ChangeSqlText(ca_tbl01_txtRiyu.Text, 0, 0) + "'" +
-                                ",KeiyakuBikou = " + "N'" + GlobalMethod.ChangeSqlText(ca_tbl01_txtBiko.Text, 0, 0) + "'" +
-                                ",KeiyakuShosha = " + (ca_tbl01_chkCaSyosya.Checked ? 1 : 0) +
-                                ",KeiyakuTokkiShiyousho = " + (ca_tbl01_chkSiyosyo.Checked ? 1 : 0) +
-                                ",KeiyakuMitsumorisho = " + (ca_tbl01_chkMitumorisyo.Checked ? 1 : 0) +
-                                ",KeiyakuTanpinChousaMitsumorisho = " + (ca_tbl01_chkTanpinTyosa.Checked ? 1 : 0) +
-                                ",KeiyakuSonota = " + (ca_tbl01_chkOther.Checked ? 1 : 0) +
-                                ",KeiyakuSonotaNaiyou = " + "N'" + GlobalMethod.ChangeSqlText(ca_tbl01_txtOtherBiko.Text, 0, 0) + "'" +
-                                ",KeiyakuZentokinUkewatashibi = " + Get_DateTimePicker("ca_tbl07_dtpRequst6") +
-                                ",KeiyakuZentokin = " + getNumToDb(ca_tbl07_txtRequst6.Text) +
-                                ",Keiyakukeiyakukingakukei = " + getNumToDb(ca_tbl01_txtJyutakuAmt.Text) +
-                                ",KeiyakuBetsuKeiyakuKingaku = " + getNumToDb(ca_tbl01_txtJyutakuGaiAmt.Text) +
-                                ",KeiyakuSeikyuubi1 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst1") + "" +
-                                ",KeiyakuSeikyuuKingaku1 = " + getNumToDb(ca_tbl07_txtRequst1.Text) +
-                                ",KeiyakuSeikyuubi2 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst2") + "" +
-                                ",KeiyakuSeikyuuKingaku2 = " + getNumToDb(ca_tbl07_txtRequst2.Text) +
-                                ",KeiyakuSeikyuubi3 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst3") + "" +
-                                ",KeiyakuSeikyuuKingaku3 = " + getNumToDb(ca_tbl07_txtRequst3.Text) +
-                                ",KeiyakuSeikyuubi4 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst4") + "" +
-                                ",KeiyakuSeikyuuKingaku4 = " + getNumToDb(ca_tbl07_txtRequst4.Text) +
-                                ",KeiyakuSeikyuubi5 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst5") + "" +
-                                ",KeiyakuSeikyuuKingaku5 = " + getNumToDb(ca_tbl07_txtRequst5.Text) +
-                                ",KeiyakuSakuseiKubunID = " + "N'" + ca_tbl01_cmbAnkenKubun.SelectedValue + "'" +
-                                ",KeiyakuSakuseiKubun = " + "N'" + ca_tbl01_cmbAnkenKubun.Text + "'" +
-                                ",KeiyakuGyoumuKubun = " + "N'" + ca_tbl01_cmbCaKubun.SelectedValue + "'" +
-                                ",KeiyakuGyoumuMei = " + "N'" + ca_tbl01_cmbCaKubun.Text + "'" +
-                                ",KeiyakuKianzumi = " + (ca_tbl01_chkKian.Checked ? 1 : 0) +
-                                ",KeiyakuHachuushaMei = " + "N'" + ca_tbl01_txtOrderKamei.Text + "'" +
-                                ",KeiyakuHaibunChoZeinuki = " + getNumToDb(ca_tbl02_AftCaBm_numAmt1.Text) +
-                                ",KeiyakuHaibunJoZeinuki = " + getNumToDb(ca_tbl02_AftCaBm_numAmt2.Text) +
-                                ",KeiyakuHaibunJosysZeinuki = " + getNumToDb(ca_tbl02_AftCaBm_numAmt3.Text) +
-                                ",KeiyakuHaibunKeiZeinuki = " + getNumToDb(ca_tbl02_AftCaBm_numAmt4.Text) +
-                                ",KeiyakuHaibunZeinukiKei = " + getNumToDb(ca_tbl02_AftCaBm_numAmtAll.Text) +
-                                ",KeiyakuUriageHaibunCho  = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt1.Text) +
-                                ",KeiyakuUriageHaibunJo   = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt2.Text) +
-                                ",KeiyakuUriageHaibunJosys  = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt3.Text) +
-                                ",KeiyakuUriageHaibunKei  = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt4.Text) +
-                                ",KeiyakuUriageHaibunGoukei = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmtAll.Text) +
-                                ",KeiyakuTankeiMikomiCho  = " + getNumToDb(ca_tbl03_numAmt1.Text) +
-                                ",KeiyakuTankeiMikomiJo  = " + getNumToDb(ca_tbl03_numAmt2.Text) +
-                                ",KeiyakuTankeiMikomiJosys  = " + getNumToDb(ca_tbl03_numAmt3.Text) +
-                                ",KeiyakuTankeiMikomiKei  = " + getNumToDb(ca_tbl03_numAmt4.Text) +
-                                ",KeiyakuKurikoshiCho  = " + getNumToDb(ca_tbl04_numKurikosiAmt1.Text) +
-                                ",KeiyakuKurikoshiJo  = " + getNumToDb(ca_tbl04_numKurikosiAmt2.Text) +
-                                ",KeiyakuKurikoshiJosys  = " + getNumToDb(ca_tbl04_numKurikosiAmt3.Text) +
-                                ",KeiyakuKurikoshiKei  = " + getNumToDb(ca_tbl04_numKurikosiAmt4.Text) +
-                                ",KeiyakuUpdateProgram = " + "'ChangeKianEntry'" +
-                                ",KeiyakuUpdateDate = " + "GETDATE()" +
-                                ",KeiyakuUpdateUser = " + "N'" + UserInfos[0] + "'" +
-                                ",KeiyakuRIBCYouTankaDataMoushikomisho = " + (ca_tbl01_chkRibcSyo.Checked ? 1 : 0) +
-                                ",KeiyakuSashaKeiyu = " + (ca_tbl01_chkSasya.Checked ? 1 : 0) +
-                                ",KeiyakuRIBCYouTankaData = " + (ca_tbl01_chkRibcAri.Checked ? 1 : 0) +
-                        " WHERE AnkenJouhouID = " + ankenNo2;
-                    result = cmd.ExecuteNonQuery();
+                    updateKeiyakuJouhouEntory(cmd, ankenNo2, 4);
+                    //cmd.CommandText = "UPDATE KeiyakuJouhouEntory SET " +
+                    //            "KeiyakuKeiyakuTeiketsubi = " + Get_DateTimePicker("ca_tbl01_dtpChangeDt") +
+                    //            ",KeiyakuSakuseibi = " + Get_DateTimePicker("ca_tbl01_dtpKianDt") +
+                    //            ",KeiyakuKeiyakuKoukiKaishibi = " + Get_DateTimePicker("ca_tbl01_dtpKokiFrom") +
+                    //            ",KeiyakuKeiyakuKoukiKanryoubi = " + Get_DateTimePicker("ca_tbl01_dtpKokiTo") +
+                    //            ",KeiyakuKeiyakuKingaku = " + getNumToDb(ca_tbl01_txtZeinukiAmt.Text) +
+                    //            ",KeiyakuZeikomiKingaku = " + getNumToDb(ca_tbl01_txtZeikomiAmt.Text) +
+                    //            ",KeiyakuuchizeiKingaku = " + getNumToDb(ca_tbl01_txtSyohizeiAmt.Text) +
+                    //            ",KeiyakuShouhizeiritsu = N'" + ca_tbl01_txtTax.Text + "'" +
+                    //            ",KeiyakuHenkouChuushiRiyuu = " + "N'" + GlobalMethod.ChangeSqlText(ca_tbl01_txtRiyu.Text, 0, 0) + "'" +
+                    //            ",KeiyakuBikou = " + "N'" + GlobalMethod.ChangeSqlText(ca_tbl01_txtBiko.Text, 0, 0) + "'" +
+                    //            ",KeiyakuShosha = " + (ca_tbl01_chkCaSyosya.Checked ? 1 : 0) +
+                    //            ",KeiyakuTokkiShiyousho = " + (ca_tbl01_chkSiyosyo.Checked ? 1 : 0) +
+                    //            ",KeiyakuMitsumorisho = " + (ca_tbl01_chkMitumorisyo.Checked ? 1 : 0) +
+                    //            ",KeiyakuTanpinChousaMitsumorisho = " + (ca_tbl01_chkTanpinTyosa.Checked ? 1 : 0) +
+                    //            ",KeiyakuSonota = " + (ca_tbl01_chkOther.Checked ? 1 : 0) +
+                    //            ",KeiyakuSonotaNaiyou = " + "N'" + GlobalMethod.ChangeSqlText(ca_tbl01_txtOtherBiko.Text, 0, 0) + "'" +
+                    //            ",KeiyakuZentokinUkewatashibi = " + Get_DateTimePicker("ca_tbl07_dtpRequst6") +
+                    //            ",KeiyakuZentokin = " + getNumToDb(ca_tbl07_txtRequst6.Text) +
+                    //            ",Keiyakukeiyakukingakukei = " + getNumToDb(ca_tbl01_txtJyutakuAmt.Text) +
+                    //            ",KeiyakuBetsuKeiyakuKingaku = " + getNumToDb(ca_tbl01_txtJyutakuGaiAmt.Text) +
+                    //            ",KeiyakuSeikyuubi1 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst1") + "" +
+                    //            ",KeiyakuSeikyuuKingaku1 = " + getNumToDb(ca_tbl07_txtRequst1.Text) +
+                    //            ",KeiyakuSeikyuubi2 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst2") + "" +
+                    //            ",KeiyakuSeikyuuKingaku2 = " + getNumToDb(ca_tbl07_txtRequst2.Text) +
+                    //            ",KeiyakuSeikyuubi3 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst3") + "" +
+                    //            ",KeiyakuSeikyuuKingaku3 = " + getNumToDb(ca_tbl07_txtRequst3.Text) +
+                    //            ",KeiyakuSeikyuubi4 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst4") + "" +
+                    //            ",KeiyakuSeikyuuKingaku4 = " + getNumToDb(ca_tbl07_txtRequst4.Text) +
+                    //            ",KeiyakuSeikyuubi5 = " + " " + Get_DateTimePicker("ca_tbl07_dtpRequst5") + "" +
+                    //            ",KeiyakuSeikyuuKingaku5 = " + getNumToDb(ca_tbl07_txtRequst5.Text) +
+                    //            ",KeiyakuSakuseiKubunID = " + "N'" + ca_tbl01_cmbAnkenKubun.SelectedValue + "'" +
+                    //            ",KeiyakuSakuseiKubun = " + "N'" + ca_tbl01_cmbAnkenKubun.Text + "'" +
+                    //            ",KeiyakuGyoumuKubun = " + "N'" + ca_tbl01_cmbCaKubun.SelectedValue + "'" +
+                    //            ",KeiyakuGyoumuMei = " + "N'" + ca_tbl01_cmbCaKubun.Text + "'" +
+                    //            ",KeiyakuKianzumi = " + (ca_tbl01_chkKian.Checked ? 1 : 0) +
+                    //            ",KeiyakuHachuushaMei = " + "N'" + ca_tbl01_txtOrderKamei.Text + "'" +
+                    //            ",KeiyakuHaibunChoZeinuki = " + getNumToDb(ca_tbl02_AftCaBm_numAmt1.Text) +
+                    //            ",KeiyakuHaibunJoZeinuki = " + getNumToDb(ca_tbl02_AftCaBm_numAmt2.Text) +
+                    //            ",KeiyakuHaibunJosysZeinuki = " + getNumToDb(ca_tbl02_AftCaBm_numAmt3.Text) +
+                    //            ",KeiyakuHaibunKeiZeinuki = " + getNumToDb(ca_tbl02_AftCaBm_numAmt4.Text) +
+                    //            ",KeiyakuHaibunZeinukiKei = " + getNumToDb(ca_tbl02_AftCaBm_numAmtAll.Text) +
+                    //            ",KeiyakuUriageHaibunCho  = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt1.Text) +
+                    //            ",KeiyakuUriageHaibunJo   = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt2.Text) +
+                    //            ",KeiyakuUriageHaibunJosys  = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt3.Text) +
+                    //            ",KeiyakuUriageHaibunKei  = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmt4.Text) +
+                    //            ",KeiyakuUriageHaibunGoukei = " + getNumToDb(ca_tbl02_AftCaBmZeikomi_numAmtAll.Text) +
+                    //            ",KeiyakuTankeiMikomiCho  = " + getNumToDb(ca_tbl03_numAmt1.Text) +
+                    //            ",KeiyakuTankeiMikomiJo  = " + getNumToDb(ca_tbl03_numAmt2.Text) +
+                    //            ",KeiyakuTankeiMikomiJosys  = " + getNumToDb(ca_tbl03_numAmt3.Text) +
+                    //            ",KeiyakuTankeiMikomiKei  = " + getNumToDb(ca_tbl03_numAmt4.Text) +
+                    //            ",KeiyakuKurikoshiCho  = " + getNumToDb(ca_tbl04_numKurikosiAmt1.Text) +
+                    //            ",KeiyakuKurikoshiJo  = " + getNumToDb(ca_tbl04_numKurikosiAmt2.Text) +
+                    //            ",KeiyakuKurikoshiJosys  = " + getNumToDb(ca_tbl04_numKurikosiAmt3.Text) +
+                    //            ",KeiyakuKurikoshiKei  = " + getNumToDb(ca_tbl04_numKurikosiAmt4.Text) +
+                    //            ",KeiyakuUpdateProgram = " + "'ChangeKianEntry'" +
+                    //            ",KeiyakuUpdateDate = " + "GETDATE()" +
+                    //            ",KeiyakuUpdateUser = " + "N'" + UserInfos[0] + "'" +
+                    //            ",KeiyakuRIBCYouTankaDataMoushikomisho = " + (ca_tbl01_chkRibcSyo.Checked ? 1 : 0) +
+                    //            ",KeiyakuSashaKeiyu = " + (ca_tbl01_chkSasya.Checked ? 1 : 0) +
+                    //            ",KeiyakuRIBCYouTankaData = " + (ca_tbl01_chkRibcAri.Checked ? 1 : 0) +
+                    //            ",KeiyakuSaiitakuKinshiUmu = N'" + (IsNotSelected(ca_tbl01_cmbKinsiUmu) ? "0" : ca_tbl01_cmbKinsiUmu.SelectedValue.ToString()) + "' " +
+                    //            ",KeiyakuSaiitakuKinshiNaiyou = N'" + (IsNotSelected(ca_tbl01_cmbKinsiNaiyo) ? "0" : ca_tbl01_cmbKinsiNaiyo.SelectedValue.ToString()) + "' " +
+                    //            ",KeiyakuSaiitakuSonotaNaiyou = N'" + ca_tbl01_txtOtherNaiyo.Text + "' " +
+                    //        " WHERE AnkenJouhouID = " + ankenNo2;
+                    //result = cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "DELETE FROM RibcJouhou " +
                             " WHERE RibcID = " + ankenNo2;
@@ -10401,38 +10402,7 @@ namespace TokuchoBugyoK2
                     }
 
                     //業務配分登録
-                    cmd.CommandText = "UPDATE GyoumuHaibun SET " +
-                                        " GyoumuChosaBuGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaBm_numAmt1.Text) + "' " +
-                                        ",GyoumuJigyoFukyuBuGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaBm_numAmt2.Text) + "' " +
-                                        ",GyoumuJyohouSystemBuGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaBm_numAmt3.Text) + "' " +
-                                        ",GyoumuSougouKenkyuJoGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaBm_numAmt4.Text) + "' " +
-                                        ",GyoumuShizaiChousaRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent1.Text) + "' " +
-                                        ",GyoumuEizenRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent2.Text) + "' " +
-                                        ",GyoumuKikiruiChousaRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent3.Text) + "' " +
-                                        ",GyoumuKoujiChousahiRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent4.Text) + "' " +
-                                        ",GyoumuSanpaiFukusanbutsuRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent5.Text) + "' " +
-                                        ",GyoumuHokakeChousaRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent6.Text) + "' " +
-                                        ",GyoumuShokeihiChousaRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent7.Text) + "' " +
-                                        ",GyoumuGenkaBunsekiRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent8.Text) + "' " +
-                                        ",GyoumuKijunsakuseiRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent9.Text) + "' " +
-                                        ",GyoumuKoukyouRoumuhiRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent10.Text) + "' " +
-                                        ",GyoumuRoumuhiKoukyouigaiRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent11.Text) + "' " +
-                                        ",GyoumuSonotaChousabuRitsu " + " = N'" + getNumToDb(ca_tbl02_2_numPercent12.Text) + "' " +
-                                        ",GyoumuShizaiChousaGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt1.Text) + "' " +
-                                        ",GyoumuEizenGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt2.Text) + "' " +
-                                        ",GyoumuKikiruiChousaGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt3.Text) + "' " +
-                                        ",GyoumuKoujiChousahiGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt4.Text) + "' " +
-                                        ",GyoumuSanpaiFukusanbutsuGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt5.Text) + "' " +
-                                        ",GyoumuHokakeChousaGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt6.Text) + "' " +
-                                        ",GyoumuShokeihiChousaGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt7.Text) + "' " +
-                                        ",GyoumuGenkaBunsekiGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt8.Text) + "' " +
-                                        ",GyoumuKijunsakuseiGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt9.Text) + "' " +
-                                        ",GyoumuKoukyouRoumuhiGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt10.Text) + "' " +
-                                        ",GyoumuRoumuhiKoukyouigaiGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt11.Text) + "' " +
-                                        ",GyoumuSonotaChousabuGaku " + " = N'" + getNumToDb(ca_tbl02_AftCaTs_numAmt12.Text) + "' " +
-                                        " WHERE GyoumuAnkenJouhouID = " + ankenNo2 + " AND GyoumuHibunKubun = 30 ";
-                    Console.WriteLine(cmd.CommandText);
-                    cmd.ExecuteNonQuery();
+                    updateGyoumuHaibun30(cmd, ankenNo2);
 
                     // 窓口の案件情報IDを最新に置き換える
                     cmd.CommandText = "UPDATE MadoguchiJouhou SET " +
@@ -12402,7 +12372,9 @@ namespace TokuchoBugyoK2
         /// 契約情報エントリ　更新                                    
         /// </summary>
         /// <param name="cmd"></param>
-        private void updateKeiyakuJouhouEntory(SqlCommand cmd)
+        /// <param name="sAnkenId">案件ID</param>
+        /// <param name="flg">1:更新、4:伝票変更</param>
+        private void updateKeiyakuJouhouEntory(SqlCommand cmd, string sAnkenId, int flg = 1)
         {
             StringBuilder sSql = new StringBuilder();
             sSql.Append("UPDATE KeiyakuJouhouEntory SET ");
@@ -12439,10 +12411,18 @@ namespace TokuchoBugyoK2
             sSql.Append("    ,KeiyakuSeikyuuKingaku5 = " + getNumToDb(ca_tbl07_txtRequst5.Text));
             sSql.Append("    ,KeiyakuSakuseiKubunID = N'" + ca_tbl01_cmbAnkenKubun.SelectedValue + "'");
             sSql.Append("    ,KeiyakuSakuseiKubun = N'" + ca_tbl01_cmbAnkenKubun.Text + "'");
-            sSql.Append("    ,KeiyakuGyoumuKubun = N'" + base_tbl03_cmbKeiyakuKubun.SelectedValue + "'");
-            sSql.Append("    ,KeiyakuGyoumuMei = N'" + base_tbl03_cmbKeiyakuKubun.Text + "'");
-            sSql.Append("    ,KeiyakuJutakubangou = N'" + base_tbl02_txtJyutakuNo.Text + "'");
-            sSql.Append("    ,KeiyakuEdaban = N'" + base_tbl02_txtJyutakuEdNo.Text + "'");
+            if (flg != 4)
+            {
+                sSql.Append("    ,KeiyakuGyoumuKubun = N'" + base_tbl03_cmbKeiyakuKubun.SelectedValue + "'");
+                sSql.Append("    ,KeiyakuGyoumuMei = N'" + base_tbl03_cmbKeiyakuKubun.Text + "'");
+                sSql.Append("    ,KeiyakuJutakubangou = N'" + base_tbl02_txtJyutakuNo.Text + "'");
+                sSql.Append("    ,KeiyakuEdaban = N'" + base_tbl02_txtJyutakuEdNo.Text + "'");
+            }
+            else
+            {
+                sSql.Append("    ,KeiyakuGyoumuKubun = N'" + ca_tbl01_cmbCaKubun.SelectedValue + "'");
+                sSql.Append("    ,KeiyakuGyoumuMei = N'" + ca_tbl01_cmbCaKubun.Text + "'");
+            }
             sSql.Append("    ,KeiyakuKianzumi = " + (ca_tbl01_chkKian.Checked ? 1 : 0));
             sSql.Append("    ,KeiyakuHachuushaMei = N'" + ca_tbl01_txtOrderKamei.Text + "'");
 
@@ -12467,9 +12447,9 @@ namespace TokuchoBugyoK2
             sSql.Append("    ,KeiyakuKurikoshiJo  = " + getNumToDb(ca_tbl04_numKurikosiAmt2.Text));
             sSql.Append("    ,KeiyakuKurikoshiJosys  = " + getNumToDb(ca_tbl04_numKurikosiAmt3.Text));
             sSql.Append("    ,KeiyakuKurikoshiKei  = " + getNumToDb(ca_tbl04_numKurikosiAmt4.Text));
-            sSql.Append("    ,KeiyakuRIBCYouTankaDataMoushikomisho = " + (ca_tbl01_chkRibcAri.Checked ? 1 : 0));
+            sSql.Append("    ,KeiyakuRIBCYouTankaDataMoushikomisho = " + (ca_tbl01_chkRibcSyo.Checked ? 1 : 0));
             sSql.Append("    ,KeiyakuSashaKeiyu = " + (ca_tbl01_chkSasya.Checked ? 1 : 0));
-            sSql.Append("    ,KeiyakuRIBCYouTankaData = " + (ca_tbl01_chkRibcSyo.Checked ? 1 : 0));
+            sSql.Append("    ,KeiyakuRIBCYouTankaData = " + (ca_tbl01_chkRibcAri.Checked ? 1 : 0));
 
             sSql.Append("    ,KeiyakuSaiitakuSonotaNaiyou = N'" + GlobalMethod.ChangeSqlText(ca_tbl01_txtOtherNaiyo.Text, 0, 0) + "'");
             sSql.Append("    ,KeiyakuSaiitakuKinshiNaiyou = N'" + ca_tbl01_cmbKinsiNaiyo.SelectedValue + "'");
@@ -12478,7 +12458,7 @@ namespace TokuchoBugyoK2
             sSql.Append("    ,KeiyakuUpdateProgram = " + "'UpdateEntry'");
             sSql.Append("    ,KeiyakuUpdateDate = " + "GETDATE()");
             sSql.Append("    ,KeiyakuUpdateUser = N'" + UserInfos[0] + "'");
-            sSql.Append(" WHERE AnkenJouhouID = " + AnkenID);
+            sSql.Append(" WHERE AnkenJouhouID = " + sAnkenId);
 
             cmd.CommandText = sSql.ToString();
 
@@ -12947,7 +12927,7 @@ namespace TokuchoBugyoK2
         /// 業務配分　配分率更新　
         /// </summary>
         /// <param name="cmd"></param>
-        private void updateGyoumuHaibun10(SqlCommand cmd)
+        private void updateGyoumuHaibun10(SqlCommand cmd, string sAnkenId)
         {
             StringBuilder sSql = new StringBuilder();
             //業務配分
@@ -12969,7 +12949,7 @@ namespace TokuchoBugyoK2
             sSql.Append("    ,GyoumuKoukyouRoumuhiRitsu = " + getNumToDb(base_tbl07_2_numPercent10.Text));
             sSql.Append("    ,GyoumuRoumuhiKoukyouigaiRitsu = " + getNumToDb(base_tbl07_2_numPercent11.Text));
             sSql.Append("    ,GyoumuSonotaChousabuRitsu = " + getNumToDb(base_tbl07_2_numPercent12.Text));
-            sSql.Append(" WHERE GyoumuAnkenJouhouID = " + AnkenID + " AND GyoumuHibunKubun = 10 ");
+            sSql.Append(" WHERE GyoumuAnkenJouhouID = " + sAnkenId + " AND GyoumuHibunKubun = 10 ");
             cmd.CommandText = sSql.ToString();
             Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
@@ -12979,7 +12959,7 @@ namespace TokuchoBugyoK2
         /// 業務配分　配分額更新　
         /// </summary>
         /// <param name="cmd"></param>
-        private void updateGyoumuHaibun30(SqlCommand cmd)
+        private void updateGyoumuHaibun30(SqlCommand cmd, string sAnkenId)
         {
             StringBuilder sSql = new StringBuilder();
             sSql.Append("UPDATE GyoumuHaibun SET ");
@@ -13018,7 +12998,7 @@ namespace TokuchoBugyoK2
             sSql.Append("    ,GyoumuKoukyouRoumuhiGaku " + " = " + getNumToDb(ca_tbl02_AftCaTs_numAmt10.Text));
             sSql.Append("    ,GyoumuRoumuhiKoukyouigaiGaku " + " = " + getNumToDb(ca_tbl02_AftCaTs_numAmt11.Text));
             sSql.Append("    ,GyoumuSonotaChousabuGaku " + " = " + getNumToDb(ca_tbl02_AftCaTs_numAmt12.Text));
-            sSql.Append(" WHERE GyoumuAnkenJouhouID = " + AnkenID + " AND GyoumuHibunKubun = 30 ");
+            sSql.Append(" WHERE GyoumuAnkenJouhouID = " + sAnkenId + " AND GyoumuHibunKubun = 30 ");
 
             cmd.CommandText = sSql.ToString();
             Console.WriteLine(cmd.CommandText);
