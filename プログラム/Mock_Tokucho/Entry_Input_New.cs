@@ -648,6 +648,9 @@ namespace TokuchoBugyoK2
 
             // 各項目の要らないイベント
             setCmbEvent();
+            base_tbl01_chkJizendasin.CheckedChanged += CheckBox_CheckedChanged;
+            base_tbl01_chkNyusatu.CheckedChanged += CheckBox_CheckedChanged;
+            base_tbl01_chkKeiyaku.CheckedChanged += CheckBox_CheckedChanged;
 
             // 呼び出し親が非表示設定
             this.Owner.Hide();
@@ -1103,7 +1106,7 @@ namespace TokuchoBugyoK2
                             base_tbl10_cmbSankoMitumori.SelectedValue = obj.ToString();
                         }
                         //参考見積額(税抜)
-                        base_tbl10_numSankoMitumoriAmt.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_N.Rows[0]["NyuusatsuSankoumitsumoriKingaku"]));
+                        base_tbl10_numSankoMitumoriAmt.Text = string.Format("{0:C}", GetLong(AnkenData_N.Rows[0]["NyuusatsuSankoumitsumoriKingaku"].ToString()));
                         //受注意欲
                         obj = AnkenData_N.Rows[0]["NyuusatsuJuchuuIyoku"];
                         if (obj != null && string.IsNullOrEmpty(obj.ToString()) == false)
@@ -1360,7 +1363,7 @@ namespace TokuchoBugyoK2
                 bid_tbl01_cmbMitumori.SelectedValue = obj.ToString();
             }
             //参考見積額(税抜)
-            bid_tbl01_txtMitumoriAmt.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_N.Rows[0]["NyuusatsuSankoumitsumoriKingaku"]));
+            bid_tbl01_txtMitumoriAmt.Text = string.Format("{0:C}", GetLong(AnkenData_N.Rows[0]["NyuusatsuSankoumitsumoriKingaku"].ToString()));
             //受注意欲
             obj = AnkenData_N.Rows[0]["NyuusatsuJuchuuIyoku"];
             if (!(obj == null || string.IsNullOrEmpty(obj.ToString())))
@@ -1408,9 +1411,9 @@ namespace TokuchoBugyoK2
             }
 
             //予定価格(税抜) ▼▼▼
-            bid_tbl03_1_txtYoteiPrice.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_N.Rows[0]["NyuusatsuYoteiKakaku"]));
+            bid_tbl03_1_txtYoteiPrice.Text = string.Format("{0:C}", GetLong(AnkenData_N.Rows[0]["NyuusatsuYoteiKakaku"].ToString()));
             //応札数▼▼▼
-            bid_tbl03_1_txtOsatuNum.Text = Convert.ToInt32(AnkenData_N.Rows[0]["NyuusatsushaSuu"]).ToString();
+            bid_tbl03_1_txtOsatuNum.Text = GetInt(AnkenData_N.Rows[0]["NyuusatsushaSuu"].ToString()).ToString();
             //落札者状況 ▼▼▼
             sDt = AnkenData_N.Rows[0]["NyuusatsuRakusatsuShaJokyou"].ToString();
             if (sDt != "")
@@ -1426,7 +1429,7 @@ namespace TokuchoBugyoK2
                 bid_tbl03_1_cmbRakusatuAmtStatus.SelectedValue = sDt;
             }
             //落札額(税抜) ▼▼▼
-            bid_tbl03_1_numRakusatuAmt.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_N.Rows[0]["NyuusatsuRakusatugaku"]));
+            bid_tbl03_1_numRakusatuAmt.Text = string.Format("{0:C}", GetLong(AnkenData_N.Rows[0]["NyuusatsuRakusatugaku"].ToString()));
             //案件メモ(入札)
             bid_tbl03_1_txtBidMemo.Text = AnkenData_N.Rows[0]["NyuusatsuAnkenMemoNuusatsu"].ToString();
 
@@ -10947,7 +10950,9 @@ namespace TokuchoBugyoK2
                 sSql.Append("    ,KeiyakuKurikoshiJo ");
                 sSql.Append("    ,KeiyakuKurikoshiJosys ");
                 sSql.Append("    ,KeiyakuKurikoshiKei ");
-
+                sSql.Append("    ,KeiyakuRIBCYouTankaDataMoushikomisho ");
+                sSql.Append("    ,KeiyakuSashaKeiyu ");
+                sSql.Append("    ,KeiyakuRIBCYouTankaData ");
                 sSql.Append("    ,KeiyakuSaiitakuSonotaNaiyou ");
                 sSql.Append("    ,KeiyakuSaiitakuKinshiNaiyou ");
                 sSql.Append("    ,KeiyakuSaiitakuKinshiUmu ");
@@ -11131,6 +11136,9 @@ namespace TokuchoBugyoK2
                 sSql.Append("    ,").Append(iType == 0 || iType == 70 ? "-" : "").Append(" KeiyakuKurikoshiJo ");
                 sSql.Append("    ,").Append(iType == 0 || iType == 70 ? "-" : "").Append(" KeiyakuKurikoshiJosys ");
                 sSql.Append("    ,").Append(iType == 0 || iType == 70 ? "-" : "").Append(" KeiyakuKurikoshiKei ");
+                sSql.Append("    ,KeiyakuRIBCYouTankaDataMoushikomisho ");
+                sSql.Append("    ,KeiyakuSashaKeiyu ");
+                sSql.Append("    ,KeiyakuRIBCYouTankaData ");
                 sSql.Append("    ,KeiyakuSaiitakuSonotaNaiyou ");
                 sSql.Append("    ,KeiyakuSaiitakuKinshiNaiyou ");
                 sSql.Append("    ,KeiyakuSaiitakuKinshiUmu ");

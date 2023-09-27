@@ -271,7 +271,7 @@ namespace TokuchoBugyoK2
                 sSql.Append("    , NyuusatsuSankoumitsumoriTaiou");//--参考見積対応
                 sSql.Append("    , NyuusatsuSaiteiKakakuUmu");//--最低制限価格有無
                 sSql.Append("    , NyuusatsuGyoumuHachuukubun");//--業務発注区分
-                sSql.Append("    , NyuusatsuJouhouTourokubi");//--入札結果登録日
+                sSql.Append("    , CASE NyuusatsuJouhouTourokubi WHEN '1753/01/01' THEN null WHEN NULL THEN null ELSE FORMAT(NyuusatsuJouhouTourokubi, 'yyyy/MM/dd') END AS NyuusatsuJouhouTourokubi");//--入札結果登録日
 
                 sSql.Append(" FROM");
                 sSql.Append("    AnkenJouhou ");

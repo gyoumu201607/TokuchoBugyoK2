@@ -5184,7 +5184,7 @@ namespace TokuchoBugyoK2
             this.base_tbl01_chkKeiyaku.Tag = "";
             this.base_tbl01_chkKeiyaku.Text = "契約";
             this.base_tbl01_chkKeiyaku.UseVisualStyleBackColor = true;
-            this.base_tbl01_chkKeiyaku.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            //this.base_tbl01_chkKeiyaku.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // base_tbl01_lblComment
             // 
@@ -5267,7 +5267,7 @@ namespace TokuchoBugyoK2
             this.base_tbl01_chkNyusatu.Tag = "";
             this.base_tbl01_chkNyusatu.Text = "入札";
             this.base_tbl01_chkNyusatu.UseVisualStyleBackColor = true;
-            this.base_tbl01_chkNyusatu.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            //this.base_tbl01_chkNyusatu.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // base_tbl01_chkJizendasin
             // 
@@ -5279,7 +5279,7 @@ namespace TokuchoBugyoK2
             this.base_tbl01_chkJizendasin.TabIndex = 3;
             this.base_tbl01_chkJizendasin.Text = "事前打診";
             this.base_tbl01_chkJizendasin.UseVisualStyleBackColor = true;
-            this.base_tbl01_chkJizendasin.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            //this.base_tbl01_chkJizendasin.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // base_tbl01_lblTitle
             // 
