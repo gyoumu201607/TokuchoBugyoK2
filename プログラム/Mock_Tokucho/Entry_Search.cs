@@ -1163,8 +1163,10 @@ namespace TokuchoBugyoK2
                             ",AnkenHachuushaKaMei " +
                             ",AnkenGyoumuMei " +
                             ",CASE AnkenUriagebi WHEN '1753/01/01' THEN null ELSE FORMAT(AnkenUriagebi,'yyyy/MM') END " +
-                            ",NyuusatsuJouhou.NyuusatsuRakusatsushaID " +
-                            ",NyuusatsuRakusatsusha " +
+                            //",NyuusatsuJouhou.NyuusatsuRakusatsushaID " +
+                            //",NyuusatsuRakusatsusha " +
+                            ",CASE WHEN NyuusatsuJouhou.NyuusatsuRakusatsushaID > 0 THEN NyuusatsuJouhou.NyuusatsuRakusatsushaID ELSE NULL END " +
+                            ",CASE WHEN NyuusatsuJouhou.NyuusatsuRakusatsushaID > 0 THEN NyuusatsuRakusatsusha ELSE NULL END " +
                             ",CASE AnkenTourokubi WHEN '1753/01/01' THEN null ELSE FORMAT(AnkenTourokubi,'yyyy/MM/dd') END " +
                             ",CASE AnkenKeiyakusho WHEN null THEN 0 WHEN '' THEN 0 ELSE 1 END " +
                             ",AnkenKeiyakusho " +

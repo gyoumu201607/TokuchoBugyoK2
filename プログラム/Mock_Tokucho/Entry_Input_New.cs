@@ -9377,6 +9377,7 @@ namespace TokuchoBugyoK2
                     catch (Exception)
                     {
                         transaction.Rollback();
+                        throw;
                         return false;
                     }
                     conn.Close();
@@ -9535,8 +9536,8 @@ namespace TokuchoBugyoK2
                     {
                         transaction.Rollback();
                         conn.Close();
-                        //throw;
-                        return false;
+                        throw;
+                        //return false;
                     }
                     GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "契約情報(エントリー)を更新しました ID:" + AnkenID, pgmName + methodName, "");
 
@@ -13349,7 +13350,7 @@ namespace TokuchoBugyoK2
                             ",NyuusatsuGyoumuBikou = " + "N'" + GlobalMethod.ChangeSqlText(base_tbl03_txtAnkenMemo.Text, 0, 0) + "' " +
                             ",NyuusatsushaSuu = " + "N'" + nyusatsuCnt + "' " +
                             //",NyuusatsuKekkaMemo = " + "N'" + GlobalMethod.ChangeSqlText(item2_3_12.Text, 0, 0) + "' " + なくなったなんで？？？？★★★
-                            ",NyuusatsuRakusatsushaID = " + "N'" + bid_tbl03_1_cmbBidStatus.SelectedValue.ToString() + "' " +
+                            ",NyuusatsuRakusatsushaID = " + (IsNotSelected(bid_tbl03_1_cmbBidStatus) ? "NULL" : "N'" + bid_tbl03_1_cmbBidStatus.SelectedValue.ToString() + "' ") +
                             ",NyuusatsuRakusatsuShaJokyou = " + "" + bid_tbl03_1_cmbRakusatuStatus.SelectedValue.ToString() + " " +
                             ",NyuusatsuRakusatsuGakuJokyou = " + "" + bid_tbl03_1_cmbRakusatuAmtStatus.SelectedValue.ToString() + " " +
                             ",NyuusatsuKyougouTasha = " + " N'" + GlobalMethod.ChangeSqlText(bid_tbl03_1_txtRakusatuSya.Text, 0, 0) + "' ";
