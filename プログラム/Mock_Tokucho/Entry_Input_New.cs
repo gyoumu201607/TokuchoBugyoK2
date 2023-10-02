@@ -5854,28 +5854,35 @@ namespace TokuchoBugyoK2
             }
             else
             {
+                string sAmt = ca_tbl01_txtJyutakuAmt.Text;
                 string GyoumuCD = ca_tbl01_cmbCaKubun.SelectedValue.ToString();
                 if (GyoumuCD == "1" || GyoumuCD == "2" || GyoumuCD == "3" || GyoumuCD == "4")
                 {
                     ca_tbl06_c1FlexGrid.Rows[2][1] = ca_tbl01_dtpKokiTo.Text;
                     ca_tbl06_c1FlexGrid.Rows[2][2] = DateTime.Parse(ca_tbl01_dtpKokiTo.Text).ToString("yyyy/MM");
+                    ca_tbl06_c1FlexGrid.Rows[2][3] = sAmt;
                 }
                 else if (GyoumuCD == "5" || GyoumuCD == "6")
                 {
                     ca_tbl06_c1FlexGrid.Rows[2][9] = ca_tbl01_dtpKokiTo.Text;
                     ca_tbl06_c1FlexGrid.Rows[2][10] = DateTime.Parse(ca_tbl01_dtpKokiTo.Text).ToString("yyyy/MM");
+                    ca_tbl06_c1FlexGrid.Rows[2][11] = sAmt;
                 }
                 else if (GyoumuCD == "7")
                 {
                     ca_tbl06_c1FlexGrid.Rows[2][17] = ca_tbl01_dtpKokiTo.Text;
                     ca_tbl06_c1FlexGrid.Rows[2][18] = DateTime.Parse(ca_tbl01_dtpKokiTo.Text).ToString("yyyy/MM");
+                    ca_tbl06_c1FlexGrid.Rows[2][19] = sAmt;
                 }
                 else if (GyoumuCD == "8")
                 {
                     ca_tbl06_c1FlexGrid.Rows[2][25] = ca_tbl01_dtpKokiTo.Text;
                     ca_tbl06_c1FlexGrid.Rows[2][26] = DateTime.Parse(ca_tbl01_dtpKokiTo.Text).ToString("yyyy/MM");
+                    ca_tbl06_c1FlexGrid.Rows[2][27] = sAmt;
                 }
                 ca_tbl07_dtpRequst1.Text = ca_tbl01_dtpKokiTo.Text;
+                ca_tbl07_txtRequst1.Text = ca_tbl01_txtZeikomiAmt.Text;
+                GetTotalMoney("ca_tbl07_txtRequst", 7);
             }
         }
 
@@ -7478,12 +7485,13 @@ namespace TokuchoBugyoK2
                 // No.1491 エントリくんの新規登録・更新で、基本情報の応援依頼先が【なし】の場合は、「応援依頼メモ」「応援依頼先」が空欄でも良いが、エラーとなってしまう。
                 if (!IsSpecifiedValue(base_tbl07_3_cmbOen.SelectedValue, "2"))
                 {
-                    if (String.IsNullOrEmpty(base_tbl07_3_txtOenMemo.Text))
-                    {
-                        errorFlg = true;
-                        base_tbl07_3_txtOenMemo.BackColor = errorColor;
-                        base_tbl07_3_picOenMemoAlert.Visible = true;
-                    }
+                    //No.1521
+                    //if (String.IsNullOrEmpty(base_tbl07_3_txtOenMemo.Text))
+                    //{
+                    //    errorFlg = true;
+                    //    base_tbl07_3_txtOenMemo.BackColor = errorColor;
+                    //    base_tbl07_3_picOenMemoAlert.Visible = true;
+                    //}
                     bool bOen1 = false;
                     bool bOen2 = false;
                     bool bOen3 = false;
@@ -8249,6 +8257,20 @@ namespace TokuchoBugyoK2
                 bid_tbl01_picOrderIyokuAlert.Visible = true;
                 errorFlg = true;
             }
+
+            // 「落札者状況 不明」の時、空欄ではないなら警告。
+            if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuStatus.SelectedValue, "2"))
+            {
+                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text) == false)
+                {
+                    set_error(GlobalMethod.GetMessage("W10612", "入札"));
+                    bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
+                    bid_tbl03_1_picRakusatuSyaAlert.Visible = true;
+                    bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
+                    bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                    errorFlg = true;
+                }
+            }
             return errorFlg;
         }
 
@@ -8498,19 +8520,6 @@ namespace TokuchoBugyoK2
             }
             // １．入札情報 落札者	「落札者状況 判明、推定」の時、空欄なら警告。
             object obj = bid_tbl03_1_cmbRakusatuStatus.SelectedValue;
-            // 「落札者状況 不明」の時、空欄ではないなら警告。
-            if (IsSpecifiedValue(obj, "2"))
-            {
-                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text) == false)
-                {
-                    //GlobalMethod.outputMessage("W10609", "入札");
-                    set_error(GlobalMethod.GetMessage("W10612", "入札"));
-                    bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuSyaAlert.Visible = true;
-                    bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
-                }
-            }
             // 「落札者状況 判明、推定」の時、空欄なら警告。
             if (IsSpecifiedValue(obj, "1") || IsSpecifiedValue(obj, "3"))
             {

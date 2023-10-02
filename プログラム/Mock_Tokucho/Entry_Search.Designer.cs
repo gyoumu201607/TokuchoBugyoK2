@@ -43,6 +43,14 @@ namespace TokuchoBugyoK2
             this.lblVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.label41 = new System.Windows.Forms.Label();
+            this.tblStep = new System.Windows.Forms.TableLayoutPanel();
+            this.src_cbStepCa = new System.Windows.Forms.CheckBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.src_cbStepBid = new System.Windows.Forms.CheckBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.src_cbStepPrior = new System.Windows.Forms.CheckBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label35 = new System.Windows.Forms.Label();
             this.src_30 = new System.Windows.Forms.CheckBox();
@@ -83,8 +91,6 @@ namespace TokuchoBugyoK2
             this.label24 = new System.Windows.Forms.Label();
             this.src_23 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.src_22 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.src_21 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -151,6 +157,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            this.tblStep.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -368,6 +375,8 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel9.Controls.Add(this.label41, 4, 3);
+            this.tableLayoutPanel9.Controls.Add(this.tblStep, 5, 3);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel14, 8, 4);
             this.tableLayoutPanel9.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.src_4, 3, 0);
@@ -398,8 +407,6 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel9.Controls.Add(this.label24, 8, 1);
             this.tableLayoutPanel9.Controls.Add(this.src_23, 7, 3);
             this.tableLayoutPanel9.Controls.Add(this.label6, 6, 3);
-            this.tableLayoutPanel9.Controls.Add(this.src_22, 5, 3);
-            this.tableLayoutPanel9.Controls.Add(this.label19, 4, 3);
             this.tableLayoutPanel9.Controls.Add(this.src_21, 3, 3);
             this.tableLayoutPanel9.Controls.Add(this.label9, 2, 3);
             this.tableLayoutPanel9.Controls.Add(this.label14, 8, 3);
@@ -428,15 +435,120 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel9.Location = new System.Drawing.Point(10, 43);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 6;
+            this.tableLayoutPanel9.RowCount = 5;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(1864, 148);
             this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // label41
+            // 
+            this.label41.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label41.Location = new System.Drawing.Point(686, 100);
+            this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(64, 17);
+            this.label41.TabIndex = 34;
+            this.label41.Text = "進捗段階";
+            // 
+            // tblStep
+            // 
+            this.tblStep.AutoSize = true;
+            this.tblStep.ColumnCount = 6;
+            this.tblStep.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblStep.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tblStep.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblStep.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tblStep.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblStep.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblStep.Controls.Add(this.src_cbStepCa, 5, 0);
+            this.tblStep.Controls.Add(this.label19, 4, 0);
+            this.tblStep.Controls.Add(this.src_cbStepBid, 3, 0);
+            this.tblStep.Controls.Add(this.label39, 2, 0);
+            this.tblStep.Controls.Add(this.src_cbStepPrior, 1, 0);
+            this.tblStep.Controls.Add(this.label40, 0, 0);
+            this.tblStep.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblStep.Location = new System.Drawing.Point(759, 99);
+            this.tblStep.Name = "tblStep";
+            this.tblStep.RowCount = 1;
+            this.tblStep.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblStep.Size = new System.Drawing.Size(229, 20);
+            this.tblStep.TabIndex = 33;
+            // 
+            // src_cbStepCa
+            // 
+            this.src_cbStepCa.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_cbStepCa.AutoSize = true;
+            this.src_cbStepCa.Location = new System.Drawing.Point(210, 3);
+            this.src_cbStepCa.Margin = new System.Windows.Forms.Padding(2);
+            this.src_cbStepCa.Name = "src_cbStepCa";
+            this.src_cbStepCa.Size = new System.Drawing.Size(15, 14);
+            this.src_cbStepCa.TabIndex = 31;
+            this.src_cbStepCa.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label19.Location = new System.Drawing.Point(170, 1);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(36, 17);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "契約";
+            // 
+            // src_cbStepBid
+            // 
+            this.src_cbStepBid.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_cbStepBid.AutoSize = true;
+            this.src_cbStepBid.Location = new System.Drawing.Point(140, 3);
+            this.src_cbStepBid.Margin = new System.Windows.Forms.Padding(2);
+            this.src_cbStepBid.Name = "src_cbStepBid";
+            this.src_cbStepBid.Size = new System.Drawing.Size(15, 14);
+            this.src_cbStepBid.TabIndex = 29;
+            this.src_cbStepBid.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label39.Location = new System.Drawing.Point(100, 1);
+            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(36, 17);
+            this.label39.TabIndex = 28;
+            this.label39.Text = "入札";
+            // 
+            // src_cbStepPrior
+            // 
+            this.src_cbStepPrior.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.src_cbStepPrior.AutoSize = true;
+            this.src_cbStepPrior.Location = new System.Drawing.Point(70, 3);
+            this.src_cbStepPrior.Margin = new System.Windows.Forms.Padding(2);
+            this.src_cbStepPrior.Name = "src_cbStepPrior";
+            this.src_cbStepPrior.Size = new System.Drawing.Size(15, 14);
+            this.src_cbStepPrior.TabIndex = 27;
+            this.src_cbStepPrior.UseVisualStyleBackColor = true;
+            // 
+            // label40
+            // 
+            this.label40.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label40.Location = new System.Drawing.Point(2, 1);
+            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(64, 17);
+            this.label40.TabIndex = 1;
+            this.label40.Text = "事前打診";
             // 
             // tableLayoutPanel14
             // 
@@ -990,37 +1102,6 @@ namespace TokuchoBugyoK2
             this.label6.Size = new System.Drawing.Size(64, 17);
             this.label6.TabIndex = 0;
             this.label6.Text = "当会応札";
-            // 
-            // src_22
-            // 
-            this.src_22.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.src_22.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.src_22.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.src_22.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.src_22.FormattingEnabled = true;
-            this.src_22.Items.AddRange(new object[] {
-            "",
-            "未確定",
-            "発注確定",
-            "発注無し"});
-            this.src_22.Location = new System.Drawing.Point(758, 98);
-            this.src_22.Margin = new System.Windows.Forms.Padding(2);
-            this.src_22.Name = "src_22";
-            this.src_22.Size = new System.Drawing.Size(104, 22);
-            this.src_22.TabIndex = 24;
-            this.src_22.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label19.Location = new System.Drawing.Point(688, 100);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(64, 17);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "引合状況";
             // 
             // src_21
             // 
@@ -2001,6 +2082,8 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            this.tblStep.ResumeLayout(false);
+            this.tblStep.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel14.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -2064,11 +2147,9 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TextBox src_16;
         private System.Windows.Forms.TextBox src_17;
         private System.Windows.Forms.TextBox src_19;
-        private System.Windows.Forms.ComboBox src_22;
         private System.Windows.Forms.ComboBox src_26;
         private System.Windows.Forms.CheckBox src_27;
         private System.Windows.Forms.TextBox src_18;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
@@ -2146,5 +2227,13 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox ankenInput2;
+        private System.Windows.Forms.TableLayoutPanel tblStep;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox src_cbStepBid;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.CheckBox src_cbStepPrior;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.CheckBox src_cbStepCa;
+        private System.Windows.Forms.Label label41;
     }
 }

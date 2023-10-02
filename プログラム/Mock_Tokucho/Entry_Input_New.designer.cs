@@ -3018,7 +3018,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_3_lblOenMemo.Name = "base_tbl07_3_lblOenMemo";
             this.base_tbl07_3_lblOenMemo.Size = new System.Drawing.Size(85, 22);
             this.base_tbl07_3_lblOenMemo.TabIndex = 42;
-            this.base_tbl07_3_lblOenMemo.Text = "応援依頼メモ";
+            this.base_tbl07_3_lblOenMemo.Text = "調査実施部所メモ";
             this.base_tbl07_3_lblOenMemo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // base_tbl07_3_lblOenIrai
@@ -3032,7 +3032,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_3_lblOenIrai.Name = "base_tbl07_3_lblOenIrai";
             this.base_tbl07_3_lblOenIrai.Size = new System.Drawing.Size(105, 21);
             this.base_tbl07_3_lblOenIrai.TabIndex = 41;
-            this.base_tbl07_3_lblOenIrai.Text = "応援依頼先　　　";
+            this.base_tbl07_3_lblOenIrai.Text = "調査実施部所　　　";
             this.base_tbl07_3_lblOenIrai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // base_tbl07_3_lblOen
@@ -3046,7 +3046,7 @@ namespace TokuchoBugyoK2
             this.base_tbl07_3_lblOen.Name = "base_tbl07_3_lblOen";
             this.base_tbl07_3_lblOen.Size = new System.Drawing.Size(105, 22);
             this.base_tbl07_3_lblOen.TabIndex = 40;
-            this.base_tbl07_3_lblOen.Text = "応援依頼の有無";
+            this.base_tbl07_3_lblOen.Text = "調査実施部所の有無";
             this.base_tbl07_3_lblOen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // base_tbl07_3_lblComent

@@ -73,7 +73,7 @@ namespace TokuchoBugyoK2
             this.src_12.MouseWheel += item_MouseWheel; // 発注者区分1
             this.src_9.MouseWheel += item_MouseWheel; // 契約区分
             this.src_21.MouseWheel += item_MouseWheel; // 受注意欲
-            this.src_22.MouseWheel += item_MouseWheel; // 引合状況
+            //this.src_22.MouseWheel += item_MouseWheel; // 引合状況    えんとり君修正STEP3 No.1523
             this.src_23.MouseWheel += item_MouseWheel; // 当会応札
             this.src_20.MouseWheel += item_MouseWheel; // 参考見積
             this.src_26.MouseWheel += item_MouseWheel; // 起案状況
@@ -102,7 +102,9 @@ namespace TokuchoBugyoK2
             rng.Data = "情報システム部部門";
             rng = c1FlexGrid1.GetCellRange(0, 44, 0, 46);
             rng.Data = "総合研究所部門";
-
+            //えんとり君修正STEP3　No.1523
+            rng = c1FlexGrid1.GetCellRange(0, 53, 0, 55);
+            rng.Data = "進捗段階";
             //コンボボックスの内容を設定
             set_combo();
             ClearForm();
@@ -856,29 +858,30 @@ namespace TokuchoBugyoK2
             //c1FlexGrid1.Cols[23].DataMap = sl;
             c1FlexGrid1.Cols[24].DataMap = sl;
 
-            //引合状況
+            // えんとり君修正STEP3 No.1523
+            ////引合状況
             System.Data.DataTable tmpdt = new System.Data.DataTable();
-            tmpdt.Columns.Add("Value", typeof(int));
-            tmpdt.Columns.Add("Discript", typeof(string));
+            //tmpdt.Columns.Add("Value", typeof(int));
+            //tmpdt.Columns.Add("Discript", typeof(string));
 
-            tmpdt.Rows.Add(1, "未確定");
-            tmpdt.Rows.Add(2, "発注確定");
-            tmpdt.Rows.Add(3, "発注無し");
-            if (tmpdt != null)
-            {
-                dr = tmpdt.NewRow();
-                tmpdt.Rows.InsertAt(dr, 0);
-            }
+            //tmpdt.Rows.Add(1, "未確定");
+            //tmpdt.Rows.Add(2, "発注確定");
+            //tmpdt.Rows.Add(3, "発注無し");
+            //if (tmpdt != null)
+            //{
+            //    dr = tmpdt.NewRow();
+            //    tmpdt.Rows.InsertAt(dr, 0);
+            //}
 
-            src_22.DataSource = tmpdt;
-            src_22.DisplayMember = "Discript";
-            src_22.ValueMember = "Value";
+            //src_22.DataSource = tmpdt;
+            //src_22.DisplayMember = "Discript";
+            //src_22.ValueMember = "Value";
 
-            sl = new SortedList();
-            sl = GlobalMethod.Get_SortedList(tmpdt);
-            //該当グリッドのセルにセット
-            //c1FlexGrid1.Cols[19].DataMap = sl;
-            c1FlexGrid1.Cols[20].DataMap = sl;
+            //sl = new SortedList();
+            //sl = GlobalMethod.Get_SortedList(tmpdt);
+            ////該当グリッドのセルにセット
+            ////c1FlexGrid1.Cols[19].DataMap = sl;
+            //c1FlexGrid1.Cols[20].DataMap = sl;
 
             //参考見積
             tmpdt = new System.Data.DataTable();
@@ -1228,6 +1231,9 @@ namespace TokuchoBugyoK2
                             //"      ELSE '無' END AS 'NendoKurikoshi' " +
                             ",ISNULL(KeiyakuKurikoshiCho,0) " +
                             ",AnkenHachushaCD " +
+                            ",AnkenJizenDashinCheck " +
+                            ",AnkenNyuusatuCheck " +
+                            ",AnkenKeiyakuCheck " +
                             ",AnkenSaishinFlg " +
                             "FROM AnkenJouhou " +
                             "LEFT JOIN NyuusatsuJouhou ON AnkenJouhou.AnkenJouhouID = NyuusatsuJouhou.AnkenJouhouID " +
@@ -1398,9 +1404,37 @@ namespace TokuchoBugyoK2
                         {
                             cmd.CommandText += "  and AnkenToukaiJyutyuIyoku = N'" + src_21.SelectedIndex + "'";
                         }
-                        if (src_22.Text != "")
+                        //えんとり君修正STEP3 No.1523
+                        //if (src_22.Text != "")
+                        //{
+                        //    cmd.CommandText += "  and AnkenHikiaijhokyo = N'" + src_22.SelectedIndex + "'";
+                        //}
+                        if (src_cbStepPrior.Checked || src_cbStepBid.Checked || src_cbStepCa.Checked)
                         {
-                            cmd.CommandText += "  and AnkenHikiaijhokyo = N'" + src_22.SelectedIndex + "'";
+                            string sStepSql = " and (";
+                            bool blAri = false;
+                            if (src_cbStepPrior.Checked)
+                            {
+                                blAri = true;
+                                // 進捗段階は事前打診まで
+                                sStepSql += " (AnkenJizenDashinCheck = 1 AND AnkenNyuusatuCheck <> 1 AND AnkenKeiyakuCheck <> 1)";
+                            }
+                            if (src_cbStepBid.Checked)
+                            {
+                                // 進捗段階は入札まで
+                                if (blAri) sStepSql += " OR";
+                                blAri = true;
+                                sStepSql += " (AnkenNyuusatuCheck = 1 AND AnkenKeiyakuCheck <> 1)";
+                            }
+                            if (src_cbStepCa.Checked)
+                            {
+                                // 進捗段階は契約まで
+                                if (blAri) sStepSql += " OR";
+                                blAri = true;
+                                sStepSql += " (AnkenKeiyakuCheck = 1)";
+                            }
+                            sStepSql += ")";
+                            cmd.CommandText += sStepSql;
                         }
                         if (src_23.Text != "")
                         {
@@ -1845,7 +1879,7 @@ namespace TokuchoBugyoK2
             //参考見積　受注意欲　引合状況　当会応礼
             src_20.SelectedIndex = -1;
             src_21.SelectedIndex = -1;
-            src_22.SelectedIndex = -1;
+            //src_22.SelectedIndex = -1; えんとり君修正STEP3 No.1523
             src_23.SelectedIndex = -1;
             //年度越え配分　発注者CD
             src_24.Checked = false;
@@ -2200,14 +2234,16 @@ namespace TokuchoBugyoK2
                                 {
                                     report_data[19] = "0";
                                 }
-                                if (src_22.Text != null && src_22.Text != "")
-                                {
-                                    report_data[20] = src_22.SelectedValue.ToString(); // 引合状況
-                                }
-                                else
-                                {
-                                    report_data[20] = "0";
-                                }
+                                // えんとり君修正STEP3 No.1523
+                                report_data[20] = "0";
+                                //if (src_22.Text != null && src_22.Text != "")
+                                //{
+                                //    report_data[20] = src_22.SelectedValue.ToString(); // 引合状況
+                                //}
+                                //else
+                                //{
+                                //    report_data[20] = "0";
+                                //}
                                 if (src_23.Text != null && src_23.Text != "")
                                 {
                                     report_data[21] = src_23.SelectedValue.ToString(); // 当会応札
