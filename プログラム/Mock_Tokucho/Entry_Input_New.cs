@@ -3368,6 +3368,10 @@ namespace TokuchoBugyoK2
 
                 if (base_tbl03_dtpKokiTo.CustomFormat == "")
                 {
+                    if (mode != MODE.INSERT && mode != MODE.PLAN)
+                    {
+                        ca_tbl01_dtpKokiTo.Text = base_tbl03_dtpKokiTo.Text;
+                    }
                     DataTable dt = new DataTable();
                     dt = GlobalMethod.getData("NendoID", "NendoID", "Mst_Nendo", "Nendo_Sdate <= '" + base_tbl03_dtpKokiTo.Text + "' AND Nendo_EDate >= '" + base_tbl03_dtpKokiTo.Text + "' ");
                     if (dt != null && dt.Rows.Count > 0)
@@ -3390,6 +3394,11 @@ namespace TokuchoBugyoK2
             {
                 if (base_tbl03_dtpKokiFrom.CustomFormat == "")
                 {
+                    if (mode != MODE.INSERT && mode != MODE.PLAN)
+                    {
+                        ca_tbl01_dtpKokiFrom.Text = base_tbl03_dtpKokiFrom.Text;
+                    }
+
                     DataTable dt = new DataTable();
                     dt = GlobalMethod.getData("NendoID", "NendoID", "Mst_Nendo", "Nendo_Sdate <= '" + base_tbl03_dtpKokiFrom.Text + "' AND Nendo_EDate >= '" + base_tbl03_dtpKokiFrom.Text + "' ");
                     if (dt != null && dt.Rows.Count > 0)
@@ -7858,13 +7867,13 @@ namespace TokuchoBugyoK2
                     errorFlg = true;
                 }
                 // ３．入札結果	全て	案件メモ以外の未登録があれば登録不可。
-                //入札結果登録日
-                if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
-                {
-                    errorFlg = true;
-                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
-                    bid_tbl03_1_picBidResultDtAlert.Visible = true;
-                }
+                //入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
+                //if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+                //{
+                //    errorFlg = true;
+                //    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                //    bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                //}
                 //入札状況
                 if (this.IsNotSelected(bid_tbl03_1_cmbBidStatus))
                 {
@@ -8195,7 +8204,7 @@ namespace TokuchoBugyoK2
             object obj = prior_tbl01_cmbMitumori.SelectedValue;
             if (this.IsSpecifiedValue(obj, "1") && base_tbl01_dtpDtBid.CustomFormat == "")
             {
-                set_error(GlobalMethod.GetMessage("E10735", "基本情報等一覧"));
+                set_error(GlobalMethod.GetMessage("E10735", "基本情報等一覧、事前打診"));
                 base_tbl01_lblDtBid.BackColor = errorColor;
                 base_tbl01_picBidAlert.Visible = true;
                 prior_tbl01_lblMitumori.BackColor = errorColor;
@@ -8421,30 +8430,9 @@ namespace TokuchoBugyoK2
                     bid_tbl01_picBidInfoDtAlert.Visible = true;
                     prior_tbl01_lblMitumori.BackColor = errorColor;
                     prior_tbl01_picMitumoriAlert.Visible = true;
-                    //if (GlobalMethod.outputMessage("E10735", "入札", 1) == DialogResult.Cancel)
-                    //{
-                    //    return true;
-                    //}
                 }
             }
 
-            //// 事前打診	２．未発注	その他の内容	発注無しの理由「その他」の時、入力欄色付け。更新時警告。→エラーにするか？→警告にする。
-            //if (IsSpecifiedValue(prior_tbl02_cmbNotOrderReason.SelectedValue, "4"))
-            //{
-            //    if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text))
-            //    {
-            //        //GlobalMethod.outputMessage("W10604", "事前打診");
-            //        set_error(GlobalMethod.GetMessage("W10604", "事前打診"));
-            //        prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
-            //        prior_tbl02_picOtherNaiyoAlert.Visible = true;
-            //        prior_tbl02_lblNotOrderReason.BackColor = errorColor;
-            //        prior_tbl02_picNotOrderReasonAlert.Visible = true;
-            //        //if (GlobalMethod.outputMessage("E10735", "事前打診", 1) == DialogResult.Cancel)
-            //        //{
-            //        //    return true;
-            //        //}
-            //    }
-            //}
             // １．入札情報	入札状況	「入札中」のまま「入札タブ　入札結果登録日」が登録されたら警告。 入札中⇒入札前
             if (IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1"))
             {
@@ -8471,6 +8459,13 @@ namespace TokuchoBugyoK2
                     bid_tbl01_lblTokaiOsatu.BackColor = errorColor;
                     bid_tbl01_picTokaiOsatuAlert.Visible = true;
                 }
+            }
+            //入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
+            if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+            {
+                set_error(GlobalMethod.GetMessage("W10611", "入札"));
+                bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                bid_tbl03_1_picBidResultDtAlert.Visible = true;
             }
             int difMonth = 0;
             if (bid_tbl03_1_dtpBidResultDt.CustomFormat == "")
@@ -8503,6 +8498,20 @@ namespace TokuchoBugyoK2
             }
             // １．入札情報 落札者	「落札者状況 判明、推定」の時、空欄なら警告。
             object obj = bid_tbl03_1_cmbRakusatuStatus.SelectedValue;
+            // 「落札者状況 不明」の時、空欄ではないなら警告。
+            if (IsSpecifiedValue(obj, "2"))
+            {
+                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text) == false)
+                {
+                    //GlobalMethod.outputMessage("W10609", "入札");
+                    set_error(GlobalMethod.GetMessage("W10612", "入札"));
+                    bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
+                    bid_tbl03_1_picRakusatuSyaAlert.Visible = true;
+                    bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
+                    bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                }
+            }
+            // 「落札者状況 判明、推定」の時、空欄なら警告。
             if (IsSpecifiedValue(obj, "1") || IsSpecifiedValue(obj, "3"))
             {
                 if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text))
