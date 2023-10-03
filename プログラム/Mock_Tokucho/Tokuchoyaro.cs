@@ -489,7 +489,7 @@ namespace TokuchoBugyoK2
                             //チェックボックス両方
                             if (checkBox2.Checked == true && checkBox3.Checked == true)
                             {
-                                cmd.CommandText += "AND ((ISNULL(HinmokuChousainCD, '') = ''" + "AND ISNULL(HinmokuRyakuBushoCD, '') <> ''" + "AND" + "(MadoguchiTantoushaBushoCD ='" + UserInfos[2] + "'))" + " OR ISNULL(HinmokuChousainCD, '') = ''" + "AND" + "(HinmokuRyakuBushoCD ='" + UserInfos[2] + "')) ";
+                                cmd.CommandText += "AND ((ISNULL(HinmokuChousainCD, '') = ''" + " AND ISNULL(HinmokuRyakuBushoCD, '') <> ''" + " AND " + "(MadoguchiTantoushaBushoCD ='" + UserInfos[2] + "'))" + " OR (ISNULL(HinmokuChousainCD, '') = ''" + " AND " + "HinmokuRyakuBushoCD ='" + UserInfos[2] + "')) ";
                             }
                             //窓口部所 窓口担当部署CD
                             else if (checkBox2.Checked == true)
@@ -618,7 +618,7 @@ namespace TokuchoBugyoK2
                 //描画再開
                 c1FlexGrid1.EndUpdate();
             }
-            if (mode == 2 && DT_UserShinchoku != null)
+            if (mode == 2 && DT_MadoguchiShinshoku != null)
             {
                 //描画停止
                 c1FlexGrid2.BeginUpdate();
