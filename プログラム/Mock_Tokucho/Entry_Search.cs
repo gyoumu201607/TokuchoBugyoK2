@@ -1411,30 +1411,32 @@ namespace TokuchoBugyoK2
                         //}
                         if (src_cbStepPrior.Checked || src_cbStepBid.Checked || src_cbStepCa.Checked)
                         {
-                            string sStepSql = " and (";
-                            bool blAri = false;
-                            if (src_cbStepPrior.Checked)
-                            {
-                                blAri = true;
-                                // 進捗段階は事前打診まで
-                                sStepSql += " (AnkenJizenDashinCheck = 1 AND AnkenNyuusatuCheck <> 1 AND AnkenKeiyakuCheck <> 1)";
-                            }
-                            if (src_cbStepBid.Checked)
-                            {
-                                // 進捗段階は入札まで
-                                if (blAri) sStepSql += " OR";
-                                blAri = true;
-                                sStepSql += " (AnkenNyuusatuCheck = 1 AND AnkenKeiyakuCheck <> 1)";
-                            }
-                            if (src_cbStepCa.Checked)
-                            {
-                                // 進捗段階は契約まで
-                                if (blAri) sStepSql += " OR";
-                                blAri = true;
-                                sStepSql += " (AnkenKeiyakuCheck = 1)";
-                            }
-                            sStepSql += ")";
-                            cmd.CommandText += sStepSql;
+                            cmd.CommandText += " and (AnkenJizenDashinCheck " + (src_cbStepPrior.Checked ? " = 1 " : " <> 1");
+                            cmd.CommandText += " and AnkenNyuusatuCheck " + (src_cbStepBid.Checked ? " = 1 " : " <> 1");
+                            cmd.CommandText += " and AnkenKeiyakuCheck " + (src_cbStepCa.Checked ? " = 1 " : " <> 1") + ")";
+                            //string sStepSql = " and (";
+                            //bool blAri = false;
+                            //if (src_cbStepPrior.Checked)
+                            //{
+                            //    // 進捗段階は事前打診まで
+                            //    sStepSql += " (AnkenJizenDashinCheck = 1";
+                            //}
+                            //if (src_cbStepBid.Checked)
+                            //{
+                            //    // 進捗段階は入札まで
+                            //    if (blAri) sStepSql += " OR";
+                            //    blAri = true;
+                            //    sStepSql += " (AnkenNyuusatuCheck = 1 AND AnkenKeiyakuCheck <> 1)";
+                            //}
+                            //if (src_cbStepCa.Checked)
+                            //{
+                            //    // 進捗段階は契約まで
+                            //    if (blAri) sStepSql += " OR";
+                            //    blAri = true;
+                            //    sStepSql += " (AnkenKeiyakuCheck = 1)";
+                            //}
+                            //sStepSql += ")";
+                            //cmd.CommandText += sStepSql;
                         }
                         if (src_23.Text != "")
                         {

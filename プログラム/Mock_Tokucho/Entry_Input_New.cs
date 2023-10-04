@@ -8258,12 +8258,12 @@ namespace TokuchoBugyoK2
                 errorFlg = true;
             }
 
-            // 「落札者状況 不明」の時、空欄ではないなら警告。
+            // 「落札者状況 不明」の時、空欄ではないなら更新不可
             if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuStatus.SelectedValue, "2"))
             {
                 if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text) == false)
                 {
-                    set_error(GlobalMethod.GetMessage("W10612", "入札"));
+                    set_error(GlobalMethod.GetMessage("E10739", "入札"));
                     bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
                     bid_tbl03_1_picRakusatuSyaAlert.Visible = true;
                     bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
@@ -10536,12 +10536,13 @@ namespace TokuchoBugyoK2
             if (base_tbl01_dtpDtPrior.CustomFormat != "")
             {
                 sSql.Append("    , " + Get_DateTimePicker("base_tbl01_dtpDtBid"));   // AnkenJizenDashinDate
+                sSql.Append("    , 1");   // AnkenJizenDashinCheck
             }
             else
             {
                 sSql.Append("    , " + Get_DateTimePicker("base_tbl01_dtpDtPrior"));   // AnkenJizenDashinDate
+                sSql.Append("    , " + (base_tbl01_chkJizendasin.Checked ? "1" : "0"));   // AnkenJizenDashinCheck
             }
-            sSql.Append("    , " + (base_tbl01_chkJizendasin.Checked ? "1" : "0"));   // AnkenJizenDashinCheck
             sSql.Append("    , N'" + GlobalMethod.ChangeSqlText(base_tbl03_txtAnkenMemo.Text, 0, 0) + "'");   // AnkenAnkenMemoKihon
             sSql.Append("    , " + ((IsNotSelected(base_tbl07_3_cmbOen)) ? "null" : base_tbl07_3_cmbOen.SelectedValue.ToString()));      // AnkenOueniraiUmu --応援依頼の有無
             sSql.Append("    , N'" + GlobalMethod.ChangeSqlText(base_tbl07_3_txtOenMemo.Text, 0, 0) + "'");   // AnkenOuenIraiMemo --応援依頼メモ
