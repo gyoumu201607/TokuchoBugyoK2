@@ -1467,7 +1467,9 @@ namespace TokuchoBugyoK2
                         // えんとり君修正STEP2
                         if (src_29.Checked)
                         {
-                            cmd.CommandText += "  and KeiyakuRIBCYouTankaDataMoushikomisho = 1";
+                            // No.1532
+                            //cmd.CommandText += "  and KeiyakuRIBCYouTankaDataMoushikomisho = 1";
+                            cmd.CommandText += "  and KeiyakuRIBCYouTankaData = 1";
                         }
                         if (src_30.Checked)
                         {

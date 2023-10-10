@@ -5456,6 +5456,31 @@ namespace TokuchoBugyoK2
         }
 
         /// <summary>
+        /// 5.発注担当者情報（調査窓口）からコピーする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void base_tbl06_btnTyosaMadoguchiCopy_Click(object sender, EventArgs e)
+        {
+            //No.1531 チェックボックスからボタンへ変更
+            //6.発注担当者情報（契約窓口）
+            //部署
+            base_tbl06_txtBusho.Text = base_tbl05_txtBusho.Text;
+            //担当者名
+            base_tbl06_txtTanto.Text = base_tbl05_txtTanto.Text;
+            //電話
+            base_tbl06_txtTel.Text = base_tbl05_txtTel.Text;
+            //FAX
+            base_tbl06_txtFax.Text = base_tbl05_txtFax.Text;
+            //E - Mail
+            base_tbl06_txtEmail.Text = base_tbl05_txtEmail.Text;
+            //郵便番号
+            base_tbl06_txtZip.Text = base_tbl05_txtZip.Text;
+            //住所
+            base_tbl06_txtAddress.Text = base_tbl05_txtAddress.Text;
+        }
+
+        /// <summary>
         /// チェックボックス　値変更処理
         /// </summary>
         /// <param name="sender"></param>
@@ -5465,32 +5490,33 @@ namespace TokuchoBugyoK2
             System.Windows.Forms.CheckBox ck = (System.Windows.Forms.CheckBox)sender;
             if (!ck.Enabled) return;
             bool bChk = ck.Checked;
-            if (ck.Name == "base_tbl06_chkTyosaMadoguchi" && bChk)
-            {
-                //部署
-                base_tbl06_txtBusho.Text = base_tbl05_txtBusho.Text;
-                //base_tbl06_txtBusho.ReadOnly = bChk;
-                //担当者名
-                base_tbl06_txtTanto.Text = base_tbl05_txtTanto.Text;
-                //base_tbl06_txtTanto.ReadOnly = bChk;
-                //電話
-                base_tbl06_txtTel.Text = base_tbl05_txtTel.Text;
-                //base_tbl06_txtTel.ReadOnly = bChk;
-                //FAX
-                base_tbl06_txtFax.Text = base_tbl05_txtFax.Text;
-                //base_tbl06_txtFax.ReadOnly = bChk;
-                //E - Mail
-                base_tbl06_txtEmail.Text = base_tbl05_txtEmail.Text;
-                //base_tbl06_txtEmail.ReadOnly = bChk;
-                //郵便番号
-                base_tbl06_txtZip.Text = base_tbl05_txtZip.Text;
-                //base_tbl06_txtZip.ReadOnly = bChk;
-                //base_tbl06_picZip.Visible = !bChk;
-                //住所
-                base_tbl06_txtAddress.Text = base_tbl05_txtAddress.Text;
-                //base_tbl06_txtAddress.ReadOnly = bChk;
-                return;
-            }
+            //No.1531 チェックボックスからボタンへ変更
+            //if (ck.Name == "base_tbl06_chkTyosaMadoguchi" && bChk)
+            //{
+            //    //部署
+            //    base_tbl06_txtBusho.Text = base_tbl05_txtBusho.Text;
+            //    //base_tbl06_txtBusho.ReadOnly = bChk;
+            //    //担当者名
+            //    base_tbl06_txtTanto.Text = base_tbl05_txtTanto.Text;
+            //    //base_tbl06_txtTanto.ReadOnly = bChk;
+            //    //電話
+            //    base_tbl06_txtTel.Text = base_tbl05_txtTel.Text;
+            //    //base_tbl06_txtTel.ReadOnly = bChk;
+            //    //FAX
+            //    base_tbl06_txtFax.Text = base_tbl05_txtFax.Text;
+            //    //base_tbl06_txtFax.ReadOnly = bChk;
+            //    //E - Mail
+            //    base_tbl06_txtEmail.Text = base_tbl05_txtEmail.Text;
+            //    //base_tbl06_txtEmail.ReadOnly = bChk;
+            //    //郵便番号
+            //    base_tbl06_txtZip.Text = base_tbl05_txtZip.Text;
+            //    //base_tbl06_txtZip.ReadOnly = bChk;
+            //    //base_tbl06_picZip.Visible = !bChk;
+            //    //住所
+            //    base_tbl06_txtAddress.Text = base_tbl05_txtAddress.Text;
+            //    //base_tbl06_txtAddress.ReadOnly = bChk;
+            //    return;
+            //}
 
             if (base_tbl01_chkJizendasin.Name.Equals(ck.Name)) { 
                 if (ck.Checked)

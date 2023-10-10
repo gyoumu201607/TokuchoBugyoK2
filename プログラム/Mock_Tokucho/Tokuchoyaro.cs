@@ -722,6 +722,8 @@ namespace TokuchoBugyoK2
             src_ShuFuku.DisplayMember = "Discript";
             src_ShuFuku.ValueMember = "Value";
             src_ShuFuku.DataSource = tmpdt;
+            // No.1526 主+副に初期設定にする。
+            src_ShuFuku.SelectedValue = "4";
 
 
             // 進捗アイコン
