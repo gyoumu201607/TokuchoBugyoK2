@@ -7501,86 +7501,87 @@ namespace TokuchoBugyoK2
                 base_tbl04_picOrderKubun2Alert.Visible = true;
             }
 
-            // ７．業務配分	全て	応援依頼の有無、応援依頼メモ、応援依頼先以外が無ければ登録不可、100%以外で登録不可。
-            // 　　ただし、部門配分の調査部配分は0以上（0を含めない）の場合、応援依頼の有無、応援依頼メモ、応援依頼先がなければ登録不可 (No.1458)
-            if(GetDouble(base_tbl07_1_numPercent1.Text) > 0)
-            {
-                // No.1533 削除
-                //if (String.IsNullOrEmpty(base_tbl07_3_cmbOen.Text))
-                //{
-                //    errorFlg = true;
-                //    base_tbl07_3_lblOen.BackColor = errorColor;
-                //    base_tbl07_3_picOenAlert.Visible = true;
-                //}
-                // No.1533 削除
-                //// No.1491 エントリくんの新規登録・更新で、基本情報の応援依頼先が【なし】の場合は、「応援依頼メモ」「応援依頼先」が空欄でも良いが、エラーとなってしまう。
-                //if (!IsSpecifiedValue(base_tbl07_3_cmbOen.SelectedValue, "2"))
-                //{
-                    //No.1521
-                    //if (String.IsNullOrEmpty(base_tbl07_3_txtOenMemo.Text))
-                    //{
-                    //    errorFlg = true;
-                    //    base_tbl07_3_txtOenMemo.BackColor = errorColor;
-                    //    base_tbl07_3_picOenMemoAlert.Visible = true;
-                    //}
-                bool bOen1 = false;
-                bool bOen2 = false;
-                bool bOen3 = false;
-                if (base_tbl07_3_tblOenIrai1.Height > 0)
-                {
-                    foreach (Control child in base_tbl07_3_tblOenIrai1.Controls)
-                    {
-                        //特定のコントロール型内部の子情報は取得しない
-                        if (child is System.Windows.Forms.CheckBox)
-                        {
-                            if (((System.Windows.Forms.CheckBox)child).Checked)
-                            {
-                                bOen1 = true;
-                                break;
-                            }
-                        }
-                    }
+            //No1533 更新と新規で、部所設定が必須になっている。エラーを外さないと運用が回らない。
+            //// ７．業務配分	全て	応援依頼の有無、応援依頼メモ、応援依頼先以外が無ければ登録不可、100%以外で登録不可。
+            //// 　　ただし、部門配分の調査部配分は0以上（0を含めない）の場合、応援依頼の有無、応援依頼メモ、応援依頼先がなければ登録不可 (No.1458)
+            //if (GetDouble(base_tbl07_1_numPercent1.Text) > 0)
+            //{
+            //    // No.1533 削除
+            //    //if (String.IsNullOrEmpty(base_tbl07_3_cmbOen.Text))
+            //    //{
+            //    //    errorFlg = true;
+            //    //    base_tbl07_3_lblOen.BackColor = errorColor;
+            //    //    base_tbl07_3_picOenAlert.Visible = true;
+            //    //}
+            //    // No.1533 削除
+            //    //// No.1491 エントリくんの新規登録・更新で、基本情報の応援依頼先が【なし】の場合は、「応援依頼メモ」「応援依頼先」が空欄でも良いが、エラーとなってしまう。
+            //    //if (!IsSpecifiedValue(base_tbl07_3_cmbOen.SelectedValue, "2"))
+            //    //{
+            //        //No.1521
+            //        //if (String.IsNullOrEmpty(base_tbl07_3_txtOenMemo.Text))
+            //        //{
+            //        //    errorFlg = true;
+            //        //    base_tbl07_3_txtOenMemo.BackColor = errorColor;
+            //        //    base_tbl07_3_picOenMemoAlert.Visible = true;
+            //        //}
+            //    bool bOen1 = false;
+            //    bool bOen2 = false;
+            //    bool bOen3 = false;
+            //    if (base_tbl07_3_tblOenIrai1.Height > 0)
+            //    {
+            //        foreach (Control child in base_tbl07_3_tblOenIrai1.Controls)
+            //        {
+            //            //特定のコントロール型内部の子情報は取得しない
+            //            if (child is System.Windows.Forms.CheckBox)
+            //            {
+            //                if (((System.Windows.Forms.CheckBox)child).Checked)
+            //                {
+            //                    bOen1 = true;
+            //                    break;
+            //                }
+            //            }
+            //        }
 
-                    if (!bOen1 && base_tbl07_3_tblOenIrai2.Height > 0)
-                    {
-                        foreach (Control child in base_tbl07_3_tblOenIrai2.Controls)
-                        {
-                            //特定のコントロール型内部の子情報は取得しない
-                            if (child is System.Windows.Forms.CheckBox)
-                            {
-                                if (((System.Windows.Forms.CheckBox)child).Checked)
-                                {
-                                    bOen2 = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
+            //        if (!bOen1 && base_tbl07_3_tblOenIrai2.Height > 0)
+            //        {
+            //            foreach (Control child in base_tbl07_3_tblOenIrai2.Controls)
+            //            {
+            //                //特定のコントロール型内部の子情報は取得しない
+            //                if (child is System.Windows.Forms.CheckBox)
+            //                {
+            //                    if (((System.Windows.Forms.CheckBox)child).Checked)
+            //                    {
+            //                        bOen2 = true;
+            //                        break;
+            //                    }
+            //                }
+            //            }
+            //        }
 
-                    if (!bOen1 && !bOen2 && base_tbl07_3_tblOenIrai3.Height > 0)
-                    {
-                        foreach (Control child in base_tbl07_3_tblOenIrai3.Controls)
-                        {
-                            //特定のコントロール型内部の子情報は取得しない
-                            if (child is System.Windows.Forms.CheckBox)
-                            {
-                                if (((System.Windows.Forms.CheckBox)child).Checked)
-                                {
-                                    bOen3 = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                if (!(bOen1 || bOen2 || bOen3))
-                {
-                    base_tbl07_3_lblOenIrai.BackColor = errorColor;
-                    base_tbl07_3_picOenIraiAlert.Visible = true;
-                    errorFlg = true;
-                }
-                //}
-            }
+            //        if (!bOen1 && !bOen2 && base_tbl07_3_tblOenIrai3.Height > 0)
+            //        {
+            //            foreach (Control child in base_tbl07_3_tblOenIrai3.Controls)
+            //            {
+            //                //特定のコントロール型内部の子情報は取得しない
+            //                if (child is System.Windows.Forms.CheckBox)
+            //                {
+            //                    if (((System.Windows.Forms.CheckBox)child).Checked)
+            //                    {
+            //                        bOen3 = true;
+            //                        break;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //    if (!(bOen1 || bOen2 || bOen3))
+            //    {
+            //        base_tbl07_3_lblOenIrai.BackColor = errorColor;
+            //        base_tbl07_3_picOenIraiAlert.Visible = true;
+            //        errorFlg = true;
+            //    }
+            //    //}
+            //}
 
             if (flg == 0)
             {

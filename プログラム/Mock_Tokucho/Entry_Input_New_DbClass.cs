@@ -899,8 +899,8 @@ namespace TokuchoBugyoK2
             sSql.Append("    , AnkenJizenDashinDate");  //--事前打診登録日
             sSql.Append("    , AnkenJizenDashinCheck"); //--事前打診
             sSql.Append("    , AnkenAnkenMemoKihon");   // --案件メモ（基本情報）
-
-            sSql.Append("    , AnkenOueniraiUmu");   // --応援依頼の有無
+            // No.1533削除
+            //sSql.Append("    , AnkenOueniraiUmu");   // --応援依頼の有無
             sSql.Append("    , AnkenOuenIraiMemo");   // --応援依頼メモ
             sSql.Append("    , AnkenJizenDashinIraibi");   // --事前打診依頼日
             sSql.Append("    , AnkenHachuuYoteiMikomibi");   // --発注予定・見込日
