@@ -250,7 +250,8 @@ namespace TokuchoBugyoK2
 
             #region イベント設定 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
             // 基本情報等一覧 ================================================================================
-            base_tbl07_3_cmbOen.MouseWheel += cmb_MouseWheel;
+            // No.1533
+            //base_tbl07_3_cmbOen.MouseWheel += cmb_MouseWheel;
             base_tbl03_cmbKokiSalesYear.MouseWheel += cmb_MouseWheel;
             base_tbl03_cmbKokiStartYear.MouseWheel += cmb_MouseWheel;
             base_tbl03_cmbKeiyakuKubun.MouseWheel += cmb_MouseWheel;
@@ -962,12 +963,13 @@ namespace TokuchoBugyoK2
                 base_tbl07_2_numPercent12.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["ChousaRitsu12"]));//その他調査部
                 GetTotalPercent("base_tbl07_2_numPercent", 13);//合計
 
-                // 応援依頼の有無
-                obj = AnkenData_H.Rows[0]["AnkenOueniraiUmu"];
-                if (obj != null && string.IsNullOrEmpty(obj.ToString()) == false)
-                {
-                    base_tbl07_3_cmbOen.SelectedValue = obj.ToString();
-                }
+                // No.1533
+                //// 応援依頼の有無
+                //obj = AnkenData_H.Rows[0]["AnkenOueniraiUmu"];
+                //if (obj != null && string.IsNullOrEmpty(obj.ToString()) == false)
+                //{
+                //    base_tbl07_3_cmbOen.SelectedValue = obj.ToString();
+                //}
                 // 応援依頼メモ
                 base_tbl07_3_txtOenMemo.Text = AnkenData_H.Rows[0]["AnkenOuenIraiMemo"].ToString();
                 // 応援依頼先(リストは工期開始年度より変更ので、工期開始年度設定後、設定する)
@@ -2118,17 +2120,18 @@ namespace TokuchoBugyoK2
 
             #endregion
 
+            // No.1533 削除
             #region 応援依頼の有無 -----------------------------
-            DataTable cmbOeUm = new System.Data.DataTable();
-            cmbOeUm.Columns.Add("Value", typeof(int));
-            cmbOeUm.Columns.Add("Discript", typeof(string));
-            cmbOeUm.Rows.Add(0, "");
-            cmbOeUm.Rows.Add(1, "あり");
-            cmbOeUm.Rows.Add(2, "なし");
-            // -- 基本情報等一覧：７．業務配分
-            this.base_tbl07_3_cmbOen.DataSource = cmbOeUm;
-            this.base_tbl07_3_cmbOen.DisplayMember = "Discript";
-            this.base_tbl07_3_cmbOen.ValueMember = "Value";
+            //DataTable cmbOeUm = new System.Data.DataTable();
+            //cmbOeUm.Columns.Add("Value", typeof(int));
+            //cmbOeUm.Columns.Add("Discript", typeof(string));
+            //cmbOeUm.Rows.Add(0, "");
+            //cmbOeUm.Rows.Add(1, "あり");
+            //cmbOeUm.Rows.Add(2, "なし");
+            //// -- 基本情報等一覧：７．業務配分
+            //this.base_tbl07_3_cmbOen.DataSource = cmbOeUm;
+            //this.base_tbl07_3_cmbOen.DisplayMember = "Discript";
+            //this.base_tbl07_3_cmbOen.ValueMember = "Value";
             #endregion
 
             #region 「発注無し」の理由 -------------------------
@@ -2972,7 +2975,8 @@ namespace TokuchoBugyoK2
                     base_tbl07_2_numPercent11.ReadOnly = true;
                     base_tbl07_2_numPercent12.ReadOnly = true;
                     // 応援依頼情報
-                    base_tbl07_3_cmbOen.Enabled = false;
+                    // No.1533 削除
+                    //base_tbl07_3_cmbOen.Enabled = false;
                     base_tbl07_3_txtOenMemo.ReadOnly = true;
                     base_tbl07_3_tblOenIrai1.Enabled = false;
                     base_tbl07_3_tblOenIrai2.Enabled = false;
@@ -7501,16 +7505,17 @@ namespace TokuchoBugyoK2
             // 　　ただし、部門配分の調査部配分は0以上（0を含めない）の場合、応援依頼の有無、応援依頼メモ、応援依頼先がなければ登録不可 (No.1458)
             if(GetDouble(base_tbl07_1_numPercent1.Text) > 0)
             {
-                if (String.IsNullOrEmpty(base_tbl07_3_cmbOen.Text))
-                {
-                    errorFlg = true;
-                    base_tbl07_3_lblOen.BackColor = errorColor;
-                    base_tbl07_3_picOenAlert.Visible = true;
-                }
-
-                // No.1491 エントリくんの新規登録・更新で、基本情報の応援依頼先が【なし】の場合は、「応援依頼メモ」「応援依頼先」が空欄でも良いが、エラーとなってしまう。
-                if (!IsSpecifiedValue(base_tbl07_3_cmbOen.SelectedValue, "2"))
-                {
+                // No.1533 削除
+                //if (String.IsNullOrEmpty(base_tbl07_3_cmbOen.Text))
+                //{
+                //    errorFlg = true;
+                //    base_tbl07_3_lblOen.BackColor = errorColor;
+                //    base_tbl07_3_picOenAlert.Visible = true;
+                //}
+                // No.1533 削除
+                //// No.1491 エントリくんの新規登録・更新で、基本情報の応援依頼先が【なし】の場合は、「応援依頼メモ」「応援依頼先」が空欄でも良いが、エラーとなってしまう。
+                //if (!IsSpecifiedValue(base_tbl07_3_cmbOen.SelectedValue, "2"))
+                //{
                     //No.1521
                     //if (String.IsNullOrEmpty(base_tbl07_3_txtOenMemo.Text))
                     //{
@@ -7518,63 +7523,63 @@ namespace TokuchoBugyoK2
                     //    base_tbl07_3_txtOenMemo.BackColor = errorColor;
                     //    base_tbl07_3_picOenMemoAlert.Visible = true;
                     //}
-                    bool bOen1 = false;
-                    bool bOen2 = false;
-                    bool bOen3 = false;
-                    if (base_tbl07_3_tblOenIrai1.Height > 0)
+                bool bOen1 = false;
+                bool bOen2 = false;
+                bool bOen3 = false;
+                if (base_tbl07_3_tblOenIrai1.Height > 0)
+                {
+                    foreach (Control child in base_tbl07_3_tblOenIrai1.Controls)
                     {
-                        foreach (Control child in base_tbl07_3_tblOenIrai1.Controls)
+                        //特定のコントロール型内部の子情報は取得しない
+                        if (child is System.Windows.Forms.CheckBox)
+                        {
+                            if (((System.Windows.Forms.CheckBox)child).Checked)
+                            {
+                                bOen1 = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!bOen1 && base_tbl07_3_tblOenIrai2.Height > 0)
+                    {
+                        foreach (Control child in base_tbl07_3_tblOenIrai2.Controls)
                         {
                             //特定のコントロール型内部の子情報は取得しない
                             if (child is System.Windows.Forms.CheckBox)
                             {
                                 if (((System.Windows.Forms.CheckBox)child).Checked)
                                 {
-                                    bOen1 = true;
+                                    bOen2 = true;
                                     break;
                                 }
                             }
                         }
-
-                        if (!bOen1 && base_tbl07_3_tblOenIrai2.Height > 0)
-                        {
-                            foreach (Control child in base_tbl07_3_tblOenIrai2.Controls)
-                            {
-                                //特定のコントロール型内部の子情報は取得しない
-                                if (child is System.Windows.Forms.CheckBox)
-                                {
-                                    if (((System.Windows.Forms.CheckBox)child).Checked)
-                                    {
-                                        bOen2 = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-
-                        if (!bOen1 && !bOen2 && base_tbl07_3_tblOenIrai3.Height > 0)
-                        {
-                            foreach (Control child in base_tbl07_3_tblOenIrai3.Controls)
-                            {
-                                //特定のコントロール型内部の子情報は取得しない
-                                if (child is System.Windows.Forms.CheckBox)
-                                {
-                                    if (((System.Windows.Forms.CheckBox)child).Checked)
-                                    {
-                                        bOen3 = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
                     }
-                    if (!(bOen1 || bOen2 || bOen3))
+
+                    if (!bOen1 && !bOen2 && base_tbl07_3_tblOenIrai3.Height > 0)
                     {
-                        base_tbl07_3_lblOenIrai.BackColor = errorColor;
-                        base_tbl07_3_picOenIraiAlert.Visible = true;
-                        errorFlg = true;
+                        foreach (Control child in base_tbl07_3_tblOenIrai3.Controls)
+                        {
+                            //特定のコントロール型内部の子情報は取得しない
+                            if (child is System.Windows.Forms.CheckBox)
+                            {
+                                if (((System.Windows.Forms.CheckBox)child).Checked)
+                                {
+                                    bOen3 = true;
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
+                if (!(bOen1 || bOen2 || bOen3))
+                {
+                    base_tbl07_3_lblOenIrai.BackColor = errorColor;
+                    base_tbl07_3_picOenIraiAlert.Visible = true;
+                    errorFlg = true;
+                }
+                //}
             }
 
             if (flg == 0)
@@ -8160,21 +8165,23 @@ namespace TokuchoBugyoK2
             double pTotle = 0.00;
             // 部門配分
             pTotle = GetDouble(base_tbl07_1_numPercentAll.Text);
-            if(pTotle != 100.00)
+            if (pTotle != 100.00)
             {
                 set_error(GlobalMethod.GetMessage("E10733", "基本情報等一覧"));
                 errorFlg = true;
                 base_tbl07_1_numPercentAll.BackColor = errorColor;
                 base_tbl07_1_picPercentAlert.Visible = true;
             }
-            // 業務配分
-            pTotle = GetDouble(base_tbl07_2_numPercentAll.Text);
-            if (pTotle != 100.00)
-            {
-                set_error(GlobalMethod.GetMessage("E10734", "基本情報等一覧"));
-                errorFlg = true;
-                base_tbl07_2_numPercentAll.BackColor = errorColor;
-                base_tbl07_2_picPercentAlert.Visible = true;
+            if (GetDouble(base_tbl07_1_numPercent1.Text) > 0) { 
+                // 業務配分
+                pTotle = GetDouble(base_tbl07_2_numPercentAll.Text);
+                if (pTotle != 100.00)
+                {
+                    set_error(GlobalMethod.GetMessage("E10734", "基本情報等一覧"));
+                    errorFlg = true;
+                    base_tbl07_2_numPercentAll.BackColor = errorColor;
+                    base_tbl07_2_picPercentAlert.Visible = true;
+                }
             }
 
             // 新規登録時のみチェックする
@@ -8508,16 +8515,26 @@ namespace TokuchoBugyoK2
                     bid_tbl01_picTokaiOsatuAlert.Visible = true;
                 }
             }
-            //入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
-            if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
-            {
-                set_error(GlobalMethod.GetMessage("W10611", "入札"));
-                bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
-                bid_tbl03_1_picBidResultDtAlert.Visible = true;
-            }
+            // No.1534
+            ////入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
+            //if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+            //{
+            //    set_error(GlobalMethod.GetMessage("W10611", "入札"));
+            //    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+            //    bid_tbl03_1_picBidResultDtAlert.Visible = true;
+            //}
             int difMonth = 0;
             if (bid_tbl03_1_dtpBidResultDt.CustomFormat == "")
             {
+                // No.1534
+                //入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
+                if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+                {
+                    set_error(GlobalMethod.GetMessage("W10611", "入札"));
+                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                    bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                }
+
                 difMonth = GetElapsedMonths(bid_tbl03_1_dtpBidResultDt.Value, DateTime.Now);
                 // 「入札結果登録日」から2か月経過したら
                 if (difMonth >= 2)
@@ -9045,7 +9062,8 @@ namespace TokuchoBugyoK2
             base_tbl04_picOrderKubun2Alert.Visible = false;    // 発注者区分２
             base_tbl07_1_picPercentAlert.Visible = false;    // 部門配分
             base_tbl07_2_picPercentAlert.Visible = false;    // 調査部　業務配分
-            base_tbl07_3_picOenAlert.Visible = false;    // 応援依頼の有無
+            // No.1533 削除
+            //base_tbl07_3_picOenAlert.Visible = false;    // 応援依頼の有無
             base_tbl07_3_picOenMemoAlert.Visible = false;    // 応援依頼メモ
             base_tbl07_3_picOenIraiAlert.Visible = false;    // 応援依頼先
             base_tbl09_picJizenDasinIraiDtAlert.Visible = false;    // 事前打診依頼日
@@ -9153,7 +9171,8 @@ namespace TokuchoBugyoK2
             base_tbl07_1_numPercentAll.BackColor = clearColor;
             base_tbl07_2_numPercentAll.BackColor = clearColor;
 
-            base_tbl07_3_lblOen.BackColor = clearColor;
+            // No.1533 削除
+            //base_tbl07_3_lblOen.BackColor = clearColor;
             base_tbl07_3_txtOenMemo.BackColor = clearColor;
             base_tbl07_3_lblOenIrai.BackColor = clearColor;
 
@@ -10570,7 +10589,8 @@ namespace TokuchoBugyoK2
                 sSql.Append("    , " + (base_tbl01_chkJizendasin.Checked ? "1" : "0"));   // AnkenJizenDashinCheck
             }
             sSql.Append("    , N'" + GlobalMethod.ChangeSqlText(base_tbl03_txtAnkenMemo.Text, 0, 0) + "'");   // AnkenAnkenMemoKihon
-            sSql.Append("    , " + ((IsNotSelected(base_tbl07_3_cmbOen)) ? "null" : base_tbl07_3_cmbOen.SelectedValue.ToString()));      // AnkenOueniraiUmu --応援依頼の有無
+            // No.1533 削除
+            //sSql.Append("    , " + ((IsNotSelected(base_tbl07_3_cmbOen)) ? "null" : base_tbl07_3_cmbOen.SelectedValue.ToString()));      // AnkenOueniraiUmu --応援依頼の有無
             sSql.Append("    , N'" + GlobalMethod.ChangeSqlText(base_tbl07_3_txtOenMemo.Text, 0, 0) + "'");   // AnkenOuenIraiMemo --応援依頼メモ
             sSql.Append("    , " + Get_DateTimePicker("base_tbl09_dtpJizenDasinIraiDt"));   // AnkenJizenDashinIraibi --事前打診依頼日
             sSql.Append("    , " + Get_DateTimePicker("base_tbl09_dtpOrderYoteiDt"));   // AnkenHachuuYoteiMikomibi --発注予定・見込日
@@ -12357,15 +12377,16 @@ namespace TokuchoBugyoK2
             sSql.Append("    ,AnkenHachuuDaihyouYakushoku = " + "N'" + GlobalMethod.ChangeSqlText(base_tbl06_txtOrderYakusyoku.Text, 0, 0) + "'");
             sSql.Append("    ,AnkenHachuuDaihyousha = " + "N'" + GlobalMethod.ChangeSqlText(base_tbl06_txtOrderSimei.Text, 0, 0) + "'");
             // ７．配分情報・業務内容
-            object obj = base_tbl07_3_cmbOen.SelectedValue;// --応援依頼の有無
-            if (obj == null || string.IsNullOrEmpty(obj.ToString()))
-            {
-                sSql.Append("    ,AnkenOueniraiUmu = null");
-            }
-            else
-            {
-                sSql.Append("    ,AnkenOueniraiUmu = " + "N'" + obj.ToString() + "'");
-            }
+            // No.1533 削除
+            //object obj = base_tbl07_3_cmbOen.SelectedValue;// --応援依頼の有無
+            //if (obj == null || string.IsNullOrEmpty(obj.ToString()))
+            //{
+            //    sSql.Append("    ,AnkenOueniraiUmu = null");
+            //}
+            //else
+            //{
+            //    sSql.Append("    ,AnkenOueniraiUmu = " + "N'" + obj.ToString() + "'");
+            //}
             sSql.Append("    ,AnkenOuenIraiMemo = N'" + GlobalMethod.ChangeSqlText(base_tbl07_3_txtOenMemo.Text, 0, 0) + "'");  // --応援依頼メモ
 
             // ８．過去案件情報
@@ -12374,7 +12395,7 @@ namespace TokuchoBugyoK2
             sSql.Append("    ,AnkenNyuusatsuYoteibi = " + Get_DateTimePicker("base_tbl10_dtpNyusatuDt"));
             sSql.Append("    ,AnkenJizenDashinIraibi = " + Get_DateTimePicker("base_tbl09_dtpJizenDasinIraiDt"));   // --事前打診依頼日
             sSql.Append("    ,AnkenHachuuYoteiMikomibi = " + Get_DateTimePicker("base_tbl09_dtpOrderYoteiDt"));   // --発注予定・見込日
-            obj = base_tbl09_cmbNotOrderStats.SelectedValue;// --未発注状況
+            object obj = base_tbl09_cmbNotOrderStats.SelectedValue;// --未発注状況
             if (obj == null || string.IsNullOrEmpty(obj.ToString()))
             {
                 sSql.Append("    ,AnkenMihachuuJoukyou = null");
