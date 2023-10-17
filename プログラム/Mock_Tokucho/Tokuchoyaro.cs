@@ -458,7 +458,9 @@ namespace TokuchoBugyoK2
                             "     END " +
                             "END " + //1:状況
                             ",MadoguchiUketsukeBangou + '-' + MadoguchiUketsukeBangouEdaban " + //2:特調番号
-                            ",ChousaShinchokuJoukyou " + //3:担当者進捗状況
+                            // No.1535 1284　TOP画面で窓口部所で検索すると、同じ特調番号で、進捗状況の異なるものが表示される。(No.1524も)
+                            //",ChousaShinchokuJoukyou " + //3:担当者進捗状況
+                            ",MadoguchiShinchokuJoukyou " + //3:担当者進捗状況
                             ",MadoguchiTourokubi " + //4:登録日
                             ",MadoguchiShimekiribi " + //5:窓口締切日
                             ",MadoguchiTantoushaBushoCD " + //6:窓口部所
