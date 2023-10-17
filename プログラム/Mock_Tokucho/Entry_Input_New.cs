@@ -4959,9 +4959,10 @@ namespace TokuchoBugyoK2
                 if (MessageBox.Show("更新を行いますが宜しいですか？", "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     //担当者項目の必須チェックを追加
-                    if (!ErrorFLG(1))
+                    bool isError = ErrorFLG(1);
+                    WarningCheck(1);
+                    if (!isError)
                     {
-                        WarningCheck(1);
                         if (Execute_SQL(1))
                         {
                             sJyutakuKasyoSibuCdOri = base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString(); //受託課所支部（契約部所）DB値
@@ -7729,21 +7730,22 @@ namespace TokuchoBugyoK2
                         errorFlg = true;
                     }
 
-                    // 落札者状況
-                    if (this.IsNotSelected(base_tbl10_cmbRakusatuStats))
-                    {
-                        base_tbl10_lblRakusatuStats.BackColor = errorColor;
-                        base_tbl10_picRakusatuStatsAlert.Visible = true;
-                        errorFlg = true;
-                    }
+                    // No.1534 落札者状況と落札額状況は空欄でもエラーにしないようにする
+                    //// 落札者状況
+                    //if (this.IsNotSelected(base_tbl10_cmbRakusatuStats))
+                    //{
+                    //    base_tbl10_lblRakusatuStats.BackColor = errorColor;
+                    //    base_tbl10_picRakusatuStatsAlert.Visible = true;
+                    //    errorFlg = true;
+                    //}
 
-                    // 落札額状況
-                    if (this.IsNotSelected(base_tbl10_cmbRakusatuAmtStats))
-                    {
-                        base_tbl10_lblRakusatuAmtStats.BackColor = errorColor;
-                        base_tbl10_picRakusatuAmtStatsAlert.Visible = true;
-                        errorFlg = true;
-                    }
+                    //// 落札額状況
+                    //if (this.IsNotSelected(base_tbl10_cmbRakusatuAmtStats))
+                    //{
+                    //    base_tbl10_lblRakusatuAmtStats.BackColor = errorColor;
+                    //    base_tbl10_picRakusatuAmtStatsAlert.Visible = true;
+                    //    errorFlg = true;
+                    //}
                 }
                 //else
                 //{
@@ -7811,16 +7813,17 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                // 事前打診	２．未発注	その他の内容	発注無しの理由「その他」の時、入力欄色付け。更新時警告。→エラーにするか？→警告にする。
-                if (IsSpecifiedValue(prior_tbl02_cmbNotOrderReason.SelectedValue, "4"))
-                {
-                    if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text))
-                    {
-                        prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
-                        prior_tbl02_picOtherNaiyoAlert.Visible = true;
-                        errorFlg = true;
-                    }
-                }
+                //// No.1537　1285　更新時に警告にならない。
+                //// 事前打診	２．未発注	その他の内容	発注無しの理由「その他」の時、入力欄色付け。更新時警告。→エラーにするか？→警告にする。
+                //if (IsSpecifiedValue(prior_tbl02_cmbNotOrderReason.SelectedValue, "4"))
+                //{
+                //    if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text))
+                //    {
+                //        prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
+                //        prior_tbl02_picOtherNaiyoAlert.Visible = true;
+                //        errorFlg = true;
+                //    }
+                //}
             }
 
             
@@ -7935,20 +7938,21 @@ namespace TokuchoBugyoK2
                     bid_tbl03_1_picOsatuNumAlert.Visible = true;
                     errorFlg = true;
                 }
-                //落札者状況
-                if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuStatus))
-                {
-                    bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
-                    errorFlg = true;
-                }
-                //落札額状況
-                if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuAmtStatus))
-                {
-                    bid_tbl03_1_lblRakusatuAmtStatus.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
-                    errorFlg = true;
-                }
+                // No.1534 警告に変更する
+                ////落札者状況
+                //if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuStatus))
+                //{
+                //    bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
+                //    bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                //    errorFlg = true;
+                //}
+                ////落札額状況
+                //if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuAmtStatus))
+                //{
+                //    bid_tbl03_1_lblRakusatuAmtStatus.BackColor = errorColor;
+                //    bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
+                //    errorFlg = true;
+                //}
             }
 
             return errorFlg;
@@ -8162,7 +8166,7 @@ namespace TokuchoBugyoK2
 
             // ３．案件情報
 
-            // ７．業務配分	全て	応援依頼の有無、応援依頼メモ、応援依頼先以外が無ければ登録不可、100%以外で登録不可。
+            // ７．業務配分	全て	100%以外で登録不可。
             double pTotle = 0.00;
             // 部門配分
             pTotle = GetDouble(base_tbl07_1_numPercentAll.Text);
@@ -8218,17 +8222,18 @@ namespace TokuchoBugyoK2
                     base_tbl01_picBidAlert.Visible = true;
                 }
 
-                // 入札状況 「入札中」のまま「入札情報登録日」が登録は登録不可。
-                obj = base_tbl10_cmbNyusatuStats.SelectedValue;
-                if (base_tbl01_dtpDtBid.CustomFormat == "" && IsSpecifiedValue(obj, "1"))
-                {
-                    set_error(GlobalMethod.GetMessage("E10737", "基本情報等一覧"));
-                    base_tbl10_lblNyusatuStats.BackColor = errorColor;
-                    base_tbl10_picNyusatuStatsAlert.Visible = true;
-                    base_tbl01_lblDtBid.BackColor = errorColor;
-                    base_tbl01_picBidAlert.Visible = true;
-                    errorFlg = true;
-                }
+                // No.1534 入札前も登録できるようにする
+                //// 入札状況 「入札中」のまま「入札情報登録日」が登録は登録不可。
+                //obj = base_tbl10_cmbNyusatuStats.SelectedValue;
+                //if (base_tbl01_dtpDtBid.CustomFormat == "" && IsSpecifiedValue(obj, "1"))
+                //{
+                //    set_error(GlobalMethod.GetMessage("E10737", "基本情報等一覧"));
+                //    base_tbl10_lblNyusatuStats.BackColor = errorColor;
+                //    base_tbl10_picNyusatuStatsAlert.Visible = true;
+                //    base_tbl01_lblDtBid.BackColor = errorColor;
+                //    base_tbl01_picBidAlert.Visible = true;
+                //    errorFlg = true;
+                //}
             }
             return errorFlg;
         }
@@ -8295,7 +8300,7 @@ namespace TokuchoBugyoK2
             // 「落札者状況 不明」の時、空欄ではないなら更新不可
             if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuStatus.SelectedValue, "2"))
             {
-                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text) == false)
+                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text.Trim()) == false)
                 {
                     set_error(GlobalMethod.GetMessage("E10739", "入札"));
                     bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
@@ -8489,6 +8494,20 @@ namespace TokuchoBugyoK2
                 }
             }
 
+            // No.1537　1285　更新時に警告にならない。
+            // 事前打診	２．未発注	その他の内容	発注無しの理由「その他」の時、入力欄色付け。更新時警告。
+            if (IsSpecifiedValue(prior_tbl02_cmbNotOrderReason.SelectedValue, "4"))
+            {
+                if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text.Trim()))
+                {
+                    set_error(GlobalMethod.GetMessage("W10604", "入札"));
+                    prior_tbl02_lblNotOrderReason.BackColor = errorColor;
+                    prior_tbl02_picNotOrderReasonAlert.Visible = true;
+                    prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
+                    prior_tbl02_picOtherNaiyoAlert.Visible = true;
+                }
+            }
+
             // １．入札情報	入札状況	「入札中」のまま「入札タブ　入札結果登録日」が登録されたら警告。 入札中⇒入札前
             if (IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1"))
             {
@@ -8562,12 +8581,29 @@ namespace TokuchoBugyoK2
                     }
                 }
             }
+
+            // No.1534 警告に変更する
+            //落札者状況
+            if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuStatus))
+            {
+                bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
+                bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                set_error(GlobalMethod.GetMessage("W10612", "入札"));
+            }
+            //落札額状況
+            if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuAmtStatus))
+            {
+                bid_tbl03_1_lblRakusatuAmtStatus.BackColor = errorColor;
+                bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
+                set_error(GlobalMethod.GetMessage("W10613", "入札"));
+            }
+
             // １．入札情報 落札者	「落札者状況 判明、推定」の時、空欄なら警告。
             object obj = bid_tbl03_1_cmbRakusatuStatus.SelectedValue;
             // 「落札者状況 判明、推定」の時、空欄なら警告。
             if (IsSpecifiedValue(obj, "1") || IsSpecifiedValue(obj, "3"))
             {
-                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text))
+                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text.Trim()))
                 {
                     //GlobalMethod.outputMessage("W10609", "入札");
                     set_error(GlobalMethod.GetMessage("W10609", "入札"));
@@ -8582,9 +8618,10 @@ namespace TokuchoBugyoK2
             obj = bid_tbl03_1_cmbRakusatuAmtStatus.SelectedValue;
             if (IsSpecifiedValue(obj, "1") || IsSpecifiedValue(obj, "3"))
             {
-                if (string.IsNullOrEmpty(bid_tbl03_1_numRakusatuAmt.Text))
+                //No1537 1285 更新時に警告にならない。【「落札額状況　判明、推定」の時、空欄なら警告が警告にならない。】
+                //0円なら空とする
+                if (string.IsNullOrEmpty(bid_tbl03_1_numRakusatuAmt.Text.Trim()) || GetLong(bid_tbl03_1_numRakusatuAmt.Text.Trim()) == 0)
                 {
-                    //GlobalMethod.outputMessage("W10610", "入札");
                     set_error(GlobalMethod.GetMessage("W10610", "入札"));
                     bid_tbl03_1_numRakusatuAmt.BackColor = errorColor;
                     bid_tbl03_1_picRakusatuAmtAlert.Visible = true;

@@ -2120,13 +2120,19 @@ namespace TokuchoBugyoK2
                                 // 30：Ribicyou                  検索条件.RIBC用単価データ有                   src_29 RIBC用単価データ有             ※えんとり君修正STEP2
                                 // 31：SashaKeiyu                検索条件.サ社経由                             src_30 RIBC検索条件.サ社経由          ※えんとり君修正STEP2
                                 // 32：AnkenBangou2              検索条件.案件番号                             ankenInput2 案件番号のみで検索の場合の案件番号
+                                // 33：AnkenJizenDashinCheck     検索条件.事前打診                             進捗状況          ※えんとり君修正STEP3
+                                // 34：AnkenNyuusatuCheck        検索条件.入札                                 進捗状況          ※えんとり君修正STEP3
+                                // 35：AnkenKeiyakuCheck         検索条件.契約                                 進捗状況          ※えんとり君修正STEP3
 
                                 //// 29個分先に用意
                                 //string[] report_data = new string[29] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
                                 //えんとり君修正STEP2　パラメータ追加
-                                //No1429　1209 要望ほか、６件　案件番号のみで検索　パラメータ再追加
-                                // 32個分先に用意
-                                string[] report_data = new string[32] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+                                // No.1536 案件一覧画面の進捗段階の検索条件が、エントリくん一覧帳票に反映されない。
+                                // 35個分先に用意
+                                string[] report_data = new string[35] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+                                ////No1429　1209 要望ほか、６件　案件番号のみで検索　パラメータ再追加
+                                //// 32個分先に用意
+                                //string[] report_data = new string[32] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
                                 // 31個分先に用意
                                 //string[] report_data = new string[31] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
                                 report_data[0] = src_1.SelectedValue.ToString();
@@ -2336,7 +2342,33 @@ namespace TokuchoBugyoK2
                                     report_data[30] = "0";
                                 }
                                 report_data[31] = ankenInput2.Text; // 案件番号のみで検索時の案件番号
-                                
+
+                                // No.1536 案件一覧画面の進捗段階の検索条件が、エントリくん一覧帳票に反映されない。
+                                if (src_cbStepPrior.Checked)
+                                {
+                                    report_data[32] = "1";
+                                }
+                                else
+                                {
+                                    report_data[32] = "0";
+                                }
+                                if (src_cbStepBid.Checked)
+                                {
+                                    report_data[33] = "1";
+                                }
+                                else
+                                {
+                                    report_data[33] = "0";
+                                }
+                                if (src_cbStepCa.Checked)
+                                {
+                                    report_data[34] = "1";
+                                }
+                                else
+                                {
+                                    report_data[34] = "0";
+                                }
+
                                 // えんとり君修正STEP3
                                 //string[] result = GlobalMethod.InsertReportWork(230, UserInfos[0], report_data);
                                 string[] result = GlobalMethod.InsertReportWork(int.Parse(comboBox13.SelectedValue.ToString()), UserInfos[0], report_data);
