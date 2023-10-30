@@ -74,6 +74,8 @@ namespace TokuchoBugyoK2
         private int errorCnt = 0;
         private string ShukeiHyoFolder = "";
         private string chousaLinkFlg = "0"; // 調査品目明細のフォルダリンク先表示フラグ　1=非表示、0=表示
+        //奉行エクセル
+        private string sagyoForuda = "0"; //調査品目明細の作業フォルダ表示フラグ　1=非表示、0=表示
         // 調査品目明細の削除Key
         private String deleteChousaHinmokuIDs = "";
         private String MadoguchiHoukokuzumi = "";
@@ -188,7 +190,7 @@ namespace TokuchoBugyoK2
             e.DrawFocusRectangle();
         }
 
-
+        //初期表示　清水検証
         private void Madoguchi_Input_Load(object sender, EventArgs e)
         {
             //不具合No1017（751）
@@ -491,6 +493,9 @@ namespace TokuchoBugyoK2
             // リンク先パスの幅を調整
             //c1FlexGrid4.Cols[41].Width = 0;
             c1FlexGrid4.Cols["ChousaLinkSakliFolder"].Width = 0;
+            //奉行エクセル
+            //作業フォルダの幅を調整
+            c1FlexGrid4.Cols["SagyoForuda"].Width = 0;
 
             //モード別処理
             if (mode == "insert")
@@ -1048,6 +1053,7 @@ namespace TokuchoBugyoK2
                         DT_GaroonTsuikaAtesaki.Clear();
                         sda.Fill(DT_GaroonTsuikaAtesaki);
                     }
+                    //奉行エクセル　初期画面表示のためのデータ取得
                     // 調査品目明細タブ
                     else if (tab == 3)
                     {
@@ -1116,6 +1122,54 @@ namespace TokuchoBugyoK2
 
                         string where = "";
 
+
+                        //奉行エクセル
+                        //作業フォルダ
+                        string buff = "";
+                        // 調査品目明細のリンク先表示フラグ 0:表示 1:非表示
+                        buff = GlobalMethod.GetCommonValue1("CHOUSA_LINK_FLG");
+                        if (buff != null && buff == "")
+                        {
+                            if (buff == "1")
+                            {
+                                chousaLinkFlg = "1";
+                                // &i_LinkImage.Tooltiptext = "現在リンク先は非表示モードが設定されています。"
+                            }
+                            else if (buff == "0")
+                            {
+                                chousaLinkFlg = "0";
+                            }
+                            else
+                            {
+                                chousaLinkFlg = "0";
+                            }
+                        }
+
+                        
+                        // 集計表フォルダのパスを取得
+                        sagyoForuda = "";
+                        cmd.CommandText = "SELECT " +
+                                          "	  MadoguchiShukeiHyoFolder " +
+                                           "FROM " +
+                                           "	MadoguchiJouhou  " +
+                                           "WHERE " +
+                                           "	MadoguchiID = " + MadoguchiID + " ";
+                        Console.WriteLine(cmd.CommandText);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        sda.Fill(dt);
+
+                        //// 集計表フォルダ存在フラグ true：存在する false：存在しない
+                        //Boolean existsFlg = false;
+                        // 集計表フォルダ
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            sagyoForuda = dt.Rows[0][0].ToString();
+
+                            //existsFlg = (Directory.Exists(ShukeiHyoFolder));
+                        }
+
+
                         //調査品目の取得
                         cmd.CommandText = "SELECT " +
                                    //"   ChousaHinmokuID " + // 0
@@ -1172,7 +1226,18 @@ namespace TokuchoBugyoK2
                                    " , ChousaTikuMei " +
                                    " , ChousaShougaku " +
                                    " , ChousaWebKen " +
-                                   " , ChousaKonkyoCode "; // 35
+                                   " , ChousaKonkyoCode "+
+                                   " , ChousaTaniAtariKakaku"+
+                                   //奉行エクセル　清水検証
+                                   ", ChousaShuukeihyouVer"+
+                                   ", ChousaBunkatsuHouhou"+
+                                   ", ChousaKoujiKouzoubutsumei"+
+                                   ", ChousaHachushaTeikyouTani"+
+                                   ", chousaTaniAtariSuuryou"+
+                                   ", ChousaTaniAtariTanka"+
+                                   ", ChousaNiwatashiJouken"+
+                                   " , MadoguchiGroupMei"
+                                   ; // 35
                         // フォルダアイコン切り替え 0:グレー 1:イエロー 2:Excleアイコン
                         if (chousaLinkFlg != "1" && ShukeiHyoFolder != "")
                         {
@@ -1226,6 +1291,8 @@ namespace TokuchoBugyoK2
                                    "LEFT JOIN Mst_Chousain MC0 ON HinmokuChousainCD = MC0.KojinCD " +
                                    "LEFT JOIN Mst_Chousain MC1 ON HinmokuFukuChousainCD1 = MC1.KojinCD " +
                                    "LEFT JOIN Mst_Chousain MC2 ON HinmokuFukuChousainCD2 = MC2.KojinCD " +
+                                   //奉行エクセル　
+                                   "LEFT JOIN MadoguchiGroupMaster ON MadoguchiGroupMaster.MadoguchiID = ChousaHinmoku.MadoguchiID " +
                                    "WHERE " +
                                    "	MadoguchiJouhou.MadoguchiID = " + MadoguchiID + " AND ChousaDeleteFlag <> 1 AND ChousaHinmokuID > 0 ";
 
@@ -2338,7 +2405,75 @@ namespace TokuchoBugyoK2
                                                              + "-"
                                                              + zeroPadding(DT_ChousaHinmoku.Rows[i]["ChousaKobetsuJun"].ToString())
                                                              ;
+                    //奉行エクセル　清水検証
+                    // 集計表Ver
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "0")
+                    {
+                        c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "-";
+                    }
+                    else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "1")
+                    {
+                        c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "-";
+                    }
+                    else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "2")
+                    {
+                        c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "Ver2";
+                    }
+                    //c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"];
 
+                    //分割方法（ファイル・シート）
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "0")
+                    {
+                        //集計表Verが初期値であれば背景色をグレー
+                        c1FlexGrid4.GetCellRange(RowCount, 57).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+
+                        if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1")
+                        {
+                            c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "ファイル";
+                        }
+                        else if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "2")
+                        {
+                            c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "シート";
+                        }
+                    }
+                    else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "0")
+                    {
+                        //集計表Verが初期値であれば背景色をグレー
+                        c1FlexGrid4.GetCellRange(RowCount, 57).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+
+                        if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1")
+                        {
+                            c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "ファイル";
+                        }
+                        else if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "2")
+                        {
+                            c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "シート";
+                        }
+                    }
+
+                    //グループ名
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "0")
+                    {
+                        //集計表Verが初期値であれば背景色をグレー
+                        c1FlexGrid4.GetCellRange(RowCount, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+
+                    }
+                    else if(DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "0")
+                    {
+                        c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["MadoguchiGroupMei"];
+                    }
+                    //工事・構造物名
+                    c1FlexGrid4.Rows[RowCount]["KojiKoubutsuMei"] = DT_ChousaHinmoku.Rows[i]["ChousaKoujiKouzoubutsumei"];
+                    //単位当たり単価（単位）
+                    c1FlexGrid4.Rows[RowCount]["TaniAtariTankaTani"] = DT_ChousaHinmoku.Rows[i]["ChousaTaniAtariTanka"];
+                    //単位当たり単価（数量）
+                    c1FlexGrid4.Rows[RowCount]["TaniAtariTankaSuryo"] = DT_ChousaHinmoku.Rows[i]["chousaTaniAtariSuuryou"];
+                    //単位当たり単価（価格）
+                    c1FlexGrid4.Rows[RowCount]["TaniAtariTankaKakaku"] = DT_ChousaHinmoku.Rows[i]["ChousaTaniAtariKakaku"];
+                    //荷渡し条件
+                    c1FlexGrid4.Rows[RowCount]["NiwatashiJoken"] = DT_ChousaHinmoku.Rows[i]["ChousaNiwatashiJouken"];
+                    //発注者提供単位
+                    c1FlexGrid4.Rows[RowCount]["HachushaTeikyoTani"] = DT_ChousaHinmoku.Rows[i]["ChousaHachushaTeikyouTani"];
                     RowCount += 1;
                 }
 
@@ -3025,7 +3160,7 @@ namespace TokuchoBugyoK2
             c1FlexGrid4.Select(BushoTantouRow, BushoTantouColumn);
             c1FlexGrid4.Rows[c1FlexGrid4.Row][c1FlexGrid4.Col] = sender.ToString();
         }
-
+        //奉行エクセル　清水検証
         // 担当者右クリックで部所
         public void ContextMenuBushoEvent(object sender, EventArgs e)
         {
@@ -4174,6 +4309,7 @@ namespace TokuchoBugyoK2
         // 受託番号を検索ボタン
         private void button1_Click(object sender, EventArgs e)
         {
+            //奉行エクセル　清水検証
             //受託番号プロンプト
             Popup_miharujutaku form = new Popup_miharujutaku();
             //年度が入っていたら年度を渡す
@@ -5084,6 +5220,28 @@ namespace TokuchoBugyoK2
             c1FlexGrid4.Cols["HinmokuFukuChousainCD1"].DataMap = sl;//調査品目タブGrid担当者
             c1FlexGrid4.Cols["HinmokuFukuChousainCD2"].DataMap = sl;//調査品目タブGrid担当者
 
+            //調査品目　材工
+            tmpdt = new System.Data.DataTable();
+            tmpdt.Columns.Add("Value", typeof(int));
+            tmpdt.Columns.Add("Discript", typeof(string));
+
+            tmpdt.Rows.Add(0, "全て");
+            tmpdt.Rows.Add(1, "材のみ");
+            src_Zaikou.DataSource = tmpdt;
+            src_Zaikou.DisplayMember = "Discript";
+            src_Zaikou.ValueMember = "Value";
+
+            //グループ名
+            discript = "MadoguchiGroupMei ";
+            value = "MadoguchiID ";
+            table = "MadoguchiGroupMaster ";
+            where = "MadoguchiID = " + MadoguchiID ; //MadoguchiIDが一致するもの
+            //コンボボックスデータ取得
+            DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
+            sl = new SortedList();
+            sl = GlobalMethod.Get_SortedList(tmpdt22);
+            c1FlexGrid4.Cols["GroupMei"].DataMap = sl;
+
             //調査品目　調査主副コンボ
             tmpdt = new System.Data.DataTable();
             tmpdt.Columns.Add("Value", typeof(int));
@@ -5115,7 +5273,6 @@ namespace TokuchoBugyoK2
             tmpdt = new System.Data.DataTable();
             tmpdt.Columns.Add("Value", typeof(int));
             tmpdt.Columns.Add("Discript", typeof(string));
-
             tmpdt.Rows.Add(0, "全て");
             tmpdt.Rows.Add(1, "担当者が空白のリスト");
             tmpdt.Rows.Add(2, "担当者が設定済のリスト");
@@ -5157,6 +5314,33 @@ namespace TokuchoBugyoK2
             //該当グリッドのセルにセット
             //c1FlexGrid4.Cols[8].DataMap = sl;
             c1FlexGrid4.Cols["ChousaZaiKou"].DataMap = sl;
+
+            //奉行エクセル　清水検証
+            //調査品目　Grid集計表Ver
+            tmpdt = new System.Data.DataTable();
+            tmpdt.Columns.Add("Value", typeof(int));
+            tmpdt.Columns.Add("Discript", typeof(string));
+
+            //tmpdt.Rows.Add(0, "");
+            tmpdt.Rows.Add(1, "Ver1");
+            tmpdt.Rows.Add(2, "Ver2");
+            sl = new SortedList();
+            sl = GlobalMethod.Get_SortedList(tmpdt);
+            //該当グリッドのセルにセット
+            c1FlexGrid4.Cols["ShukeihyoVer"].DataMap = sl;
+
+            //調査品目　Grid分割方法Ver
+            tmpdt = new System.Data.DataTable();
+            tmpdt.Columns.Add("Value", typeof(int));
+            tmpdt.Columns.Add("Discript", typeof(string));
+
+            //tmpdt.Rows.Add(0, "");
+            tmpdt.Rows.Add(1, "ファイル");
+            tmpdt.Rows.Add(2, "シート");
+            sl = new SortedList();
+            sl = GlobalMethod.Get_SortedList(tmpdt);
+            //該当グリッドのセルにセット
+            c1FlexGrid4.Cols["Bunkatsuhouhou"].DataMap = sl;
 
             //調査品目　Gridリンク先画像
             imgMap = new Hashtable();
@@ -11537,6 +11721,15 @@ namespace TokuchoBugyoK2
             ",ChousaUpdateUser " +
             ",ChousaUpdateProgram " +
             ",ChousaShinchokuJoukyou " +
+            //奉行エクセル　清水検証
+            ",ChousaShuukeihyouVer"+
+            ",ChousaBunkatsuHouhou" +
+            ",ChousaKoujiKouzoubutsumei" +
+            ",ChousaTaniAtariTanka" +
+            ",chousaTaniAtariSuuryou" +
+            ",ChousaTaniAtariKakaku" +
+            ",ChousaNiwatashiJouken"+
+            ",ChousaHachushaTeikyouTani"+
             ") VALUES ";
             string valuesText = "";
 
@@ -12475,10 +12668,13 @@ namespace TokuchoBugyoK2
                                 cmd.CommandText += " ChousaZentaiJun = '" + c1FlexGrid4.Rows[i]["ChousaZentaiJun"] + "' " +                                             // 全体順
                                     ",ChousaKobetsuJun = '" + c1FlexGrid4.Rows[i]["ChousaKobetsuJun"] + "' " +                                                          // 個別順
                                     ",ChousaZaiKou = N'" + c1FlexGrid4.Rows[i]["ChousaZaiKou"] + "' " +                                                                  // 材工
+                                    //奉行エクセル　清水検証
+
                                     ",ChousaHinmei = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaHinmei"].ToString(), 0, 0) + "' " +                     // 品目
                                     ",ChousaKikaku = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaKikaku"].ToString(), 0, 0) + "' " +                     // 規格
                                     ",ChousaTanka = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTanka"].ToString(), 0, 0) + "' " +                       // 単位
                                     ",ChousaSankouShitsuryou = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaSankouShitsuryou"].ToString(), 0, 0) + "' ";  // 参考質量
+
 
                                 // 価格
                                 //if (c1FlexGrid4.Rows[i][13] != null && c1FlexGrid4.Rows[i][13].ToString() != "")
@@ -12778,6 +12974,79 @@ namespace TokuchoBugyoK2
                                             c1FlexGrid4.Rows[i]["ShinchokuIcon"] = "4";
                                         }
                                     }
+                                }
+                                ////奉行エクセル　清水検証　ここでDB　UPDATE
+                                //集計表Ver
+                                if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
+                                {
+                                    cmd.CommandText += ",ChousaShuukeihyouVer = '" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
+                                }
+                                else
+                                {
+                                    cmd.CommandText += ",ChousaShuukeihyouVer = null ";
+                                }
+                                //分割方法
+                                if (c1FlexGrid4.Rows[i]["BunkatsuHouhou"] != null && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() != "")
+                                {
+                                    cmd.CommandText += ",ChousaBunkatsuHouhou = '" + c1FlexGrid4.Rows[i]["BunkatsuHouhou"] + "' ";
+                                }
+                                else
+                                {
+                                    cmd.CommandText += ",ChousaBunkatsuHouhou = null ";
+                                }
+                                //工事・構造物名
+                                if (c1FlexGrid4.Rows[i]["KojiKoubutsuMei"] != null && c1FlexGrid4.Rows[i]["KojiKoubutsuMei"].ToString() != "")
+                                {
+                                    cmd.CommandText += ",ChousaKoujiKouzoubutsumei = '" + c1FlexGrid4.Rows[i]["KojiKoubutsuMei"] + "' ";
+                                }
+                                else
+                                {
+                                    cmd.CommandText += ",ChousaKoujiKouzoubutsumei = null ";
+                                }
+                                // 単位当たり単価（単位）
+                                if (c1FlexGrid4.Rows[i]["TaniAtariTankaTani"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaTani"].ToString() != "")
+                                {
+                                    cmd.CommandText += ",ChousaTaniAtariTanka = '" + c1FlexGrid4.Rows[i]["TaniAtariTankaTani"] + "' ";
+                                }
+                                else
+                                {
+                                    cmd.CommandText += ",ChousaTaniAtariTanka = null ";
+                                }
+                                //単位当たり単価（数量）
+                                if (c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"].ToString() != "")
+                                {
+                                    cmd.CommandText += ",chousaTaniAtariSuuryou = '" + c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"] + "' ";
+                                }
+                                else
+                                {
+                                    cmd.CommandText += ",chousaTaniAtariSuuryou = null ";
+                                }
+                                // 単位当たり単価（価格）
+                                if (c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"].ToString() != "")
+                                {
+                                    cmd.CommandText += ",ChousaTaniAtariKakaku = '" + c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"] + "' ";
+                                }
+                                else
+                                {
+                                    cmd.CommandText += ",ChousaTaniAtariKakaku = null ";
+                                }
+                                //発注者提供単位
+                                if (c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"] != null && c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"].ToString() != "")
+                                {
+                                    cmd.CommandText += ",ChousaHachushaTeikyouTani = '" + c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"] + "' ";
+                                }
+                                else
+                                {
+                                    cmd.CommandText += ",ChousaHachushaTeikyouTani = null ";
+                                }
+                                //荷渡し条件
+                                if (c1FlexGrid4.Rows[i]["NiwatashiJoken"] != null && c1FlexGrid4.Rows[i]["NiwatashiJoken"].ToString() != "")
+                                {
+                                    cmd.CommandText += ",ChousaNiwatashiJouken = '" + c1FlexGrid4.Rows[i]["NiwatashiJoken"] + "' ";
+                                }
+                                else
+                                {
+                                    cmd.CommandText += ",ChousaNiwatashiJouken = null ";
                                 }
 
                                 //cmd.CommandText += "WHERE ChousaHinmokuID ='" + c1FlexGrid4.Rows[i][55] + "' AND MadoguchiID ='" + MadoguchiID + "' ";
@@ -15161,6 +15430,7 @@ namespace TokuchoBugyoK2
                         where += "AND (ChousainYukoukikanFrom IS NULL OR ChousainYukoukikanFrom <= '" + ToNendo + "/3/31' ) " +
                         "AND (ChousainYukoukikanTo IS NULL OR ChousainYukoukikanTo >= '" + Nendo + "/4/1' ) ";
                     }
+                    //奉行エクセル　清水検証
                     //コンボボックスデータ取得
                     DataTable tmpdt11 = GlobalMethod.getData(discript, value, table, where);
                     SortedList sl = new SortedList();
@@ -15513,6 +15783,7 @@ namespace TokuchoBugyoK2
                 {
                     strIndex = 200;
                 }
+            
 
                 if (strIndex != 0)
                 {
@@ -15595,6 +15866,12 @@ namespace TokuchoBugyoK2
                             c1FlexGrid4.Rows[e.Row][e.Col] = "0";
                         }
                     }
+                }
+                ////奉行エクセル　清水検証
+                //// グループ名
+                if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
+                {
+                    strIndex  = 15;
                 }
             }
         }
@@ -16248,6 +16525,7 @@ namespace TokuchoBugyoK2
                     {
                         c1FlexGrid4.Rows[rowCount][j] = "";
                     }
+                    //奉行エクセル　追加項目分の追記が必要そう
                 }
                 // 進捗状況を判定する（進捗状況は20:調査開始固定なので、進捗状況の以外を判定する）
                 DateTime dateTime = DateTime.Today;
@@ -16327,6 +16605,7 @@ namespace TokuchoBugyoK2
             this.ResumeLayout();
         }
 
+        //奉行エクセル　清水検証
         // 品目からの取込
         private void button3_ReadHinmoku_Click(object sender, EventArgs e)
         {
@@ -16459,11 +16738,22 @@ namespace TokuchoBugyoK2
                                    " , ChousaDeleteFlag " + // 50
                                    " , ChousaHinmokuID " + // 51:調査品目ID
                                    " , ChousaShinchokuJoukyou " + // 52:進捗状況
+                                   //奉行エクセル　清水検証
+                                   ", ChousaShuukeihyouVer" +
+                                   ", ChousaBunkatsuHouhou" +
+                                   ", ChousaKoujiKouzoubutsumei" +
+                                   ", ChousaHachushaTeikyouTani" +
+                                   ", ChousaTaniAtariKakaku"+
+                                   ", chousaTaniAtariSuuryou" +
+                                   ", ChousaTaniAtariTanka" +
+                                   ", ChousaNiwatashiJouken" +
+                                   ", MadoguchiGroupMei" +
                                    " , 0 " + // 53:0:Insert/1:Select/2:Update
                                    //" , ChousaTankaCD1 " + // 54:発注品目コード
                                    " , '' " + // 55:並び順 →  54:並び順
                                    "FROM " +
                                    " ChousaHinmoku  " +
+                                   "LEFT JOIN MadoguchiGroupMaster ON ChousaHinmoku.MadoguchiID = MadoguchiGroupMaster.MadoguchiID" +
                                    "LEFT JOIN MadoguchiJouhou ON MadoguchiJouhou.MadoguchiID = ChousaHinmoku.MadoguchiID " +
                                    "LEFT JOIN Mst_Chousain MC0 ON HinmokuChousainCD = MC0.KojinCD " +
                                    "LEFT JOIN Mst_Chousain MC1 ON HinmokuFukuChousainCD1 = MC1.KojinCD " +
@@ -16723,6 +17013,9 @@ namespace TokuchoBugyoK2
                             c1FlexGrid4.Rows[rowCount]["ChousaLinkSakli"] = "0";
                             // リンク先パス
                             c1FlexGrid4.Rows[rowCount]["ChousaLinkSakliFolder"] = "";
+                            //奉行エクセル
+                            //作業フォルダ
+                            c1FlexGrid4.Rows[rowCount]["SagyoForuda"] = "";
                             // 調査担当部所
                             c1FlexGrid4.Rows[rowCount]["HinmokuRyakuBushoCD"] = addCousaHinmokuDT.Rows[i]["HinmokuRyakuBushoCD"];
                             // 調査担当者
@@ -16760,8 +17053,26 @@ namespace TokuchoBugyoK2
                             c1FlexGrid4.Rows[rowCount]["ColumnSort"] = "N"
                                                                      + zeroPadding(c1FlexGrid4.Rows[rowCount]["ChousaZentaiJun"].ToString())
                                                                      + "-"
-                                                                     + zeroPadding(c1FlexGrid4.Rows[rowCount]["ChousaKobetsuJun"].ToString())
-                                                                     ;
+                                                                     + zeroPadding(c1FlexGrid4.Rows[rowCount]["ChousaKobetsuJun"].ToString());
+
+                            // 奉行エクセル　清水検証
+                            //集計表Ver
+                            c1FlexGrid4.Rows[rowCount]["ShukeihyoVer"] = addCousaHinmokuDT.Rows[i]["ChousaShuukeihyouVer"];
+                            //分割方法
+                            c1FlexGrid4.Rows[rowCount]["BunkatsuHouhou"] = addCousaHinmokuDT.Rows[i]["ChousaBunkatsuHouhou"];
+                            //工事・構造物名
+                            c1FlexGrid4.Rows[rowCount]["KojiKoubutsuMei"] = addCousaHinmokuDT.Rows[i]["ChousaKoujiKouzoubutsumei"];
+                            //単位当たり単価（単位）
+                            c1FlexGrid4.Rows[rowCount]["TaniAtariTankaTani"] = addCousaHinmokuDT.Rows[i]["ChousaTaniAtariTanka"];
+                            //単位当たり単価（数量）
+                            c1FlexGrid4.Rows[rowCount]["TaniAtariTankaSuryo"] = addCousaHinmokuDT.Rows[i]["chousaTaniAtariSuuryou"];
+                            //単位当たり単価（価格）
+                            c1FlexGrid4.Rows[rowCount]["TaniAtariTankaKakaku"] = addCousaHinmokuDT.Rows[i]["ChousaTaniAtariKakaku"];
+                           //荷渡し条件
+                            c1FlexGrid4.Rows[rowCount]["NiwatashiJoken"] = addCousaHinmokuDT.Rows[i]["ChousaNiwatashiJouken"];
+                            //発注者提供単位
+                            c1FlexGrid4.Rows[rowCount]["HachushaTeikyoTani"] = addCousaHinmokuDT.Rows[i]["ChousaHachushaTeikyouTani"];
+
 
                         }
                     }
@@ -16923,6 +17234,15 @@ namespace TokuchoBugyoK2
         private void c1FlexGrid4_AfterEdit(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
             DateTime dateTime = DateTime.Today;
+
+            ////奉行エクセル　集計表Verがデフォルト値の場合とVer1を選択した場合に選択
+            //if (e.Row > 0 && e.Col <= c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
+            //{
+            //    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "0")
+            //    {
+            //        e.Cancel = true;
+            //    }
+            //}
 
             // 52:締切日
             //if (e.Row > 0 && e.Col == 52)
@@ -18587,6 +18907,43 @@ namespace TokuchoBugyoK2
                 }
             }
             return false;
+        }
+
+        
+        //グループ名の登録
+        private void button4_2Click(object sender, EventArgs e)
+        {//奉行エクセル　清水検証
+            //Popup_GroupMei form = new Popup_GroupMei();
+            //form.ShowDialog();
+        }
+
+        private void button6_2_Click_1(object sender, EventArgs e)
+        {
+            //奉行エクセル　グループ名まで移動
+            // 表示されている左端の列を58列目に設定
+            c1FlexGrid4.LeftCol = 58;
+            // 表示されている最下行のインデックスを参照
+            Console.WriteLine(c1FlexGrid4.BottomRow);
+        }
+
+        private void c1FlexGrid4_BeforeEdit(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
+        {
+            //奉行エクセル　集計表VerがVer1の場合に選択不可
+            //if (e.Row > 0 && e.Col <= c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
+            if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
+            {
+                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "-")
+                {
+                    e.Cancel = true;
+                }
+            }
+            if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
+            {
+                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "-")
+                {
+                    e.Cancel = true;
+                }
+            }
         }
     }
 

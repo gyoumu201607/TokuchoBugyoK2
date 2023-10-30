@@ -217,6 +217,8 @@
             this.KyoroykuBusho10 = new System.Windows.Forms.CheckBox();
             this.button_update_2 = new System.Windows.Forms.Button();
             this.tabPage3 = new TokuchoBugyoK2.GlobalMethod.CTabPage();
+            this.button6_2 = new System.Windows.Forms.Button();
+            this.button4_2 = new System.Windows.Forms.Button();
             this.btnRowSizeChange = new System.Windows.Forms.Button();
             this.btnGridSize = new System.Windows.Forms.Button();
             this.label148 = new System.Windows.Forms.Label();
@@ -3216,6 +3218,8 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.button6_2);
+            this.tabPage3.Controls.Add(this.button4_2);
             this.tabPage3.Controls.Add(this.btnRowSizeChange);
             this.tabPage3.Controls.Add(this.btnGridSize);
             this.tabPage3.Controls.Add(this.label148);
@@ -3234,6 +3238,36 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "調査品目明細";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button6_2
+            // 
+            this.button6_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.button6_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button6_2.ForeColor = System.Drawing.Color.White;
+            this.button6_2.Location = new System.Drawing.Point(1011, 212);
+            this.button6_2.Margin = new System.Windows.Forms.Padding(2);
+            this.button6_2.Name = "button6_2";
+            this.button6_2.Size = new System.Drawing.Size(331, 32);
+            this.button6_2.TabIndex = 64;
+            this.button6_2.Text = "グループ名設定へ移動";
+            this.button6_2.UseVisualStyleBackColor = false;
+            this.button6_2.Click += new System.EventHandler(this.button6_2_Click_1);
+            // 
+            // button4_2
+            // 
+            this.button4_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.button4_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button4_2.ForeColor = System.Drawing.Color.White;
+            this.button4_2.Location = new System.Drawing.Point(689, 210);
+            this.button4_2.Margin = new System.Windows.Forms.Padding(2);
+            this.button4_2.Name = "button4_2";
+            this.button4_2.Size = new System.Drawing.Size(292, 32);
+            this.button4_2.TabIndex = 63;
+            this.button4_2.Text = "グループ名の登録";
+            this.button4_2.UseVisualStyleBackColor = false;
+            this.button4_2.Click += new System.EventHandler(this.button4_2Click);
             // 
             // btnRowSizeChange
             // 
@@ -3293,12 +3327,13 @@
             this.c1FlexGrid4.Rows.DefaultSize = 44;
             this.c1FlexGrid4.Rows.Fixed = 2;
             this.c1FlexGrid4.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid4.Size = new System.Drawing.Size(2922, 457);
+            this.c1FlexGrid4.Size = new System.Drawing.Size(4797, 457);
             this.c1FlexGrid4.StyleInfo = resources.GetString("c1FlexGrid4.StyleInfo");
             this.c1FlexGrid4.TabIndex = 57;
             this.c1FlexGrid4.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid4_BeforeMouseDown);
             this.c1FlexGrid4.AfterSort += new C1.Win.C1FlexGrid.SortColEventHandler(this.c1FlexGrid4_AfterSort);
             this.c1FlexGrid4.SelChange += new System.EventHandler(this.c1FlexGrid4_SelChange);
+            this.c1FlexGrid4.BeforeEdit += new C1.Win.C1FlexGrid.RowColEventHandler(this.c1FlexGrid4_BeforeEdit);
             this.c1FlexGrid4.AfterEdit += new C1.Win.C1FlexGrid.RowColEventHandler(this.c1FlexGrid4_AfterEdit);
             this.c1FlexGrid4.ValidateEdit += new C1.Win.C1FlexGrid.ValidateEditEventHandler(this.c1FlexGrid4_ValidateEdit);
             this.c1FlexGrid4.KeyDownEdit += new C1.Win.C1FlexGrid.KeyEditEventHandler(this.c1FlexGrid4_KeyDownEdit);
@@ -4131,7 +4166,7 @@
             // 
             this.item4_Mail_icon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.item4_Mail_icon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.item4_Mail_icon.Location = new System.Drawing.Point(350, 1818);
+            this.item4_Mail_icon.Location = new System.Drawing.Point(1336, 2156);
             this.item4_Mail_icon.Margin = new System.Windows.Forms.Padding(5);
             this.item4_Mail_icon.Name = "item4_Mail_icon";
             this.item4_Mail_icon.Size = new System.Drawing.Size(30, 30);
@@ -7269,7 +7304,7 @@
             this.tableLayoutPanel56.ColumnCount = 2;
             this.tableLayoutPanel56.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel56.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel56.Location = new System.Drawing.Point(439, 14575);
+            this.tableLayoutPanel56.Location = new System.Drawing.Point(1593, 18369);
             this.tableLayoutPanel56.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel56.Name = "tableLayoutPanel56";
             this.tableLayoutPanel56.RowCount = 3;
@@ -7995,5 +8030,7 @@
         private System.Windows.Forms.Label lblBootMode;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Button btnRowSizeChange;
+        private System.Windows.Forms.Button button4_2;
+        private System.Windows.Forms.Button button6_2;
     }
 }
