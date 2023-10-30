@@ -222,6 +222,8 @@
             this.label143 = new System.Windows.Forms.Label();
             this.BikoUpdateBtn = new System.Windows.Forms.Button();
             this.shibuBikouTableAdapter = new TokuchoBugyoK2.TokuchoBugyoKDataSetTableAdapters.ShibuBikouTableAdapter();
+            this.button4_2 = new System.Windows.Forms.Button();
+            this.button6_2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -1988,6 +1990,8 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.button6_2);
+            this.tabPage3.Controls.Add(this.button4_2);
             this.tabPage3.Controls.Add(this.btnRowSizeChange);
             this.tabPage3.Controls.Add(this.btnGridSize);
             this.tabPage3.Controls.Add(this.label148);
@@ -2866,6 +2870,7 @@
             this.c1FlexGrid4.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid4_BeforeMouseDown);
             this.c1FlexGrid4.AfterSort += new C1.Win.C1FlexGrid.SortColEventHandler(this.c1FlexGrid4_AfterSort);
             this.c1FlexGrid4.SelChange += new System.EventHandler(this.c1FlexGrid4_SelChange);
+            this.c1FlexGrid4.BeforeEdit += new C1.Win.C1FlexGrid.RowColEventHandler(this.c1FlexGrid4_BeforeEdit);
             this.c1FlexGrid4.AfterEdit += new C1.Win.C1FlexGrid.RowColEventHandler(this.c1FlexGrid4_AfterEdit);
             this.c1FlexGrid4.ValidateEdit += new C1.Win.C1FlexGrid.ValidateEditEventHandler(this.c1FlexGrid4_ValidateEdit);
             this.c1FlexGrid4.KeyDownEdit += new C1.Win.C1FlexGrid.KeyEditEventHandler(this.c1FlexGrid4_KeyDownEdit);
@@ -2971,6 +2976,36 @@
             // shibuBikouTableAdapter
             // 
             this.shibuBikouTableAdapter.ClearBeforeFill = true;
+            // 
+            // button4_2
+            // 
+            this.button4_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.button4_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button4_2.ForeColor = System.Drawing.Color.White;
+            this.button4_2.Location = new System.Drawing.Point(705, 268);
+            this.button4_2.Margin = new System.Windows.Forms.Padding(2);
+            this.button4_2.Name = "button4_2";
+            this.button4_2.Size = new System.Drawing.Size(160, 32);
+            this.button4_2.TabIndex = 64;
+            this.button4_2.Text = "グループ名の登録";
+            this.button4_2.UseVisualStyleBackColor = false;
+            this.button4_2.Click += new System.EventHandler(this.button4_2_Click);
+            // 
+            // button6_2
+            // 
+            this.button6_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.button6_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button6_2.ForeColor = System.Drawing.Color.White;
+            this.button6_2.Location = new System.Drawing.Point(894, 267);
+            this.button6_2.Margin = new System.Windows.Forms.Padding(2);
+            this.button6_2.Name = "button6_2";
+            this.button6_2.Size = new System.Drawing.Size(160, 32);
+            this.button6_2.TabIndex = 65;
+            this.button6_2.Text = "グループ名設定へ移動";
+            this.button6_2.UseVisualStyleBackColor = false;
+            this.button6_2.Click += new System.EventHandler(this.button6_2_Click);
             // 
             // Jibun_Input
             // 
@@ -3252,5 +3287,7 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel lnkGaroonMail;
         private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Button button6_2;
+        private System.Windows.Forms.Button button4_2;
     }
 }
