@@ -844,7 +844,7 @@ namespace TokuchoBugyoK2
             this.ClientSize = new System.Drawing.Size(584, 881);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Popup_ShukeiHyou_New";
-            this.Text = "Popup_ShukeiHyou_New";
+            this.Text = "選択リスト 集計表";
             this.Load += new System.EventHandler(this.Popup_ShukeiHyou_New_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

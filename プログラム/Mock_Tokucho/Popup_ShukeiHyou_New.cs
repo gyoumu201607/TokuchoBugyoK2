@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
+using C1.Win.C1FlexGrid;
 
 namespace TokuchoBugyoK2
 {
@@ -609,7 +610,7 @@ namespace TokuchoBugyoK2
                     int filerow = c1FlexGrid3.Rows.Count;
                     for (int r = 0; r < filerow; r++)
                     {
-                        c1FlexGrid3.GetCellRange(r, 1).StyleNew.BackColor = clearColor;
+                        c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
                     }
 
                     //  VIPS　20220322　課題管理表No1263(957)　ADD  保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
@@ -921,7 +922,7 @@ namespace TokuchoBugyoK2
                 int filerow = c1FlexGrid3.Rows.Count;
                 for (int r = 0; r < filerow; r++)
                 {
-                    c1FlexGrid3.GetCellRange(r, 1).StyleNew.BackColor = clearColor;
+                    c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
                 }
 
                 // 奉行エクセル移管対応 20231004
@@ -1002,6 +1003,7 @@ namespace TokuchoBugyoK2
                 if (ShukeiVer == 1)
                 {
                     getFileName();
+                    int h = c1FlexGrid3.Rows.Count;
 
                     //  VIPS　20220322　課題管理表No1263(957)　ADD  保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
                     // フォルダチェック
@@ -1080,6 +1082,7 @@ namespace TokuchoBugyoK2
                 //// ファイル名を空に
                 //item1_PritFileName.Text = "";
                 c1FlexGrid2.Rows.Count = 1;
+                c1FlexGrid3.Clear(ClearFlags.Content);
                 c1FlexGrid3.Rows.Count = 1;
             }
         }
@@ -1135,10 +1138,11 @@ namespace TokuchoBugyoK2
             {
                 // 奉行エクセル移管対応 20231004
                 //item1_PritFileName.Text = "一括集計表" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
-                c1FlexGrid3.Rows.Count = 0;
+                c1FlexGrid3.Rows.Count = 1;
                 c1FlexGrid3.AllowAddNew = true;
                 c1FlexGrid3.Rows.Add();
                 c1FlexGrid3[0, 0] = "一括集計表" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                c1FlexGrid3.AllowAddNew = false;
             }
             else
             {
@@ -1149,7 +1153,7 @@ namespace TokuchoBugyoK2
                     // 奉行エクセル移管対応 20231004
                     //item1_PritFileName.Text = label_SentakuTantousha.Text + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
                     int addrow = ChousainMeiList.Count;
-                    c1FlexGrid3.Rows.Count = 0;
+                    c1FlexGrid3.Rows.Count = 1;
                     c1FlexGrid3.AllowAddNew = true;
                     for (int r = 0; r < addrow; r++)
                     {
@@ -1173,7 +1177,8 @@ namespace TokuchoBugyoK2
                     // 奉行エクセル移管対応 20231004
                     //item1_PritFileName.Text = "未登録" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
                     c1FlexGrid2.Rows.Count = 1;
-                    c1FlexGrid3.Rows.Count = 0;
+                    c1FlexGrid3.Clear(ClearFlags.Content);
+                    c1FlexGrid3.Rows.Count = 1;
                 }
             }
         }
@@ -1236,10 +1241,10 @@ namespace TokuchoBugyoK2
                 int filerow = c1FlexGrid3.Rows.Count;
                 for (int r = 0; r < filerow; r++)
                 {
-                    // 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。→メッセージ出力
+                    // 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
                     if ((ShukeiVer == 2) && (GroupMeiList[r].ToString() == "" || GroupMeiList[r].ToString() is null))
                     {
-                        c1FlexGrid3.GetCellRange(r, 1).StyleNew.BackColor = errorColor;
+                        c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
                         // E20XXX:グループ名が選択されていない明細が存在します。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20XXX", ""));
@@ -1255,13 +1260,27 @@ namespace TokuchoBugyoK2
                             prntflg = 0;
                         }
 
-                        if (File.Exists(chousainShukeiFolder + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                        if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
                         {
-                            // E20332:集計表ファイルが既に存在します。
-                            set_error("", 0);
-                            set_error(GlobalMethod.GetMessage("E20332", ""));
-                            c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
-                            prntflg = 0;
+                            if (File.Exists(chousainShukeiFolder + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                            {
+                                // E20332:集計表ファイルが既に存在します。
+                                set_error("", 0);
+                                set_error(GlobalMethod.GetMessage("E20332", ""));
+                                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                                prntflg = 0;
+                            }
+                        }
+                        else
+                        {
+                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                            {
+                                // E20332:集計表ファイルが既に存在します。
+                                set_error("", 0);
+                                set_error(GlobalMethod.GetMessage("E20332", ""));
+                                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                                prntflg = 0;
+                            }
                         }
                     }
 
@@ -1347,7 +1366,7 @@ namespace TokuchoBugyoK2
                                     // 成功時は、ファイルをフォルダにコピーする
                                     try
                                     {
-                                        if (!checkBox_Zenhinmoku.Checked)
+                                        if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
                                         {
                                             System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + c1FlexGrid3[r, 0].ToString(), true);
                                         }
@@ -1374,7 +1393,7 @@ namespace TokuchoBugyoK2
                                                 try
                                                 {
                                                     string linkpath;
-                                                    if (!checkBox_Zenhinmoku.Checked)
+                                                    if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
                                                     {
                                                         linkpath = chousainShukeiFolder + @"\" + c1FlexGrid3[r, 0].ToString();
                                                     }
@@ -1401,15 +1420,22 @@ namespace TokuchoBugyoK2
                                                     }
                                                     cmd.ExecuteNonQuery();
 
+                                                    // 担当部所テーブル更新
+                                                    string shukeipath;
+                                                    if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
+                                                    {
+                                                        shukeipath = chousainShukeiFolder;
+                                                    }
+                                                    else
+                                                    {
+                                                        shukeipath = item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0].ToString();
+                                                    }
                                                     // 全品目一括集計表
-                                                    cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + linkpath + "' " +
+                                                    cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + shukeipath + "' " +
                                                         ", MadoguchiL1AsteriaKoushinFlag = 1 " +
                                                         "WHERE " +
                                                         "MadoguchiID = '" + MadoguchiID + "' ";
                                                     
-                                                    // ※ファイル出力のループ1回で１ファイル対象だが、１担当で複数グループある場合、調査品目は問題ないが
-                                                    // 　MadoguchiJouhouMadoguchiL1Chouは窓口ID＋調査担当者CDで一意になっている？のでグループ分作成できない・・・
-
                                                     // 全品目一括集計表ではない AND 個人CD が0出ない場合は、個人のみ更新
                                                     if (!checkBox_Zenhinmoku.Checked && report_data[3] != "0")
                                                     {
@@ -1696,10 +1722,10 @@ namespace TokuchoBugyoK2
                             }
                         }
 
-                        // 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。→メッセージ出力
+                        // 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
                         if ((ShukeiVer == 2) && (GroupMeiList[i].ToString() == "" || GroupMeiList[i].ToString() is null))
                         {
-                            c1FlexGrid3.GetCellRange(i, 1).StyleNew.BackColor = errorColor;
+                            c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
                             // E20XXX:グループ名が選択されていない明細が存在します。
                             set_error("", 0);
                             set_error(GlobalMethod.GetMessage("E20XXX", ""));
@@ -1715,14 +1741,29 @@ namespace TokuchoBugyoK2
                                 prntflg = 0;
                             }
 
-                            if (File.Exists(chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0]) && radioButton_Save.Checked)
+                            if (ShukeiVer == 2 && BunkatsuList[i] == "2")
                             {
-                                // E20332:集計表ファイルが既に存在します。
-                                set_error("", 0);
-                                set_error(GlobalMethod.GetMessage("E20332", ""));
-                                c1FlexGrid3.GetCellRange(i, 1).StyleNew.BackColor = errorColor;
-                                prntflg = 0;
+                                if (File.Exists(chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0]) && radioButton_Save.Checked)
+                                {
+                                    // E20332:集計表ファイルが既に存在します。
+                                    set_error("", 0);
+                                    set_error(GlobalMethod.GetMessage("E20332", ""));
+                                    c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
+                                    prntflg = 0;
+                                }
                             }
+                            else
+                            {
+                                if (File.Exists(item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[i, 0]) && radioButton_Save.Checked)
+                                {
+                                    // E20332:集計表ファイルが既に存在します。
+                                    set_error("", 0);
+                                    set_error(GlobalMethod.GetMessage("E20332", ""));
+                                    c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
+                                    prntflg = 0;
+                                }
+                            }
+
                         }
 
                         if (prntflg == 1)
@@ -1794,7 +1835,14 @@ namespace TokuchoBugyoK2
                                         // 成功時は、ファイルをフォルダにコピーする
                                         try
                                         {
-                                            System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0].ToString(), true);
+                                            if (ShukeiVer == 2 && BunkatsuList[i] == "2")
+                                            {
+                                                System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0].ToString(), true);
+                                            }
+                                            else
+                                            {
+                                                System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[i, 0].ToString(), true);
+                                            }
                                             set_error("集計表ファイルを出力しました。:" + c1FlexGrid3[i, 0].ToString());
 
                                             // リンク先を設定するチェックボックスチェック時
@@ -1811,7 +1859,15 @@ namespace TokuchoBugyoK2
 
                                                     try
                                                     {
-                                                        string linkpath = chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0].ToString();
+                                                        string linkpath;
+                                                        if (ShukeiVer == 2 && BunkatsuList[i] == "2")
+                                                        {
+                                                            linkpath = chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0].ToString();
+                                                        }
+                                                        else
+                                                        {
+                                                            linkpath = item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[i, 0].ToString();
+                                                        }
                                                         // 全品目一括集計表
                                                         cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + linkpath + "' " +
                                                             "WHERE " +
@@ -1831,14 +1887,25 @@ namespace TokuchoBugyoK2
                                                         }
                                                         cmd.ExecuteNonQuery();
 
-                                                        // ※ファイル出力のループ1回で１ファイル対象だが、１担当で複数グループある場合、調査品目は問題ないが
-                                                        // 　MadoguchiJouhouMadoguchiL1Chouは窓口ID＋調査担当者CDで一意になっている？のでグループ分作成できない・・・
-
+                                                        // 担当部所テーブル更新
+                                                        string shukeipath;
+                                                        if (ShukeiVer == 2 && BunkatsuList[i] == "2")
+                                                        {
+                                                            shukeipath = chousainShukeiFolder;
+                                                        }
+                                                        else
+                                                        {
+                                                            shukeipath = item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[i, 0].ToString();
+                                                        }
                                                         // 全品目一括集計表
-                                                        cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + linkpath + "' " +
+                                                        cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + shukeipath + "' " +
                                                             ", MadoguchiL1AsteriaKoushinFlag = 1 " +
                                                             "WHERE " +
                                                             "MadoguchiID = '" + MadoguchiID + "' ";
+
+                                                        // ※ファイル出力のループ1回で１ファイル対象だが、１担当で複数グループある場合、調査品目は問題ないが
+                                                        // 　MadoguchiJouhouMadoguchiL1Chouは窓口ID＋調査担当者CDで一意になっている？のでグループ分作成できない・・・
+
                                                         // 個人CD が0出ない場合は、個人のみ更新
                                                         if (report_data[3] != "0")
                                                         {
