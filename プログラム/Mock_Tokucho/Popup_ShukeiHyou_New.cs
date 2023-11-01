@@ -2215,10 +2215,10 @@ namespace TokuchoBugyoK2
                                 {
                                     BushoList.Add(src_Busho.Text);
                                     ChousainMeiList.Add(dt0.Rows[i][0].ToString());
-                                    TokuchoList.Add(dt0.Rows[i][1].ToString() + "-" + dt0.Rows[i][2].ToString());
+                                    TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
                                     KojincdList.Add(kojinList[r].ToString());
-                                    GroupMeiList.Add(dt0.Rows[i][3].ToString());
-                                    BunkatsuList.Add(dt0.Rows[i][4].ToString());
+                                    GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                    BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                     GroupIDList.Add(dt0.Rows[i][3].ToString());
                                 }
                             }
@@ -2259,10 +2259,10 @@ namespace TokuchoBugyoK2
                                 {
                                     BushoList.Add(src_Busho.Text);
                                     ChousainMeiList.Add(dt0.Rows[i][0].ToString());
-                                    TokuchoList.Add(dt0.Rows[i][1].ToString() + "-" + dt0.Rows[i][2].ToString());
+                                    TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
                                     KojincdList.Add(kojinList[r].ToString());
-                                    GroupMeiList.Add(dt0.Rows[i][3].ToString());
-                                    BunkatsuList.Add(dt0.Rows[i][4].ToString());
+                                    GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                    BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                     GroupIDList.Add(dt0.Rows[i][3].ToString());
                                 }
                             }
