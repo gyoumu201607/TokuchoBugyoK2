@@ -1003,7 +1003,6 @@ namespace TokuchoBugyoK2
                 if (ShukeiVer == 1)
                 {
                     getFileName();
-                    int h = c1FlexGrid3.Rows.Count;
 
                     //  VIPS　20220322　課題管理表No1263(957)　ADD  保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
                     // フォルダチェック
