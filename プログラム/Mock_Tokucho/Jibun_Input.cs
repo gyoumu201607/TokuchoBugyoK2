@@ -9194,14 +9194,14 @@ namespace TokuchoBugyoK2
             //if (e.Row > 0 && e.Col <= c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
             if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
             {
-                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "-")
+                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                 {
                     e.Cancel = true;
                 }
             }
             if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
             {
-                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "-")
+                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                 {
                     e.Cancel = true;
                 }

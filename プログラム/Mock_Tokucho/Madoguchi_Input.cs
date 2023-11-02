@@ -75,7 +75,7 @@ namespace TokuchoBugyoK2
         private string ShukeiHyoFolder = "";
         private string chousaLinkFlg = "0"; // 調査品目明細のフォルダリンク先表示フラグ　1=非表示、0=表示
         //奉行エクセル
-        private string sagyoForuda = "0"; //調査品目明細の作業フォルダ表示フラグ　1=非表示、0=表示
+        private string sagyoForuda = "";
         // 調査品目明細の削除Key
         private String deleteChousaHinmokuIDs = "";
         private String MadoguchiHoukokuzumi = "";
@@ -18966,43 +18966,21 @@ namespace TokuchoBugyoK2
 
         private void c1FlexGrid4_BeforeEdit(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
-            //奉行エクセル　集計表VerがVer1の場合に選択不可、背景色をグレーにする
+            //奉行エクセル　集計表VerがVer1の場合に選択不可
             //if (e.Row > 0 && e.Col <= c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
             if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
             {
                 //if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "集計表Ver2")
-                for (int i = 0; i < DT_ChousaHinmoku.Rows.Count; i++)
-                {
-                    if (chousaHinmokuDispFlg == "0" && i >= 9999)
-                    {
-                        break;
-                    }
-                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "1")
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                     {
                         e.Cancel = true;
-                        c1FlexGrid4.Styles.Add("分割方法");
-                        c1FlexGrid4.Styles["分割方法"].BackColor = Color.FromArgb(240, 240, 240);
-                        c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"] = c1FlexGrid4.Styles["分割方法"];
-
                     }
-                }
             }
             if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
             {
-                for (int i = 0; i < DT_ChousaHinmoku.Rows.Count; i++)
+                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                 {
-                    if (chousaHinmokuDispFlg == "0" && i >= 9999)
-                    {
-                        break;
-                    }
-                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "1")
-                    //if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "0" || c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "-")
-                    {
-                        e.Cancel = true;
-                        c1FlexGrid4.Styles.Add("CustomStyle");
-                        c1FlexGrid4.Styles["CustomStyle"].BackColor = Color.FromArgb(240, 240, 240);
-                        c1FlexGrid4.Rows[e.Row]["GroupMei"] = c1FlexGrid4.Styles["CustomStyle"];
-                    }
+                    e.Cancel = true;
                 }
             }
         }
