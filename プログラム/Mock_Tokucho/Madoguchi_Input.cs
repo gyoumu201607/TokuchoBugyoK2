@@ -18970,16 +18970,20 @@ namespace TokuchoBugyoK2
             //if (e.Row > 0 && e.Col <= c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
             if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
             {
-                //if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "集計表Ver2")
                     if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                     {
-                        e.Cancel = true;
-                    }
+                    e.Cancel = true;
+                    //c1FlexGrid4.Styles.Add("CustomStyle");
+                    //c1FlexGrid4.Styles["CustomStyle"].BackColor = Color.FromArgb(240, 240, 240);
+                    //c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"] = c1FlexGrid4.Styles["CustomStyle"];
+                }
             }
+
             if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
             {
                 if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                 {
+                    //c1FlexGrid4.GetCellRange(2, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                     e.Cancel = true;
                 }
             }
