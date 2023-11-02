@@ -910,7 +910,7 @@ namespace TokuchoBugyoK2
             discript = "MadoguchiGroupMei ";
             value = "MadoguchiID ";
             table = "MadoguchiGroupMaster ";
-            where = "MadoguchiID = " + MadoguchiID; //MadoguchiIDが一致するもの
+            where = "MadoguchiGroupMasterID = " + MadoguchiID; //MadoguchiIDが一致するもの
             //コンボボックスデータ取得
             DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
             sl = new SortedList();
@@ -971,8 +971,8 @@ namespace TokuchoBugyoK2
             tmpdt.Columns.Add("Discript", typeof(string));
 
             //tmpdt.Rows.Add(0, "");
-            tmpdt.Rows.Add(1, "Ver1");
-            tmpdt.Rows.Add(2, "Ver2");
+            tmpdt.Rows.Add(1, "-");
+            tmpdt.Rows.Add(2, "集計表Ver2");
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
             //該当グリッドのセルにセット
@@ -983,9 +983,9 @@ namespace TokuchoBugyoK2
             tmpdt.Columns.Add("Value", typeof(int));
             tmpdt.Columns.Add("Discript", typeof(string));
 
-            //tmpdt.Rows.Add(0, "");
-            tmpdt.Rows.Add(1, "ファイル");
-            tmpdt.Rows.Add(2, "シート");
+            tmpdt.Rows.Add(0, "-");
+            tmpdt.Rows.Add(1, "シート分割");
+            tmpdt.Rows.Add(2, "ファイル分割");
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
             //該当グリッドのセルにセット
@@ -1466,13 +1466,13 @@ namespace TokuchoBugyoK2
                                    "FROM " +
                                    " ChousaHinmoku  " +
                                    //奉行エクセル
-                                   "LEFT JOIN MadoguchiGroupMaster ON ChousaHinmoku.MadoguchiID = MadoguchiGroupMaster.MadoguchiID " +
+                                   "LEFT JOIN MadoguchiGroupMaster ON ChousaHinmoku.MadoguchiID = MadoguchiGroupMaster.MadoguchiGroupMasterID " +
                                    "LEFT JOIN MadoguchiJouhou ON MadoguchiJouhou.MadoguchiID = ChousaHinmoku.MadoguchiID " +
                                    "LEFT JOIN Mst_Chousain MC0 ON HinmokuChousainCD = MC0.KojinCD " +
                                    "LEFT JOIN Mst_Chousain MC1 ON HinmokuFukuChousainCD1 = MC1.KojinCD " +
                                    "LEFT JOIN Mst_Chousain MC2 ON HinmokuFukuChousainCD2 = MC2.KojinCD " +
                                    "WHERE " +
-                                   "	MadoguchiJouhou.MadoguchiID = " + MadoguchiID + " AND ChousaDeleteFlag <> 1 AND ChousaHinmokuID > 0 ";
+                                   "MadoguchiJouhou.MadoguchiID = " + MadoguchiID + " AND ChousaDeleteFlag <> 1 AND ChousaHinmokuID > 0 ";
 
                         //調査品目検索条件
                         //調査担当部所
@@ -2097,62 +2097,24 @@ namespace TokuchoBugyoK2
                                                              ;
                     // 奉行エクセル
                     // 集計表Ver
-                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "0")
-                    {
-                        c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "-";
-                    }
-                    else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "1")
-                    {
-                        c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "-";
-                    }
-                    else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "2")
-                    {
-                        c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "Ver2";
-                    }
-                    //c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"];
+                    c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"];
 
                     //分割方法（ファイル・シート）
-                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "0")
-                    {
-                        //集計表Verが初期値であれば背景色をグレー
-                        c1FlexGrid4.GetCellRange(RowCount, 57).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
-
-                        if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1")
-                        {
-                            c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "ファイル";
-                        }
-                        else if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "2")
-                        {
-                            c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "シート";
-                        }
-                    }
-                    else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "0")
-                    {
-                        //集計表Verが初期値であれば背景色をグレー
-                        c1FlexGrid4.GetCellRange(RowCount, 57).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
-
-                        if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1")
-                        {
-                            c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "ファイル";
-                        }
-                        else if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "2")
-                        {
-                            c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "シート";
-                        }
-                    }
-
-                    //グループ名
-                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "0")
+                    c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"];
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "2")
                     {
                         //集計表Verが初期値であれば背景色をグレー
                         c1FlexGrid4.GetCellRange(RowCount, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                    }
 
-                    }
-                    else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "0")
+                    //グループ名
+                    c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["MadoguchiGroupMei"];
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "2")
                     {
-                        c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["MadoguchiGroupMei"];
+                        //集計表Verが初期値であれば背景色をグレー
+                        c1FlexGrid4.GetCellRange(RowCount, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                     }
-                    
+
                     //工事・構造物名
                     c1FlexGrid4.Rows[RowCount]["KojiKoubutsuMei"] = DT_ChousaHinmoku.Rows[i]["ChousaKoujiKouzoubutsumei"];
                     //単位当たり単価（単位）
@@ -8951,7 +8913,7 @@ namespace TokuchoBugyoK2
         private void button6_2_Click(object sender, EventArgs e)
         {
             //奉行エクセル　グループ名まで移動
-            c1FlexGrid4.LeftCol = 58;
+            c1FlexGrid4.LeftCol = 59;
             Console.WriteLine(c1FlexGrid4.BottomRow);
         }
 

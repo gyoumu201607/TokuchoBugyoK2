@@ -152,6 +152,8 @@
             this.button2_Update = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.tabPage3 = new TokuchoBugyoK2.GlobalMethod.CTabPage();
+            this.button6_2 = new System.Windows.Forms.Button();
+            this.button4_2 = new System.Windows.Forms.Button();
             this.btnRowSizeChange = new System.Windows.Forms.Button();
             this.btnGridSize = new System.Windows.Forms.Button();
             this.label148 = new System.Windows.Forms.Label();
@@ -222,8 +224,6 @@
             this.label143 = new System.Windows.Forms.Label();
             this.BikoUpdateBtn = new System.Windows.Forms.Button();
             this.shibuBikouTableAdapter = new TokuchoBugyoK2.TokuchoBugyoKDataSetTableAdapters.ShibuBikouTableAdapter();
-            this.button4_2 = new System.Windows.Forms.Button();
-            this.button6_2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -2012,6 +2012,36 @@
             this.tabPage3.Text = "調査品目明細";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button6_2
+            // 
+            this.button6_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.button6_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button6_2.ForeColor = System.Drawing.Color.White;
+            this.button6_2.Location = new System.Drawing.Point(894, 267);
+            this.button6_2.Margin = new System.Windows.Forms.Padding(2);
+            this.button6_2.Name = "button6_2";
+            this.button6_2.Size = new System.Drawing.Size(160, 32);
+            this.button6_2.TabIndex = 65;
+            this.button6_2.Text = "グループ名設定へ移動";
+            this.button6_2.UseVisualStyleBackColor = false;
+            this.button6_2.Click += new System.EventHandler(this.button6_2_Click);
+            // 
+            // button4_2
+            // 
+            this.button4_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
+            this.button4_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button4_2.ForeColor = System.Drawing.Color.White;
+            this.button4_2.Location = new System.Drawing.Point(705, 268);
+            this.button4_2.Margin = new System.Windows.Forms.Padding(2);
+            this.button4_2.Name = "button4_2";
+            this.button4_2.Size = new System.Drawing.Size(160, 32);
+            this.button4_2.TabIndex = 64;
+            this.button4_2.Text = "グループ名の登録";
+            this.button4_2.UseVisualStyleBackColor = false;
+            this.button4_2.Click += new System.EventHandler(this.button4_2_Click);
+            // 
             // btnRowSizeChange
             // 
             this.btnRowSizeChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
@@ -2976,36 +3006,6 @@
             // shibuBikouTableAdapter
             // 
             this.shibuBikouTableAdapter.ClearBeforeFill = true;
-            // 
-            // button4_2
-            // 
-            this.button4_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.button4_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.button4_2.ForeColor = System.Drawing.Color.White;
-            this.button4_2.Location = new System.Drawing.Point(705, 268);
-            this.button4_2.Margin = new System.Windows.Forms.Padding(2);
-            this.button4_2.Name = "button4_2";
-            this.button4_2.Size = new System.Drawing.Size(160, 32);
-            this.button4_2.TabIndex = 64;
-            this.button4_2.Text = "グループ名の登録";
-            this.button4_2.UseVisualStyleBackColor = false;
-            this.button4_2.Click += new System.EventHandler(this.button4_2_Click);
-            // 
-            // button6_2
-            // 
-            this.button6_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(78)))), ((int)(((byte)(122)))));
-            this.button6_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.button6_2.ForeColor = System.Drawing.Color.White;
-            this.button6_2.Location = new System.Drawing.Point(894, 267);
-            this.button6_2.Margin = new System.Windows.Forms.Padding(2);
-            this.button6_2.Name = "button6_2";
-            this.button6_2.Size = new System.Drawing.Size(160, 32);
-            this.button6_2.TabIndex = 65;
-            this.button6_2.Text = "グループ名設定へ移動";
-            this.button6_2.UseVisualStyleBackColor = false;
-            this.button6_2.Click += new System.EventHandler(this.button6_2_Click);
             // 
             // Jibun_Input
             // 
