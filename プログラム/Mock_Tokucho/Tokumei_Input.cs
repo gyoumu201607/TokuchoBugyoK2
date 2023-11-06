@@ -69,7 +69,7 @@ namespace TokuchoBugyoK2
         private string ShukeiHyoFolder = "";
         private string chousaLinkFlg = "0"; // 調査品目明細のフォルダリンク先表示フラグ　1=非表示、0=表示
         //奉行エクセル
-        private string sagyoForuda = "0"; //調査品目明細の作業フォルダ表示フラグ　1=非表示、0=表示
+        private string sagyoForuda = ""; //調査品目明細の作業フォルダ表示フラグ　1=非表示、0=表示
         // 調査品目明細の削除Key
         private String deleteChousaHinmokuIDs = "";
         private String MadoguchiHoukokuzumi = "";
@@ -218,6 +218,9 @@ namespace TokuchoBugyoK2
             // リンク先パスの幅を調整
             //c1FlexGrid4.Cols[41].Width = 0;
             c1FlexGrid4.Cols["ChousaLinkSakliFolder"].Width = 0;
+            //奉行エクセル
+            //作業フォルダの幅を調整
+            c1FlexGrid4.Cols["SagyoForudaPath"].Width = 0;
 
             if (Message != "")
             {
@@ -908,9 +911,9 @@ namespace TokuchoBugyoK2
             //奉行エクセル
             //グループ名
             discript = "MadoguchiGroupMei ";
-            value = "MadoguchiID ";
+            value = "MadoguchiGroupMasterID ";
             table = "MadoguchiGroupMaster ";
-            where = "MadoguchiGroupMasterID = " + MadoguchiID; //MadoguchiIDが一致するもの
+            where = "MadoguchiID = " + MadoguchiID; //MadoguchiIDが一致するもの
             //コンボボックスデータ取得
             DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
             sl = new SortedList();
@@ -1003,6 +1006,10 @@ namespace TokuchoBugyoK2
             c1FlexGrid4.Cols["ChousaLinkSakli"].ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.CenterCenter;
             c1FlexGrid4.Cols["ChousaLinkSakli"].ImageMap = imgMap;
             c1FlexGrid4.Cols["ChousaLinkSakli"].ImageAndText = false;
+            // 奉行エクセル移管対応
+            c1FlexGrid4.Cols["SagyoForuda"].ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.CenterCenter;
+            c1FlexGrid4.Cols["SagyoForuda"].ImageMap = imgMap;
+            c1FlexGrid4.Cols["SagyoForuda"].ImageAndText = false;
 
             //調査品目　Grid属性
             discript = "ZokuseiMeishou ";
@@ -1447,7 +1454,7 @@ namespace TokuchoBugyoK2
                                    " , 1 " + // 53:0:Insert/1:Select/2:Update
                                    " , ChousaTankaCD1 " + // 54:発注品目コード
                                    " , '' " + // 55:並び順
-                                   //奉行エクセル
+                                              //奉行エクセル
                                    ", ChousaShuukeihyouVer" +
                                    ", ChousaBunkatsuHouhou" +
                                    ", ChousaKoujiKouzoubutsumei" +
@@ -1462,11 +1469,24 @@ namespace TokuchoBugyoK2
                                    " , ISNULL(MC2.RetireFlg, 0) AS RetireFlg2 " + //副担当者2退職フラグ
                                    " , MC0.ChousainMei " + // 調査員名
                                    " , MC1.ChousainMei AS FukuChousainMei1 " + // 副調査員名1
-                                   " , MC2.ChousainMei AS FukuChousainMei2 " + // 副調査員名2
+                                   " , MC2.ChousainMei AS FukuChousainMei2 "  // 副調査員名2
+                                   ;
+                                    // 作業フォルダアイコン切り替え 0:グレー 1:イエロー
+                                    if (chousaLinkFlg != "1")
+                                    {
+                                        cmd.CommandText += " , CASE WHEN ISNULL(MJMC.MadoguchiL1SagyouHolder,'') <> '' THEN 1 ELSE 0 END AS Sagyou ";
+                                    }
+                                    else
+                                    {
+                                        cmd.CommandText += " , 0 AS Sagyou ";
+                                    }
+                                    cmd.CommandText += " , MJMC.MadoguchiL1SagyouHolder AS SagyouHolder " + //担当者作業フォルダ
                                    "FROM " +
                                    " ChousaHinmoku  " +
                                    //奉行エクセル
                                    "LEFT JOIN MadoguchiGroupMaster ON ChousaHinmoku.MadoguchiID = MadoguchiGroupMaster.MadoguchiGroupMasterID " +
+                                    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou MJMC ON ChousaHinmoku.MadoguchiID = MJMC.MadoguchiID " +
+                                   "AND ChousaHinmoku.HinmokuChousainCD = MJMC.MadoguchiL1ChousaTantoushaCD " +
                                    "LEFT JOIN MadoguchiJouhou ON MadoguchiJouhou.MadoguchiID = ChousaHinmoku.MadoguchiID " +
                                    "LEFT JOIN Mst_Chousain MC0 ON HinmokuChousainCD = MC0.KojinCD " +
                                    "LEFT JOIN Mst_Chousain MC1 ON HinmokuFukuChousainCD1 = MC1.KojinCD " +
@@ -2127,6 +2147,26 @@ namespace TokuchoBugyoK2
                     c1FlexGrid4.Rows[RowCount]["NiwatashiJoken"] = DT_ChousaHinmoku.Rows[i]["ChousaNiwatashiJouken"];
                     //発注者提供単位
                     c1FlexGrid4.Rows[RowCount]["HachushaTeikyoTani"] = DT_ChousaHinmoku.Rows[i]["ChousaHachushaTeikyouTani"];
+                    //作業フォルダ
+                    c1FlexGrid4.Rows[RowCount]["SagyoForuda"] = "0";
+                    if (chousaLinkFlg != "1")
+                    {
+                        // 作業フォルダがセットされている場合
+                        if (DT_ChousaHinmoku.Rows[i]["Sagyou"].ToString() == "1")
+                        {
+                            // リンク先に登録されている作業フォルダが存在するか
+                            if (Directory.Exists(DT_ChousaHinmoku.Rows[i]["SagyouHolder"].ToString()))
+                            {
+                                c1FlexGrid4.Rows[RowCount]["SagyoForuda"] = "1";
+                            }
+                        }
+                        else
+                        {
+                            c1FlexGrid4.Rows[RowCount]["SagyoForuda"] = "";
+                        }
+                    }
+                    // 作業フォルダパス
+                    c1FlexGrid4.Rows[RowCount]["SagyoForudaPath"] = DT_ChousaHinmoku.Rows[i]["SagyouHolder"];
 
                     RowCount += 1;
                 }
@@ -2905,7 +2945,7 @@ namespace TokuchoBugyoK2
                     ",ChousaUpdateUser " +
                     ",ChousaUpdateProgram " +
                     ",ChousaShinchokuJoukyou " +
-                    //奉行エクセル　清水検証
+                    //奉行エクセル
                     ",ChousaShuukeihyouVer" +
                     ",ChousaBunkatsuHouhou" +
                     ",ChousaKoujiKouzoubutsumei" +
@@ -7116,6 +7156,22 @@ namespace TokuchoBugyoK2
                 if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
                 {
                     strIndex = 15;
+                }
+                if (e.Col == c1FlexGrid4.Cols["ShukeihyoVer"].Index)
+                {
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
+                    {
+
+                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.Rows[e.Row][58] = "";
+                        c1FlexGrid4.Rows[e.Row][59] = "";
+                    }
+                    else
+                    {
+                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.White;
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
+                    }
                 }
             }
         }
