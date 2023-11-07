@@ -18939,11 +18939,21 @@ namespace TokuchoBugyoK2
         //グループ名の登録
         private void button4_2Click(object sender, EventArgs e)
         {//奉行エクセル　
-           
-            //Popup_GroupMei form = new Popup_GroupMei();
-            //form.MadoguchiID = MadoguchiID;
-            //form.UserInfos = UserInfos;
-            //form.ShowDialog();
+
+            Popup_GroupMei form = new Popup_GroupMei();
+            form.MadoguchiID = MadoguchiID;
+            form.UserInfos = UserInfos;
+            form.ShowDialog();
+            // グループ名
+            String discript = "MadoguchiGroupMei ";
+            String value = "MadoguchiGroupMasterID ";
+            String table = "MadoguchiGroupMaster ";
+            String where = "MadoguchiID = " + MadoguchiID; //MadoguchiIDが一致するもの
+            //コンボボックスデータ取得
+            DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
+            SortedList sl = new SortedList();
+            sl = GlobalMethod.Get_SortedList(tmpdt22);
+            c1FlexGrid4.Cols["GroupMei"].DataMap = sl;
         }
 
         private void button6_2_Click_1(object sender, EventArgs e)
