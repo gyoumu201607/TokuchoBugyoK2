@@ -1463,7 +1463,8 @@ namespace TokuchoBugyoK2
                                    ", chousaTaniAtariSuuryou" +
                                    ", ChousaTaniAtariTanka" +
                                    ", ChousaNiwatashiJouken" +
-                                   ", MadoguchiGroupMei" +
+                                   ", MadoguchiGroupMaster.MadoguchiGroupMei" +
+                                   ", ChousaMadoguchiGroupMasterID" +
                                    " , ISNULL(MC0.RetireFlg, 0) AS RetireFlg " + //担当者退職フラグ
                                    " , ISNULL(MC1.RetireFlg, 0) AS RetireFlg1 " + //副担当者1退職フラグ
                                    " , ISNULL(MC2.RetireFlg, 0) AS RetireFlg2 " + //副担当者2退職フラグ
@@ -1484,8 +1485,9 @@ namespace TokuchoBugyoK2
                                    "FROM " +
                                    " ChousaHinmoku  " +
                                    //奉行エクセル
-                                   "LEFT JOIN MadoguchiGroupMaster ON ChousaHinmoku.MadoguchiID = MadoguchiGroupMaster.MadoguchiGroupMasterID " +
-                                    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou MJMC ON ChousaHinmoku.MadoguchiID = MJMC.MadoguchiID " +
+                                   "LEFT JOIN MadoguchiGroupMaster ON MadoguchiGroupMaster.MadoguchiGroupMasterID = ChousaHinmoku.ChousaMadoguchiGroupMasterID " +
+                                   //"LEFT JOIN MadoguchiGroupMaster ON ChousaHinmoku.MadoguchiID = MadoguchiGroupMaster.MadoguchiGroupMasterID " +
+                                   "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou MJMC ON ChousaHinmoku.MadoguchiID = MJMC.MadoguchiID " +
                                    "AND ChousaHinmoku.HinmokuChousainCD = MJMC.MadoguchiL1ChousaTantoushaCD " +
                                    "LEFT JOIN MadoguchiJouhou ON MadoguchiJouhou.MadoguchiID = ChousaHinmoku.MadoguchiID " +
                                    "LEFT JOIN Mst_Chousain MC0 ON HinmokuChousainCD = MC0.KojinCD " +
@@ -2954,6 +2956,7 @@ namespace TokuchoBugyoK2
                     ",ChousaTaniAtariKakaku" +
                     ",ChousaNiwatashiJouken" +
                     ",ChousaHachushaTeikyouTani" +
+                    ", ChousaMadoguchiGroupMasterID" +
                     ") VALUES ";
                     string valuesText = "";
 
@@ -3927,6 +3930,8 @@ namespace TokuchoBugyoK2
                                         cmd.CommandText += " ChousaZentaiJun = '" + c1FlexGrid4.Rows[i]["ChousaZentaiJun"] + "' " +                                             // 全体順
                                             ",ChousaKobetsuJun = '" + c1FlexGrid4.Rows[i]["ChousaKobetsuJun"] + "' " +                                                          // 個別順
                                             ",ChousaZaiKou = '" + c1FlexGrid4.Rows[i]["ChousaZaiKou"] + "' " +                                                                  // 材工
+                                            //検証中
+                                            ",ChousaMadoguchiGroupMasterID = N'" + c1FlexGrid4.Rows[i]["GroupMei"] + "' " +
                                             ",ChousaHinmei = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaHinmei"].ToString(), 0, 0) + "' " +                     // 品目
                                             ",ChousaKikaku = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaKikaku"].ToString(), 0, 0) + "' " +                     // 規格
                                             ",ChousaTanka = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTanka"].ToString(), 0, 0) + "' " +                       // 単位
@@ -4306,8 +4311,6 @@ namespace TokuchoBugyoK2
                                         {
                                             cmd.CommandText += ",ChousaNiwatashiJouken = null ";
                                         }
-
-
                                         //cmd.CommandText += "WHERE ChousaHinmokuID ='" + c1FlexGrid4.Rows[i][55] + "' AND MadoguchiID ='" + MadoguchiID + "' ";
                                         cmd.CommandText += "WHERE ChousaHinmokuID ='" + c1FlexGrid4.Rows[i]["ChousaHinmokuID2"] + "' AND MadoguchiID ='" + MadoguchiID + "' ";
 
@@ -8963,6 +8966,8 @@ namespace TokuchoBugyoK2
         {
             //奉行エクセル　
             //Popup_GroupMei form = new Popup_GroupMei();
+            //form.MadoguchiID = MadoguchiID;
+            //form.UserInfos = UserInfos;
             //form.ShowDialog();
         }
 
