@@ -12951,6 +12951,8 @@ namespace TokuchoBugyoK2
                                 //集計表Ver
                                 if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
                                 {
+                                    //検証中
+                                    //cmd.CommandText += ",ChousaShuukeihyouVer = '" + c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString()  + "' ";
                                     cmd.CommandText += ",ChousaShuukeihyouVer = '" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
                                 }
                                 else
@@ -12960,6 +12962,8 @@ namespace TokuchoBugyoK2
                                 //分割方法
                                 if (c1FlexGrid4.Rows[i]["BunkatsuHouhou"] != null && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() != "")
                                 {
+                                    //検証中
+                                    //cmd.CommandText += ",ChousaBunkatsuHouhou = '" + c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() + "' ";
                                     cmd.CommandText += ",ChousaBunkatsuHouhou = '" + c1FlexGrid4.Rows[i]["BunkatsuHouhou"] + "' ";
                                 }
                                 else
