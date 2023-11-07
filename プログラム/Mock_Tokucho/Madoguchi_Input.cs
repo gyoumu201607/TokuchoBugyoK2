@@ -11702,7 +11702,6 @@ namespace TokuchoBugyoK2
             ",ChousaTaniAtariKakaku" +
             ",ChousaNiwatashiJouken"+
             ",ChousaHachushaTeikyouTani"+
-            //検証中
             ",ChousaMadoguchiGroupMasterID"+
             ") VALUES ";
             string valuesText = "";
@@ -12642,7 +12641,6 @@ namespace TokuchoBugyoK2
                                 cmd.CommandText += " ChousaZentaiJun = '" + c1FlexGrid4.Rows[i]["ChousaZentaiJun"] + "' " +                                             // 全体順
                                     ",ChousaKobetsuJun = '" + c1FlexGrid4.Rows[i]["ChousaKobetsuJun"] + "' " +                                                          // 個別順
                                     ",ChousaZaiKou = N'" + c1FlexGrid4.Rows[i]["ChousaZaiKou"] + "' " +                                                                  // 材工
-                                    //検証中
                                     ",ChousaMadoguchiGroupMasterID = N'" + c1FlexGrid4.Rows[i]["GroupMei"] + "' " +
                                     ",ChousaHinmei = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaHinmei"].ToString(), 0, 0) + "' " +                     // 品目
                                     ",ChousaKikaku = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaKikaku"].ToString(), 0, 0) + "' " +                     // 規格
@@ -13022,17 +13020,6 @@ namespace TokuchoBugyoK2
                                 {
                                     cmd.CommandText += ",ChousaNiwatashiJouken = null ";
                                 }
-                                //検証中
-                                ////グループ名
-                                //if (c1FlexGrid4.Rows[i]["GroupMei"] != null && c1FlexGrid4.Rows[i]["GroupMei"].ToString() != "")
-                                //{
-                                //    cmd.CommandText += ",ChousaMadoguchiGroupMasterID = ChousaMadoguchiGroupMasterID ";
-                                //}
-                                //else
-                                //{
-                                //    cmd.CommandText += ",ChousaMadoguchiGroupMasterID = null ";
-                                //}
-
                                 //cmd.CommandText += "WHERE ChousaHinmokuID ='" + c1FlexGrid4.Rows[i][55] + "' AND MadoguchiID ='" + MadoguchiID + "' ";
                                 //cmd.CommandText += "WHERE ChousaHinmokuID ='" + c1FlexGrid4.Rows[i]["ChousaHinmokuID2"] + "' AND MadoguchiID ='" + MadoguchiID + "' ";
                                 cmd.CommandText += "WHERE ChousaHinmokuID ='" + c1FlexGrid4.Rows[i]["ChousaHinmokuID2"] + "' ";
@@ -17120,11 +17107,8 @@ namespace TokuchoBugyoK2
                             c1FlexGrid4.Rows[rowCount]["NiwatashiJoken"] = addCousaHinmokuDT.Rows[i]["ChousaNiwatashiJouken"];
                             //発注者提供単位
                             c1FlexGrid4.Rows[rowCount]["HachushaTeikyoTani"] = addCousaHinmokuDT.Rows[i]["ChousaHachushaTeikyouTani"];
-                            //検証中
                             //グループ名
                             c1FlexGrid4.Rows[rowCount]["GroupMei"] = addCousaHinmokuDT.Rows[i]["MadoguchiGroupMei"];
-
-
                         }
                     }
                 }
@@ -18955,7 +18939,8 @@ namespace TokuchoBugyoK2
         //グループ名の登録
         private void button4_2Click(object sender, EventArgs e)
         {//奉行エクセル　
-         //Popup_GroupMei form = new Popup_GroupMei();
+           
+            //Popup_GroupMei form = new Popup_GroupMei();
             //form.MadoguchiID = MadoguchiID;
             //form.UserInfos = UserInfos;
             //form.ShowDialog();
