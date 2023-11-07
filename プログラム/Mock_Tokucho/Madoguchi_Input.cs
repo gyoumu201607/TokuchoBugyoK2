@@ -1116,19 +1116,6 @@ namespace TokuchoBugyoK2
                         dt = new DataTable();
                         sda.Fill(dt);
 
-                        ////検証中
-                        //// グループ名を取得
-                        //cmd.CommandText = "SELECT " +
-                        //                  "	MadoguchiGroupMei　" +
-                        //                   "FROM " +
-                        //                   "	MadoguchiGroupMaster  " +
-                        //                   "WHERE " +
-                        //                   "	MadoguchiID = " + MadoguchiID + " ";
-                        //Console.WriteLine(cmd.CommandText);
-                        //sda = new SqlDataAdapter(cmd);
-                        //dt = new DataTable();
-                        //sda.Fill(dt);
-
                         //// 集計表フォルダ存在フラグ true：存在する false：存在しない
                         //Boolean existsFlg = false;
                         // 集計表フォルダ
