@@ -505,7 +505,7 @@ namespace TokuchoBugyoK2
                 var sda = new SqlDataAdapter(cmd);
                 sda.Fill(dt);
                 int MadoguchiGroupMasterIDCount = 1;
-                if (dt.Rows.Count > 1)
+                if (int.Parse(dt.Rows[0][0].ToString()) >= 1)
                 {
                     MadoguchiGroupMasterIDCount = int.Parse(dt.Rows[0][0].ToString()) + 1;
                 }
