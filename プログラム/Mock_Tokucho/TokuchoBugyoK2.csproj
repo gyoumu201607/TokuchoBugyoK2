@@ -259,6 +259,9 @@
     <Compile Include="Popup_FileError.Designer.cs">
       <DependentUpon>Popup_FileError.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popup_GroupMei.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Popup_Hachusha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -582,6 +585,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_FileError.resx">
       <DependentUpon>Popup_FileError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_GroupMei.resx">
+      <DependentUpon>Popup_GroupMei.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Hachusha.resx">
       <DependentUpon>Popup_Hachusha.cs</DependentUpon>
