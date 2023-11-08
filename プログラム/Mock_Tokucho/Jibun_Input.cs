@@ -3855,11 +3855,21 @@ namespace TokuchoBugyoK2
                                             ",ChousaKobetsuJun = '" + c1FlexGrid4.Rows[i]["ChousaKobetsuJun"] + "' " +                                                          // 個別順
                                             ",ChousaZaiKou = '" + c1FlexGrid4.Rows[i]["ChousaZaiKou"] + "' " +                                                                  // 材工
                                             //検証中
-                                            ",ChousaMadoguchiGroupMasterID = N'" + c1FlexGrid4.Rows[i]["GroupMei"] + "' " +
+                                            //",ChousaMadoguchiGroupMasterID = N'" + c1FlexGrid4.Rows[i]["GroupMei"] + "' " +
                                             ",ChousaHinmei = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaHinmei"].ToString(), 0, 0) + "' " +                     // 品目
                                             ",ChousaKikaku = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaKikaku"].ToString(), 0, 0) + "' " +                     // 規格
                                             ",ChousaTanka = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTanka"].ToString(), 0, 0) + "' " +                       // 単位
                                             ",ChousaSankouShitsuryou = N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaSankouShitsuryou"].ToString(), 0, 0) + "' ";  // 参考質量
+                                                                                                                                                                                 
+                                        // グループ名
+                                        if (c1FlexGrid4.Rows[i]["GroupMei"] != null && c1FlexGrid4.Rows[i]["GroupMei"].ToString() != "")
+                                        {
+                                            cmd.CommandText += ",ChousaMadoguchiGroupMasterID = '" + c1FlexGrid4.Rows[i]["GroupMei"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            cmd.CommandText += ",ChousaMadoguchiGroupMasterID = 0 ";
+                                        }
 
                                         // 価格
                                         //if (c1FlexGrid4.Rows[i][13] != null && c1FlexGrid4.Rows[i][13].ToString() != "")
@@ -4178,7 +4188,7 @@ namespace TokuchoBugyoK2
                                         }
                                         else
                                         {
-                                            cmd.CommandText += ",ChousaBunkatsuHouhou = null ";
+                                            cmd.CommandText += ",ChousaBunkatsuHouhou = '0' ";
                                         }
                                         //工事・構造物名
                                         if (c1FlexGrid4.Rows[i]["KojiKoubutsuMei"] != null && c1FlexGrid4.Rows[i]["KojiKoubutsuMei"].ToString() != "")
