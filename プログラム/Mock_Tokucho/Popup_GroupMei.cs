@@ -505,11 +505,16 @@ namespace TokuchoBugyoK2
                 var sda = new SqlDataAdapter(cmd);
                 sda.Fill(dt);
                 int MadoguchiGroupMasterIDCount = 1;
-                if (int.Parse(dt.Rows[0][0].ToString()) >= 1)
-                {
-                    MadoguchiGroupMasterIDCount = int.Parse(dt.Rows[0][0].ToString()) + 1;
-                }
+                string dtrows = dt.Rows[0][0].ToString();
 
+                //NO1566 グループ名を登録し更新するとシステムエラーが発生する。
+                //テーブルにデータがない場合の考慮がされていなかったため処理を修正。
+                if (dtrows != "") {
+                    if (int.Parse(dt.Rows[0][0].ToString()) >= 1)
+                    {
+                        MadoguchiGroupMasterIDCount = int.Parse(dt.Rows[0][0].ToString()) + 1;
+                    }
+                }
                 //グループ名登録・更新処理
                 for (int i = 1; i < GroupMeiGrid.Rows.Count; i++)
                 {
