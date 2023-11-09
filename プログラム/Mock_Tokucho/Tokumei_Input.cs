@@ -1463,7 +1463,6 @@ namespace TokuchoBugyoK2
                                    ", chousaTaniAtariSuuryou" +
                                    ", ChousaTaniAtariTanka" +
                                    ", ChousaNiwatashiJouken" +
-                                   ", MadoguchiGroupMaster.MadoguchiGroupMei" +
                                    ", ChousaMadoguchiGroupMasterID" +
                                    " , ISNULL(MC0.RetireFlg, 0) AS RetireFlg " + //担当者退職フラグ
                                    " , ISNULL(MC1.RetireFlg, 0) AS RetireFlg1 " + //副担当者1退職フラグ
@@ -1485,8 +1484,7 @@ namespace TokuchoBugyoK2
                                    "FROM " +
                                    " ChousaHinmoku  " +
                                    //奉行エクセル
-                                   "LEFT JOIN MadoguchiGroupMaster ON MadoguchiGroupMaster.MadoguchiGroupMasterID = ChousaHinmoku.ChousaMadoguchiGroupMasterID " +
-                                   //"LEFT JOIN MadoguchiGroupMaster ON ChousaHinmoku.MadoguchiID = MadoguchiGroupMaster.MadoguchiGroupMasterID " +
+                                   //"LEFT JOIN MadoguchiGroupMaster ON MadoguchiGroupMaster.MadoguchiGroupMasterID = ChousaHinmoku.ChousaMadoguchiGroupMasterID " +
                                    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou MJMC ON ChousaHinmoku.MadoguchiID = MJMC.MadoguchiID " +
                                    "AND ChousaHinmoku.HinmokuChousainCD = MJMC.MadoguchiL1ChousaTantoushaCD " +
                                    "LEFT JOIN MadoguchiJouhou ON MadoguchiJouhou.MadoguchiID = ChousaHinmoku.MadoguchiID " +
@@ -2128,9 +2126,15 @@ namespace TokuchoBugyoK2
                         //集計表Verが初期値であれば背景色をグレー
                         c1FlexGrid4.GetCellRange(RowCount, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                     }
-
                     //グループ名
-                    c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["MadoguchiGroupMei"];
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"].ToString() == "0")
+                    {
+                        c1FlexGrid4.Rows[RowCount]["GroupMei"] = "";
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"];
+                    }
                     if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "2")
                     {
                         //集計表Verが初期値であれば背景色をグレー

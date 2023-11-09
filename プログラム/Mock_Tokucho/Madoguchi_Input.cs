@@ -1194,7 +1194,7 @@ namespace TokuchoBugyoK2
                                    ", chousaTaniAtariSuuryou"+
                                    ", ChousaTaniAtariTanka"+
                                    ", ChousaNiwatashiJouken"+
-                                   " , MadoguchiGroupMaster.MadoguchiGroupMei"
+                                   " , ChousaMadoguchiGroupMasterID"
                                    ; // 35
                         // フォルダアイコン切り替え 0:グレー 1:イエロー 2:Excleアイコン
                         if (chousaLinkFlg != "1" && ShukeiHyoFolder != "")
@@ -1263,7 +1263,7 @@ namespace TokuchoBugyoK2
                                    //奉行エクセル
                                    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou MJMC ON ChousaHinmoku.MadoguchiID = MJMC.MadoguchiID " +
                                    "AND ChousaHinmoku.HinmokuChousainCD = MJMC.MadoguchiL1ChousaTantoushaCD " +
-                                   "LEFT JOIN MadoguchiGroupMaster ON MadoguchiGroupMaster.MadoguchiGroupMasterID = ChousaHinmoku.ChousaMadoguchiGroupMasterID " +
+                                   //"LEFT JOIN MadoguchiGroupMaster ON MadoguchiGroupMaster.MadoguchiGroupMasterID = ChousaHinmoku.ChousaMadoguchiGroupMasterID " +
                                    "WHERE " +
                                    "MadoguchiJouhou.MadoguchiID = " + MadoguchiID + " AND ChousaDeleteFlag <> 1 AND ChousaHinmokuID > 0 ";
 
@@ -2388,7 +2388,14 @@ namespace TokuchoBugyoK2
                     //分割方法（ファイル・シート）
                     c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"];
                     //グループ名
-                    c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["MadoguchiGroupMei"];
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"].ToString() == "0")
+                    {
+                        c1FlexGrid4.Rows[RowCount]["GroupMei"] = "";
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"];
+                    }
                     //工事・構造物名
                     c1FlexGrid4.Rows[RowCount]["KojiKoubutsuMei"] = DT_ChousaHinmoku.Rows[i]["ChousaKoujiKouzoubutsumei"];
                     //単位当たり単価（単位）
@@ -17204,8 +17211,10 @@ namespace TokuchoBugyoK2
                             c1FlexGrid4.Rows[rowCount]["NiwatashiJoken"] = addCousaHinmokuDT.Rows[i]["ChousaNiwatashiJouken"];
                             //発注者提供単位
                             c1FlexGrid4.Rows[rowCount]["HachushaTeikyoTani"] = addCousaHinmokuDT.Rows[i]["ChousaHachushaTeikyouTani"];
+                            //検証中
+                            //グループ名からIDに変更
                             //グループ名
-                            c1FlexGrid4.Rows[rowCount]["GroupMei"] = addCousaHinmokuDT.Rows[i]["MadoguchiGroupMei"];
+                            c1FlexGrid4.Rows[rowCount]["GroupMei"] = addCousaHinmokuDT.Rows[i]["ChousaMadoguchiGroupMasterID"];
                         }
                     }
                 }
