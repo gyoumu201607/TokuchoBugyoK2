@@ -19100,10 +19100,10 @@ namespace TokuchoBugyoK2
             String where = "MadoguchiID = " + MadoguchiID + "ORDER BY MadoguchiGroupMei"; //MadoguchiIDが一致するもの
             //コンボボックスデータ取得
             DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
-            //SortedList sl = new SortedList();
-            //sl = GlobalMethod.Get_SortedList(tmpdt22);
-            //c1FlexGrid4.Cols["GroupMei"].DataMap = sl;
-            c1FlexGrid4.Cols["GroupMei"].DataMap = tmpdt22;
+            SortedList sl = new SortedList();
+            sl = GlobalMethod.Get_SortedList(tmpdt22);
+            c1FlexGrid4.Cols["GroupMei"].DataMap = sl;
+            //c1FlexGrid4.Cols["GroupMei"].DataMap = tmpdt22;
 
         }
 
