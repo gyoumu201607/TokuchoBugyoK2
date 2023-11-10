@@ -301,6 +301,7 @@ namespace TokuchoBugyoK2
             //グループ名をGridにセット
             MadoguchiGroupMeiData = get_MadoguchiGroupMei(MadoguchiID);
             GroupMeiGrid.Rows.Count = 1;
+
             for (int i = 0; i < MadoguchiGroupMeiData.Rows.Count; i++)
             {
                 GroupMeiGrid.Rows.Add();
@@ -309,6 +310,9 @@ namespace TokuchoBugyoK2
                     GroupMeiGrid.Rows[i + 1][k + 1] = MadoguchiGroupMeiData.Rows[i][k].ToString();
                 }
             }
+
+            //No1569 不具合対応
+            GroupMeiGrid.Sort(C1.Win.C1FlexGrid.SortFlags.Ascending, 2);
 
             //初期表示に足りない行数を空白の行で追加
             if (GroupMeiGrid.Rows.Count - 1 < intGroupMeiSuu)
