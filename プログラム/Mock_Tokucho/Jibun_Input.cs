@@ -988,7 +988,7 @@ namespace TokuchoBugyoK2
             tmpdt.Columns.Add("Value", typeof(int));
             tmpdt.Columns.Add("Discript", typeof(string));
 
-            tmpdt.Rows.Add(0, "-");
+            //tmpdt.Rows.Add(0, "-");
             tmpdt.Rows.Add(1, "シート分割");
             tmpdt.Rows.Add(2, "ファイル分割");
             sl = new SortedList();
@@ -2281,29 +2281,38 @@ namespace TokuchoBugyoK2
                                                              + "-"
                                                              + zeroPadding(DT_ChousaHinmoku.Rows[i]["ChousaKobetsuJun"].ToString())
                                                              ;
-                    // 奉行エクセル
+                    //奉行エクセル
                     // 集計表Ver
-                    c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"];
-                    //if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "0")
-                    //{
-                    //    c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "-";
-                    //}
-                    //else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "1")
-                    //{
-                    //    c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "-";
-                    //}
-                    //else if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "2")
-                    //{
-                    //    c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "集計表Ver2";
-                    //}
-
-                    //分割方法（ファイル・シート）
-                    c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"];
+                    //集計表Verが初期値であれば背景色をグレー
                     if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "2")
                     {
-                        //集計表Verが初期値であれば背景色をグレー
+                        c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "1";
                         c1FlexGrid4.GetCellRange(RowCount, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.GetCellRange(RowCount, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                     }
+                    else
+                    {
+                        c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"];
+                    }
+                    //分割方法（ファイル・シート）
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1" || DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "2")
+                    {
+                        c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"];
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = "-";
+                    }
+                    // 奉行エクセル
+                    // 集計表Ver
+                    //c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"];
+                    ////分割方法（ファイル・シート）
+                    //c1FlexGrid4.Rows[RowCount]["BunkatsuHouhou"] = DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"];
+                    //if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "2")
+                    //{
+                    //    //集計表Verが初期値であれば背景色をグレー
+                    //    c1FlexGrid4.GetCellRange(RowCount, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                    //}
                     //グループ名
                     if (DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"].ToString() == "0")
                     {
@@ -7946,6 +7955,9 @@ namespace TokuchoBugyoK2
                     || e.Col == c1FlexGrid4.Cols["ChousaHinmokuJouhou2"].Index || e.Col == c1FlexGrid4.Cols["ChousaFukuShizai"].Index
                     || e.Col == c1FlexGrid4.Cols["ChousaBunrui"].Index || e.Col == c1FlexGrid4.Cols["ChousaMemo2"].Index
                     ) && e.Row >= 2)
+
+
+
                 {
                     // Enterキー押下で改行させる
                     if ((e.KeyCode == Keys.Enter))
@@ -8073,6 +8085,8 @@ namespace TokuchoBugyoK2
                     }
                 }
             }
+
+
 
 
             // ベース単価、前回価格、発注者提供単価、価格
@@ -9355,21 +9369,23 @@ namespace TokuchoBugyoK2
         private void button6_2_Click(object sender, EventArgs e)
         {
             //奉行エクセル　グループ名まで移動
-            c1FlexGrid4.LeftCol = 59;
+            //No.1571
+            c1FlexGrid4.LeftCol = 57;
             Console.WriteLine(c1FlexGrid4.BottomRow);
         }
 
         private void c1FlexGrid4_BeforeEdit(object sender, RowColEventArgs e)
         {
             //奉行エクセル　集計表VerがVer1の場合に選択不可
-            //if (e.Row > 0 && e.Col <= c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
             if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
             {
                 if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                 {
+                    c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"] = "-";
                     e.Cancel = true;
                 }
             }
+           
             if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
             {
                 if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
