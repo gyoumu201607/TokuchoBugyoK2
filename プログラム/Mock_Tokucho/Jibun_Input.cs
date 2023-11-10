@@ -7923,7 +7923,7 @@ namespace TokuchoBugyoK2
 
                         c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
-                        c1FlexGrid4.Rows[e.Row][58] = "";
+                        c1FlexGrid4.Rows[e.Row][58] = "-";
                         c1FlexGrid4.Rows[e.Row][59] = "";
                     }
                     else
@@ -9381,7 +9381,6 @@ namespace TokuchoBugyoK2
             {
                 if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                 {
-                    c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"] = "-";
                     e.Cancel = true;
                 }
             }

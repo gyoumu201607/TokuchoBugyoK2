@@ -16028,7 +16028,7 @@ namespace TokuchoBugyoK2
 
                         c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
-                        c1FlexGrid4.Rows[e.Row][58] = "";
+                        c1FlexGrid4.Rows[e.Row][58] = "-";
                         c1FlexGrid4.Rows[e.Row][59] = "";
                     }
                     else
@@ -16683,7 +16683,7 @@ namespace TokuchoBugyoK2
                     //分割方法（ファイル・シート）
                     else if (j == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
                     {
-                        c1FlexGrid4.Rows[rowCount][j] = "0";
+                        c1FlexGrid4.Rows[rowCount][j] = "-";
                     }
                     //グループ名
                     else if (j == c1FlexGrid4.Cols["GroupMei"].Index)
@@ -19120,15 +19120,16 @@ namespace TokuchoBugyoK2
         private void c1FlexGrid4_BeforeEdit(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
             //奉行エクセル　集計表VerがVer1の場合に選択不可
-            if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
-            {
-                        if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
-                        {
-                            c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"] = "-";
-                            e.Cancel = true;
-                        }
+            
+                if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
+                {
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
+                    {
+                        e.Cancel = true;
+                    }
+                }
                     
-            }
+            
 
             if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
             {
