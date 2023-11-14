@@ -7964,6 +7964,13 @@ namespace TokuchoBugyoK2
                 //    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
                 //    bid_tbl03_1_picBidResultDtAlert.Visible = true;
                 //}
+                // 入札結果登録日 // No 1587　進捗段階　入札の際、入札画面の入札結果登録日が空欄でも登録が出来る。入札成立～何某の場合は、入力エラーで良い。
+                if (bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+                {
+                    errorFlg = true;
+                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                    bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                }
                 //入札状況
                 if (this.IsNotSelected(bid_tbl03_1_cmbBidStatus))
                 {
@@ -11736,15 +11743,18 @@ namespace TokuchoBugyoK2
             sSql.Append("    , NyuusatsuJuchuuIyoku ");   // --受注意欲
             sSql.Append("    , NyuusatsuSankoumitsumoriKingaku ");   // --参考見積額
             sSql.Append("    , NyuusatsuSankoumitsumoriTaiou ");   // --参考見積対応
-            sSql.Append("    , NyuusatsuSaiteiKakakuUmu ");   // --最低制限価格有無
+            sSql.Append("    , NyuusatsuSaiteiKakakuUmu ");   // --最低制限価格有無NyuusatsuRakusatugaku
 
             sSql.Append("    , NyuusatsuGyoumuHachuukubun ");   // --業務発注区分
-            sSql.Append("    , NyuusatsuJouhouTourokubi ");   // --入札結果登録日
+            // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
+            sSql.Append("    , NyuusatsuJouhouTourokubi ");   // --落札額
+            sSql.Append("    , NyuusatsuRakusatugaku ");
 
             if (iType != 9)
             {
                 sSql.Append("    , NyuusatsuOusatugaku ");
-                sSql.Append("    , NyuusatsuRakusatugaku ");
+                // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
+                //sSql.Append("    , NyuusatsuRakusatugaku ");
                 sSql.Append("    , NyuusatsuNendoKurikoshigaku ");
                 sSql.Append("    , NyuusatsuKyougouTasha ");
                 sSql.Append("    , NyuusatsuKeiyakukeitaiCDSaishuu ");
@@ -11866,6 +11876,8 @@ namespace TokuchoBugyoK2
                     sSql.Append("    , " + base_tbl10_cmbOrderKubun.SelectedValue.ToString());
                 }
                 sSql.Append("    ,   null  ");  // --入札結果登録日
+                // 落札額 // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
+                sSql.Append("    , N'" + getNumToDb(base_tbl10_txtRakusatuAmt.Text) + "'");
                 sSql.Append("    )");
             }
             else
@@ -11911,9 +11923,10 @@ namespace TokuchoBugyoK2
                 sSql.Append("    , NyuusatsuSaiteiKakakuUmu ");   // --最低制限価格有無
                 sSql.Append("    , NyuusatsuGyoumuHachuukubun ");   // --業務発注区分
                 sSql.Append("    , NyuusatsuJouhouTourokubi ");   // --入札結果登録日
+                sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuRakusatugaku "); // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
                 // ↑↑ここまで共通
                 sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuOusatugaku ");
-                sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuRakusatugaku ");                
+                //sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuRakusatugaku "); // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
                 sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuNendoKurikoshigaku ");                
                 sSql.Append("    , CASE WHEN NyuusatsuKyougouTashaID > 0 THEN NyuusatsuKyougouTasha ELSE NULL END ");                             
                 sSql.Append("    , NyuusatsuKeiyakukeitaiCDSaishuu ");

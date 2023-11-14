@@ -7077,12 +7077,15 @@ namespace TokuchoBugyoK2
             this.base_tbl10_txtRakusatuAmt.Location = new System.Drawing.Point(597, 364);
             this.base_tbl10_txtRakusatuAmt.MaxLength = 12;
             this.base_tbl10_txtRakusatuAmt.Name = "base_tbl10_txtRakusatuAmt";
-            this.base_tbl10_txtRakusatuAmt.ReadOnly = true;
+            this.base_tbl10_txtRakusatuAmt.ReadOnly = false;
             this.base_tbl10_txtRakusatuAmt.Size = new System.Drawing.Size(107, 21);
             this.base_tbl10_txtRakusatuAmt.TabIndex = 18;
             this.base_tbl10_txtRakusatuAmt.Text = "¥0";
             this.base_tbl10_txtRakusatuAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.base_tbl10_txtRakusatuAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.base_tbl10_txtRakusatuAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.base_tbl10_txtRakusatuAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.base_tbl10_txtRakusatuAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // base_tbl10_lblRakusatuAmt
             // 
@@ -9737,12 +9740,16 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_numRakusatuAmt.Location = new System.Drawing.Point(4, 4);
             this.bid_tbl03_1_numRakusatuAmt.Margin = new System.Windows.Forms.Padding(4);
             this.bid_tbl03_1_numRakusatuAmt.Name = "bid_tbl03_1_numRakusatuAmt";
-            this.bid_tbl03_1_numRakusatuAmt.ReadOnly = true;
+            this.bid_tbl03_1_numRakusatuAmt.ReadOnly = false;
             this.bid_tbl03_1_numRakusatuAmt.Size = new System.Drawing.Size(122, 21);
             this.bid_tbl03_1_numRakusatuAmt.TabIndex = 0;
             this.bid_tbl03_1_numRakusatuAmt.Text = "¥0";
             this.bid_tbl03_1_numRakusatuAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.bid_tbl03_1_numRakusatuAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
+            this.bid_tbl03_1_numRakusatuAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.bid_tbl03_1_numRakusatuAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.bid_tbl03_1_numRakusatuAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.bid_tbl03_1_numRakusatuAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // bid_tbl03_1_lblRakusatuAmtComment
             // 
