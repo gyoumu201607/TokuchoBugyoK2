@@ -6512,6 +6512,9 @@ namespace TokuchoBugyoK2
             this.base_tbl09_numSankomitumoriAmt.Text = "¥0";
             this.base_tbl09_numSankomitumoriAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.base_tbl09_numSankomitumoriAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.base_tbl09_numSankomitumoriAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.base_tbl09_numSankomitumoriAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.base_tbl09_numSankomitumoriAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // base_tbl09_lblSankomitumoriAmt
             // 
@@ -7220,6 +7223,10 @@ namespace TokuchoBugyoK2
             this.base_tbl10_txtYoteiAmt.Text = "¥0";
             this.base_tbl10_txtYoteiAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.base_tbl10_txtYoteiAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.base_tbl10_txtYoteiAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.base_tbl10_txtYoteiAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.base_tbl10_txtYoteiAmt.Validated += new System.EventHandler(this.textBox_Validated);
+
             // 
             // base_tbl10_lblYoteiAmt
             // 
@@ -7408,6 +7415,9 @@ namespace TokuchoBugyoK2
             this.base_tbl10_numSankoMitumoriAmt.Text = "¥0";
             this.base_tbl10_numSankoMitumoriAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.base_tbl10_numSankoMitumoriAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.base_tbl10_numSankoMitumoriAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.base_tbl10_numSankoMitumoriAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.base_tbl10_numSankoMitumoriAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // base_tbl10_lblSankoMitumoriAmt
             // 
@@ -10195,6 +10205,10 @@ namespace TokuchoBugyoK2
             this.bid_tbl01_txtMitumoriAmt.Text = "\\0";
             this.bid_tbl01_txtMitumoriAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.bid_tbl01_txtMitumoriAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
+            this.bid_tbl01_txtMitumoriAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.bid_tbl01_txtMitumoriAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.bid_tbl01_txtMitumoriAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.bid_tbl01_txtMitumoriAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // bid_tbl01_lblMitumori
             // 

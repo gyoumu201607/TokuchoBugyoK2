@@ -2677,6 +2677,15 @@ namespace TokuchoBugyoK2
                 FolderPath = FolderPath.Replace(@"$FOLDER_BASE$", FolderBase);
                 FolderPath = FolderPath.Replace("/", @"\");
             }
+
+            //No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
+            // 工期開始年度　2021年度まで、　010北道
+            // 工期開始年度　2022年度から　　010北海
+            int koukinendo = 0;
+            if (int.TryParse(base_tbl03_cmbKokiStartYear.SelectedValue.ToString(), out koukinendo))
+            {
+                FolderPath = change_hokaido_path(FolderPath, koukinendo);
+            }
             return FolderPath;
         }
 
@@ -5415,22 +5424,53 @@ namespace TokuchoBugyoK2
                     int koukinendo = 0;
                     if (int.TryParse(base_tbl03_cmbKokiStartYear.SelectedValue.ToString(), out koukinendo))
                     {
-                        if (koukinendo > 2021)
-                        {
-                            // 010北道
-                            string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                            // 010北海
-                            string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+                        // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
+                        //if (koukinendo > 2021)
+                        //{
+                        //    // 010北道
+                        //    string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+                        //    // 010北海
+                        //    string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
 
-                            if (str1 != null && str2 != null)
-                            {
-                                folderPath = folderPath.Replace(str1, str2);
-                            }
-                        }
+                        //    if (str1 != null && str2 != null)
+                        //    {
+                        //        folderPath = folderPath.Replace(str1, str2);
+                        //    }
+                        //}
+                        folderPath = change_hokaido_path(folderPath, koukinendo);
                     }
                     base_tbl02_txtAnkenFolder.Text = folderPath;
                 }
             }
+        }
+
+        /// <summary>
+        /// No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海 共通化にする
+        /// </summary>
+        /// <param name="folderPath">変更元Path</param>
+        /// <param name="iYear">工期開始年度</param>
+        /// <returns></returns>
+        private string change_hokaido_path(string folderPath, int iYear)
+        {
+            string rtnPath = folderPath;
+
+            // 010北道
+            string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+            // 010北海
+            string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+            if (str1 != null && str2 != null)
+            {
+
+                if (iYear > 2021)
+                {
+                    rtnPath = folderPath.Replace(str1, str2);
+                }
+                else
+                {
+                    rtnPath = folderPath.Replace(str2, str1);
+                }
+            }
+            return rtnPath;
         }
 
         /// <summary>
@@ -5603,18 +5643,20 @@ namespace TokuchoBugyoK2
                 int koukinendo = 0;
                 if (int.TryParse(sYear, out koukinendo))
                 {
-                    if (koukinendo > 2021)
-                    {
-                        // 010北道
-                        string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                        // 010北海
-                        string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+                    // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
+                    //if (koukinendo > 2021)
+                    //{
+                    //    // 010北道
+                    //    string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+                    //    // 010北海
+                    //    string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
 
-                        if (str1 != null && str2 != null)
-                        {
-                            FolderPath = FolderPath.Replace(str1, str2);
-                        }
-                    }
+                    //    if (str1 != null && str2 != null)
+                    //    {
+                    //        FolderPath = FolderPath.Replace(str1, str2);
+                    //    }
+                    //}
+                    FolderPath = change_hokaido_path(FolderPath, koukinendo);
                 }
             }
             if (FolderBase != "" && FolderPath != "")
@@ -6779,7 +6821,12 @@ namespace TokuchoBugyoK2
         private long GetLong(string str)
         {
             long num = 0;
-            long.TryParse(str.Replace("%", string.Empty).Replace("¥", string.Empty).Replace(",", string.Empty), out num);
+            string strVal = str.Replace("%", string.Empty).Replace("¥", string.Empty).Replace(",", string.Empty);
+            if (strVal.Contains("."))
+            {
+                strVal = (strVal.Split('.'))[0];
+            }
+            long.TryParse(strVal, out num);
             return num;
         }
         private string GetMoneyTextLong(long num)
@@ -8980,7 +9027,7 @@ namespace TokuchoBugyoK2
             // 調査部 業務別配分が100でないとエラー
             if (GetDouble(ca_tbl02_AftCaBm_numPercent1.Text) > 0)
             {
-                if (GetDouble(ca_tbl02_AftCaTs_numPercentAll.Text) >= 99)
+                if (ca_tbl02_AftCaTs_numPercentAll.Text != "100.00%")
                 {
                     // 調査業務別　配分の合計が100になるように入力してください。
                     set_error(GlobalMethod.GetMessage("E70045", "(契約タブ)"));
@@ -9303,7 +9350,7 @@ namespace TokuchoBugyoK2
                 ca_tbl02_AftCaBmZeikomi_numAmtAll.BackColor = clearColor;
                 ca_tbl02_AftCaBm_numAmtAll.BackColor = clearColor;
                 ca_tbl02_AftCaBm_numPercentAll.BackColor = clearColor;
-
+                ca_tbl02_AftCaTs_numPercentAll.BackColor = clearColor;
                 te_txtPoint.BackColor = clearColor;
                 te_txtKanriPoint.BackColor = clearColor;
                 te_txtSyosaPoint.BackColor = clearColor;
@@ -9460,17 +9507,19 @@ namespace TokuchoBugyoK2
                     int koukinendo = 0;
                     if (int.TryParse(sStartYear, out koukinendo))
                     {
+                        // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
                         if (koukinendo > 2021)
                         {
-                            // 010北道
-                            string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                            // 010北海
-                            string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+                            //// 010北道
+                            //string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+                            //// 010北海
+                            //string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
 
-                            if (str1 != null && str2 != null)
-                            {
-                                ankenFolder = ankenFolder.Replace(str1, str2);
-                            }
+                            //if (str1 != null && str2 != null)
+                            //{
+                            //    ankenFolder = ankenFolder.Replace(str1, str2);
+                            //}
+                            ankenFolder = change_hokaido_path(ankenFolder, koukinendo);
                         }
                     }
                 }
