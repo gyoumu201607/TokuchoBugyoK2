@@ -124,6 +124,8 @@ namespace TokuchoBugyoK2
         {
             InitializeComponent();
             //c1FlexGrid3.Rows[0].Height = 44;
+            listener = new ClipboardListener(this);
+            listener.DrawClipboard += Listener_DrawClipboard;
 
             //TODO デザイン画面にてボタンが表示域外の為ソースでイベント付与
             //this.button13.Click += button13_Click;
@@ -165,6 +167,26 @@ namespace TokuchoBugyoK2
             //エントリ君修正STEP2
             this.ErrorMessage.Font = new System.Drawing.Font(this.ErrorMessage.Font.Name, float.Parse(GlobalMethod.GetCommonValue1("DSP_ERROR_FONTSIZE")));
 
+        }
+
+        ClipboardListener listener;
+
+        public bool isFormCopy = false;
+        private void Listener_DrawClipboard(object sender, EventArgs e)
+        {
+            Console.WriteLine(" Listener_DrawClipboard ======================================= STT");
+            Console.WriteLine(isFormCopy);
+            if (copyData != null)
+                Console.WriteLine(copyData.Count);
+            if (!isFormCopy && copyData != null)
+            {
+                copyData.Clear();
+            }
+            // クリップボードのデータが変化した。
+            if (copyData != null)
+                Console.WriteLine(copyData.Count);
+            isFormCopy = false;
+            Console.WriteLine(" Listener_DrawClipboard ======================================= END");
         }
 
         private void ComboBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -16269,57 +16291,90 @@ namespace TokuchoBugyoK2
                     if (HinmokuCol <= HinmokuColSel || HinmokuCol >= HinmokuColSel)
                     {
                         //No.1417 1182 奉行上でもコピペについて
-                        bool isWinCopy = false;
-                        IDataObject data = Clipboard.GetDataObject();
-                        string strWinCopyText = "";
-                        if (data.GetDataPresent(DataFormats.Text))
+                        if(copyData == null || copyData.Count <= 0)
                         {
-                            string str;
-                            //クリップボードからデータを取得
-                            str = (string)data.GetData(DataFormats.Text);
-                            //クリップボードにある最後の開業コードを削除
-                            strWinCopyText = str.TrimEnd('\r', '\n');
+                            //isWinCopy = true;
+                            IDataObject data = Clipboard.GetDataObject();
+                            if (data.GetDataPresent(DataFormats.Text))
+                            {
+                                string str;
+                                //クリップボードからデータを取得
+                                str = (string)data.GetData(DataFormats.Text);
+                                //クリップボードにある最後の開業コードを削除
+                                string strWinCopyText = str.TrimEnd('\r', '\n');
 
-                            string strGridCopyText = "";
-                            if (copyData != null && copyData.Count > 0)
-                            {
-                                for (int i = 0; i < copyData.Count; i++)
+                                if (copyData == null)
                                 {
-                                    string sLineText = "";
-                                    for (int j = 0; j < copyData[i].Count; j++)
+                                    copyData = new List<List<string>>();
+                                }
+                                copyData.Clear();
+                                string[] lines = strWinCopyText.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+                                for (int i = 0; i < lines.Length; i++)
+                                {
+                                    copyData.Add(new List<string>());
+                                    string[] cols = lines[i].Split('\t');
+                                    for (int j = 0; j < cols.Length; j++)
                                     {
-                                        sLineText = sLineText + copyData[i][j];
+                                        copyData[i].Add(cols[j]);
                                     }
-                                    strGridCopyText = strGridCopyText + sLineText;
-                                }
-                                strGridCopyText = strGridCopyText.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "").Replace("\t","").Replace(" ", "");
-                            }
-                            string strWin = strWinCopyText.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace(" ","");
-                            if (!strWin.Equals(strGridCopyText))
-                                isWinCopy = true;
-                        }
-                        if (isWinCopy)
-                        {
-                            if (copyData == null)
-                            {
-                                copyData = new List<List<string>>();
-                            }
-                            copyData.Clear();
-                            string[] lines = strWinCopyText.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-                            for(int i = 0; i < lines.Length; i++)
-                            {
-                                copyData.Add(new List<string>());
-                                string[] cols = lines[i].Split('\t');
-                                for (int j = 0; j < cols.Length; j++)
-                                {
-                                    copyData[i].Add(cols[j]);
                                 }
                             }
                         }
-                        if (copyData == null)
+                        if (copyData == null || copyData.Count <= 0)
                         {
                             return;
                         }
+                        //bool isWinCopy = false;
+                        //IDataObject data = Clipboard.GetDataObject();
+                        //string strWinCopyText = "";
+                        //if (data.GetDataPresent(DataFormats.Text))
+                        //{
+                        //    string str;
+                        //    //クリップボードからデータを取得
+                        //    str = (string)data.GetData(DataFormats.Text);
+                        //    //クリップボードにある最後の開業コードを削除
+                        //    strWinCopyText = str.TrimEnd('\r', '\n');
+
+                        //    string strGridCopyText = "";
+                        //    if (copyData != null && copyData.Count > 0)
+                        //    {
+                        //        for (int i = 0; i < copyData.Count; i++)
+                        //        {
+                        //            string sLineText = "";
+                        //            for (int j = 0; j < copyData[i].Count; j++)
+                        //            {
+                        //                sLineText = sLineText + copyData[i][j];
+                        //            }
+                        //            strGridCopyText = strGridCopyText + sLineText;
+                        //        }
+                        //        strGridCopyText = strGridCopyText.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "").Replace("\t","").Replace(" ", "");
+                        //    }
+                        //    string strWin = strWinCopyText.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace(" ","");
+                        //    if (!strWin.Equals(strGridCopyText))
+                        //        isWinCopy = true;
+                        //}
+                        //if (isWinCopy)
+                        //{
+                        //    if (copyData == null)
+                        //    {
+                        //        copyData = new List<List<string>>();
+                        //    }
+                        //    copyData.Clear();
+                        //    string[] lines = strWinCopyText.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+                        //    for(int i = 0; i < lines.Length; i++)
+                        //    {
+                        //        copyData.Add(new List<string>());
+                        //        string[] cols = lines[i].Split('\t');
+                        //        for (int j = 0; j < cols.Length; j++)
+                        //        {
+                        //            copyData[i].Add(cols[j]);
+                        //        }
+                        //    }
+                        //}
+                        //if (copyData == null)
+                        //{
+                        //    return;
+                        //}
                         // ペースト時に取り直されるので、このタイミングで保持しておく
                         int row = HinmokuRow; // 選択している開始行
                         int rowSel = HinmokuRowSel; // 選択している最終行
@@ -18433,6 +18488,7 @@ namespace TokuchoBugyoK2
             // Ctrl + C
             if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
+                isFormCopy = true;
                 if (copyData == null)
                 {
                     copyData = new List<List<string>>();
@@ -18564,6 +18620,9 @@ namespace TokuchoBugyoK2
                         }
                     }
                 }
+                //クリップボードをクリアする
+                Clipboard.SetDataObject(new DataObject());
+
             }
             // Ctrl + V
             else if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
