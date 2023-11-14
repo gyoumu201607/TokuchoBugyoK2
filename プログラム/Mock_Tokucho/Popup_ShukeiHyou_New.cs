@@ -979,6 +979,8 @@ namespace TokuchoBugyoK2
                 //item1_PritFileName.Enabled = true;
                 c1FlexGrid2.Rows.Count = 1;
                 c1FlexGrid3.Rows.Count = 0;
+                // ファイル出力ボタンを非活性化
+                btnFileExport.Enabled = false;
             }
         }
 
@@ -1094,6 +1096,9 @@ namespace TokuchoBugyoK2
             // 拡張子
             String extensions = ".xlsm";
             String printFileName = "";
+            // ファイル名を初期化
+            c1FlexGrid3.Clear(ClearFlags.Content);
+            c1FlexGrid3.Rows.Count = 1;
 
             var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
             using (var conn = new SqlConnection(connStr))
@@ -1154,17 +1159,30 @@ namespace TokuchoBugyoK2
                     int addrow = ChousainMeiList.Count;
                     c1FlexGrid3.Rows.Count = 1;
                     c1FlexGrid3.AllowAddNew = true;
-                    for (int r = 0; r < addrow; r++)
+                    if (ShukeiVer == 2)
                     {
-                        c1FlexGrid3.Rows.Add();
+                        for (int r = 0; r < addrow; r++)
                         {
-                            if (c1FlexGrid2.Rows[r + 1][4].ToString() == "シート分割" || ShukeiVer == 1)
+                            c1FlexGrid3.Rows.Add();
+                            {
+                                if (c1FlexGrid2.Rows[r + 1][4].ToString() == "シート分割")
+                                {
+                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                                }
+                                else
+                                {
+                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + extensions;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int r = 0; r < addrow; r++)
+                        {
+                            c1FlexGrid3.Rows.Add();
                             {
                                 c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
-                            }
-                            else
-                            {
-                                c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + extensions;
                             }
                         }
                     }
@@ -2421,7 +2439,7 @@ namespace TokuchoBugyoK2
             if (BaseList != null && BaseList.Rows.Count > 0)
             {
                 basePath = BaseList.Rows[0][0].ToString();
-                basePath.Replace(@"$NENDO$", FromNendo.ToString()).Replace(@"$BUSHO$", BushoList[c].ToString()).Replace(@"$TANTOUSHA$", ChousainMeiList[c].ToString()).Replace(@"$TOKUCHOBANGOU$", TokuhoBangou.ToString());
+                basePath = basePath.Replace(@"$NENDO$", FromNendo.ToString()).Replace(@"$BUSHO$", BushoList[c].ToString()).Replace(@"$TANTOUSHA$", ChousainMeiList[c].ToString()).Replace(@"$TOKUCHOBANGOU$", TokuhoBangou.ToString());
                 //作業フォルダ作成
                 DirectoryInfo ds = new DirectoryInfo(basePath);
                 if (!Directory.Exists(basePath))
@@ -2437,6 +2455,7 @@ namespace TokuchoBugyoK2
                         return false;
                     }
                 }
+                basePath = basePath.Replace("/", @"\");
                 // 作業フォルダDB登録
                 var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
                 using (var conn = new SqlConnection(connStr))
@@ -2452,7 +2471,7 @@ namespace TokuchoBugyoK2
                         "MadoguchiL1SagyouHolder = '" + basePath + "' " +
                         " WHERE MadoguchiL1ChousaShinchoku != 80 " +
                         " AND MadoguchiID = '" + MadoguchiID + "' " +
-                        " AND MadoguchiL1ChousaBushoCD = '" + BushoList[c].ToString() + "' " +
+                        " AND MadoguchiL1ChousaBushoCD = '" + Busho + "' " +
                         " AND MadoguchiL1ChousaTantoushaCD = '" + KojincdList[c].ToString() + "' " +
                         " AND MadoguchiL1TokuchoBangou = '" + TokuchoList[c].ToString() + "' ";
                         cmd.ExecuteNonQuery();
