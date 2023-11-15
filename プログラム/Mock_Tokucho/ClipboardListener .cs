@@ -72,6 +72,30 @@ namespace TokuchoBugyoK2
                 else
                     winCount = 0;
             }
+            if (handlerF.Name.Equals("Tokumei_Input"))
+            {
+                if (winCount > 0)
+                {
+                    winCount = 0;
+                    return;
+                }
+                if (((Tokumei_Input)handlerF).isFormCopy)
+                    winCount++;
+                else
+                    winCount = 0;
+            }
+            if (handlerF.Name.Equals("Jibun_Input"))
+            {
+                if (winCount > 0)
+                {
+                    winCount = 0;
+                    return;
+                }
+                if (((Jibun_Input)handlerF).isFormCopy)
+                    winCount++;
+                else
+                    winCount = 0;
+            }
             if (msg.Msg == WM_DRAWCLIPBOARD)
             {
                 if (nextHandle != IntPtr.Zero)
