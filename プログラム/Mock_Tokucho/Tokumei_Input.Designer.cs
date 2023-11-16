@@ -2716,11 +2716,12 @@
             this.c1FlexGrid4.Rows.DefaultSize = 44;
             this.c1FlexGrid4.Rows.Fixed = 2;
             this.c1FlexGrid4.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid4.Size = new System.Drawing.Size(3634, 457);
+            this.c1FlexGrid4.Size = new System.Drawing.Size(3799, 457);
             this.c1FlexGrid4.StyleInfo = resources.GetString("c1FlexGrid4.StyleInfo");
             this.c1FlexGrid4.TabIndex = 55;
             this.c1FlexGrid4.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid4_BeforeMouseDown);
             this.c1FlexGrid4.AfterSort += new C1.Win.C1FlexGrid.SortColEventHandler(this.c1FlexGrid4_AfterSort);
+            this.c1FlexGrid4.AfterScroll += new C1.Win.C1FlexGrid.RangeEventHandler(this.c1FlexGrid4_AfterScroll);
             this.c1FlexGrid4.SelChange += new System.EventHandler(this.c1FlexGrid4_SelChange);
             this.c1FlexGrid4.BeforeEdit += new C1.Win.C1FlexGrid.RowColEventHandler(this.c1FlexGrid4_BeforeEdit);
             this.c1FlexGrid4.AfterEdit += new C1.Win.C1FlexGrid.RowColEventHandler(this.c1FlexGrid4_AfterEdit);

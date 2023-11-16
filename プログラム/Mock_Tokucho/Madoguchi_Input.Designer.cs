@@ -3327,11 +3327,12 @@
             this.c1FlexGrid4.Rows.DefaultSize = 44;
             this.c1FlexGrid4.Rows.Fixed = 2;
             this.c1FlexGrid4.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid4.Size = new System.Drawing.Size(5426, 457);
+            this.c1FlexGrid4.Size = new System.Drawing.Size(5584, 457);
             this.c1FlexGrid4.StyleInfo = resources.GetString("c1FlexGrid4.StyleInfo");
             this.c1FlexGrid4.TabIndex = 57;
             this.c1FlexGrid4.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid4_BeforeMouseDown);
             this.c1FlexGrid4.AfterSort += new C1.Win.C1FlexGrid.SortColEventHandler(this.c1FlexGrid4_AfterSort);
+            this.c1FlexGrid4.AfterScroll += new C1.Win.C1FlexGrid.RangeEventHandler(this.c1FlexGrid4_AfterScroll);
             this.c1FlexGrid4.SelChange += new System.EventHandler(this.c1FlexGrid4_SelChange);
             this.c1FlexGrid4.BeforeEdit += new C1.Win.C1FlexGrid.RowColEventHandler(this.c1FlexGrid4_BeforeEdit);
             this.c1FlexGrid4.AfterEdit += new C1.Win.C1FlexGrid.RowColEventHandler(this.c1FlexGrid4_AfterEdit);
@@ -4166,7 +4167,7 @@
             // 
             this.item4_Mail_icon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.item4_Mail_icon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.item4_Mail_icon.Location = new System.Drawing.Point(1664, 2268);
+            this.item4_Mail_icon.Location = new System.Drawing.Point(1746, 2296);
             this.item4_Mail_icon.Margin = new System.Windows.Forms.Padding(5);
             this.item4_Mail_icon.Name = "item4_Mail_icon";
             this.item4_Mail_icon.Size = new System.Drawing.Size(30, 30);
@@ -7304,7 +7305,7 @@
             this.tableLayoutPanel56.ColumnCount = 2;
             this.tableLayoutPanel56.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel56.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel56.Location = new System.Drawing.Point(1977, 19633);
+            this.tableLayoutPanel56.Location = new System.Drawing.Point(2073, 19949);
             this.tableLayoutPanel56.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel56.Name = "tableLayoutPanel56";
             this.tableLayoutPanel56.RowCount = 3;

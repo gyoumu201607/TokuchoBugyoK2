@@ -9205,5 +9205,11 @@ namespace TokuchoBugyoK2
                 }
             }
         }
+
+        private void c1FlexGrid4_AfterScroll(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
+        {
+            int lc = c1FlexGrid1.LeftCol;
+            lc = e.NewRange.RightCol;
+        }
     }
 }
