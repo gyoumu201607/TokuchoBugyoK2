@@ -2677,6 +2677,15 @@ namespace TokuchoBugyoK2
                 FolderPath = FolderPath.Replace(@"$FOLDER_BASE$", FolderBase);
                 FolderPath = FolderPath.Replace("/", @"\");
             }
+
+            //No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
+            // 工期開始年度　2021年度まで、　010北道
+            // 工期開始年度　2022年度から　　010北海
+            int koukinendo = 0;
+            if (int.TryParse(base_tbl03_cmbKokiStartYear.SelectedValue.ToString(), out koukinendo))
+            {
+                FolderPath = change_hokaido_path(FolderPath, koukinendo);
+            }
             return FolderPath;
         }
 
@@ -5038,7 +5047,7 @@ namespace TokuchoBugyoK2
                         }
 
                         DataTable dt = EntryInputDbClass.CheckAnkenBeforeDelete(AnkenID);
-                        if (dt.Rows.Count == 0)
+                        if (dt == null || dt.Rows.Count == 0)
                         {
                             // E10009:対象データは存在しません。
                             set_error(GlobalMethod.GetMessage("E10009", ""));
@@ -5415,22 +5424,53 @@ namespace TokuchoBugyoK2
                     int koukinendo = 0;
                     if (int.TryParse(base_tbl03_cmbKokiStartYear.SelectedValue.ToString(), out koukinendo))
                     {
-                        if (koukinendo > 2021)
-                        {
-                            // 010北道
-                            string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                            // 010北海
-                            string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+                        // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
+                        //if (koukinendo > 2021)
+                        //{
+                        //    // 010北道
+                        //    string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+                        //    // 010北海
+                        //    string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
 
-                            if (str1 != null && str2 != null)
-                            {
-                                folderPath = folderPath.Replace(str1, str2);
-                            }
-                        }
+                        //    if (str1 != null && str2 != null)
+                        //    {
+                        //        folderPath = folderPath.Replace(str1, str2);
+                        //    }
+                        //}
+                        folderPath = change_hokaido_path(folderPath, koukinendo);
                     }
                     base_tbl02_txtAnkenFolder.Text = folderPath;
                 }
             }
+        }
+
+        /// <summary>
+        /// No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海 共通化にする
+        /// </summary>
+        /// <param name="folderPath">変更元Path</param>
+        /// <param name="iYear">工期開始年度</param>
+        /// <returns></returns>
+        private string change_hokaido_path(string folderPath, int iYear)
+        {
+            string rtnPath = folderPath;
+
+            // 010北道
+            string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+            // 010北海
+            string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+            if (str1 != null && str2 != null)
+            {
+
+                if (iYear > 2021)
+                {
+                    rtnPath = folderPath.Replace(str1, str2);
+                }
+                else
+                {
+                    rtnPath = folderPath.Replace(str2, str1);
+                }
+            }
+            return rtnPath;
         }
 
         /// <summary>
@@ -5603,18 +5643,20 @@ namespace TokuchoBugyoK2
                 int koukinendo = 0;
                 if (int.TryParse(sYear, out koukinendo))
                 {
-                    if (koukinendo > 2021)
-                    {
-                        // 010北道
-                        string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                        // 010北海
-                        string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+                    // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
+                    //if (koukinendo > 2021)
+                    //{
+                    //    // 010北道
+                    //    string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+                    //    // 010北海
+                    //    string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
 
-                        if (str1 != null && str2 != null)
-                        {
-                            FolderPath = FolderPath.Replace(str1, str2);
-                        }
-                    }
+                    //    if (str1 != null && str2 != null)
+                    //    {
+                    //        FolderPath = FolderPath.Replace(str1, str2);
+                    //    }
+                    //}
+                    FolderPath = change_hokaido_path(FolderPath, koukinendo);
                 }
             }
             if (FolderBase != "" && FolderPath != "")
@@ -6779,7 +6821,12 @@ namespace TokuchoBugyoK2
         private long GetLong(string str)
         {
             long num = 0;
-            long.TryParse(str.Replace("%", string.Empty).Replace("¥", string.Empty).Replace(",", string.Empty), out num);
+            string strVal = str.Replace("%", string.Empty).Replace("¥", string.Empty).Replace(",", string.Empty);
+            if (strVal.Contains("."))
+            {
+                strVal = (strVal.Split('.'))[0];
+            }
+            long.TryParse(strVal, out num);
             return num;
         }
         private string GetMoneyTextLong(long num)
@@ -7714,8 +7761,10 @@ namespace TokuchoBugyoK2
                         errorFlg = true;
                     }
 
-                    // 再委託禁止条項の内容 ★★★不要？
-                    if (this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
+                    // No1588　1319　新規登録時、再委託禁止条項の記載有無を「なし」に設定しても、再委託禁止条項の内容が空欄だとエラーになる。
+                    // 再委託禁止条項の内容
+                    //if (this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
+                    if (this.IsSpecifiedValue(base_tbl10_cmbKinsiUmu.SelectedValue,"2") == false && this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
                     {
                         base_tbl10_lblKinsiNaiyo.BackColor = errorColor;
                         base_tbl10_picKinsiNaiyoAlert.Visible = true;
@@ -7917,6 +7966,13 @@ namespace TokuchoBugyoK2
                 //    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
                 //    bid_tbl03_1_picBidResultDtAlert.Visible = true;
                 //}
+                // 入札結果登録日 // No 1587　進捗段階　入札の際、入札画面の入札結果登録日が空欄でも登録が出来る。入札成立～何某の場合は、入力エラーで良い。
+                if (bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+                {
+                    errorFlg = true;
+                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                    bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                }
                 //入札状況
                 if (this.IsNotSelected(bid_tbl03_1_cmbBidStatus))
                 {
@@ -8271,43 +8327,48 @@ namespace TokuchoBugyoK2
         {
             // エラーフラグ true:エラー /false:正常
             bool errorFlg = false;
-            Color errorColor = Color.FromArgb(255, 204, 255);
 
-            // 受注意欲（入札タブ）を「なし」以外にした状態で、参考見積（入札）が「辞退」の場合に更新不可
-            bool isErr = IsSpecifiedValue(bid_tbl01_cmbMitumori.SelectedValue, "4");
-            if (IsSpecifiedValue(bid_tbl01_cmbOrderIyoku.SelectedValue, "3") == false && isErr)
+            // No1562 1313　進捗段階「入札」にチェックが入っていないが、（入札）タブの、落札者状況が未設定ですと出る。
+            if (base_tbl01_dtpDtBid.CustomFormat == "")
             {
-                set_error(GlobalMethod.GetMessage("E10730", "入札"));
-                bid_tbl01_lblMitumori.BackColor = errorColor;
-                bid_tbl01_picMitumoriAlert.Visible = true;
-                bid_tbl01_lblOrderIyoku.BackColor = errorColor;
-                bid_tbl01_picOrderIyokuAlert.Visible = true;
-                errorFlg = true;
-            }
+                Color errorColor = Color.FromArgb(255, 204, 255);
 
-            // 受注意欲（入札タブ）を「なし」以外にした状態で、当会応札（入札タブ）が「不参加」「辞退」の場合に更新不可
-            isErr = (IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "3") || IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "4"));
-            if (IsSpecifiedValue(bid_tbl01_cmbOrderIyoku.SelectedValue, "3") == false && isErr)
-            {
-                set_error(GlobalMethod.GetMessage("E10738", "入札"));
-                bid_tbl01_lblTokaiOsatu.BackColor = errorColor;
-                bid_tbl01_picTokaiOsatuAlert.Visible = true;
-                bid_tbl01_lblOrderIyoku.BackColor = errorColor;
-                bid_tbl01_picOrderIyokuAlert.Visible = true;
-                errorFlg = true;
-            }
-
-            // 「落札者状況 不明」の時、空欄ではないなら更新不可
-            if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuStatus.SelectedValue, "2"))
-            {
-                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text.Trim()) == false)
+                // 受注意欲（入札タブ）を「なし」以外にした状態で、参考見積（入札）が「辞退」の場合に更新不可
+                bool isErr = IsSpecifiedValue(bid_tbl01_cmbMitumori.SelectedValue, "4");
+                if (IsSpecifiedValue(bid_tbl01_cmbOrderIyoku.SelectedValue, "3") == false && isErr)
                 {
-                    set_error(GlobalMethod.GetMessage("E10739", "入札"));
-                    bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuSyaAlert.Visible = true;
-                    bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                    set_error(GlobalMethod.GetMessage("E10730", "入札"));
+                    bid_tbl01_lblMitumori.BackColor = errorColor;
+                    bid_tbl01_picMitumoriAlert.Visible = true;
+                    bid_tbl01_lblOrderIyoku.BackColor = errorColor;
+                    bid_tbl01_picOrderIyokuAlert.Visible = true;
                     errorFlg = true;
+                }
+
+                // 受注意欲（入札タブ）を「なし」以外にした状態で、当会応札（入札タブ）が「不参加」「辞退」の場合に更新不可
+                isErr = (IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "3") || IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "4"));
+                if (IsSpecifiedValue(bid_tbl01_cmbOrderIyoku.SelectedValue, "3") == false && isErr)
+                {
+                    set_error(GlobalMethod.GetMessage("E10738", "入札"));
+                    bid_tbl01_lblTokaiOsatu.BackColor = errorColor;
+                    bid_tbl01_picTokaiOsatuAlert.Visible = true;
+                    bid_tbl01_lblOrderIyoku.BackColor = errorColor;
+                    bid_tbl01_picOrderIyokuAlert.Visible = true;
+                    errorFlg = true;
+                }
+
+                // 「落札者状況 不明」の時、空欄ではないなら更新不可
+                if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuStatus.SelectedValue, "2"))
+                {
+                    if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text.Trim()) == false)
+                    {
+                        set_error(GlobalMethod.GetMessage("E10739", "入札"));
+                        bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
+                        bid_tbl03_1_picRakusatuSyaAlert.Visible = true;
+                        bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
+                        bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                        errorFlg = true;
+                    }
                 }
             }
             return errorFlg;
@@ -8508,125 +8569,129 @@ namespace TokuchoBugyoK2
                 }
             }
 
-            // １．入札情報	入札状況	「入札中」のまま「入札タブ　入札結果登録日」が登録されたら警告。 入札中⇒入札前
-            if (IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1"))
+            // No1562 1313　進捗段階「入札」にチェックが入っていないが、（入札）タブの、落札者状況が未設定ですと出る。
+            if (base_tbl01_dtpDtBid.CustomFormat == "")
             {
-                if (bid_tbl03_1_dtpBidResultDt.CustomFormat == "")
+                // １．入札情報	入札状況	「入札中」のまま「入札タブ　入札結果登録日」が登録されたら警告。 入札中⇒入札前
+                if (IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1"))
                 {
-                    //GlobalMethod.outputMessage("W10605", "入札");
-                    set_error(GlobalMethod.GetMessage("W10605", "入札"));
-                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
-                    bid_tbl03_1_picBidResultDtAlert.Visible = true;
-                    bid_tbl03_1_lblBidStatus.BackColor = errorColor;
-                    bid_tbl03_1_picBidStatusAlert.Visible = true;
+                    if (bid_tbl03_1_dtpBidResultDt.CustomFormat == "")
+                    {
+                        //GlobalMethod.outputMessage("W10605", "入札");
+                        set_error(GlobalMethod.GetMessage("W10605", "入札"));
+                        bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                        bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                        bid_tbl03_1_lblBidStatus.BackColor = errorColor;
+                        bid_tbl03_1_picBidStatusAlert.Visible = true;
 
+                    }
                 }
-            }
-            // １．入札情報 当会応札	「検討中」のまま「入札タブ 入札結果登録日」が登録されたら警告。
-            if (IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "1"))
-            {
-                if (bid_tbl03_1_dtpBidResultDt.CustomFormat == "")
+                // １．入札情報 当会応札	「検討中」のまま「入札タブ 入札結果登録日」が登録されたら警告。
+                if (IsSpecifiedValue(bid_tbl01_cmbTokaiOsatu.SelectedValue, "1"))
                 {
-                    //GlobalMethod.outputMessage("W10606", "入札");
-                    set_error(GlobalMethod.GetMessage("W10606", "入札"));
-                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
-                    bid_tbl03_1_picBidResultDtAlert.Visible = true;
-                    bid_tbl01_lblTokaiOsatu.BackColor = errorColor;
-                    bid_tbl01_picTokaiOsatuAlert.Visible = true;
+                    if (bid_tbl03_1_dtpBidResultDt.CustomFormat == "")
+                    {
+                        //GlobalMethod.outputMessage("W10606", "入札");
+                        set_error(GlobalMethod.GetMessage("W10606", "入札"));
+                        bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                        bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                        bid_tbl01_lblTokaiOsatu.BackColor = errorColor;
+                        bid_tbl01_picTokaiOsatuAlert.Visible = true;
+                    }
                 }
-            }
-            // No.1534
-            ////入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
-            //if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
-            //{
-            //    set_error(GlobalMethod.GetMessage("W10611", "入札"));
-            //    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
-            //    bid_tbl03_1_picBidResultDtAlert.Visible = true;
-            //}
-            int difMonth = 0;
-            if (bid_tbl03_1_dtpBidResultDt.CustomFormat == "")
-            {
                 // No.1534
-                //入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
-                if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+                ////入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
+                //if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
+                //{
+                //    set_error(GlobalMethod.GetMessage("W10611", "入札"));
+                //    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                //    bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                //}
+                int difMonth = 0;
+                if (bid_tbl03_1_dtpBidResultDt.CustomFormat == "")
                 {
-                    set_error(GlobalMethod.GetMessage("W10611", "入札"));
-                    bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
-                    bid_tbl03_1_picBidResultDtAlert.Visible = true;
-                }
-
-                difMonth = GetElapsedMonths(bid_tbl03_1_dtpBidResultDt.Value, DateTime.Now);
-                // 「入札結果登録日」から2か月経過したら
-                if (difMonth >= 2)
-                {
-                    // １．入札情報 落札者状況	「不明」のまま「入札結果登録日」から2か月経過したら警告。
-                    if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuStatus.SelectedValue, "2"))
+                    // No.1534
+                    //入札結果登録日　No.1522（1268）　入札結果登録日の更新時のエラーから警告に変更する。
+                    if (!IsSpecifiedValue(bid_tbl03_1_cmbBidStatus.SelectedValue, "1") && bid_tbl03_1_dtpBidResultDt.CustomFormat != "")
                     {
-                        //GlobalMethod.outputMessage("W10607", "入札");
-                        set_error(GlobalMethod.GetMessage("W10607", "入札"));
-                        bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
-                        bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                        set_error(GlobalMethod.GetMessage("W10611", "入札"));
                         bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
                         bid_tbl03_1_picBidResultDtAlert.Visible = true;
                     }
-                    // １．入札情報 落札額状況	「不明」のまま「入札結果登録日」から2か月経過したら警告。
-                    if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuAmtStatus.SelectedValue, "2"))
+
+                    difMonth = GetElapsedMonths(bid_tbl03_1_dtpBidResultDt.Value, DateTime.Now);
+                    // 「入札結果登録日」から2か月経過したら
+                    if (difMonth >= 2)
                     {
-                        //GlobalMethod.outputMessage("W10608", "入札");
-                        set_error(GlobalMethod.GetMessage("W10608", "入札"));
-                        bid_tbl03_1_lblRakusatuAmtStatus.BackColor = errorColor;
-                        bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
-                        bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
-                        bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                        // １．入札情報 落札者状況	「不明」のまま「入札結果登録日」から2か月経過したら警告。
+                        if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuStatus.SelectedValue, "2"))
+                        {
+                            //GlobalMethod.outputMessage("W10607", "入札");
+                            set_error(GlobalMethod.GetMessage("W10607", "入札"));
+                            bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
+                            bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                            bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                            bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                        }
+                        // １．入札情報 落札額状況	「不明」のまま「入札結果登録日」から2か月経過したら警告。
+                        if (IsSpecifiedValue(bid_tbl03_1_cmbRakusatuAmtStatus.SelectedValue, "2"))
+                        {
+                            //GlobalMethod.outputMessage("W10608", "入札");
+                            set_error(GlobalMethod.GetMessage("W10608", "入札"));
+                            bid_tbl03_1_lblRakusatuAmtStatus.BackColor = errorColor;
+                            bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
+                            bid_tbl03_1_lblBidResultDt.BackColor = errorColor;
+                            bid_tbl03_1_picBidResultDtAlert.Visible = true;
+                        }
                     }
                 }
-            }
 
-            // No.1534 警告に変更する
-            //落札者状況
-            if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuStatus))
-            {
-                bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
-                bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
-                set_error(GlobalMethod.GetMessage("W10612", "入札"));
-            }
-            //落札額状況
-            if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuAmtStatus))
-            {
-                bid_tbl03_1_lblRakusatuAmtStatus.BackColor = errorColor;
-                bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
-                set_error(GlobalMethod.GetMessage("W10613", "入札"));
-            }
-
-            // １．入札情報 落札者	「落札者状況 判明、推定」の時、空欄なら警告。
-            object obj = bid_tbl03_1_cmbRakusatuStatus.SelectedValue;
-            // 「落札者状況 判明、推定」の時、空欄なら警告。
-            if (IsSpecifiedValue(obj, "1") || IsSpecifiedValue(obj, "3"))
-            {
-                if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text.Trim()))
+                // No.1534 警告に変更する
+                //落札者状況
+                if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuStatus))
                 {
-                    //GlobalMethod.outputMessage("W10609", "入札");
-                    set_error(GlobalMethod.GetMessage("W10609", "入札"));
-                    bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuSyaAlert.Visible = true;
                     bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
                     bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                    set_error(GlobalMethod.GetMessage("W10612", "入札"));
                 }
-            }
-
-            // １．入札情報 落札額	「落札額状況 判明、推定」の時、空欄なら警告。
-            obj = bid_tbl03_1_cmbRakusatuAmtStatus.SelectedValue;
-            if (IsSpecifiedValue(obj, "1") || IsSpecifiedValue(obj, "3"))
-            {
-                //No1537 1285 更新時に警告にならない。【「落札額状況　判明、推定」の時、空欄なら警告が警告にならない。】
-                //0円なら空とする
-                if (string.IsNullOrEmpty(bid_tbl03_1_numRakusatuAmt.Text.Trim()) || GetLong(bid_tbl03_1_numRakusatuAmt.Text.Trim()) == 0)
+                //落札額状況
+                if (this.IsNotSelected(bid_tbl03_1_cmbRakusatuAmtStatus))
                 {
-                    set_error(GlobalMethod.GetMessage("W10610", "入札"));
-                    bid_tbl03_1_numRakusatuAmt.BackColor = errorColor;
-                    bid_tbl03_1_picRakusatuAmtAlert.Visible = true;
                     bid_tbl03_1_lblRakusatuAmtStatus.BackColor = errorColor;
                     bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
+                    set_error(GlobalMethod.GetMessage("W10613", "入札"));
+                }
+
+                // １．入札情報 落札者	「落札者状況 判明、推定」の時、空欄なら警告。
+                object obj = bid_tbl03_1_cmbRakusatuStatus.SelectedValue;
+                // 「落札者状況 判明、推定」の時、空欄なら警告。
+                if (IsSpecifiedValue(obj, "1") || IsSpecifiedValue(obj, "3"))
+                {
+                    if (string.IsNullOrEmpty(bid_tbl03_1_txtRakusatuSya.Text.Trim()))
+                    {
+                        //GlobalMethod.outputMessage("W10609", "入札");
+                        set_error(GlobalMethod.GetMessage("W10609", "入札"));
+                        bid_tbl03_1_txtRakusatuSya.BackColor = errorColor;
+                        bid_tbl03_1_picRakusatuSyaAlert.Visible = true;
+                        bid_tbl03_1_lblRakusatuStatus.BackColor = errorColor;
+                        bid_tbl03_1_picRakusatuStatusAlert.Visible = true;
+                    }
+                }
+
+                // １．入札情報 落札額	「落札額状況 判明、推定」の時、空欄なら警告。
+                obj = bid_tbl03_1_cmbRakusatuAmtStatus.SelectedValue;
+                if (IsSpecifiedValue(obj, "1") || IsSpecifiedValue(obj, "3"))
+                {
+                    //No1537 1285 更新時に警告にならない。【「落札額状況　判明、推定」の時、空欄なら警告が警告にならない。】
+                    //0円なら空とする
+                    if (string.IsNullOrEmpty(bid_tbl03_1_numRakusatuAmt.Text.Trim()) || GetLong(bid_tbl03_1_numRakusatuAmt.Text.Trim()) == 0)
+                    {
+                        set_error(GlobalMethod.GetMessage("W10610", "入札"));
+                        bid_tbl03_1_numRakusatuAmt.BackColor = errorColor;
+                        bid_tbl03_1_picRakusatuAmtAlert.Visible = true;
+                        bid_tbl03_1_lblRakusatuAmtStatus.BackColor = errorColor;
+                        bid_tbl03_1_picRakusatuAmtStatusAlert.Visible = true;
+                    }
                 }
             }
 
@@ -8781,7 +8846,9 @@ namespace TokuchoBugyoK2
             }
             // ２．配分情報・業務内容 【契約後】配分率(%)が100％でない場合は更新不可。
             double dblPercent = GetDouble(ca_tbl02_AftCaBm_numPercentAll.Text);
-            if(dblPercent != 100.00)
+            // No1575 1316　契約画面で起案する際、配分率が99％の場合、エラーとなって起案出来ない。
+            //if (dblPercent != 100.00)
+            if (dblPercent < 99)
             {
                 ca_tbl02_AftCaBm_numPercentAll.BackColor = errorColor;
                 ca_tbl02_AftCaBm_picPercentAlert.Visible = true;
@@ -8967,7 +9034,6 @@ namespace TokuchoBugyoK2
 
             //契約タブの調査部配分率が0ではない場合
             // 調査部 業務別配分が100でないとエラー
-            //if (item3_7_2_26_1.Text != "100.00%" && item3_7_2_26_1.Text != "0.00%")
             if (GetDouble(ca_tbl02_AftCaBm_numPercent1.Text) > 0)
             {
                 if (ca_tbl02_AftCaTs_numPercentAll.Text != "100.00%")
@@ -9293,7 +9359,7 @@ namespace TokuchoBugyoK2
                 ca_tbl02_AftCaBmZeikomi_numAmtAll.BackColor = clearColor;
                 ca_tbl02_AftCaBm_numAmtAll.BackColor = clearColor;
                 ca_tbl02_AftCaBm_numPercentAll.BackColor = clearColor;
-
+                ca_tbl02_AftCaTs_numPercentAll.BackColor = clearColor;
                 te_txtPoint.BackColor = clearColor;
                 te_txtKanriPoint.BackColor = clearColor;
                 te_txtSyosaPoint.BackColor = clearColor;
@@ -9368,36 +9434,101 @@ namespace TokuchoBugyoK2
                 }
 
                 // 案件（受託）フォルダー
-                string ankenFolder = base_tbl02_txtAnkenFolder.Text;
-                if (UserInfos[2].Equals(sSibuCd) == false)
+                string ankenFolder = "";
+                // 画面で選択している受託課所支部の部所フォルダ
+                string replaceFolderName = "";
+                // 置き換え対象のログインユーザーの部所フォルダ
+                string replaceTargetFolderName = "";
+
+                // 画面の受託課所支部の部所フォルダを取得する
+                using (var conn = new SqlConnection(connStr))
                 {
-                    // 画面で選択している受託課所支部の部所フォルダ
-                    string replaceFolderName = getReplaceFolderPath(sSibuCd, "M_Folderから画面の受託課所支部：");
-                    // 置き換え対象のログインユーザーの部所フォルダ
-                    string replaceTargetFolderName = getReplaceFolderPath(UserInfos[2], "M_Folderからログインユーザーの受託課所支部：");
-                    if (replaceTargetFolderName != "")
+                    try
                     {
-                        // 自分の部署フォルダを画面の選択している受託課所支部のフォルダに置き換える
-                        ankenFolder = ankenFolder.Replace(replaceTargetFolderName, replaceFolderName);
+                        conn.Open();
+                        var cmd = conn.CreateCommand();
 
-                        // 867
-                        // 工期開始年度　2021年度まで、　010北道
-                        // 工期開始年度　2022年度から　　010北海
-                        int koukinendo = 0;
-                        if (int.TryParse(sStartYear, out koukinendo))
+                        cmd.CommandText = "SELECT  " +
+                                "FolderPath " +
+                                "FROM M_Folder " +
+                                "WHERE MENU_ID = 100 AND FolderBunruiCD = 1 AND FolderBushoCD = '" + sSibuCd + "' ";
+                        var sda = new SqlDataAdapter(cmd);
+                        var dtSb = new DataTable();
+                        sda.Fill(dtSb);
+                        if (dtSb != null && dtSb.Rows.Count > 0)
                         {
-                            if (koukinendo > 2021)
-                            {
-                                // 010北道
-                                string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                                // 010北海
-                                string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+                            // フォルダパスを取得（例：$FOLDER_BASE$/111統括）
+                            replaceFolderName = dtSb.Rows[0][0].ToString();
+                            // 課所支部のフォルダ部分のみとする $FOLDER_BASE$/xxx 
+                            replaceFolderName = replaceFolderName.Replace(@"$FOLDER_BASE$/", "");
+                            // 課所支部のフォルダ部分のみとする $FOLDER_BASE$ しかない場合の対応
+                            replaceFolderName = replaceFolderName.Replace(@"$FOLDER_BASE$", "");
+                        }
+                        dtSb.Clear();
+                    }
+                    catch (Exception)
+                    {
+                        // エラー
+                        GlobalMethod.outputLogger("Execute_SQL", "M_Folderから画面の受託課所支部：" + sSibuCd + " のフォルダパスが取得できずにエラー", "ID:" + AnkenID + " mode:" + mode, "DEBUG");
+                    }
+                }
+                // 置き換え対象のログインユーザーの部所フォルダを取得する
+                using (var conn = new SqlConnection(connStr))
+                {
+                    try
+                    {
+                        conn.Open();
+                        var cmd = conn.CreateCommand();
 
-                                if (str1 != null && str2 != null)
-                                {
-                                    ankenFolder = ankenFolder.Replace(str1, str2);
-                                }
-                            }
+                        cmd.CommandText = "SELECT  " +
+                                "FolderPath " +
+                                "FROM M_Folder " +
+                                "WHERE MENU_ID = 100 AND FolderBunruiCD = 1 AND FolderBushoCD = '" + UserInfos[2] + "' ";
+                        var sda = new SqlDataAdapter(cmd);
+                        var dtLogin = new DataTable();
+                        sda.Fill(dtLogin);
+                        if (dtLogin != null && dtLogin.Rows.Count > 0)
+                        {
+                            // フォルダパスを取得（例：$FOLDER_BASE$/111統括）
+                            replaceTargetFolderName = dtLogin.Rows[0][0].ToString();
+                            // 課所支部のフォルダ部分のみとする
+                            replaceTargetFolderName = replaceTargetFolderName.Replace(@"$FOLDER_BASE$/", "");
+                        }
+                        dtLogin.Clear();
+                    }
+                    catch (Exception)
+                    {
+                        // エラー
+                        GlobalMethod.outputLogger("Execute_SQL", "M_Folderからログインユーザーの受託課所支部：" + UserInfos[2] + " のフォルダパスが取得できずにエラー", "ID:" + AnkenID + " mode:" + mode, "DEBUG");
+                    }
+                }
+
+                // 案件（受託）フォルダ
+                ankenFolder = base_tbl02_txtAnkenFolder.Text;
+                if (replaceTargetFolderName != "")
+                {
+                    // 自分の部署フォルダを画面の選択している受託課所支部のフォルダに置き換える
+                    ankenFolder = ankenFolder.Replace(replaceTargetFolderName, replaceFolderName);
+
+                    // 867
+                    // 工期開始年度　2021年度まで、　010北道
+                    // 工期開始年度　2022年度から　　010北海
+                    int koukinendo = 0;
+                    if (int.TryParse(sStartYear, out koukinendo))
+                    {
+                        // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
+                        if (koukinendo > 2021)
+                        {
+                            //// 010北道
+                            //string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+                            //// 010北海
+                            //string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+
+                            //if (str1 != null && str2 != null)
+                            //{
+                            //    ankenFolder = ankenFolder.Replace(str1, str2);
+                            //}
+                            ankenFolder = change_hokaido_path(ankenFolder, koukinendo);
                         }
                     }
                 }
@@ -9408,6 +9539,47 @@ namespace TokuchoBugyoK2
                     ankenFolder = ankenFolder.Substring(0, ankenFolder.Length - 1);
                 }
 
+                //// 案件（受託）フォルダー
+                //string ankenFolder = base_tbl02_txtAnkenFolder.Text;
+                //if (UserInfos[2].Equals(sSibuCd) == false)
+                //{
+                //    // 画面で選択している受託課所支部の部所フォルダ
+                //    string replaceFolderName = getReplaceFolderPath(sSibuCd, "M_Folderから画面の受託課所支部：");
+                //    // 置き換え対象のログインユーザーの部所フォルダ
+                //    string replaceTargetFolderName = getReplaceFolderPath(UserInfos[2], "M_Folderからログインユーザーの受託課所支部：");
+                //    if (replaceTargetFolderName != "")
+                //    {
+                //        // 自分の部署フォルダを画面の選択している受託課所支部のフォルダに置き換える
+                //        ankenFolder = ankenFolder.Replace(replaceTargetFolderName, replaceFolderName);
+
+                //        // 867
+                //        // 工期開始年度　2021年度まで、　010北道
+                //        // 工期開始年度　2022年度から　　010北海
+                //        int koukinendo = 0;
+                //        if (int.TryParse(sStartYear, out koukinendo))
+                //        {
+                //            if (koukinendo > 2021)
+                //            {
+                //                // 010北道
+                //                string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
+                //                // 010北海
+                //                string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+
+                //                if (str1 != null && str2 != null)
+                //                {
+                //                    ankenFolder = ankenFolder.Replace(str1, str2);
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
+
+                //// 最終文字が\マークとなったら取り除く
+                //if (ankenFolder.Length > 0 && ankenFolder.EndsWith(@"\"))
+                //{
+                //    ankenFolder = ankenFolder.Substring(0, ankenFolder.Length - 1);
+                //}
+
                 // 受託部所の所属長を取得する
                 string BushoShozokuChou = "";
                 DataTable dt = new System.Data.DataTable();
@@ -9416,7 +9588,7 @@ namespace TokuchoBugyoK2
                 {
                     BushoShozokuChou = dt.Rows[0][0].ToString();
                 }
-               
+
 
                 using (var conn = new SqlConnection(connStr))
                 {
@@ -9430,7 +9602,7 @@ namespace TokuchoBugyoK2
                         // 案件情報テーブルへデータ作成
                         cmd.CommandText = "INSERT INTO AnkenJouhou ( " + EntryInputDbClass.getInsAnkenCols() +
                                             " ) VALUES ( " +
-                                            getInsAnkenVals(ankenID.ToString(), ankenNo,  ankenFolder, BushoShozokuChou) +
+                                            getInsAnkenVals(ankenID.ToString(), ankenNo, ankenFolder, BushoShozokuChou) +
                                             ")";
 
                         Console.WriteLine(cmd.CommandText);
@@ -9534,26 +9706,41 @@ namespace TokuchoBugyoK2
                 string ankenNo = base_tbl02_txtAnkenNo.Text;
                 string ori_ankenNo = base_tbl02_txtAnkenNo.Text;
                 //案件番号変更
-                if (sJyutakuKasyoSibuCdOri.Equals(base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString()) == false || sKokiStartYearOri.Equals(base_tbl03_cmbKokiStartYear.SelectedValue.ToString()) == false)
-                {
-                    ankenNo =changeAnkenNo(ori_ankenNo);
-                    if (string.IsNullOrEmpty(ankenNo))
-                    {
-                        // 案件番号変更エラー
-                        GlobalMethod.outputLogger("InsertAnken", "契約情報登録 案件番号変更エラー", "空案件番号", UserInfos[1]);
-                        set_error(GlobalMethod.GetMessage("E10606", ""));
-                        return false;
-                    }
-                }
-
+                // No1557 1308 案件情報で調査会が受注後もフォルダ変更が出来てしまう。
+                // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
                 // 受託番号の設定OR解除
                 setOrClearJutakuBan(ankenNo);
 
-                // フォルダリムーブ処理
-                if (RenameFolder(ori_ankenNo))
+                // 案件番号変更処理
+                if (base_tbl02_txtJyutakuNo.Text == "")
                 {
-                    // 移動履歴LOG残す
-                    GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "フォルダ変更前：" + GlobalMethod.ChangeSqlText(sFolderRenameBef, 0, 0) + "→フォルダ変更後：" + GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0), pgmName + methodName, "");
+                    if (sJyutakuKasyoSibuCdOri.Equals(base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString()) == false || sKokiStartYearOri.Equals(base_tbl03_cmbKokiStartYear.SelectedValue.ToString()) == false)
+                    {
+                        ankenNo = changeAnkenNo(ori_ankenNo);
+                        if (string.IsNullOrEmpty(ankenNo))
+                        {
+                            // 案件番号変更エラー
+                            GlobalMethod.outputLogger("InsertAnken", "契約情報登録 案件番号変更エラー", "空案件番号", UserInfos[1]);
+                            set_error(GlobalMethod.GetMessage("E10606", ""));
+                            return false;
+                        }
+                    }
+                }
+
+                // No1557 1308 案件情報で調査会が受注後もフォルダ変更が出来てしまう。
+                // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
+                //// 受託番号の設定OR解除
+                //setOrClearJutakuBan(ankenNo);
+
+                // フォルダリムーブ処理
+                // No1557 1308 案件情報で調査会が受注後もフォルダ変更が出来てしまう。
+                // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
+                if (base_tbl02_txtJyutakuNo.Text == "") { 
+                    if (RenameFolder(ori_ankenNo))
+                    {
+                        // 移動履歴LOG残す
+                        GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "フォルダ変更前：" + GlobalMethod.ChangeSqlText(sFolderRenameBef, 0, 0) + "→フォルダ変更後：" + GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0), pgmName + methodName, "");
+                    }
                 }
                 using (var conn = new SqlConnection(connStr))
                 {
@@ -11558,15 +11745,18 @@ namespace TokuchoBugyoK2
             sSql.Append("    , NyuusatsuJuchuuIyoku ");   // --受注意欲
             sSql.Append("    , NyuusatsuSankoumitsumoriKingaku ");   // --参考見積額
             sSql.Append("    , NyuusatsuSankoumitsumoriTaiou ");   // --参考見積対応
-            sSql.Append("    , NyuusatsuSaiteiKakakuUmu ");   // --最低制限価格有無
+            sSql.Append("    , NyuusatsuSaiteiKakakuUmu ");   // --最低制限価格有無NyuusatsuRakusatugaku
 
             sSql.Append("    , NyuusatsuGyoumuHachuukubun ");   // --業務発注区分
-            sSql.Append("    , NyuusatsuJouhouTourokubi ");   // --入札結果登録日
+            // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
+            sSql.Append("    , NyuusatsuJouhouTourokubi ");   // --落札額
+            sSql.Append("    , NyuusatsuRakusatugaku ");
 
             if (iType != 9)
             {
                 sSql.Append("    , NyuusatsuOusatugaku ");
-                sSql.Append("    , NyuusatsuRakusatugaku ");
+                // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
+                //sSql.Append("    , NyuusatsuRakusatugaku ");
                 sSql.Append("    , NyuusatsuNendoKurikoshigaku ");
                 sSql.Append("    , NyuusatsuKyougouTasha ");
                 sSql.Append("    , NyuusatsuKeiyakukeitaiCDSaishuu ");
@@ -11688,6 +11878,8 @@ namespace TokuchoBugyoK2
                     sSql.Append("    , " + base_tbl10_cmbOrderKubun.SelectedValue.ToString());
                 }
                 sSql.Append("    ,   null  ");  // --入札結果登録日
+                // 落札額 // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
+                sSql.Append("    , N'" + getNumToDb(base_tbl10_txtRakusatuAmt.Text) + "'");
                 sSql.Append("    )");
             }
             else
@@ -11733,9 +11925,10 @@ namespace TokuchoBugyoK2
                 sSql.Append("    , NyuusatsuSaiteiKakakuUmu ");   // --最低制限価格有無
                 sSql.Append("    , NyuusatsuGyoumuHachuukubun ");   // --業務発注区分
                 sSql.Append("    , NyuusatsuJouhouTourokubi ");   // --入札結果登録日
+                sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuRakusatugaku "); // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
                 // ↑↑ここまで共通
                 sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuOusatugaku ");
-                sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuRakusatugaku ");                
+                //sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuRakusatugaku "); // No 1586　エントリくんの新規登録時10　入札情報・入札結果欄の落札額が入力出来なくなっている。
                 sSql.Append("    , ").Append(iType == 0 || iType == 70 ? "-" : "").Append(" NyuusatsuNendoKurikoshigaku ");                
                 sSql.Append("    , CASE WHEN NyuusatsuKyougouTashaID > 0 THEN NyuusatsuKyougouTasha ELSE NULL END ");                             
                 sSql.Append("    , NyuusatsuKeiyakukeitaiCDSaishuu ");
@@ -11916,9 +12109,11 @@ namespace TokuchoBugyoK2
             {
                 return "";
             }
-
-            dt = GlobalMethod.getData("SELECT TOP 1 SUBSTRING(AnkenAnkenBangou,7,3)", "SUBSTRING(AnkenAnkenBangou,7,3)", "AnkenJouhou",
+            // No1559 1310　工期自を変更時に年度が変わり、案件番号が変更された際、案件番号の最終三桁が最大値で取られていない。
+            dt = GlobalMethod.getData("SUBSTRING(AnkenAnkenBangou,7,3)", "TOP 1 SUBSTRING(AnkenAnkenBangou,7,3)", "AnkenJouhou",
                 "AnkenAnkenBangou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + ankenNo + "%' and AnkenDeleteFlag != 1 ORDER BY AnkenAnkenBangou DESC");
+            //dt = GlobalMethod.getData("SELECT TOP 1 SUBSTRING(AnkenAnkenBangou,7,3)", "SUBSTRING(AnkenAnkenBangou,7,3)", "AnkenJouhou",
+            //    "AnkenAnkenBangou COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + ankenNo + "%' and AnkenDeleteFlag != 1 ORDER BY AnkenAnkenBangou DESC");
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -11971,7 +12166,7 @@ namespace TokuchoBugyoK2
                     bool JutakuEdaCreateFlag = true;
 
                     // 受託番号の枝番を取得する
-                    DataTable dt = GlobalMethod.getData("TOP 1 AnkenJutakuBangouEda", "AnkenJutakuBangouEda", "AnkenJouhou",
+                    DataTable dt = GlobalMethod.getData("AnkenJutakuBangouEda", "TOP 1 AnkenJutakuBangouEda", "AnkenJouhou",
                         "AnkenJouhouID = " + AnkenID + " AND AnkenJutakuBangouEda <> '' and AnkenJutakuBangouEda != '' and AnkenDeleteFlag != 1 ");
                     if (dt != null && dt.Rows.Count > 0)
                     {
@@ -11983,7 +12178,7 @@ namespace TokuchoBugyoK2
 
                     if (JutakuEdaCreateFlag == true)
                     {
-                        dt = GlobalMethod.getData("TOP 1 AnkenJutakuBangouEda", "AnkenJutakuBangouEda", "AnkenJouhou",
+                        dt = GlobalMethod.getData("AnkenJutakuBangouEda", "TOP 1 AnkenJutakuBangouEda", "AnkenJouhou",
                             "AnkenAnkenBangou = (SELECT AnkenAnkenBangou FROM AnkenJouhou WHERE AnkenJouhouID = " + AnkenID + ") and AnkenJutakuBangouEda != '' and AnkenDeleteFlag != 1 order by AnkenJutakuBangouEda desc ");
                         if (dt != null && dt.Rows.Count > 0)
                         {
@@ -12119,54 +12314,59 @@ namespace TokuchoBugyoK2
             }
             else if (ori_ankenNo.Equals(base_tbl02_txtAnkenNo.Text) == false)
             {
-                folderTo = GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0);
-                // リネームボタン押下しない　AND　案件番号自動変更
-                if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
-                {
-                    // リネーム前後、すべて調査部の場合、リネームを実施する
-                    isRename = 1;
-                }
-                else if (sJigyoubuHeadCD.Equals("T"))
-                {
-                    // リネーム後のみ調査部なら、新規作成する
-                    isRename = 3;
-                }
-                else if (sJigyoubuHeadCD_ori.Equals("T"))
-                {
-                    // リネームボタン押下しない、契約部署のみ変更する場合
-                    if (folderTo.Equals(sFolderRenameBef) == false)
-                    {
-                        isRename = 4;
-                    }
-                    else
-                    {
-                        base_tbl02_txtRenameFolder.Text = "";
-                        ca_tbl01_hidResetAnkenno.Text = "";
-                        isRename = 5;
-                    }
-                }
-                else
-                {
-                    if (folderTo.Contains(ori_ankenNo))
-                    {
-                        isRename = 4;
-                    }
-                    else
-                    {
-                        isRename = 5;
-                    }
-                }
+                // No1560 1311　【備忘】現行の仕様では工期自を変更時に年度を変更し、案件番号が変更された際、フォルダ変更も行われる。
+                //    ※フォルダ変更ボタンで確認せずにホルダ変更が行われてしまう。
+                isRename = 5;
+                //folderTo = GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0);
+                //// リネームボタン押下しない　AND　案件番号自動変更
+                //if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
+                //{
+                //    // リネーム前後、すべて調査部の場合、リネームを実施する
+                //    isRename = 1;
+                //}
+                //else if (sJigyoubuHeadCD.Equals("T"))
+                //{
+                //    // リネーム後のみ調査部なら、新規作成する
+                //    isRename = 3;
+                //}
+                //else if (sJigyoubuHeadCD_ori.Equals("T"))
+                //{
+                //    // リネームボタン押下しない、契約部署のみ変更する場合
+                //    if (folderTo.Equals(sFolderRenameBef) == false)
+                //    {
+                //        isRename = 4;
+                //    }
+                //    else
+                //    {
+                //        base_tbl02_txtRenameFolder.Text = "";
+                //        ca_tbl01_hidResetAnkenno.Text = "";
+                //        isRename = 5;
+                //    }
+                //}
+                //else
+                //{
+                //    if (folderTo.Contains(ori_ankenNo))
+                //    {
+                //        isRename = 4;
+                //    }
+                //    else
+                //    {
+                //        isRename = 5;
+                //    }
+                //}
             }
             else
             {
                 isRename = 5;
             }
 
-            //案件番号も変更する場合
-            if (ori_ankenNo.Equals(base_tbl02_txtAnkenNo.Text) == false && (isRename == 1 || isRename == 3 || isRename == 4))
-            {
-                folderTo = GlobalMethod.ChangeSqlText(folderTo.Replace("\\" + ori_ankenNo, "\\" + base_tbl02_txtAnkenNo.Text), 0, 0);
-            }
+            // No1560 1311　【備忘】現行の仕様では工期自を変更時に年度を変更し、案件番号が変更された際、フォルダ変更も行われる。
+            //    ※フォルダ変更ボタンで確認せずにホルダ変更が行われてしまう。
+            ////案件番号も変更する場合
+            //if (ori_ankenNo.Equals(base_tbl02_txtAnkenNo.Text) == false && (isRename == 1 || isRename == 3 || isRename == 4))
+            //{
+            //    folderTo = GlobalMethod.ChangeSqlText(folderTo.Replace("\\" + ori_ankenNo, "\\" + base_tbl02_txtAnkenNo.Text), 0, 0);
+            //}
 
             // リネームを実行する
             if (isRename == 1 || isRename == 4)
@@ -12610,6 +12810,18 @@ namespace TokuchoBugyoK2
                 if (flag == 3)
                 {
                     sSql.Append("    ,AnkenKianZumi = 1");
+                }
+
+                if(flag == 1)
+                {
+                    // No.1555 1306　アラートメールの発報で、工期自が変更された場合 工期自が変更された場合、アラートメールのフラグを0に変更する。
+                    string sDt = AnkenData_H.Rows[0]["KeiyakuKoukiKaishibi"].ToString();
+                    if (base_tbl03_dtpKokiFrom.Text.Equals(sDt) == false)
+                    {
+                        sSql.Append("    ,AnkenArartError = 0");
+                        sSql.Append("    ,AnkenArartwarning3 = 0");
+                        sSql.Append("    ,AnkenArartwarning7 = 0");
+                    }
                 }
             }
             sSql.Append(" WHERE AnkenJouhouID = " + AnkenID);
