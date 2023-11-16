@@ -928,9 +928,10 @@ namespace TokuchoBugyoK2
             where = "MadoguchiID  = " + MadoguchiID; //MadoguchiIDが一致するもの
             //コンボボックスデータ取得
             DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
-            sl = new SortedList();
-            sl = GlobalMethod.Get_SortedList(tmpdt22);
-            c1FlexGrid4.Cols["GroupMei"].DataMap = sl;
+            //1574
+            ListDictionary ld = new ListDictionary();
+            ld = GlobalMethod.Get_ListDictionary(tmpdt22);
+            c1FlexGrid4.Cols["GroupMei"].DataMap = ld;
 
             //調査品目　担当者空白リスト
             tmpdt = new System.Data.DataTable();
@@ -7953,6 +7954,8 @@ namespace TokuchoBugyoK2
                     {
                         c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.White;
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
+                        //1572
+                        c1FlexGrid4.Rows[e.Row][58] = 1;
                     }
                 }
             }
@@ -9422,9 +9425,10 @@ namespace TokuchoBugyoK2
             String where = "MadoguchiID = " + MadoguchiID; //MadoguchiIDが一致するもの
             //コンボボックスデータ取得
             DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
-            SortedList sl = new SortedList();
-            sl = GlobalMethod.Get_SortedList(tmpdt22);
-            c1FlexGrid4.Cols["GroupMei"].DataMap = sl;
+            //1574
+            ListDictionary ld = new ListDictionary();
+            ld = GlobalMethod.Get_ListDictionary(tmpdt22);
+            c1FlexGrid4.Cols["GroupMei"].DataMap = ld;
         }
 
         private void button6_2_Click(object sender, EventArgs e)
