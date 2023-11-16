@@ -556,23 +556,55 @@ namespace TokuchoBugyoK2
                     //更新処理
                     else if (GroupMeiGrid.Rows[i][1] != null)
                     {
-                        sSql.Append("UPDATE MadoguchiGroupMaster");
-                        sSql.Append(" SET");
-                        sSql.Append("    MadoguchiGroupMei = \'").Append(GroupMeiGrid.Rows[i][2]).Append("\'");
-                        sSql.Append("    ,MadoguchiGroupeChangeDate = ").Append("GETDATE()");
-                        sSql.Append("    ,MadoguchiGropeChengeUserID = ").Append(UserInfos[0]);
-                        sSql.Append("    ,MadoguchiGroupeChengeBushoCD = ").Append(UserInfos[2]);
-                        sSql.Append(" WHERE");
-                        sSql.Append("    MadoguchiID = ").Append(MadoguchiID);
-                        sSql.Append("    AND MadoguchiGroupMasterID = ").Append(GroupMeiGrid.Rows[i][1]);
-                        cmd.CommandText = sSql.ToString();
-                        cmd.ExecuteNonQuery();
+                        //グループ名マスタからデータを取得
+                        string GroupMeiChk = get_GrouupMei(GroupMeiGrid.Rows[i][1].ToString());
+                        if (GroupMeiGrid.Rows[i][2].ToString() != GroupMeiChk)
+                        {
+                            sSql.Append("UPDATE MadoguchiGroupMaster");
+                            sSql.Append(" SET");
+                            sSql.Append("    MadoguchiGroupMei = \'").Append(GroupMeiGrid.Rows[i][2]).Append("\'");
+                            sSql.Append("    ,MadoguchiGroupeChangeDate = ").Append("GETDATE()");
+                            sSql.Append("    ,MadoguchiGropeChengeUserID = ").Append(UserInfos[0]);
+                            sSql.Append("    ,MadoguchiGroupeChengeBushoCD = ").Append(UserInfos[2]);
+                            sSql.Append(" WHERE");
+                            sSql.Append("    MadoguchiID = ").Append(MadoguchiID);
+                            sSql.Append("    AND MadoguchiGroupMasterID = ").Append(GroupMeiGrid.Rows[i][1]);
+                            cmd.CommandText = sSql.ToString();
+                            cmd.ExecuteNonQuery();
+                        }
                     }
 
                 }
             }
             //グループ名マスタ　更新処理　終了
             this.Close();
+        }
+
+        /// <summary>
+        /// グループ名取得
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        private string get_GrouupMei(string MadoguchiGroupMasterID)
+        {
+            DataTable dt = new DataTable();
+            using (var conn = new SqlConnection(connStr))
+            {
+                var cmd = conn.CreateCommand();
+                StringBuilder sSql = new StringBuilder();
+                sSql.Append("SELECT");
+                sSql.Append("      MadoguchiGroupMasterID ");
+                sSql.Append("    , MadoguchiGroupMei ");
+                sSql.Append("    , MadoguchiID ");
+                sSql.Append(" FROM");
+                sSql.Append("    MadoguchiGroupMaster");
+                sSql.Append(" WHERE");
+                sSql.Append("    MadoguchiGroupMasterID = ").Append(MadoguchiGroupMasterID);
+                cmd.CommandText = sSql.ToString();
+                var sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+            }
+            return dt.Rows[0][1].ToString();   
         }
 
         /// <summary>
@@ -593,6 +625,8 @@ namespace TokuchoBugyoK2
         private void button_GyouTsuika_Click(object sender, EventArgs e)
         {
             GroupMeiGrid.Rows.Add();
+            int row = GroupMeiGrid.Rows.Count - 1;
+            GroupMeiGrid.Select(row, 2, true);
         }
 
     }
