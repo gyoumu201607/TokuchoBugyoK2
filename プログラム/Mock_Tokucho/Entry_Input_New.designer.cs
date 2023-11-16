@@ -6512,6 +6512,9 @@ namespace TokuchoBugyoK2
             this.base_tbl09_numSankomitumoriAmt.Text = "¥0";
             this.base_tbl09_numSankomitumoriAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.base_tbl09_numSankomitumoriAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.base_tbl09_numSankomitumoriAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.base_tbl09_numSankomitumoriAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.base_tbl09_numSankomitumoriAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // base_tbl09_lblSankomitumoriAmt
             // 
@@ -7074,12 +7077,15 @@ namespace TokuchoBugyoK2
             this.base_tbl10_txtRakusatuAmt.Location = new System.Drawing.Point(597, 364);
             this.base_tbl10_txtRakusatuAmt.MaxLength = 12;
             this.base_tbl10_txtRakusatuAmt.Name = "base_tbl10_txtRakusatuAmt";
-            this.base_tbl10_txtRakusatuAmt.ReadOnly = true;
+            this.base_tbl10_txtRakusatuAmt.ReadOnly = false;
             this.base_tbl10_txtRakusatuAmt.Size = new System.Drawing.Size(107, 21);
             this.base_tbl10_txtRakusatuAmt.TabIndex = 18;
             this.base_tbl10_txtRakusatuAmt.Text = "¥0";
             this.base_tbl10_txtRakusatuAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.base_tbl10_txtRakusatuAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.base_tbl10_txtRakusatuAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.base_tbl10_txtRakusatuAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.base_tbl10_txtRakusatuAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // base_tbl10_lblRakusatuAmt
             // 
@@ -7220,6 +7226,10 @@ namespace TokuchoBugyoK2
             this.base_tbl10_txtYoteiAmt.Text = "¥0";
             this.base_tbl10_txtYoteiAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.base_tbl10_txtYoteiAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.base_tbl10_txtYoteiAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.base_tbl10_txtYoteiAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.base_tbl10_txtYoteiAmt.Validated += new System.EventHandler(this.textBox_Validated);
+
             // 
             // base_tbl10_lblYoteiAmt
             // 
@@ -7408,6 +7418,9 @@ namespace TokuchoBugyoK2
             this.base_tbl10_numSankoMitumoriAmt.Text = "¥0";
             this.base_tbl10_numSankoMitumoriAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.base_tbl10_numSankoMitumoriAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.base_tbl10_numSankoMitumoriAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.base_tbl10_numSankoMitumoriAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.base_tbl10_numSankoMitumoriAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // base_tbl10_lblSankoMitumoriAmt
             // 
@@ -9727,12 +9740,16 @@ namespace TokuchoBugyoK2
             this.bid_tbl03_1_numRakusatuAmt.Location = new System.Drawing.Point(4, 4);
             this.bid_tbl03_1_numRakusatuAmt.Margin = new System.Windows.Forms.Padding(4);
             this.bid_tbl03_1_numRakusatuAmt.Name = "bid_tbl03_1_numRakusatuAmt";
-            this.bid_tbl03_1_numRakusatuAmt.ReadOnly = true;
+            this.bid_tbl03_1_numRakusatuAmt.ReadOnly = false;
             this.bid_tbl03_1_numRakusatuAmt.Size = new System.Drawing.Size(122, 21);
             this.bid_tbl03_1_numRakusatuAmt.TabIndex = 0;
             this.bid_tbl03_1_numRakusatuAmt.Text = "¥0";
             this.bid_tbl03_1_numRakusatuAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.bid_tbl03_1_numRakusatuAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
+            this.bid_tbl03_1_numRakusatuAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.bid_tbl03_1_numRakusatuAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.bid_tbl03_1_numRakusatuAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.bid_tbl03_1_numRakusatuAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // bid_tbl03_1_lblRakusatuAmtComment
             // 
@@ -10195,6 +10212,10 @@ namespace TokuchoBugyoK2
             this.bid_tbl01_txtMitumoriAmt.Text = "\\0";
             this.bid_tbl01_txtMitumoriAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.bid_tbl01_txtMitumoriAmt.Leave += new System.EventHandler(this.numAmtTextBox_Leave);
+            this.bid_tbl01_txtMitumoriAmt.Enter += new System.EventHandler(this.textBox_Enter);
+            this.bid_tbl01_txtMitumoriAmt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.item_KeyDown);
+            this.bid_tbl01_txtMitumoriAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.bid_tbl01_txtMitumoriAmt.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // bid_tbl01_lblMitumori
             // 
