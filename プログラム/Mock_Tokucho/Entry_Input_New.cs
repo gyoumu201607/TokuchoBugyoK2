@@ -7761,8 +7761,10 @@ namespace TokuchoBugyoK2
                         errorFlg = true;
                     }
 
-                    // 再委託禁止条項の内容 ★★★不要？
-                    if (this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
+                    // No1588　1319　新規登録時、再委託禁止条項の記載有無を「なし」に設定しても、再委託禁止条項の内容が空欄だとエラーになる。
+                    // 再委託禁止条項の内容
+                    //if (this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
+                    if (this.IsSpecifiedValue(base_tbl10_cmbKinsiUmu.SelectedValue,"2") == false && this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
                     {
                         base_tbl10_lblKinsiNaiyo.BackColor = errorColor;
                         base_tbl10_picKinsiNaiyoAlert.Visible = true;
