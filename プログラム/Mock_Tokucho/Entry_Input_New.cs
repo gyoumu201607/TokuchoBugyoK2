@@ -6015,7 +6015,9 @@ namespace TokuchoBugyoK2
                 {
                     if (base_tbl01_chkKeiyaku.Checked == false)
                     {
-                        set_error("進捗階段の契約をチェックしてください。");
+                        // No1592 1321　エントリくんの契約画面で、メッセージの誤植がある。
+                        //set_error("進捗階段の契約をチェックしてください。");
+                        set_error("進捗段階の契約をチェックして下さい。");
                         return;
                     }
 
@@ -6065,7 +6067,9 @@ namespace TokuchoBugyoK2
                 {
                     Execute_SQL(2);
                     // 出力実行
-                    outPutReport(ListID, AnkenID);
+                    // No1589 1320 エントリーシート、確認用と本番用が同じものが出ている。
+                    //outPutReport(ListID, AnkenID);
+                    outPutReport(ListID, AnkenID, "1", "0");
                 }
             }
         }
