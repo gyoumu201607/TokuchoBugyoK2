@@ -363,7 +363,9 @@ namespace TokuchoBugyoK2
         private Boolean check_TEL()
         {
             // 0始まり4桁-4桁-4桁 or 11 or 12桁 or 国際番号対応 or 空白
-            if (Tel.Text != "" && !System.Text.RegularExpressions.Regex.IsMatch(Tel.Text, @"^((0\d{1,4}-\d{1,4}-\d{4})|\+?(\d{10,12})|(\+\d{1,3}-\d{1,2}-\d{1,4}-\d{4})|(\s*))$", System.Text.RegularExpressions.RegexOptions.ECMAScript))
+            // No1590対応
+            //if (Tel.Text != "" && !System.Text.RegularExpressions.Regex.IsMatch(Tel.Text, @"^((0\d{1,4}-\d{1,4}-\d{4})|\+?(\d{10,12})|(\+\d{1,3}-\d{1,2}-\d{1,4}-\d{4})|(\s*))$", System.Text.RegularExpressions.RegexOptions.ECMAScript))
+            if (Tel.Text != "" && !System.Text.RegularExpressions.Regex.IsMatch(Tel.Text, @"^((0\d{1,4}-\d{1,4}-\d{4})|\+?(\d{11,12})|(\+\d{1,3}-\d{1,2}-\d{1,4}-\d{4})|(\s*))$", System.Text.RegularExpressions.RegexOptions.ECMAScript))
             {
                 // E20603:電話番号を正しく入力してください。
                 set_error(GlobalMethod.GetMessage("E20603", ""));
