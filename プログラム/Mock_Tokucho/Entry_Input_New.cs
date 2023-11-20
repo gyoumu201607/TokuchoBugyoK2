@@ -1465,7 +1465,7 @@ namespace TokuchoBugyoK2
                     bid_tbl03_4_c1FlexGrid.Rows.Add();
                 }
                 //【入札参加者】
-                for (int i = 0; i < AnkenData_Grid2.Columns.Count; i++)
+                for (int i = 0; i < AnkenData_Grid2.Columns.Count - 1; i++)
                 {
                     bid_tbl03_4_c1FlexGrid.Rows[k + 1][i + 2] = AnkenData_Grid2.Rows[k][i].ToString();
                 }
@@ -5664,7 +5664,7 @@ namespace TokuchoBugyoK2
                 FolderPath = FolderPath.Replace(@"$FOLDER_BASE$", FolderBase);
                 FolderPath = FolderPath.Replace("/", @"\");
 
-                string jCd = getJigyoubuHeadCD();
+                string jCd = getJigyoubuHeadCD(1);
 
                 if (jCd.Equals("T"))
                 {
@@ -6017,7 +6017,7 @@ namespace TokuchoBugyoK2
                     {
                         // No1592 1321　エントリくんの契約画面で、メッセージの誤植がある。
                         //set_error("進捗階段の契約をチェックしてください。");
-                        set_error("進捗段階の契約をチェックして下さい。");
+                        set_error(GlobalMethod.GetMessage("E10740","基本情報"));
                         return;
                     }
 
@@ -6222,7 +6222,9 @@ namespace TokuchoBugyoK2
                 ErrorMessage.Text = "";
                 if (string.IsNullOrEmpty(ca_tbl01_cmbAnkenKubun.Text))
                 {
-                    set_error("案件区分を選択してください。");
+                    // No1592 1321　エントリくんの契約画面で、メッセージの誤植がある。
+                    //set_error("案件区分を選択してください。");
+                    set_error(GlobalMethod.GetMessage("E10741",""));
                     return;
                 }
                 KianError(1);
@@ -6252,7 +6254,9 @@ namespace TokuchoBugyoK2
                 else
                 {
                     // エラーが発生しました
-                    set_error("出力用データを作成する時にエラーが発生しました。");
+                    // No1592 1321　エントリくんの契約画面で、メッセージの誤植がある。
+                    //set_error("出力用データを作成する時にエラーが発生しました。");
+                    set_error(GlobalMethod.GetMessage("E10742", ""));
                 }
             }
         }
@@ -6591,31 +6595,58 @@ namespace TokuchoBugyoK2
         /// <summary>
         /// 部署：事業部ヘッダーコード取得
         /// </summary>
+        /// <param name="getFlag">取得区分 0：DBから取得、1:契約区分より取得</param>
         /// <returns></returns>
-        private string getJigyoubuHeadCD(string sSibu = "")
+        private string getJigyoubuHeadCD(int getFlag = 0, string sSibu = "")
         {
-            //SQL変数
-            string discript = "GyoumuBushoCD";
-            string value = "JigyoubuHeadCD";
-            string table = "Mst_Busho";
-            string where = "GyoumuBushoCD = '" + base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString() + "'";
-            if(string.IsNullOrEmpty(sSibu) == false)
+            if (getFlag == 1)
             {
-                where = "GyoumuBushoCD = '" + sSibu + "'";
-            }
-            //データ取得
-            DataTable combodt1 = new System.Data.DataTable();
-            combodt1 = GlobalMethod.getData(discript, value, table, where);
-            if (combodt1 != null && combodt1.Rows.Count > 0)
-            {
-                if (combodt1.Rows[0][0] != null)
-                    return combodt1.Rows[0][0].ToString();
-                else
-                    return "";
+                // No1593 1322　エントリくんのコピー機能で、他事業部の場合も案件番号がTになる。
+                string jigyoubuHeadCD = "";
+                // 調査部が見つかった場合、T と判断
+                if (base_tbl03_cmbKeiyakuKubun.Text.IndexOf("調査部") > -1)
+                {
+                    jigyoubuHeadCD = "T";
+                }
+                else if (base_tbl03_cmbKeiyakuKubun.Text.IndexOf("事業普及部") > -1)
+                {
+                    jigyoubuHeadCD = "B";
+                }
+                else if (base_tbl03_cmbKeiyakuKubun.Text.IndexOf("情シス部") > -1)
+                {
+                    jigyoubuHeadCD = "J";
+                }
+                else if (base_tbl03_cmbKeiyakuKubun.Text.IndexOf("総合研究所") > -1)
+                {
+                    jigyoubuHeadCD = "K";
+                }
+                return jigyoubuHeadCD;
             }
             else
             {
-                return "";
+                //SQL変数
+                string discript = "GyoumuBushoCD";
+                string value = "JigyoubuHeadCD";
+                string table = "Mst_Busho";
+                string where = "GyoumuBushoCD = '" + base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString() + "'";
+                if (string.IsNullOrEmpty(sSibu) == false)
+                {
+                    where = "GyoumuBushoCD = '" + sSibu + "'";
+                }
+                //データ取得
+                DataTable combodt1 = new System.Data.DataTable();
+                combodt1 = GlobalMethod.getData(discript, value, table, where);
+                if (combodt1 != null && combodt1.Rows.Count > 0)
+                {
+                    if (combodt1.Rows[0][0] != null)
+                        return combodt1.Rows[0][0].ToString();
+                    else
+                        return "";
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
@@ -7765,14 +7796,16 @@ namespace TokuchoBugyoK2
                         errorFlg = true;
                     }
 
-                    // No1588　1319　新規登録時、再委託禁止条項の記載有無を「なし」に設定しても、再委託禁止条項の内容が空欄だとエラーになる。
-                    // 再委託禁止条項の内容
-                    //if (this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
-                    if (this.IsSpecifiedValue(base_tbl10_cmbKinsiUmu.SelectedValue,"2") == false && this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
+                    // No1588　1319　新規登録時、再委託禁止条項の記載有無を「なし」/「不明」に設定しても、再委託禁止条項の内容が空欄だとエラーになる。
+                    if ((this.IsSpecifiedValue(base_tbl10_cmbKinsiUmu.SelectedValue, "2") || this.IsSpecifiedValue(base_tbl10_cmbKinsiUmu.SelectedValue, "3")) == false)
                     {
-                        base_tbl10_lblKinsiNaiyo.BackColor = errorColor;
-                        base_tbl10_picKinsiNaiyoAlert.Visible = true;
-                        errorFlg = true;
+                        // 再委託禁止条項の内容
+                        if (this.IsNotSelected(base_tbl10_cmbKinsiNaiyo))
+                        {
+                            base_tbl10_lblKinsiNaiyo.BackColor = errorColor;
+                            base_tbl10_picKinsiNaiyoAlert.Visible = true;
+                            errorFlg = true;
+                        }
                     }
 
                     // 入札状況
@@ -9396,7 +9429,7 @@ namespace TokuchoBugyoK2
                 string sStartYear = base_tbl03_cmbKokiStartYear.SelectedValue.ToString();
                 // 案件番号、案件ID　採番　と　新規追加前　チェック ----------------------------------------------------------
                 //案件番号
-                string jigyoubuHeadCD = getJigyoubuHeadCD();
+                string jigyoubuHeadCD = getJigyoubuHeadCD(1);
                 string ankenNo = base_tbl02_txtAnkenNo.Text == "" ? EntryInputDbClass.getAnkenNo(jigyoubuHeadCD, sStartYear, sSibuCd) : base_tbl02_txtAnkenNo.Text;
 
                 if (string.IsNullOrEmpty(ankenNo))
@@ -9648,6 +9681,45 @@ namespace TokuchoBugyoK2
                         createNyuusatsuJouhou(cmd, ankenID.ToString());
                         createKokyakuKeiyakuJouhou(cmd, ankenID.ToString());
 
+                        // No1594　1323　エントリくんのコピー機能で、「この案件番号の枝番でコピーする」で、落札者が受注で登録されていない。
+                        if((this.mode == MODE.INSERT || this.mode == MODE.PLAN) && copy == COPY.ED)
+                        {
+                            // 入札参加者リストがある場合、登録する
+                            if(this.AnkenData_Grid2!=null && this.AnkenData_Grid2.Rows.Count > 0)
+                            {
+                                int i = 1;
+                                foreach(DataRow rw in AnkenData_Grid2.Rows)
+                                {
+                                    StringBuilder sql = new StringBuilder();
+                                    sql.Append("INSERT NyuusatsuJouhouOusatsusha ( ");
+                                    sql.Append("NyuusatsuJouhouID ");
+                                    sql.Append(", NyuusatsuOusatsuID ");
+                                    sql.Append(", NyuusatsuRakusatsuJyuni ");//落札順位
+                                    sql.Append(", NyuusatsuRakusatsuJokyou ");//落札状況
+                                    sql.Append(", NyuusatsuOusatsushaID ");
+                                    sql.Append(", NyuusatsuOusatsusha ");
+                                    sql.Append(", NyuusatsuOusatsuKingaku ");
+                                    sql.Append(", NyuusatsuOusatsuKyougouTashaID ");
+                                    sql.Append(", NyuusatsuRakusatsuComment ");
+                                    sql.Append(", NyuusatsuOusatsuKyougouKigyouCD ");
+                                    sql.Append(") VALUES (");
+                                    sql.Append("'" + ankenID.ToString() + "' ");
+                                    sql.Append("," + i);
+                                    sql.Append(", " + (string.IsNullOrEmpty(rw["NyuusatsuRakusatsuJyuni"].ToString()) ? "NULL " : rw["NyuusatsuRakusatsuJyuni"].ToString() +" "));
+                                    sql.Append(",'" + ("True".Equals(rw["NyuusatsuRakusatsuJokyou"].ToString()) ? "1' " : "0' "));
+                                    sql.Append(",N'" + rw["NyuusatsuOusatsushaID"].ToString() + "' ");
+                                    sql.Append(",N'" + rw["NyuusatsuOusatsusha"].ToString() + "' ");
+                                    sql.Append(",N'" + rw["NyuusatsuOusatsuKingaku"].ToString() + "' ");
+                                    sql.Append(",N'" + rw["NyuusatsuOusatsuKyougouTashaID"].ToString() + "' ");
+                                    sql.Append(",N'" + rw["NyuusatsuRakusatsuComment"].ToString() + "' ");
+                                    sql.Append(",N'" + rw["NyuusatsuOusatsuKyougouKigyouCD"].ToString() + "')");
+                                    cmd.CommandText = sql.ToString();
+                                    Console.WriteLine(cmd.CommandText);
+                                    cmd.ExecuteNonQuery();
+                                    i++;
+                                }
+                            }
+                        }
                         transaction.Commit();
 
                     }
@@ -11795,7 +11867,8 @@ namespace TokuchoBugyoK2
                 {
                     sSql.Append("    , " + base_tbl10_cmbNyusatuStats.SelectedValue.ToString());
                 }
-                sSql.Append("    , ''");
+                sSql.Append("    , N'" + GlobalMethod.ChangeSqlText(base_tbl10_txtRakusatuSya.Text, 0, 0) + "'");
+                //sSql.Append("    , ''");
                 sSql.Append("    ,   null  ");
 
                 sSql.Append("    , N'" + GlobalMethod.ChangeSqlText(base_tbl03_txtAnkenMemo.Text, 0, 0) + "'");
@@ -12096,7 +12169,7 @@ namespace TokuchoBugyoK2
         private string changeAnkenNo(string ori_ankenNo)
         {
             string ankenNo = "";
-            string jigyoubuHeadCD = getJigyoubuHeadCD();
+            string jigyoubuHeadCD = getJigyoubuHeadCD(1);
 
             // 業務分類CD + 年度下2桁
             ankenNo = jigyoubuHeadCD + base_tbl03_cmbKokiStartYear.SelectedValue.ToString().Substring(2, 2);
