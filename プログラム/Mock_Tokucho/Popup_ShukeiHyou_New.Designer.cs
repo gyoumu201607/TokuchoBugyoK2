@@ -50,7 +50,6 @@ namespace TokuchoBugyoK2
             this.checkBox_BushoIkkatu = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.c1FlexGrid1 = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.Top_Page = new System.Windows.Forms.PictureBox();
             this.Previous_Page = new System.Windows.Forms.PictureBox();
@@ -81,6 +80,7 @@ namespace TokuchoBugyoK2
             this.c1FlexGrid3 = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.item1_ShukeiFolder = new System.Windows.Forms.TextBox();
             this.item_LinkCheckBox = new System.Windows.Forms.CheckBox();
+            this.c1FlexGrid1 = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -88,7 +88,6 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Top_Page)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Previous_Page)).BeginInit();
@@ -104,6 +103,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -406,22 +406,6 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(376, 214);
             this.tableLayoutPanel3.TabIndex = 6;
-            // 
-            // c1FlexGrid1
-            // 
-            this.c1FlexGrid1.AutoResize = true;
-            this.c1FlexGrid1.CellButtonImage = ((System.Drawing.Image)(resources.GetObject("c1FlexGrid1.CellButtonImage")));
-            this.c1FlexGrid1.ColumnInfo = resources.GetString("c1FlexGrid1.ColumnInfo");
-            this.c1FlexGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1FlexGrid1.ForeColor = System.Drawing.Color.Black;
-            this.c1FlexGrid1.Location = new System.Drawing.Point(3, 35);
-            this.c1FlexGrid1.Name = "c1FlexGrid1";
-            this.c1FlexGrid1.Rows.Count = 1;
-            this.c1FlexGrid1.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid1.Size = new System.Drawing.Size(370, 176);
-            this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
-            this.c1FlexGrid1.TabIndex = 14;
-            this.c1FlexGrid1.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid1_BeforeMouseDown);
             // 
             // tableLayoutPanel4
             // 
@@ -836,6 +820,22 @@ namespace TokuchoBugyoK2
             this.item_LinkCheckBox.Text = "リンク先を設定する";
             this.item_LinkCheckBox.UseVisualStyleBackColor = true;
             // 
+            // c1FlexGrid1
+            // 
+            this.c1FlexGrid1.AutoResize = true;
+            this.c1FlexGrid1.CellButtonImage = ((System.Drawing.Image)(resources.GetObject("c1FlexGrid1.CellButtonImage")));
+            this.c1FlexGrid1.ColumnInfo = resources.GetString("c1FlexGrid1.ColumnInfo");
+            this.c1FlexGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1FlexGrid1.ForeColor = System.Drawing.Color.Black;
+            this.c1FlexGrid1.Location = new System.Drawing.Point(3, 35);
+            this.c1FlexGrid1.Name = "c1FlexGrid1";
+            this.c1FlexGrid1.Rows.Count = 1;
+            this.c1FlexGrid1.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
+            this.c1FlexGrid1.Size = new System.Drawing.Size(370, 176);
+            this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
+            this.c1FlexGrid1.TabIndex = 14;
+            this.c1FlexGrid1.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid1_BeforeMouseDown);
+            // 
             // Popup_ShukeiHyou_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -859,7 +859,6 @@ namespace TokuchoBugyoK2
             this.groupBox2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Top_Page)).EndInit();
@@ -881,6 +880,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
