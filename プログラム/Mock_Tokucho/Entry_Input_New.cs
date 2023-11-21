@@ -847,10 +847,14 @@ namespace TokuchoBugyoK2
             //３．案件情報　----
             //業務名称
             base_tbl03_txtGyomuName.Text = AnkenData_H.Rows[0]["AnkenGyoumuMei"].ToString();
+            // No1593 「この発注者を元にコピーをする」際に、部門配分と契約区分がコピーされない。
+            //契約区分
+            base_tbl03_cmbKeiyakuKubun.SelectedValue = AnkenData_H.Rows[0]["AnkenGyoumuKubun"].ToString();
             if (copy != COPY.HC)
             {
-                //契約区分
-                base_tbl03_cmbKeiyakuKubun.SelectedValue = AnkenData_H.Rows[0]["AnkenGyoumuKubun"].ToString();
+                // No1593 「この発注者を元にコピーをする」際に、部門配分と契約区分がコピーされない。
+                ////契約区分
+                //base_tbl03_cmbKeiyakuKubun.SelectedValue = AnkenData_H.Rows[0]["AnkenGyoumuKubun"].ToString();
                 if (copy != COPY.GM)
                 {
                     //工期自
@@ -933,21 +937,23 @@ namespace TokuchoBugyoK2
             // 発注元代表者_氏名
             base_tbl06_txtOrderSimei.Text = AnkenData_H.Rows[0]["AnkenHachuuDaihyousha"].ToString();
 
-            // ７．業務配分
+            // No1593 「この発注者を元にコピーをする」際に、部門配分と契約区分がコピーされない。
+            //// ７．業務配分
+            //if (copy != COPY.HC)
+            //{
+            // 部門配分 【事前打診・入札】配分率(%)
+            //調査部
+            base_tbl07_1_numPercent1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["BuRitsu1"]));
+            //事業普及部
+            base_tbl07_1_numPercent2.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["BuRitsu2"]));
+            //情報システム部
+            base_tbl07_1_numPercent3.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["BuRitsu3"]));
+            //総合研究所
+            base_tbl07_1_numPercent4.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["BuRitsu4"]));
+            //合計
+            GetTotalPercent("base_tbl07_1_numPercent", 5);
             if (copy != COPY.HC)
             {
-                // 部門配分 【事前打診・入札】配分率(%)
-                //調査部
-                base_tbl07_1_numPercent1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["BuRitsu1"]));
-                //事業普及部
-                base_tbl07_1_numPercent2.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["BuRitsu2"]));
-                //情報システム部
-                base_tbl07_1_numPercent3.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["BuRitsu3"]));
-                //総合研究所
-                base_tbl07_1_numPercent4.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["BuRitsu4"]));
-                //合計
-                GetTotalPercent("base_tbl07_1_numPercent", 5);
-
                 // 調査部 業務別配分 【事前打診・入札】配分率(%)
                 base_tbl07_2_numPercent1.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["ChousaRitsu1"]));//資材調査
                 base_tbl07_2_numPercent2.Text = GetPercentText(Convert.ToDouble(AnkenData_H.Rows[0]["ChousaRitsu2"]));//営繕調査
@@ -1162,8 +1168,12 @@ namespace TokuchoBugyoK2
                         {
                             base_tbl10_cmbRakusatuAmtStats.SelectedValue = sObj;
                         }
-                        //落札額(税抜) ▼▼▼
-                        base_tbl10_txtRakusatuAmt.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_N.Rows[0]["NyuusatsuRakusatugaku"]));
+                        // No1594 「この案件番号の枝番で受託番号を作成する」際に落札額がコピー不要
+                        if (copy != COPY.ED)
+                        {
+                            //落札額(税抜) ▼▼▼
+                            base_tbl10_txtRakusatuAmt.Text = string.Format("{0:C}", Convert.ToInt64(AnkenData_N.Rows[0]["NyuusatsuRakusatugaku"]));
+                        }
                     }
                 }
             }
