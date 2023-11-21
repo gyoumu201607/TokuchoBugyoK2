@@ -9697,8 +9697,10 @@ namespace TokuchoBugyoK2
                             // 入札参加者リストがある場合、登録する
                             if(this.AnkenData_Grid2!=null && this.AnkenData_Grid2.Rows.Count > 0)
                             {
+                                // No1594 差し戻し　「応札額がコピーされている為、更新すると落札額に入ってしまう。調査会様のみ＆応札額=0でコピーする」
+                                DataRow[] rows = AnkenData_Grid2.Select("NyuusatsuOusatsuKyougouKigyouCD = '6010005018675' AND NyuusatsuRakusatsuJokyou = 1");
                                 int i = 1;
-                                foreach(DataRow rw in AnkenData_Grid2.Rows)
+                                foreach(DataRow rw in rows)
                                 {
                                     StringBuilder sql = new StringBuilder();
                                     sql.Append("INSERT NyuusatsuJouhouOusatsusha ( ");
@@ -9715,11 +9717,12 @@ namespace TokuchoBugyoK2
                                     sql.Append(") VALUES (");
                                     sql.Append("'" + ankenID.ToString() + "' ");
                                     sql.Append("," + i);
-                                    sql.Append(", " + (string.IsNullOrEmpty(rw["NyuusatsuRakusatsuJyuni"].ToString()) ? "NULL " : rw["NyuusatsuRakusatsuJyuni"].ToString() +" "));
-                                    sql.Append(",'" + ("True".Equals(rw["NyuusatsuRakusatsuJokyou"].ToString()) ? "1' " : "0' "));
+                                    sql.Append(", " + (string.IsNullOrEmpty(rw["NyuusatsuRakusatsuJyuni"].ToString()) ? "NULL " : rw["NyuusatsuRakusatsuJyuni"].ToString() + " "));
+                                    sql.Append(",'1' ");
                                     sql.Append(",N'" + rw["NyuusatsuOusatsushaID"].ToString() + "' ");
                                     sql.Append(",N'" + rw["NyuusatsuOusatsusha"].ToString() + "' ");
-                                    sql.Append(",N'" + rw["NyuusatsuOusatsuKingaku"].ToString() + "' ");
+                                    sql.Append(",N'0' ");
+                                    // sql.Append(",N'" + rw["NyuusatsuOusatsuKingaku"].ToString() + "' ");
                                     sql.Append(",N'" + rw["NyuusatsuOusatsuKyougouTashaID"].ToString() + "' ");
                                     sql.Append(",N'" + rw["NyuusatsuRakusatsuComment"].ToString() + "' ");
                                     sql.Append(",N'" + rw["NyuusatsuOusatsuKyougouKigyouCD"].ToString() + "')");
