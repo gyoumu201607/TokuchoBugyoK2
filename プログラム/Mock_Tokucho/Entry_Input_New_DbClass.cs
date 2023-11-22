@@ -651,7 +651,8 @@ namespace TokuchoBugyoK2
                 sSql.Append("    , NyuusatsuOusatsusha");
                 sSql.Append("    , NyuusatsuOusatsuKingaku");
                 sSql.Append("    , NyuusatsuRakusatsuComment");
-                sSql.Append("    , NyuusatsuOusatsuKyougouKigyouCD ");
+                sSql.Append("    , NyuusatsuOusatsuKyougouKigyouCD ");  // Gridに表示するのはここまで
+                sSql.Append("    , NyuusatsuOusatsuKyougouTashaID ");
                 sSql.Append(" FROM");
                 sSql.Append("    AnkenJouhou ");
                 sSql.Append("    LEFT JOIN NyuusatsuJouhou ");
