@@ -1010,7 +1010,7 @@ namespace TokuchoBugyoK2
             tmpdt.Columns.Add("Discript", typeof(string));
 
             //tmpdt.Rows.Add(0, "-");
-            tmpdt.Rows.Add(1, "シート分割");
+            tmpdt.Rows.Add(1, "-");
             tmpdt.Rows.Add(2, "ファイル分割");
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
@@ -4702,8 +4702,29 @@ namespace TokuchoBugyoK2
                     //Garoon連携対象である場合、かつ、更新処理でエラーが出ていない場合に連携処理を行う。
                     if (item1_GaroonRenkei.Checked == true && globalErrorFlg == "0")
                     {
-                        // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
-                        GaroonBtn_Click(sender, e);
+                        //1578
+                        for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
+                        {
+                            if (c1FlexGrid4.Rows[i]["GroupMei"] == null || c1FlexGrid4.Rows[i]["GroupMei"].ToString() == "" && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2")
+                            {
+                                set_error(GlobalMethod.GetMessage("W20304", ""));
+                                // ピンク背景
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
+                                // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
+                                c1FlexGrid4.Rows[i]["ColumnSort"] = "E"
+                                                                  + zeroPadding((c1FlexGrid4.Rows[i]["ChousaZentaiJun"] != null ? c1FlexGrid4.Rows[i]["ChousaZentaiJun"].ToString() : "0"))
+                                                                  + "-"
+                                                                  + zeroPadding((c1FlexGrid4.Rows[i]["ChousaKobetsuJun"] != null ? c1FlexGrid4.Rows[i]["ChousaKobetsuJun"].ToString() : "0"))
+                                                                  ;
+                            }
+                            else
+                            {
+                                // 必須背景薄黄色
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.White;
+                            }
+                        }
+                            // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
+                            GaroonBtn_Click(sender, e);
                     }
                 }
             }
@@ -7340,6 +7361,8 @@ namespace TokuchoBugyoK2
                     || e.Col == c1FlexGrid4.Cols["ChousaZenkaiTani"].Index || e.Col == c1FlexGrid4.Cols["ChousaHinmokuJouhou1"].Index
                     || e.Col == c1FlexGrid4.Cols["ChousaHinmokuJouhou2"].Index || e.Col == c1FlexGrid4.Cols["ChousaFukuShizai"].Index
                     || e.Col == c1FlexGrid4.Cols["ChousaBunrui"].Index || e.Col == c1FlexGrid4.Cols["ChousaMemo2"].Index
+                    //1584
+                    || e.Col == c1FlexGrid4.Cols["TaniAtariTankaSuryo"].Index
                     ) && e.Row >= 2)
                 {
                     // Enterキー押下で改行させる
@@ -8854,44 +8877,6 @@ namespace TokuchoBugyoK2
         }
         private void gridSizeChange()
         {
-            //if (btnGridSize.Text == "一覧拡大")
-            //{
-            //    // height:457 → 914
-            //    // width:1820 → 3752
-            //    btnGridSize.Text = "一覧縮小";
-            //    c1FlexGrid4.Height = 914;
-            //    c1FlexGrid4.Width = 3752;
-            //}
-            //else
-            //{
-            //    // height:914 → 457
-            //    // width:3752 → 1820
-            //    btnGridSize.Text = "一覧拡大";
-            //    c1FlexGrid4.Height = 457;
-            //    c1FlexGrid4.Width = 1820;
-            //}
-            //if (btnGridSize.Text == "一覧拡大")
-            //{
-            //    // height:457 → 914
-            //    // width:1820 → 3752
-            //    c1FlexGrid4.MaximumSize = new System.Drawing.Size(0, 914);
-            //    btnGridSize.Text = "一覧縮小";
-            //    c1FlexGrid4.Height = 914;
-            //    c1FlexGrid4.Width = this.Size.Width - 40;
-            //    //c1FlexGrid4.Width = 3752;
-            //    //c1FlexGrid4.Dock = DockStyle.Fill;
-            //}
-            //else
-            //{
-            //    // height:914 → 457
-            //    // width:3752 → 1820
-            //    c1FlexGrid4.MaximumSize = new System.Drawing.Size(1820, 457);
-            //    btnGridSize.Text = "一覧拡大";
-            //    c1FlexGrid4.Height = 457;
-            //    c1FlexGrid4.Width = 1820;
-            //    //c1FlexGrid4.Dock = DockStyle. None;
-            //}
-
             string num = "";
             int smallWidth = 0;
             int smallHeight = 0;
@@ -8906,7 +8891,7 @@ namespace TokuchoBugyoK2
                 Int32.TryParse(num, out maximumWidth);
                 if (maximumWidth == 0)
                 {
-                    maximumWidth = 1820;
+                    maximumWidth = 1500;
                 }
             }
             num = GlobalMethod.GetCommonValue1("TOKUMEIKACHO_HINMOKU_GRID_MIN_WIDTH");
@@ -8915,7 +8900,7 @@ namespace TokuchoBugyoK2
                 Int32.TryParse(num, out minimumWidth);
                 if (minimumWidth == 0)
                 {
-                    minimumWidth = 1820;
+                    minimumWidth = 1800;
                 }
             }
             if (btnGridSize.Text == "一覧拡大")
@@ -8926,7 +8911,7 @@ namespace TokuchoBugyoK2
                     Int32.TryParse(num, out bigHeight);
                     if (bigHeight == 0)
                     {
-                        bigHeight = 914;
+                        bigHeight = 800;
                     }
                 }
                 num = GlobalMethod.GetCommonValue1("TOKUMEIKACHO_HINMOKU_GRID_PADDING");
@@ -8939,17 +8924,14 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                // height:457 → 914
-                // width:1820 → 3752
-                //c1FlexGrid4.MaximumSize = new System.Drawing.Size(0, 914);
-                c1FlexGrid4.MaximumSize = new System.Drawing.Size(0, bigHeight);
+                //1580
+                //c1FlexGrid4.MaximumSize = new System.Drawing.Size(0, bigHeight);
+                //初回の画面表示
+                c1FlexGrid4.MaximumSize = new System.Drawing.Size(maximumWidth, bigHeight);
                 c1FlexGrid4.MinimumSize = new System.Drawing.Size(minimumWidth, bigHeight);
                 btnGridSize.Text = "一覧縮小";
-                //c1FlexGrid4.Height = 914;
                 c1FlexGrid4.Height = bigHeight;
-                //c1FlexGrid4.Width = this.Size.Width - 40;
                 c1FlexGrid4.Width = this.Size.Width - padding;
-                //c1FlexGrid4.Width = 3752;
 
                 // 1201 最大化する
                 // 調査品目明細タブを初めて開いた
@@ -9001,6 +8983,7 @@ namespace TokuchoBugyoK2
                 // height:914 → 457
                 // width:3752 → 1820
                 //c1FlexGrid4.MaximumSize = new System.Drawing.Size(1820, 457);
+                //タブ移動時表示
                 c1FlexGrid4.MaximumSize = new System.Drawing.Size(maximumWidth, smallHeight);
                 c1FlexGrid4.MinimumSize = new System.Drawing.Size(minimumWidth, smallHeight);
                 btnGridSize.Text = "一覧拡大";
