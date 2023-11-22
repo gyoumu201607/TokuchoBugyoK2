@@ -5364,7 +5364,7 @@ namespace TokuchoBugyoK2
             tmpdt.Columns.Add("Discript", typeof(string));
 
             //tmpdt.Rows.Add(0, "-");
-            tmpdt.Rows.Add(1, "シート分割");
+            tmpdt.Rows.Add(1, "-");
             tmpdt.Rows.Add(2, "ファイル分割");
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
@@ -10757,6 +10757,27 @@ namespace TokuchoBugyoK2
                     //Garoon連携対象である場合、かつ、更新処理でエラーが出ていない場合に連携処理を行う。
                     if (item1_GaroonRenkei.Checked == true && globalErrorFlg == "0")
                     {
+                        //1578
+                        for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
+                        {
+                            if (c1FlexGrid4.Rows[i]["GroupMei"] == null || c1FlexGrid4.Rows[i]["GroupMei"].ToString() == "" && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2")
+                            {
+                                set_error(GlobalMethod.GetMessage("W20304", ""));
+                                // ピンク背景
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
+                                // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
+                                c1FlexGrid4.Rows[i]["ColumnSort"] = "N"
+                                                                  + zeroPadding((c1FlexGrid4.Rows[i]["ChousaZentaiJun"] != null ? c1FlexGrid4.Rows[i]["ChousaZentaiJun"].ToString() : "0"))
+                                                                  + "-"
+                                                                  + zeroPadding((c1FlexGrid4.Rows[i]["ChousaKobetsuJun"] != null ? c1FlexGrid4.Rows[i]["ChousaKobetsuJun"].ToString() : "0"))
+                                                                  ;
+                            }
+                            else
+                            {
+                                // 必須背景薄黄色
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.White;
+                            }
+                        }
                         GaroonBtn_Click(sender, e);
                     }
 
@@ -16506,6 +16527,8 @@ namespace TokuchoBugyoK2
                     || e.Col == c1FlexGrid4.Cols["ChousaZenkaiTani"].Index || e.Col == c1FlexGrid4.Cols["ChousaHinmokuJouhou1"].Index
                     || e.Col == c1FlexGrid4.Cols["ChousaHinmokuJouhou2"].Index || e.Col == c1FlexGrid4.Cols["ChousaFukuShizai"].Index
                     || e.Col == c1FlexGrid4.Cols["ChousaBunrui"].Index || e.Col == c1FlexGrid4.Cols["ChousaMemo2"].Index
+                    //1584
+                    || e.Col == c1FlexGrid4.Cols["TaniAtariTankaSuryo"].Index
                     ) && e.Row >= 2)
                 {
                     // Enterキー押下で改行させる
