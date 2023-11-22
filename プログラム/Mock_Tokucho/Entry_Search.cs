@@ -429,7 +429,9 @@ namespace TokuchoBugyoK2
                     {
                         checkNo = c1FlexGrid1[i, 3].ToString();
                         busho = c1FlexGrid1[i, 21].ToString();
-                        saishin = c1FlexGrid1[i, 53].ToString();
+                        // No1595 1324 変更伝票ボタンで、最新伝票を選択してもエラーとなる。
+                        //saishin = c1FlexGrid1[i, 53].ToString();
+                        saishin = c1FlexGrid1[i, 56].ToString();
                         ankenkbn = c1FlexGrid1[i, 19].ToString();
                         kianflg = c1FlexGrid1[i, 17].ToString();
                     }
