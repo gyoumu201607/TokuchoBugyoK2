@@ -5963,42 +5963,86 @@ namespace TokuchoBugyoK2
 
         private void button3_ExcelShukeihyo_Click(object sender, EventArgs e)
         {
-            //集計表プロンプト
-            Popup_ShukeiHyou form = new Popup_ShukeiHyou();
-            //form.nendo = item1_3.SelectedValue.ToString();
-            form.MadoguchiID = MadoguchiID;
-
-            if (src_Busho.Text != null && src_Busho.Text != "" )
+            // 奉行エクセル移管対応
+            if (IsPopup_ShukeiHyou_New.Equals("1"))
             {
-                form.Busho = src_Busho.SelectedValue.ToString();
+                //集計表プロンプト
+                Popup_ShukeiHyou_New form = new Popup_ShukeiHyou_New();
+                //form.nendo = item1_3.SelectedValue.ToString();
+                form.MadoguchiID = MadoguchiID;
+
+                if (src_Busho.Text != null && src_Busho.Text != "")
+                {
+                    form.Busho = src_Busho.SelectedValue.ToString();
+                }
+                else
+                {
+                    form.Busho = UserInfos[2];
+                }
+
+                // 担当者
+                if (src_HinmokuChousain.Text != null && src_HinmokuChousain.Text != "")
+                {
+                    form.Tantousha = src_HinmokuChousain.Text;
+                }
+
+                form.TokuhoBangou = item1_MadoguchiUketsukeBangou.Text;
+                form.TokuhoBangouEda = item1_MadoguchiUketsukeBangouEdaban.Text;
+                form.KanriBangou = item1_MadoguchiKanriBangou.Text;
+                form.UserInfos = UserInfos;
+                form.PrintGamen = "Jibun";
+                form.ShowDialog();
+
+                if (form.ReturnValue != null && form.ReturnValue[0] != null)
+                {
+                    //item1_MadoguchiTantoushaCD.Text = form.ReturnValue[0];
+                    //item1_MadoguchiTantousha.Text = form.ReturnValue[1];
+
+                    //item_Hyoujikensuu.SelectedIndex = 1;
+                    item_Hyoujikensuu.SelectedIndex = 4; // 1000件対応
+                    // データ取り直し
+                    get_data(3);
+                }
             }
             else
             {
-                form.Busho = UserInfos[2];
-            }
+                //集計表プロンプト
+                Popup_ShukeiHyou form = new Popup_ShukeiHyou();
+                //form.nendo = item1_3.SelectedValue.ToString();
+                form.MadoguchiID = MadoguchiID;
 
-            // 担当者
-            if(src_HinmokuChousain.Text != null && src_HinmokuChousain.Text != "")
-            {
-                form.Tantousha = src_HinmokuChousain.Text;
-            }
+                if (src_Busho.Text != null && src_Busho.Text != "")
+                {
+                    form.Busho = src_Busho.SelectedValue.ToString();
+                }
+                else
+                {
+                    form.Busho = UserInfos[2];
+                }
 
-            form.TokuhoBangou = item1_MadoguchiUketsukeBangou.Text;
-            form.TokuhoBangouEda = item1_MadoguchiUketsukeBangouEdaban.Text;
-            form.KanriBangou = item1_MadoguchiKanriBangou.Text;
-            form.UserInfos = UserInfos;
-            form.PrintGamen = "Jibun";
-            form.ShowDialog();
+                // 担当者
+                if (src_HinmokuChousain.Text != null && src_HinmokuChousain.Text != "")
+                {
+                    form.Tantousha = src_HinmokuChousain.Text;
+                }
 
-            if (form.ReturnValue != null && form.ReturnValue[0] != null)
-            {
-                //item1_MadoguchiTantoushaCD.Text = form.ReturnValue[0];
-                //item1_MadoguchiTantousha.Text = form.ReturnValue[1];
+                form.TokuhoBangou = item1_MadoguchiUketsukeBangou.Text;
+                form.TokuhoBangouEda = item1_MadoguchiUketsukeBangouEdaban.Text;
+                form.KanriBangou = item1_MadoguchiKanriBangou.Text;
+                form.UserInfos = UserInfos;
+                form.PrintGamen = "Jibun";
+                form.ShowDialog();
 
-                //item_Hyoujikensuu.SelectedIndex = 1;
-                item_Hyoujikensuu.SelectedIndex = 4; // 1000件対応
-                // データ取り直し
-                get_data(3);
+                if (form.ReturnValue != null && form.ReturnValue[0] != null)
+                {
+                    //item1_MadoguchiTantoushaCD.Text = form.ReturnValue[0];
+                    //item1_MadoguchiTantousha.Text = form.ReturnValue[1];
+
+                    //item_Hyoujikensuu.SelectedIndex = 1;
+                    item_Hyoujikensuu.SelectedIndex = 4; // 1000件対応
+                    // データ取り直し
+                    get_data(3);
+                }
             }
         }
 
