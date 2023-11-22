@@ -148,7 +148,11 @@ namespace TokuchoBugyoK2
             //文字表示を大きくする場合は、デザイナでTabのItemSize.widthを変更する。窓口、特命課長、自分大臣は、125で設定すると、14ポイントぐらいのサイズでいける
             tab.DrawMode = TabDrawMode.OwnerDrawFixed;
 
-
+            // 奉行エクセル移管対応
+            if (ConfigurationManager.AppSettings.AllKeys.Contains("Popup_ShukeiHyou_New"))
+            {
+                IsPopup_ShukeiHyou_New = ConfigurationManager.AppSettings["Popup_ShukeiHyou_New"].ToString();
+            }
 
             //不具合No1207
             //共通マスタからグリッド行高の設定を取得する
@@ -5420,27 +5424,56 @@ namespace TokuchoBugyoK2
 
         private void button3_ExcelShukeihyo_Click(object sender, EventArgs e)
         {
-            //集計表プロンプト
-            Popup_ShukeiHyou form = new Popup_ShukeiHyou();
-            //form.nendo = item1_3.SelectedValue.ToString();
-            form.MadoguchiID = MadoguchiID;
-            form.Busho = UserInfos[2];
-            form.TokuhoBangou = item1_MadoguchiUketsukeBangou.Text;
-            form.TokuhoBangouEda = item1_MadoguchiUketsukeBangouEdaban.Text;
-            form.KanriBangou = item1_MadoguchiKanriBangou.Text;
-            form.UserInfos = UserInfos;
-            form.PrintGamen = "Tokumei";
-            form.ShowDialog();
-
-            if (form.ReturnValue != null && form.ReturnValue[0] != null)
+            // 奉行エクセル移管対応
+            if (IsPopup_ShukeiHyou_New.Equals("1"))
             {
-                //item1_MadoguchiTantoushaCD.Text = form.ReturnValue[0];
-                //item1_MadoguchiTantousha.Text = form.ReturnValue[1];
+                //集計表プロンプト
+                Popup_ShukeiHyou_New form = new Popup_ShukeiHyou_New();
+                //form.nendo = item1_3.SelectedValue.ToString();
+                form.MadoguchiID = MadoguchiID;
+                form.Busho = UserInfos[2];
+                form.TokuhoBangou = item1_MadoguchiUketsukeBangou.Text;
+                form.TokuhoBangouEda = item1_MadoguchiUketsukeBangouEdaban.Text;
+                form.KanriBangou = item1_MadoguchiKanriBangou.Text;
+                form.UserInfos = UserInfos;
+                form.PrintGamen = "Tokumei";
+                form.ShowDialog();
 
-                //item_Hyoujikensuu.SelectedIndex = 1;
-                item_Hyoujikensuu.SelectedIndex = 4; // 1000件対応
-                // データ取り直し
-                get_data(3);
+                if (form.ReturnValue != null && form.ReturnValue[0] != null)
+                {
+                    //item1_MadoguchiTantoushaCD.Text = form.ReturnValue[0];
+                    //item1_MadoguchiTantousha.Text = form.ReturnValue[1];
+
+                    //item_Hyoujikensuu.SelectedIndex = 1;
+                    item_Hyoujikensuu.SelectedIndex = 4; // 1000件対応
+                    // データ取り直し
+                    get_data(3);
+                }
+            }
+            else
+            {
+                //集計表プロンプト
+                Popup_ShukeiHyou form = new Popup_ShukeiHyou();
+                //form.nendo = item1_3.SelectedValue.ToString();
+                form.MadoguchiID = MadoguchiID;
+                form.Busho = UserInfos[2];
+                form.TokuhoBangou = item1_MadoguchiUketsukeBangou.Text;
+                form.TokuhoBangouEda = item1_MadoguchiUketsukeBangouEdaban.Text;
+                form.KanriBangou = item1_MadoguchiKanriBangou.Text;
+                form.UserInfos = UserInfos;
+                form.PrintGamen = "Tokumei";
+                form.ShowDialog();
+
+                if (form.ReturnValue != null && form.ReturnValue[0] != null)
+                {
+                    //item1_MadoguchiTantoushaCD.Text = form.ReturnValue[0];
+                    //item1_MadoguchiTantousha.Text = form.ReturnValue[1];
+
+                    //item_Hyoujikensuu.SelectedIndex = 1;
+                    item_Hyoujikensuu.SelectedIndex = 4; // 1000件対応
+                    // データ取り直し
+                    get_data(3);
+                }
             }
         }
 
