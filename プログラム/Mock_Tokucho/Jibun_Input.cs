@@ -4618,12 +4618,39 @@ namespace TokuchoBugyoK2
                     //Garoon連携対象である場合、かつ、更新処理でエラーが出ていない場合に連携処理を行う。
                     if (item1_GaroonRenkei.Checked == true && globalErrorFlg == "0")
                     {
-                        //1578
+                        //1578 1597
                         for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
                         {
-                            if (c1FlexGrid4.Rows[i]["GroupMei"] == null || c1FlexGrid4.Rows[i]["GroupMei"].ToString() == "" && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2")
+                            if (c1FlexGrid4.Rows[i]["GroupMei"] == null || c1FlexGrid4.Rows[i]["GroupMei"].ToString() == "" && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "2")
                             {
-                                set_error(GlobalMethod.GetMessage("W20304", ""));
+                                //set_error(GlobalMethod.GetMessage("W20304", ""));
+
+                                
+                                    //M_Messageからメッセージを取得する
+                                    using (var conn = new SqlConnection(connStr))
+                                    {
+                                        conn.Open();
+                                        var cmd = conn.CreateCommand();
+                                        var comboDt = new System.Data.DataTable();
+                                        //SQL生成
+                                        cmd.CommandText = "SELECT " +
+                                          "DISTINCT Message " +
+                                          "FROM " + "M_Message " +
+                                          "WHERE MessageID = 'W20304' ";
+                                        //データ取得
+                                        var sda = new SqlDataAdapter(cmd);
+                                        sda.Fill(comboDt);
+
+                                        String message = "";
+                                        if (comboDt.Rows.Count > 0)
+                                        {
+                                            message = comboDt.Rows[0][0].ToString();
+                                        }
+                                    //ErrorMessage.Text += Environment.NewLine;
+                                    ErrorMessage.Text += message;
+                                    //ErrorBox.Visible = true;
+                                }
+
                                 // ピンク背景
                                 c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                                 // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
@@ -9207,7 +9234,7 @@ namespace TokuchoBugyoK2
                 Int32.TryParse(num, out maximumWidth);
                 if (maximumWidth == 0)
                 {
-                    maximumWidth = 1845;
+                    maximumWidth = 1820;
                 }
             }
             num = GlobalMethod.GetCommonValue1("JIBUNDAIJIN_HINMOKU_GRID_MIN_WIDTH");

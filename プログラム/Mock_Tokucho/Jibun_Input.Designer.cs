@@ -289,7 +289,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1884, 949);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1684, 949);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel4
@@ -311,7 +311,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1884, 80);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1684, 80);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
             // lblVersion
@@ -362,7 +362,7 @@
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1884, 40);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1684, 40);
             this.tableLayoutPanel6.TabIndex = 14;
             // 
             // button4
@@ -445,7 +445,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-            this.label7.Location = new System.Drawing.Point(1689, 21);
+            this.label7.Location = new System.Drawing.Point(1489, 21);
             this.label7.Margin = new System.Windows.Forms.Padding(5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(190, 14);
@@ -475,7 +475,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1880, 96);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1680, 96);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
             // tableLayoutPanel3
@@ -651,7 +651,7 @@
             this.tableLayoutPanel100.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel100.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel100.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel100.Size = new System.Drawing.Size(1884, 102);
+            this.tableLayoutPanel100.Size = new System.Drawing.Size(1684, 102);
             this.tableLayoutPanel100.TabIndex = 35;
             // 
             // tableLayoutPanel8
@@ -763,7 +763,7 @@
             this.tableLayoutPanel7.Padding = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1880, 663);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1680, 663);
             this.tableLayoutPanel7.TabIndex = 14;
             // 
             // tab
@@ -780,7 +780,7 @@
             this.tab.Name = "tab";
             this.tab.Padding = new System.Drawing.Point(5, 4);
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(1854, 643);
+            this.tab.Size = new System.Drawing.Size(1654, 643);
             this.tab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tab.TabIndex = 14;
             this.tab.TabStop = false;
@@ -796,7 +796,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1846, 605);
+            this.tabPage1.Size = new System.Drawing.Size(1646, 605);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "調査概要";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1381,7 +1381,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1846, 605);
+            this.tabPage2.Size = new System.Drawing.Size(1646, 605);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "担当部所";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2007,7 +2007,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1846, 605);
+            this.tabPage3.Size = new System.Drawing.Size(1646, 605);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "調査品目明細";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2894,7 +2894,7 @@
             this.c1FlexGrid4.Rows.DefaultSize = 44;
             this.c1FlexGrid4.Rows.Fixed = 2;
             this.c1FlexGrid4.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid4.Size = new System.Drawing.Size(1820, 457);
+            this.c1FlexGrid4.Size = new System.Drawing.Size(1982, 457);
             this.c1FlexGrid4.StyleInfo = resources.GetString("c1FlexGrid4.StyleInfo");
             this.c1FlexGrid4.TabIndex = 56;
             this.c1FlexGrid4.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid4_BeforeMouseDown);
@@ -2932,7 +2932,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 34);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1846, 605);
+            this.tabPage8.Size = new System.Drawing.Size(1646, 605);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "備考";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -3012,7 +3012,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1884, 949);
+            this.ClientSize = new System.Drawing.Size(1684, 949);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
