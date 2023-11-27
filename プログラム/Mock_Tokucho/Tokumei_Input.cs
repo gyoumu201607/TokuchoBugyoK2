@@ -8924,7 +8924,7 @@ namespace TokuchoBugyoK2
                 Int32.TryParse(num, out maximumWidth);
                 if (maximumWidth == 0)
                 {
-                    maximumWidth = 1500;
+                    maximumWidth = 1845;
                 }
             }
             num = GlobalMethod.GetCommonValue1("TOKUMEIKACHO_HINMOKU_GRID_MIN_WIDTH");
@@ -8933,7 +8933,7 @@ namespace TokuchoBugyoK2
                 Int32.TryParse(num, out minimumWidth);
                 if (minimumWidth == 0)
                 {
-                    minimumWidth = 1800;
+                    minimumWidth = 1820;
                 }
             }
             if (btnGridSize.Text == "一覧拡大")
@@ -8944,7 +8944,7 @@ namespace TokuchoBugyoK2
                     Int32.TryParse(num, out bigHeight);
                     if (bigHeight == 0)
                     {
-                        bigHeight = 800;
+                        bigHeight = 914;
                     }
                 }
                 num = GlobalMethod.GetCommonValue1("TOKUMEIKACHO_HINMOKU_GRID_PADDING");
