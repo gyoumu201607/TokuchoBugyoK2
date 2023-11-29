@@ -813,6 +813,7 @@ namespace TokuchoBugyoK2
             this.c1FlexGrid3.Size = new System.Drawing.Size(414, 57);
             this.c1FlexGrid3.StyleInfo = resources.GetString("c1FlexGrid3.StyleInfo");
             this.c1FlexGrid3.TabIndex = 22;
+            this.c1FlexGrid3.Click += new System.EventHandler(this.c1FlexGrid3_Click);
             // 
             // item1_ShukeiFolder
             // 
