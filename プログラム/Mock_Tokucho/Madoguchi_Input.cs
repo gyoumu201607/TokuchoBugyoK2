@@ -10757,10 +10757,10 @@ namespace TokuchoBugyoK2
                     //Garoon連携対象である場合、かつ、更新処理でエラーが出ていない場合に連携処理を行う。
                     if (item1_GaroonRenkei.Checked == true && globalErrorFlg == "0")
                     {
-                        //1578
+                        //1578 1597
                         for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
                         {
-                            if (c1FlexGrid4.Rows[i]["GroupMei"] == null || c1FlexGrid4.Rows[i]["GroupMei"].ToString() == "" && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2")
+                            if (c1FlexGrid4.Rows[i]["GroupMei"] == null || c1FlexGrid4.Rows[i]["GroupMei"].ToString() == "" && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "2")
                             {
                                 set_error(GlobalMethod.GetMessage("W20304", ""));
                                 // ピンク背景
