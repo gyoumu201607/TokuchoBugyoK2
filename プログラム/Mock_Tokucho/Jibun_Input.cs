@@ -4619,36 +4619,15 @@ namespace TokuchoBugyoK2
                     if (item1_GaroonRenkei.Checked == true && globalErrorFlg == "0")
                     {
                         //1578 1597
+                        int errorC = 0;
                         for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
                         {
                             if (c1FlexGrid4.Rows[i]["GroupMei"] == null || c1FlexGrid4.Rows[i]["GroupMei"].ToString() == "" && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "2")
                             {
-                                //set_error(GlobalMethod.GetMessage("W20304", ""));
-
-                                
-                                    //M_Messageからメッセージを取得する
-                                    using (var conn = new SqlConnection(connStr))
-                                    {
-                                        conn.Open();
-                                        var cmd = conn.CreateCommand();
-                                        var comboDt = new System.Data.DataTable();
-                                        //SQL生成
-                                        cmd.CommandText = "SELECT " +
-                                          "DISTINCT Message " +
-                                          "FROM " + "M_Message " +
-                                          "WHERE MessageID = 'W20304' ";
-                                        //データ取得
-                                        var sda = new SqlDataAdapter(cmd);
-                                        sda.Fill(comboDt);
-
-                                        String message = "";
-                                        if (comboDt.Rows.Count > 0)
-                                        {
-                                            message = comboDt.Rows[0][0].ToString();
-                                        }
-                                    //ErrorMessage.Text += Environment.NewLine;
-                                    ErrorMessage.Text += message;
-                                    //ErrorBox.Visible = true;
+                                if (errorC == 0)
+                                {
+                                    set_error(GlobalMethod.GetMessage("W20304", ""));
+                                    errorC = 1;
                                 }
 
                                 // ピンク背景

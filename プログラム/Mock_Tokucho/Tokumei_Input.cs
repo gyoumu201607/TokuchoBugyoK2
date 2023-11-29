@@ -4707,11 +4707,16 @@ namespace TokuchoBugyoK2
                     if (item1_GaroonRenkei.Checked == true && globalErrorFlg == "0")
                     {
                         //1578 1597
+                        int errorC = 0;
                         for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
                         {
                             if (c1FlexGrid4.Rows[i]["GroupMei"] == null || c1FlexGrid4.Rows[i]["GroupMei"].ToString() == "" && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "2")
                             {
-                                set_error(GlobalMethod.GetMessage("W20304", ""));
+                                if (errorC == 0)
+                                {
+                                    set_error(GlobalMethod.GetMessage("W20304", ""));
+                                    errorC = 1;
+                                }
                                 // ピンク背景
                                 c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                                 // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
