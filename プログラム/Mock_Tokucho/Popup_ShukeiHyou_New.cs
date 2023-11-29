@@ -1212,6 +1212,7 @@ namespace TokuchoBugyoK2
             int prntflg = 1;
 
             // ファイル名重複チェック
+            FileNameList.Clear();
             for (int r = 0; r < filerow; r++)
             {
                 if (!FileNameList.Contains(c1FlexGrid3[r, 0].ToString()))
