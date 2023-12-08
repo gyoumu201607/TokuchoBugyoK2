@@ -2448,6 +2448,11 @@ namespace TokuchoBugyoK2
                     {
                         c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"];
                     }
+                    //No.1622
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1" && DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "2")
+                    {
+                        c1FlexGrid4.GetCellRange(RowCount, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                    }
                     //工事・構造物名
                     c1FlexGrid4.Rows[RowCount]["KojiKoubutsuMei"] = DT_ChousaHinmoku.Rows[i]["ChousaKoujiKouzoubutsumei"];
                     //単位当たり単価（単位）
@@ -10782,6 +10787,11 @@ namespace TokuchoBugyoK2
                                 // 必須背景薄黄色
                                 c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.White;
                             }
+                            //No.1622
+                            if(c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "1")
+                            {
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                            }
                         }
                         GaroonBtn_Click(sender, e);
                     }
@@ -15809,7 +15819,7 @@ namespace TokuchoBugyoK2
                         {
                             sRank = "-";
                             where = "TankaRankDeleteFlag != 1 AND TankaKeiyakuID = (SELECT TanpinGyoumuCD FROM TanpinNyuuryoku WHERE MadoguchiID = " + MadoguchiID + ") " +
-                                "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'-'" ;
+                                "AND TankaRankHinmoku COLLATE Japanese_XJIS_100_CI_AS_SC = N'-'";
                         }
                         combodt = new DataTable();
                         combodt = GlobalMethod.getData(discript, value, table, where);
@@ -15979,7 +15989,7 @@ namespace TokuchoBugyoK2
                 {
                     strIndex = 200;
                 }
-            
+
 
                 if (strIndex != 0)
                 {
@@ -16063,29 +16073,47 @@ namespace TokuchoBugyoK2
                         }
                     }
                 }
-                ////奉行エクセル
-                //// グループ名
+                //奉行エクセル
+                // グループ名
                 if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
                 {
-                    strIndex  = 15;
+                    strIndex = 15;
                 }
-                //作業フォルダ
+                //集計表Ver
                 if (e.Col == c1FlexGrid4.Cols["ShukeihyoVer"].Index)
                 {
                     if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                     {
-
                         c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.Rows[e.Row][58] = "-";
                         c1FlexGrid4.Rows[e.Row][59] = "";
+                    } //No.1622
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "1")
+                    {
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.Rows[e.Row][59] = "";
                     }
-                    else
+                    if(c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2")
                     {
                         c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.White;
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
                         //1572
                         c1FlexGrid4.Rows[e.Row][58] = 1;
+                    }
+                }
+                //No.1622
+                //分割方法
+                if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
+                {
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "1")
+                    {
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.Rows[e.Row][59] = "";
+                    }
+                    if (c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "2")
+                    {
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
                     }
                 }
             }
@@ -19223,6 +19251,15 @@ namespace TokuchoBugyoK2
             if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
             {
                 if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
+                {
+                    e.Cancel = true;
+                }
+            }
+
+            //No.1622
+            if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
+            {
+                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "1")
                 {
                     e.Cancel = true;
                 }

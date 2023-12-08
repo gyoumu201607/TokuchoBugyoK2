@@ -2346,6 +2346,12 @@ namespace TokuchoBugyoK2
                     {
                         c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"];
                     }
+                    //No.1622
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1" && DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "2")
+                    {
+                        c1FlexGrid4.GetCellRange(RowCount, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                    }
+                    //集計表Ver
                     if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "2")
                     {
                         //集計表Verが初期値であれば背景色をグレー
@@ -4643,6 +4649,11 @@ namespace TokuchoBugyoK2
                             {
                                 // 必須背景薄黄色
                                 c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.White;
+                            }
+                            //No.1622
+                            if (c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "1")
+                            {
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                             }
                         }
                             // VIPS　20220302　課題管理表No1275(969)　ADD　「Garoon連携処理」追加　対応
@@ -8005,12 +8016,13 @@ namespace TokuchoBugyoK2
                         }
                     }
                 }
-                ////奉行エクセル
-                //// グループ名
+                //奉行エクセル
+                // グループ名
                 if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
                 {
                     strIndex = 15;
                 }
+                //集計表Ver
                 if (e.Col == c1FlexGrid4.Cols["ShukeihyoVer"].Index)
                 {
                     if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
@@ -8020,8 +8032,14 @@ namespace TokuchoBugyoK2
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.Rows[e.Row][58] = "-";
                         c1FlexGrid4.Rows[e.Row][59] = "";
+                    } 
+                    //No.1622
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "1")
+                    {
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.Rows[e.Row][59] = "";
                     }
-                    else
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2")
                     {
                         c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.White;
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
@@ -8029,6 +8047,21 @@ namespace TokuchoBugyoK2
                         c1FlexGrid4.Rows[e.Row][58] = 1;
                     }
                 }
+                //No.1622
+                //分割方法
+                if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
+                {
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "1")
+                    {
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.Rows[e.Row][59] = "";
+                    }
+                    if (c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "2")
+                    {
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
+                    }
+                }
+
             }
         }
 
@@ -9531,6 +9564,15 @@ namespace TokuchoBugyoK2
                     e.Cancel = true;
                 }
             }
+            //No.1622
+            if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
+            {
+                if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "1")
+                {
+                    e.Cancel = true;
+                }
+            }
+
         }
 
         private void c1FlexGrid4_AfterScroll(object sender, RangeEventArgs e)
