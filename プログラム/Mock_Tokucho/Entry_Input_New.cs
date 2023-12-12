@@ -6857,10 +6857,11 @@ namespace TokuchoBugyoK2
         }
         private string GetPercentText(double num)
         {
-            if (num > 100)
-            {
-                num = 100;
-            }
+            //No1623対応（上限100%を外して入力配分額をそのまま反映する）
+            //if (num > 100)
+            //{
+            //    num = 100;
+            //}
             string str = string.Format("{0:F2}", num) + "%";
             return str;
         }
