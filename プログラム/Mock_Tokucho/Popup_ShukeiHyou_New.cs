@@ -52,6 +52,7 @@ namespace TokuchoBugyoK2
         //選択帳票の集計表Ver
         private int ShukeiVer;
         private string chousainShukeiFolder;
+        private int prShukeiVer = 0;
 
         // VIPS　20220316　課題管理表No1263(957)　ADD　自分大臣の時だけファイルDLタイプの選択を追加
         Popup_Download download_form = null;
@@ -224,11 +225,26 @@ namespace TokuchoBugyoK2
 
             //帳票情報
             //SQL変数
+            DataTable VerList = GlobalMethod.getData("CommonMasterID", "CommonValue1", "M_CommonMaster", "CommonMasterKye = 'CHOUSA_SHUUKEI_VER' ");
+            if (VerList != null && VerList.Rows.Count > 0)
+            {
+                int.TryParse(VerList.Rows[0][0].ToString(), out prShukeiVer);
+            }
+            //帳票Verラジオボタン
+            if (prShukeiVer == 1)
+            {
+                radioButton_Ver1.Checked = true;
+            }
+            else
+            {
+                radioButton_Ver2.Checked = true;
+            }
+            //帳票　コンボ
             combodt = new System.Data.DataTable();
             discript = "PrintName ";
             value = "PrintListID ";
             table = "Mst_PrintList";
-            where = "MENU_ID = 203 AND PrintBunruiCD = 3 AND PrintDelFlg <> 1 ORDER BY PrintListNarabijun ";
+            where = "MENU_ID = 203 AND PrintBunruiCD = 3 AND PrintDelFlg <> 1 AND PrintShukeiVer = " + prShukeiVer + " ORDER BY PrintListNarabijun ";
             combodt = GlobalMethod.getData(discript, value, table, where);
             comboBox_Chohyo.DisplayMember = "Discript";
             comboBox_Chohyo.ValueMember = "Value";
@@ -268,7 +284,8 @@ namespace TokuchoBugyoK2
                     //"WHERE (ChousainYukoukikanFrom IS NULL OR ChousainYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
                     //"AND (ChousainYukoukikanTo IS NULL OR ChousainYukoukikanTo >= '" + ToNendo + "/3/31' ) ";
                     "WHERE (ChousainYukoukikanFrom IS NULL OR ChousainYukoukikanFrom <= '" + today + "' ) " +
-                    "AND (ChousainYukoukikanTo IS NULL OR ChousainYukoukikanTo >= '" + today + "' ) ";
+                    "AND (ChousainYukoukikanTo IS NULL OR ChousainYukoukikanTo >= '" + today + "' ) " +
+                    "AND RetireFLG = 0";
 
                 if (src_Busho.Text != "")
                 {
@@ -1388,13 +1405,12 @@ namespace TokuchoBugyoK2
                         {
                             if (result[0].Trim() == "1")
                             {
-                                //set_error(result[1]);
-                                set_error("", 0);
+                                //set_error("", 0);
                                 set_error(result[1]);
                             }
                             else
                             {
-                                set_error("", 0);
+                                //set_error("", 0);
 
                                 // VIPS　20220316　課題管理表No1263(957)　ADD　保存、DL選択の分岐を追加	
                                 // 直接フォルダに保存するかDLダイアログを表示するか
@@ -2524,43 +2540,64 @@ namespace TokuchoBugyoK2
             // 作業フォルダ作成&DB登録
             string bushoCD3 = "";
             string ryakuMei = "";
-            string convStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-            using (var conn = new SqlConnection(convStr))
-            {
-                try
-                {
-                    var cmd = conn.CreateCommand();
-                    DataTable dtm = new DataTable();
-                    cmd.CommandText = "SELECT KashoShibuCD, KaMei FROM Mst_Busho WHERE GyoumuBushoCD = '" + Busho + "'";
-                    var sdm = new SqlDataAdapter(cmd);
-                    dtm.Clear();
-                    sdm.Fill(dtm);
-                    if (dtm != null && dtm.Rows.Count > 0)
-                    {
-                        bushoCD3 = dtm.Rows[0][0].ToString();
-                        ryakuMei = dtm.Rows[0][1].ToString();
-                    }
-                    else
-                    {
-                        // 所属がマスタにありません。
-                        set_error(GlobalMethod.GetMessage("E20313", ""));
-                        return false;
-                    }
+            //string convStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+            //using (var conn = new SqlConnection(convStr))
+            //{
+            //    try
+            //    {
+            //        var cmd = conn.CreateCommand();
+            //        DataTable dtm = new DataTable();
+            //        //cmd.CommandText = "SELECT KashoShibuCD, KaMei FROM Mst_Busho WHERE GyoumuBushoCD = '" + Busho + "'";
+            //        cmd.CommandText = "SELECT KashoShibuCD, KaMei FROM Mst_Busho WHERE GyoumuBushoCD = '" + src_Busho.SelectedValue.ToString() + "'";
+            //        var sdm = new SqlDataAdapter(cmd);
+            //        dtm.Clear();
+            //        sdm.Fill(dtm);
+            //        if (dtm != null && dtm.Rows.Count > 0)
+            //        {
+            //            bushoCD3 = dtm.Rows[0][0].ToString();
+            //            ryakuMei = dtm.Rows[0][1].ToString();
+            //        }
+            //        else
+            //        {
+            //            // 所属がマスタにありません。
+            //            set_error(GlobalMethod.GetMessage("E20313", ""));
+            //            return false;
+            //        }
 
-                    conn.Close();
-                }
-                catch (Exception)
+            //        conn.Close();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        // エラーが発生しました
+            //        return false;
+            //    }
+            //}
+            string KameiPath;
+            if (src_Busho.SelectedValue.ToString() == "171000") //北海道
+            {
+                KameiPath = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
+            }
+            else
+            {
+                DataTable BushoPath = GlobalMethod.getData("FolderPath", "FolderPath", "M_Folder", "MENU_ID = 100 AND FolderBunruiCD = 1 AND FolderBushoCD = '" + src_Busho.SelectedValue.ToString() + "' ");
+                if (BushoPath != null && BushoPath.Rows.Count > 0)
                 {
-                    // エラーが発生しました
+                    KameiPath = BushoPath.Rows[0][0].ToString();
+                    KameiPath = KameiPath.Replace(@"$FOLDER_BASE$", "").Replace(@"/", "");
+                }
+                else
+                {
+                    // FolderPathが取得できない
                     return false;
                 }
             }
+
             string basePath;
             DataTable BaseList = GlobalMethod.getData("CommonMasterID", "CommonValue1", "M_CommonMaster", "CommonMasterKye = 'ENTORY_SAGYOU_HOLDERBASE' ");
             if (BaseList != null && BaseList.Rows.Count > 0)
             {
                 basePath = BaseList.Rows[0][0].ToString();
-                basePath = basePath.Replace(@"$NENDO$", FromNendo.ToString()).Replace(@"$BUSHO$", bushoCD3 + ryakuMei).Replace(@"$TANTOUSHA$", ChousainMeiList[c].ToString()).Replace(@"$TOKUCHOBANGOU$", TokuhoBangou.ToString());
+                basePath = basePath.Replace(@"$NENDO$", FromNendo.ToString()).Replace(@"$BUSHO$", KameiPath).Replace(@"$TANTOUSHA$", ChousainMeiList[c].ToString()).Replace(@"$TOKUCHOBANGOU$", TokuchoList[c].ToString());
                 //作業フォルダ作成
                 DirectoryInfo ds = new DirectoryInfo(basePath);
                 if (!Directory.Exists(basePath))
@@ -2592,7 +2629,7 @@ namespace TokuchoBugyoK2
                         "MadoguchiL1SagyouHolder = '" + basePath + "' " +
                         " WHERE MadoguchiL1ChousaShinchoku != 80 " +
                         " AND MadoguchiID = '" + MadoguchiID + "' " +
-                        " AND MadoguchiL1ChousaBushoCD = '" + Busho + "' " +
+                        " AND MadoguchiL1ChousaBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
                         " AND MadoguchiL1ChousaTantoushaCD = '" + KojincdList[c].ToString() + "' " +
                         " AND MadoguchiL1TokuchoBangou = '" + TokuchoList[c].ToString() + "' ";
                         cmd.ExecuteNonQuery();
@@ -2644,6 +2681,27 @@ namespace TokuchoBugyoK2
         private void c1FlexGrid3_Click(object sender, EventArgs e)
         {
             c1FlexGrid3.HighLight = HighLightEnum.Always;
+        }
+        private void radioButton_Ver_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_Ver1.Checked)
+            {
+                prShukeiVer = 1;
+            }
+            else
+            {
+                prShukeiVer = 2;
+            }
+            //帳票　コンボ再設定
+            DataTable combodt = new System.Data.DataTable();
+            string discript = "PrintName ";
+            string value = "PrintListID ";
+            string table = "Mst_PrintList";
+            string where = "MENU_ID = 203 AND PrintBunruiCD = 3 AND PrintDelFlg <> 1 AND PrintShukeiVer = " + prShukeiVer + " ORDER BY PrintListNarabijun ";
+            combodt = GlobalMethod.getData(discript, value, table, where);
+            comboBox_Chohyo.DisplayMember = "Discript";
+            comboBox_Chohyo.ValueMember = "Value";
+            comboBox_Chohyo.DataSource = combodt;
         }
     }
 }
