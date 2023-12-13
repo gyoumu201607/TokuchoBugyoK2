@@ -9194,44 +9194,6 @@ namespace TokuchoBugyoK2
 
         private void gridSizeChange()
         {
-            //if (btnGridSize.Text == "一覧拡大")
-            //{
-            //    // height:457 → 914
-            //    // width:1820 → 3752
-            //    btnGridSize.Text = "一覧縮小";
-            //    c1FlexGrid4.Height = 914;
-            //    c1FlexGrid4.Width = 3752;
-            //}
-            //else
-            //{
-            //    // height:914 → 457
-            //    // width:3752 → 1820
-            //    btnGridSize.Text = "一覧拡大";
-            //    c1FlexGrid4.Height = 457;
-            //    c1FlexGrid4.Width = 1820;
-            //}
-            //if (btnGridSize.Text == "一覧拡大")
-            //{
-            //    // height:457 → 914
-            //    // width:1820 → 3752
-            //    c1FlexGrid4.MaximumSize = new System.Drawing.Size(0, 914);
-            //    btnGridSize.Text = "一覧縮小";
-            //    c1FlexGrid4.Height = 914;
-            //    c1FlexGrid4.Width = this.Size.Width - 40;
-            //    //c1FlexGrid4.Width = 3752;
-            //    //c1FlexGrid4.Dock = DockStyle.Fill;
-            //}
-            //else
-            //{
-            //    // height:914 → 457
-            //    // width:3752 → 1820
-            //    c1FlexGrid4.MaximumSize = new System.Drawing.Size(1820, 457);
-            //    btnGridSize.Text = "一覧拡大";
-            //    c1FlexGrid4.Height = 457;
-            //    c1FlexGrid4.Width = 1820;
-            //    //c1FlexGrid4.Dock = DockStyle. None;
-            //}
-
             string num = "";
             int smallWidth = 0;
             int smallHeight = 0;
@@ -9279,18 +9241,13 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                // height:457 → 914
-                // width:1820 → 3752
-                //c1FlexGrid4.MaximumSize = new System.Drawing.Size(0, bugHeight);
+                //初回の画面表示
                 //1580
-                c1FlexGrid4.MaximumSize = new System.Drawing.Size(maximumWidth, bigHeight);
+                c1FlexGrid4.MaximumSize = new System.Drawing.Size(1862, bigHeight);
                 c1FlexGrid4.MinimumSize = new System.Drawing.Size(minimumWidth, bigHeight);
                 btnGridSize.Text = "一覧縮小";
-                //c1FlexGrid4.Height = 914;
                 c1FlexGrid4.Height = bigHeight;
-                //c1FlexGrid4.Width = this.Size.Width - 40;
                 c1FlexGrid4.Width = this.Size.Width - padding;
-                //c1FlexGrid4.Width = 3752;
 
                 // 1201 最大化する
                 // 調査品目明細タブを初めて開いた
@@ -9339,15 +9296,11 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                // height:914 → 457
-                // width:3752 → 1820
-                //c1FlexGrid4.MaximumSize = new System.Drawing.Size(1820, 457);
+                //タブ移動時表示
                 c1FlexGrid4.MaximumSize = new System.Drawing.Size(maximumWidth, smallHeight);
                 c1FlexGrid4.MinimumSize = new System.Drawing.Size(minimumWidth, smallHeight);
                 btnGridSize.Text = "一覧拡大";
-                //c1FlexGrid4.Height = 457;
                 c1FlexGrid4.Height = smallHeight;
-                //c1FlexGrid4.Width = 1820;
                 c1FlexGrid4.Width = smallWidth;
             }
         }
