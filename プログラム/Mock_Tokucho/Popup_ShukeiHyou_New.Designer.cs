@@ -66,6 +66,9 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox_Chohyo = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioButton_Ver1 = new System.Windows.Forms.RadioButton();
+            this.radioButton_Ver2 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.item1_ShukeiFolder_icon = new System.Windows.Forms.PictureBox();
@@ -97,6 +100,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel11.SuspendLayout();
             this.ErrorBox.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.item1_ShukeiFolder_icon)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -593,12 +597,14 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.22222F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.77778F));
             this.tableLayoutPanel8.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.comboBox_Chohyo, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.comboBox_Chohyo, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel10, 1, 0);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 519);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(540, 29);
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(540, 54);
             this.tableLayoutPanel8.TabIndex = 21;
             // 
             // label7
@@ -620,13 +626,50 @@ namespace TokuchoBugyoK2
             this.comboBox_Chohyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Chohyo.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F);
             this.comboBox_Chohyo.FormattingEnabled = true;
-            this.comboBox_Chohyo.Location = new System.Drawing.Point(149, 3);
+            this.comboBox_Chohyo.Location = new System.Drawing.Point(149, 30);
             this.comboBox_Chohyo.Name = "comboBox_Chohyo";
             this.comboBox_Chohyo.Size = new System.Drawing.Size(255, 21);
-            this.comboBox_Chohyo.TabIndex = 8;
+            this.comboBox_Chohyo.TabIndex = 17;
             this.comboBox_Chohyo.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBox_DrawItem);
             this.comboBox_Chohyo.SelectedIndexChanged += new System.EventHandler(this.comboBox_Chohyo_SelectedIndexChanged);
             this.comboBox_Chohyo.TextChanged += new System.EventHandler(this.Chohyo_TextChanged);
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.radioButton_Ver1, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.radioButton_Ver2, 1, 0);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(149, 3);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(155, 21);
+            this.tableLayoutPanel10.TabIndex = 18;
+            // 
+            // radioButton_Ver1
+            // 
+            this.radioButton_Ver1.AutoSize = true;
+            this.radioButton_Ver1.Location = new System.Drawing.Point(3, 3);
+            this.radioButton_Ver1.Name = "radioButton_Ver1";
+            this.radioButton_Ver1.Size = new System.Drawing.Size(52, 17);
+            this.radioButton_Ver1.TabIndex = 0;
+            this.radioButton_Ver1.Text = "Ver1";
+            this.radioButton_Ver1.UseVisualStyleBackColor = true;
+            this.radioButton_Ver1.CheckedChanged += new System.EventHandler(this.radioButton_Ver_CheckedChanged);
+            // 
+            // radioButton_Ver2
+            // 
+            this.radioButton_Ver2.AutoSize = true;
+            this.radioButton_Ver2.Location = new System.Drawing.Point(80, 3);
+            this.radioButton_Ver2.Name = "radioButton_Ver2";
+            this.radioButton_Ver2.Size = new System.Drawing.Size(52, 17);
+            this.radioButton_Ver2.TabIndex = 1;
+            this.radioButton_Ver2.Text = "Ver2";
+            this.radioButton_Ver2.UseVisualStyleBackColor = true;
+            this.radioButton_Ver2.CheckedChanged += new System.EventHandler(this.radioButton_Ver_CheckedChanged);
             // 
             // tableLayoutPanel9
             // 
@@ -635,7 +678,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.77778F));
             this.tableLayoutPanel9.Controls.Add(this.label8, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.item1_ShukeiFolder_icon, 1, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 554);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 579);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -672,7 +715,7 @@ namespace TokuchoBugyoK2
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.c1FlexGrid2);
-            this.groupBox4.Location = new System.Drawing.Point(3, 582);
+            this.groupBox4.Location = new System.Drawing.Point(3, 607);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(540, 112);
             this.groupBox4.TabIndex = 26;
@@ -704,7 +747,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel7.Controls.Add(this.radioButton_Save, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.btnFileExport, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.button_end, 3, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(216, 798);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(216, 823);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -780,7 +823,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel6.Controls.Add(this.c1FlexGrid3, 1, 2);
             this.tableLayoutPanel6.Controls.Add(this.item1_ShukeiFolder, 1, 3);
             this.tableLayoutPanel6.Controls.Add(this.item_LinkCheckBox, 0, 3);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 700);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 725);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 4;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -872,6 +915,8 @@ namespace TokuchoBugyoK2
             this.ErrorBox.ResumeLayout(false);
             this.ErrorBox.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.item1_ShukeiFolder_icon)).EndInit();
@@ -924,7 +969,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox item1_ShukeiFolder_icon;
-        private System.Windows.Forms.ComboBox comboBox_Chohyo;
         private System.Windows.Forms.CheckBox item_LinkCheckBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.RadioButton radioButton_DL;
@@ -940,5 +984,9 @@ namespace TokuchoBugyoK2
         private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid2;
         private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid3;
         private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid1;
+        private System.Windows.Forms.ComboBox comboBox_Chohyo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.RadioButton radioButton_Ver1;
+        private System.Windows.Forms.RadioButton radioButton_Ver2;
     }
 }
