@@ -3674,7 +3674,7 @@ namespace TokuchoBugyoK2
         private void numPercentTextBox_Leave(object sender, EventArgs e)
         {
             //// 新規登録の時連動しない
-            //if (mode == MODE.INSERT || mode == MODE.PLAN) return;
+            //if (mode == MODE.INSERT || mode == MODE.PLAN) return
             System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
             tb.Text = GetPercentText(GetDouble(tb.Text));
             // 編集不可なら、何もしない
@@ -4186,11 +4186,12 @@ namespace TokuchoBugyoK2
                     lblAftCaBmRate = base_tbl07_4_lblRate4;
                     break;
             }
-            // パセート再計算
+            // パーセント再計算
             double dPercent = 0;
-            if(total > 0)
+            if (total > 0)
             {
-                dPercent = (double)(lngAmtTax * 100 / total);
+                //dPercent = (double)(lngAmtTax * 100 / total);
+                dPercent = lngAmtTax * 100 / Convert.ToDouble(total);
             }
             txtAftCaBmPercent.Text = GetPercentText(dPercent);
             GetTotalPercent("ca_tbl02_AftCaBm_numPercent", 5);
@@ -6856,10 +6857,11 @@ namespace TokuchoBugyoK2
         }
         private string GetPercentText(double num)
         {
-            if (num > 100)
-            {
-                num = 100;
-            }
+            //No1623対応（上限100%を外して入力配分額をそのまま反映する）
+            //if (num > 100)
+            //{
+            //    num = 100;
+            //}
             string str = string.Format("{0:F2}", num) + "%";
             return str;
         }
@@ -6901,7 +6903,8 @@ namespace TokuchoBugyoK2
         private long Get_Zeikomi(long num)
         {
             long zei = GetInt(ca_tbl01_txtTax.Text) + 100;
-            long zeinuki = num * zei;
+            // long zeinuki = num * zei
+            long zeinuki = num * zei / 100;
             return zeinuki;
         }
 
