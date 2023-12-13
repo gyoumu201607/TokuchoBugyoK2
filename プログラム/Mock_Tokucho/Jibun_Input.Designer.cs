@@ -1990,6 +1990,7 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.AutoScrollMargin = new System.Drawing.Size(25, 0);
             this.tabPage3.Controls.Add(this.button6_2);
             this.tabPage3.Controls.Add(this.button4_2);
             this.tabPage3.Controls.Add(this.btnRowSizeChange);
@@ -2894,7 +2895,7 @@
             this.c1FlexGrid4.Rows.DefaultSize = 44;
             this.c1FlexGrid4.Rows.Fixed = 2;
             this.c1FlexGrid4.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid4.Size = new System.Drawing.Size(1982, 457);
+            this.c1FlexGrid4.Size = new System.Drawing.Size(2312, 457);
             this.c1FlexGrid4.StyleInfo = resources.GetString("c1FlexGrid4.StyleInfo");
             this.c1FlexGrid4.TabIndex = 56;
             this.c1FlexGrid4.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid4_BeforeMouseDown);

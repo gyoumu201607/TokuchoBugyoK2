@@ -8995,7 +8995,7 @@ namespace TokuchoBugyoK2
                 //1580
                 //c1FlexGrid4.MaximumSize = new System.Drawing.Size(0, bigHeight);
                 //初回の画面表示
-                c1FlexGrid4.MaximumSize = new System.Drawing.Size(maximumWidth, bigHeight);
+                c1FlexGrid4.MaximumSize = new System.Drawing.Size(0, bigHeight);
                 c1FlexGrid4.MinimumSize = new System.Drawing.Size(minimumWidth, bigHeight);
                 btnGridSize.Text = "一覧縮小";
                 c1FlexGrid4.Height = bigHeight;
