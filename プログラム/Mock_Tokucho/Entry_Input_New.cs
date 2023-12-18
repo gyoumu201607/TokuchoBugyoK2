@@ -3928,9 +3928,38 @@ namespace TokuchoBugyoK2
                 GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
                 base_tbl07_4_lblAmtAll.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
                 // 配分率の計算 No.1467
-                cal_aftCaBmPercent(sNo);
+                cal_aftCaBmPercent(sNo); 
                 return;
             }
+            // No1604 追加対応（配分額(税抜)を入力項目に変更）
+            if (sName.Contains("ca_tbl02_AftCaBm_numAmt"))
+            {
+                // 配分額(税抜)合計
+                GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
+                string sNo = sName.Replace("ca_tbl02_AftCaBm_numAmt", "");
+                switch (sNo)
+                {
+                    case "1":
+                        // 調査部 業務配分別配分 契約 配分額(税抜)
+                        calc_aftCaTsFreeTax();
+                        //基本情報等一覧へも反映する
+                        base_tbl07_4_lblAmt1.Text = ca_tbl02_AftCaBm_numAmt1.Text;
+                        break;
+                    case "2":
+                        base_tbl07_4_lblAmt2.Text = ca_tbl02_AftCaBm_numAmt2.Text;
+                        break;
+                    case "3":
+                        base_tbl07_4_lblAmt3.Text = ca_tbl02_AftCaBm_numAmt3.Text;
+                        break;
+                    case "4":
+                        base_tbl07_4_lblAmt4.Text = ca_tbl02_AftCaBm_numAmt4.Text;
+                        break;
+                }
+                //基本情報等一覧の配分額(税抜)合計
+                base_tbl07_4_lblAmtAll.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
+                return;
+            }
+
             if (ca_tbl01_txtZeinukiAmt.Name.Equals(sName))
             {
                 // 契約：税抜(自動計算用)
