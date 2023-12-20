@@ -586,14 +586,10 @@ namespace TokuchoBugyoK2
                 }
                 conn.Close();
             }
-            // 奉行エクセル移管対応 20231004
-            if (!checkBox_BushoIkkatu.Checked)
-            {
-                Paging_all.Text = (Math.Ceiling((double)ListData.Rows.Count / 20)).ToString();
-                Paging_now.Text = (1).ToString();
-                set_data(1);
-                //Resize_Grid("c1FlexGrid1");
-            }
+            Paging_all.Text = (Math.Ceiling((double)ListData.Rows.Count / 20)).ToString();
+            Paging_now.Text = (1).ToString();
+            set_data(1);
+            //Resize_Grid("c1FlexGrid1");
         }
 
         private void c1FlexGrid1_BeforeMouseDown(object sender, C1.Win.C1FlexGrid.BeforeMouseDownEventArgs e)
@@ -1279,7 +1275,11 @@ namespace TokuchoBugyoK2
                         // E20903:分割方法が混在しています。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20903", ""));
-                        // 混在系エラーは問題あるファイルを特定できないので出力を取りやめる？
+                        for (int r = 0; r < filerow; r++)
+                        {
+                            c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                        }
+                        // 混在系エラーは問題あるファイルを特定できないので出力を取りやめる
                         return;
                     }
                     if (BunkatsuList[0] == "2" && BunkatsuList.Contains("1"))
@@ -1287,7 +1287,11 @@ namespace TokuchoBugyoK2
                         // E20903:分割方法が混在しています。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20903", ""));
-                        // 混在系エラーは問題あるファイルを特定できないので出力を取りやめる？
+                        for (int r = 0; r < filerow; r++)
+                        {
+                            c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                        }
+                        // 混在系エラーは問題あるファイルを特定できないので出力を取りやめる
                         return;
                     }
                 }
@@ -1842,7 +1846,8 @@ namespace TokuchoBugyoK2
                             // 個人CD
                             //report_data[3] = dt0.Rows[i][1].ToString();
                             //report_data[3] = dt0.Rows[i][0].ToString();
-                            report_data[3] = ChousainMeiList[i].ToString();
+                            //report_data[3] = ChousainMeiList[i].ToString();
+                            report_data[3] = KojincdList[i].ToString();
                             // 主+副  0:主+副 1:主のみ 2:副
                             report_data[4] = comboBox_Taisho.SelectedValue.ToString();
                             // ファイル名
@@ -2487,10 +2492,18 @@ namespace TokuchoBugyoK2
                     sda.Fill(dt0);
                     if (dt0 != null && dt0.Rows.Count > 0)
                     {
-                        // Verの混在チェック
+                        // 分割方法の混在チェック
                         // E20903:分割方法が混在しています。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20903", ""));
+                        int filerow = c1FlexGrid3.Rows.Count;
+                        for (int r = 0; r < filerow; r++)
+                        {
+                            if (KojincdList[r].ToString() == chkChousain)
+                            {
+                                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                            }
+                        }
                         checkflg = 0;
                     }
                     else
