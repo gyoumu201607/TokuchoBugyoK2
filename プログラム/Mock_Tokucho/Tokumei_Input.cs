@@ -69,7 +69,8 @@ namespace TokuchoBugyoK2
         private string ShukeiHyoFolder = "";
         private string chousaLinkFlg = "0"; // 調査品目明細のフォルダリンク先表示フラグ　1=非表示、0=表示
         //奉行エクセル
-        private string sagyoForuda = ""; //調査品目明細の作業フォルダ表示フラグ　1=非表示、0=表示
+        private string sagyoForuda = ""; //調査品目明細の
+                                         //表示フラグ　1=非表示、0=表示
         // 調査品目明細の削除Key
         private String deleteChousaHinmokuIDs = "";
         private String MadoguchiHoukokuzumi = "";
@@ -6698,6 +6699,29 @@ namespace TokuchoBugyoK2
                                 break;
                             case "2":
                                 if (File.Exists(c1FlexGrid4[hti.Row, hti.Column + 1].ToString()))
+                                {
+                                    System.Diagnostics.Process.Start(c1FlexGrid4[hti.Row, hti.Column + 1].ToString());
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+
+                //1631
+                // 奉行エクセル移管対応
+                // 作業フォルダアイコン
+                if (ColName == "SagyoForuda")
+                {
+                    if (c1FlexGrid4.Rows[hti.Row]["SagyoForuda"] != null)
+                    {
+                        switch (c1FlexGrid4.Rows[hti.Row]["SagyoForuda"].ToString())
+                        {
+                            // アイコン 0:グレー 1:イエロー
+                            case "1":
+                                // 作業フォルダが存在すれば開く
+                                if (Directory.Exists(c1FlexGrid4[hti.Row, hti.Column + 1].ToString()))
                                 {
                                     System.Diagnostics.Process.Start(c1FlexGrid4[hti.Row, hti.Column + 1].ToString());
                                 }

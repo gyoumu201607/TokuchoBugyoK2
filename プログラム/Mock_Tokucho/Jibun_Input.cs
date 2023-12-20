@@ -7360,6 +7360,28 @@ namespace TokuchoBugyoK2
                         }
                     }
                 }
+
+                // 奉行エクセル移管対応
+                // 作業フォルダアイコン
+                if (ColName == "SagyoForuda")
+                {
+                    if (c1FlexGrid4.Rows[hti.Row]["SagyoForuda"] != null)
+                    {
+                        switch (c1FlexGrid4.Rows[hti.Row]["SagyoForuda"].ToString())
+                        {
+                            // アイコン 0:グレー 1:イエロー
+                            case "1":
+                                // 作業フォルダが存在すれば開く
+                                if (Directory.Exists(c1FlexGrid4[hti.Row, hti.Column + 1].ToString()))
+                                {
+                                    System.Diagnostics.Process.Start(c1FlexGrid4[hti.Row, hti.Column + 1].ToString());
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
             }
 
             // フォルダアイコン
