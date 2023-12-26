@@ -2457,6 +2457,9 @@ namespace TokuchoBugyoK2
                         && i != c1FlexGrid4.Cols["HinmokuFukuChousainCD2"].Index
                         && i != c1FlexGrid4.Cols["ChousaHoukokuRank"].Index
                         && i != c1FlexGrid4.Cols["ChousaIraiRank"].Index
+                        //No.1111
+                        && i != c1FlexGrid4.Cols["SagyoForuda"].Index
+                        && i != c1FlexGrid4.Cols["SagyoForudaPath"].Index
                         )
                     {
                         c1FlexGrid4.Cols[i].AllowEditing = EditMode;
