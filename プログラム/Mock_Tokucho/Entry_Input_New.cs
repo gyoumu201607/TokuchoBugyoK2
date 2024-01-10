@@ -8640,7 +8640,8 @@ namespace TokuchoBugyoK2
             {
                 if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text.Trim()))
                 {
-                    set_error(GlobalMethod.GetMessage("W10604", "入札"));
+                    // 2024/01/09　文言変更：入札⇒事前打診
+                    set_error(GlobalMethod.GetMessage("W10604", "事前打診"));
                     prior_tbl02_lblNotOrderReason.BackColor = errorColor;
                     prior_tbl02_picNotOrderReasonAlert.Visible = true;
                     prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
@@ -9118,7 +9119,7 @@ namespace TokuchoBugyoK2
                 if (ca_tbl02_AftCaTs_numPercentAll.Text != "100.00%")
                 {
                     // 調査業務別　配分の合計が100になるように入力してください。
-                    set_error(GlobalMethod.GetMessage("E70045", "(契約タブ)"));
+                    set_error(GlobalMethod.GetMessage("E70045", "契約タブ"));
                     varidateFlag = false;
                 }
             }
@@ -9129,7 +9130,7 @@ namespace TokuchoBugyoK2
                 if (ca_tbl02_AftCaTs_numPercentAll.Text != "0.00%")
                 {
                     // 調査部　業務別配分の合計が不正です。
-                    set_error(GlobalMethod.GetMessage("E10725", "(契約タブ)"));
+                    set_error(GlobalMethod.GetMessage("E10725", "契約タブ"));
                     varidateFlag = false;
                 }
             }
@@ -12499,14 +12500,14 @@ namespace TokuchoBugyoK2
                 if (Directory.Exists(sFolderRenameBef) == false)
                 {
                     isError = true;
-                    set_error(GlobalMethod.GetMessage("E10018", "(基本情報等一覧)"));
+                    set_error(GlobalMethod.GetMessage("E10018", "基本情報等一覧"));
                 }
 
                 //E10019 リネームするフォルダが既に存在します。確認して下さい。
                 if (Directory.Exists(folderTo) == true)
                 {
                     isError = true;
-                    set_error(GlobalMethod.GetMessage("E10019", "(基本情報等一覧)"));
+                    set_error(GlobalMethod.GetMessage("E10019", "基本情報等一覧"));
                 }
 
                 //E10020 リネームするフォルダ（支部のフォルダ）が見つかりませんでした。確認して下さい。
@@ -12519,7 +12520,7 @@ namespace TokuchoBugyoK2
                 if (Directory.Exists(sTo) == false)
                 {
                     isError = true;
-                    set_error(GlobalMethod.GetMessage("E10020", "(基本情報等一覧)"));
+                    set_error(GlobalMethod.GetMessage("E10020", "基本情報等一覧"));
                 }
                 // ファイルを移動処理
                 if (isError == false)
@@ -12536,7 +12537,7 @@ namespace TokuchoBugyoK2
                     catch (Exception ex)
                     {
                         // 移動失敗
-                        set_error(GlobalMethod.GetMessage("E70065", "(基本情報等一覧)"));
+                        set_error(GlobalMethod.GetMessage("E70065", "基本情報等一覧"));
                         GlobalMethod.outputLogger("UpdateEntory->FileMove", ex.Message, AnkenID, UserInfos[1]);
                     }
                 }
@@ -12562,7 +12563,7 @@ namespace TokuchoBugyoK2
                     catch (Exception)
                     {
                         // フォルダを作成する権限がありません。
-                        set_error(GlobalMethod.GetMessage("E70046", "(基本情報等一覧)"));
+                        set_error(GlobalMethod.GetMessage("E70046", "基本情報等一覧"));
                     }
                 }
                 else
@@ -12595,7 +12596,7 @@ namespace TokuchoBugyoK2
                                 catch (Exception)
                                 {
                                     // フォルダを作成する権限がありません。
-                                    set_error(GlobalMethod.GetMessage("E70046", "(基本情報等一覧)"));
+                                    set_error(GlobalMethod.GetMessage("E70046", "基本情報等一覧"));
                                     break;
                                 }
                             }
