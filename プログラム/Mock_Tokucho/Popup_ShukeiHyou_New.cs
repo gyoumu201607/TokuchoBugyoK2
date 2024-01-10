@@ -48,7 +48,8 @@ namespace TokuchoBugyoK2
         private List<string> GroupIDList = new List<string>();
         private List<string> kojinList = new List<string>();
         private List<string> FileNameList = new List<string>();
-
+        private List<string> SyuFukuList = new List<string>();
+        
         //選択帳票の集計表Ver
         private int ShukeiVer;
         private string chousainShukeiFolder;
@@ -263,6 +264,8 @@ namespace TokuchoBugyoK2
             BunkatsuList.Clear();
             kojinList.Clear();
             KojincdList.Clear();
+            GroupIDList.Clear();
+            SyuFukuList.Clear();
 
             var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
 
@@ -1170,11 +1173,25 @@ namespace TokuchoBugyoK2
                             {
                                 if (c1FlexGrid2.Rows[r + 1][4].ToString() == "-")
                                 {
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                                    if (SyuFukuList[r].ToString() == "1")
+                                    {
+                                        c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                                    }
+                                    else
+                                    {
+                                        c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "_見積" + extensions;
+                                    }
                                 }
                                 else
                                 {
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + extensions;
+                                    if (SyuFukuList[r].ToString() == "1")
+                                    {
+                                        c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + extensions;
+                                    }
+                                    else
+                                    {
+                                        c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + "_見積" + extensions;
+                                    }
                                 }
                             }
                         }
@@ -1185,7 +1202,14 @@ namespace TokuchoBugyoK2
                         {
                             c1FlexGrid3.Rows.Add();
                             {
-                                c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                                if (SyuFukuList[r].ToString() == "1")
+                                {
+                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                                }
+                                else
+                                {
+                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "_見積" + extensions;
+                                }
                             }
                         }
                     }
@@ -1270,28 +1294,34 @@ namespace TokuchoBugyoK2
                 // 集計表VerがVer2の場合、調査員単位で分割方法がファイル分割・シート分割混在でメッセージ出力
                 if (ShukeiVer == 2)
                 {
-                    if (BunkatsuList[0] == "1" && BunkatsuList.Contains("2"))
+                    // 分割混在チェックメソッドを使用する
+                    //if (BunkatsuList[0] == "1" && BunkatsuList.Contains("2"))
+                    //{
+                    //    // E20903:分割方法が混在しています。
+                    //    set_error("", 0);
+                    //    set_error(GlobalMethod.GetMessage("E20903", ""));
+                    //    for (int r = 0; r < filerow; r++)
+                    //    {
+                    //        c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                    //    }
+                    //    // 混在系エラーは問題あるファイルを特定できないので出力を取りやめる
+                    //    return;
+                    //}
+                    //if (BunkatsuList[0] == "2" && BunkatsuList.Contains("1"))
+                    //{
+                    //    // E20903:分割方法が混在しています。
+                    //    set_error("", 0);
+                    //    set_error(GlobalMethod.GetMessage("E20903", ""));
+                    //    for (int r = 0; r < filerow; r++)
+                    //    {
+                    //        c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                    //    }
+                    //    // 混在系エラーは問題あるファイルを特定できないので出力を取りやめる
+                    //    return;
+                    //}
+                    int.TryParse(BunkatsuList[0].ToString(), out int BunkatsuType);
+                    if (!bunkatsuCheck(KojincdList[0].ToString(), BunkatsuType))
                     {
-                        // E20903:分割方法が混在しています。
-                        set_error("", 0);
-                        set_error(GlobalMethod.GetMessage("E20903", ""));
-                        for (int r = 0; r < filerow; r++)
-                        {
-                            c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
-                        }
-                        // 混在系エラーは問題あるファイルを特定できないので出力を取りやめる
-                        return;
-                    }
-                    if (BunkatsuList[0] == "2" && BunkatsuList.Contains("1"))
-                    {
-                        // E20903:分割方法が混在しています。
-                        set_error("", 0);
-                        set_error(GlobalMethod.GetMessage("E20903", ""));
-                        for (int r = 0; r < filerow; r++)
-                        {
-                            c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
-                        }
-                        // 混在系エラーは問題あるファイルを特定できないので出力を取りやめる
                         return;
                     }
                 }
@@ -1763,7 +1793,7 @@ namespace TokuchoBugyoK2
                         //}
 
                         // 集計表Ver1、Ver2混在チェック
-                        if (!fileErrorCheck(KojincdList[i].ToString()))
+                        if (!fileErrorCheck(KojincdList[i].ToString(), SyuFukuList[i].ToString()))
                         {
                             prntflg = 0;
                         }
@@ -2251,7 +2281,7 @@ namespace TokuchoBugyoK2
                 {
                     var cmd = conn.CreateCommand();
                     //  1:主のデータを取得
-                    if (comboBox_Taisho.Text != null && comboBox_Taisho.SelectedValue.ToString() == "1")
+                    if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0" || comboBox_Taisho.SelectedValue.ToString() == "1"))
                     {
                         for (int r = 0; r < kojinList.Count; r++)
                         {
@@ -2287,12 +2317,13 @@ namespace TokuchoBugyoK2
                                     GroupMeiList.Add(dt0.Rows[i][1].ToString());
                                     BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                     GroupIDList.Add(dt0.Rows[i][3].ToString());
+                                    SyuFukuList.Add("1");
                                 }
                             }
                         }
                     }
                     // 2:副1と副2のデータを取得
-                    if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "2"))
+                    if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0" || comboBox_Taisho.SelectedValue.ToString() == "2"))
                     {
                         for (int r = 0; r < kojinList.Count; r++)
                         {
@@ -2331,57 +2362,58 @@ namespace TokuchoBugyoK2
                                     GroupMeiList.Add(dt0.Rows[i][1].ToString());
                                     BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                     GroupIDList.Add(dt0.Rows[i][3].ToString());
+                                    SyuFukuList.Add("2");
                                 }
                             }
                         }
                     }
                     // 0:主+副
-                    if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0"))
-                    {
-                        for (int r = 0; r < kojinList.Count; r++)
-                        {
-                            cmd.CommandText = "SELECT distinct " +
-                                "mc.ChousainMei " +
-                                ",mg.MadoguchiGroupMei " +
-                                ",ch.ChousaBunkatsuHouhou " +
-                                ",ch.ChousaMadoguchiGroupMasterID " +
-                                "FROM ChousaHinmoku ch " +
-                                "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ((ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD) " +
-                                "OR (ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
-                                "OR (ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD)) " +
-                                "LEFT JOIN Mst_Chousain mc ON ((ch.HinmokuChousainCD = mc.KojinCD) OR (ch.HinmokuFukuChousainCD1 = mc.KojinCD) OR (ch.HinmokuFukuChousainCD2 = mc.KojinCD)) " +
-                                "LEFT JOIN MadoguchiGroupMaster mg ON ch.ChousaMadoguchiGroupMasterID = mg.MadoguchiGroupMasterID " +
-                                "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND (( ch.HinmokuChousainCD = '" + kojinList[r] + "' ) " +
-                                "OR (ch.HinmokuFukuChousainCD1 = '" + kojinList[r] + "' ) " +
-                                "OR (ch.HinmokuFukuChousainCD2 = '" + kojinList[r] + "' )) " +
-                                "AND ((ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
-                                "OR (ch.HinmokuRyakuBushoFuku1CD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
-                                "OR (ch.HinmokuRyakuBushoFuku2CD = '" + src_Busho.SelectedValue.ToString() + "' )) " +
-                                "AND ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
-                                "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
-                                "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
-                                "AND mjmc.MadoguchiL1ChousaShinchoku != 80 " +
-                                "AND mc.KojinCD = '" + kojinList[r] + "' " +
-                                "ORDER BY mg.MadoguchiGroupMei, ch.ChousaBunkatsuHouhou";
-                            var sdb = new SqlDataAdapter(cmd);
-                            DataTable dt0 = new DataTable();
-                            sdb.Fill(dt0);
+                    //if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0"))
+                    //{
+                    //    for (int r = 0; r < kojinList.Count; r++)
+                    //    {
+                    //        cmd.CommandText = "SELECT distinct " +
+                    //            "mc.ChousainMei " +
+                    //            ",mg.MadoguchiGroupMei " +
+                    //            ",ch.ChousaBunkatsuHouhou " +
+                    //            ",ch.ChousaMadoguchiGroupMasterID " +
+                    //            "FROM ChousaHinmoku ch " +
+                    //            "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ((ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD) " +
+                    //            "OR (ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
+                    //            "OR (ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD)) " +
+                    //            "LEFT JOIN Mst_Chousain mc ON ((ch.HinmokuChousainCD = mc.KojinCD) OR (ch.HinmokuFukuChousainCD1 = mc.KojinCD) OR (ch.HinmokuFukuChousainCD2 = mc.KojinCD)) " +
+                    //            "LEFT JOIN MadoguchiGroupMaster mg ON ch.ChousaMadoguchiGroupMasterID = mg.MadoguchiGroupMasterID " +
+                    //            "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND (( ch.HinmokuChousainCD = '" + kojinList[r] + "' ) " +
+                    //            "OR (ch.HinmokuFukuChousainCD1 = '" + kojinList[r] + "' ) " +
+                    //            "OR (ch.HinmokuFukuChousainCD2 = '" + kojinList[r] + "' )) " +
+                    //            "AND ((ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
+                    //            "OR (ch.HinmokuRyakuBushoFuku1CD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
+                    //            "OR (ch.HinmokuRyakuBushoFuku2CD = '" + src_Busho.SelectedValue.ToString() + "' )) " +
+                    //            "AND ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
+                    //            "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
+                    //            "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
+                    //            "AND mjmc.MadoguchiL1ChousaShinchoku != 80 " +
+                    //            "AND mc.KojinCD = '" + kojinList[r] + "' " +
+                    //            "ORDER BY mg.MadoguchiGroupMei, ch.ChousaBunkatsuHouhou";
+                    //        var sdb = new SqlDataAdapter(cmd);
+                    //        DataTable dt0 = new DataTable();
+                    //        sdb.Fill(dt0);
 
-                            if (dt0 != null && dt0.Rows.Count > 0)
-                            {
-                                for (int i = 0; i < dt0.Rows.Count; i++)
-                                {
-                                    BushoList.Add(src_Busho.Text);
-                                    ChousainMeiList.Add(dt0.Rows[i][0].ToString());
-                                    TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
-                                    KojincdList.Add(kojinList[r].ToString());
-                                    GroupMeiList.Add(dt0.Rows[i][1].ToString());
-                                    BunkatsuList.Add(dt0.Rows[i][2].ToString());
-                                    GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                }
-                            }
-                        }
-                    }
+                    //        if (dt0 != null && dt0.Rows.Count > 0)
+                    //        {
+                    //            for (int i = 0; i < dt0.Rows.Count; i++)
+                    //            {
+                    //                BushoList.Add(src_Busho.Text);
+                    //                ChousainMeiList.Add(dt0.Rows[i][0].ToString());
+                    //                TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                    //                KojincdList.Add(kojinList[r].ToString());
+                    //                GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                    //                BunkatsuList.Add(dt0.Rows[i][2].ToString());
+                    //                GroupIDList.Add(dt0.Rows[i][3].ToString());
+                    //            }
+                    //        }
+                    //    }
+                    //}
                     conn.Close();
                 }
                 catch (Exception)
@@ -2391,7 +2423,7 @@ namespace TokuchoBugyoK2
             }
         }
 
-        private bool fileErrorCheck(string chkChousain)
+        private bool fileErrorCheck(string chkChousain, string chkSyuFuku)
         {
             // 同一担当者のうちでVer1、Ver2混在をチェック→メッセージ出力
             // 対象の担当者集計表Verリスト
@@ -2404,20 +2436,51 @@ namespace TokuchoBugyoK2
                 {
                     var cmd = conn.CreateCommand();
                     // 選択した集計表Ver以外を検索
-                    cmd.CommandText = "SELECT " +
+                    // No1619 集計表Ver混在チェックは「主担当」「副担当」それぞれで行う
+                    if (chkSyuFuku == "1")
+                    {
+                        cmd.CommandText = "SELECT " +
                             "ch.ChousaShuukeihyouVer " +
                             "FROM ChousaHinmoku ch " +
-                            "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ((ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD) " +
-                            "OR (ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
+                            "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD " +
+                            "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND ch.HinmokuChousainCD = '" + chkChousain + "' " +
+                            "AND ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
+                            "AND NOT ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
+                            "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
+                            "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
+                            "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
+                    }
+                    if (chkSyuFuku == "2")
+                    {
+                        cmd.CommandText = "SELECT " +
+                            "ch.ChousaShuukeihyouVer " +
+                            "FROM ChousaHinmoku ch " +
+                            "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID " +
+                            "AND ((ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
                             "OR (ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD)) " +
-                            "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND (( ch.HinmokuChousainCD = '" + chkChousain + "' ) " +
-                            "OR (ch.HinmokuFukuChousainCD1 = '" + chkChousain + "' ) " +
+                            "WHERE ch.MadoguchiID = '" + MadoguchiID + "' " +
+                            "AND ((ch.HinmokuFukuChousainCD1 = '" + chkChousain + "' ) " +
                             "OR (ch.HinmokuFukuChousainCD2 = '" + chkChousain + "' )) " +
                             "AND ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
                             "AND NOT ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
                             "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
                             "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
                             "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
+                    }
+                    //cmd.CommandText = "SELECT " +
+                    //    "ch.ChousaShuukeihyouVer " +
+                    //    "FROM ChousaHinmoku ch " +
+                    //    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ((ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD) " +
+                    //    "OR (ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
+                    //    "OR (ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD)) " +
+                    //    "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND (( ch.HinmokuChousainCD = '" + chkChousain + "' ) " +
+                    //    "OR (ch.HinmokuFukuChousainCD1 = '" + chkChousain + "' ) " +
+                    //    "OR (ch.HinmokuFukuChousainCD2 = '" + chkChousain + "' )) " +
+                    //    "AND ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
+                    //    "AND NOT ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
+                    //    "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
+                    //    "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
+                    //    "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
 
                     var sda = new SqlDataAdapter(cmd);
                     DataTable dt0 = new DataTable();
@@ -2428,6 +2491,24 @@ namespace TokuchoBugyoK2
                         // E20905:集計表Ver1、Ver2が混在しています。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20905", ""));
+                        int filerow = c1FlexGrid3.Rows.Count;
+                        for (int r = 0; r < filerow; r++)
+                        {
+                            if (chkSyuFuku == "1")
+                            {
+                                if (KojincdList[r].ToString() == chkChousain && SyuFukuList[r].ToString() == "1")
+                                {
+                                    c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                                }
+                            }
+                            if (chkSyuFuku == "2")
+                            {
+                                if (KojincdList[r].ToString() == chkChousain && SyuFukuList[r].ToString() == "2")
+                                {
+                                    c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                                }
+                            }
+                        }
                         checkflg = 0;
                     }
                     else
@@ -2533,8 +2614,8 @@ namespace TokuchoBugyoK2
             // 集計表フォルダ作成
             if (ShukeiVer == 2 && BunkatsuList[c] == "2")
             {
-                DirectoryInfo di = new DirectoryInfo(item1_ShukeiFolder.Text + @"\" + ChousainMeiList[c].ToString() + "-" + TokuhoBangou.ToString());
-                chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[c].ToString() + "-" + TokuhoBangou.ToString();
+                DirectoryInfo di = new DirectoryInfo(item1_ShukeiFolder.Text + @"\" + ChousainMeiList[c].ToString() + "-" + TokuchoList[c].ToString());
+                chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[c].ToString() + "-" + TokuchoList[c].ToString();
                 if (!Directory.Exists(chousainShukeiFolder))
                 {
                     try
