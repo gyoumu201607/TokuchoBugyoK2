@@ -6053,8 +6053,9 @@ namespace TokuchoBugyoK2
             string discript = "ShibuouenKojinCD ";
             string value = "ShibuouenKojinCD ";
             string table = "Mst_Shibuouen ";
-            //string where = "ShibuouenDeleteFlag = 0 Order By ShibuouenKojinCD ";
-            string where = "(ShibuouenDeleteFlag = 0 or ShibuouenDeleteFlag = 1) Order By ShibuouenKojinCD ";
+            string where = "ShibuouenDeleteFlag = 0 Order By ShibuouenKojinCD ";
+            //No.1547
+            //string where = "(ShibuouenDeleteFlag = 0 or ShibuouenDeleteFlag = 1) Order By ShibuouenKojinCD ";
             string w_ShibuouenKojinCD = "";
 
             // データ取得

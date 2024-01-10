@@ -2147,7 +2147,7 @@
             this.groupBox1.Location = new System.Drawing.Point(681, 58);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(705, 168);
+            this.groupBox1.Size = new System.Drawing.Size(739, 168);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "単価取込";
@@ -2176,7 +2176,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(685, 129);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(719, 129);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // radioButton3
@@ -2186,10 +2186,10 @@
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.Location = new System.Drawing.Point(3, 103);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(188, 19);
+            this.radioButton3.Size = new System.Drawing.Size(228, 19);
             this.radioButton3.TabIndex = 11;
             this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "奉行エクセル集計表から取込む";
+            this.radioButton3.Text = "集計表ファイル（グループ名）から取込む";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton1
@@ -2238,7 +2238,7 @@
             this.button3_TankaTorikomi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3_TankaTorikomi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.button3_TankaTorikomi.ForeColor = System.Drawing.Color.White;
-            this.button3_TankaTorikomi.Location = new System.Drawing.Point(469, 27);
+            this.button3_TankaTorikomi.Location = new System.Drawing.Point(503, 27);
             this.button3_TankaTorikomi.Margin = new System.Windows.Forms.Padding(2);
             this.button3_TankaTorikomi.Name = "button3_TankaTorikomi";
             this.button3_TankaTorikomi.Size = new System.Drawing.Size(214, 32);
@@ -2252,7 +2252,7 @@
             this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.checkBox1.Location = new System.Drawing.Point(288, 3);
+            this.checkBox1.Location = new System.Drawing.Point(322, 3);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox1.Size = new System.Drawing.Size(176, 19);
@@ -2265,7 +2265,7 @@
             this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.checkBox2.Location = new System.Drawing.Point(336, 33);
+            this.checkBox2.Location = new System.Drawing.Point(370, 33);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox2.Size = new System.Drawing.Size(128, 19);
@@ -2278,7 +2278,7 @@
             this.checkBox3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBox3.AutoSize = true;
             this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.checkBox3.Location = new System.Drawing.Point(203, 69);
+            this.checkBox3.Location = new System.Drawing.Point(237, 69);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox3.Size = new System.Drawing.Size(261, 19);
@@ -2294,7 +2294,7 @@
             this.button3_TankaTorikomiResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3_TankaTorikomiResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.button3_TankaTorikomiResult.ForeColor = System.Drawing.Color.White;
-            this.button3_TankaTorikomiResult.Location = new System.Drawing.Point(469, 63);
+            this.button3_TankaTorikomiResult.Location = new System.Drawing.Point(503, 63);
             this.button3_TankaTorikomiResult.Margin = new System.Windows.Forms.Padding(2);
             this.button3_TankaTorikomiResult.Name = "button3_TankaTorikomiResult";
             this.button3_TankaTorikomiResult.Size = new System.Drawing.Size(214, 32);
@@ -2895,7 +2895,7 @@
             this.c1FlexGrid4.Rows.DefaultSize = 44;
             this.c1FlexGrid4.Rows.Fixed = 2;
             this.c1FlexGrid4.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid4.Size = new System.Drawing.Size(2686, 457);
+            this.c1FlexGrid4.Size = new System.Drawing.Size(2873, 457);
             this.c1FlexGrid4.StyleInfo = resources.GetString("c1FlexGrid4.StyleInfo");
             this.c1FlexGrid4.TabIndex = 56;
             this.c1FlexGrid4.BeforeMouseDown += new C1.Win.C1FlexGrid.BeforeMouseDownEventHandler(this.c1FlexGrid4_BeforeMouseDown);
