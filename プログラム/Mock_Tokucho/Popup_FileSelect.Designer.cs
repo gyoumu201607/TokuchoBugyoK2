@@ -131,7 +131,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Popup_FileSelect";
-            this.Text = "奉行エクセル一覧";
+            this.Text = "集計表ファイル（グループ名）から取込む";
             this.Load += new System.EventHandler(this.Popup_FileSelect_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
