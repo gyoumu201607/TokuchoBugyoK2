@@ -1286,7 +1286,7 @@ namespace TokuchoBugyoK2
                 //}
 
                 // 集計表Ver1、Ver2混在チェック
-                //if (!fileErrorCheck(item1_KojinCD.Text))
+                //if (!fileErrorCheck(item1_KojinCD.Text, SyuFukuList[i].ToString()))
                 //{
                 //    prntflg = 0;
                 //}
@@ -1329,6 +1329,11 @@ namespace TokuchoBugyoK2
                 filerow = c1FlexGrid3.Rows.Count;
                 for (int r = 0; r < filerow; r++)
                 {
+                    // 集計表Ver1、Ver2混在チェック
+                    if (!fileErrorCheck(item1_KojinCD.Text, SyuFukuList[r].ToString()))
+                    {
+                        prntflg = 0;
+                    }
                     // 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
                     if ((ShukeiVer == 2 && BunkatsuList[r] == "2") && (GroupMeiList[r].ToString() == "" || GroupMeiList[r].ToString() is null))
                     {
@@ -2335,7 +2340,7 @@ namespace TokuchoBugyoK2
                                 "FROM ChousaHinmoku ch " +
                                 "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ((ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
                                 "OR (ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD)) " +
-                                "LEFT JOIN Mst_Chousain mc ON (ch.HinmokuFukuChousainCD1 = mc.KojinCD) OR (ch.HinmokuFukuChousainCD2 = mc.KojinCD)" +
+                                "LEFT JOIN Mst_Chousain mc ON (ch.HinmokuFukuChousainCD1 = mc.KojinCD) OR (ch.HinmokuFukuChousainCD2 = mc.KojinCD) " +
                                 "LEFT JOIN MadoguchiGroupMaster mg ON ch.ChousaMadoguchiGroupMasterID = mg.MadoguchiGroupMasterID " +
                                 "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND (( ch.HinmokuFukuChousainCD1 = '" + kojinList[r] + "' ) " +
                                 "OR (ch.HinmokuFukuChousainCD2 = '" + kojinList[r] + "' )) " +
@@ -2436,8 +2441,8 @@ namespace TokuchoBugyoK2
                 {
                     var cmd = conn.CreateCommand();
                     // 選択した集計表Ver以外を検索
-                    // No1619 集計表Ver混在チェックは「主担当」「副担当」それぞれで行う
-                    if (chkSyuFuku == "1")
+                    // No1619 集計表Ver混在チェックは「主担当」「副担当」「主＋副」それぞれで行う
+                    if (chkSyuFuku == "1" && comboBox_Taisho.Text != null && comboBox_Taisho.SelectedValue.ToString() == "1")
                     {
                         cmd.CommandText = "SELECT " +
                             "ch.ChousaShuukeihyouVer " +
@@ -2450,7 +2455,7 @@ namespace TokuchoBugyoK2
                             "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
                             "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
                     }
-                    if (chkSyuFuku == "2")
+                    if (chkSyuFuku == "2" && comboBox_Taisho.Text != null && comboBox_Taisho.SelectedValue.ToString() == "2")
                     {
                         cmd.CommandText = "SELECT " +
                             "ch.ChousaShuukeihyouVer " +
@@ -2461,26 +2466,34 @@ namespace TokuchoBugyoK2
                             "WHERE ch.MadoguchiID = '" + MadoguchiID + "' " +
                             "AND ((ch.HinmokuFukuChousainCD1 = '" + chkChousain + "' ) " +
                             "OR (ch.HinmokuFukuChousainCD2 = '" + chkChousain + "' )) " +
-                            "AND ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
+                            // No1635 副担当の検索条件おかしいので修正
+                            //"AND ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
+                            "AND ((ch.HinmokuRyakuBushoFuku1CD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
+                            "OR (ch.HinmokuRyakuBushoFuku2CD = '" + src_Busho.SelectedValue.ToString() + "' )) " +
                             "AND NOT ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
                             "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
                             "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
                             "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
                     }
-                    //cmd.CommandText = "SELECT " +
-                    //    "ch.ChousaShuukeihyouVer " +
-                    //    "FROM ChousaHinmoku ch " +
-                    //    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ((ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD) " +
-                    //    "OR (ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
-                    //    "OR (ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD)) " +
-                    //    "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND (( ch.HinmokuChousainCD = '" + chkChousain + "' ) " +
-                    //    "OR (ch.HinmokuFukuChousainCD1 = '" + chkChousain + "' ) " +
-                    //    "OR (ch.HinmokuFukuChousainCD2 = '" + chkChousain + "' )) " +
-                    //    "AND ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
-                    //    "AND NOT ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
-                    //    "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
-                    //    "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
-                    //    "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
+                    if (comboBox_Taisho.Text != null && comboBox_Taisho.SelectedValue.ToString() == "0")
+                    {
+                        cmd.CommandText = "SELECT " +
+                            "ch.ChousaShuukeihyouVer " +
+                            "FROM ChousaHinmoku ch " +
+                            "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ((ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD) " +
+                            "OR (ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
+                            "OR (ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD)) " +
+                            "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND (( ch.HinmokuChousainCD = '" + chkChousain + "' ) " +
+                            "OR (ch.HinmokuFukuChousainCD1 = '" + chkChousain + "' ) " +
+                            "OR (ch.HinmokuFukuChousainCD2 = '" + chkChousain + "' )) " +
+                            "AND ((ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
+                            "OR (ch.HinmokuRyakuBushoFuku1CD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
+                            "OR (ch.HinmokuRyakuBushoFuku2CD = '" + src_Busho.SelectedValue.ToString() + "' )) " +
+                            "AND NOT ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
+                            "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
+                            "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
+                            "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
+                    }
 
                     var sda = new SqlDataAdapter(cmd);
                     DataTable dt0 = new DataTable();
@@ -2564,7 +2577,11 @@ namespace TokuchoBugyoK2
                             "WHERE MadoguchiID = '" + MadoguchiID + "' AND (( HinmokuChousainCD = '" + chkChousain + "' ) " +
                             "OR (HinmokuFukuChousainCD1 = '" + chkChousain + "' ) " +
                             "OR (HinmokuFukuChousainCD2 = '" + chkChousain + "' )) " +
-                            "AND HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
+                            // 副担当考慮されてないSQLのため修正
+                            //"AND HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
+                            "AND ((HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
+                            "OR ((HinmokuRyakuBushoFuku1CD = '" + src_Busho.SelectedValue.ToString() + "' ) " +
+                            "OR (HinmokuRyakuBushoFuku2CD = '" + src_Busho.SelectedValue.ToString() + "' ))) " +
                             "AND ChousaShuukeihyouVer = '" + ShukeiVer + "' " +
                             "AND NOT ChousaBunkatsuHouhou = " + bnkt + " ";
 
