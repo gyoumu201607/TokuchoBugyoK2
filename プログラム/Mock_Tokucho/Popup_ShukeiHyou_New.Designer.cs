@@ -142,7 +142,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 881);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 924);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // groupBox3
@@ -747,7 +747,7 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel7.Controls.Add(this.radioButton_Save, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.btnFileExport, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.button_end, 3, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(216, 823);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(216, 873);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -817,7 +817,7 @@ namespace TokuchoBugyoK2
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.Controls.Add(this.label9, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.c1FlexGrid3, 1, 2);
@@ -830,7 +830,8 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(540, 92);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(540, 142);
             this.tableLayoutPanel6.TabIndex = 8;
             // 
             // label9
@@ -849,11 +850,11 @@ namespace TokuchoBugyoK2
             // c1FlexGrid3
             // 
             this.c1FlexGrid3.ColumnInfo = "1,0,0,0,0,-1,Columns:0{Width:390;}\t";
-            this.c1FlexGrid3.Location = new System.Drawing.Point(123, 3);
+            this.c1FlexGrid3.Location = new System.Drawing.Point(140, 3);
             this.c1FlexGrid3.Name = "c1FlexGrid3";
             this.c1FlexGrid3.Rows.Count = 0;
             this.c1FlexGrid3.Rows.Fixed = 0;
-            this.c1FlexGrid3.Size = new System.Drawing.Size(414, 57);
+            this.c1FlexGrid3.Size = new System.Drawing.Size(397, 102);
             this.c1FlexGrid3.StyleInfo = resources.GetString("c1FlexGrid3.StyleInfo");
             this.c1FlexGrid3.TabIndex = 22;
             this.c1FlexGrid3.Click += new System.EventHandler(this.c1FlexGrid3_Click);
@@ -862,7 +863,7 @@ namespace TokuchoBugyoK2
             // 
             this.item1_ShukeiFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.item1_ShukeiFolder.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item1_ShukeiFolder.Location = new System.Drawing.Point(123, 66);
+            this.item1_ShukeiFolder.Location = new System.Drawing.Point(140, 111);
             this.item1_ShukeiFolder.MaxLength = 512;
             this.item1_ShukeiFolder.Name = "item1_ShukeiFolder";
             this.item1_ShukeiFolder.Size = new System.Drawing.Size(414, 20);
@@ -873,9 +874,9 @@ namespace TokuchoBugyoK2
             // 
             this.item_LinkCheckBox.AutoSize = true;
             this.item_LinkCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.item_LinkCheckBox.Location = new System.Drawing.Point(3, 66);
+            this.item_LinkCheckBox.Location = new System.Drawing.Point(3, 111);
             this.item_LinkCheckBox.Name = "item_LinkCheckBox";
-            this.item_LinkCheckBox.Size = new System.Drawing.Size(114, 21);
+            this.item_LinkCheckBox.Size = new System.Drawing.Size(131, 21);
             this.item_LinkCheckBox.TabIndex = 10;
             this.item_LinkCheckBox.Text = "リンク先を設定する";
             this.item_LinkCheckBox.UseVisualStyleBackColor = true;
@@ -885,8 +886,9 @@ namespace TokuchoBugyoK2
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(584, 881);
+            this.ClientSize = new System.Drawing.Size(584, 924);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Popup_ShukeiHyou_New";
             this.Text = "選択リスト 集計表";
             this.Load += new System.EventHandler(this.Popup_ShukeiHyou_New_Load);
