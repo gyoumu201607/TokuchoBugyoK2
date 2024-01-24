@@ -1462,7 +1462,9 @@ namespace TokuchoBugyoK2
                     "(" + WorkID + ",4" + ",'KojinCD'" + ",2" + ",null" + "," + data[3] + ",null" + ")," +
                     "(" + WorkID + ",5" + ",'ShuFuku'" + ",2" + ",null" + "," + data[4] + ",null" + ")," +
                     "(" + WorkID + ",6" + ",'FileName'" + ",1" + ",N'" + ChangeSqlText(data[5], 0, 0) + "'" + ",null" + ",null)," +
-                    "(" + WorkID + ",7" + ",'PrintGamen'" + ",2" + ",null" + "," + data[6] + ",null" + ")";
+                    "(" + WorkID + ",7" + ",'PrintGamen'" + ",2" + ",null" + "," + data[6] + ",null" + ")," +
+                    // No1648 集計表出力パラメータにグループ名を追加
+                    "(" + WorkID + ",8" + ",'MadoguchiGroupMei'" + ",2" + ",N'" + ChangeSqlText(data[7], 0, 0) + "'" + ",null" + ",null)";
                 }
 
                 // 協力依頼書
