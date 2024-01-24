@@ -1384,10 +1384,11 @@ namespace TokuchoBugyoK2
                     // 5:ShuFuku         主+副  0:主+副 1:主のみ 2:副
                     // 6:FileName        ファイル名
                     // 7:PrintGamen      呼び出し元画面 0:窓口ミハル 1:特命課長  2:自分大臣
-                    // 7個分先に用意
+                    // 8:GroupName       グループ名
+                    // 8個分先に用意
                     if (prntflg == 1)
                     {
-                        string[] report_data = new string[7] { "", "", "", "", "", "", "" };
+                        string[] report_data = new string[8] { "", "", "", "", "", "", "", "" };
 
                         // 窓口ID
                         report_data[0] = MadoguchiID;
@@ -1430,6 +1431,15 @@ namespace TokuchoBugyoK2
                                 break;
                             default:
                                 break;
+                        }
+                        // No1648 集計表出力パラメータにグループ名を追加
+                        if (ShukeiVer == 2 && BunkatsuList[r] == "2")
+                        {
+                            report_data[7] = GroupMeiList[r].ToString();
+                        }
+                        else
+                        {
+                            report_data[7] = "";
                         }
 
                         int listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
@@ -1869,8 +1879,9 @@ namespace TokuchoBugyoK2
                             // 5:ShuFuku         主+副  0:主+副 1:主のみ 2:副
                             // 6:FileName        ファイル名
                             // 7:PrintGamen      呼び出し元画面 0:窓口ミハル 1:特命課長  2:自分大臣
-                            // 6個分先に用意
-                            string[] report_data = new string[7] { "", "", "", "", "", "", "" };
+                            // 8:GroupName       グループ名
+                            // 8個分先に用意
+                            string[] report_data = new string[8] { "", "", "", "", "", "", "", "" };
 
                             // 窓口ID
                             report_data[0] = MadoguchiID;
@@ -1903,6 +1914,15 @@ namespace TokuchoBugyoK2
                                     break;
                                 default:
                                     break;
+                            }
+                            // No1648 集計表出力パラメータにグループ名を追加
+                            if (ShukeiVer == 2 && BunkatsuList[i] == "2")
+                            {
+                                report_data[7] = GroupMeiList[i].ToString();
+                            }
+                            else
+                            {
+                                report_data[7] = "";
                             }
 
                             int listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
