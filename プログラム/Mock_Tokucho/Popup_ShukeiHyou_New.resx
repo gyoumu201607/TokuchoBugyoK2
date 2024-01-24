@@ -118,6 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="item1_ShukeiFolder_icon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAQCAYAAAAS7Y8mAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAAd0SU1FB+ABGwYTEBg9ZUgAAANUSURBVDhPjVRpS5RhFH2rj/2CoA/RZn2yCFJb
+        rCiiKIjCqAiiojAMU7HCSIqixRbFaCPRNs0sS9E0zXXUcRsdy7UZHfd9ycpxd8bTc+44JUHQh8N93vee
+        e+65d555telpO/p79PhSEoCaiiuorwmHpe4hmsxRaGmIRqslRuL4aB/I/V+IcEv9S1SXXZTYZIoUUaK5
+        /rkIE93t6fjWVyImBnqLMdBTKOe+7jz0denQ05GBjpYkWH9aZoTtNlUYq4oMmJz4iYnxwRkMiMuxkW6M
+        WNtgHWrC0A8zhr6bMNhvFPHerhxpyNjbmSUGOloSYbdPQqNo3efragX3HOMr13zX3pyArrZU5SRTHNEt
+        QYcUoWBna7LwyOe6LHWPYaq6I5Mq4Rh8LvZDpeE8aiuuwlR5G+aqu2iovS9rIamtMQ7tTfEqvnGIzKys
+        ofaBcL9WhqDGeBmVpWflt2Je62pNgSHvqBL3R3V5sHJ/TYjm6jARbzRFoNn8TMh0xTPfiaji0Ahr+BtR
+        o6zghEyhcemFWftQrvdW3QJRZQiS28H1cCyuiCK8KYwE3zFHDp2yhk6poc/cq9aUBm2wvxz56TtQkntY
+        EhVFvtKADpwNvn65KVMI1FkEVa6q7IJw6dSoPyUautQt6O8ugDY81Iy09xuV+E4UZe9Hqe4IyvKPw1jo
+        I7tnEfdPETYjHGJ+YoKjs6Y4+4AYTIxdJzdHG7a2IiHGAzkpmyShz9wjDUpyDzmaqEK6YSMW56Zudpxz
+        DiI9YSMKPu2W8WksM8kT0RFrMTrcAY13NTV+g3SicxbmpW1XBbtk90VZXr8niby/BvPmzoEh/5hwFy+a
+        j3u3Vgk/I9ETSa/XIzbKDaMjndCmJq0i9vLJWknQPRtlJ29yNPm4TSahI+6PjvjMCVlDPk0lx62XHOPk
+        xA9o/JdwrNDrroh76o5XkW7wObEEXnsWyvO7aA9pyIIPbzcIKBb/wl3cUZw15FJD93Er7LZxhzBHCTi9
+        HI9CV8tou3csgKZpCA9ZhbAbrhJnw/mOXIJn1gb6LpemNtuY4yNUbbwkLs/7uyAoYAXOnXERkOjvs0zg
+        671U4Hxmzskngs+thPexxSgvOPnn60bXzg8Nr9/fkTdH4qzzv7i2qRElbMcvCXQ7/G3PiUIAAAAASUVO
+        RK5CYII=
+</value>
+  </data>
   <data name="c1FlexGrid1.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
@@ -271,27 +292,6 @@
         0ruVSSW6EcEZtmq2YtS7O/lAvV6wBkg1mqHXrKAT6Ik6L45hwJd2m63ymfA2JlMZ0xfdXtGJjYOx968G
         YaL9WI8Zx+vAXvJucDglIKoppOjCOtlIubePtthif4T0LQgl/Xcb0uWmG8H7VV7ef8UNmxBADih9AAAA
         AElFTkSuQmCC
-</value>
-  </data>
-  <data name="item1_ShukeiFolder_icon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAQCAYAAAAS7Y8mAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAAd0SU1FB+ABGwYTEBg9ZUgAAANUSURBVDhPjVRpS5RhFH2rj/2CoA/RZn2yCFJb
-        rCiiKIjCqAiiojAMU7HCSIqixRbFaCPRNs0sS9E0zXXUcRsdy7UZHfd9ycpxd8bTc+44JUHQh8N93vee
-        e+65d555telpO/p79PhSEoCaiiuorwmHpe4hmsxRaGmIRqslRuL4aB/I/V+IcEv9S1SXXZTYZIoUUaK5
-        /rkIE93t6fjWVyImBnqLMdBTKOe+7jz0denQ05GBjpYkWH9aZoTtNlUYq4oMmJz4iYnxwRkMiMuxkW6M
-        WNtgHWrC0A8zhr6bMNhvFPHerhxpyNjbmSUGOloSYbdPQqNo3efragX3HOMr13zX3pyArrZU5SRTHNEt
-        QYcUoWBna7LwyOe6LHWPYaq6I5Mq4Rh8LvZDpeE8aiuuwlR5G+aqu2iovS9rIamtMQ7tTfEqvnGIzKys
-        ofaBcL9WhqDGeBmVpWflt2Je62pNgSHvqBL3R3V5sHJ/TYjm6jARbzRFoNn8TMh0xTPfiaji0Ahr+BtR
-        o6zghEyhcemFWftQrvdW3QJRZQiS28H1cCyuiCK8KYwE3zFHDp2yhk6poc/cq9aUBm2wvxz56TtQkntY
-        EhVFvtKADpwNvn65KVMI1FkEVa6q7IJw6dSoPyUautQt6O8ugDY81Iy09xuV+E4UZe9Hqe4IyvKPw1jo
-        I7tnEfdPETYjHGJ+YoKjs6Y4+4AYTIxdJzdHG7a2IiHGAzkpmyShz9wjDUpyDzmaqEK6YSMW56Zudpxz
-        DiI9YSMKPu2W8WksM8kT0RFrMTrcAY13NTV+g3SicxbmpW1XBbtk90VZXr8niby/BvPmzoEh/5hwFy+a
-        j3u3Vgk/I9ETSa/XIzbKDaMjndCmJq0i9vLJWknQPRtlJ29yNPm4TSahI+6PjvjMCVlDPk0lx62XHOPk
-        xA9o/JdwrNDrroh76o5XkW7wObEEXnsWyvO7aA9pyIIPbzcIKBb/wl3cUZw15FJD93Er7LZxhzBHCTi9
-        HI9CV8tou3csgKZpCA9ZhbAbrhJnw/mOXIJn1gb6LpemNtuY4yNUbbwkLs/7uyAoYAXOnXERkOjvs0zg
-        671U4Hxmzskngs+thPexxSgvOPnn60bXzg8Nr9/fkTdH4qzzv7i2qRElbMcvCXQ7/G3PiUIAAAAASUVO
-        RK5CYII=
 </value>
   </data>
   <data name="c1FlexGrid2.ColumnInfo" xml:space="preserve">
