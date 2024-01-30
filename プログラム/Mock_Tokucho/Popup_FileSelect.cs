@@ -66,9 +66,13 @@ namespace TokuchoBugyoK2
                     }
                     else
                     {
-                        gridFileList.Rows.Count++;
-                        gridFileList.Rows[gridFileList.Rows.Count - 1][(int)GRID_COL.AVAILABLE] = false;
-                        gridFileList.Rows[gridFileList.Rows.Count - 1][(int)GRID_COL.FILE_NAME] = fi.Name;
+                        //No1625対応（副担当分は除外）
+                        if (!fi.Name.Contains("_見積"))
+                        {
+                            gridFileList.Rows.Count++;
+                            gridFileList.Rows[gridFileList.Rows.Count - 1][(int)GRID_COL.AVAILABLE] = false;
+                            gridFileList.Rows[gridFileList.Rows.Count - 1][(int)GRID_COL.FILE_NAME] = fi.Name;
+                        }
                     }
                     
                 }

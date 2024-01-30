@@ -3674,7 +3674,7 @@ namespace TokuchoBugyoK2
         private void numPercentTextBox_Leave(object sender, EventArgs e)
         {
             //// 新規登録の時連動しない
-            //if (mode == MODE.INSERT || mode == MODE.PLAN) return;
+            //if (mode == MODE.INSERT || mode == MODE.PLAN) return
             System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
             tb.Text = GetPercentText(GetDouble(tb.Text));
             // 編集不可なら、何もしない
@@ -3928,9 +3928,38 @@ namespace TokuchoBugyoK2
                 GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
                 base_tbl07_4_lblAmtAll.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
                 // 配分率の計算 No.1467
-                cal_aftCaBmPercent(sNo);
+                cal_aftCaBmPercent(sNo); 
                 return;
             }
+            // No1604 追加対応（配分額(税抜)を入力項目に変更）
+            if (sName.Contains("ca_tbl02_AftCaBm_numAmt"))
+            {
+                // 配分額(税抜)合計
+                GetTotalMoney("ca_tbl02_AftCaBm_numAmt", 5);
+                string sNo = sName.Replace("ca_tbl02_AftCaBm_numAmt", "");
+                switch (sNo)
+                {
+                    case "1":
+                        // 調査部 業務配分別配分 契約 配分額(税抜)
+                        calc_aftCaTsFreeTax();
+                        //基本情報等一覧へも反映する
+                        base_tbl07_4_lblAmt1.Text = ca_tbl02_AftCaBm_numAmt1.Text;
+                        break;
+                    case "2":
+                        base_tbl07_4_lblAmt2.Text = ca_tbl02_AftCaBm_numAmt2.Text;
+                        break;
+                    case "3":
+                        base_tbl07_4_lblAmt3.Text = ca_tbl02_AftCaBm_numAmt3.Text;
+                        break;
+                    case "4":
+                        base_tbl07_4_lblAmt4.Text = ca_tbl02_AftCaBm_numAmt4.Text;
+                        break;
+                }
+                //基本情報等一覧の配分額(税抜)合計
+                base_tbl07_4_lblAmtAll.Text = ca_tbl02_AftCaBm_numAmtAll.Text;
+                return;
+            }
+
             if (ca_tbl01_txtZeinukiAmt.Name.Equals(sName))
             {
                 // 契約：税抜(自動計算用)
@@ -4186,11 +4215,12 @@ namespace TokuchoBugyoK2
                     lblAftCaBmRate = base_tbl07_4_lblRate4;
                     break;
             }
-            // パセート再計算
+            // パーセント再計算
             double dPercent = 0;
-            if(total > 0)
+            if (total > 0)
             {
-                dPercent = (double)(lngAmtTax * 100 / total);
+                //dPercent = (double)(lngAmtTax * 100 / total);
+                dPercent = lngAmtTax * 100 / Convert.ToDouble(total);
             }
             txtAftCaBmPercent.Text = GetPercentText(dPercent);
             GetTotalPercent("ca_tbl02_AftCaBm_numPercent", 5);
@@ -6856,10 +6886,11 @@ namespace TokuchoBugyoK2
         }
         private string GetPercentText(double num)
         {
-            if (num > 100)
-            {
-                num = 100;
-            }
+            //No1623対応（上限100%を外して入力配分額をそのまま反映する）
+            //if (num > 100)
+            //{
+            //    num = 100;
+            //}
             string str = string.Format("{0:F2}", num) + "%";
             return str;
         }
@@ -6901,7 +6932,8 @@ namespace TokuchoBugyoK2
         private long Get_Zeikomi(long num)
         {
             long zei = GetInt(ca_tbl01_txtTax.Text) + 100;
-            long zeinuki = num * zei;
+            // long zeinuki = num * zei
+            long zeinuki = num * zei / 100;
             return zeinuki;
         }
 
@@ -8608,7 +8640,8 @@ namespace TokuchoBugyoK2
             {
                 if (string.IsNullOrEmpty(prior_tbl02_txtOtherNaiyo.Text.Trim()))
                 {
-                    set_error(GlobalMethod.GetMessage("W10604", "入札"));
+                    // 2024/01/09　文言変更：入札⇒事前打診
+                    set_error(GlobalMethod.GetMessage("W10604", "事前打診"));
                     prior_tbl02_lblNotOrderReason.BackColor = errorColor;
                     prior_tbl02_picNotOrderReasonAlert.Visible = true;
                     prior_tbl02_txtOtherNaiyo.BackColor = errorColor;
@@ -9086,7 +9119,7 @@ namespace TokuchoBugyoK2
                 if (ca_tbl02_AftCaTs_numPercentAll.Text != "100.00%")
                 {
                     // 調査業務別　配分の合計が100になるように入力してください。
-                    set_error(GlobalMethod.GetMessage("E70045", "(契約タブ)"));
+                    set_error(GlobalMethod.GetMessage("E70045", "契約タブ"));
                     varidateFlag = false;
                 }
             }
@@ -9097,7 +9130,7 @@ namespace TokuchoBugyoK2
                 if (ca_tbl02_AftCaTs_numPercentAll.Text != "0.00%")
                 {
                     // 調査部　業務別配分の合計が不正です。
-                    set_error(GlobalMethod.GetMessage("E10725", "(契約タブ)"));
+                    set_error(GlobalMethod.GetMessage("E10725", "契約タブ"));
                     varidateFlag = false;
                 }
             }
@@ -12467,14 +12500,14 @@ namespace TokuchoBugyoK2
                 if (Directory.Exists(sFolderRenameBef) == false)
                 {
                     isError = true;
-                    set_error(GlobalMethod.GetMessage("E10018", "(基本情報等一覧)"));
+                    set_error(GlobalMethod.GetMessage("E10018", "基本情報等一覧"));
                 }
 
                 //E10019 リネームするフォルダが既に存在します。確認して下さい。
                 if (Directory.Exists(folderTo) == true)
                 {
                     isError = true;
-                    set_error(GlobalMethod.GetMessage("E10019", "(基本情報等一覧)"));
+                    set_error(GlobalMethod.GetMessage("E10019", "基本情報等一覧"));
                 }
 
                 //E10020 リネームするフォルダ（支部のフォルダ）が見つかりませんでした。確認して下さい。
@@ -12487,7 +12520,7 @@ namespace TokuchoBugyoK2
                 if (Directory.Exists(sTo) == false)
                 {
                     isError = true;
-                    set_error(GlobalMethod.GetMessage("E10020", "(基本情報等一覧)"));
+                    set_error(GlobalMethod.GetMessage("E10020", "基本情報等一覧"));
                 }
                 // ファイルを移動処理
                 if (isError == false)
@@ -12504,7 +12537,7 @@ namespace TokuchoBugyoK2
                     catch (Exception ex)
                     {
                         // 移動失敗
-                        set_error(GlobalMethod.GetMessage("E70065", "(基本情報等一覧)"));
+                        set_error(GlobalMethod.GetMessage("E70065", "基本情報等一覧"));
                         GlobalMethod.outputLogger("UpdateEntory->FileMove", ex.Message, AnkenID, UserInfos[1]);
                     }
                 }
@@ -12530,7 +12563,7 @@ namespace TokuchoBugyoK2
                     catch (Exception)
                     {
                         // フォルダを作成する権限がありません。
-                        set_error(GlobalMethod.GetMessage("E70046", "(基本情報等一覧)"));
+                        set_error(GlobalMethod.GetMessage("E70046", "基本情報等一覧"));
                     }
                 }
                 else
@@ -12563,7 +12596,7 @@ namespace TokuchoBugyoK2
                                 catch (Exception)
                                 {
                                     // フォルダを作成する権限がありません。
-                                    set_error(GlobalMethod.GetMessage("E70046", "(基本情報等一覧)"));
+                                    set_error(GlobalMethod.GetMessage("E70046", "基本情報等一覧"));
                                     break;
                                 }
                             }
