@@ -294,7 +294,9 @@ namespace TokuchoBugyoK2
         {
             //案件情報のセット
             MadoguchiData = get_data(MadoguchiID);
-            Label_MadoguchiID.Text = MadoguchiData.Rows[0]["MadoguchiID"].ToString();
+            //Label_MadoguchiID.Text = MadoguchiData.Rows[0]["MadoguchiID"].ToString();
+            //No.1651 1356　グループ名選択画面の特調番号不備 　不具合対応
+            Label_MadoguchiID.Text = MadoguchiData.Rows[0]["MadoguchiUketsukeBangou"].ToString() + "-" + MadoguchiData.Rows[0]["MadoguchiUketsukeBangouEdaban"].ToString();
             Label_HacchushaKamei.Text = MadoguchiData.Rows[0]["MadoguchiHachuuKikanmei"].ToString();
             Label_GyoumuMeishou.Text = MadoguchiData.Rows[0]["MadoguchiGyoumuMeishou"].ToString();
 
@@ -389,6 +391,9 @@ namespace TokuchoBugyoK2
                 sSql.Append("      MadoguchiID");
                 sSql.Append("    , MadoguchiGyoumuMeishou ");
                 sSql.Append("    , MadoguchiHachuuKikanmei ");
+                //No.1651 1356　グループ名選択画面の特調番号不備 　不具合対応
+                sSql.Append("    , MadoguchiUketsukeBangou ");
+                sSql.Append("    , MadoguchiUketsukeBangouEdaban ");
                 sSql.Append(" FROM");
                 sSql.Append("    MadoguchiJouhou");
                 sSql.Append(" WHERE");
