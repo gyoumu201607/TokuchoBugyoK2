@@ -5251,8 +5251,21 @@ namespace TokuchoBugyoK2
                         }
                         else if (result[0].Trim() == "0")
                         {
-                                // 正常 データ取り直し
-                                get_data(3);
+                            // 正常 データ取り直し
+                            // No1650対応：取込完了後グループ名が正しく表示されない
+                            // グループ名再取得
+                            String discript = "MadoguchiGroupMei ";
+                            String value = "MadoguchiGroupMasterID ";
+                            String table = "MadoguchiGroupMaster ";
+                            String where = "MadoguchiID = " + MadoguchiID + "ORDER BY MadoguchiGroupMei ";
+                            //コンボボックスデータ取得
+                            DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
+                            //1574
+                            ListDictionary ld = new ListDictionary();
+                            ld = GlobalMethod.Get_ListDictionary(tmpdt22);
+                            c1FlexGrid4.Cols["GroupMei"].DataMap = ld;
+
+                            get_data(3);
                                 // E20321:取込が完了しました。
                                 set_error(GlobalMethod.GetMessage("E20321", ""));
 
