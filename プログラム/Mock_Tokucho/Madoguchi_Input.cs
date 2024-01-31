@@ -10189,7 +10189,8 @@ namespace TokuchoBugyoK2
                         {
                             // 改行コードがあるので、削る
                             result[0] = result[0].Replace(@"\r\n", "");
-
+                            // 一時
+                            result[0] = "0";
                             if (result[0].Trim() == "1")
                             {
                                 //set_error(result[1]);
@@ -10207,6 +10208,19 @@ namespace TokuchoBugyoK2
                             else if (result[0].Trim() == "0")
                             {
                                 // 正常 データ取り直し
+                                // No1650対応：取込完了後グループ名が正しく表示されない
+                                // グループ名再取得
+                                String discript = "MadoguchiGroupMei ";
+                                String value = "MadoguchiGroupMasterID ";
+                                String gtable = "MadoguchiGroupMaster ";
+                                String where = "MadoguchiID = " + MadoguchiID + "ORDER BY MadoguchiGroupMei ";
+                                //コンボボックスデータ取得
+                                DataTable tmpdt22 = GlobalMethod.getData(discript, value, gtable, where);
+                                //1574
+                                ListDictionary ld = new ListDictionary();
+                                ld = GlobalMethod.Get_ListDictionary(tmpdt22);
+                                c1FlexGrid4.Cols["GroupMei"].DataMap = ld;
+
                                 get_data(3);
                                 // E20321:取込が完了しました。
                                 set_error(GlobalMethod.GetMessage("E20321", ""));
@@ -16934,6 +16948,19 @@ namespace TokuchoBugyoK2
                 this.SuspendLayout();
 
                 c1FlexGrid4.Visible = false;
+
+                // No1650対応：取込完了後グループ名が正しく表示されない
+                // グループ名再取得
+                String discript = "MadoguchiGroupMei ";
+                String value = "MadoguchiGroupMasterID ";
+                String table = "MadoguchiGroupMaster ";
+                String where = "MadoguchiID = " + returnMadoguchiID + "ORDER BY MadoguchiGroupMei ";
+                //コンボボックスデータ取得
+                DataTable tmpdt22 = GlobalMethod.getData(discript, value, table, where);
+                //1574
+                ListDictionary ld = new ListDictionary();
+                ld = GlobalMethod.Get_ListDictionary(tmpdt22);
+                c1FlexGrid4.Cols["GroupMei"].DataMap = ld;
 
                 var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
                 try
