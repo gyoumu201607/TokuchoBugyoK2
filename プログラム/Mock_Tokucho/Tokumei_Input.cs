@@ -9304,6 +9304,7 @@ namespace TokuchoBugyoK2
                     e.Cancel = true;
                 }
             }
+            /*No.1657
             //No.1622
             if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
             {
@@ -9312,6 +9313,7 @@ namespace TokuchoBugyoK2
                     e.Cancel = true;
                 }
             }
+            */
         }
 
         private void c1FlexGrid4_AfterScroll(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
