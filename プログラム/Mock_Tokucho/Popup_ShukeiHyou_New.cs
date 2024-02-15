@@ -37,6 +37,16 @@ namespace TokuchoBugyoK2
 
         // 奉行エクセル移管対応
         //対象のグループ一覧用リスト
+        private List<string> GbushoList = new List<string>();
+        private List<string> GtokuchoList = new List<string>();
+        private List<string> GkojincdList = new List<string>();
+        private List<string> GchousainMeiList = new List<string>();
+        private List<string> GgroupMeiList = new List<string>();
+        private List<string> GbunkatsuList = new List<string>();
+        private List<string> GshukeiVerList = new List<string>();
+        private List<string> GgroupIDList = new List<string>();
+
+        //対象のファイル名用リスト
         private List<string> BushoList = new List<string>();
         private List<string> TokuchoList = new List<string>();
         private List<string> KojincdList = new List<string>();
@@ -44,7 +54,7 @@ namespace TokuchoBugyoK2
         private List<string> GroupMeiList = new List<string>();
         private List<string> BunkatsuList = new List<string>();
         private List<string> ShukeiVerList = new List<string>();
-
+        private List<string> FileNoList = new List<string>();
         private List<string> GroupIDList = new List<string>();
         private List<string> kojinList = new List<string>();
         private List<string> FileNameList = new List<string>();
@@ -256,7 +266,15 @@ namespace TokuchoBugyoK2
 
         private void get_data()
         {
-            // 奉行エクセル移管対応 20231004 対象のグループ一覧リスト初期化
+            // 奉行エクセル移管対応 20231004 対象のグループ一覧リスト、ファイル名リスト初期化
+            GbushoList.Clear();
+            GtokuchoList.Clear();
+            GkojincdList.Clear();
+            GchousainMeiList.Clear();
+            GgroupMeiList.Clear();
+            GbunkatsuList.Clear();
+            GshukeiVerList.Clear();
+            GgroupIDList.Clear();
             BushoList.Clear();
             TokuchoList.Clear();
             ChousainMeiList.Clear();
@@ -266,6 +284,7 @@ namespace TokuchoBugyoK2
             KojincdList.Clear();
             GroupIDList.Clear();
             SyuFukuList.Clear();
+            FileNoList.Clear();
 
             var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
 
@@ -438,21 +457,31 @@ namespace TokuchoBugyoK2
                 {
                     c1FlexGrid2.Rows.Count = 1;
                     c1FlexGrid2.AllowAddNew = true;
-                    int addrow = BushoList.Count;
+                    // No1656対応：ファイル分割時ファイル番号単位集約のためグループ名リスト取得元を変更
+                    int addrow = GbushoList.Count;
+                    //int addrow = BushoList.Count;
 
                     for (int r = 0; r < addrow; r++)
                     {
                         c1FlexGrid2.Rows.Add();
                         {
-                            c1FlexGrid2[r + 1, 1] = BushoList[r].ToString();
-                            c1FlexGrid2[r + 1, 2] = ChousainMeiList[r].ToString();
-                            c1FlexGrid2[r + 1, 3] = GroupMeiList[r].ToString();
-                            if (BunkatsuList[r] == "1")
+                            // No1656対応：ファイル分割時ファイル番号単位集約のためグループ名リスト取得元を変更
+                            c1FlexGrid2[r + 1, 1] = GbushoList[r].ToString();
+                            c1FlexGrid2[r + 1, 2] = GchousainMeiList[r].ToString();
+                            //c1FlexGrid2[r + 1, 1] = BushoList[r].ToString();
+                            //c1FlexGrid2[r + 1, 2] = ChousainMeiList[r].ToString();
+                            // No1665対応：シート分割時グループ名は無視する
+                            //c1FlexGrid2[r + 1, 3] = GroupMeiList[r].ToString();
+                            if (GbunkatsuList[r] == "1")
                             {
+                                c1FlexGrid2[r + 1, 3] = "";
                                 c1FlexGrid2[r + 1, 4] = "-";
                             }
                             else
                             {
+                                c1FlexGrid2[r + 1, 3] = GgroupMeiList[r].ToString();
+                                // No1656対応：ファイル分割時ファイル番号単位集約のためグループ名リスト取得元を変更
+                                //c1FlexGrid2[r + 1, 3] = GroupMeiList[r].ToString();
                                 c1FlexGrid2[r + 1, 4] = "ファイル分割";
                             }
                         }
@@ -489,7 +518,7 @@ namespace TokuchoBugyoK2
         private void c1FlexGrid1_BeforeMouseDown(object sender, C1.Win.C1FlexGrid.BeforeMouseDownEventArgs e)
         {
             var hti = this.c1FlexGrid1.HitTest(new Point(e.X, e.Y));
-
+            set_error("", 0);
             //部所一括チェックがtrueじゃない
             if (!Busho_Ikkatu)
             {
@@ -886,7 +915,8 @@ namespace TokuchoBugyoK2
                 Hinmoku_All = true;
                 //gridと対象非表示
                 groupBox2.Visible = false;
-                groupBox3.Visible = false;
+                //groupBox3.Visible = false;
+                tableLayoutPanel5.Visible = false;
                 // filterを隠す
                 groupBox1.Visible = false;
 
@@ -973,7 +1003,8 @@ namespace TokuchoBugyoK2
                 Hinmoku_All = false;
                 //gridと対象表示
                 groupBox2.Visible = true;
-                groupBox3.Visible = true;
+                //groupBox3.Visible = true;
+                tableLayoutPanel5.Visible = true;
                 groupBox1.Visible = true;
 
                 // 奉行エクセル移管対応 20231004
@@ -1063,39 +1094,27 @@ namespace TokuchoBugyoK2
                             c1FlexGrid3.Rows.Add();
                             if (c1FlexGrid2.Rows[r + 1][4].ToString() == "-") //シート分割
                             {
-                                // No1657対応（直接原因では無いが関連して発見した障害のため。シート分割でもグループ名登録されている場合を考慮）
-                                if (GroupMeiList[r].ToString() == "" || GroupMeiList[r].ToString() is null)
+                                if (SyuFukuList[r].ToString() == "1")
                                 {
-                                    if (SyuFukuList[r].ToString() == "1")
-                                    {
-                                        c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
-                                    }
-                                    else
-                                    {
-                                        c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "_見積" + extensions;
-                                    }
+                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
                                 }
                                 else
                                 {
-                                    if (SyuFukuList[r].ToString() == "1")
-                                    {
-                                        c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + extensions;
-                                    }
-                                    else
-                                    {
-                                        c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + "_見積" + extensions;
-                                    }
+                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "_見積" + extensions;
                                 }
                             }
                             else //ファイル分割
                             {
                                 if (SyuFukuList[r].ToString() == "1")
                                 {
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + extensions;
-                                }
+                                    // No1656対応：グループ名ではなくファイル番号を編集
+                                    //c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + extensions;
+                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + FileNoList[r].ToString() + "】" + extensions;                                }
                                 else
                                 {
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + "_見積" + extensions;
+                                    // No1656対応：グループ名ではなくファイル番号を編集
+                                    //c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + "_見積" + extensions;
+                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + FileNoList[r].ToString() + "】" + "_見積" + extensions;
                                 }
                             }
                         }
@@ -1162,7 +1181,7 @@ namespace TokuchoBugyoK2
             // エラー背景色
             Color errorColor = Color.FromArgb(255, 204, 255);
             int prntflg = 1;
-            int existchk = 0;
+            int exstchk = 0;
 
             // ファイル名重複チェック
             FileNameList.Clear();
@@ -1183,6 +1202,33 @@ namespace TokuchoBugyoK2
                         set_error(GlobalMethod.GetMessage("E20906", ""));
                         c1FlexGrid3.Row = r;
                         c1FlexGrid3.HighLight = HighLightEnum.Never;
+                    }
+                }
+                // No1658対応：集計表Ver2でファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
+                if (exstchk == 0)
+                {
+                    if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
+                    {
+                        //chousainShukeiFolder = "";
+                        //chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[r].ToString() + "-" + TokuchoList[r].ToString();
+                        // 集計表フォルダ・作業フォルダ作成
+                        chousainShukeiFolder = "";
+                        if (!createFolder(r))
+                        {
+                            prntflg = 0;
+                        }
+                        else
+                        {
+                            var fileList = Directory.GetFiles(chousainShukeiFolder, "*.*");
+                            if (fileList.Length > 0)
+                            {
+                                if (MessageBox.Show(GlobalMethod.GetMessage("I20318", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                                {
+                                    prntflg = 0;
+                                }
+                                exstchk = 1;
+                            }
+                        }
                     }
                 }
             }
@@ -1221,17 +1267,32 @@ namespace TokuchoBugyoK2
                 for (int r = 0; r < filerow; r++)
                 {
                     // 集計表Ver1、Ver2混在チェック
-                    if (!fileErrorCheck(item1_KojinCD.Text, SyuFukuList[r].ToString()))
+                    if (!checkBox_Zenhinmoku.Checked)
                     {
-                        prntflg = 0;
+                        if (!fileErrorCheck(item1_KojinCD.Text, SyuFukuList[r].ToString()))
+                        {
+                            prntflg = 0;
+                        }
                     }
-                    // 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
-                    if ((ShukeiVer == 2 && BunkatsuList[r] == "2") && (GroupMeiList[r].ToString() == "" || GroupMeiList[r].ToString() is null))
+                    // No1656対応：グループ名が選択されていなくても出力対象とする
+                    //// 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
+                    //if ((ShukeiVer == 2 && BunkatsuList[r] == "2") && (GroupMeiList[r].ToString() == "" || GroupMeiList[r].ToString() is null))
+                    //{
+                    //    c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                    //    // E20904:グループ名が選択されていない明細が存在します。
+                    //    set_error("", 0);
+                    //    set_error(GlobalMethod.GetMessage("E20904", ""));
+                    //    prntflg = 0;
+                    //}
+                    // No1656対応：集計表Ver2でファイル番号が選択されていない品目明細があった場合、エラーとする。
+                    if ((ShukeiVer == 2 && BunkatsuList[r] == "2") && (FileNoList[r].ToString() == "" || FileNoList[r].ToString() is null))
                     {
                         c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
-                        // E20904:グループ名が選択されていない明細が存在します。
+                        // E20907:ファイル番号が割り当てられていません。
                         set_error("", 0);
-                        set_error(GlobalMethod.GetMessage("E20904", ""));
+                        set_error(GlobalMethod.GetMessage("E20907", ""));
+                        c1FlexGrid3.Row = r;
+                        c1FlexGrid3.HighLight = HighLightEnum.Never;
                         prntflg = 0;
                     }
 
@@ -1239,9 +1300,12 @@ namespace TokuchoBugyoK2
                     {
                         // 集計表フォルダ・作業フォルダ作成
                         chousainShukeiFolder = "";
-                        if (!createFolder(r))
+                        if (!checkBox_Zenhinmoku.Checked)
                         {
-                            prntflg = 0;
+                            if (!createFolder(r))
+                            {
+                                prntflg = 0;
+                            }
                         }
 
                         if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
@@ -1252,20 +1316,9 @@ namespace TokuchoBugyoK2
                                 set_error("", 0);
                                 set_error(GlobalMethod.GetMessage("E20332", ""));
                                 c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                                c1FlexGrid3.Row = r;
+                                c1FlexGrid3.HighLight = HighLightEnum.Never;
                                 prntflg = 0;
-                            }
-                            // No1658対応：集計表Ver2でファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
-                            else if (existchk == 0)
-                            {
-                                var fileList = Directory.GetFiles(chousainShukeiFolder, "*.*");
-                                if (fileList.Length > 0)
-                                {
-                                    if (MessageBox.Show(GlobalMethod.GetMessage("I20318", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
-                                    {
-                                        prntflg = 0;
-                                    }
-                                    existchk = 1;
-                                }
                             }
                         }
                         else
@@ -1276,6 +1329,8 @@ namespace TokuchoBugyoK2
                                 set_error("", 0);
                                 set_error(GlobalMethod.GetMessage("E20332", ""));
                                 c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                                c1FlexGrid3.Row = r;
+                                c1FlexGrid3.HighLight = HighLightEnum.Never;
                                 prntflg = 0;
                             }
                         }
@@ -1336,10 +1391,10 @@ namespace TokuchoBugyoK2
                             default:
                                 break;
                         }
-                        // No1648 集計表出力パラメータにグループ名を追加
+                        // No1656 集計表出力パラメータをグループ名からファイル番号に変更
                         if (ShukeiVer == 2 && BunkatsuList[r] == "2")
                         {
-                            report_data[7] = GroupMeiList[r].ToString();
+                            report_data[7] = FileNoList[r].ToString();
                         }
                         else
                         {
@@ -1728,13 +1783,25 @@ namespace TokuchoBugyoK2
                             }
                         }
 
-                        // 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
-                        if ((ShukeiVer == 2 && BunkatsuList[i] == "2") && (GroupMeiList[i].ToString() == "" || GroupMeiList[i].ToString() is null))
+                        // No1656対応：グループ名が選択されていなくても出力対象とする
+                        //// 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
+                        //if ((ShukeiVer == 2 && BunkatsuList[i] == "2") && (GroupMeiList[i].ToString() == "" || GroupMeiList[i].ToString() is null))
+                        //{
+                        //    c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
+                        //    // E20904:グループ名が選択されていない明細が存在します。
+                        //    set_error("", 0);
+                        //    set_error(GlobalMethod.GetMessage("E20904", ""));
+                        //    prntflg = 0;
+                        //}
+                        // No1656対応：集計表Ver2でファイル番号が選択されていない品目明細があった場合、エラーとする。
+                        if ((ShukeiVer == 2 && BunkatsuList[i] == "2") && (FileNoList[i].ToString() == "" || FileNoList[i].ToString() is null))
                         {
                             c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
-                            // E20904:グループ名が選択されていない明細が存在します。
+                            // E20907:ファイル番号が割り当てられていません。
                             set_error("", 0);
-                            set_error(GlobalMethod.GetMessage("E20904", ""));
+                            set_error(GlobalMethod.GetMessage("E20907", ""));
+                            c1FlexGrid3.Row = i;
+                            c1FlexGrid3.HighLight = HighLightEnum.Never;
                             prntflg = 0;
                         }
 
@@ -1755,20 +1822,9 @@ namespace TokuchoBugyoK2
                                     set_error("", 0);
                                     set_error(GlobalMethod.GetMessage("E20332", ""));
                                     c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
+                                    c1FlexGrid3.Row = i;
+                                    c1FlexGrid3.HighLight = HighLightEnum.Never;
                                     prntflg = 0;
-                                }
-                                // No1658対応：集計表Ver2でファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
-                                else if (existchk == 0)
-                                {
-                                    var fileList = Directory.GetFiles(chousainShukeiFolder, "*.*");
-                                    if (fileList.Length > 0)
-                                    {
-                                        if (MessageBox.Show(GlobalMethod.GetMessage("I20318", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
-                                        {
-                                            prntflg = 0;
-                                        }
-                                        existchk = 1;
-                                    }
                                 }
                             }
                             else
@@ -1779,6 +1835,8 @@ namespace TokuchoBugyoK2
                                     set_error("", 0);
                                     set_error(GlobalMethod.GetMessage("E20332", ""));
                                     c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
+                                    c1FlexGrid3.Row = i;
+                                    c1FlexGrid3.HighLight = HighLightEnum.Never;
                                     prntflg = 0;
                                 }
                             }
@@ -2232,6 +2290,7 @@ namespace TokuchoBugyoK2
                                     ",mg.MadoguchiGroupMei " +
                                     ",ch.ChousaBunkatsuHouhou " +
                                     ",ch.ChousaMadoguchiGroupMasterID " +
+                                    ",ch.ChousaFileNo " +
                                     "FROM ChousaHinmoku ch " +
                                     "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD " +
                                     "LEFT JOIN Mst_Chousain mc ON ch.HinmokuChousainCD = mc.KojinCD " +
@@ -2252,14 +2311,64 @@ namespace TokuchoBugyoK2
                             {
                                 for (int i = 0; i < dt0.Rows.Count; i++)
                                 {
-                                    BushoList.Add(src_Busho.Text);
-                                    ChousainMeiList.Add(dt0.Rows[i][0].ToString());
-                                    TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
-                                    KojincdList.Add(kojinList[r].ToString());
-                                    GroupMeiList.Add(dt0.Rows[i][1].ToString());
-                                    BunkatsuList.Add(dt0.Rows[i][2].ToString());
-                                    GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                    SyuFukuList.Add("1");
+                                    GbushoList.Add(src_Busho.Text);
+                                    GchousainMeiList.Add(dt0.Rows[i][0].ToString());
+                                    GtokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                                    GkojincdList.Add(kojinList[r].ToString());
+                                    GgroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                    GbunkatsuList.Add(dt0.Rows[i][2].ToString());
+                                    GgroupIDList.Add(dt0.Rows[i][3].ToString());
+                                    if (i > 0)
+                                    {
+                                        if (GkojincdList[i].ToString() == GkojincdList[i-1].ToString()) //同一調査員内
+                                        {
+                                            // No1665対応：シート分割時グループ名は無視するので重複除外が必要
+                                            if (ShukeiVer == 2 && dt0.Rows[i][2].ToString() == "1" && BunkatsuList.Contains(dt0.Rows[i][2].ToString()))
+                                            {
+                                            }
+                                            // No1656対応：ファイル分割時同一ファイル番号で集約するので重複除外が必要
+                                            else if (ShukeiVer == 2 && dt0.Rows[i][2].ToString() == "2" && FileNoList.Contains(dt0.Rows[i][4].ToString()))
+                                            {
+                                            }
+                                            else
+                                            {
+                                                BushoList.Add(src_Busho.Text);
+                                                ChousainMeiList.Add(dt0.Rows[i][0].ToString());
+                                                TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                                                KojincdList.Add(kojinList[r].ToString());
+                                                GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                                BunkatsuList.Add(dt0.Rows[i][2].ToString());
+                                                GroupIDList.Add(dt0.Rows[i][3].ToString());
+                                                SyuFukuList.Add("1");
+                                                FileNoList.Add(dt0.Rows[i][4].ToString());
+                                            }
+                                        }
+                                        else
+                                        {
+                                            BushoList.Add(src_Busho.Text);
+                                            ChousainMeiList.Add(dt0.Rows[i][0].ToString());
+                                            TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                                            KojincdList.Add(kojinList[r].ToString());
+                                            GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                            BunkatsuList.Add(dt0.Rows[i][2].ToString());
+                                            GroupIDList.Add(dt0.Rows[i][3].ToString());
+                                            SyuFukuList.Add("1");
+                                            FileNoList.Add(dt0.Rows[i][4].ToString());
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        BushoList.Add(src_Busho.Text);
+                                        ChousainMeiList.Add(dt0.Rows[i][0].ToString());
+                                        TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                                        KojincdList.Add(kojinList[r].ToString());
+                                        GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                        BunkatsuList.Add(dt0.Rows[i][2].ToString());
+                                        GroupIDList.Add(dt0.Rows[i][3].ToString());
+                                        SyuFukuList.Add("1");
+                                        FileNoList.Add(dt0.Rows[i][4].ToString());
+                                    }
                                 }
                             }
                         }
@@ -2274,6 +2383,7 @@ namespace TokuchoBugyoK2
                                 ",mg.MadoguchiGroupMei " +
                                 ",ch.ChousaBunkatsuHouhou " +
                                 ",ch.ChousaMadoguchiGroupMasterID " +
+                                ",ch.ChousaFileNo " +
                                 "FROM ChousaHinmoku ch " +
                                 "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ((ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD) " +
                                 "OR (ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD)) " +
@@ -2297,14 +2407,63 @@ namespace TokuchoBugyoK2
                             {
                                 for (int i = 0; i < dt0.Rows.Count; i++)
                                 {
-                                    BushoList.Add(src_Busho.Text);
-                                    ChousainMeiList.Add(dt0.Rows[i][0].ToString());
-                                    TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
-                                    KojincdList.Add(kojinList[r].ToString());
-                                    GroupMeiList.Add(dt0.Rows[i][1].ToString());
-                                    BunkatsuList.Add(dt0.Rows[i][2].ToString());
-                                    GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                    SyuFukuList.Add("2");
+                                    GbushoList.Add(src_Busho.Text);
+                                    GchousainMeiList.Add(dt0.Rows[i][0].ToString());
+                                    GtokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                                    GkojincdList.Add(kojinList[r].ToString());
+                                    GgroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                    GbunkatsuList.Add(dt0.Rows[i][2].ToString());
+                                    GgroupIDList.Add(dt0.Rows[i][3].ToString());
+                                    if (i > 0)
+                                    {
+                                        if (GkojincdList[i].ToString() == GkojincdList[i - 1].ToString()) //同一調査員内
+                                        {
+                                            // No1665対応：シート分割時グループ名は無視するので重複除外が必要
+                                            if (ShukeiVer == 2 && dt0.Rows[i][2].ToString() == "1" && BunkatsuList.Contains(dt0.Rows[i][2].ToString()))
+                                            {
+                                            }
+                                            // No1656対応：ファイル分割時同一ファイル番号で集約するので重複除外が必要
+                                            else if (ShukeiVer == 2 && dt0.Rows[i][2].ToString() == "2" && FileNoList.Contains(dt0.Rows[i][4].ToString()))
+                                            {
+                                            }
+                                            else
+                                            {
+                                                BushoList.Add(src_Busho.Text);
+                                                ChousainMeiList.Add(dt0.Rows[i][0].ToString());
+                                                TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                                                KojincdList.Add(kojinList[r].ToString());
+                                                GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                                BunkatsuList.Add(dt0.Rows[i][2].ToString());
+                                                GroupIDList.Add(dt0.Rows[i][3].ToString());
+                                                SyuFukuList.Add("2");
+                                                FileNoList.Add(dt0.Rows[i][4].ToString());
+                                            }
+                                        }
+                                        else
+                                        {
+                                            BushoList.Add(src_Busho.Text);
+                                            ChousainMeiList.Add(dt0.Rows[i][0].ToString());
+                                            TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                                            KojincdList.Add(kojinList[r].ToString());
+                                            GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                            BunkatsuList.Add(dt0.Rows[i][2].ToString());
+                                            GroupIDList.Add(dt0.Rows[i][3].ToString());
+                                            SyuFukuList.Add("2");
+                                            FileNoList.Add(dt0.Rows[i][4].ToString());
+                                        }
+                                    }
+                                    else
+                                    {
+                                        BushoList.Add(src_Busho.Text);
+                                        ChousainMeiList.Add(dt0.Rows[i][0].ToString());
+                                        TokuchoList.Add(TokuhoBangou.ToString() + "-" + TokuhoBangouEda.ToString());
+                                        KojincdList.Add(kojinList[r].ToString());
+                                        GroupMeiList.Add(dt0.Rows[i][1].ToString());
+                                        BunkatsuList.Add(dt0.Rows[i][2].ToString());
+                                        GroupIDList.Add(dt0.Rows[i][3].ToString());
+                                        SyuFukuList.Add("2");
+                                        FileNoList.Add(dt0.Rows[i][4].ToString());
+                                    }
                                 }
                             }
                         }
