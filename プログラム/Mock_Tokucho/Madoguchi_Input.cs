@@ -10822,7 +10822,7 @@ namespace TokuchoBugyoK2
                                 }
                                 
                                 // ピンク背景
-                                c1FlexGrid4.GetCellRange(i, 58).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
                                 // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
                                 c1FlexGrid4.Rows[i]["ColumnSort"] = "N"
                                                                   + zeroPadding((c1FlexGrid4.Rows[i]["ChousaZentaiJun"] != null ? c1FlexGrid4.Rows[i]["ChousaZentaiJun"].ToString() : "0"))
@@ -10833,7 +10833,7 @@ namespace TokuchoBugyoK2
                             else
                             {
                                 // 必須背景薄黄色
-                                c1FlexGrid4.GetCellRange(i, 58).StyleNew.BackColor = Color.White;
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.White;
                             }
                             /*1657
                             //No.1622
@@ -16220,13 +16220,13 @@ namespace TokuchoBugyoK2
                 {
                     if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                     {
-                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.GetCellRange(e.Row, 60).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
-                        c1FlexGrid4.Rows[e.Row][59] = "-";
+                        c1FlexGrid4.Rows[e.Row][58] = "-";
                         c1FlexGrid4.Rows[e.Row][60] = "";
                         //No.1656
-                        c1FlexGrid4.Rows[e.Row][58] = "";
-                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.Rows[e.Row][59] = "";
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                     }
                     //No.1657
                     /*
@@ -16239,10 +16239,10 @@ namespace TokuchoBugyoK2
                     */
                     if(c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2")
                     {
-                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
+                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.White;
                         c1FlexGrid4.GetCellRange(e.Row, 60).StyleNew.BackColor = Color.White;
                         //1572
-                        c1FlexGrid4.Rows[e.Row][59] = 1;
+                        c1FlexGrid4.Rows[e.Row][58] = 1;
                         //No.1657
                         if (c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "2")
                         {
@@ -16266,7 +16266,7 @@ namespace TokuchoBugyoK2
                     {
                         c1FlexGrid4.GetCellRange(e.Row, 60).StyleNew.BackColor = Color.White;
                         //No.1656
-                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.White;
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
                     }
                 }
                 //No.1664

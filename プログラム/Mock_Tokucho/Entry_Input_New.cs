@@ -12391,7 +12391,7 @@ namespace TokuchoBugyoK2
         }
 
         /// <summary>
-        /// フォルダリムーブ処理
+        /// フォルダリネーム処理
         /// </summary>
         /// <param name="ori_ankenNo"></param>
         /// <returns></returns>
@@ -12412,7 +12412,9 @@ namespace TokuchoBugyoK2
                 }
                 if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
                 {
+                    // リネーム前後が調査部の場合
                     //もっとファイル
+                    //案件（受託）フォルダ内に元の案件番号が含まれている場合
                     if (base_tbl02_txtAnkenFolder.Text.Contains(ori_ankenNo))
                     {
                         // リネーム前後、すべて調査部の場合、リネームを実施する
