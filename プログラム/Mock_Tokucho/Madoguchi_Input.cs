@@ -16262,6 +16262,11 @@ namespace TokuchoBugyoK2
                         c1FlexGrid4.Rows[e.Row][59] = "";
                     }
                     */
+                    if (c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() != "2")
+                    {
+                        c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.Rows[e.Row][59] = "";
+                    }
                     if (c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "2")
                     {
                         c1FlexGrid4.GetCellRange(e.Row, 60).StyleNew.BackColor = Color.White;
