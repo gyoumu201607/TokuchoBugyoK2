@@ -261,203 +261,6 @@ namespace TokuchoBugyoK2
             BikoGrid.Glyphs[C1.Win.C1FlexGrid.GlyphEnum.Ascending] = Image.FromFile("Resource/Asc.png");
             BikoGrid.Glyphs[C1.Win.C1FlexGrid.GlyphEnum.Descending] = Image.FromFile("Resource/Desc.png");
 
-            //// 行番号の取得
-            //int ShinchokuIconColIndex = c1FlexGrid4.Cols["ShinchokuIcon"].Index;                            // 進捗状況
-            //int ChousaZentaiJunColIndex = c1FlexGrid4.Cols["ChousaZentaiJun"].Index;                        // 全体順
-            //int ChousaKobetsuJunColIndex = c1FlexGrid4.Cols["ChousaKobetsuJun"].Index;                      // 個別順
-            //int ChousaZaiKouColIndex = c1FlexGrid4.Cols["ChousaZaiKou"].Index;                              // 材工
-            //int ChousaHinmeiColIndex = c1FlexGrid4.Cols["ChousaHinmei"].Index;                              // 品目
-            //int ChousaKikakuColIndex = c1FlexGrid4.Cols["ChousaKikaku"].Index;                              // 規格
-            //int ChousaTankaColIndex = c1FlexGrid4.Cols["ChousaTanka"].Index;                                // 単位
-            //int ChousaSankouShitsuryouColIndex = c1FlexGrid4.Cols["ChousaSankouShitsuryou"].Index;          // 参考質量
-            //int ChousaKakakuColIndex = c1FlexGrid4.Cols["ChousaKakaku"].Index;                              // 価格
-            //int ChousaChuushiColIndex = c1FlexGrid4.Cols["ChousaChuushi"].Index;                            // 中止
-            //int ChousaBikou2ColIndex = c1FlexGrid4.Cols["ChousaBikou2"].Index;                              // 報告備考
-            //int ChousaBikouColIndex = c1FlexGrid4.Cols["ChousaBikou"].Index;                                // 依頼備考
-            //int ChousaTankaTekiyouTikuColIndex = c1FlexGrid4.Cols["ChousaTankaTekiyouTiku"].Index;          // 単価適用地域
-            //int ChousaZumenNoColIndex = c1FlexGrid4.Cols["ChousaZumenNo"].Index;                            // 図面番号
-            //int ChousaSuuryouColIndex = c1FlexGrid4.Cols["ChousaSuuryou"].Index;                            // 数量
-            //int ChousaMitsumorisakiColIndex = c1FlexGrid4.Cols["ChousaMitsumorisaki"].Index;                // 見積先
-            //int ChousaBaseMakereColIndex = c1FlexGrid4.Cols["ChousaBaseMakere"].Index;                      // ベースメーカー
-            //int ChousaBaseTankaColIndex = c1FlexGrid4.Cols["ChousaBaseTanka"].Index;                        // ベース単位
-            //int ChousaKakeritsuColIndex = c1FlexGrid4.Cols["ChousaKakeritsu"].Index;                        // 掛率
-            //int ChousaObiMeiColIndex = c1FlexGrid4.Cols["ChousaObiMei"].Index;                              // 属性
-            //int ChousaZenkaiTaniColIndex = c1FlexGrid4.Cols["ChousaZenkaiTani"].Index;                      // 前回単位
-            //int ChousaZenkaiKakakuColIndex = c1FlexGrid4.Cols["ChousaZenkaiKakaku"].Index;                  // 前回価格
-            //int ChousaSankoutiColIndex = c1FlexGrid4.Cols["ChousaSankouti"].Index;                          // 発注者提供単価
-            //int ChousaHinmokuJouhou1ColIndex = c1FlexGrid4.Cols["ChousaHinmokuJouhou1"].Index;              // 品目情報1
-            //int ChousaHinmokuJouhou2ColIndex = c1FlexGrid4.Cols["ChousaHinmokuJouhou2"].Index;              // 品目情報2
-            //int ChousaFukuShizaiColIndex = c1FlexGrid4.Cols["ChousaFukuShizai"].Index;                      // 前回質量
-            //int ChousaBunruiColIndex = c1FlexGrid4.Cols["ChousaBunrui"].Index;                              // メモ1
-            //int ChousaMemo2ColIndex = c1FlexGrid4.Cols["ChousaMemo2"].Index;                                // メモ2
-            //int ChousaTankaCD1ColIndex = c1FlexGrid4.Cols["ChousaTankaCD1"].Index;                          // 発注品目コード
-            //int ChousaTikuWariCodeColIndex = c1FlexGrid4.Cols["ChousaTikuWariCode"].Index;                  // 地区割コード
-            //int ChousaTikuCodeColIndex = c1FlexGrid4.Cols["ChousaTikuCode"].Index;                          // 地区コード
-            //int ChousaTikuMeiColIndex = c1FlexGrid4.Cols["ChousaTikuMei"].Index;                            // 地区名
-            //int ChousaShougakuColIndex = c1FlexGrid4.Cols["ChousaShougaku"].Index;                          // 少額案件[10万/100万]
-            //int ChousaWebKenColIndex = c1FlexGrid4.Cols["ChousaWebKen"].Index;                              // Web建
-            //int ChousaKonkyoCodeColIndex = c1FlexGrid4.Cols["ChousaKonkyoCode"].Index;                      // 根拠関連コード
-            //int HinmokuRyakuBushoCDColIndex = c1FlexGrid4.Cols["HinmokuRyakuBushoCD"].Index;                // 調査担当部所
-            //int HinmokuChousainCDColIndex = c1FlexGrid4.Cols["HinmokuChousainCD"].Index;                    // 調査担当者
-            //int HinmokuRyakuBushoFuku1CDColIndex = c1FlexGrid4.Cols["HinmokuRyakuBushoFuku1CD"].Index;      // 副調査担当部所1
-            //int HinmokuFukuChousainCD1ColIndex = c1FlexGrid4.Cols["HinmokuFukuChousainCD1"].Index;          // 副調査担当者1
-            //int HinmokuRyakuBushoFuku2CDColIndex = c1FlexGrid4.Cols["HinmokuRyakuBushoFuku2CD"].Index;      // 副調査担当部所2
-            //int HinmokuFukuChousainCD2ColIndex = c1FlexGrid4.Cols["HinmokuFukuChousainCD2"].Index;          // 副調査担当者2
-            //int ChousaHoukokuHonsuuColIndex = c1FlexGrid4.Cols["ChousaHoukokuHonsuu"].Index;                // 報告数
-            //int ChousaHoukokuRankColIndex = c1FlexGrid4.Cols["ChousaHoukokuRank"].Index;                    // 報告ランク
-            //int ChousaIraiHonsuuColIndex = c1FlexGrid4.Cols["ChousaIraiHonsuu"].Index;                      // 依頼数
-            //int ChousaIraiRankColIndex = c1FlexGrid4.Cols["ChousaIraiRank"].Index;                          // 依頼ランク
-            //int ChousaHinmokuShimekiribiColIndex = c1FlexGrid4.Cols["ChousaHinmokuShimekiribi"].Index;      // 締切日
-            //int ChousaHoukokuzumiColIndex = c1FlexGrid4.Cols["ChousaHoukokuzumi"].Index;                    // 報告済
-
-            ////ソート項目にアイコンを設定
-            //C1.Win.C1FlexGrid.CellRange cr;
-            //Bitmap bmp1 = new Bitmap("Resource/Image/SortIconDefalt.png");
-            //Bitmap bmpSort = new Bitmap(bmp1, bmp1.Width / 6, bmp1.Height / 6);
-
-            //cr = c1FlexGrid4.GetCellRange(0, ShinchokuIconColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaZentaiJunColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaKobetsuJunColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaZaiKouColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaHinmeiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaKikakuColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaTankaColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaSankouShitsuryouColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaKakakuColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaChuushiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaBikou2ColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaBikouColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaTankaTekiyouTikuColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaZumenNoColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaSuuryouColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaMitsumorisakiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaBaseMakereColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaBaseTankaColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaKakeritsuColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaObiMeiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaZenkaiTaniColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaZenkaiKakakuColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaSankoutiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaHinmokuJouhou1ColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaHinmokuJouhou2ColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaFukuShizaiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaBunruiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaMemo2ColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaTankaCD1ColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaTikuWariCodeColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaTikuCodeColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaTikuMeiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaShougakuColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaWebKenColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaKonkyoCodeColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, HinmokuRyakuBushoCDColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, HinmokuChousainCDColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, HinmokuRyakuBushoFuku1CDColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, HinmokuFukuChousainCD1ColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, HinmokuRyakuBushoFuku2CDColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, HinmokuFukuChousainCD2ColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaHoukokuHonsuuColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaHoukokuRankColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaIraiHonsuuColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaIraiRankColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaHinmokuShimekiribiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-            //cr = c1FlexGrid4.GetCellRange(0, ChousaHoukokuzumiColIndex);
-            //cr.StyleNew.ImageAlign = C1.Win.C1FlexGrid.ImageAlignEnum.RightCenter;
-            //cr.Image = bmpSort;
-
-
 
             item3_TargetPage.ImeMode = ImeMode.Disable;
 
@@ -658,131 +461,6 @@ namespace TokuchoBugyoK2
             contextMenuIraiClear.Text = "依頼ランククリア";
             contextMenuIraiClear.Click += ContextMenuIraiClearEvent;
 
-            //調査員
-            //DataTable dt2 = new DataTable();
-            //using (var conn = new SqlConnection(connStr))
-            //{
-            //    var cmd = conn.CreateCommand();
-            //    cmd.CommandText = "SELECT " +
-            //        "KojinCD " +
-            //        ",ChousainMei " +
-            //        "FROM Mst_Chousain " +
-            //        "WHERE RetireFLG = 0 AND TokuchoFLG = 1 AND TokuchoRole > 0 " +
-            //        "ORDER BY ChousainMei ";
-
-            //    var sda = new SqlDataAdapter(cmd);
-            //    dt2.Clear();
-            //    sda.Fill(dt2);
-            //    conn.Close();
-            //}
-            //contextMenuTantousha.Text = "調査担当者";
-            //contextMenuTantousha = Set_ContextMenu(contextMenuTantousha, dt2);
-
-            //ToolStripMenuItem contextMenuSubTantousha = new ToolStripMenuItem();
-
-            //for (int i = 0; i < dt2.Rows.Count; i++)
-            //{
-            //    if (dt2.Rows[i][1].ToString() != "")
-            //    {
-            //        contextMenuSubTantousha.DropDownItems.Add(dt.Rows[i][1].ToString(), null, ContextMenuEvent);
-            //    }
-            //}
-            //contextMenuTantousha.DropDownItemClicked += contextMenuTantoushaItemClicked;
-
-            //if (mode != "insert")
-            //{
-            //    // 単品入力から業務CDの取得
-            //    int TankaKeiyakuID = 0;
-            //    DataTable Tanpin_Dt = new DataTable();
-            //    using (var conn = new SqlConnection(connStr))
-            //    {
-            //        var cmd = conn.CreateCommand();
-            //        cmd.CommandText = "SELECT TanpinGyoumuCD FROM TanpinNyuuryoku"
-            //                    + " WHERE MadoguchiID = " + MadoguchiID
-            //                    ;
-
-            //        var sda = new SqlDataAdapter(cmd);
-            //        sda.Fill(Tanpin_Dt);
-            //        if (Tanpin_Dt.Rows.Count > 0 && Tanpin_Dt.Rows[0][0] != null)
-            //        {
-            //            TankaKeiyakuID = int.Parse(Tanpin_Dt.Rows[0][0].ToString());
-            //        }
-            //    }
-
-            //    // 報告ランク
-            //    DataTable houkokuDt = new DataTable();
-            //    using (var conn = new SqlConnection(connStr))
-            //    {
-            //        var cmd = conn.CreateCommand();
-            //        //cmd.CommandText = "SELECT " +
-            //        //    "tkr.TankaRankHinmoku AS Value " +
-            //        //    ",tkr.TankaRankHinmoku AS Descript " +
-            //        //    "FROM TankaKeiyakuRank tkr " +
-            //        //    "INNER JOIN TankaKeiyaku tk ON tk.TankaKeiyakuID = tkr.TankaKeiyakuID " +
-            //        //    "INNER JOIN AnkenJouhou aj ON aj.AnkenJouhouID = tk.AnkenJouhouID " +
-            //        //    "INNER JOIN MadoguchiJouhou mj ON mj.AnkenJouhouID = aj.AnkenJouhouID " +
-            //        //    "WHERE tkr.TankaRankDeleteFlag != 1 " +
-            //        //    "AND mj.MadoguchiID = '" + MadoguchiID + "' " +
-            //        //    "ORDER BY tk.TankaKeiyakuID,tkr.TankaRankID";
-            //        cmd.CommandText = "SELECT"
-            //                        + " TankaRankHinmoku AS Value"
-            //                        + ", TankaRankHinmoku AS Descript"
-            //                        + " FROM TankaKeiyakuRank"
-            //                        + " WHERE TankaRankDeleteFlag != 1"
-            //                        + " AND TankaKeiyakuID = " + TankaKeiyakuID
-            //                        + " ORDER BY TankaKeiyakuID, TankaRankID"
-            //                        ;
-
-            //        var sda = new SqlDataAdapter(cmd);
-            //        houkokuDt.Clear();
-            //        sda.Fill(houkokuDt);
-            //        conn.Close();
-            //    }
-
-            //    contextMenuHoukoku.Text = "報告ランク";
-            //    //contextMenuHoukoku.DropDownItems.Add("", null, ContextMenuEvent);
-            //    //contextMenuHoukoku.DropDownItems.Add("A-①", null, ContextMenuEvent);
-            //    //contextMenuHoukoku.DropDownItems.Add("A-②", null, ContextMenuEvent);
-
-            //    contextMenuHoukoku = Set_ContextMenu(contextMenuHoukoku, houkokuDt);
-
-            //    // 依頼ランク
-            //    DataTable iraiDt = new DataTable();
-            //    using (var conn = new SqlConnection(connStr))
-            //    {
-            //        var cmd = conn.CreateCommand();
-            //        //cmd.CommandText = "SELECT " +
-            //        //    "tkr.TankaRankHinmoku AS Value " +
-            //        //    ",tkr.TankaRankHinmoku AS Descript " +
-            //        //    "FROM TankaKeiyakuRank tkr " +
-            //        //    "INNER JOIN TankaKeiyaku tk ON tk.TankaKeiyakuID = tkr.TankaKeiyakuID " +
-            //        //    "INNER JOIN AnkenJouhou aj ON aj.AnkenJouhouID = tk.AnkenJouhouID " +
-            //        //    "INNER JOIN MadoguchiJouhou mj ON mj.AnkenJouhouID = aj.AnkenJouhouID " +
-            //        //    "WHERE tkr.TankaRankDeleteFlag != 1 " +
-            //        //    "AND mj.MadoguchiID = '" + MadoguchiID + "' " +
-            //        //    "ORDER BY tk.TankaKeiyakuID,tkr.TankaRankID";
-            //        cmd.CommandText = "SELECT"
-            //                        + " TankaRankHinmoku AS Value"
-            //                        + ", TankaRankHinmoku AS Descript"
-            //                        + " FROM TankaKeiyakuRank"
-            //                        + " WHERE TankaRankDeleteFlag != 1"
-            //                        + " AND TankaKeiyakuID = " + TankaKeiyakuID
-            //                        + " ORDER BY TankaKeiyakuID, TankaRankID"
-            //                        ;
-
-            //        var sda = new SqlDataAdapter(cmd);
-            //        iraiDt.Clear();
-            //        sda.Fill(iraiDt);
-            //        conn.Close();
-            //    }
-
-            //    contextMenuIrai.Text = "依頼ランク";
-            //    //contextMenuIrai.DropDownItems.Add("A-①", null, ContextMenuEvent);
-            //    //contextMenuIrai.DropDownItems.Add("A-②", null, ContextMenuEvent);
-
-            //    contextMenuIrai = Set_ContextMenu(contextMenuIrai, iraiDt);
-
-            //}
 
 
             //実施区分
@@ -5382,8 +5060,8 @@ namespace TokuchoBugyoK2
             }
             */
 
-            tmpdt.Rows.Add("01", fileMaxNum);
-            /*
+            //tmpdt.Rows.Add("01", fileMaxNum);
+            
             tmpdt.Rows.Add("01", "01");
             tmpdt.Rows.Add("02", "02");
             tmpdt.Rows.Add("03", "03");
@@ -5394,7 +5072,7 @@ namespace TokuchoBugyoK2
             tmpdt.Rows.Add("08", "08");
             tmpdt.Rows.Add("09", "09");
             tmpdt.Rows.Add("10", "10");
-            */
+            
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
             //該当グリッドのセルにセット
@@ -16242,6 +15920,37 @@ namespace TokuchoBugyoK2
                     }
                 }
                 //奉行エクセル
+                //ファイルNo
+                if (e.Col == c1FlexGrid4.Cols["FileNo"].Index)
+                {
+                    //No.1672
+                    // 別の値がペーストされる対策
+                    if (c1FlexGrid4.Rows[e.Row][ColName] != null)
+                    {
+                        switch(c1FlexGrid4.Rows[e.Row][ColName].ToString())
+						{
+                            case "01":
+                            case "02":
+                            case "03":
+                            case "04":
+                            case "05":
+                            case "06":
+                            case "07":
+                            case "08":
+                            case "09":
+                            case "10":
+                                break;
+                            default:
+                                c1FlexGrid4.Rows[e.Row][ColName] = "";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "";
+                    }
+                }
+                
                 // グループ名
                 if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
                 {
@@ -16254,12 +15963,30 @@ namespace TokuchoBugyoK2
                         value = "MadoguchiGroupMasterID ";
                         table = "MadoguchiGroupMaster ";
                         where = "MadoguchiID  = " + MadoguchiID; //MadoguchiIDが一致するもの
-                    
+                        //入力しているグループ名のグループIDが、グループマスタ上に存在するかどうか
+
+                        int dummy;
+                        if ( int.TryParse(c1FlexGrid4.Rows[e.Row][ColName].ToString(), out dummy))
+                        {
+                            //入力されたグループが数値だった場合
+                            //念のためグループのIDと名称両方を検索条件にセット
+                            where += " AND  ( MadoguchiGroupMei = '" + c1FlexGrid4.Rows[e.Row][ColName] + "'";
+                            where += " OR  MadoguchiGroupMasterID = " + c1FlexGrid4.Rows[e.Row][ColName] + ")";
+
+                        }
+                        else
+                        {
+                            ///入力されたグループが文字列だった場合
+                            where += " AND  MadoguchiGroupMei = '" + c1FlexGrid4.Rows[e.Row][ColName] + "'";
+
+                        }
+
                         combodt = new DataTable();
                         combodt = GlobalMethod.getData(discript, value, table, where);
                         if (combodt != null && combodt.Rows.Count > 0)
                         {
-                            // 取得出来た場合はスルー
+                            // 取得出来た場合はIDをセット
+                            c1FlexGrid4.Rows[e.Row][ColName] = combodt.Rows[0]["value"];
                         }
                         else
                         {
