@@ -5357,11 +5357,33 @@ namespace TokuchoBugyoK2
 
             //No.1656
             //調査品目　Gridファイル番号
+            //M_COMMON_MASTERからファイル番号の上限値を取得する
+            var dt = new DataTable();
+            var conn = new SqlConnection(connStr);
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT CommonValue1 " +
+                "FROM M_CommonMaster " +
+                "WHERE CommonMasterKye = 'CHOUSA_SHUUKEI_FILENO' ";
+            //データ取得
+            var sdaC = new SqlDataAdapter(cmd);
+            sdaC.Fill(dt);
+            string fileMaxNum = "";
+            fileMaxNum = dt.Rows[0][0].ToString();
+            //if (int.TryParse(fileMaxNum), out int fmn == true);
+
             tmpdt = new System.Data.DataTable();
             tmpdt.Columns.Add("Value", typeof(string));
             tmpdt.Columns.Add("Discript", typeof(string));
+            /*
+            for (int i = 1; i <= fileMaxNum.int.Parse(); i++)
+            {
 
-            //tmpdt.Rows.Add(0, "");
+                tmpdt.Rows.Add("0" + i, "0" + i);
+            }
+            */
+
+            tmpdt.Rows.Add("01", fileMaxNum);
+            /*
             tmpdt.Rows.Add("01", "01");
             tmpdt.Rows.Add("02", "02");
             tmpdt.Rows.Add("03", "03");
@@ -5372,6 +5394,7 @@ namespace TokuchoBugyoK2
             tmpdt.Rows.Add("08", "08");
             tmpdt.Rows.Add("09", "09");
             tmpdt.Rows.Add("10", "10");
+            */
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
             //該当グリッドのセルにセット
@@ -12545,6 +12568,14 @@ namespace TokuchoBugyoK2
                                         valuesText += ",'" + c1FlexGrid4.Rows[i]["ChosainCD"] + "' ";
                                         afterChousainCD = c1FlexGrid4.Rows[i]["ChosainCD"].ToString();
                                     }
+                                    /*
+                                    //No.1673
+                                    else if (c1FlexGrid4.Row) 
+                                    {
+                                        valuesText += ",'" + c1FlexGrid4.Rows[i]["ChosainCD"] + "' ";
+                                        afterChousainCD = c1FlexGrid4.Rows[i]["ChosainCD"].ToString();
+                                    }
+                                    */
                                     valuesText += ",'" + c1FlexGrid4.Rows[i]["HinmokuChousainCD"] + "' ";
                                     afterChousainCD = c1FlexGrid4.Rows[i]["HinmokuChousainCD"].ToString();
                                 }
@@ -16214,10 +16245,56 @@ namespace TokuchoBugyoK2
                 if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
                 {
                     strIndex = 15;
+                    //No.1672
+                    // 別の値がペーストされる対策
+                    if (c1FlexGrid4.Rows[e.Row][ColName] != null)
+                    {
+                        discript = "MadoguchiGroupMei ";
+                        value = "MadoguchiGroupMasterID ";
+                        table = "MadoguchiGroupMaster ";
+                        where = "MadoguchiID  = " + MadoguchiID; //MadoguchiIDが一致するもの
+                    
+                        combodt = new DataTable();
+                        combodt = GlobalMethod.getData(discript, value, table, where);
+                        if (combodt != null && combodt.Rows.Count > 0)
+                        {
+                            // 取得出来た場合はスルー
+                        }
+                        else
+                        {
+                            // 取得できなかったらクリア
+                            c1FlexGrid4.Rows[e.Row][ColName] = "";
+                        }
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "";
+                    }
                 }
                 //集計表Ver
                 if (e.Col == c1FlexGrid4.Cols["ShukeihyoVer"].Index)
                 {
+                    //No.1672
+                    // 別の値がペーストされる対策
+                    if (c1FlexGrid4.Rows[e.Row][ColName] != null)
+                    {
+                        if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "1" || c1FlexGrid4.Rows[e.Row][ColName].ToString() == "集計表Ver2")
+                        {
+                            c1FlexGrid4.Rows[e.Row][ColName] = "1";
+                        }
+                        else if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "2" || c1FlexGrid4.Rows[e.Row][ColName].ToString() == "-")
+                        {
+                            c1FlexGrid4.Rows[e.Row][ColName] = "2";
+                        }
+                        else
+                        {
+                            c1FlexGrid4.Rows[e.Row][ColName] = "";
+                        }
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "";
+                    }
                     if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                     {
                         c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
@@ -16254,6 +16331,27 @@ namespace TokuchoBugyoK2
                 //分割方法
                 if (e.Col == c1FlexGrid4.Cols["BunkatsuHouhou"].Index)
                 {
+                    //No.1672
+                    // 別の値がペーストされる対策
+                    if (c1FlexGrid4.Rows[e.Row][ColName] != null)
+                    {
+                        if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "1" || c1FlexGrid4.Rows[e.Row][ColName].ToString() == "-")
+                        {
+                            c1FlexGrid4.Rows[e.Row][ColName] = "1";
+                        }
+                        else if (c1FlexGrid4.Rows[e.Row][ColName].ToString() == "2" || c1FlexGrid4.Rows[e.Row][ColName].ToString() == "ファイル分割")
+                        {
+                            c1FlexGrid4.Rows[e.Row][ColName] = "2";
+                        }
+                        else
+                        {
+                            c1FlexGrid4.Rows[e.Row][ColName] = "";
+                        }
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "";
+                    }
                     //No.1657
                     /*
                     if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2" && c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "1")
