@@ -12563,7 +12563,7 @@ namespace TokuchoBugyoK2
                                     //valuesText += ",'" + c1FlexGrid4.Rows[i][43] + "' ";
                                     //afterChousainCD = c1FlexGrid4.Rows[i][43].ToString();
                                     //No.1664
-                                    if(c1FlexGrid4.Rows[i]["RetireFlg"].ToString() == "1") 
+                                    if(c1FlexGrid4.Rows[i]["RetireFlg"] != null && c1FlexGrid4.Rows[i]["RetireFlg"].ToString() == "1") 
                                     {
                                         valuesText += ",'" + c1FlexGrid4.Rows[i]["ChosainCD"] + "' ";
                                         afterChousainCD = c1FlexGrid4.Rows[i]["ChosainCD"].ToString();
@@ -12605,7 +12605,7 @@ namespace TokuchoBugyoK2
                                     //valuesText += ",'" + c1FlexGrid4.Rows[i][45] + "' ";
                                     //afterFukuChousainCD1 = c1FlexGrid4.Rows[i][45].ToString();
                                     //No.1664
-                                    if (c1FlexGrid4.Rows[i]["RetireFlg1"].ToString() == "1")
+                                    if (c1FlexGrid4.Rows[i]["RetireFlg1"] != null && c1FlexGrid4.Rows[i]["RetireFlg1"].ToString() == "1")
                                     {
                                         valuesText += ",'" + c1FlexGrid4.Rows[i]["FukuChosainCD1"] + "' ";
                                         afterChousainCD = c1FlexGrid4.Rows[i]["FukuChosainCD1"].ToString();
@@ -12639,7 +12639,7 @@ namespace TokuchoBugyoK2
                                     //valuesText += ",'" + c1FlexGrid4.Rows[i][47] + "' ";
                                     //afterFukuChousainCD2 = c1FlexGrid4.Rows[i][47].ToString();
                                     //No.1664
-                                    if (c1FlexGrid4.Rows[i]["RetireFlg2"].ToString() == "1")
+                                    if (c1FlexGrid4.Rows[i]["RetireFlg2"] != null && c1FlexGrid4.Rows[i]["RetireFlg2"].ToString() == "1")
                                     {
                                         valuesText += ",'" + c1FlexGrid4.Rows[i]["FukuChosainCD2"] + "' ";
                                         afterChousainCD = c1FlexGrid4.Rows[i]["FukuChosainCD2"].ToString();
@@ -12909,7 +12909,7 @@ namespace TokuchoBugyoK2
 
 
                         // ２－２．更新を処理する
-
+                        #region  ２－２．更新を処理する
                         // 更新日付をあらかじめ所得しておく
                         sysDateTimeStr = DateTime.Now.ToString();
 
@@ -13064,7 +13064,7 @@ namespace TokuchoBugyoK2
                                 if (c1FlexGrid4.Rows[i]["HinmokuChousainCD"] != null && c1FlexGrid4.Rows[i]["HinmokuChousainCD"].ToString() != "")
                                 {
                                     //No.1664
-                                    if (c1FlexGrid4.Rows[i]["RetireFlg"].ToString() == "0")
+                                    if (c1FlexGrid4.Rows[i]["RetireFlg"] == null || c1FlexGrid4.Rows[i]["RetireFlg"].ToString() == "0")
                                     {
                                         //cmd.CommandText += ",HinmokuChousainCD = '" + c1FlexGrid4.Rows[i][43] + "' ";
                                         cmd.CommandText += ",HinmokuChousainCD = '" + c1FlexGrid4.Rows[i]["HinmokuChousainCD"] + "' ";
@@ -13094,7 +13094,7 @@ namespace TokuchoBugyoK2
                                 if (c1FlexGrid4.Rows[i]["HinmokuFukuChousainCD1"] != null && c1FlexGrid4.Rows[i]["HinmokuFukuChousainCD1"].ToString() != "")
                                 {
                                     //No.1664
-                                    if (c1FlexGrid4.Rows[i]["RetireFlg1"].ToString() == "0") 
+                                    if (c1FlexGrid4.Rows[i]["RetireFlg1"] == null || c1FlexGrid4.Rows[i]["RetireFlg1"].ToString() == "0") 
                                     { 
                                         //cmd.CommandText += ",HinmokuFukuChousainCD1 = '" + c1FlexGrid4.Rows[i][45] + "' ";
                                         cmd.CommandText += ",HinmokuFukuChousainCD1 = '" + c1FlexGrid4.Rows[i]["HinmokuFukuChousainCD1"] + "' ";
@@ -13124,7 +13124,7 @@ namespace TokuchoBugyoK2
                                 if (c1FlexGrid4.Rows[i]["HinmokuFukuChousainCD2"] != null && c1FlexGrid4.Rows[i]["HinmokuFukuChousainCD2"].ToString() != "")
                                 {
                                     //No.1664
-                                    if (c1FlexGrid4.Rows[i]["RetireFlg2"].ToString() == "0")
+                                    if (c1FlexGrid4.Rows[i]["RetireFlg2"] == null || c1FlexGrid4.Rows[i]["RetireFlg2"].ToString() == "0")
                                     { 
                                         //cmd.CommandText += ",HinmokuFukuChousainCD2 = '" + c1FlexGrid4.Rows[i][47] + "' ";
                                         cmd.CommandText += ",HinmokuFukuChousainCD2 = '" + c1FlexGrid4.Rows[i]["HinmokuFukuChousainCD2"] + "' ";
@@ -13395,7 +13395,7 @@ namespace TokuchoBugyoK2
                                                 if (c1FlexGrid4.Rows[i]["HinmokuChousainCD"] != null)
                                                 {
                                                     //No.1664
-                                                    if (c1FlexGrid4.Rows[i]["RetireFlg"].ToString() == "0")
+                                                    if ( c1FlexGrid4.Rows[i]["RetireFlg"] == null || c1FlexGrid4.Rows[i]["RetireFlg"].ToString() == "0")
                                                     {
                                                         //afterChousainCD = c1FlexGrid4.Rows[i][43].ToString();
                                                         afterChousainCD = c1FlexGrid4.Rows[i]["HinmokuChousainCD"].ToString();
@@ -13438,7 +13438,7 @@ namespace TokuchoBugyoK2
                                                 {
                                                     //afterChousainCD = c1FlexGrid4.Rows[i][45].ToString();
                                                     //No.1664
-                                                    if (c1FlexGrid4.Rows[i]["RetireFlg1"].ToString() == "0")
+                                                    if (c1FlexGrid4.Rows[i]["RetireFlg1"] == null || c1FlexGrid4.Rows[i]["RetireFlg1"].ToString() == "0")
                                                     { 
                                                         afterChousainCD = c1FlexGrid4.Rows[i]["HinmokuFukuChousainCD1"].ToString();
                                                     }
@@ -13480,7 +13480,7 @@ namespace TokuchoBugyoK2
                                                 {
                                                     //afterChousainCD = c1FlexGrid4.Rows[i][47].ToString();
                                                     //No.1664
-                                                    if (c1FlexGrid4.Rows[i]["RetireFlg2"].ToString() == "0")
+                                                    if (c1FlexGrid4.Rows[i]["RetireFlg2"] == null || c1FlexGrid4.Rows[i]["RetireFlg2"].ToString() == "0")
                                                     { 
                                                         afterChousainCD = c1FlexGrid4.Rows[i]["HinmokuFukuChousainCD2"].ToString();
                                                     }
@@ -13506,9 +13506,10 @@ namespace TokuchoBugyoK2
                             }
                         }
                         transaction.Commit();
+						#endregion
 
-                        // ３．ChousaHinmokuから担当部所の連携を行う（支部備考も）
-                        String resultMessage = "";
+						// ３．ChousaHinmokuから担当部所の連携を行う（支部備考も）
+						String resultMessage = "";
                         GlobalMethod.MadoguchiHinmokuRenkeiUpdate_SQL(MadoguchiID, "Madoguchi", UserInfos[0], out resultMessage);
 
 
@@ -13555,7 +13556,7 @@ namespace TokuchoBugyoK2
 
                         transaction.Commit();
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
                         transaction.Rollback();
                         throw;
@@ -16882,6 +16883,7 @@ namespace TokuchoBugyoK2
             string w_TankaTekiyouChiiki = Value[4];                                 // 単価適用地域
             int.TryParse(Value[5].ToString(), out int w_TuikaGyousuu);              // 追加行数
             double.TryParse(Value[6].ToString(), out double w_ZentaiJunKaishiNo);   // 全体順開始番号
+            string w_retireFlg = Value[7];                                          // 退職フラグ
 
             //レイアウトロジックを停止する
             this.SuspendLayout();
@@ -17087,6 +17089,21 @@ namespace TokuchoBugyoK2
                                                       + "-"
                                                       + zeroPadding(c1FlexGrid4.Rows[rowCount]["ChousaKobetsuJun"].ToString())
                                                       ;
+                    }
+                    //退職フラグ
+                    else if (j == c1FlexGrid4.Cols["RetireFlg"].Index)
+                    {
+                        c1FlexGrid4.Rows[rowCount][j] = w_retireFlg;
+                    }
+                    //退職フラグ
+                    else if (j == c1FlexGrid4.Cols["RetireFlg1"].Index)
+                    {
+                        c1FlexGrid4.Rows[rowCount][j] = 0;
+                    }
+                    //退職フラグ
+                    else if (j == c1FlexGrid4.Cols["RetireFlg2"].Index)
+                    {
+                        c1FlexGrid4.Rows[rowCount][j] = 0;
                     }
                     else
                     {

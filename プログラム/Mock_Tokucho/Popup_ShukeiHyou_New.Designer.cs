@@ -80,9 +80,9 @@ namespace TokuchoBugyoK2
             this.ErrorBox = new System.Windows.Forms.TableLayoutPanel();
             this.ErrorMessage = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.c1FlexGrid2 = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.SyukeihyoVer2GroupNameListGrid = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.c1FlexGrid3 = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.FileNameListGrid = new C1.Win.C1FlexGrid.C1FlexGrid();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -104,9 +104,9 @@ namespace TokuchoBugyoK2
             this.tableLayoutPanel11.SuspendLayout();
             this.ErrorBox.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SyukeihyoVer2GroupNameListGrid)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FileNameListGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -809,7 +809,7 @@ namespace TokuchoBugyoK2
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.c1FlexGrid2);
+            this.groupBox4.Controls.Add(this.SyukeihyoVer2GroupNameListGrid);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox4.Location = new System.Drawing.Point(591, 202);
             this.groupBox4.Name = "groupBox4";
@@ -818,24 +818,24 @@ namespace TokuchoBugyoK2
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "集計表Ver2グループ名リスト";
             // 
-            // c1FlexGrid2
+            // SyukeihyoVer2GroupNameListGrid
             // 
-            this.c1FlexGrid2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.c1FlexGrid2.ColumnInfo = resources.GetString("c1FlexGrid2.ColumnInfo");
-            this.c1FlexGrid2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1FlexGrid2.ForeColor = System.Drawing.Color.Black;
-            this.c1FlexGrid2.Location = new System.Drawing.Point(6, 28);
-            this.c1FlexGrid2.Name = "c1FlexGrid2";
-            this.c1FlexGrid2.Rows.Count = 1;
-            this.c1FlexGrid2.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
-            this.c1FlexGrid2.Size = new System.Drawing.Size(534, 179);
-            this.c1FlexGrid2.StyleInfo = resources.GetString("c1FlexGrid2.StyleInfo");
-            this.c1FlexGrid2.TabIndex = 26;
+            this.SyukeihyoVer2GroupNameListGrid.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SyukeihyoVer2GroupNameListGrid.ColumnInfo = resources.GetString("SyukeihyoVer2GroupNameListGrid.ColumnInfo");
+            this.SyukeihyoVer2GroupNameListGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SyukeihyoVer2GroupNameListGrid.ForeColor = System.Drawing.Color.Black;
+            this.SyukeihyoVer2GroupNameListGrid.Location = new System.Drawing.Point(6, 28);
+            this.SyukeihyoVer2GroupNameListGrid.Name = "SyukeihyoVer2GroupNameListGrid";
+            this.SyukeihyoVer2GroupNameListGrid.Rows.Count = 1;
+            this.SyukeihyoVer2GroupNameListGrid.ShowButtons = C1.Win.C1FlexGrid.ShowButtonsEnum.Always;
+            this.SyukeihyoVer2GroupNameListGrid.Size = new System.Drawing.Size(534, 179);
+            this.SyukeihyoVer2GroupNameListGrid.StyleInfo = resources.GetString("SyukeihyoVer2GroupNameListGrid.StyleInfo");
+            this.SyukeihyoVer2GroupNameListGrid.TabIndex = 26;
             // 
             // groupBox5
             // 
             this.groupBox5.AutoSize = true;
-            this.groupBox5.Controls.Add(this.c1FlexGrid3);
+            this.groupBox5.Controls.Add(this.FileNameListGrid);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(591, 434);
             this.groupBox5.Name = "groupBox5";
@@ -844,18 +844,18 @@ namespace TokuchoBugyoK2
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "ファイル名リスト";
             // 
-            // c1FlexGrid3
+            // FileNameListGrid
             // 
-            this.c1FlexGrid3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.c1FlexGrid3.ColumnInfo = "1,0,0,0,0,-1,Columns:0{Width:390;}\t";
-            this.c1FlexGrid3.Location = new System.Drawing.Point(134, 13);
-            this.c1FlexGrid3.Name = "c1FlexGrid3";
-            this.c1FlexGrid3.Rows.Count = 0;
-            this.c1FlexGrid3.Rows.Fixed = 0;
-            this.c1FlexGrid3.Size = new System.Drawing.Size(397, 184);
-            this.c1FlexGrid3.StyleInfo = resources.GetString("c1FlexGrid3.StyleInfo");
-            this.c1FlexGrid3.TabIndex = 22;
-            this.c1FlexGrid3.Click += new System.EventHandler(this.c1FlexGrid3_Click);
+            this.FileNameListGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileNameListGrid.ColumnInfo = "1,0,0,0,0,-1,Columns:0{Width:390;}\t";
+            this.FileNameListGrid.Location = new System.Drawing.Point(134, 13);
+            this.FileNameListGrid.Name = "FileNameListGrid";
+            this.FileNameListGrid.Rows.Count = 0;
+            this.FileNameListGrid.Rows.Fixed = 0;
+            this.FileNameListGrid.Size = new System.Drawing.Size(397, 184);
+            this.FileNameListGrid.StyleInfo = resources.GetString("FileNameListGrid.StyleInfo");
+            this.FileNameListGrid.TabIndex = 22;
+            this.FileNameListGrid.Click += new System.EventHandler(this.c1FlexGrid3_Click);
             // 
             // Popup_ShukeiHyou_New
             // 
@@ -902,9 +902,9 @@ namespace TokuchoBugyoK2
             this.ErrorBox.ResumeLayout(false);
             this.ErrorBox.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SyukeihyoVer2GroupNameListGrid)).EndInit();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FileNameListGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -955,7 +955,7 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.GroupBox groupBox4;
-        private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid2;
+        private C1.Win.C1FlexGrid.C1FlexGrid SyukeihyoVer2GroupNameListGrid;
         private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid1;
         private System.Windows.Forms.ComboBox comboBox_Chohyo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
@@ -964,6 +964,6 @@ namespace TokuchoBugyoK2
         private System.Windows.Forms.TextBox item1_ShukeiFolder;
         private System.Windows.Forms.CheckBox item_LinkCheckBox;
         private System.Windows.Forms.GroupBox groupBox5;
-        private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid3;
+        private C1.Win.C1FlexGrid.C1FlexGrid FileNameListGrid;
     }
 }

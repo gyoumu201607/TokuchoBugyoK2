@@ -100,6 +100,10 @@ namespace TokuchoBugyoK2
         private string AutoSizeGridRowMode;
         private const string GRID_ROW_AUTO_SIZE = "行高自動調整";
         private const string GRID_ROW_FIX_SIZE = "行高自動調整解除";
+        private const int ShukeihyoVer = 58;
+        private const int Bunkatu = 60;
+        private const int ChousaFileNo = 60;
+
 
         // 奉行エクセル移管対応
         private string IsPopup_ShukeiHyou_New = "0";
@@ -7609,13 +7613,13 @@ namespace TokuchoBugyoK2
                     if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() != "2")
                     {
 
-                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.GetCellRange(e.Row, ShukeihyoVer).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.GetCellRange(e.Row, 60).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
-                        c1FlexGrid4.Rows[e.Row][58] = "-";
+                        c1FlexGrid4.Rows[e.Row][ShukeihyoVer] = "-";
                         c1FlexGrid4.Rows[e.Row][60] = "";
                         //No.1656
                         c1FlexGrid4.Rows[e.Row][59] = "";
-                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                        c1FlexGrid4.GetCellRange(e.Row, ShukeihyoVer).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                     } 
                     /*No.1657
                     //No.1622
@@ -7627,10 +7631,10 @@ namespace TokuchoBugyoK2
                     */
                     if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2")
                     {
-                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.White;
+                        c1FlexGrid4.GetCellRange(e.Row, ShukeihyoVer).StyleNew.BackColor = Color.White;
                         c1FlexGrid4.GetCellRange(e.Row, 60).StyleNew.BackColor = Color.White;
                         //1572
-                        c1FlexGrid4.Rows[e.Row][58] = 1;
+                        c1FlexGrid4.Rows[e.Row][ShukeihyoVer] = 1;
                         //No.1657
                         if (c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "2")
                         {
@@ -7677,7 +7681,7 @@ namespace TokuchoBugyoK2
                     }
                     if (c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "2")
                     {
-                        c1FlexGrid4.GetCellRange(e.Row, 58).StyleNew.BackColor = Color.White;
+                        c1FlexGrid4.GetCellRange(e.Row, ShukeihyoVer).StyleNew.BackColor = Color.White;
                         //No.1656
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.White;
                     }
@@ -7828,6 +7832,7 @@ namespace TokuchoBugyoK2
             string w_TankaTekiyouChiiki = Value[4];                                 // 単価適用地域
             int.TryParse(Value[5].ToString(), out int w_TuikaGyousuu);              // 追加行数
             double.TryParse(Value[6].ToString(), out double w_ZentaiJunKaishiNo);   // 全体順開始番号
+            string w_retireFlg = Value[7];                                          // 退職フラグ
 
             //レイアウトロジックを停止する
             this.SuspendLayout();
@@ -8033,6 +8038,21 @@ namespace TokuchoBugyoK2
                                                       + "-"
                                                       + zeroPadding(c1FlexGrid4.Rows[rowCount]["ChousaKobetsuJun"].ToString())
                                                       ;
+                    }
+                    //退職フラグ
+                    else if (j == c1FlexGrid4.Cols["RetireFlg"].Index)
+                    {
+                        c1FlexGrid4.Rows[rowCount][j] = w_retireFlg;
+                    }
+                    //退職フラグ
+                    else if (j == c1FlexGrid4.Cols["RetireFlg1"].Index)
+                    {
+                        c1FlexGrid4.Rows[rowCount][j] = 0;
+                    }
+                    //退職フラグ
+                    else if (j == c1FlexGrid4.Cols["RetireFlg2"].Index)
+                    {
+                        c1FlexGrid4.Rows[rowCount][j] = 0;
                     }
                     else
                     {
