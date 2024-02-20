@@ -17,7 +17,16 @@ namespace TokuchoBugyoK2
 {
     public partial class Popup_ShukeiHyou_New : Form
     {
-        public string[] UserInfos;
+        private const string MitsumoriFileNameSuffix = "_見積";
+        private const int COL_FILE_SEPPARATE = 4;
+        private const string SYU_TANTO = "1";
+        private const string HUKU_TANTO = "2";
+        private const int COL_FILE_NAME = 0;
+		private const int COL_BUSHO_NAME = 1;
+		private const int COL_CHOUSAIN_NAME = 2;
+		private const int COL_GROUP_NAME = 3;
+		private const int COL_BUNKATSU_HOHO = 4;
+		public string[] UserInfos;
         public string[] ReturnValue = new string[10];
         private DataTable ListData = new DataTable();
         GlobalMethod GlobalMethod = new GlobalMethod();
@@ -455,43 +464,43 @@ namespace TokuchoBugyoK2
 
                 if (ShukeiVer == 2 && !checkBox_Zenhinmoku.Checked)
                 {
-                    c1FlexGrid2.Rows.Count = 1;
-                    c1FlexGrid2.AllowAddNew = true;
+                    SyukeihyoVer2GroupNameListGrid.Rows.Count = 1;
+                    SyukeihyoVer2GroupNameListGrid.AllowAddNew = true;
                     // No1656対応：ファイル分割時ファイル番号単位集約のためグループ名リスト取得元を変更
                     int addrow = GbushoList.Count;
                     //int addrow = BushoList.Count;
 
                     for (int r = 0; r < addrow; r++)
                     {
-                        c1FlexGrid2.Rows.Add();
+                        SyukeihyoVer2GroupNameListGrid.Rows.Add();
                         {
                             // No1656対応：ファイル分割時ファイル番号単位集約のためグループ名リスト取得元を変更
-                            c1FlexGrid2[r + 1, 1] = GbushoList[r].ToString();
-                            c1FlexGrid2[r + 1, 2] = GchousainMeiList[r].ToString();
+                            SyukeihyoVer2GroupNameListGrid[r + 1, COL_BUSHO_NAME] = GbushoList[r].ToString();
+                            SyukeihyoVer2GroupNameListGrid[r + 1, COL_CHOUSAIN_NAME] = GchousainMeiList[r].ToString();
                             //c1FlexGrid2[r + 1, 1] = BushoList[r].ToString();
                             //c1FlexGrid2[r + 1, 2] = ChousainMeiList[r].ToString();
                             // No1665対応：シート分割時グループ名は無視する
                             //c1FlexGrid2[r + 1, 3] = GroupMeiList[r].ToString();
                             if (GbunkatsuList[r] == "1")
                             {
-                                c1FlexGrid2[r + 1, 3] = "";
-                                c1FlexGrid2[r + 1, 4] = "-";
+                                SyukeihyoVer2GroupNameListGrid[r + 1, COL_GROUP_NAME] = "";
+                                SyukeihyoVer2GroupNameListGrid[r + 1, COL_BUNKATSU_HOHO] = "-";
                             }
                             else
                             {
-                                c1FlexGrid2[r + 1, 3] = GgroupMeiList[r].ToString();
+                                SyukeihyoVer2GroupNameListGrid[r + 1, COL_GROUP_NAME] = GgroupMeiList[r].ToString();
                                 // No1656対応：ファイル分割時ファイル番号単位集約のためグループ名リスト取得元を変更
                                 //c1FlexGrid2[r + 1, 3] = GroupMeiList[r].ToString();
-                                c1FlexGrid2[r + 1, 4] = "ファイル分割";
+                                SyukeihyoVer2GroupNameListGrid[r + 1, COL_BUNKATSU_HOHO] = "ファイル分割";
                             }
                         }
 
                     }
-                    c1FlexGrid2.AllowAddNew = false;
+                    SyukeihyoVer2GroupNameListGrid.AllowAddNew = false;
                 }
                 else
                 {
-                    c1FlexGrid2.Rows.Count = 1;
+                    SyukeihyoVer2GroupNameListGrid.Rows.Count = 1;
                 }
 
                 // 集計表フォルダ取得
@@ -545,10 +554,10 @@ namespace TokuchoBugyoK2
                     // 奉行エクセル移管対応 20231004
                     // エラー背景色　クリア
                     Color clearColor = Color.FromArgb(255, 255, 255);
-                    int filerow = c1FlexGrid3.Rows.Count;
+                    int filerow = FileNameListGrid.Rows.Count;
                     for (int r = 0; r < filerow; r++)
                     {
-                        c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
+                        FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
                     }
 
                     //  VIPS　20220322　課題管理表No1263(957)　ADD  保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
@@ -564,19 +573,19 @@ namespace TokuchoBugyoK2
                     else
                     {
                         int prntflg = 0;
-                        filerow = c1FlexGrid3.Rows.Count;
+                        filerow = FileNameListGrid.Rows.Count;
                         // エラー背景色
                         Color errorColor = Color.FromArgb(255, 204, 255);
                         for (int r = 0; r < filerow; r++)
                         {
-                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0]) && radioButton_Save.Checked)
                             {
                                 // E20332:集計表ファイルが既に存在します。
                                 set_error("", 0);
                                 set_error(GlobalMethod.GetMessage("E20332", ""));
                                 // ファイル出力ボタンを非活性化
                                 btnFileExport.Enabled = false;
-                                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                                FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
                             }
                             else
                             {
@@ -840,10 +849,10 @@ namespace TokuchoBugyoK2
                 getFileName();
                 // エラー背景色　クリア
                 Color clearColor = Color.FromArgb(255, 255, 255);
-                int filerow = c1FlexGrid3.Rows.Count;
+                int filerow = FileNameListGrid.Rows.Count;
                 for (int r = 0; r < filerow; r++)
                 {
-                    c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
+                    FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
                 }
 
                 // 奉行エクセル移管対応 20231004
@@ -862,19 +871,19 @@ namespace TokuchoBugyoK2
                 //    btnFileExport.Enabled = true;
                 //}
                 int prntflg = 0;
-                filerow = c1FlexGrid3.Rows.Count;
+                filerow = FileNameListGrid.Rows.Count;
                 // エラー背景色
                 Color errorColor = Color.FromArgb(255, 204, 255);
                 for (int r = 0; r < filerow; r++)
                 {
-                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0]) && radioButton_Save.Checked)
                     {
                         // E20332:集計表ファイルが既に存在します。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20332", ""));
                         // ファイル出力ボタンを非活性化
                         btnFileExport.Enabled = false;
-                        c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                        FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
                     }
                     else
                     {
@@ -898,8 +907,8 @@ namespace TokuchoBugyoK2
 
                 // 奉行エクセル移管対応 20231004
                 //item1_PritFileName.Enabled = true;
-                c1FlexGrid2.Rows.Count = 1;
-                c1FlexGrid3.Rows.Count = 0;
+                SyukeihyoVer2GroupNameListGrid.Rows.Count = 1;
+                FileNameListGrid.Rows.Count = 0;
                 // ファイル出力ボタンを非活性化
                 btnFileExport.Enabled = false;
             }
@@ -924,8 +933,8 @@ namespace TokuchoBugyoK2
                 checkBox_BushoIkkatu.Checked = false;
 
                 // ファイル名一覧グリッドを初期化
-                c1FlexGrid3.Clear(ClearFlags.Content);
-                c1FlexGrid3.Rows.Count = 0;
+                FileNameListGrid.Clear(ClearFlags.Content);
+                FileNameListGrid.Rows.Count = 0;
 
                 // 奉行エクセル移管対応
                 get_data();
@@ -962,19 +971,19 @@ namespace TokuchoBugyoK2
                         //    btnFileExport.Enabled = true;
                         //}
                         int prntflg = 0;
-                        int filerow = c1FlexGrid3.Rows.Count;
+                        int filerow = FileNameListGrid.Rows.Count;
                         // エラー背景色
                         Color errorColor = Color.FromArgb(255, 204, 255);
                         for (int r = 0; r < filerow; r++)
                         {
-                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0]) && radioButton_Save.Checked)
                             {
                                 // E20332:集計表ファイルが既に存在します。
                                 set_error("", 0);
                                 set_error(GlobalMethod.GetMessage("E20332", ""));
                                 // ファイル出力ボタンを非活性化
                                 btnFileExport.Enabled = false;
-                                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                                FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
                             }
                             else
                             {
@@ -1010,9 +1019,9 @@ namespace TokuchoBugyoK2
                 // 奉行エクセル移管対応 20231004
                 //// ファイル名を空に
                 //item1_PritFileName.Text = "";
-                c1FlexGrid2.Rows.Count = 1;
-                c1FlexGrid3.Clear(ClearFlags.Content);
-                c1FlexGrid3.Rows.Count = 0;
+                SyukeihyoVer2GroupNameListGrid.Rows.Count = 1;
+                FileNameListGrid.Clear(ClearFlags.Content);
+                FileNameListGrid.Rows.Count = 0;
             }
         }
 
@@ -1025,8 +1034,8 @@ namespace TokuchoBugyoK2
             String extensions = ".xlsm";
             String printFileName = "";
             // ファイル名を初期化
-            c1FlexGrid3.Clear(ClearFlags.Content);
-            c1FlexGrid3.Rows.Count = 0;
+            FileNameListGrid.Clear(ClearFlags.Content);
+            FileNameListGrid.Rows.Count = 0;
 
             var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
             using (var conn = new SqlConnection(connStr))
@@ -1070,11 +1079,11 @@ namespace TokuchoBugyoK2
             {
                 // 奉行エクセル移管対応 20231004
                 //item1_PritFileName.Text = "一括集計表" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
-                c1FlexGrid3.Rows.Count = 0;
-                c1FlexGrid3.AllowAddNew = true;
-                c1FlexGrid3.Rows.Add();
-                c1FlexGrid3[0, 0] = "一括集計表" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
-                c1FlexGrid3.AllowAddNew = false;
+                FileNameListGrid.Rows.Count = 0;
+                FileNameListGrid.AllowAddNew = true;
+                FileNameListGrid.Rows.Add();
+                FileNameListGrid[0, 0] = "一括集計表" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                FileNameListGrid.AllowAddNew = false;
             }
             else
             {
@@ -1085,71 +1094,68 @@ namespace TokuchoBugyoK2
                     // 奉行エクセル移管対応 20231004
                     //item1_PritFileName.Text = label_SentakuTantousha.Text + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
                     int addrow = ChousainMeiList.Count;
-                    c1FlexGrid3.Rows.Count = 0;
-                    c1FlexGrid3.AllowAddNew = true;
+                    FileNameListGrid.Rows.Count = 0;
+                    FileNameListGrid.AllowAddNew = true;
+
+
                     if (ShukeiVer == 2)
                     {
                         for (int r = 0; r < addrow; r++)
                         {
-                            c1FlexGrid3.Rows.Add();
-                            if (c1FlexGrid2.Rows[r + 1][4].ToString() == "-") //シート分割
+                            FileNameListGrid.Rows.Add();
+                            if (SyukeihyoVer2GroupNameListGrid.Rows[r + 1][COL_FILE_SEPPARATE].ToString() == "-") //シート分割
                             {
-                                if (SyuFukuList[r].ToString() == "1")
+                                if (SyuFukuList[r].ToString() == SYU_TANTO)
                                 {
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                                    FileNameListGrid[r, COL_FILE_NAME] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
                                 }
                                 else
                                 {
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "_見積" + extensions;
+                                    //_見積を追加
+                                    FileNameListGrid[r, COL_FILE_NAME] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + MitsumoriFileNameSuffix + extensions;
                                 }
                             }
                             else //ファイル分割
                             {
-                                if (SyuFukuList[r].ToString() == "1")
+                                if (SyuFukuList[r].ToString() == SYU_TANTO)
                                 {
                                     // No1656対応：グループ名ではなくファイル番号を編集
                                     //c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + extensions;
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + FileNoList[r].ToString() + "】" + extensions;                                }
+                                    FileNameListGrid[r, COL_FILE_NAME] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + FileNoList[r].ToString() + "】" + extensions;                                }
                                 else
                                 {
+                                    //_見積を追加
                                     // No1656対応：グループ名ではなくファイル番号を編集
                                     //c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + GroupMeiList[r].ToString() + "】" + "_見積" + extensions;
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + FileNoList[r].ToString() + "】" + "_見積" + extensions;
+                                    FileNameListGrid[r, COL_FILE_NAME] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "【" + FileNoList[r].ToString() + "】" + MitsumoriFileNameSuffix + extensions;
                                 }
                             }
                         }
                     }
                     else
                     {
+                        //集計表Ver1の場合
                         for (int r = 0; r < addrow; r++)
                         {
-                            c1FlexGrid3.Rows.Add();
-                            {
-                                if (SyuFukuList[r].ToString() == "1")
-                                {
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
-                                }
-                                else
-                                {
-                                    c1FlexGrid3[r, 0] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + "_見積" + extensions;
-                                }
-                            }
+                            FileNameListGrid.Rows.Add();
+                            FileNameListGrid[r, COL_FILE_NAME] = ChousainMeiList[r].ToString() + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
+                            
                         }
                     }
-                    c1FlexGrid3.AllowAddNew = false;
+                    FileNameListGrid.AllowAddNew = false;
 
                 }
                 else
                 {
                     // 奉行エクセル移管対応 20231004
                     //item1_PritFileName.Text = "未登録" + "-" + TokuhoBangou + "-" + TokuhoBangouEda + extensions;
-                    c1FlexGrid2.Rows.Count = 1;
-                    c1FlexGrid3.Clear(ClearFlags.Content);
-                    c1FlexGrid3.Rows.Count = 0;
+                    SyukeihyoVer2GroupNameListGrid.Rows.Count = 1;
+                    FileNameListGrid.Clear(ClearFlags.Content);
+                    FileNameListGrid.Rows.Count = 0;
                 }
             }
             // No1657対応：対象ファイル無い場合もファイル出力ボタン押せてしまう
-            if (c1FlexGrid3.Rows.Count == 0)
+            if (FileNameListGrid.Rows.Count == 0)
             {
                 // ファイル出力ボタンを非活性化
                 btnFileExport.Enabled = false;
@@ -1173,10 +1179,10 @@ namespace TokuchoBugyoK2
             set_error("", 0);
             // 背景色クリア
             Color clearColor = Color.FromArgb(255, 255, 255);
-            int filerow = c1FlexGrid3.Rows.Count;
+            int filerow = FileNameListGrid.Rows.Count;
             for (int r = 0; r < filerow; r++)
             {
-                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
+                FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
             }
             // エラー背景色
             Color errorColor = Color.FromArgb(255, 204, 255);
@@ -1187,21 +1193,21 @@ namespace TokuchoBugyoK2
             FileNameList.Clear();
             for (int r = 0; r < filerow; r++)
             {
-                if (!FileNameList.Contains(c1FlexGrid3[r, 0].ToString()))
+                if (!FileNameList.Contains(FileNameListGrid[r, 0].ToString()))
                 {
-                    FileNameList.Add(c1FlexGrid3[r, 0].ToString());
+                    FileNameList.Add(FileNameListGrid[r, 0].ToString());
                 }
                 else
                 {
-                    c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                    FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
                     if (prntflg == 1)
                     {
                         prntflg = 0;
                         // E20906:ファイル名が重複しています。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20906", ""));
-                        c1FlexGrid3.Row = r;
-                        c1FlexGrid3.HighLight = HighLightEnum.Never;
+                        FileNameListGrid.Row = r;
+                        FileNameListGrid.HighLight = HighLightEnum.Never;
                     }
                 }
                 // No1658対応：集計表Ver2でファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
@@ -1263,7 +1269,7 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                filerow = c1FlexGrid3.Rows.Count;
+                filerow = FileNameListGrid.Rows.Count;
                 for (int r = 0; r < filerow; r++)
                 {
                     // 集計表Ver1、Ver2混在チェック
@@ -1287,12 +1293,12 @@ namespace TokuchoBugyoK2
                     // No1656対応：集計表Ver2でファイル番号が選択されていない品目明細があった場合、エラーとする。
                     if ((ShukeiVer == 2 && BunkatsuList[r] == "2") && (FileNoList[r].ToString() == "" || FileNoList[r].ToString() is null))
                     {
-                        c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                        FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
                         // E20907:ファイル番号が割り当てられていません。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20907", ""));
-                        c1FlexGrid3.Row = r;
-                        c1FlexGrid3.HighLight = HighLightEnum.Never;
+                        FileNameListGrid.Row = r;
+                        FileNameListGrid.HighLight = HighLightEnum.Never;
                         prntflg = 0;
                     }
 
@@ -1310,27 +1316,27 @@ namespace TokuchoBugyoK2
 
                         if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
                         {
-                            if (File.Exists(chousainShukeiFolder + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                            if (File.Exists(chousainShukeiFolder + @"\" + FileNameListGrid[r, 0]) && radioButton_Save.Checked)
                             {
                                 // E20332:集計表ファイルが既に存在します。
                                 set_error("", 0);
                                 set_error(GlobalMethod.GetMessage("E20332", ""));
-                                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
-                                c1FlexGrid3.Row = r;
-                                c1FlexGrid3.HighLight = HighLightEnum.Never;
+                                FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                                FileNameListGrid.Row = r;
+                                FileNameListGrid.HighLight = HighLightEnum.Never;
                                 prntflg = 0;
                             }
                         }
                         else
                         {
-                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0]) && radioButton_Save.Checked)
                             {
                                 // E20332:集計表ファイルが既に存在します。
                                 set_error("", 0);
                                 set_error(GlobalMethod.GetMessage("E20332", ""));
-                                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
-                                c1FlexGrid3.Row = r;
-                                c1FlexGrid3.HighLight = HighLightEnum.Never;
+                                FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                                FileNameListGrid.Row = r;
+                                FileNameListGrid.HighLight = HighLightEnum.Never;
                                 prntflg = 0;
                             }
                         }
@@ -1374,7 +1380,7 @@ namespace TokuchoBugyoK2
                         // 主+副  0:主+副 1:主のみ 2:副
                         report_data[4] = comboBox_Taisho.SelectedValue.ToString();
                         // ファイル名
-                        report_data[5] = c1FlexGrid3[r, 0].ToString();
+                        report_data[5] = FileNameListGrid[r, 0].ToString();
 
                         report_data[6] = "0";
                         switch (PrintGamen)
@@ -1429,13 +1435,13 @@ namespace TokuchoBugyoK2
                                     {
                                         if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
                                         {
-                                            System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + c1FlexGrid3[r, 0].ToString(), true);
+                                            System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + FileNameListGrid[r, 0].ToString(), true);
                                         }
                                         else
                                         {
-                                            System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0].ToString(), true);
+                                            System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0].ToString(), true);
                                         }
-                                        set_error("集計表ファイルを出力しました。:" + c1FlexGrid3[r, 0].ToString());
+                                        set_error("集計表ファイルを出力しました。:" + FileNameListGrid[r, 0].ToString());
 
                                         // リンク先を設定するチェックボックスチェック時
                                         if (item_LinkCheckBox.Checked)
@@ -1456,11 +1462,11 @@ namespace TokuchoBugyoK2
                                                     string linkpath;
                                                     if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
                                                     {
-                                                        linkpath = chousainShukeiFolder + @"\" + c1FlexGrid3[r, 0].ToString();
+                                                        linkpath = chousainShukeiFolder + @"\" + FileNameListGrid[r, 0].ToString();
                                                     }
                                                     else
                                                     {
-                                                        linkpath = item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0].ToString();
+                                                        linkpath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0].ToString();
                                                     }
                                                     // 全品目一括集計表
                                                     cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + linkpath + "' " +
@@ -1489,7 +1495,7 @@ namespace TokuchoBugyoK2
                                                     }
                                                     else
                                                     {
-                                                        shukeipath = item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0].ToString();
+                                                        shukeipath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0].ToString();
                                                     }
                                                     // 全品目一括集計表
                                                     cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + shukeipath + "' " +
@@ -1574,7 +1580,7 @@ namespace TokuchoBugyoK2
                                     download_form.TopLevel = false;
                                     this.Controls.Add(download_form);
 
-                                    String fileName = Path.GetFileName(c1FlexGrid3[r, 0].ToString());
+                                    String fileName = Path.GetFileName(FileNameListGrid[r, 0].ToString());
                                     download_form.ExcelName = fileName;
                                     download_form.TotalFilePath = result[2];
                                     download_form.Dock = DockStyle.Bottom;
@@ -1796,12 +1802,12 @@ namespace TokuchoBugyoK2
                         // No1656対応：集計表Ver2でファイル番号が選択されていない品目明細があった場合、エラーとする。
                         if ((ShukeiVer == 2 && BunkatsuList[i] == "2") && (FileNoList[i].ToString() == "" || FileNoList[i].ToString() is null))
                         {
-                            c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
+                            FileNameListGrid.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
                             // E20907:ファイル番号が割り当てられていません。
                             set_error("", 0);
                             set_error(GlobalMethod.GetMessage("E20907", ""));
-                            c1FlexGrid3.Row = i;
-                            c1FlexGrid3.HighLight = HighLightEnum.Never;
+                            FileNameListGrid.Row = i;
+                            FileNameListGrid.HighLight = HighLightEnum.Never;
                             prntflg = 0;
                         }
 
@@ -1816,27 +1822,27 @@ namespace TokuchoBugyoK2
 
                             if (ShukeiVer == 2 && BunkatsuList[i] == "2")
                             {
-                                if (File.Exists(chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0]) && radioButton_Save.Checked)
+                                if (File.Exists(chousainShukeiFolder + @"\" + FileNameListGrid[i, 0]) && radioButton_Save.Checked)
                                 {
                                     // E20332:集計表ファイルが既に存在します。
                                     set_error("", 0);
                                     set_error(GlobalMethod.GetMessage("E20332", ""));
-                                    c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
-                                    c1FlexGrid3.Row = i;
-                                    c1FlexGrid3.HighLight = HighLightEnum.Never;
+                                    FileNameListGrid.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
+                                    FileNameListGrid.Row = i;
+                                    FileNameListGrid.HighLight = HighLightEnum.Never;
                                     prntflg = 0;
                                 }
                             }
                             else
                             {
-                                if (File.Exists(item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[i, 0]) && radioButton_Save.Checked)
+                                if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[i, 0]) && radioButton_Save.Checked)
                                 {
                                     // E20332:集計表ファイルが既に存在します。
                                     set_error("", 0);
                                     set_error(GlobalMethod.GetMessage("E20332", ""));
-                                    c1FlexGrid3.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
-                                    c1FlexGrid3.Row = i;
-                                    c1FlexGrid3.HighLight = HighLightEnum.Never;
+                                    FileNameListGrid.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
+                                    FileNameListGrid.Row = i;
+                                    FileNameListGrid.HighLight = HighLightEnum.Never;
                                     prntflg = 0;
                                 }
                             }
@@ -1925,13 +1931,13 @@ namespace TokuchoBugyoK2
                                         {
                                             if (ShukeiVer == 2 && BunkatsuList[i] == "2")
                                             {
-                                                System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0].ToString(), true);
+                                                System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + FileNameListGrid[i, 0].ToString(), true);
                                             }
                                             else
                                             {
-                                                System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[i, 0].ToString(), true);
+                                                System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + FileNameListGrid[i, 0].ToString(), true);
                                             }
-                                            set_error("集計表ファイルを出力しました。:" + c1FlexGrid3[i, 0].ToString());
+                                            set_error("集計表ファイルを出力しました。:" + FileNameListGrid[i, 0].ToString());
 
                                             // リンク先を設定するチェックボックスチェック時
                                             if (item_LinkCheckBox.Checked)
@@ -1950,11 +1956,11 @@ namespace TokuchoBugyoK2
                                                         string linkpath;
                                                         if (ShukeiVer == 2 && BunkatsuList[i] == "2")
                                                         {
-                                                            linkpath = chousainShukeiFolder + @"\" + c1FlexGrid3[i, 0].ToString();
+                                                            linkpath = chousainShukeiFolder + @"\" + FileNameListGrid[i, 0].ToString();
                                                         }
                                                         else
                                                         {
-                                                            linkpath = item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[i, 0].ToString();
+                                                            linkpath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[i, 0].ToString();
                                                         }
                                                         // 全品目一括集計表
                                                         cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + linkpath + "' " +
@@ -1983,7 +1989,7 @@ namespace TokuchoBugyoK2
                                                         }
                                                         else
                                                         {
-                                                            shukeipath = item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[i, 0].ToString();
+                                                            shukeipath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[i, 0].ToString();
                                                         }
                                                         // 全品目一括集計表
                                                         cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + shukeipath + "' " +
@@ -2062,7 +2068,7 @@ namespace TokuchoBugyoK2
                                         download_form.TopLevel = false;
                                         this.Controls.Add(download_form);
 
-                                        fileName = Path.GetFileName(c1FlexGrid3[i, 0].ToString());
+                                        fileName = Path.GetFileName(FileNameListGrid[i, 0].ToString());
                                         download_form.ExcelName = fileName;
                                         download_form.TotalFilePath = result[2];
                                         download_form.Dock = DockStyle.Bottom;
@@ -2220,10 +2226,10 @@ namespace TokuchoBugyoK2
             // 奉行エクセル移管対応 20231004
             // エラー背景色　クリア
             Color clearColor = Color.FromArgb(255, 255, 255);
-            int filerow = c1FlexGrid3.Rows.Count;
+            int filerow = FileNameListGrid.Rows.Count;
             for (int r = 0; r < filerow; r++)
             {
-                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
+                FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
             }
 
             // フォルダチェック
@@ -2238,19 +2244,19 @@ namespace TokuchoBugyoK2
             else
             {
                 int prntflg = 0;
-                filerow = c1FlexGrid3.Rows.Count;
+                filerow = FileNameListGrid.Rows.Count;
                 // エラー背景色
                 Color errorColor = Color.FromArgb(255, 204, 255);
                 for (int r = 0; r < filerow; r++)
                 {
-                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + c1FlexGrid3[r, 0]) && radioButton_Save.Checked)
+                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0]) && radioButton_Save.Checked)
                     {
                         // E20332:集計表ファイルが既に存在します。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20332", ""));
                         // ファイル出力ボタンを非活性化
                         btnFileExport.Enabled = false;
-                        c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                        FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
                     }
                     else
                     {
@@ -2339,7 +2345,7 @@ namespace TokuchoBugyoK2
                                                 GroupMeiList.Add(dt0.Rows[i][1].ToString());
                                                 BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                                 GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                                SyuFukuList.Add("1");
+                                                SyuFukuList.Add(SYU_TANTO);
                                                 FileNoList.Add(dt0.Rows[i][4].ToString());
                                             }
                                         }
@@ -2352,7 +2358,7 @@ namespace TokuchoBugyoK2
                                             GroupMeiList.Add(dt0.Rows[i][1].ToString());
                                             BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                             GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                            SyuFukuList.Add("1");
+                                            SyuFukuList.Add(SYU_TANTO);
                                             FileNoList.Add(dt0.Rows[i][4].ToString());
                                         }
 
@@ -2366,7 +2372,7 @@ namespace TokuchoBugyoK2
                                         GroupMeiList.Add(dt0.Rows[i][1].ToString());
                                         BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                         GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                        SyuFukuList.Add("1");
+                                        SyuFukuList.Add(SYU_TANTO);
                                         FileNoList.Add(dt0.Rows[i][4].ToString());
                                     }
                                 }
@@ -2435,7 +2441,7 @@ namespace TokuchoBugyoK2
                                                 GroupMeiList.Add(dt0.Rows[i][1].ToString());
                                                 BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                                 GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                                SyuFukuList.Add("2");
+                                                SyuFukuList.Add(HUKU_TANTO);
                                                 FileNoList.Add(dt0.Rows[i][4].ToString());
                                             }
                                         }
@@ -2448,7 +2454,7 @@ namespace TokuchoBugyoK2
                                             GroupMeiList.Add(dt0.Rows[i][1].ToString());
                                             BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                             GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                            SyuFukuList.Add("2");
+                                            SyuFukuList.Add(HUKU_TANTO);
                                             FileNoList.Add(dt0.Rows[i][4].ToString());
                                         }
                                     }
@@ -2461,7 +2467,7 @@ namespace TokuchoBugyoK2
                                         GroupMeiList.Add(dt0.Rows[i][1].ToString());
                                         BunkatsuList.Add(dt0.Rows[i][2].ToString());
                                         GroupIDList.Add(dt0.Rows[i][3].ToString());
-                                        SyuFukuList.Add("2");
+                                        SyuFukuList.Add(HUKU_TANTO);
                                         FileNoList.Add(dt0.Rows[i][4].ToString());
                                     }
                                 }
@@ -2600,21 +2606,21 @@ namespace TokuchoBugyoK2
                         // E20905:集計表Ver1、Ver2が混在しています。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20905", ""));
-                        int filerow = c1FlexGrid3.Rows.Count;
+                        int filerow = FileNameListGrid.Rows.Count;
                         for (int r = 0; r < filerow; r++)
                         {
                             if (chkSyuFuku == "1")
                             {
-                                if (KojincdList[r].ToString() == chkChousain && SyuFukuList[r].ToString() == "1")
+                                if (KojincdList[r].ToString() == chkChousain && SyuFukuList[r].ToString() == SYU_TANTO)
                                 {
-                                    c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                                    FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
                                 }
                             }
                             if (chkSyuFuku == "2")
                             {
-                                if (KojincdList[r].ToString() == chkChousain && SyuFukuList[r].ToString() == "2")
+                                if (KojincdList[r].ToString() == chkChousain && SyuFukuList[r].ToString() == HUKU_TANTO)
                                 {
-                                    c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                                    FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
                                 }
                             }
                         }
@@ -2690,12 +2696,12 @@ namespace TokuchoBugyoK2
                         // E20903:分割方法が混在しています。
                         set_error("", 0);
                         set_error(GlobalMethod.GetMessage("E20903", ""));
-                        int filerow = c1FlexGrid3.Rows.Count;
+                        int filerow = FileNameListGrid.Rows.Count;
                         for (int r = 0; r < filerow; r++)
                         {
                             if (KojincdList[r].ToString() == chkChousain)
                             {
-                                c1FlexGrid3.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
+                                FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = Color.FromArgb(255, 204, 255);
                             }
                         }
                         checkflg = 0;
@@ -2745,8 +2751,8 @@ namespace TokuchoBugyoK2
             }
 
             // 作業フォルダ作成&DB登録
-            string bushoCD3 = "";
-            string ryakuMei = "";
+           // string bushoCD3 = "";
+           // string ryakuMei = "";
             //string convStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
             //using (var conn = new SqlConnection(convStr))
             //{
@@ -2887,7 +2893,7 @@ namespace TokuchoBugyoK2
 
         private void c1FlexGrid3_Click(object sender, EventArgs e)
         {
-            c1FlexGrid3.HighLight = HighLightEnum.Always;
+            FileNameListGrid.HighLight = HighLightEnum.Always;
         }
         private void radioButton_Ver_CheckedChanged(object sender, EventArgs e)
         {

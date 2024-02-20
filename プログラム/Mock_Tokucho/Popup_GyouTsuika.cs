@@ -10,13 +10,14 @@ namespace TokuchoBugyoK2
     public partial class Popup_GyouTsuika : Form
     {
         public string[] UserInfos;
-        public string[] ReturnValue = new string[7];
+        public string[] ReturnValue = new string[8];
         GlobalMethod GlobalMethod = new GlobalMethod();
 
         public int Nendo = DateTime.Today.Year;
         private int ToNendo = 0;
+		private string RetireFlg;
 
-        public Popup_GyouTsuika()
+		public Popup_GyouTsuika()
         {
             InitializeComponent();
 
@@ -93,13 +94,51 @@ namespace TokuchoBugyoK2
                 ReturnValue[4] = textBox_TankaTekiyouChiiki.Text;                       // 単価適用地域
                 ReturnValue[5] = textBox_TuikaGyousuu.Text;                             // 追加行数
                 ReturnValue[6] = textBox_ZentaiJunKaishiNo.Text;                        // 全体順開始番号
+
+                //調査員の退職フラグ取得
+                this.GetUserRetireFlg();
+                ReturnValue[7] = this.RetireFlg;                                        // 退職フラグ
+
                 this.Close();
             }
 
         }
 
-        // キャンセルボタン
-        private void button_Cancel_Click(object sender, EventArgs e)
+        //調査員の退職フラグ取得
+        private void GetUserRetireFlg()
+        {
+            string kojinCD = comboBox_ChousaTantousha.SelectedValue.ToString();
+            var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+
+            using (var conn = new SqlConnection(connStr))
+            {
+                var cmd = conn.CreateCommand();
+
+                // 調査員マスタの値の取得
+                var dtprint = new DataTable();
+                cmd.CommandText 
+= @"SELECT    case 
+        when RetireFLG = 0 then '0'
+        when RetireFLG = 1 then '1'
+    end as RetireFLG "
+                                + "  FROM Mst_Chousain"
+                                + " WHERE KojinCD = " + kojinCD;
+                // データ取得
+                var sda = new SqlDataAdapter(cmd);
+                sda.Fill(dtprint);
+                if (dtprint.Rows.Count > 0)
+                {
+                    this.RetireFlg = dtprint.Rows[0]["RetireFLG"].ToString();
+                }
+                conn.Close();
+
+            }
+
+
+        }
+
+		// キャンセルボタン
+		private void button_Cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -153,7 +192,7 @@ namespace TokuchoBugyoK2
             // 調査担当者 コンボ
             DataTable combodt2 = new System.Data.DataTable();
             string discript = "ChousainMei ";
-            string value = "KojinCD ";
+            string value = "KojinCD  ";
             string table = "Mst_Chousain ";
             string where = "ChousainDeleteFlag = 0";
             if (comboBox_ChousaBusho.SelectedValue != null && comboBox_ChousaBusho.SelectedValue.ToString() != "")
@@ -193,7 +232,7 @@ namespace TokuchoBugyoK2
 
                     // 調査員マスタの値の取得
                     var dtprint = new DataTable();
-                    cmd.CommandText = "SELECT GyoumuBushoCD"
+                    cmd.CommandText = "SELECT GyoumuBushoCD "
                                     + "  FROM Mst_Chousain"
                                     + " WHERE KojinCD = " + comboBox_ChousaTantousha.SelectedValue;
                     // データ取得
@@ -201,7 +240,7 @@ namespace TokuchoBugyoK2
                     sda.Fill(dtprint);
                     if (dtprint.Rows.Count > 0)
                     {
-                        comboBox_ChousaBusho.SelectedValue = dtprint.Rows[0][0].ToString();
+                        comboBox_ChousaBusho.SelectedValue = dtprint.Rows[0]["GyoumuBushoCD"].ToString();
                     }
                     conn.Close();
 
