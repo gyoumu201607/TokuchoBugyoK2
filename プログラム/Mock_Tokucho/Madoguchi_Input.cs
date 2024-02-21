@@ -5060,29 +5060,16 @@ namespace TokuchoBugyoK2
             tmpdt.Columns.Add("Discript", typeof(string));
             for (int i = 1; i <= fMN; i++)
             {
-                tmpdt.Rows.Add("0" + i, "0" + i);
-                /*if (tmpdt.Rows =[])
+                if(i < 10)
                 {
-                    DataRow dr = dt.NewRow();
-                    //dr["fileNum"] = 10;
-                    tmpdt.Rows.InsertAt(dt.Rows[0], 9);
-                }*/
+                    tmpdt.Rows.Add("0" + i, "0" + i);
+                }
+                else
+                {
+                    tmpdt.Rows.Add(i.ToString(), i.ToString());
+                }
             }
-            */
-
-            tmpdt.Rows.Add("01", fileMaxNum);
-            /*
-            tmpdt.Rows.Add("01", "01");
-            tmpdt.Rows.Add("02", "02");
-            tmpdt.Rows.Add("03", "03");
-            tmpdt.Rows.Add("04", "04");
-            tmpdt.Rows.Add("05", "05");
-            tmpdt.Rows.Add("06", "06");
-            tmpdt.Rows.Add("07", "07");
-            tmpdt.Rows.Add("08", "08");
-            tmpdt.Rows.Add("09", "09");
-            tmpdt.Rows.Add("10", "10");
-            */
+          
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
             //該当グリッドのセルにセット

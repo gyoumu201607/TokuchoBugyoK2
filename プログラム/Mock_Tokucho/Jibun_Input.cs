@@ -995,21 +995,35 @@ namespace TokuchoBugyoK2
 
             //No.1656
             //調査品目　Gridファイル番号
+            //M_COMMON_MASTERからファイル番号の上限値を取得する
+            var dt = new DataTable();
+            var conn = new SqlConnection(connStr);
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT CommonValue1 " +
+                "FROM M_CommonMaster " +
+                "WHERE CommonMasterKye = 'CHOUSA_SHUUKEI_FILENO' ";
+            //データ取得
+            var sdaC = new SqlDataAdapter(cmd);
+            sdaC.Fill(dt);
+            string fileMaxNum = "";
+            fileMaxNum = dt.Rows[0][0].ToString();
+            int fMN = Int32.Parse(fileMaxNum);
+
             tmpdt = new System.Data.DataTable();
             tmpdt.Columns.Add("Value", typeof(string));
             tmpdt.Columns.Add("Discript", typeof(string));
+            for (int i = 1; i <= fMN; i++)
+            {
+                if (i < 10)
+                {
+                    tmpdt.Rows.Add("0" + i, "0" + i);
+                }
+                else
+                {
+                    tmpdt.Rows.Add(i.ToString(), i.ToString());
+                }
+            }
 
-            //tmpdt.Rows.Add(0, "");
-            tmpdt.Rows.Add("01", "01");
-            tmpdt.Rows.Add("02", "02");
-            tmpdt.Rows.Add("03", "03");
-            tmpdt.Rows.Add("04", "04");
-            tmpdt.Rows.Add("05", "05");
-            tmpdt.Rows.Add("06", "06");
-            tmpdt.Rows.Add("07", "07");
-            tmpdt.Rows.Add("08", "08");
-            tmpdt.Rows.Add("09", "09");
-            tmpdt.Rows.Add("10", "10");
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
             //該当グリッドのセルにセット
