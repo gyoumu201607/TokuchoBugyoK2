@@ -7553,10 +7553,84 @@ namespace TokuchoBugyoK2
                     }
                 }
                 //奉行エクセル
+                //ファイルNo
+                if (e.Col == c1FlexGrid4.Cols["FileNo"].Index)
+                {
+                    //No.1672
+                    // 別の値がペーストされる対策
+                    if (c1FlexGrid4.Rows[e.Row][ColName] != null)
+                    {
+                        switch (c1FlexGrid4.Rows[e.Row][ColName].ToString())
+                        {
+                            case "01":
+                            case "02":
+                            case "03":
+                            case "04":
+                            case "05":
+                            case "06":
+                            case "07":
+                            case "08":
+                            case "09":
+                            case "10":
+                                break;
+                            default:
+                                c1FlexGrid4.Rows[e.Row][ColName] = "";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "";
+                    }
+                }
+
                 // グループ名
                 if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
                 {
                     strIndex = 15;
+
+                    if (c1FlexGrid4.Rows[e.Row][ColName] != null)
+                    {
+                        discript = "MadoguchiGroupMei ";
+                        value = "MadoguchiGroupMasterID ";
+                        table = "MadoguchiGroupMaster ";
+                        where = "MadoguchiID  = " + MadoguchiID; //MadoguchiIDが一致するもの
+                        //入力しているグループ名のグループIDが、グループマスタ上に存在するかどうか
+
+                        int dummy;
+                        if (int.TryParse(c1FlexGrid4.Rows[e.Row][ColName].ToString(), out dummy))
+                        {
+                            //入力されたグループが数値だった場合
+                            //念のためグループのIDと名称両方を検索条件にセット
+                            where += " AND  ( MadoguchiGroupMei = '" + c1FlexGrid4.Rows[e.Row][ColName] + "'";
+                            where += " OR  MadoguchiGroupMasterID = " + c1FlexGrid4.Rows[e.Row][ColName] + ")";
+
+                        }
+                        else
+                        {
+                            ///入力されたグループが文字列だった場合
+                            where += " AND  MadoguchiGroupMei = '" + c1FlexGrid4.Rows[e.Row][ColName] + "'";
+
+                        }
+
+                        combodt = new DataTable();
+                        combodt = GlobalMethod.getData(discript, value, table, where);
+                        if (combodt != null && combodt.Rows.Count > 0)
+                        {
+                            // 取得出来た場合はIDをセット
+                            c1FlexGrid4.Rows[e.Row][ColName] = combodt.Rows[0]["value"];
+                        }
+                        else
+                        {
+                            // 取得できなかったらクリア
+                            c1FlexGrid4.Rows[e.Row][ColName] = "";
+                        }
+                    }
+                    else
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "";
+                    }
+
                     //No.1672
                     /*
                     // 別の値がペーストされる対策
