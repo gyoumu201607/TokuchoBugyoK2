@@ -2415,6 +2415,11 @@ namespace TokuchoBugyoK2
                     //No.1656
                     //ファイル番号
                     c1FlexGrid4.Rows[RowCount]["FileNo"] = DT_ChousaHinmoku.Rows[i]["ChousaFileNo"];
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "2" && DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1")
+                    {
+                        c1FlexGrid4.GetCellRange(RowCount, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+
+                    }
                     //分割方法（ファイル・シート）
                     if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1" || DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "2")
                     {
@@ -2426,8 +2431,9 @@ namespace TokuchoBugyoK2
                     }
                     //No.1657
                     if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "2" && DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1")
-                        {
+                    {
                         c1FlexGrid4.Rows[RowCount]["GroupMei"] = DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"];
+
                     }
                     //グループ名
                     if (DT_ChousaHinmoku.Rows[i]["ChousaMadoguchiGroupMasterID"].ToString() == "0")
@@ -5369,32 +5375,21 @@ namespace TokuchoBugyoK2
             sdaC.Fill(dt);
             string fileMaxNum = "";
             fileMaxNum = dt.Rows[0][0].ToString();
-            //if (int.TryParse(fileMaxNum), out int fmn == true);
+            int fMN = Int32.Parse(fileMaxNum);
 
             tmpdt = new System.Data.DataTable();
             tmpdt.Columns.Add("Value", typeof(string));
             tmpdt.Columns.Add("Discript", typeof(string));
-            /*
-            for (int i = 1; i <= fileMaxNum.int.Parse(); i++)
+            for (int i = 1; i <= fMN; i++)
             {
-
                 tmpdt.Rows.Add("0" + i, "0" + i);
+                /*if (tmpdt.Rows =[])
+                {
+                    DataRow dr = dt.NewRow();
+                    //dr["fileNum"] = 10;
+                    tmpdt.Rows.InsertAt(dt.Rows[0], 9);
+                }*/
             }
-            */
-
-            tmpdt.Rows.Add("01", fileMaxNum);
-            /*
-            tmpdt.Rows.Add("01", "01");
-            tmpdt.Rows.Add("02", "02");
-            tmpdt.Rows.Add("03", "03");
-            tmpdt.Rows.Add("04", "04");
-            tmpdt.Rows.Add("05", "05");
-            tmpdt.Rows.Add("06", "06");
-            tmpdt.Rows.Add("07", "07");
-            tmpdt.Rows.Add("08", "08");
-            tmpdt.Rows.Add("09", "09");
-            tmpdt.Rows.Add("10", "10");
-            */
             sl = new SortedList();
             sl = GlobalMethod.Get_SortedList(tmpdt);
             //該当グリッドのセルにセット

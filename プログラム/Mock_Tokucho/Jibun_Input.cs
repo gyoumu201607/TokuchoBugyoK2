@@ -2345,6 +2345,11 @@ namespace TokuchoBugyoK2
                     //No.1656
                     //ファイル番号
                     c1FlexGrid4.Rows[RowCount]["FileNo"] = DT_ChousaHinmoku.Rows[i]["ChousaFileNo"];
+                    if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() == "2" && DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1")
+                    {
+                        c1FlexGrid4.GetCellRange(RowCount, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+
+                    }
                     //分割方法（ファイル・シート）
                     if (DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "1" || DT_ChousaHinmoku.Rows[i]["ChousaBunkatsuHouhou"].ToString() == "2")
                     {
