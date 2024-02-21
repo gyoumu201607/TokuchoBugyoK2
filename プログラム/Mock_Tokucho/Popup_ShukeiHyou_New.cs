@@ -1344,7 +1344,7 @@ namespace TokuchoBugyoK2
                     // 2:ZeninSyukeihyo  全品目一括集計表 1:チェック 0:未チェック
                     // 3:ShibuMei        支部名
                     // 4:KojinCD         個人CD
-                    // 5:ShuFuku         主+副  0:主+副 1:主のみ 2:副
+                    // 5:ShuFuku         主副  1:主 2:副
                     // 6:FileName        ファイル名
                     // 7:PrintGamen      呼び出し元画面 0:窓口ミハル 1:特命課長  2:自分大臣
                     // 8:GroupName       グループ名
@@ -1375,7 +1375,7 @@ namespace TokuchoBugyoK2
                         {
                             report_data[3] = item1_KojinCD.Text;
                         }
-                        // 主+副  0:主+副 1:主のみ 2:副
+                        // 主副  1:主 2:副
                         //report_data[4] = comboBox_Taisho.SelectedValue.ToString();
                         report_data[4] = SyuFukuList[fileRowIdx].ToString();
 
@@ -1610,6 +1610,7 @@ namespace TokuchoBugyoK2
                 // 対象を取得する
                 string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
 
+                #region 既存コメントアウト
                 ////分類
                 //using (var conn = new SqlConnection(connStr))
                 //{
@@ -1729,6 +1730,8 @@ namespace TokuchoBugyoK2
                 //        //    label3.Visible = true;
                 //    }
                 //}
+                #endregion
+
                 // 対象者がいる場合
                 //if(dt0.Rows.Count > 0)
                 //if (kojinList.Count > 0)
@@ -1849,7 +1852,7 @@ namespace TokuchoBugyoK2
                             // 2:ZeninSyukeihyo  全品目一括集計表 1:チェック 0:未チェック
                             // 3:ShibuMei        支部名
                             // 4:KojinCD         個人CD
-                            // 5:ShuFuku         主+副  0:主+副 1:主のみ 2:副
+                            // 5:ShuFuku         主副  1:主 2:副
                             // 6:FileName        ファイル名
                             // 7:PrintGamen      呼び出し元画面 0:窓口ミハル 1:特命課長  2:自分大臣
                             // 8:GroupName       グループ名
@@ -1867,7 +1870,7 @@ namespace TokuchoBugyoK2
                             //report_data[3] = dt0.Rows[i][0].ToString();
                             //report_data[3] = ChousainMeiList[i].ToString();
                             report_data[3] = KojincdList[i].ToString();
-                            // 主+副  0:主+副 1:主のみ 2:副
+                            // 主副  1:主のみ 2:副
                             //report_data[4] = comboBox_Taisho.SelectedValue.ToString();
                             report_data[4] = SyuFukuList[i].ToString();
                             // ファイル名
