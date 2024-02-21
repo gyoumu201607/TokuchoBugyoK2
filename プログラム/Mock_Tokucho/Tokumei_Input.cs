@@ -3734,6 +3734,7 @@ namespace TokuchoBugyoK2
                                             ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuCode"].ToString(), 0, 0) + "' " +                  // 地区コード
                                             ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuMei"].ToString(), 0, 0) + "' ";                    // 地区名
 
+#region 既存値セット
                                         // 少額案件[10万/100万]
                                         //if (c1FlexGrid4.Rows[i][37] != null && c1FlexGrid4.Rows[i][37].ToString() == "True")
                                         if (c1FlexGrid4.Rows[i]["ChousaShougaku"] != null && c1FlexGrid4.Rows[i]["ChousaShougaku"].ToString() == "True")
@@ -3949,6 +3950,8 @@ namespace TokuchoBugyoK2
                                                 }
                                             }
                                         }
+#endregion
+
                                         else
                                         {
                                             //valuesText += ",'" + c1FlexGrid4.Rows[i][56] + "' ";       // 進捗状況
@@ -4000,19 +4003,20 @@ namespace TokuchoBugyoK2
                                                 }
                                             }
                                             //奉行エクセル
-                                            //集計表Ver
-                                            if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
+#region 奉行エクセル
+                                            //ファイル番号
+                                            if (c1FlexGrid4.Rows[i]["FileNo"] != null && c1FlexGrid4.Rows[i]["FileNo"].ToString() != "")
                                             {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
+                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["FileNo"] + "' ";
                                             }
                                             else
                                             {
                                                 valuesText += ",null ";
                                             }
-                                            //ファイル番号
-                                            if (c1FlexGrid4.Rows[i]["FileNo"] != null && c1FlexGrid4.Rows[i]["FileNo"].ToString() != "")
+                                            //集計表Ver
+                                            if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
                                             {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["FileNo"] + "' ";
+                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
                                             }
                                             else
                                             {
@@ -4027,6 +4031,7 @@ namespace TokuchoBugyoK2
                                             {
                                                 valuesText += ",'0' ";
                                             }
+
                                             //工事・構造物名
                                             if (c1FlexGrid4.Rows[i]["KojiKoubutsuMei"] != null && c1FlexGrid4.Rows[i]["KojiKoubutsuMei"].ToString() != "")
                                             {
@@ -4090,6 +4095,7 @@ namespace TokuchoBugyoK2
                                             {
                                                 valuesText += ",0 ";
                                             }
+                                            #endregion
 
                                         }
                                         valuesText += ")";

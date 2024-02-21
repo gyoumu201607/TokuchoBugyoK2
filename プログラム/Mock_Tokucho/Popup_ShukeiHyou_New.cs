@@ -1376,7 +1376,9 @@ namespace TokuchoBugyoK2
                             report_data[3] = item1_KojinCD.Text;
                         }
                         // 主+副  0:主+副 1:主のみ 2:副
-                        report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                        //report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                        report_data[4] = SyuFukuList[fileRowIdx].ToString();
+
                         // ファイル名
                         report_data[5] = FileNameListGrid[fileRowIdx, 0].ToString();
 
@@ -1866,7 +1868,8 @@ namespace TokuchoBugyoK2
                             //report_data[3] = ChousainMeiList[i].ToString();
                             report_data[3] = KojincdList[i].ToString();
                             // 主+副  0:主+副 1:主のみ 2:副
-                            report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                            //report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                            report_data[4] = SyuFukuList[i].ToString();
                             // ファイル名
                             //report_data[5] = item1_PritFileName.Text;
                             report_data[5] = fileName;
@@ -1898,7 +1901,9 @@ namespace TokuchoBugyoK2
 
                             int listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
 
+                            //帳票Exe連携ワークテーブル登録
                             string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data, "Shukeihyo");
+                            
                             // result
                             // 成否判定 0:正常 1：エラー
                             // メッセージ（主にエラー用）
@@ -2720,12 +2725,6 @@ namespace TokuchoBugyoK2
 
         private bool createFolder(int c)
         {
-            //ver1の場合、集計表フォルダ、作業フォルダを作成しない。
-            if(ShukeiVer == 1)
-			{
-                return false;
-			}
-
             // 集計表フォルダ作成
             //todo:分割方法リスト2:ファイル分割
             //ve2でファイル分割の場合、名前＋特徴?番号のフォルダを作成
@@ -2748,41 +2747,6 @@ namespace TokuchoBugyoK2
                 }
             }
 
-            // 作業フォルダ作成&DB登録
-           // string bushoCD3 = "";
-           // string ryakuMei = "";
-            //string convStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-            //using (var conn = new SqlConnection(convStr))
-            //{
-            //    try
-            //    {
-            //        var cmd = conn.CreateCommand();
-            //        DataTable dtm = new DataTable();
-            //        //cmd.CommandText = "SELECT KashoShibuCD, KaMei FROM Mst_Busho WHERE GyoumuBushoCD = '" + Busho + "'";
-            //        cmd.CommandText = "SELECT KashoShibuCD, KaMei FROM Mst_Busho WHERE GyoumuBushoCD = '" + src_Busho.SelectedValue.ToString() + "'";
-            //        var sdm = new SqlDataAdapter(cmd);
-            //        dtm.Clear();
-            //        sdm.Fill(dtm);
-            //        if (dtm != null && dtm.Rows.Count > 0)
-            //        {
-            //            bushoCD3 = dtm.Rows[0][0].ToString();
-            //            ryakuMei = dtm.Rows[0][1].ToString();
-            //        }
-            //        else
-            //        {
-            //            // 所属がマスタにありません。
-            //            set_error(GlobalMethod.GetMessage("E20313", ""));
-            //            return false;
-            //        }
-
-            //        conn.Close();
-            //    }
-            //    catch (Exception)
-            //    {
-            //        // エラーが発生しました
-            //        return false;
-            //    }
-            //}
             string KameiPath;
             if (src_Busho.SelectedValue.ToString() == "171000") //北海道
             {
@@ -2804,90 +2768,100 @@ namespace TokuchoBugyoK2
             }
 
             //作業フォルダの作成
-            string basePath;
-            DataTable BaseList = GlobalMethod.getData("CommonMasterID", "CommonValue1", "M_CommonMaster", "CommonMasterKye = 'ENTORY_SAGYOU_HOLDERBASE' ");
-            if (BaseList != null && BaseList.Rows.Count > 0)
+            //ver1の場合、作業フォルダを作成しない。
+            if (ShukeiVer != 1)
             {
-                basePath = BaseList.Rows[0][0].ToString();
-                basePath = basePath.Replace(@"$NENDO$", FromNendo.ToString()).Replace(@"$BUSHO$", KameiPath).Replace(@"$TANTOUSHA$", ChousainMeiList[c].ToString()).Replace(@"$TOKUCHOBANGOU$", TokuchoList[c].ToString());
-                //作業フォルダ作成
-                DirectoryInfo ds = new DirectoryInfo(basePath);
-                if (!Directory.Exists(basePath))
+                string basePath;
+                DataTable BaseList = GlobalMethod.getData("CommonMasterID", "CommonValue1", "M_CommonMaster", "CommonMasterKye = 'ENTORY_SAGYOU_HOLDERBASE' ");
+                if (BaseList != null && BaseList.Rows.Count > 0)
                 {
-                    try
+                    basePath = BaseList.Rows[0][0].ToString();
+                    basePath = basePath.Replace(@"$NENDO$", FromNendo.ToString()).Replace(@"$BUSHO$", KameiPath).Replace(@"$TANTOUSHA$", ChousainMeiList[c].ToString()).Replace(@"$TOKUCHOBANGOU$", TokuchoList[c].ToString());
+                    //作業フォルダ作成
+                    DirectoryInfo ds = new DirectoryInfo(basePath);
+                    if (!Directory.Exists(basePath))
                     {
-                        ds.Create();
+                        try
+                        {
+                            ds.Create();
+                        }
+                        catch (Exception)
+                        {
+                            // フォルダを作成する権限がありません。
+                            set_error(GlobalMethod.GetMessage("E70046", ""));
+                            return false;
+                        }
                     }
-                    catch (Exception)
+                    basePath = basePath.Replace("/", @"\");
+                    // 作業フォルダDB登録
+                    var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                    using (var conn = new SqlConnection(connStr))
                     {
-                        // フォルダを作成する権限がありません。
-                        set_error(GlobalMethod.GetMessage("E70046", ""));
+                        conn.Open();
+                        var cmd = conn.CreateCommand();
+                        SqlTransaction transaction = conn.BeginTransaction();
+                        cmd.Transaction = transaction;
+
+                        try
+                        {
+                            cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET " +
+                            "MadoguchiL1SagyouHolder = '" + basePath + "' " +
+                            " WHERE MadoguchiL1ChousaShinchoku != 80 " +
+                            " AND MadoguchiID = '" + MadoguchiID + "' " +
+                            " AND MadoguchiL1ChousaBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
+                            " AND MadoguchiL1ChousaTantoushaCD = '" + KojincdList[c].ToString() + "' " +
+                            " AND MadoguchiL1TokuchoBangou = '" + TokuchoList[c].ToString() + "' ";
+                            cmd.ExecuteNonQuery();
+
+                            transaction.Commit();
+                        }
+                        catch (Exception)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                        conn.Close();
+                    }
+                    DataTable CreateList = GlobalMethod.getData("CommonMasterID", "CommonValue1", "M_CommonMaster", "CommonMasterKye = 'ENTORY_SAGYOU_HOLDER' ORDER BY CommonMasterID ");
+                    if (CreateList != null && CreateList.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < CreateList.Rows.Count; i++)
+                        {
+                            DirectoryInfo dm = new DirectoryInfo(basePath + @"\" + CreateList.Rows[i][0].ToString());
+                            if (!Directory.Exists(basePath + @"\" + CreateList.Rows[i][0].ToString()))
+                            {
+                                try
+                                {
+                                    dm.Create();
+                                }
+                                catch (Exception)
+                                {
+                                    // フォルダを作成する権限がありません。
+                                    set_error(GlobalMethod.GetMessage("E70046", ""));
+                                    return false;
+                                }
+                            }
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        // ENTORY_SAGYOU_HOLDERが取得できない
                         return false;
                     }
                 }
-                basePath = basePath.Replace("/", @"\");
-                // 作業フォルダDB登録
-                var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-                using (var conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-                    var cmd = conn.CreateCommand();
-                    SqlTransaction transaction = conn.BeginTransaction();
-                    cmd.Transaction = transaction;
-
-                    try
-                    {
-                        cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET " +
-                        "MadoguchiL1SagyouHolder = '" + basePath + "' " +
-                        " WHERE MadoguchiL1ChousaShinchoku != 80 " +
-                        " AND MadoguchiID = '" + MadoguchiID + "' " +
-                        " AND MadoguchiL1ChousaBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
-                        " AND MadoguchiL1ChousaTantoushaCD = '" + KojincdList[c].ToString() + "' " +
-                        " AND MadoguchiL1TokuchoBangou = '" + TokuchoList[c].ToString() + "' ";
-                        cmd.ExecuteNonQuery();
-
-                        transaction.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        transaction.Rollback();
-                        throw;
-                    }
-                    conn.Close();
-                }
-                DataTable CreateList = GlobalMethod.getData("CommonMasterID", "CommonValue1", "M_CommonMaster", "CommonMasterKye = 'ENTORY_SAGYOU_HOLDER' ORDER BY CommonMasterID ");
-                if (CreateList != null && CreateList.Rows.Count > 0)
-                {
-                    for (int i = 0; i < CreateList.Rows.Count; i++)
-                    {
-                        DirectoryInfo dm = new DirectoryInfo(basePath + @"\" + CreateList.Rows[i][0].ToString());
-                        if (!Directory.Exists(basePath + @"\" + CreateList.Rows[i][0].ToString()))
-                        {
-                            try
-                            {
-                                dm.Create();
-                            }
-                            catch (Exception)
-                            {
-                                // フォルダを作成する権限がありません。
-                                set_error(GlobalMethod.GetMessage("E70046", ""));
-                                return false;
-                            }
-                        }
-                    }
-                    return true;
-                }
                 else
                 {
-                    // ENTORY_SAGYOU_HOLDERが取得できない
+                    // ENTORY_SAGYOU_HOLDERBASEが取得できない
                     return false;
                 }
+
+
             }
-            else
-            {
-                // ENTORY_SAGYOU_HOLDERBASEが取得できない
-                return false;
-            }
+			else
+			{
+                return true;
+			}
         }
 
         private void c1FlexGrid3_Click(object sender, EventArgs e)

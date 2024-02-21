@@ -12464,19 +12464,19 @@ namespace TokuchoBugyoK2
                                     }
                                 }
                                 //奉行エクセル
-                                //集計表Ver
-                                if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
+                                //ファイル番号
+                                if (c1FlexGrid4.Rows[i]["FileNo"] != null && c1FlexGrid4.Rows[i]["FileNo"].ToString() != "")
                                 {
-                                    valuesText += ",'" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
+                                    valuesText += ",'" + c1FlexGrid4.Rows[i]["FileNo"] + "' ";
                                 }
                                 else
                                 {
                                     valuesText += ",null ";
                                 }
-                                //ファイル番号
-                                if (c1FlexGrid4.Rows[i]["FileNo"] != null && c1FlexGrid4.Rows[i]["FileNo"].ToString() != "")
+                                //集計表Ver
+                                if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
                                 {
-                                    valuesText += ",'" + c1FlexGrid4.Rows[i]["FileNo"] + "' ";
+                                    valuesText += ",'" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
                                 }
                                 else
                                 {

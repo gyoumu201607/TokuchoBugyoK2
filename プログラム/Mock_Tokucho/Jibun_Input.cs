@@ -3265,6 +3265,7 @@ namespace TokuchoBugyoK2
 
                         for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
                         {
+                            #region 既存ソース値セット
                             // 地区割りコード
                             //if (c1FlexGrid4.Rows[i][34] != null && c1FlexGrid4.Rows[i][34].ToString() != ""
                             //    && !System.Text.RegularExpressions.Regex.IsMatch(c1FlexGrid4.Rows[i][34].ToString().Replace(Environment.NewLine, ""), @"^[0-9a-zA-Z]+$", System.Text.RegularExpressions.RegexOptions.ECMAScript))
@@ -3412,6 +3413,7 @@ namespace TokuchoBugyoK2
                                 // 必須背景薄黄色
                                 c1FlexGrid4.GetCellRange(i, ChousaKobetsuJunIndex).StyleNew.BackColor = Color.FromArgb(245, 245, 220);
                             }
+
 
                         }
 
@@ -3900,20 +3902,22 @@ namespace TokuchoBugyoK2
                                                     c1FlexGrid4.Rows[i]["ShinchokuIcon"] = "4";
                                                 }
                                             }
+                                            #endregion
                                             //奉行エクセル
-                                            //集計表Ver
-                                            if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
+                                            #region 奉行エクセル
+                                            //ファイル番号
+                                            if (c1FlexGrid4.Rows[i]["FileNo"] != null && c1FlexGrid4.Rows[i]["FileNo"].ToString() != "")
                                             {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
+                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["FileNo"] + "' ";
                                             }
                                             else
                                             {
                                                 valuesText += ",null ";
                                             }
-                                            //ファイル番号
-                                            if (c1FlexGrid4.Rows[i]["FileNo"] != null && c1FlexGrid4.Rows[i]["FileNo"].ToString() != "")
+                                            //集計表Ver
+                                            if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
                                             {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["FileNo"] + "' ";
+                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
                                             }
                                             else
                                             {
@@ -3991,6 +3995,7 @@ namespace TokuchoBugyoK2
                                             {
                                                 valuesText += ",0 ";
                                             }
+                                            #endregion
 
                                         }
                                         valuesText += ")";
