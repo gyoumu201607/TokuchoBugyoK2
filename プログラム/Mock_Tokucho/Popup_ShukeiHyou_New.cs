@@ -486,10 +486,12 @@ namespace TokuchoBugyoK2
                             //c1FlexGrid2[r + 1, 1] = BushoList[r].ToString();
                             //c1FlexGrid2[r + 1, 2] = ChousainMeiList[r].ToString();
                             // No1665対応：シート分割時グループ名は無視する
+                            // No1678対応：シート分割時グループ名は使用しないが表示する
                             //c1FlexGrid2[r + 1, 3] = GroupMeiList[r].ToString();
                             if (GbunkatsuList[r] == "1")
                             {
-                                SyukeihyoVer2GroupNameListGrid[r + 1, COL_GROUP_NAME] = "";
+                                //SyukeihyoVer2GroupNameListGrid[r + 1, COL_GROUP_NAME] = "";
+                                SyukeihyoVer2GroupNameListGrid[r + 1, COL_GROUP_NAME] = GgroupMeiList[r].ToString();
                                 SyukeihyoVer2GroupNameListGrid[r + 1, COL_BUNKATSU_HOHO] = "-";
                             }
                             else
@@ -1892,10 +1894,11 @@ namespace TokuchoBugyoK2
                                 default:
                                     break;
                             }
-                            // No1648 集計表出力パラメータにグループ名を追加
+                            // No1648 集計表出力パラメータにグループ名->ファイル番号を追加
                             if (ShukeiVer == 2 && BunkatsuList[i] == "2")
                             {
-                                report_data[7] = GroupMeiList[i].ToString();
+                                //report_data[7] = GroupMeiList[i].ToString();
+                                report_data[7] = FileNoList[i].ToString();
                             }
                             else
                             {
