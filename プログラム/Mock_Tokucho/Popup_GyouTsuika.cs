@@ -109,33 +109,37 @@ namespace TokuchoBugyoK2
         {
             string kojinCD = comboBox_ChousaTantousha.SelectedValue.ToString();
             var connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-
-            using (var conn = new SqlConnection(connStr))
+            if (kojinCD.Length != 0)
             {
-                var cmd = conn.CreateCommand();
-
-                // 調査員マスタの値の取得
-                var dtprint = new DataTable();
-                cmd.CommandText 
-= @"SELECT    case 
-        when RetireFLG = 0 then '0'
-        when RetireFLG = 1 then '1'
-    end as RetireFLG "
-                                + "  FROM Mst_Chousain"
-                                + " WHERE KojinCD = " + kojinCD;
-                // データ取得
-                var sda = new SqlDataAdapter(cmd);
-                sda.Fill(dtprint);
-                if (dtprint.Rows.Count > 0)
+                using (var conn = new SqlConnection(connStr))
                 {
-                    this.RetireFlg = dtprint.Rows[0]["RetireFLG"].ToString();
-                }
-                conn.Close();
+                    var cmd = conn.CreateCommand();
 
+                    // 調査員マスタの値の取得
+                    var dtprint = new DataTable();
+                    cmd.CommandText
+    = @"SELECT    case 
+            when RetireFLG = 0 then '0'
+            when RetireFLG = 1 then '1'
+        end as RetireFLG "
+                                    + "  FROM Mst_Chousain"
+                                    + " WHERE KojinCD = " + kojinCD;
+                    // データ取得
+                    var sda = new SqlDataAdapter(cmd);
+                    sda.Fill(dtprint);
+                    if (dtprint.Rows.Count > 0)
+                    {
+                        this.RetireFlg = dtprint.Rows[0]["RetireFLG"].ToString();
+                    }
+                    conn.Close();
+
+                }
             }
 
 
+
         }
+
 
 		// キャンセルボタン
 		private void button_Cancel_Click(object sender, EventArgs e)
