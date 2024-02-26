@@ -2018,13 +2018,13 @@ namespace TokuchoBugyoK2
                     // 調査担当部所
                     c1FlexGrid4.Rows[RowCount]["HinmokuRyakuBushoCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuRyakuBushoCD"];
                     // 調査担当者（修正後）No1427　1201 嘱託に転籍された方が個人CDで表示される
-                    //// 調査担当者（修正前）名前でなくコードで表示
-                    //c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuChousainCD"];
                     if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg"])
                         c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["ChousainMei"] + "（退職）";
                     else
-                        c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuChousainCD"];
-                    //副調査担当部所1
+                        //No.1684
+                        c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["ChousainMei"];
+                        //c1FlexGrid4.Rows[RowCount]["HinmokuChousainCD"] = DT_ChousaHinmoku.Rows[i]["HinmokuChousainCD"];
+                        //副調査担当部所1
                     c1FlexGrid4.Rows[RowCount]["HinmokuRyakuBushoFuku1CD"] = DT_ChousaHinmoku.Rows[i]["HinmokuRyakuBushoFuku1CD"];
 
                     // 副調査担当者1（修正後）No1427 1201 嘱託に転籍された方が個人CDで表示される
@@ -2033,10 +2033,11 @@ namespace TokuchoBugyoK2
                     if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg1"])
                         c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei1"] + "（退職）";
                     else
-                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD1"];
-                    // 副調査担当部所2
-                    c1FlexGrid4.Rows[RowCount]["HinmokuRyakuBushoFuku2CD"] = DT_ChousaHinmoku.Rows[i]["HinmokuRyakuBushoFuku2CD"];
-
+                        //No.1684
+                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei1"];
+                        //c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD1"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD1"];
+                        // 副調査担当部所2
+                        c1FlexGrid4.Rows[RowCount]["HinmokuRyakuBushoFuku2CD"] = DT_ChousaHinmoku.Rows[i]["HinmokuRyakuBushoFuku2CD"];
 
                     // 副調査担当者2（修正後）No1427　1201 嘱託に転籍された方が個人CDで表示される
                     //// 副調査担当者2（修正前）名前でなくコードで表示
@@ -2044,8 +2045,10 @@ namespace TokuchoBugyoK2
                     if ((bool)DT_ChousaHinmoku.Rows[i]["RetireFlg2"])
                         c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei2"] + "（退職）";
                     else
-                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD2"];
-                    // 報告数
+                        //No.1684
+                        c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["FukuChousainMei2"];
+                        //c1FlexGrid4.Rows[RowCount]["HinmokuFukuChousainCD2"] = DT_ChousaHinmoku.Rows[i]["HinmokuFukuChousainCD2"];
+                        // 報告数
                     c1FlexGrid4.Rows[RowCount]["ChousaHoukokuHonsuu"] = DT_ChousaHinmoku.Rows[i]["ChousaHoukokuHonsuu"];
                     // 報告ランク
                     c1FlexGrid4.Rows[RowCount]["ChousaHoukokuRank"] = DT_ChousaHinmoku.Rows[i]["ChousaHoukokuRank"];
@@ -12237,8 +12240,10 @@ namespace TokuchoBugyoK2
                                 {
                                     //valuesText += ",'" + c1FlexGrid4.Rows[i][43] + "' ";
                                     //afterChousainCD = c1FlexGrid4.Rows[i][43].ToString();
-                                    //No.1664
-                                    if(c1FlexGrid4.Rows[i]["RetireFlg"] != null && c1FlexGrid4.Rows[i]["RetireFlg"].ToString() == "1") 
+                                    //No.1664 
+                                    if(c1FlexGrid4.Rows[i]["RetireFlg"] != null)
+                                        //No.1684
+                                        //&& c1FlexGrid4.Rows[i]["RetireFlg"].ToString() == "1") 
                                     {
                                         valuesText += ",'" + c1FlexGrid4.Rows[i]["ChosainCD"] + "' ";
                                         afterChousainCD = c1FlexGrid4.Rows[i]["ChosainCD"].ToString();
@@ -12280,7 +12285,9 @@ namespace TokuchoBugyoK2
                                     //valuesText += ",'" + c1FlexGrid4.Rows[i][45] + "' ";
                                     //afterFukuChousainCD1 = c1FlexGrid4.Rows[i][45].ToString();
                                     //No.1664
-                                    if (c1FlexGrid4.Rows[i]["RetireFlg1"] != null && c1FlexGrid4.Rows[i]["RetireFlg1"].ToString() == "1")
+                                    if (c1FlexGrid4.Rows[i]["RetireFlg1"] != null) 
+                                        //No.1684
+                                        //&& c1FlexGrid4.Rows[i]["RetireFlg1"].ToString() == "1")
                                     {
                                         valuesText += ",'" + c1FlexGrid4.Rows[i]["FukuChosainCD1"] + "' ";
                                         afterChousainCD = c1FlexGrid4.Rows[i]["FukuChosainCD1"].ToString();
@@ -12314,7 +12321,9 @@ namespace TokuchoBugyoK2
                                     //valuesText += ",'" + c1FlexGrid4.Rows[i][47] + "' ";
                                     //afterFukuChousainCD2 = c1FlexGrid4.Rows[i][47].ToString();
                                     //No.1664
-                                    if (c1FlexGrid4.Rows[i]["RetireFlg2"] != null && c1FlexGrid4.Rows[i]["RetireFlg2"].ToString() == "1")
+                                    if (c1FlexGrid4.Rows[i]["RetireFlg2"] != null)
+                                        //No.1684
+                                        //&& c1FlexGrid4.Rows[i]["RetireFlg2"].ToString() == "1")
                                     {
                                         valuesText += ",'" + c1FlexGrid4.Rows[i]["FukuChosainCD2"] + "' ";
                                         afterChousainCD = c1FlexGrid4.Rows[i]["FukuChosainCD2"].ToString();
