@@ -524,65 +524,99 @@ namespace TokuchoBugyoK2
                         MadoguchiGroupMasterIDCount = int.Parse(dt.Rows[0][0].ToString()) + 1;
                     }
                 }
-                //グループ名登録・更新処理
+
+                //NO1693 グループ名設定画面で、同一グループ名を追加した際、エラーにならず、登録出来てしまう。
+                //重複時はグループ名を登録できないようダイアログを表示
+
+                bool isGroupMeiDup = false;
                 for (int i = 1; i < GroupMeiGrid.Rows.Count; i++)
                 {
                     sSql = new StringBuilder();
-
-                    //新規登録処理
-                    if (GroupMeiGrid.Rows[i][1] == null && GroupMeiGrid.Rows[i][2] != null)
+                    
+                    if (GroupMeiGrid.Rows[i][2] != null)
                     {
-                        sSql.Append("INSERT INTO MadoguchiGroupMaster (");
-                        sSql.Append("      MadoguchiGroupMasterID ");
-                        sSql.Append("      ,MadoguchiGroupMei ");
-                        sSql.Append("      ,MadoguchiGroupCreateDate ");
-                        sSql.Append("      ,MadoguchiGropeCreateUserID ");
-                        sSql.Append("      ,MadoguchiGroupeCreateBushoCD ");
-                        sSql.Append("      ,MadoguchiGroupeChangeDate ");
-                        sSql.Append("      ,MadoguchiGropeChengeUserID ");
-                        sSql.Append("      ,MadoguchiGroupeChengeBushoCD ");
-                        sSql.Append("      ,MadoguchiID ");
-                        sSql.Append(")");
-                        sSql.Append(" VALUES (");
-                        sSql.Append("      \'").Append(MadoguchiGroupMasterIDCount).Append("\'");
-                        sSql.Append("      ,\'").Append(GroupMeiGrid.Rows[i][2]).Append("\'");
-                        sSql.Append("      ,").Append("GETDATE()");
-                        sSql.Append("      ,\'").Append(UserInfos[0]).Append("\'");
-                        sSql.Append("      ,\'").Append(UserInfos[2]).Append("\'");
-                        sSql.Append("      ,").Append("GETDATE()");
-                        sSql.Append("      ,\'").Append(UserInfos[0]).Append("\'");
-                        sSql.Append("      ,\'").Append(UserInfos[2]).Append("\'");
-                        sSql.Append("      ,\'").Append(MadoguchiID).Append("\'");
-                        sSql.Append(" )");
-                        cmd.CommandText = sSql.ToString();
-                        cmd.ExecuteNonQuery();
-                        MadoguchiGroupMasterIDCount++;
-                    }
-                    //更新処理
-                    else if (GroupMeiGrid.Rows[i][1] != null)
-                    {
-                        //グループ名マスタからデータを取得
-                        string GroupMeiChk = get_GrouupMei(GroupMeiGrid.Rows[i][1].ToString());
-                        if (GroupMeiGrid.Rows[i][2].ToString() != GroupMeiChk)
+                        for (int j = i + 1; j < GroupMeiGrid.Rows.Count; j++)
                         {
-                            sSql.Append("UPDATE MadoguchiGroupMaster");
-                            sSql.Append(" SET");
-                            sSql.Append("    MadoguchiGroupMei = \'").Append(GroupMeiGrid.Rows[i][2]).Append("\'");
-                            sSql.Append("    ,MadoguchiGroupeChangeDate = ").Append("GETDATE()");
-                            sSql.Append("    ,MadoguchiGropeChengeUserID = ").Append(UserInfos[0]);
-                            sSql.Append("    ,MadoguchiGroupeChengeBushoCD = ").Append(UserInfos[2]);
-                            sSql.Append(" WHERE");
-                            sSql.Append("    MadoguchiID = ").Append(MadoguchiID);
-                            sSql.Append("    AND MadoguchiGroupMasterID = ").Append(GroupMeiGrid.Rows[i][1]);
-                            cmd.CommandText = sSql.ToString();
-                            cmd.ExecuteNonQuery();
+                            if (GroupMeiGrid.Rows[j][2] != null)
+                            {
+                                if (GroupMeiGrid.Rows[i][2].ToString() == GroupMeiGrid.Rows[j][2].ToString() && GroupMeiGrid.Rows[j][2].ToString() != "" && GroupMeiGrid.Rows[j][2].ToString() != "")
+                                {
+                                    isGroupMeiDup = true;
+                                }
+                            }
                         }
                     }
+                }
 
+                //グループ名登録・更新処理
+                if (isGroupMeiDup)
+                {
+                    MessageBox.Show(GlobalMethod.GetMessage("E70087", ""), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    for (int i = 1; i < GroupMeiGrid.Rows.Count; i++)
+                    {
+                        sSql = new StringBuilder();
+
+                        //新規登録処理
+                        if (GroupMeiGrid.Rows[i][1] == null && GroupMeiGrid.Rows[i][2] != null)
+                        {
+                            if (GroupMeiGrid.Rows[i][2].ToString() != "") {
+                                sSql.Append("INSERT INTO MadoguchiGroupMaster (");
+                                sSql.Append("      MadoguchiGroupMasterID ");
+                                sSql.Append("      ,MadoguchiGroupMei ");
+                                sSql.Append("      ,MadoguchiGroupCreateDate ");
+                                sSql.Append("      ,MadoguchiGropeCreateUserID ");
+                                sSql.Append("      ,MadoguchiGroupeCreateBushoCD ");
+                                sSql.Append("      ,MadoguchiGroupeChangeDate ");
+                                sSql.Append("      ,MadoguchiGropeChengeUserID ");
+                                sSql.Append("      ,MadoguchiGroupeChengeBushoCD ");
+                                sSql.Append("      ,MadoguchiID ");
+                                sSql.Append(")");
+                                sSql.Append(" VALUES (");
+                                sSql.Append("      \'").Append(MadoguchiGroupMasterIDCount).Append("\'");
+                                sSql.Append("      ,\'").Append(GroupMeiGrid.Rows[i][2]).Append("\'");
+                                sSql.Append("      ,").Append("GETDATE()");
+                                sSql.Append("      ,\'").Append(UserInfos[0]).Append("\'");
+                                sSql.Append("      ,\'").Append(UserInfos[2]).Append("\'");
+                                sSql.Append("      ,").Append("GETDATE()");
+                                sSql.Append("      ,\'").Append(UserInfos[0]).Append("\'");
+                                sSql.Append("      ,\'").Append(UserInfos[2]).Append("\'");
+                                sSql.Append("      ,\'").Append(MadoguchiID).Append("\'");
+                                sSql.Append(" )");
+                                cmd.CommandText = sSql.ToString();
+                                cmd.ExecuteNonQuery();
+                                MadoguchiGroupMasterIDCount++;
+                            }
+                        }
+                        //更新処理
+                        else if (GroupMeiGrid.Rows[i][1] != null)
+                        {
+                            //グループ名マスタからデータを取得
+                            string GroupMeiChk = get_GrouupMei(GroupMeiGrid.Rows[i][1].ToString());
+                            if (GroupMeiGrid.Rows[i][2].ToString() != GroupMeiChk)
+                            {
+                                sSql.Append("UPDATE MadoguchiGroupMaster");
+                                sSql.Append(" SET");
+                                sSql.Append("    MadoguchiGroupMei = \'").Append(GroupMeiGrid.Rows[i][2]).Append("\'");
+                                sSql.Append("    ,MadoguchiGroupeChangeDate = ").Append("GETDATE()");
+                                sSql.Append("    ,MadoguchiGropeChengeUserID = ").Append(UserInfos[0]);
+                                sSql.Append("    ,MadoguchiGroupeChengeBushoCD = ").Append(UserInfos[2]);
+                                sSql.Append(" WHERE");
+                                sSql.Append("    MadoguchiID = ").Append(MadoguchiID);
+                                sSql.Append("    AND MadoguchiGroupMasterID = ").Append(GroupMeiGrid.Rows[i][1]);
+                                cmd.CommandText = sSql.ToString();
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                    }
+                    //グループ名マスタ　更新処理　終了
+                    this.Close();
                 }
             }
-            //グループ名マスタ　更新処理　終了
-            this.Close();
+
         }
 
         /// <summary>
