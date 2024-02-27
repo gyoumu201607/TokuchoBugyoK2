@@ -7741,7 +7741,11 @@ namespace TokuchoBugyoK2
                     }
                     else
                     {
-                        c1FlexGrid4.Editor.Text = "0";
+                        //1652 金額￥0対応
+                        if (c1FlexGrid4.Editor.Text.Length != 0)
+                        {
+                            c1FlexGrid4.Editor.Text = "0";
+                        }
                     }
                 }
             }
