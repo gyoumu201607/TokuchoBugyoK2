@@ -3109,68 +3109,12 @@ namespace TokuchoBugyoK2
                         float zentaiNextF = 0;
                         float kobetsuNextF = 0;
                         int recordCount = 0;
-                        //// Grid内で重複していないか確認
-                        //for (int i = 2; i < c1FlexGrid4.Rows.Count; i++)
-                        //{
-                        //    zentai = c1FlexGrid4.Rows[i][6].ToString();
-                        //    kobetsu = c1FlexGrid4.Rows[i][7].ToString();
-
-                        //    float.TryParse(zentai, out zentaiF);
-                        //    float.TryParse(kobetsu, out kobetsuF);
-
-                        //    recordCount = 0;
-
-                        //    // 色付けしても次のループでまた塗り直ししてしまうので、全件で回す
-                        //    //for(int j = i + 1;j < c1FlexGrid4.Rows.Count; j++)
-                        //    for (int j = 2; j < c1FlexGrid4.Rows.Count; j++)
-                        //    {
-
-                        //        if (c1FlexGrid4.Rows[j][6] != null && c1FlexGrid4.Rows[j][7] != null && c1FlexGrid4.Rows[j][6].ToString() != "" && c1FlexGrid4.Rows[j][7].ToString() != "")
-                        //        {
-                        //            zentai = c1FlexGrid4.Rows[j][6].ToString();
-                        //            kobetsu = c1FlexGrid4.Rows[j][7].ToString();
-
-                        //            float.TryParse(zentai, out zentaiNextF);
-                        //            float.TryParse(kobetsu, out kobetsuNextF);
-
-                        //            if (zentaiF == zentaiNextF && kobetsuF == kobetsuNextF)
-                        //            {
-                        //                recordCount += 1;
-                        //            }
-                        //        }
-                        //    }
-                        //    // 重複レコードがあった場合
-                        //    if (recordCount > 1)
-                        //    {
-                        //        errmessage1 = 1;
-                        //        errorFlg = true;
-                        //        // ピンク背景
-                        //        c1FlexGrid4.GetCellRange(i, 6).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
-                        //        c1FlexGrid4.GetCellRange(i, 7).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
-                        //        // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
-                        //        c1FlexGrid4[i, 58] = "E" + zeroPadding(c1FlexGrid4[i, 6].ToString()) + "-" + zeroPadding(c1FlexGrid4[i, 7].ToString());
-                        //    }
-                        //    else
-                        //    {
-                        //        // クリーム色背景
-                        //        c1FlexGrid4.GetCellRange(i, 6).StyleNew.BackColor = Color.FromArgb(245, 245, 220);
-                        //        c1FlexGrid4.GetCellRange(i, 7).StyleNew.BackColor = Color.FromArgb(245, 245, 220);
-                        //    }
-                        //}
 
                         // 全体順と個別順のIndex（行番号）を取得する。
                         int ZentaiJunColIndex = c1FlexGrid4.Cols["ChousaZentaiJun"].Index;
                         int KobetsuJunColIndex = c1FlexGrid4.Cols["ChousaKobetsuJun"].Index;
 
                         // 全体順でソート
-                        //c1FlexGrid4.Cols[6].Sort = C1.Win.C1FlexGrid.SortFlags.Ascending;
-                        //c1FlexGrid4.Cols.Move(6, 1);
-                        //c1FlexGrid4.Sort(C1.Win.C1FlexGrid.SortFlags.UseColSort, 1, 6);
-                        //c1FlexGrid4.Cols.Move(1, 6);
-                        //c1FlexGrid4.Cols[6].Sort = C1.Win.C1FlexGrid.SortFlags.Ascending;
-                        //c1FlexGrid4.Cols.Move(6, 1);
-                        //c1FlexGrid4.Sort(C1.Win.C1FlexGrid.SortFlags.UseColSort, 1, 6);
-                        //c1FlexGrid4.Cols.Move(1, 6);
                         c1FlexGrid4.Cols[ZentaiJunColIndex].Sort = C1.Win.C1FlexGrid.SortFlags.Ascending;
                         c1FlexGrid4.Cols[KobetsuJunColIndex].Sort = C1.Win.C1FlexGrid.SortFlags.Ascending;
                         c1FlexGrid4.Cols.Move(ZentaiJunColIndex, 1);
@@ -3969,7 +3913,7 @@ namespace TokuchoBugyoK2
                                                 }
                                             }
                                         }
-#endregion
+
 
                                         else
                                         {
@@ -4021,102 +3965,104 @@ namespace TokuchoBugyoK2
                                                     c1FlexGrid4.Rows[i]["ShinchokuIcon"] = "4";
                                                 }
                                             }
-                                            //奉行エクセル
-#region 奉行エクセル
-                                            //ファイル番号
-                                            if (c1FlexGrid4.Rows[i]["FileNo"] != null && c1FlexGrid4.Rows[i]["FileNo"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["FileNo"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",null ";
-                                            }
-                                            //集計表Ver
-                                            if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",null ";
-                                            }
-                                            //分割方法
-                                            if (c1FlexGrid4.Rows[i]["BunkatsuHouhou"] != null && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["BunkatsuHouhou"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",'0' ";
-                                            }
-
-                                            //工事・構造物名
-                                            if (c1FlexGrid4.Rows[i]["KojiKoubutsuMei"] != null && c1FlexGrid4.Rows[i]["KojiKoubutsuMei"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["KojiKoubutsuMei"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",null ";
-                                            }
-                                            // 単位当たり単価（単位）
-                                            if (c1FlexGrid4.Rows[i]["TaniAtariTankaTani"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaTani"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["TaniAtariTankaTani"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",null ";
-                                            }
-                                            //単位当たり単価（数量）
-                                            if (c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",null ";
-                                            }
-                                            // 単位当たり単価（価格）
-                                            if (c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",null ";
-                                            }
-                                            //荷渡し条件
-                                            if (c1FlexGrid4.Rows[i]["NiwatashiJoken"] != null && c1FlexGrid4.Rows[i]["NiwatashiJoken"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["NiwatashiJoken"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",null ";
-                                            }
-                                            //発注者提供単位
-                                            if (c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"] != null && c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",null ";
-                                            }
-                                            // グループ名
-                                            if (c1FlexGrid4.Rows[i]["GroupMei"] != null && c1FlexGrid4.Rows[i]["GroupMei"].ToString() != "")
-                                            {
-                                                valuesText += ",'" + c1FlexGrid4.Rows[i]["GroupMei"] + "' ";
-                                            }
-                                            else
-                                            {
-                                                valuesText += ",0 ";
-                                            }
-                                            #endregion
-
                                         }
+                                        #endregion
+                                        //奉行エクセル
+                                        #region 奉行エクセル
+                                        //ファイル番号
+                                        if (c1FlexGrid4.Rows[i]["FileNo"] != null && c1FlexGrid4.Rows[i]["FileNo"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["FileNo"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",null ";
+                                        }
+                                        //集計表Ver
+                                        if (c1FlexGrid4.Rows[i]["ShukeihyoVer"] != null && c1FlexGrid4.Rows[i]["ShukeihyoVer"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["ShukeihyoVer"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",null ";
+                                        }
+                                        //分割方法
+                                        if (c1FlexGrid4.Rows[i]["BunkatsuHouhou"] != null && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["BunkatsuHouhou"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",'0' ";
+                                        }
+
+                                        //工事・構造物名
+                                        if (c1FlexGrid4.Rows[i]["KojiKoubutsuMei"] != null && c1FlexGrid4.Rows[i]["KojiKoubutsuMei"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["KojiKoubutsuMei"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",null ";
+                                        }
+                                        // 単位当たり単価（単位）
+                                        if (c1FlexGrid4.Rows[i]["TaniAtariTankaTani"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaTani"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["TaniAtariTankaTani"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",null ";
+                                        }
+                                        //単位当たり単価（数量）
+                                        if (c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["TaniAtariTankaSuryo"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",null ";
+                                        }
+                                        // 単位当たり単価（価格）
+                                        if (c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"] != null && c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["TaniAtariTankaKakaku"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",null ";
+                                        }
+                                        //荷渡し条件
+                                        if (c1FlexGrid4.Rows[i]["NiwatashiJoken"] != null && c1FlexGrid4.Rows[i]["NiwatashiJoken"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["NiwatashiJoken"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",null ";
+                                        }
+                                        //発注者提供単位
+                                        if (c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"] != null && c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["HachusyaTeikyoTani"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",null ";
+                                        }
+                                        // グループ名
+                                        if (c1FlexGrid4.Rows[i]["GroupMei"] != null && c1FlexGrid4.Rows[i]["GroupMei"].ToString() != "")
+                                        {
+                                            valuesText += ",'" + c1FlexGrid4.Rows[i]["GroupMei"] + "' ";
+                                        }
+                                        else
+                                        {
+                                            valuesText += ",0 ";
+                                        }
+                                        #endregion
+
+                                        
                                         valuesText += ")";
 
                                         // 履歴に登録する
@@ -8307,7 +8253,11 @@ namespace TokuchoBugyoK2
                     }
                     else
                     {
-                        c1FlexGrid4.Editor.Text = "0";
+                        //1652 金額￥0対応
+                        if (c1FlexGrid4.Editor.Text.Length != 0)
+                        {
+                            c1FlexGrid4.Editor.Text = "0";
+                        }
                     }
                 }
             }
