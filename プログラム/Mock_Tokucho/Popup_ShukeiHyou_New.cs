@@ -857,8 +857,8 @@ namespace TokuchoBugyoK2
                 getFileName();
                 // エラー背景色　クリア
                 Color clearColor = Color.FromArgb(255, 255, 255);
-                int filerow = FileNameListGrid.Rows.Count;
-                for (int r = 0; r < filerow; r++)
+                int filerowCount = FileNameListGrid.Rows.Count;
+                for (int r = 0; r < filerowCount; r++)
                 {
                     FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
                 }
@@ -879,12 +879,12 @@ namespace TokuchoBugyoK2
                 //    btnFileExport.Enabled = true;
                 //}
                 int prntflg = 0;
-                filerow = FileNameListGrid.Rows.Count;
+                filerowCount = FileNameListGrid.Rows.Count;
                 // エラー背景色
                 Color errorColor = Color.FromArgb(255, 204, 255);
-                for (int r = 0; r < filerow; r++)
+                for (int fileListRowIdx = 0; fileListRowIdx < filerowCount; fileListRowIdx++)
                 {
-                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[r, 0]) && radioButton_Save.Checked)
+                    if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileListRowIdx, 0]) && radioButton_Save.Checked)
                     {
                         // E20332:集計表ファイルが既に存在します。
                         set_error("", 0);
@@ -892,11 +892,12 @@ namespace TokuchoBugyoK2
                         // ファイル出力ボタンを非活性化
                         btnFileExport.Enabled = false;
                         //No.1687
-                        int ColIndex = FileNameListGrid.Cols["FileNameList"].Index;
-                //参考  int ZentaiJunColIndex = c1FlexGrid4.Cols["ChousaZentaiJun"].Index;
-                            FileNameListGrid.GetCellRange(r, ColIndex).StyleNew.BackColor = errorColor;
-                        //参考　c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.White;
-                        //FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                        if (FileNameListGrid.Cols["FileNameList"] != null)
+                        {
+                            int fileNameColIndex = FileNameListGrid.Cols["FileNameList"].Index;
+                            FileNameListGrid.GetCellRange(fileListRowIdx, fileNameColIndex).StyleNew.BackColor = errorColor;
+                            //FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                        }
                     }
                     else
                     {
