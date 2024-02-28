@@ -1391,7 +1391,15 @@ namespace TokuchoBugyoK2
                         //全品目一括の場合SyuFukuListが空になるため
                         if(SyuFukuList.Count > 0)
 						{
-                            report_data[4] = SyuFukuList[fileRowIdx].ToString();
+                            if (ShukeiVer == 2)
+							{
+                                report_data[4] = SyuFukuList[fileRowIdx].ToString();
+							}
+							else
+							{
+                                report_data[4] = comboBox_Taisho.SelectedValue.ToString(); 
+                            }
+                            
 						}
 						else
 						{
@@ -1872,8 +1880,17 @@ namespace TokuchoBugyoK2
                             //report_data[3] = ChousainMeiList[i].ToString();
                             report_data[3] = KojincdList[i].ToString();
                             // 主副  1:主のみ 2:副
-                            //report_data[4] = comboBox_Taisho.SelectedValue.ToString();
-                            report_data[4] = SyuFukuList[i].ToString();
+                            //ただしVer1は 0:主＋副 1:主のみ 2:副
+                            if ( ShukeiVer == 2)
+                            { 
+                                
+                                report_data[4] = SyuFukuList[i].ToString();
+                            }
+                            else
+							{
+                                report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                            }
+
                             // ファイル名
                             //report_data[5] = item1_PritFileName.Text;
                             report_data[5] = fileName;
