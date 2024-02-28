@@ -847,7 +847,8 @@ namespace TokuchoBugyoK2
 			// FileNameListGrid
 			// 
 			this.FileNameListGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.FileNameListGrid.ColumnInfo = "1,0,0,0,0,-1,Columns:0{Width:390;}\t";
+			this.FileNameListGrid.ColumnInfo = "1,0,0,0,0,-1,Columns:0{Width:390;Name:\"FileNameList\";Style:\"Font:MS UI Gothic, 9p" +
+    "t;\";}\t";
 			this.FileNameListGrid.Location = new System.Drawing.Point(134, 13);
 			this.FileNameListGrid.Name = "FileNameListGrid";
 			this.FileNameListGrid.Rows.Count = 0;
