@@ -3567,6 +3567,7 @@ namespace TokuchoBugyoK2
                                             valuesText += ",";
                                         }
 
+                                        #region 既存値セット
                                         valuesText += "(" +
                                         //" '" + c1FlexGrid4.Rows[i][55] + "' " +
                                         //",'" + MadoguchiID + "' " +
@@ -3697,7 +3698,6 @@ namespace TokuchoBugyoK2
                                             ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuCode"].ToString(), 0, 0) + "' " +                  // 地区コード
                                             ",N'" + GlobalMethod.ChangeSqlText(c1FlexGrid4.Rows[i]["ChousaTikuMei"].ToString(), 0, 0) + "' ";                    // 地区名
 
-#region 既存値セット
                                         // 少額案件[10万/100万]
                                         //if (c1FlexGrid4.Rows[i][37] != null && c1FlexGrid4.Rows[i][37].ToString() == "True")
                                         if (c1FlexGrid4.Rows[i]["ChousaShougaku"] != null && c1FlexGrid4.Rows[i]["ChousaShougaku"].ToString() == "True")
