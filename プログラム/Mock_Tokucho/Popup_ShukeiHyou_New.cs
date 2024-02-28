@@ -891,7 +891,12 @@ namespace TokuchoBugyoK2
                         set_error(GlobalMethod.GetMessage("E20332", ""));
                         // ファイル出力ボタンを非活性化
                         btnFileExport.Enabled = false;
-                        FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
+                        //No.1687
+                        int ColIndex = FileNameListGrid.Cols["FileNameList"].Index;
+                //参考  int ZentaiJunColIndex = c1FlexGrid4.Cols["ChousaZentaiJun"].Index;
+                            FileNameListGrid.GetCellRange(r, ColIndex).StyleNew.BackColor = errorColor;
+                        //参考　c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.White;
+                        //FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
                     }
                     else
                     {
