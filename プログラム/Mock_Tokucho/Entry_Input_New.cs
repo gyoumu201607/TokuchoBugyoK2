@@ -7533,7 +7533,8 @@ namespace TokuchoBugyoK2
                 {
                     errorFlg = true;
                     base_tbl01_lblDtPrior.BackColor = errorColor;
-                    base_tbl01_lblDtBid.BackColor = errorColor;
+                    //No1692　入札の登録日時背景色は変えないよう修正
+                    //base_tbl01_lblDtBid.BackColor = errorColor;
                     base_tbl01_picPriorAlert.Visible = true;
                     base_tbl01_picBidAlert.Visible = true;
                 }
@@ -8353,7 +8354,8 @@ namespace TokuchoBugyoK2
                     errorFlg = true;
                     base_tbl10_lblSankoMitumori.BackColor = errorColor;
                     base_tbl10_picSankoMitumoriAlert.Visible = true;
-                    base_tbl01_lblDtBid.BackColor = errorColor;
+                    //No1692　入札の登録日時背景色は変えないよう修正
+                    //base_tbl01_lblDtBid.BackColor = errorColor;
                     base_tbl01_picBidAlert.Visible = true;
                 }
 
@@ -8387,7 +8389,8 @@ namespace TokuchoBugyoK2
             if (this.IsSpecifiedValue(obj, "1") && base_tbl01_dtpDtBid.CustomFormat == "")
             {
                 set_error(GlobalMethod.GetMessage("E10735", "基本情報等一覧、事前打診"));
-                base_tbl01_lblDtBid.BackColor = errorColor;
+                //No1692　入札の登録日時背景色は変えないよう修正
+                //base_tbl01_lblDtBid.BackColor = errorColor;
                 base_tbl01_picBidAlert.Visible = true;
                 prior_tbl01_lblMitumori.BackColor = errorColor;
                 prior_tbl01_picMitumoriAlert.Visible = true;
