@@ -996,7 +996,76 @@ namespace TokuchoBugyoK2
         /// <param name="sJyutakuNo"></param>
         /// <param name="sJyutakuEdNo"></param>
         /// <returns></returns>
-        public DataTable CheckAnkenBeforeDelete(string sAnkenID, int iSelf = 0, string sJyutakuNo = "", string sJyutakuEdNo = "", SqlConnection cnn = null)
+        public DataTable CheckAnkenBeforeDeleteWithTran(string sAnkenID, int iSelf, string sJyutakuNo, string sJyutakuEdNo, SqlConnection cnn, SqlTransaction transaction)
+        {
+            DataTable dt = new DataTable();
+            
+            if (cnn.State != ConnectionState.Open)
+			{
+                cnn.Open();
+            }
+                    
+            var cmd = cnn.CreateCommand();
+            StringBuilder sSql = new StringBuilder();
+
+            MakeCheckAnkenBeforeDeleteSQL(sSql, sAnkenID, iSelf, sJyutakuNo, sJyutakuEdNo);
+            cmd.CommandText = sSql.ToString();
+            cmd.Transaction = transaction;
+
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            sda.Fill(dt);
+
+            return dt;
+        }
+
+		private void MakeCheckAnkenBeforeDeleteSQL(StringBuilder sSql, string sAnkenID, int iSelf, string sJyutakuNo, string sJyutakuEdNo)
+		{
+
+            sSql.Append("SELECT");
+            sSql.Append("    AnkenJouhouID");
+            sSql.Append("    , AnkenSaishinFlg");
+            sSql.Append("    , AnkenSakuseiKubun");
+            sSql.Append("    , AnkenJutakuBangou");
+            sSql.Append("    , AnkenJutakuBangouEda ");
+            sSql.Append(" FROM");
+            sSql.Append("    AnkenJouhou ");
+            sSql.Append(" WHERE");
+            if (iSelf == 0)
+            {
+                // 編集中の案件
+                sSql.Append("    AnkenJouhouID = ").Append(sAnkenID);
+            }
+            else if (iSelf == 1)
+            {
+                // 編集中案件以外
+                sSql.Append("    AnkenJouhouID <> ").Append(sAnkenID);
+                sSql.Append("  AND AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'").Append(sJyutakuNo).Append("'");
+                sSql.Append("  AND AnkenJutakuBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC = N'").Append(sJyutakuEdNo).Append("'");
+                sSql.Append("  AND AnkenSakuseiKubun IN ('01','03','06','07','08','09')");
+                sSql.Append("  AND AnkenJouhou.AnkenDeleteFlag != 1");
+                sSql.Append(" ORDER BY AnkenJutakuBangou DESC, AnkenJouhouID DESC");
+            }
+            else
+            {
+                // 赤伝検索
+                sSql.Append("    AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'").Append(sJyutakuNo).Append("'");
+                sSql.Append("  AND AnkenJutakuBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC = N'").Append(sJyutakuEdNo).Append("'");
+                sSql.Append("  AND AnkenJouhou.AnkenSakuseiKubun = '02'");
+                sSql.Append("  AND AnkenJouhou.AnkenDeleteFlag != 1");
+                sSql.Append(" ORDER BY AnkenJutakuBangou DESC, AnkenJouhouID DESC");
+            }
+
+        }
+
+		/// <summary>
+		/// 案件存在チェックなど
+		/// </summary>
+		/// <param name="sAnkenID"></param>
+		/// <param name="iSelf">0:自分検索、1、自分以外検索、2：赤伝検索</param>
+		/// <param name="sJyutakuNo"></param>
+		/// <param name="sJyutakuEdNo"></param>
+		/// <returns></returns>
+		public DataTable CheckAnkenBeforeDelete(string sAnkenID, int iSelf = 0, string sJyutakuNo = "", string sJyutakuEdNo = "", SqlConnection cnn = null)
         {
             DataTable dt = new DataTable();
             var conn = cnn;
@@ -1009,38 +1078,8 @@ namespace TokuchoBugyoK2
                 if (cnn == null) conn.Open();
                 var cmd = conn.CreateCommand();
                 StringBuilder sSql = new StringBuilder();
-                sSql.Append("SELECT");
-                sSql.Append("    AnkenJouhouID");
-                sSql.Append("    , AnkenSaishinFlg");
-                sSql.Append("    , AnkenSakuseiKubun");
-                sSql.Append("    , AnkenJutakuBangou");
-                sSql.Append("    , AnkenJutakuBangouEda ");
-                sSql.Append(" FROM");
-                sSql.Append("    AnkenJouhou ");
-                sSql.Append(" WHERE");
-                if (iSelf == 0)
-                {
-                    // 編集中の案件
-                    sSql.Append("    AnkenJouhouID = ").Append(sAnkenID);
-                }
-                else if (iSelf == 1)
-                {
-                    // 編集中案件以外
-                    sSql.Append("    AnkenJouhouID <> ").Append(sAnkenID);
-                    sSql.Append("  AND AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'").Append(sJyutakuNo).Append("'");
-                    sSql.Append("  AND AnkenJutakuBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC = N'").Append(sJyutakuEdNo).Append("'");
-                    sSql.Append("  AND AnkenSakuseiKubun IN ('01','03','06','07','08','09')");
-                    sSql.Append("  AND AnkenJouhou.AnkenDeleteFlag != 1");
-                    sSql.Append(" ORDER BY AnkenJutakuBangou DESC, AnkenJouhouID DESC");
-                }
-                else {
-                    // 赤伝検索
-                    sSql.Append("    AnkenJutakuBangou COLLATE Japanese_XJIS_100_CI_AS_SC = N'").Append(sJyutakuNo).Append("'");
-                    sSql.Append("  AND AnkenJutakuBangouEda COLLATE Japanese_XJIS_100_CI_AS_SC = N'").Append(sJyutakuEdNo).Append("'");
-                    sSql.Append("  AND AnkenJouhou.AnkenSakuseiKubun = '02'");
-                    sSql.Append("  AND AnkenJouhou.AnkenDeleteFlag != 1");
-                    sSql.Append(" ORDER BY AnkenJutakuBangou DESC, AnkenJouhouID DESC");
-                }
+                MakeCheckAnkenBeforeDeleteSQL(sSql, sAnkenID, iSelf, sJyutakuNo, sJyutakuEdNo);
+
                 cmd.CommandText = sSql.ToString();
                 var sda = new SqlDataAdapter(cmd);
                 sda.Fill(dt);
@@ -1094,7 +1133,7 @@ namespace TokuchoBugyoK2
                         || sAnkenSakuseiKubun == "08" || sAnkenSakuseiKubun == "09"
                         ))
                     {
-                        DataTable dt2 = CheckAnkenBeforeDelete(sAnkenID, 1, sJyutakuNo, sJyutakuEdNo, conn);
+                        DataTable dt2 = CheckAnkenBeforeDeleteWithTran(sAnkenID, 1, sJyutakuNo, sJyutakuEdNo, conn, transaction);
 
                         for (int i = 0; i < dt2.Rows.Count; i++)
                         {
@@ -1132,8 +1171,9 @@ namespace TokuchoBugyoK2
                         "WHERE AnkenJouhouID = '" + sAnkenID + "'";
                         cmd.ExecuteNonQuery();
 
-
-                        DataTable dt3 = CheckAnkenBeforeDelete(sAnkenID, 3, sJyutakuNo, sJyutakuEdNo, conn);
+                        //No1670 CheckAnkenBeforeDelete2回目エラー対応（conn使いまわし時）
+                        //DataTable dt3 = CheckAnkenBeforeDelete(sAnkenID, 3, sJyutakuNo, sJyutakuEdNo, conn);
+                        DataTable dt3 = CheckAnkenBeforeDeleteWithTran(sAnkenID, 3, sJyutakuNo, sJyutakuEdNo, conn, transaction);
 
                         string akadenAnkenJouhouID = "";
                         // 直近の02:契約変更（赤伝）を削除する
@@ -1186,11 +1226,12 @@ namespace TokuchoBugyoK2
                     //this.Close();
 
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     transaction.Rollback();
                     throw;
                 }
+
             }
             return bRtn;
         }
