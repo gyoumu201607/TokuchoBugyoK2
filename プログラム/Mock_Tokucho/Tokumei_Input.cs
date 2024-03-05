@@ -2191,6 +2191,8 @@ namespace TokuchoBugyoK2
                     if (DT_ChousaHinmoku.Rows[i]["ChousaShuukeihyouVer"].ToString() != "2")
                     {
                         c1FlexGrid4.Rows[RowCount]["ShukeihyoVer"] = "1";
+                        //No.1692
+                        c1FlexGrid4.GetCellRange(RowCount, 58).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.GetCellRange(RowCount, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.GetCellRange(RowCount, 60).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                     }
@@ -3474,6 +3476,36 @@ namespace TokuchoBugyoK2
                             {
                                 // 必須背景薄黄色
                                 c1FlexGrid4.GetCellRange(i, ChousaKobetsuJunIndex).StyleNew.BackColor = Color.FromArgb(245, 245, 220);
+                            }
+
+                            //ファイル番号
+                            //No.1656
+                            int errorC = 0;
+                            if (c1FlexGrid4.Rows[i]["FileNo"] == null || c1FlexGrid4.Rows[i]["FileNo"].ToString() == "" && c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "2")
+                            {
+                                if (errorC == 0)
+                                {
+                                    set_error(GlobalMethod.GetMessage("E20907", ""));
+                                    errorC = 1;
+                                }
+                                // ピンク背景
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(255, 200, 255);
+                                // 並び順（全体順 - 個別順）の頭に エラーなら E、正常なら Nを付け、ソートしやすくする
+                                c1FlexGrid4.Rows[i]["ColumnSort"] = "N"
+                                                                  + zeroPadding((c1FlexGrid4.Rows[i]["ChousaZentaiJun"] != null ? c1FlexGrid4.Rows[i]["ChousaZentaiJun"].ToString() : "0"))
+                                                                  + "-"
+                                                                  + zeroPadding((c1FlexGrid4.Rows[i]["ChousaKobetsuJun"] != null ? c1FlexGrid4.Rows[i]["ChousaKobetsuJun"].ToString() : "0"))
+                                                                  ;
+                            }
+                            //No.1692
+                            else if (c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "1")
+                            {
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                            }
+                            else
+                            {
+                                // 必須背景薄黄色
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.White;
                             }
                         }
 
@@ -4846,6 +4878,11 @@ namespace TokuchoBugyoK2
                                                                   + "-"
                                                                   + zeroPadding((c1FlexGrid4.Rows[i]["ChousaKobetsuJun"] != null ? c1FlexGrid4.Rows[i]["ChousaKobetsuJun"].ToString() : "0"))
                                                                   ;
+                            }
+                            //No.1692
+                            else if (c1FlexGrid4.Rows[i]["BunkatsuHouhou"].ToString() == "1")
+                            {
+                                c1FlexGrid4.GetCellRange(i, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                             }
                             else
                             {
@@ -7522,6 +7559,11 @@ namespace TokuchoBugyoK2
                 //ファイルNo
                 if (e.Col == c1FlexGrid4.Cols["FileNo"].Index)
                 {
+                    //No.1692 コピペ不可にする
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "1" || c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "1")
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "";
+                    }
                     //No.1672
                     // 別の値がペーストされる対策
                     if (c1FlexGrid4.Rows[e.Row][ColName] != null)
@@ -7554,7 +7596,13 @@ namespace TokuchoBugyoK2
                 if (e.Col == c1FlexGrid4.Cols["GroupMei"].Index)
                 {
                     strIndex = 15;
-
+                    //No.1692 コピペ不可にする
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "1")
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "";
+                    }
+                    //No.1672
+                    // 別の値がペーストされる対策
                     if (c1FlexGrid4.Rows[e.Row][ColName] != null)
                     {
                         discript = "MadoguchiGroupMei ";
@@ -7698,6 +7746,11 @@ namespace TokuchoBugyoK2
                         c1FlexGrid4.Rows[e.Row][59] = "";
                     }
                     */
+                    //No.1692 コピペ不可にする
+                    if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "1")
+                    {
+                        c1FlexGrid4.Rows[e.Row][ColName] = "1";
+                    }
                     //No.1672
                     // 別の値がペーストされる対策
                     if (c1FlexGrid4.Rows[e.Row][ColName] != null)
@@ -7723,6 +7776,12 @@ namespace TokuchoBugyoK2
                     {
                         c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
                         c1FlexGrid4.Rows[e.Row][59] = "";
+                        //No.1692
+                        if (c1FlexGrid4.Rows[e.Row]["ShukeihyoVer"].ToString() == "2")
+                        {
+                            c1FlexGrid4.GetCellRange(e.Row, 59).StyleNew.BackColor = Color.FromArgb(240, 240, 240);
+                            c1FlexGrid4.Rows[e.Row][59] = "";
+                        }
                     }
                     if (c1FlexGrid4.Rows[e.Row]["BunkatsuHouhou"].ToString() == "2")
                     {
