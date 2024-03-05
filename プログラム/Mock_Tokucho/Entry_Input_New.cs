@@ -9852,16 +9852,14 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                // No1557 1308 案件情報で調査会が受注後もフォルダ変更が出来てしまう。
-                // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
-                //// 受託番号の設定OR解除
-                //setOrClearJutakuBan(ankenNo);
 
-                // フォルダリムーブ処理
+                // フォルダリネーム処理
                 // No1557 1308 案件情報で調査会が受注後もフォルダ変更が出来てしまう。
                 // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
-                if (base_tbl02_txtJyutakuNo.Text == "") { 
-                    if (RenameFolder(ori_ankenNo))
+                if (base_tbl02_txtJyutakuNo.Text == "") {
+                    //リネーム処理実行
+                    bool isSuccessRenameFolder = RenameFolder(ori_ankenNo);
+                    if (isSuccessRenameFolder)
                     {
                         // 移動履歴LOG残す
                         GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "フォルダ変更前：" + GlobalMethod.ChangeSqlText(sFolderRenameBef, 0, 0) + "→フォルダ変更後：" + GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0), pgmName + methodName, "");
