@@ -12415,7 +12415,7 @@ namespace TokuchoBugyoK2
                 }
                 if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
                 {
-                    //もっとファイル
+                    //もとファイル
                     if (base_tbl02_txtAnkenFolder.Text.Contains(ori_ankenNo))
                     {
                         // リネーム前後、すべて調査部の場合、リネームを実施する
@@ -12443,43 +12443,6 @@ namespace TokuchoBugyoK2
                 // No1560 1311　【備忘】現行の仕様では工期自を変更時に年度を変更し、案件番号が変更された際、フォルダ変更も行われる。
                 //    ※フォルダ変更ボタンで確認せずにホルダ変更が行われてしまう。
                 isRename = 5;
-                //folderTo = GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0);
-                //// リネームボタン押下しない　AND　案件番号自動変更
-                //if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
-                //{
-                //    // リネーム前後、すべて調査部の場合、リネームを実施する
-                //    isRename = 1;
-                //}
-                //else if (sJigyoubuHeadCD.Equals("T"))
-                //{
-                //    // リネーム後のみ調査部なら、新規作成する
-                //    isRename = 3;
-                //}
-                //else if (sJigyoubuHeadCD_ori.Equals("T"))
-                //{
-                //    // リネームボタン押下しない、契約部署のみ変更する場合
-                //    if (folderTo.Equals(sFolderRenameBef) == false)
-                //    {
-                //        isRename = 4;
-                //    }
-                //    else
-                //    {
-                //        base_tbl02_txtRenameFolder.Text = "";
-                //        ca_tbl01_hidResetAnkenno.Text = "";
-                //        isRename = 5;
-                //    }
-                //}
-                //else
-                //{
-                //    if (folderTo.Contains(ori_ankenNo))
-                //    {
-                //        isRename = 4;
-                //    }
-                //    else
-                //    {
-                //        isRename = 5;
-                //    }
-                //}
             }
             else
             {
