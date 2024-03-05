@@ -118,27 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="item1_ShukeiFolder_icon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAQCAYAAAAS7Y8mAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAAd0SU1FB+ABGwYTEBg9ZUgAAANUSURBVDhPjVRpS5RhFH2rj/2CoA/RZn2yCFJb
-        rCiiKIjCqAiiojAMU7HCSIqixRbFaCPRNs0sS9E0zXXUcRsdy7UZHfd9ycpxd8bTc+44JUHQh8N93vee
-        e+65d555telpO/p79PhSEoCaiiuorwmHpe4hmsxRaGmIRqslRuL4aB/I/V+IcEv9S1SXXZTYZIoUUaK5
-        /rkIE93t6fjWVyImBnqLMdBTKOe+7jz0denQ05GBjpYkWH9aZoTtNlUYq4oMmJz4iYnxwRkMiMuxkW6M
-        WNtgHWrC0A8zhr6bMNhvFPHerhxpyNjbmSUGOloSYbdPQqNo3efragX3HOMr13zX3pyArrZU5SRTHNEt
-        QYcUoWBna7LwyOe6LHWPYaq6I5Mq4Rh8LvZDpeE8aiuuwlR5G+aqu2iovS9rIamtMQ7tTfEqvnGIzKys
-        ofaBcL9WhqDGeBmVpWflt2Je62pNgSHvqBL3R3V5sHJ/TYjm6jARbzRFoNn8TMh0xTPfiaji0Ahr+BtR
-        o6zghEyhcemFWftQrvdW3QJRZQiS28H1cCyuiCK8KYwE3zFHDp2yhk6poc/cq9aUBm2wvxz56TtQkntY
-        EhVFvtKADpwNvn65KVMI1FkEVa6q7IJw6dSoPyUautQt6O8ugDY81Iy09xuV+E4UZe9Hqe4IyvKPw1jo
-        I7tnEfdPETYjHGJ+YoKjs6Y4+4AYTIxdJzdHG7a2IiHGAzkpmyShz9wjDUpyDzmaqEK6YSMW56Zudpxz
-        DiI9YSMKPu2W8WksM8kT0RFrMTrcAY13NTV+g3SicxbmpW1XBbtk90VZXr8niby/BvPmzoEh/5hwFy+a
-        j3u3Vgk/I9ETSa/XIzbKDaMjndCmJq0i9vLJWknQPRtlJ29yNPm4TSahI+6PjvjMCVlDPk0lx62XHOPk
-        xA9o/JdwrNDrroh76o5XkW7wObEEXnsWyvO7aA9pyIIPbzcIKBb/wl3cUZw15FJD93Er7LZxhzBHCTi9
-        HI9CV8tou3csgKZpCA9ZhbAbrhJnw/mOXIJn1gb6LpemNtuY4yNUbbwkLs/7uyAoYAXOnXERkOjvs0zg
-        671U4Hxmzskngs+thPexxSgvOPnn60bXzg8Nr9/fkTdH4qzzv7i2qRElbMcvCXQ7/G3PiUIAAAAASUVO
-        RK5CYII=
-</value>
-  </data>
   <data name="c1FlexGrid1.CellButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAJHA8J3H8qnP9Ia57s7m+tXq+4u878Xg+IS47qzR9Nns+8nj+aXN887n+cTg+M/m
@@ -160,10 +139,40 @@
 </value>
   </data>
   <data name="c1FlexGrid1.ColumnInfo" xml:space="preserve">
-    <value>5,0,0,0,0,-1,Columns:0{Width:41;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 9pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;BackgroundImage:iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK8AAACvABQqw0mAAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAAalJREFUOE9j+P//P0UYqyApGKsgLrzgvPWGBeetDi29FKQFE8NQhAvPOWu9ZOpJ2f9TTkj+n3Fa9//0U9oaIHGsitHxrDMu+ROOq/zvPSoFxDJALHlh4nFpIZAcisLZZ/21gFgNWWzuuRDd3mN6/9sPyf7vOKwIwvfaD2vwweQRms9F2PYcs/7Te8z6x6xz4cZQccaeY1ZXmw4o/286qPq/6YDqz+aDGmCnwzCYmHoqhqP5gPnfqt2q/0G47ZDNl9nnErR7jrpV1O7V/l+9Rx2INf7X7tVKQdYMN6Bshxpj4Rb1yYVbtP8XbtH6X7BF43/dHrvflTtNwWyQeNFW7d3omkEYhZOxVndS+hrd/0D6f/paLSDWhrJ1f2SsNZRBVgvDGAIxi3UnRS7U/R+1CIqB7JjF+kXo6mAYq6D/TL0+n2l6/72n6v73na53AZsaGAYTzAwMvEAsA8RKjAwMqgwMDOImRWqrrJt13qr4SkcA+cpAOU0gVgOpgarlRTaAHYj5gVgYiMVABgAxNwMDiyiQFgSKSQKxBEgOqgaklh1uACUYqyDx+D8DALQNdV1Ig9ShAAAAAElFTkSuQmCC;BackgroundImageLayout:Scale;";}	1{Caption:"部所CD";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 20.321pt;";}	2{Width:159;Caption:"調査担当部所";AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 9pt;Margins:1, 0, 0, 0;TextAlign:LeftCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	3{Caption:"担当者CD";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 20.321pt;";}	4{Width:162;Caption:"調査担当者";AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 9pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	</value>
+    <value>5,0,0,0,0,-1,Columns:0{Width:41;AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 9pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;BackgroundImage:iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK8AAACvABQqw0mAAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAAalJREFUOE9j+P//P0UYqyApGKsgLrzgvPWGBeetDi29FKQFE8NQhAvPOWu9ZOpJ2f9TTkj+n3Fa9//0U9oaIHGsitHxrDMu+ROOq/zvPSoFxDJALHlh4nFpIZAcisLZZ/21gFgNWWzuuRDd3mN6/9sPyf7vOKwIwvfaD2vwweQRms9F2PYcs/7Te8z6x6xz4cZQccaeY1ZXmw4o/286qPq/6YDqz+aDGmCnwzCYmHoqhqP5gPnfqt2q/0G47ZDNl9nnErR7jrpV1O7V/l+9Rx2INf7X7tVKQdYMN6Bshxpj4Rb1yYVbtP8XbtH6X7BF43/dHrvflTtNwWyQeNFW7d3omkEYhZOxVndS+hrd/0D6f/paLSDWhrJ1f2SsNZRBVgvDGAIxi3UnRS7U/R+1CIqB7JjF+kXo6mAYq6D/TL0+n2l6/72n6v73na53AZsaGAYTzAwMvEAsA8RKjAwMqgwMDOImRWqrrJt13qr4SkcA+cpAOU0gVgOpgarlRTaAHYj5gVgYiMVABgAxNwMDiyiQFgSKSQKxBEgOqgaklh1uACUYqyDx+D8DALQNdV1Ig9ShAAAAAElFTkSuQmCC;BackgroundImageLayout:Scale;";}	1{Caption:"部所CD";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 22.579pt;";}	2{Width:159;Caption:"調査担当部所";AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 9pt;Margins:1, 0, 0, 0;TextAlign:LeftCenter;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	3{Caption:"担当者CD";Visible:False;Style:"Font:ＭＳ Ｐゴシック, 22.579pt;";}	4{Width:162;Caption:"調査担当者";AllowEditing:False;Style:"Font:ＭＳ Ｐゴシック, 9pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	</value>
   </data>
   <data name="c1FlexGrid1.StyleInfo" xml:space="preserve">
     <value>Normal{ForeColor:Black;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:White;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{ForeColor:Black;}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="SyukeihyoVer2GroupNameListGrid.ColumnInfo" xml:space="preserve">
+    <value>5,1,0,0,0,-1,Columns:0{Visible:False;Style:"Font:Microsoft Sans Serif, 9.75pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	1{Width:137;Caption:"部門名";Style:"Font:Microsoft Sans Serif, 9pt;";StyleFixed:"Font:Microsoft Sans Serif, 9.75pt;ForeColor:Control;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	2{Width:134;Caption:"調査員名";Style:"Font:Microsoft Sans Serif, 9pt;";StyleFixed:"Font:Microsoft Sans Serif, 9.75pt;ForeColor:Control;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	3{Width:144;Caption:"グループ名";Style:"Font:Microsoft Sans Serif, 9pt;";StyleFixed:"Font:Microsoft Sans Serif, 10pt;ForeColor:Control;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	4{Caption:"分割方法";Style:"Font:Microsoft Sans Serif, 9pt;";StyleFixed:"Font:Microsoft Sans Serif, 9.75pt;ForeColor:Control;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	</value>
+  </data>
+  <data name="SyukeihyoVer2GroupNameListGrid.StyleInfo" xml:space="preserve">
+    <value>Normal{ForeColor:Black;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="FileNameListGrid.StyleInfo" xml:space="preserve">
+    <value>Normal{}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
+  </data>
+  <data name="item1_ShukeiFolder_icon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAQCAYAAAAS7Y8mAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAAd0SU1FB+ABGwYTEBg9ZUgAAANUSURBVDhPjVRpS5RhFH2rj/2CoA/RZn2yCFJb
+        rCiiKIjCqAiiojAMU7HCSIqixRbFaCPRNs0sS9E0zXXUcRsdy7UZHfd9ycpxd8bTc+44JUHQh8N93vee
+        e+65d555telpO/p79PhSEoCaiiuorwmHpe4hmsxRaGmIRqslRuL4aB/I/V+IcEv9S1SXXZTYZIoUUaK5
+        /rkIE93t6fjWVyImBnqLMdBTKOe+7jz0denQ05GBjpYkWH9aZoTtNlUYq4oMmJz4iYnxwRkMiMuxkW6M
+        WNtgHWrC0A8zhr6bMNhvFPHerhxpyNjbmSUGOloSYbdPQqNo3efragX3HOMr13zX3pyArrZU5SRTHNEt
+        QYcUoWBna7LwyOe6LHWPYaq6I5Mq4Rh8LvZDpeE8aiuuwlR5G+aqu2iovS9rIamtMQ7tTfEqvnGIzKys
+        ofaBcL9WhqDGeBmVpWflt2Je62pNgSHvqBL3R3V5sHJ/TYjm6jARbzRFoNn8TMh0xTPfiaji0Ahr+BtR
+        o6zghEyhcemFWftQrvdW3QJRZQiS28H1cCyuiCK8KYwE3zFHDp2yhk6poc/cq9aUBm2wvxz56TtQkntY
+        EhVFvtKADpwNvn65KVMI1FkEVa6q7IJw6dSoPyUautQt6O8ugDY81Iy09xuV+E4UZe9Hqe4IyvKPw1jo
+        I7tnEfdPETYjHGJ+YoKjs6Y4+4AYTIxdJzdHG7a2IiHGAzkpmyShz9wjDUpyDzmaqEK6YSMW56Zudpxz
+        DiI9YSMKPu2W8WksM8kT0RFrMTrcAY13NTV+g3SicxbmpW1XBbtk90VZXr8niby/BvPmzoEh/5hwFy+a
+        j3u3Vgk/I9ETSa/XIzbKDaMjndCmJq0i9vLJWknQPRtlJ29yNPm4TSahI+6PjvjMCVlDPk0lx62XHOPk
+        xA9o/JdwrNDrroh76o5XkW7wObEEXnsWyvO7aA9pyIIPbzcIKBb/wl3cUZw15FJD93Er7LZxhzBHCTi9
+        HI9CV8tou3csgKZpCA9ZhbAbrhJnw/mOXIJn1gb6LpemNtuY4yNUbbwkLs/7uyAoYAXOnXERkOjvs0zg
+        671U4Hxmzskngs+thPexxSgvOPnn60bXzg8Nr9/fkTdH4qzzv7i2qRElbMcvCXQ7/G3PiUIAAAAASUVO
+        RK5CYII=
+</value>
   </data>
   <data name="Top_Page.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -293,15 +302,6 @@
         YaL9WI8Zx+vAXvJucDglIKoppOjCOtlIubePtthif4T0LQgl/Xcb0uWmG8H7VV7ef8UNmxBADih9AAAA
         AElFTkSuQmCC
 </value>
-  </data>
-  <data name="SyukeihyoVer2GroupNameListGrid.ColumnInfo" xml:space="preserve">
-    <value>5,1,0,0,0,-1,Columns:0{Visible:False;Style:"Font:Microsoft Sans Serif, 9.75pt;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	1{Width:137;Caption:"部門名";StyleFixed:"Font:Microsoft Sans Serif, 9.75pt;ForeColor:Control;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	2{Width:134;Caption:"調査員名";StyleFixed:"Font:Microsoft Sans Serif, 9.75pt;ForeColor:Control;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	3{Width:144;Caption:"グループ名";StyleFixed:"Font:Microsoft Sans Serif, 10pt;ForeColor:Control;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	4{Caption:"分割方法";StyleFixed:"Font:Microsoft Sans Serif, 9.75pt;ForeColor:Control;Margins:1, 0, 0, 0;TextEffect:Flat;TextDirection:Normal;Trimming:None;";}	</value>
-  </data>
-  <data name="SyukeihyoVer2GroupNameListGrid.StyleInfo" xml:space="preserve">
-    <value>Normal{ForeColor:Black;}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
-  </data>
-  <data name="FileNameListGrid.StyleInfo" xml:space="preserve">
-    <value>Normal{}	Alternate{}	Fixed{BackColor:SteelBlue;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	Highlight{BackColor:Highlight;ForeColor:HighlightText;SearchBackColor:Orange;}	Focus{}	Editor{}	Search{BackColor:Highlight;ForeColor:HighlightText;}	Frozen{BackColor:Beige;}	FrozenAlternate{}	NewRow{ForeColor:GrayText;}	EmptyArea{BackColor:AppWorkspace;Border:Flat,1,ControlDarkDark,Both;}	SelectedColumnHeader{}	SelectedRowHeader{}	GrandTotal{BackColor:Black;ForeColor:White;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;}	FilterEditor{}	Footer{BackColor:Control;ForeColor:ControlText;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:Hide;}	FirstCustomStyle{}	</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
