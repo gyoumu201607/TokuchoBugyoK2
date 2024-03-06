@@ -4241,7 +4241,9 @@ namespace TokuchoBugyoK2
             }
             // パーセント再計算
             double dPercent = 0;
-            if (total > 0)
+            //No1670 赤伝の場合マイナスになるので、ゼロ割にならない限り計算実施に変更
+            //if (total > 0)
+            if (total != 0)
             {
                 //dPercent = (double)(lngAmtTax * 100 / total);
                 dPercent = lngAmtTax * 100 / Convert.ToDouble(total);
