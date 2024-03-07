@@ -9853,6 +9853,9 @@ namespace TokuchoBugyoK2
                     {
                         // 移動履歴LOG残す
                         GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "フォルダ変更前：" + GlobalMethod.ChangeSqlText(sFolderRenameBef, 0, 0) + "→フォルダ変更後：" + GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0), pgmName + methodName, "");
+
+                        //フォルダ変更ボタンクリック済みフラグをOFFにする
+                        isClickedRenameFolderButton = false;
                     }
                 }
                 using (var conn = new SqlConnection(connStr))
