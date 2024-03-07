@@ -241,10 +241,14 @@ namespace TokuchoBugyoK2
         /// 基本情報等一覧タブ　エラーリスト
         /// </summary>
         private bool[] baseErrors = { true,true,true};
-        #endregion
+        /// <summary>
+        /// フォルダ変更ボタンをクリックしたかどうかフラグ
+        /// </summary>
+		private bool isClickedRenameFolderButton = false;
+		#endregion
 
-        #region フォーム　イベント ---------------------------------------------------
-        public Entry_Input_New()
+		#region フォーム　イベント ---------------------------------------------------
+		public Entry_Input_New()
         {
             InitializeComponent();
 
@@ -5669,6 +5673,15 @@ namespace TokuchoBugyoK2
             // 案件（受託）フォルダ
             base_tbl02_txtRenameFolder.Text = FolderPath;
 
+            //フォルダ変更ボタンクリックフラグON
+            isClickedRenameFolderButton = true;
+
+            //No1668 ファイル更新ボタンを押下後、変更フォルダが表示されたときに、確認ダイアログを表示させる。OKのみの確認ダイアログとする。
+            if (base_tbl02_txtRenameFolder.Text.Length != 0 && base_tbl02_txtRenameFolder.Text != sFolderRenameBef)
+            {
+                MessageBox.Show(GlobalMethod.GetMessage("E20908", ""), "確認", MessageBoxButtons.OK);
+
+            }
             //案件（受託）フォルダのフルパス作成時に案件番号が作成されていれば非表示案件Noにセット
             if (ankenNo.Length != 0)
 			{
@@ -9830,7 +9843,8 @@ namespace TokuchoBugyoK2
                 // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
                 if (base_tbl02_txtJyutakuNo.Text == "") {
 					//No1668 ファイル更新ボタンを押下後、変更フォルダが表示されたときに、確認ダイアログを表示させる。OKのみの確認ダイアログとする。
-					if (base_tbl02_txtRenameFolder.Text.Length != 0 && base_tbl02_txtRenameFolder.Text != sFolderRenameBef)
+                    //No1668　かつフォルダ変更ボタンを押した場合は、１度表示しているため確認ダイアログは非表示とする
+					if (base_tbl02_txtRenameFolder.Text.Length != 0 && base_tbl02_txtRenameFolder.Text != sFolderRenameBef && !isClickedRenameFolderButton)
 					{
                         MessageBox.Show(GlobalMethod.GetMessage("E20908", ""), "確認", MessageBoxButtons.OK);
 
@@ -9841,6 +9855,9 @@ namespace TokuchoBugyoK2
                     {
                         // 移動履歴LOG残す
                         GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "フォルダ変更前：" + GlobalMethod.ChangeSqlText(sFolderRenameBef, 0, 0) + "→フォルダ変更後：" + GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0), pgmName + methodName, "");
+
+                        //フォルダ変更ボタンクリック済みフラグをOFFにする
+                        isClickedRenameFolderButton = false;
                     }
                 }
                 using (var conn = new SqlConnection(connStr))
