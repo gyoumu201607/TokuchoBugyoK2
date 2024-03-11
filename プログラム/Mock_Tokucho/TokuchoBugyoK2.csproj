@@ -7,14 +7,14 @@
     <ProjectGuid>{0AA1DAEB-7746-4D4F-8B66-55281FA32BFE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TokuchoBugyoK2</RootNamespace>
-    <AssemblyName>TokuchoBugyoK2</AssemblyName>
+    <AssemblyName>TokuchoBugyoK2_ST</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\deploy_app\江幡様環境_デプロイモジュール_20231121\</PublishUrl>
+    <PublishUrl>C:\deploy_app\ステージング環境_デプロイモジュール_20240307\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,20 +24,20 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://PN0J3AKSC75241A/TokuchoBugyoK2/</InstallUrl>
-    <ProductName>TokuchoBugyoK2</ProductName>
+    <InstallUrl>http://HON-VM-135/TokuchoBugyoK2_ST/</InstallUrl>
+    <ProductName>TokuchoBugyoK2_ST</ProductName>
     <PublisherName>Construction Research Institute</PublisherName>
-    <MinimumRequiredVersion>2.0.0.106</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.0.0.113</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>app.htm</WebPage>
-    <ApplicationRevision>106</ApplicationRevision>
-    <ApplicationVersion>2.0.0.106</ApplicationVersion>
+    <ApplicationRevision>113</ApplicationRevision>
+    <ApplicationVersion>2.0.0.113</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
-    <BootstrapperComponentsUrl>http://PN0J3AKSC75241A/TokuchoBugyoK2/</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>http://HON-VM-135/TokuchoBugyoK2_ST/</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
