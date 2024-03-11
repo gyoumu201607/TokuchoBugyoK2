@@ -74,7 +74,11 @@ namespace TokuchoBugyoK2
         private List<string> kojinList = new List<string>();
         private List<string> FileNameList = new List<string>();
         private List<string> SyuFukuList = new List<string>();
-        
+
+        //Errorメッセージコードリスト
+        //発生したエラーメッセージコードを格納する。同一メッセージの出力を抑制する
+        private List<string> ErrorMessageCdList = new List<string>();
+
         //選択帳票の集計表Ver
         private int ShukeiVer;
         private string chousainShukeiFolder;
@@ -1202,85 +1206,51 @@ namespace TokuchoBugyoK2
             set_error("", 0);
             // 背景色クリア
             Color clearColor = Color.FromArgb(255, 255, 255);
-            int filerow = FileNameListGrid.Rows.Count;
-            for (int r = 0; r < filerow; r++)
+            int fileNameListCount = FileNameListGrid.Rows.Count;
+            for (int r = 0; r < fileNameListCount; r++)
             {
                 FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = clearColor;
             }
             // エラー背景色
             Color errorColor = Color.FromArgb(255, 204, 255);
-            int prntflg = 1;
-            int exstchk = 0;
+            bool isPrintOKflg = true;
 
+            ErrorMessageCdList.Clear();
             // ファイル名重複チェック
             FileNameList.Clear();
-            for (int r = 0; r < filerow; r++)
+            for (int fileRowIdx = 0; fileRowIdx < fileNameListCount; fileRowIdx++)
             {
-                if (!FileNameList.Contains(FileNameListGrid[r, 0].ToString()))
+                if (FileNameList.Contains(FileNameListGrid[fileRowIdx, 0].ToString()))
                 {
-                    FileNameList.Add(FileNameListGrid[r, 0].ToString());
-                }
-                else
-                {
-                    FileNameListGrid.GetCellRange(r, 0).StyleNew.BackColor = errorColor;
-                    if (prntflg == 1)
-                    {
-                        prntflg = 0;
-                        // E20906:ファイル名が重複しています。
-                        set_error("", 0);
-                        set_error(GlobalMethod.GetMessage("E20906", ""));
-                        FileNameListGrid.Row = r;
+                    FileNameListGrid.GetCellRange(fileRowIdx, 0).StyleNew.BackColor = errorColor;
+                    
+                    if (isPrintOKflg)
+					{
+                        if (!ErrorMessageCdList.Contains("E20906"))
+                        {
+                            // E20906:ファイル名が重複しています。
+                            //set_error("", 0);
+                            set_error(GlobalMethod.GetMessage("E20906", ""));
+                        }
+                        ErrorMessageCdList.Add("E20906");
+                        FileNameListGrid.Row = fileRowIdx;
                         FileNameListGrid.HighLight = HighLightEnum.Never;
                     }
+
+                    isPrintOKflg = false;
+
+                    //break;
                 }
-                // No1658対応：集計表Ver2でファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
-                if (exstchk == 0)
-                {
-                    if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[r] == "2")
-                    {
-                        //chousainShukeiFolder = "";
-                        //chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[r].ToString() + "-" + TokuchoList[r].ToString();
-                        // 集計表フォルダ・作業フォルダ作成
-                        chousainShukeiFolder = "";
-                        if (!createFolder(r))
-                        {
-                            prntflg = 0;
-                        }
-                        else
-                        {
-                            var fileList = Directory.GetFiles(chousainShukeiFolder, "*.*");
-                            if (fileList.Length > 0)
-                            {
-                                if (MessageBox.Show(GlobalMethod.GetMessage("I20318", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
-                                {
-                                    prntflg = 0;
-                                }
-                                exstchk = 1;
-                            }
-                        }
-                    }
+                else
+				{
+                    FileNameList.Add(FileNameListGrid[fileRowIdx, 0].ToString());
                 }
+
             }
 
             // 部所一括集計表出力以外の場合
             if (!checkBox_BushoIkkatu.Checked)
             {
-                // 奉行エクセル移管対応 20231004
-                //// VIPS 20220322 課題管理表No1263(957) ADD  保存にチェックがついていて、かつ、ファイルが存在する場合にエラー
-                //// ファイル存在チェック
-                //if (File.Exists(item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text) && radioButton_Save.Checked)
-                //{
-                //    // 既にファイルが存在する
-                //    set_error("", 0);
-                //    set_error(GlobalMethod.GetMessage("E20332", "") + ":" + item1_PritFileName.Text);
-                //    return;
-                //}
-
-                // 集計表Ver1、Ver2混在チェック
-                //if (!fileErrorCheck(item1_KojinCD.Text, SyuFukuList[i].ToString()))
-                //{
-                //    prntflg = 0;
-                //}
 
                 // 集計表VerがVer2の場合、調査員単位で分割方法がファイル分割・シート分割混在でメッセージ出力
                 if (ShukeiVer == 2)
@@ -1288,20 +1258,25 @@ namespace TokuchoBugyoK2
                     int.TryParse(BunkatsuList[0].ToString(), out int BunkatsuType);
                     if (!bunkatsuCheck(KojincdList[0].ToString(), BunkatsuType))
                     {
-                        return;
+                        //return;
+                        isPrintOKflg = false;
                     }
                 }
 
-                filerow = FileNameListGrid.Rows.Count;
-                for (int fileRowIdx = 0; fileRowIdx < filerow; fileRowIdx++)
+                fileNameListCount = FileNameListGrid.Rows.Count;
+                for (int fileRowIdx = 0; fileRowIdx < fileNameListCount; fileRowIdx++)
                 {
+                    chousainShukeiFolder = "";
+                    chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[fileRowIdx].ToString() + "-" + TokuchoList[fileRowIdx].ToString();
+
                     // 集計表Ver1、Ver2混在チェック
                     if (!checkBox_Zenhinmoku.Checked)
                     {
-                        if (!fileErrorCheck(item1_KojinCD.Text, SyuFukuList[fileRowIdx].ToString()))
-                        {
-                            prntflg = 0;
-                        }
+                        isPrintOKflg = fileErrorCheck(item1_KojinCD.Text, SyuFukuList[fileRowIdx].ToString()) ? isPrintOKflg: false;
+                        //if (!fileErrorCheck(item1_KojinCD.Text, SyuFukuList[fileRowIdx].ToString()))
+                        //{
+                        //    isPrintOKflg = false;
+                        //}
                     }
                     // No1656対応：グループ名が選択されていなくても出力対象とする
                     //// 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
@@ -1314,592 +1289,127 @@ namespace TokuchoBugyoK2
                         set_error(GlobalMethod.GetMessage("E20907", ""));
                         FileNameListGrid.Row = fileRowIdx;
                         FileNameListGrid.HighLight = HighLightEnum.Never;
-                        prntflg = 0;
+                        isPrintOKflg = false;
                     }
 
-                    if (prntflg == 1)
+                    if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
                     {
+                        if (File.Exists(chousainShukeiFolder + @"\" + FileNameListGrid[fileRowIdx, 0]) && radioButton_Save.Checked)
+                        {
+                            if (!ErrorMessageCdList.Contains("E20332"))
+                            {
+                                // E20332:集計表ファイルが既に存在します。
+                                //set_error("", 0);
+                                set_error(GlobalMethod.GetMessage("E20332", ""));
+                            }
+                            ErrorMessageCdList.Add("E20332");
+
+                            FileNameListGrid.GetCellRange(fileRowIdx, 0).StyleNew.BackColor = errorColor;
+                            FileNameListGrid.Row = fileRowIdx;
+                            FileNameListGrid.HighLight = HighLightEnum.Never;
+                            isPrintOKflg = false;
+                        }
+                    }
+                    else
+                    {
+                        if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileRowIdx, 0]) && radioButton_Save.Checked)
+                        {
+                            if (!ErrorMessageCdList.Contains("E20332"))
+                            {
+                                // E20332:集計表ファイルが既に存在します。
+                                //set_error("", 0);
+                                set_error(GlobalMethod.GetMessage("E20332", ""));
+                            }
+                            ErrorMessageCdList.Add("E20332");
+
+                            FileNameListGrid.GetCellRange(fileRowIdx, 0).StyleNew.BackColor = errorColor;
+                            FileNameListGrid.Row = fileRowIdx;
+                            FileNameListGrid.HighLight = HighLightEnum.Never;
+                            isPrintOKflg = false;
+                        }
+                    }
+                }
+
+
+                // 集計表のファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
+                isPrintOKflg = ShowFileExistsDialog(isPrintOKflg) ? isPrintOKflg : false;
+
+
+                //エラーがなければフォルダ作成、workテーブルデータ登録
+                if (isPrintOKflg)
+                {
+                    for (int fileRowIdx = 0; fileRowIdx < fileNameListCount; fileRowIdx++)
+                    {
+
                         // 集計表フォルダ・作業フォルダ作成
                         chousainShukeiFolder = "";
                         if (!checkBox_Zenhinmoku.Checked)
                         {
                             if (!createFolder(fileRowIdx))
                             {
-                                prntflg = 0;
+                                isPrintOKflg = false;
                             }
                         }
 
-                        if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
+                        // 1:MadoguchiID     窓口ID
+                        // 2:ZeninSyukeihyo  全品目一括集計表 1:チェック 0:未チェック
+                        // 3:ShibuMei        支部名
+                        // 4:KojinCD         個人CD
+                        // 5:ShuFuku         主副  1:主 2:副
+                        // 6:FileName        ファイル名
+                        // 7:PrintGamen      呼び出し元画面 0:窓口ミハル 1:特命課長  2:自分大臣
+                        // 8:GroupName       グループ名
+                        // 8個分先に用意
+                        if (isPrintOKflg)
                         {
-                            if (File.Exists(chousainShukeiFolder + @"\" + FileNameListGrid[fileRowIdx, 0]) && radioButton_Save.Checked)
-                            {
-                                // E20332:集計表ファイルが既に存在します。
-                                set_error("", 0);
-                                set_error(GlobalMethod.GetMessage("E20332", ""));
-                                FileNameListGrid.GetCellRange(fileRowIdx, 0).StyleNew.BackColor = errorColor;
-                                FileNameListGrid.Row = fileRowIdx;
-                                FileNameListGrid.HighLight = HighLightEnum.Never;
-                                prntflg = 0;
-                            }
-                        }
-                        else
-                        {
-                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileRowIdx, 0]) && radioButton_Save.Checked)
-                            {
-                                // E20332:集計表ファイルが既に存在します。
-                                set_error("", 0);
-                                set_error(GlobalMethod.GetMessage("E20332", ""));
-                                FileNameListGrid.GetCellRange(fileRowIdx, 0).StyleNew.BackColor = errorColor;
-                                FileNameListGrid.Row = fileRowIdx;
-                                FileNameListGrid.HighLight = HighLightEnum.Never;
-                                prntflg = 0;
-                            }
-                        }
-                    }
-
-                    // 1:MadoguchiID     窓口ID
-                    // 2:ZeninSyukeihyo  全品目一括集計表 1:チェック 0:未チェック
-                    // 3:ShibuMei        支部名
-                    // 4:KojinCD         個人CD
-                    // 5:ShuFuku         主副  1:主 2:副
-                    // 6:FileName        ファイル名
-                    // 7:PrintGamen      呼び出し元画面 0:窓口ミハル 1:特命課長  2:自分大臣
-                    // 8:GroupName       グループ名
-                    // 8個分先に用意
-                    if (prntflg == 1)
-                    {
-                        string[] report_data = new string[8] { "", "", "", "", "", "", "", "" };
-
-                        // 窓口ID
-                        report_data[0] = MadoguchiID;
-                        // 全品目一括集計表 1:チェック 0:未チェック
-                        if (checkBox_Zenhinmoku.Checked)
-                        {
-                            report_data[1] = "1";
-                        }
-                        else
-                        {
-                            report_data[1] = "0";
-                        }
-                        // 支部名
-                        report_data[2] = label_SentakuBusho.Text;
-                        // 個人CD
-                        if (checkBox_Zenhinmoku.Checked)
-                        {
-                            report_data[3] = "0";
-                        }
-                        else
-                        {
-                            report_data[3] = item1_KojinCD.Text;
-                        }
-                        // 主副  1:主 2:副
-                        //report_data[4] = comboBox_Taisho.SelectedValue.ToString();
-                        //全品目一括の場合SyuFukuListが空になるため
-                        if(SyuFukuList.Count > 0)
-						{
-                            if (ShukeiVer == 2)
-							{
-                                report_data[4] = SyuFukuList[fileRowIdx].ToString();
-							}
-							else
-							{
-                                report_data[4] = comboBox_Taisho.SelectedValue.ToString(); 
-                            }
-                            
-						}
-						else
-						{
-                            report_data[4] = "0";
-
-                        }
-                        
-
-                        // ファイル名
-                        report_data[5] = FileNameListGrid[fileRowIdx, 0].ToString();
-
-                        report_data[6] = "0";
-                        switch (PrintGamen)
-                        {
-                            case "Madoguchi":
-                                report_data[6] = "0";
-                                break;
-                            case "Tokumei":
-                                report_data[6] = "1";
-                                break;
-                            case "Jibun":
-                                report_data[6] = "2";
-                                break;
-                            default:
-                                break;
-                        }
-                        // No1656 集計表出力パラメータをグループ名からファイル番号に変更
-                        if (ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
-                        {
-                            report_data[7] = FileNoList[fileRowIdx].ToString();
-                        }
-                        else
-                        {
-                            report_data[7] = "";
-                        }
-
-                        int listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
-
-                        string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data, "Shukeihyo");
-                        // result
-                        // 成否判定 0:正常 1：エラー
-                        // メッセージ（主にエラー用）
-                        // ファイル物理パス（C:\Work\xxxx\0000000111_xxx.xlsx）
-                        // ダウンロード時のファイル名（xxx.xlsx）
-                        if (result != null && result.Length >= 4)
-                        {
-                            if (result[0].Trim() == "1")
-                            {
-                                //set_error("", 0);
-                                set_error(result[1]);
-                            }
-                            else
-                            {
-                                //set_error("", 0);
-
-                                // VIPS　20220316　課題管理表No1263(957)　ADD　保存、DL選択の分岐を追加	
-                                // 直接フォルダに保存するかDLダイアログを表示するか
-                                if (radioButton_Save.Checked)
-                                {
-                                    // 成功時は、ファイルをフォルダにコピーする
-                                    try
-                                    {
-                                        if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
-                                        {
-                                            System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + FileNameListGrid[fileRowIdx, 0].ToString(), true);
-                                        }
-                                        else
-                                        {
-                                            System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileRowIdx, 0].ToString(), true);
-                                        }
-                                        set_error("集計表ファイルを出力しました。:" + FileNameListGrid[fileRowIdx, 0].ToString());
-
-                                        // リンク先を設定するチェックボックスチェック時
-                                        if (item_LinkCheckBox.Checked)
-                                        {
-                                            // 対象を取得する
-                                            string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-                                            DataTable dt0 = new DataTable();
-                                            using (var conn = new SqlConnection(connStr))
-                                            {
-                                                //No1381 1165 リンクについてエクセルのリンクを追加
-                                                conn.Open();
-                                                var cmd = conn.CreateCommand();
-                                                SqlTransaction transaction = conn.BeginTransaction();
-                                                cmd.Transaction = transaction;
-
-                                                try
-                                                {
-                                                    string linkpath;
-                                                    if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
-                                                    {
-                                                        linkpath = chousainShukeiFolder + @"\" + FileNameListGrid[fileRowIdx, 0].ToString();
-                                                    }
-                                                    else
-                                                    {
-                                                        linkpath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileRowIdx, 0].ToString();
-                                                    }
-                                                    // 全品目一括集計表
-                                                    cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + linkpath + "' " +
-                                                        "WHERE " +
-                                                        "MadoguchiID = '" + MadoguchiID + "' ";
-                                                    // 全品目一括集計表ではない AND 個人CD が0でない場合は、個人のみ更新
-                                                    if (!checkBox_Zenhinmoku.Checked && report_data[3] != "0")
-                                                    {
-                                                        cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
-                                                            "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
-                                                            "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )" +
-                                                            "AND ChousaShuukeihyouVer = " + ShukeiVer + " ";
-                                                    }
-                                                    // 集計表Verが2の場合、グループ単位の更新
-                                                    if (ShukeiVer == 2)
-                                                    {
-                                                        cmd.CommandText += "AND ChousaMadoguchiGroupMasterID = " + int.Parse(GroupIDList[fileRowIdx]) + " ";
-                                                    }
-                                                    cmd.ExecuteNonQuery();
-
-                                                    // 担当部所テーブル更新
-                                                    string shukeipath;
-                                                    if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
-                                                    {
-                                                        shukeipath = chousainShukeiFolder;
-                                                    }
-                                                    else
-                                                    {
-                                                        shukeipath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileRowIdx, 0].ToString();
-                                                    }
-                                                    // 全品目一括集計表
-                                                    cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + shukeipath + "' " +
-                                                        ", MadoguchiL1AsteriaKoushinFlag = 1 " +
-                                                        "WHERE " +
-                                                        "MadoguchiID = '" + MadoguchiID + "' ";
-                                                    
-                                                    // 全品目一括集計表ではない AND 個人CD が0出ない場合は、個人のみ更新
-                                                    if (!checkBox_Zenhinmoku.Checked && report_data[3] != "0")
-                                                    {
-                                                        cmd.CommandText += "AND MadoguchiL1ChousaTantoushaCD = '" + report_data[3] + "' ";
-                                                    }
-                                                    cmd.ExecuteNonQuery();
-
-                                                    transaction.Commit();
-                                                }
-                                                catch (Exception)
-                                                {
-                                                    transaction.Rollback();
-                                                    // エラーが発生しました
-                                                    set_error("", 0);
-                                                    set_error(GlobalMethod.GetMessage("E00091", ""));
-                                                }
-                                                conn.Close();
-                                                //try
-                                                //{
-                                                //    conn.Open();
-                                                //    var cmd = conn.CreateCommand();
-
-                                                //    // 全品目一括集計表ではない
-                                                //    if (!checkBox_Zenhinmoku.Checked)
-                                                //    {
-                                                //        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
-                                                //            "WHERE " +
-                                                //            "MadoguchiID = '" + MadoguchiID + "' ";
-
-                                                //        // 個人CD が0出ない場合は、個人のみ更新
-                                                //        if (report_data[3] != "0")
-                                                //        {
-                                                //            cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
-                                                //                "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
-                                                //                "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
-                                                //        }
-                                                //    }
-                                                //    else
-                                                //    {
-                                                //        // 全品目一括集計表
-                                                //        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
-                                                //            "WHERE " +
-                                                //            "MadoguchiID = '" + MadoguchiID + "' ";
-                                                //    }
-                                                //    cmd.ExecuteNonQuery();
-                                                //    conn.Close();
-                                                //    // 調査品目データを取り直しさせるためにパラメータをセット
-                                                //    ReturnValue[0] = "1";
-                                                //}
-                                                //catch (Exception)
-                                                //{
-                                                //    // エラーが発生しました
-                                                //    set_error("", 0);
-                                                //    set_error(GlobalMethod.GetMessage("E00091", ""));
-                                                //}
-                                            }
-                                        }
-                                    }
-                                    catch (Exception)
-                                    {
-                                        // ファイルコピー失敗
-                                        set_error(GlobalMethod.GetMessage("E20332", ""));
-                                    }
-
-                                }
-                                else // VIPS　20220316　課題管理表No1263(957)　ADD　DL処理の追加
-                                {
-                                    // DLダイアログを表示する。
-                                    if (download_form != null)
-                                    {
-                                        download_form.Close();
-                                    }
-                                    // DLダイアログを表示する。
-                                    download_form = new Popup_Download();
-                                    download_form.TopLevel = false;
-                                    this.Controls.Add(download_form);
-
-                                    String fileName = Path.GetFileName(FileNameListGrid[fileRowIdx, 0].ToString());
-                                    download_form.ExcelName = fileName;
-                                    download_form.TotalFilePath = result[2];
-                                    download_form.Dock = DockStyle.Bottom;
-                                    download_form.Show();
-                                    download_form.BringToFront();
-                                }
-                            }
-                        }
-                        else
-                        {
-                            // エラーが発生しました
-                            set_error("", 0);
-                            set_error(GlobalMethod.GetMessage("E00091", ""));
-                        }
-                    }
-                }
-
-            }
-            // 部所一括集計表出力
-            else
-            {
-                //奉行エクセル移管対応 get_data内で対象担当者のリストは取得・保持しているためそれを使用する
-                //// 対象の担当者リスト
-                //List<string> kojinList = new List<string>();
-                //List<string> ChousainMeiList = new List<string>();
-
-                // 対象を取得する
-                string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
-
-                #region 既存コメントアウト
-                ////分類
-                //using (var conn = new SqlConnection(connStr))
-                //{
-                //    try
-                //    {
-                //        var cmd = conn.CreateCommand();
-                //        //cmd.CommandText = "SELECT " +
-                //        //        "MadoguchiL1ChousaTantoushaCD " +
-                //        //        ",MadoguchiL1ChousaTantousha " +
-                //        //        ",MadoguchiL1ChousaBushoCD " +
-                //        //        "FROM MadoguchiJouhouMadoguchiL1Chou WHERE MadoguchiID = '" + MadoguchiID + "' AND MadoguchiL1ChousaTantoushaCD > 0 " +
-                //        //        "AND MadoguchiL1ChousaBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
-                //        //        // MadoguchiL1ChousaShinchoku = 1 //調査中
-                //        //        // 1:調査中　　⇒　40：集計中
-                //        //        //"AND MadoguchiL1ChousaShinchoku = 40";
-                //        //        // 旧進捗状況の　1:調査中　は 20:調査開始、30:見積中、40：集計中に該当する
-                //        //        //"AND MadoguchiL1ChousaShinchoku IN (20,30,40)";
-                //        //        "AND MadoguchiL1ChousaShinchoku != 80";
-
-                //        // 主のデータを取得
-                //        // 0:主+副 1:主 2:副
-                //        if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0" || comboBox_Taisho.SelectedValue.ToString() == "1"))
-                //        {
-                //            cmd.CommandText = "SELECT distinct " +
-                //                    "HinmokuChousainCD " +
-                //                    ",mc.ChousainMei " +
-                //                    ",HinmokuRyakuBushoCD " +
-                //                    "FROM ChousaHinmoku ch " +
-                //                    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD " +
-                //                    "LEFT JOIN Mst_Chousain mc ON ch.HinmokuChousainCD = mc.KojinCD " +
-                //                    "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND ch.HinmokuChousainCD > 0 " +
-                //                    "AND HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
-                //                    "AND mjmc.MadoguchiL1ChousaShinchoku != 80";
-                //            var sda = new SqlDataAdapter(cmd);
-                //            DataTable dt0 = new DataTable();
-                //            sda.Fill(dt0);
-
-                //            if (dt0 != null && dt0.Rows.Count > 0)
-                //            {
-                //                for (int i = 0; i < dt0.Rows.Count; i++)
-                //                {
-                //                    // 重複除外
-                //                    if (!kojinList.Contains(dt0.Rows[i][0].ToString()))
-                //                    {
-                //                        kojinList.Add(dt0.Rows[i][0].ToString());
-                //                        ChousainMeiList.Add(dt0.Rows[i][1].ToString());
-                //                    }
-                //                }
-                //            }
-                //        }
-                //        // 副1のデータを取得
-                //        if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0" || comboBox_Taisho.SelectedValue.ToString() == "2"))
-                //        {
-                //            cmd.CommandText = "SELECT distinct " +
-                //                    "HinmokuFukuChousainCD1 " +
-                //                    ",mc.ChousainMei " +
-                //                    ",HinmokuRyakuBushoFuku1CD " +
-                //                    "FROM ChousaHinmoku ch " +
-                //                    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ch.HinmokuFukuChousainCD1 = mjmc.MadoguchiL1ChousaTantoushaCD " +
-                //                    "LEFT JOIN Mst_Chousain mc ON ch.HinmokuFukuChousainCD1 = mc.KojinCD " +
-                //                    "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND ch.HinmokuFukuChousainCD1 > 0 " +
-                //                    "AND HinmokuRyakuBushoFuku1CD = '" + src_Busho.SelectedValue.ToString() + "' " +
-                //                    "AND mjmc.MadoguchiL1ChousaShinchoku != 80";
-                //            var sda = new SqlDataAdapter(cmd);
-                //            DataTable dt0 = new DataTable();
-                //            sda.Fill(dt0);
-
-                //            if (dt0 != null && dt0.Rows.Count > 0)
-                //            {
-                //                for (int i = 0; i < dt0.Rows.Count; i++)
-                //                {
-                //                    // 重複除外
-                //                    if (!kojinList.Contains(dt0.Rows[i][0].ToString()))
-                //                    {
-                //                        kojinList.Add(dt0.Rows[i][0].ToString());
-                //                        ChousainMeiList.Add(dt0.Rows[i][1].ToString());
-                //                    }
-                //                }
-                //            }
-                //        }
-                //        // 副2のデータを取得
-                //        if (comboBox_Taisho.Text != null && (comboBox_Taisho.SelectedValue.ToString() == "0" || comboBox_Taisho.SelectedValue.ToString() == "2"))
-                //        {
-                //            cmd.CommandText = "SELECT distinct " +
-                //                    "HinmokuFukuChousainCD2 " +
-                //                    ",mc.ChousainMei " +
-                //                    ",HinmokuRyakuBushoFuku2CD " +
-                //                    "FROM ChousaHinmoku ch " +
-                //                    "LEFT JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ch.HinmokuFukuChousainCD2 = mjmc.MadoguchiL1ChousaTantoushaCD " +
-                //                    "LEFT JOIN Mst_Chousain mc ON ch.HinmokuFukuChousainCD2 = mc.KojinCD " +
-                //                    "WHERE ch.MadoguchiID = '" + MadoguchiID + "' AND ch.HinmokuFukuChousainCD2 > 0 " +
-                //                    "AND HinmokuRyakuBushoFuku2CD = '" + src_Busho.SelectedValue.ToString() + "' " +
-                //                    "AND mjmc.MadoguchiL1ChousaShinchoku != 80";
-                //            var sda = new SqlDataAdapter(cmd);
-                //            DataTable dt0 = new DataTable();
-                //            sda.Fill(dt0);
-
-                //            if (dt0 != null && dt0.Rows.Count > 0)
-                //            {
-                //                for (int i = 0; i < dt0.Rows.Count; i++)
-                //                {
-                //                    // 重複除外
-                //                    if (!kojinList.Contains(dt0.Rows[i][0].ToString()))
-                //                    {
-                //                        kojinList.Add(dt0.Rows[i][0].ToString());
-                //                        ChousainMeiList.Add(dt0.Rows[i][1].ToString());
-                //                    }
-                //                }
-                //            }
-                //        }
-                //        conn.Close();
-                //    }
-                //    catch (Exception)
-                //    {
-                //        //    // エラーが発生しました
-                //        //    label3.Text = GlobalMethod.GetMessage("E00091", "");
-                //        //    label3.Visible = true;
-                //    }
-                //}
-                #endregion
-
-                // 対象者がいる場合
-                //if(dt0.Rows.Count > 0)
-                //if (kojinList.Count > 0)
-                if (KojincdList.Count > 0)
-                {
-                    //// VIPS　20220322　課題管理表No1263(957)　ADD保存にチェックがついていて、かつ、フォルダがみつからない場合にエラー
-                    //// フォルダチェック
-                    //if (!Directory.Exists(item1_ShukeiFolder.Text) && radioButton_Save.Checked)
-                    //{
-                    //    // 集計表フォルダがみつかりません。
-                    //    set_error("", 0);
-                    //    set_error(GlobalMethod.GetMessage("E20331", ""));
-                    //    return;
-                    //}
-                    String extensions = ".xlsm";
-                    string fileName = "";
-                    string errorMsg = "";
-
-                    //set_error("", 0);
-                    //for (int i = 0; dt0.Rows.Count > i; i++)
-                    for (int i = 0; KojincdList.Count > i; i++)
-                    {
-
-                        // 集計表Ver1、Ver2混在チェック
-                        if (!fileErrorCheck(KojincdList[i].ToString(), SyuFukuList[i].ToString()))
-                        {
-                            prntflg = 0;
-                        }
-
-                        // 集計表VerがVer2の場合、調査員単位で分割方法混在チェック
-                        //int BunkatsuType;
-                        int.TryParse(BunkatsuList[i].ToString(), out int BunkatsuType);
-                        if (ShukeiVer == 2)
-                        {
-                            if (!bunkatsuCheck(KojincdList[i].ToString(), BunkatsuType))
-                            {
-                                prntflg = 0;
-                            }
-                        }
-
-                        // No1656対応：グループ名が選択されていなくても出力対象とする
-                        //// 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
-                        // No1656対応：集計表Ver2でファイル番号が選択されていない品目明細があった場合、エラーとする。
-                        if ((ShukeiVer == 2 && BunkatsuList[i] == "2") && (FileNoList[i].ToString() == "" || FileNoList[i].ToString() is null))
-                        {
-                            FileNameListGrid.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
-                            // E20907:ファイル番号が割り当てられていません。
-                            set_error("", 0);
-                            set_error(GlobalMethod.GetMessage("E20907", ""));
-                            FileNameListGrid.Row = i;
-                            FileNameListGrid.HighLight = HighLightEnum.Never;
-                            prntflg = 0;
-                        }
-
-                        if (prntflg == 1)
-                        {
-                            // 集計表フォルダ・作業フォルダ作成
-                            chousainShukeiFolder = "";
-                            if (!createFolder(i))
-                            {
-                                prntflg = 0;
-                            }
-
-                            if (ShukeiVer == 2 && BunkatsuList[i] == "2")
-                            {
-                                if (File.Exists(chousainShukeiFolder + @"\" + FileNameListGrid[i, 0]) && radioButton_Save.Checked)
-                                {
-                                    // E20332:集計表ファイルが既に存在します。
-                                    set_error("", 0);
-                                    set_error(GlobalMethod.GetMessage("E20332", ""));
-                                    FileNameListGrid.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
-                                    FileNameListGrid.Row = i;
-                                    FileNameListGrid.HighLight = HighLightEnum.Never;
-                                    prntflg = 0;
-                                }
-                            }
-                            else
-                            {
-                                if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[i, 0]) && radioButton_Save.Checked)
-                                {
-                                    // E20332:集計表ファイルが既に存在します。
-                                    set_error("", 0);
-                                    set_error(GlobalMethod.GetMessage("E20332", ""));
-                                    FileNameListGrid.GetCellRange(i, 0).StyleNew.BackColor = errorColor;
-                                    FileNameListGrid.Row = i;
-                                    FileNameListGrid.HighLight = HighLightEnum.Never;
-                                    prntflg = 0;
-                                }
-                            }
-
-                        }
-
-                        if (prntflg == 1)
-                        {
-                            // 作れるファイルが1つでもあれば作る
-
-                            // 1:MadoguchiID     窓口ID
-                            // 2:ZeninSyukeihyo  全品目一括集計表 1:チェック 0:未チェック
-                            // 3:ShibuMei        支部名
-                            // 4:KojinCD         個人CD
-                            // 5:ShuFuku         主副  1:主 2:副
-                            // 6:FileName        ファイル名
-                            // 7:PrintGamen      呼び出し元画面 0:窓口ミハル 1:特命課長  2:自分大臣
-                            // 8:GroupName       グループ名
-                            // 8個分先に用意
                             string[] report_data = new string[8] { "", "", "", "", "", "", "", "" };
 
                             // 窓口ID
                             report_data[0] = MadoguchiID;
                             // 全品目一括集計表 1:チェック 0:未チェック
-                            report_data[1] = "0";
-                            // 支部名
-                            report_data[2] = src_Busho.Text;
-                            // 個人CD
-                            //report_data[3] = dt0.Rows[i][1].ToString();
-                            //report_data[3] = dt0.Rows[i][0].ToString();
-                            //report_data[3] = ChousainMeiList[i].ToString();
-                            report_data[3] = KojincdList[i].ToString();
-                            // 主副  1:主のみ 2:副
-                            //ただしVer1は 0:主＋副 1:主のみ 2:副
-                            if ( ShukeiVer == 2)
-                            { 
-                                
-                                report_data[4] = SyuFukuList[i].ToString();
+                            if (checkBox_Zenhinmoku.Checked)
+                            {
+                                report_data[1] = "1";
                             }
                             else
-							{
-                                report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                            {
+                                report_data[1] = "0";
+                            }
+                            // 支部名
+                            report_data[2] = label_SentakuBusho.Text;
+                            // 個人CD
+                            if (checkBox_Zenhinmoku.Checked)
+                            {
+                                report_data[3] = "0";
+                            }
+                            else
+                            {
+                                report_data[3] = item1_KojinCD.Text;
+                            }
+                            // 主副  1:主 2:副
+                            //report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                            //全品目一括の場合SyuFukuListが空になるため
+                            if (SyuFukuList.Count > 0)
+                            {
+                                if (ShukeiVer == 2)
+                                {
+                                    report_data[4] = SyuFukuList[fileRowIdx].ToString();
+                                }
+                                else
+                                {
+                                    report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                                }
+
+                            }
+                            else
+                            {
+                                report_data[4] = "0";
+
                             }
 
+
                             // ファイル名
-                            //report_data[5] = item1_PritFileName.Text;
-                            report_data[5] = fileName;
+                            report_data[5] = FileNameListGrid[fileRowIdx, 0].ToString();
 
                             report_data[6] = "0";
                             switch (PrintGamen)
@@ -1916,11 +1426,10 @@ namespace TokuchoBugyoK2
                                 default:
                                     break;
                             }
-                            // No1648 集計表出力パラメータにグループ名->ファイル番号を追加
-                            if (ShukeiVer == 2 && BunkatsuList[i] == "2")
+                            // No1656 集計表出力パラメータをグループ名からファイル番号に変更
+                            if (ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
                             {
-                                //report_data[7] = GroupMeiList[i].ToString();
-                                report_data[7] = FileNoList[i].ToString();
+                                report_data[7] = FileNoList[fileRowIdx].ToString();
                             }
                             else
                             {
@@ -1929,9 +1438,7 @@ namespace TokuchoBugyoK2
 
                             int listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
 
-                            //帳票Exe連携ワークテーブル登録
                             string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data, "Shukeihyo");
-                            
                             // result
                             // 成否判定 0:正常 1：エラー
                             // メッセージ（主にエラー用）
@@ -1941,31 +1448,36 @@ namespace TokuchoBugyoK2
                             {
                                 if (result[0].Trim() == "1")
                                 {
+                                    //set_error("", 0);
                                     set_error(result[1]);
                                 }
                                 else
                                 {
-                                    // VIPS　20220316　課題管理表No1263(957)　ADD　保存、DL選択の分岐を追加
-                                    // 直接フォルダに保存するかDLダイアログを表示するか選択させる
+                                    //set_error("", 0);
+
+                                    // VIPS　20220316　課題管理表No1263(957)　ADD　保存、DL選択の分岐を追加	
+                                    // 直接フォルダに保存するかDLダイアログを表示するか
                                     if (radioButton_Save.Checked)
                                     {
                                         // 成功時は、ファイルをフォルダにコピーする
                                         try
                                         {
-                                            if (ShukeiVer == 2 && BunkatsuList[i] == "2")
+                                            if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
                                             {
-                                                System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + FileNameListGrid[i, 0].ToString(), true);
+                                                System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + FileNameListGrid[fileRowIdx, 0].ToString(), true);
                                             }
                                             else
                                             {
-                                                System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + FileNameListGrid[i, 0].ToString(), true);
+                                                System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileRowIdx, 0].ToString(), true);
                                             }
-                                            set_error("集計表ファイルを出力しました。:" + FileNameListGrid[i, 0].ToString());
+                                            set_error("集計表ファイルを出力しました。:" + FileNameListGrid[fileRowIdx, 0].ToString());
 
                                             // リンク先を設定するチェックボックスチェック時
                                             if (item_LinkCheckBox.Checked)
                                             {
                                                 // 対象を取得する
+                                                string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+                                                DataTable dt0 = new DataTable();
                                                 using (var conn = new SqlConnection(connStr))
                                                 {
                                                     //No1381 1165 リンクについてエクセルのリンクを追加
@@ -1977,20 +1489,20 @@ namespace TokuchoBugyoK2
                                                     try
                                                     {
                                                         string linkpath;
-                                                        if (ShukeiVer == 2 && BunkatsuList[i] == "2")
+                                                        if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
                                                         {
-                                                            linkpath = chousainShukeiFolder + @"\" + FileNameListGrid[i, 0].ToString();
+                                                            linkpath = chousainShukeiFolder + @"\" + FileNameListGrid[fileRowIdx, 0].ToString();
                                                         }
                                                         else
                                                         {
-                                                            linkpath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[i, 0].ToString();
+                                                            linkpath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileRowIdx, 0].ToString();
                                                         }
                                                         // 全品目一括集計表
                                                         cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + linkpath + "' " +
                                                             "WHERE " +
                                                             "MadoguchiID = '" + MadoguchiID + "' ";
-                                                        // 個人CD が0出ない場合は、個人のみ更新
-                                                        if (report_data[3] != "0")
+                                                        // 全品目一括集計表ではない AND 個人CD が0でない場合は、個人のみ更新
+                                                        if (!checkBox_Zenhinmoku.Checked && report_data[3] != "0")
                                                         {
                                                             cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
                                                                 "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
@@ -2000,19 +1512,19 @@ namespace TokuchoBugyoK2
                                                         // 集計表Verが2の場合、グループ単位の更新
                                                         if (ShukeiVer == 2)
                                                         {
-                                                            cmd.CommandText += "AND ChousaMadoguchiGroupMasterID = " + int.Parse(GroupIDList[i]) + " ";
+                                                            cmd.CommandText += "AND ChousaMadoguchiGroupMasterID = " + int.Parse(GroupIDList[fileRowIdx]) + " ";
                                                         }
                                                         cmd.ExecuteNonQuery();
 
                                                         // 担当部所テーブル更新
                                                         string shukeipath;
-                                                        if (ShukeiVer == 2 && BunkatsuList[i] == "2")
+                                                        if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2")
                                                         {
                                                             shukeipath = chousainShukeiFolder;
                                                         }
                                                         else
                                                         {
-                                                            shukeipath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[i, 0].ToString();
+                                                            shukeipath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[fileRowIdx, 0].ToString();
                                                         }
                                                         // 全品目一括集計表
                                                         cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + shukeipath + "' " +
@@ -2020,11 +1532,8 @@ namespace TokuchoBugyoK2
                                                             "WHERE " +
                                                             "MadoguchiID = '" + MadoguchiID + "' ";
 
-                                                        // ※ファイル出力のループ1回で１ファイル対象だが、１担当で複数グループある場合、調査品目は問題ないが
-                                                        // 　MadoguchiJouhouMadoguchiL1Chouは窓口ID＋調査担当者CDで一意になっている？のでグループ分作成できない・・・
-
-                                                        // 個人CD が0出ない場合は、個人のみ更新
-                                                        if (report_data[3] != "0")
+                                                        // 全品目一括集計表ではない AND 個人CD が0出ない場合は、個人のみ更新
+                                                        if (!checkBox_Zenhinmoku.Checked && report_data[3] != "0")
                                                         {
                                                             cmd.CommandText += "AND MadoguchiL1ChousaTantoushaCD = '" + report_data[3] + "' ";
                                                         }
@@ -2040,26 +1549,35 @@ namespace TokuchoBugyoK2
                                                         set_error(GlobalMethod.GetMessage("E00091", ""));
                                                     }
                                                     conn.Close();
-
                                                     //try
                                                     //{
                                                     //    conn.Open();
                                                     //    var cmd = conn.CreateCommand();
-                                                    //    cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + fileName + "' " +
-                                                    //        "WHERE " +
-                                                    //        "MadoguchiID = '" + MadoguchiID + "' ";
 
-                                                    //    // 個人CD が0出ない場合は、個人のみ更新
-                                                    //    if (report_data[3] != "0")
+                                                    //    // 全品目一括集計表ではない
+                                                    //    if (!checkBox_Zenhinmoku.Checked)
                                                     //    {
-                                                    //        cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
-                                                    //            "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
-                                                    //            "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
-                                                    //    }
+                                                    //        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
+                                                    //            "WHERE " +
+                                                    //            "MadoguchiID = '" + MadoguchiID + "' ";
 
+                                                    //        // 個人CD が0出ない場合は、個人のみ更新
+                                                    //        if (report_data[3] != "0")
+                                                    //        {
+                                                    //            cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
+                                                    //                "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
+                                                    //                "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
+                                                    //        }
+                                                    //    }
+                                                    //    else
+                                                    //    {
+                                                    //        // 全品目一括集計表
+                                                    //        cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + item1_PritFileName.Text + "' " +
+                                                    //            "WHERE " +
+                                                    //            "MadoguchiID = '" + MadoguchiID + "' ";
+                                                    //    }
                                                     //    cmd.ExecuteNonQuery();
                                                     //    conn.Close();
-
                                                     //    // 調査品目データを取り直しさせるためにパラメータをセット
                                                     //    ReturnValue[0] = "1";
                                                     //}
@@ -2071,13 +1589,13 @@ namespace TokuchoBugyoK2
                                                     //}
                                                 }
                                             }
-
                                         }
                                         catch (Exception)
                                         {
                                             // ファイルコピー失敗
-                                            set_error("ファイルコピー失敗:" + fileName);
+                                            set_error(GlobalMethod.GetMessage("E20332", ""));
                                         }
+
                                     }
                                     else // VIPS　20220316　課題管理表No1263(957)　ADD　DL処理の追加
                                     {
@@ -2091,13 +1609,12 @@ namespace TokuchoBugyoK2
                                         download_form.TopLevel = false;
                                         this.Controls.Add(download_form);
 
-                                        fileName = Path.GetFileName(FileNameListGrid[i, 0].ToString());
+                                        String fileName = Path.GetFileName(FileNameListGrid[fileRowIdx, 0].ToString());
                                         download_form.ExcelName = fileName;
                                         download_form.TotalFilePath = result[2];
                                         download_form.Dock = DockStyle.Bottom;
                                         download_form.Show();
                                         download_form.BringToFront();
-
                                     }
                                 }
                             }
@@ -2106,6 +1623,375 @@ namespace TokuchoBugyoK2
                                 // エラーが発生しました
                                 set_error("", 0);
                                 set_error(GlobalMethod.GetMessage("E00091", ""));
+                            }
+                        }
+                    }
+                }
+
+            }
+            // 部所一括集計表出力
+            else
+            {
+                //奉行エクセル移管対応 get_data内で対象担当者のリストは取得・保持しているためそれを使用する
+                //// 対象の担当者リスト
+                //List<string> kojinList = new List<string>();
+                //List<string> ChousainMeiList = new List<string>();
+
+                // 対象を取得する
+                string connStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
+
+
+                // 対象者がいる場合
+                if (KojincdList.Count > 0)
+                {
+                    string fileName = "";
+                    //string errorMsg = "";
+
+                    for (int kojinCdListIdx = 0; kojinCdListIdx < KojincdList.Count; kojinCdListIdx++)
+                    {
+                        chousainShukeiFolder = "";
+                        chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[kojinCdListIdx].ToString() + "-" + TokuchoList[kojinCdListIdx].ToString();
+
+                        // 集計表Ver1、Ver2混在チェック
+                        if (!fileErrorCheck(KojincdList[kojinCdListIdx].ToString(), SyuFukuList[kojinCdListIdx].ToString()))
+                        {
+                            isPrintOKflg = false;
+                        }
+
+                        // 集計表VerがVer2の場合、調査員単位で分割方法混在チェック
+                        //int BunkatsuType;
+                        int.TryParse(BunkatsuList[kojinCdListIdx].ToString(), out int BunkatsuType);
+                        if (ShukeiVer == 2)
+                        {
+                            if (!bunkatsuCheck(KojincdList[kojinCdListIdx].ToString(), BunkatsuType))
+                            {
+                                isPrintOKflg = false;
+                            }
+                        }
+
+                        // No1656対応：グループ名が選択されていなくても出力対象とする
+                        //// 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
+                        // No1656対応：集計表Ver2でファイル番号が選択されていない品目明細があった場合、エラーとする。
+                        if ((ShukeiVer == 2 && BunkatsuList[kojinCdListIdx] == "2") && (FileNoList[kojinCdListIdx].ToString() == "" || FileNoList[kojinCdListIdx].ToString() is null))
+                        {
+                            FileNameListGrid.GetCellRange(kojinCdListIdx, 0).StyleNew.BackColor = errorColor;
+                            if (!ErrorMessageCdList.Contains("E20907"))
+                            {
+                                // E20907:ファイル番号が割り当てられていません。
+                                //set_error("", 0);
+                                set_error(GlobalMethod.GetMessage("E20907", ""));
+                            }
+
+                            ErrorMessageCdList.Add("E20907");
+
+                            FileNameListGrid.Row = kojinCdListIdx;
+                            FileNameListGrid.HighLight = HighLightEnum.Never;
+                            isPrintOKflg = false;
+                        }
+
+                        if (ShukeiVer == 2 && BunkatsuList[kojinCdListIdx] == "2")
+                        {
+                            if (File.Exists(chousainShukeiFolder + @"\" + FileNameListGrid[kojinCdListIdx, 0]) && radioButton_Save.Checked)
+                            {
+                                if (!ErrorMessageCdList.Contains("E20332"))
+                                {
+                                    // E20332:集計表ファイルが既に存在します。
+                                    //set_error("", 0);
+                                    set_error(GlobalMethod.GetMessage("E20332", ""));
+                                }
+                                ErrorMessageCdList.Add("E20332");
+
+                                FileNameListGrid.GetCellRange(kojinCdListIdx, 0).StyleNew.BackColor = errorColor;
+                                FileNameListGrid.Row = kojinCdListIdx;
+                                FileNameListGrid.HighLight = HighLightEnum.Never;
+                                isPrintOKflg = false;
+                            }
+                        }
+                        else
+                        {
+                            if (File.Exists(item1_ShukeiFolder.Text + @"\" + FileNameListGrid[kojinCdListIdx, 0]) && radioButton_Save.Checked)
+                            {
+                                if (!ErrorMessageCdList.Contains("E20332"))
+                                {
+                                    // E20332:集計表ファイルが既に存在します。
+                                    //set_error("", 0);
+                                    set_error(GlobalMethod.GetMessage("E20332", ""));
+                                }
+                                ErrorMessageCdList.Add("E20332");
+
+                                FileNameListGrid.GetCellRange(kojinCdListIdx, 0).StyleNew.BackColor = errorColor;
+                                FileNameListGrid.Row = kojinCdListIdx;
+                                FileNameListGrid.HighLight = HighLightEnum.Never;
+                                isPrintOKflg = false;
+                            }
+                        }
+
+                    }
+
+
+                    // 集計表のファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
+                    isPrintOKflg = ShowFileExistsDialog(isPrintOKflg) ? isPrintOKflg : false;
+
+                    if (isPrintOKflg)
+                    {
+                        for (int kojinCdListIdx = 0; kojinCdListIdx < KojincdList.Count; kojinCdListIdx++)
+                        {
+                            // 集計表フォルダ・作業フォルダ作成
+                            chousainShukeiFolder = "";
+                            if (!createFolder(kojinCdListIdx))
+                            {
+                                isPrintOKflg = false;
+                            }
+
+
+                            if (isPrintOKflg)
+                            {
+                                // 作れるファイルが1つでもあれば作る
+
+                                // 1:MadoguchiID     窓口ID
+                                // 2:ZeninSyukeihyo  全品目一括集計表 1:チェック 0:未チェック
+                                // 3:ShibuMei        支部名
+                                // 4:KojinCD         個人CD
+                                // 5:ShuFuku         主副  1:主 2:副
+                                // 6:FileName        ファイル名
+                                // 7:PrintGamen      呼び出し元画面 0:窓口ミハル 1:特命課長  2:自分大臣
+                                // 8:GroupName       グループ名
+                                // 8個分先に用意
+                                string[] report_data = new string[8] { "", "", "", "", "", "", "", "" };
+
+                                // 窓口ID
+                                report_data[0] = MadoguchiID;
+                                // 全品目一括集計表 1:チェック 0:未チェック
+                                report_data[1] = "0";
+                                // 支部名
+                                report_data[2] = src_Busho.Text;
+                                // 個人CD
+                                //report_data[3] = dt0.Rows[i][1].ToString();
+                                //report_data[3] = dt0.Rows[i][0].ToString();
+                                //report_data[3] = ChousainMeiList[i].ToString();
+                                report_data[3] = KojincdList[kojinCdListIdx].ToString();
+                                // 主副  1:主のみ 2:副
+                                //ただしVer1は 0:主＋副 1:主のみ 2:副
+                                if (ShukeiVer == 2)
+                                {
+
+                                    report_data[4] = SyuFukuList[kojinCdListIdx].ToString();
+                                }
+                                else
+                                {
+                                    report_data[4] = comboBox_Taisho.SelectedValue.ToString();
+                                }
+
+                                // ファイル名
+                                //report_data[5] = item1_PritFileName.Text;
+                                report_data[5] = fileName;
+
+                                report_data[6] = "0";
+                                switch (PrintGamen)
+                                {
+                                    case "Madoguchi":
+                                        report_data[6] = "0";
+                                        break;
+                                    case "Tokumei":
+                                        report_data[6] = "1";
+                                        break;
+                                    case "Jibun":
+                                        report_data[6] = "2";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                // No1648 集計表出力パラメータにグループ名->ファイル番号を追加
+                                if (ShukeiVer == 2 && BunkatsuList[kojinCdListIdx] == "2")
+                                {
+                                    //report_data[7] = GroupMeiList[i].ToString();
+                                    report_data[7] = FileNoList[kojinCdListIdx].ToString();
+                                }
+                                else
+                                {
+                                    report_data[7] = "";
+                                }
+
+                                int listID = int.Parse(comboBox_Chohyo.SelectedValue.ToString());
+
+                                //帳票Exe連携ワークテーブル登録
+                                string[] result = GlobalMethod.InsertMadoguchiReportWork(listID, UserInfos[0], report_data, "Shukeihyo");
+
+                                // result
+                                // 成否判定 0:正常 1：エラー
+                                // メッセージ（主にエラー用）
+                                // ファイル物理パス（C:\Work\xxxx\0000000111_xxx.xlsx）
+                                // ダウンロード時のファイル名（xxx.xlsx）
+                                if (result != null && result.Length >= 4)
+                                {
+                                    if (result[0].Trim() == "1")
+                                    {
+                                        set_error(result[1]);
+                                    }
+                                    else
+                                    {
+                                        // VIPS　20220316　課題管理表No1263(957)　ADD　保存、DL選択の分岐を追加
+                                        // 直接フォルダに保存するかDLダイアログを表示するか選択させる
+                                        if (radioButton_Save.Checked)
+                                        {
+                                            // 成功時は、ファイルをフォルダにコピーする
+                                            try
+                                            {
+                                                if (ShukeiVer == 2 && BunkatsuList[kojinCdListIdx] == "2")
+                                                {
+                                                    System.IO.File.Copy(result[2], chousainShukeiFolder + @"\" + FileNameListGrid[kojinCdListIdx, 0].ToString(), true);
+                                                }
+                                                else
+                                                {
+                                                    System.IO.File.Copy(result[2], item1_ShukeiFolder.Text + @"\" + FileNameListGrid[kojinCdListIdx, 0].ToString(), true);
+                                                }
+                                                set_error("集計表ファイルを出力しました。:" + FileNameListGrid[kojinCdListIdx, 0].ToString());
+
+                                                // リンク先を設定するチェックボックスチェック時
+                                                if (item_LinkCheckBox.Checked)
+                                                {
+                                                    // 対象を取得する
+                                                    using (var conn = new SqlConnection(connStr))
+                                                    {
+                                                        //No1381 1165 リンクについてエクセルのリンクを追加
+                                                        conn.Open();
+                                                        var cmd = conn.CreateCommand();
+                                                        SqlTransaction transaction = conn.BeginTransaction();
+                                                        cmd.Transaction = transaction;
+
+                                                        try
+                                                        {
+                                                            string linkpath;
+                                                            if (ShukeiVer == 2 && BunkatsuList[kojinCdListIdx] == "2")
+                                                            {
+                                                                linkpath = chousainShukeiFolder + @"\" + FileNameListGrid[kojinCdListIdx, 0].ToString();
+                                                            }
+                                                            else
+                                                            {
+                                                                linkpath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[kojinCdListIdx, 0].ToString();
+                                                            }
+                                                            // 全品目一括集計表
+                                                            cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + linkpath + "' " +
+                                                                "WHERE " +
+                                                                "MadoguchiID = '" + MadoguchiID + "' ";
+                                                            // 個人CD が0出ない場合は、個人のみ更新
+                                                            if (report_data[3] != "0")
+                                                            {
+                                                                cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
+                                                                    "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
+                                                                    "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )" +
+                                                                    "AND ChousaShuukeihyouVer = " + ShukeiVer + " ";
+                                                            }
+                                                            // 集計表Verが2の場合、グループ単位の更新
+                                                            if (ShukeiVer == 2)
+                                                            {
+                                                                cmd.CommandText += "AND ChousaMadoguchiGroupMasterID = " + int.Parse(GroupIDList[kojinCdListIdx]) + " ";
+                                                            }
+                                                            cmd.ExecuteNonQuery();
+
+                                                            // 担当部所テーブル更新
+                                                            string shukeipath;
+                                                            if (ShukeiVer == 2 && BunkatsuList[kojinCdListIdx] == "2")
+                                                            {
+                                                                shukeipath = chousainShukeiFolder;
+                                                            }
+                                                            else
+                                                            {
+                                                                shukeipath = item1_ShukeiFolder.Text + @"\" + FileNameListGrid[kojinCdListIdx, 0].ToString();
+                                                            }
+                                                            // 全品目一括集計表
+                                                            cmd.CommandText = "UPDATE MadoguchiJouhouMadoguchiL1Chou SET MadoguchiL1ShukeihyoLink = N'" + shukeipath + "' " +
+                                                                ", MadoguchiL1AsteriaKoushinFlag = 1 " +
+                                                                "WHERE " +
+                                                                "MadoguchiID = '" + MadoguchiID + "' ";
+
+                                                            // ※ファイル出力のループ1回で１ファイル対象だが、１担当で複数グループある場合、調査品目は問題ないが
+                                                            // 　MadoguchiJouhouMadoguchiL1Chouは窓口ID＋調査担当者CDで一意になっている？のでグループ分作成できない・・・
+
+                                                            // 個人CD が0出ない場合は、個人のみ更新
+                                                            if (report_data[3] != "0")
+                                                            {
+                                                                cmd.CommandText += "AND MadoguchiL1ChousaTantoushaCD = '" + report_data[3] + "' ";
+                                                            }
+                                                            cmd.ExecuteNonQuery();
+
+                                                            transaction.Commit();
+                                                        }
+                                                        catch (Exception)
+                                                        {
+                                                            transaction.Rollback();
+                                                            // エラーが発生しました
+                                                            set_error("", 0);
+                                                            set_error(GlobalMethod.GetMessage("E00091", ""));
+                                                        }
+                                                        conn.Close();
+
+                                                        //try
+                                                        //{
+                                                        //    conn.Open();
+                                                        //    var cmd = conn.CreateCommand();
+                                                        //    cmd.CommandText = "UPDATE ChousaHinmoku SET ChousaLinkSakli = N'" + item1_ShukeiFolder.Text + @"\" + fileName + "' " +
+                                                        //        "WHERE " +
+                                                        //        "MadoguchiID = '" + MadoguchiID + "' ";
+
+                                                        //    // 個人CD が0出ない場合は、個人のみ更新
+                                                        //    if (report_data[3] != "0")
+                                                        //    {
+                                                        //        cmd.CommandText += "AND (HinmokuChousainCD = '" + report_data[3] + "' " +
+                                                        //            "OR HinmokuFukuChousainCD1 = '" + report_data[3] + "' " +
+                                                        //            "OR HinmokuFukuChousainCD2 = '" + report_data[3] + "' )";
+                                                        //    }
+
+                                                        //    cmd.ExecuteNonQuery();
+                                                        //    conn.Close();
+
+                                                        //    // 調査品目データを取り直しさせるためにパラメータをセット
+                                                        //    ReturnValue[0] = "1";
+                                                        //}
+                                                        //catch (Exception)
+                                                        //{
+                                                        //    // エラーが発生しました
+                                                        //    set_error("", 0);
+                                                        //    set_error(GlobalMethod.GetMessage("E00091", ""));
+                                                        //}
+                                                    }
+                                                }
+
+                                            }
+                                            catch (Exception)
+                                            {
+                                                // ファイルコピー失敗
+                                                set_error("ファイルコピー失敗:" + fileName);
+                                            }
+                                        }
+                                        else // VIPS　20220316　課題管理表No1263(957)　ADD　DL処理の追加
+                                        {
+                                            // DLダイアログを表示する。
+                                            if (download_form != null)
+                                            {
+                                                download_form.Close();
+                                            }
+                                            // DLダイアログを表示する。
+                                            download_form = new Popup_Download();
+                                            download_form.TopLevel = false;
+                                            this.Controls.Add(download_form);
+
+                                            fileName = Path.GetFileName(FileNameListGrid[kojinCdListIdx, 0].ToString());
+                                            download_form.ExcelName = fileName;
+                                            download_form.TotalFilePath = result[2];
+                                            download_form.Dock = DockStyle.Bottom;
+                                            download_form.Show();
+                                            download_form.BringToFront();
+
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // エラーが発生しました
+                                    set_error("", 0);
+                                    set_error(GlobalMethod.GetMessage("E00091", ""));
+                                }
                             }
                         }
                     }
@@ -2120,6 +2006,39 @@ namespace TokuchoBugyoK2
             }
         }
 
+        /// <summary>
+        /// 集計表のファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
+        /// </summary>
+        /// <param name="isPrintOKflg"></param>
+        /// <returns>true: 出力処理継続、　false:実行キャンセル</returns>
+		private bool ShowFileExistsDialog(bool isPrintOKflg)
+		{
+            bool ret = true;
+
+            for (int fileRowIdx = 0; fileRowIdx < FileNameListGrid.Rows.Count; fileRowIdx++)
+            {
+                // No1658対応：集計表Ver2でファイル分割フォルダに何らかのファイルがあった場合確認ダイアログ表示
+                if (!checkBox_Zenhinmoku.Checked && ShukeiVer == 2 && BunkatsuList[fileRowIdx] == "2" && isPrintOKflg)
+                {
+                    chousainShukeiFolder = "";
+                    chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[fileRowIdx].ToString() + "-" + TokuchoList[fileRowIdx].ToString();
+
+                    if (Directory.Exists(chousainShukeiFolder))
+                    {
+                        var fileList = Directory.GetFiles(chousainShukeiFolder, "*.*");
+                        if (fileList.Length > 0)
+                        {
+                            if (MessageBox.Show(GlobalMethod.GetMessage("I20318", ""), "確認", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                            {
+                                ret = false;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            return ret;
+        }
 
         private void set_error(string mes, int flg = 1)
         {
@@ -2513,12 +2432,18 @@ namespace TokuchoBugyoK2
             
         }
 
+        /// <summary>
+        /// Verの混在チェック
+        /// </summary>
+        /// <param name="chkChousain">調査員Cd</param>
+        /// <param name="chkSyuFuku">主・副</param>
+        /// <returns>true:エラーなし , false:エラーあり</returns>
         private bool fileErrorCheck(string chkChousain, string chkSyuFuku)
         {
             // 同一担当者のうちでVer1、Ver2混在をチェック→メッセージ出力
             // 対象の担当者集計表Verリスト
             ShukeiVerList.Clear();
-            int checkflg = 1;
+            bool isCheckOk = true;
             string convStr = ConfigurationManager.ConnectionStrings["TokuchoBugyoK2.Properties.Settings.TokuchoBugyoKConnectionString"].ToString();
             using (var conn = new SqlConnection(convStr))
             {
@@ -2585,10 +2510,15 @@ namespace TokuchoBugyoK2
                     sda.Fill(dt0);
                     if (dt0 != null && dt0.Rows.Count > 0)
                     {
-                        // Verの混在チェック
-                        // E20905:集計表Ver1、Ver2が混在しています。
-                        set_error("", 0);
-                        set_error(GlobalMethod.GetMessage("E20905", ""));
+						// Verの混在チェック
+						// E20905:集計表Ver1、Ver2が混在しています。
+						if (!ErrorMessageCdList.Contains("E20905"))
+                        {
+                            //set_error("", 0);
+                            set_error(GlobalMethod.GetMessage("E20905", ""));
+                        }
+                        ErrorMessageCdList.Add("E20905");
+
                         int filerow = FileNameListGrid.Rows.Count;
                         for (int r = 0; r < filerow; r++)
                         {
@@ -2607,30 +2537,31 @@ namespace TokuchoBugyoK2
                                 }
                             }
                         }
-                        checkflg = 0;
+                        isCheckOk = false;
                     }
                     else
                     {
-                        checkflg = 1;
+                        isCheckOk = true;
                     }
                     conn.Close();
                 }
                 catch (Exception)
                 {
                     // エラーが発生しました
-                    checkflg = 0;
+                    isCheckOk = false;
                 }
             }
-            if (checkflg == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+
+            return isCheckOk;
         }
 
+
+        /// <summary>
+        /// 集計表VerがVer2の場合、調査員単位で分割方法がファイル分割・シート分割混在でメッセージ出力
+        /// </summary>
+        /// <param name="chkChousain">調査員Cd</param>
+        /// <param name="bnkt">分割方法</param>
+        /// <returns>true:チェックOK、　false;チェックNG</returns>
         private bool bunkatsuCheck(string chkChousain, int bnkt)
         {
             // 集計表VerがVer2の場合、調査員単位で分割方法がファイル分割・シート分割混在でメッセージ出力
@@ -2675,10 +2606,16 @@ namespace TokuchoBugyoK2
                     sda.Fill(dt0);
                     if (dt0 != null && dt0.Rows.Count > 0)
                     {
-                        // 分割方法の混在チェック
-                        // E20903:分割方法が混在しています。
-                        set_error("", 0);
-                        set_error(GlobalMethod.GetMessage("E20903", ""));
+						// 分割方法の混在チェック
+						// E20903:分割方法が混在しています。
+						//set_error("", 0);
+						if (!ErrorMessageCdList.Contains("E20903"))
+                        {
+                            set_error(GlobalMethod.GetMessage("E20903", ""));
+                        }
+
+                        ErrorMessageCdList.Add("E20903");
+
                         int filerow = FileNameListGrid.Rows.Count;
                         for (int r = 0; r < filerow; r++)
                         {
@@ -2710,7 +2647,13 @@ namespace TokuchoBugyoK2
                 return false;
             }
         }
-
+        /// <summary>
+        /// 集計表フォルダ作成
+        /// todo:分割方法リスト2:ファイル分割
+        /// ver2でファイル分割の場合、名前＋特徴?番号のフォルダを作成
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private bool createFolder(int c)
         {
             // 集計表フォルダ作成
