@@ -9829,12 +9829,7 @@ namespace TokuchoBugyoK2
                 // No1557 1308 案件情報で調査会が受注後もフォルダ変更が出来てしまう。
                 // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
                 if (base_tbl02_txtJyutakuNo.Text == "") {
-					//No1668 ファイル更新ボタンを押下後、変更フォルダが表示されたときに、確認ダイアログを表示させる。OKのみの確認ダイアログとする。
-					if (base_tbl02_txtRenameFolder.Text.Length != 0 && base_tbl02_txtRenameFolder.Text != sFolderRenameBef)
-					{
-                        MessageBox.Show(GlobalMethod.GetMessage("E20908", ""), "確認", MessageBoxButtons.OK);
 
-                    }
                     //リネーム処理実行
                     bool isSuccessRenameFolder = RenameFolder(ori_ankenNo);
                     if (isSuccessRenameFolder)
