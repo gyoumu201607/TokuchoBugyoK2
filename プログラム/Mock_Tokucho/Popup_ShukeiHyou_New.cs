@@ -1267,17 +1267,29 @@ namespace TokuchoBugyoK2
                 for (int fileRowIdx = 0; fileRowIdx < fileNameListCount; fileRowIdx++)
                 {
                     chousainShukeiFolder = "";
-                    chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[fileRowIdx].ToString() + "-" + TokuchoList[fileRowIdx].ToString();
+                    if(ChousainMeiList.Count > fileRowIdx && TokuchoList.Count > fileRowIdx)
+					{
+                        chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[fileRowIdx].ToString() + "-" + TokuchoList[fileRowIdx].ToString();
+                    }
+                    
 
+                    //1690 全品目一括もVer混在チェックを行う
                     // 集計表Ver1、Ver2混在チェック
-                    if (!checkBox_Zenhinmoku.Checked)
+                    //if (!checkBox_Zenhinmoku.Checked)
+                    //{
+                    if (SyuFukuList.Count() > fileRowIdx)
                     {
-                        isPrintOKflg = fileErrorCheck(item1_KojinCD.Text, SyuFukuList[fileRowIdx].ToString()) ? isPrintOKflg: false;
+                        isPrintOKflg = fileErrorCheck(item1_KojinCD.Text, SyuFukuList[fileRowIdx].ToString()) ? isPrintOKflg : false;
+                    }
+					else
+					{
+                        isPrintOKflg = fileErrorCheck(item1_KojinCD.Text, "") ? isPrintOKflg : false;
+                    }
                         //if (!fileErrorCheck(item1_KojinCD.Text, SyuFukuList[fileRowIdx].ToString()))
                         //{
                         //    isPrintOKflg = false;
                         //}
-                    }
+                    //}
                     // No1656対応：グループ名が選択されていなくても出力対象とする
                     //// 集計表Ver2でグループ名が選択されていない品目明細があった場合、エラーとする。
                     // No1656対応：集計表Ver2でファイル番号が選択されていない品目明細があった場合、エラーとする。
@@ -1650,8 +1662,10 @@ namespace TokuchoBugyoK2
                     for (int kojinCdListIdx = 0; kojinCdListIdx < KojincdList.Count; kojinCdListIdx++)
                     {
                         chousainShukeiFolder = "";
-                        chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[kojinCdListIdx].ToString() + "-" + TokuchoList[kojinCdListIdx].ToString();
-
+                        if (ChousainMeiList.Count > kojinCdListIdx && TokuchoList.Count > kojinCdListIdx)
+                        {
+                            chousainShukeiFolder = item1_ShukeiFolder.Text + @"\" + ChousainMeiList[kojinCdListIdx].ToString() + "-" + TokuchoList[kojinCdListIdx].ToString();
+                        }
                         // 集計表Ver1、Ver2混在チェック
                         if (!fileErrorCheck(KojincdList[kojinCdListIdx].ToString(), SyuFukuList[kojinCdListIdx].ToString()))
                         {
@@ -2504,7 +2518,20 @@ namespace TokuchoBugyoK2
                             "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
                             "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
                     }
-
+                    if (chkSyuFuku.Length == 0 && chkChousain.Length == 0)
+					{
+                        //主副の指定及び調査員の指定がない場合、品目一括と判断する
+                        cmd.CommandText = "SELECT " +
+                            "ch.ChousaShuukeihyouVer " +
+                            "FROM ChousaHinmoku ch " +
+                            "INNER JOIN MadoguchiJouhouMadoguchiL1Chou mjmc ON ch.MadoguchiID = mjmc.MadoguchiID AND ch.HinmokuChousainCD = mjmc.MadoguchiL1ChousaTantoushaCD " +
+                            "WHERE ch.MadoguchiID = '" + MadoguchiID + "' " +
+                            "AND ch.HinmokuRyakuBushoCD = '" + src_Busho.SelectedValue.ToString() + "' " +
+                            "AND NOT ch.ChousaShuukeihyouVer = " + ShukeiVer + " " +
+                            "AND mjmc.MadoguchiL1UketsukeBangou = '" + TokuhoBangou.ToString() + "' " +
+                            "AND mjmc.MadoguchiL1UketsukeBangouEdaban = '" + TokuhoBangouEda.ToString() + "' " +
+                            "AND mjmc.MadoguchiL1ChousaShinchoku != 80 ";
+                    }
                     var sda = new SqlDataAdapter(cmd);
                     DataTable dt0 = new DataTable();
                     sda.Fill(dt0);
