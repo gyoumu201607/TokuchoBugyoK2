@@ -718,29 +718,6 @@ namespace TokuchoBugyoK2
             // 取得データを画面へ設定処理
             set_data();
 
-            //No1668 画面表示時に仮作成した案件フォルダフルパスと、案件（受託）フォルダが異なる場合、更新時にフォルダ強制変更になるようにする
-            string FolderPath = "";
-            string ankenNo = "";
-            MakeFolderFullPath(ref FolderPath, ref ankenNo);
-
-
-			//初期表示時のフォルダ再作成時、"●●●"は現行案件Noとする
-			string ankenNoRight3 = GlobalMethod.Right(base_tbl02_txtAnkenNo.Text, 3);
-
-			FolderPath = FolderPath.Replace("●●●", ankenNoRight3);
-			ankenNo = ankenNo.Replace("●●●", ankenNoRight3);
-
-			// 案件（受託）フォルダと仮作成したFolderPathが空でない、かつ異なる場合
-			if (FolderPath.Length != 0 && base_tbl02_txtAnkenFolder.Text.Length != 0 && FolderPath != base_tbl02_txtAnkenFolder.Text)
-            {
-                // 変更後の案件（受託）フォルダに仮作成したFolderPathをセット
-                base_tbl02_txtRenameFolder.Text = FolderPath;
-            }
-            //案件（受託）フォルダのフルパス作成時に案件番号が作成されていれば非表示案件Noにセット
-            if (ankenNo.Length != 0)
-            {
-                ca_tbl01_hidResetAnkenno.Text = ankenNo;
-            }
         }
 
         /// <summary>
@@ -5665,7 +5642,11 @@ namespace TokuchoBugyoK2
         {
             string FolderPath = "";
             string ankenNo = "";
+
+            //案件（受託）フォルダのフルパス作成
             MakeFolderFullPath(ref FolderPath, ref ankenNo);
+
+
             // 案件（受託）フォルダ
             base_tbl02_txtRenameFolder.Text = FolderPath;
 
