@@ -717,6 +717,7 @@ namespace TokuchoBugyoK2
 
             // 取得データを画面へ設定処理
             set_data();
+
         }
 
         /// <summary>
@@ -4217,7 +4218,9 @@ namespace TokuchoBugyoK2
             }
             // パーセント再計算
             double dPercent = 0;
-            if (total > 0)
+            //No1670 赤伝の場合マイナスになるので、ゼロ割にならない限り計算実施に変更
+            //if (total > 0)
+            if (total != 0)
             {
                 //dPercent = (double)(lngAmtTax * 100 / total);
                 dPercent = lngAmtTax * 100 / Convert.ToDouble(total);
@@ -5464,19 +5467,6 @@ namespace TokuchoBugyoK2
                     int koukinendo = 0;
                     if (int.TryParse(base_tbl03_cmbKokiStartYear.SelectedValue.ToString(), out koukinendo))
                     {
-                        // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
-                        //if (koukinendo > 2021)
-                        //{
-                        //    // 010北道
-                        //    string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                        //    // 010北海
-                        //    string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
-
-                        //    if (str1 != null && str2 != null)
-                        //    {
-                        //        folderPath = folderPath.Replace(str1, str2);
-                        //    }
-                        //}
                         folderPath = change_hokaido_path(folderPath, koukinendo);
                     }
                     base_tbl02_txtAnkenFolder.Text = folderPath;
@@ -5650,6 +5640,32 @@ namespace TokuchoBugyoK2
         /// <param name="e"></param>
         private void base_tbl02_btnRenameFolder_Click(object sender, EventArgs e)
         {
+            string FolderPath = "";
+            string ankenNo = "";
+
+            //案件（受託）フォルダのフルパス作成
+            MakeFolderFullPath(ref FolderPath, ref ankenNo);
+
+
+            // 案件（受託）フォルダ
+            base_tbl02_txtRenameFolder.Text = FolderPath;
+
+            //案件（受託）フォルダのフルパス作成時に案件番号が作成されていれば非表示案件Noにセット
+            if (ankenNo.Length != 0)
+			{
+                ca_tbl01_hidResetAnkenno.Text = ankenNo;
+            }
+            
+        }
+
+        /// <summary>
+        /// 案件（受託）フォルダのフルパス作成
+        /// </summary>
+        /// <param name="FolderPath"></param>
+        /// <param name="ankenNo"></param>
+		private void MakeFolderFullPath(ref string FolderPath , ref string ankenNo)
+		{
+
             // フォルダリネーム========================================================
             string sBushoCd = base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString();//受託課所支部（契約部所）
             string sYear = base_tbl03_cmbKokiStartYear.SelectedValue.ToString();   // 工期開始年度
@@ -5667,7 +5683,7 @@ namespace TokuchoBugyoK2
             // //xxxx/00Cyousa/00調査情報部門共有/$NENDO$/200受託調査関連
             // フォルダ関連は工期開始年度で作成する
             string FolderBase = GlobalMethod.GetCommonValue1("FOLDER_BASE").Replace(@"$NENDO$", sYear);
-            string FolderPath = "";
+            //string FolderPath = "";
 
             DataTable dt = new System.Data.DataTable();
             dt = GlobalMethod.getData(discript, value, table, where);
@@ -5683,19 +5699,6 @@ namespace TokuchoBugyoK2
                 int koukinendo = 0;
                 if (int.TryParse(sYear, out koukinendo))
                 {
-                    // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
-                    //if (koukinendo > 2021)
-                    //{
-                    //    // 010北道
-                    //    string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                    //    // 010北海
-                    //    string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
-
-                    //    if (str1 != null && str2 != null)
-                    //    {
-                    //        FolderPath = FolderPath.Replace(str1, str2);
-                    //    }
-                    //}
                     FolderPath = change_hokaido_path(FolderPath, koukinendo);
                 }
             }
@@ -5719,7 +5722,7 @@ namespace TokuchoBugyoK2
                     {
                         sGyomu = sGyomu.Substring(0, 20);
                     }
-                    string ankenNo = base_tbl02_txtAnkenNo.Text;
+                    ankenNo = base_tbl02_txtAnkenNo.Text;
                     if (sJyutakuKasyoSibuCdOri.Equals(sBushoCd) == false || sKokiStartYearOri.Equals(sYear) == false)
                     {
                         string jigyoubuHeadCD = "";
@@ -5767,7 +5770,7 @@ namespace TokuchoBugyoK2
                         ankenNo = ankenNo + "●●●";
                     }
                     FolderPath = FolderPath + "\\" + ankenNo + "_" + sGOrder + "_" + sGyomu;
-                    ca_tbl01_hidResetAnkenno.Text = ankenNo;
+                    //ca_tbl01_hidResetAnkenno.Text = ankenNo;
                 }
             }
             else
@@ -5775,23 +5778,22 @@ namespace TokuchoBugyoK2
                 FolderPath = FolderBase;
                 FolderPath = FolderPath.Replace("/", @"\");
             }
-            // 案件（受託）フォルダ
-            base_tbl02_txtRenameFolder.Text = FolderPath;
-        }
+            
+		}
 
-        #endregion
+		#endregion
 
-        #region 事前打診 イベント ----------------------------------------------------
+		#region 事前打診 イベント ----------------------------------------------------
 
-        #endregion
+		#endregion
 
-        #region 入札 イベント --------------------------------------------------------
-        /// <summary>
-        /// 入札：３．入札結果　応札者追加ボタン押下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void bid_tbl03_4_btnAdd_Click(object sender, EventArgs e)
+		#region 入札 イベント --------------------------------------------------------
+		/// <summary>
+		/// 入札：３．入札結果　応札者追加ボタン押下
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void bid_tbl03_4_btnAdd_Click(object sender, EventArgs e)
         {
             if (bid_tbl03_4_c1FlexGrid.Rows.Count < 11)
             {
@@ -6938,7 +6940,7 @@ namespace TokuchoBugyoK2
         }
 
         /// <summary>
-        /// フォルダが存在するよりマック表示更新処理
+        /// フォルダ存在チェック　フォルダ画像切り替え
         /// 　存在あり：黄色
         /// 　存在なし：灰色
         /// </summary>
@@ -9602,15 +9604,6 @@ namespace TokuchoBugyoK2
                         // No1563 1314　北海道のフォルダ名が間違ってる。　×　010北道　○　010北海
                         if (koukinendo > 2021)
                         {
-                            //// 010北道
-                            //string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                            //// 010北海
-                            //string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
-
-                            //if (str1 != null && str2 != null)
-                            //{
-                            //    ankenFolder = ankenFolder.Replace(str1, str2);
-                            //}
                             ankenFolder = change_hokaido_path(ankenFolder, koukinendo);
                         }
                     }
@@ -9622,46 +9615,6 @@ namespace TokuchoBugyoK2
                     ankenFolder = ankenFolder.Substring(0, ankenFolder.Length - 1);
                 }
 
-                //// 案件（受託）フォルダー
-                //string ankenFolder = base_tbl02_txtAnkenFolder.Text;
-                //if (UserInfos[2].Equals(sSibuCd) == false)
-                //{
-                //    // 画面で選択している受託課所支部の部所フォルダ
-                //    string replaceFolderName = getReplaceFolderPath(sSibuCd, "M_Folderから画面の受託課所支部：");
-                //    // 置き換え対象のログインユーザーの部所フォルダ
-                //    string replaceTargetFolderName = getReplaceFolderPath(UserInfos[2], "M_Folderからログインユーザーの受託課所支部：");
-                //    if (replaceTargetFolderName != "")
-                //    {
-                //        // 自分の部署フォルダを画面の選択している受託課所支部のフォルダに置き換える
-                //        ankenFolder = ankenFolder.Replace(replaceTargetFolderName, replaceFolderName);
-
-                //        // 867
-                //        // 工期開始年度　2021年度まで、　010北道
-                //        // 工期開始年度　2022年度から　　010北海
-                //        int koukinendo = 0;
-                //        if (int.TryParse(sStartYear, out koukinendo))
-                //        {
-                //            if (koukinendo > 2021)
-                //            {
-                //                // 010北道
-                //                string str1 = GlobalMethod.GetCommonValue1("MADOGUCHI_HOKKAIDO_PATH");
-                //                // 010北海
-                //                string str2 = GlobalMethod.GetCommonValue2("MADOGUCHI_HOKKAIDO_PATH");
-
-                //                if (str1 != null && str2 != null)
-                //                {
-                //                    ankenFolder = ankenFolder.Replace(str1, str2);
-                //                }
-                //            }
-                //        }
-                //    }
-                //}
-
-                //// 最終文字が\マークとなったら取り除く
-                //if (ankenFolder.Length > 0 && ankenFolder.EndsWith(@"\"))
-                //{
-                //    ankenFolder = ankenFolder.Substring(0, ankenFolder.Length - 1);
-                //}
 
                 // 受託部所の所属長を取得する
                 string BushoShozokuChou = "";
@@ -9852,16 +9805,15 @@ namespace TokuchoBugyoK2
                     }
                 }
 
-                // No1557 1308 案件情報で調査会が受注後もフォルダ変更が出来てしまう。
-                // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
-                //// 受託番号の設定OR解除
-                //setOrClearJutakuBan(ankenNo);
 
-                // フォルダリムーブ処理
+                // フォルダリネーム処理
                 // No1557 1308 案件情報で調査会が受注後もフォルダ変更が出来てしまう。
                 // No1558 1309 案件情報で受注後も工期自、工期至の変更を行うと、案件番号が変更されてしまう。
-                if (base_tbl02_txtJyutakuNo.Text == "") { 
-                    if (RenameFolder(ori_ankenNo))
+                if (base_tbl02_txtJyutakuNo.Text == "") {
+
+                    //リネーム処理実行
+                    bool isSuccessRenameFolder = RenameFolder(ori_ankenNo);
+                    if (isSuccessRenameFolder)
                     {
                         // 移動履歴LOG残す
                         GlobalMethod.Insert_History(UserInfos[0], UserInfos[1], UserInfos[2], UserInfos[3], "フォルダ変更前：" + GlobalMethod.ChangeSqlText(sFolderRenameBef, 0, 0) + "→フォルダ変更後：" + GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0), pgmName + methodName, "");
@@ -12415,18 +12367,19 @@ namespace TokuchoBugyoK2
                 }
                 if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
                 {
-                    // リネーム前後が調査部の場合
-                    //もっとファイル
-                    //案件（受託）フォルダ内に元の案件番号が含まれている場合
-                    if (base_tbl02_txtAnkenFolder.Text.Contains(ori_ankenNo))
-                    {
-                        // リネーム前後、すべて調査部の場合、リネームを実施する
-                        isRename = 1;
-                    }
-                    else
-                    {
-                        isRename = 3;
-                    }
+                    //No1668 変更前後が調査部で、変更前後のフォルダパスが設定済みでかつ異なっている場合、
+                    //元の案件Noにかかわらず強制的にリネーム対象とする
+                    isRename = 1;
+                    ////もとファイル
+                    //if (base_tbl02_txtAnkenFolder.Text.Contains(ori_ankenNo))
+                    //{
+                    //    // リネーム前後、すべて調査部の場合、リネームを実施する
+                    //    isRename = 1;
+                    //}
+                    //else
+                    //{
+                    //    isRename = 3;
+                    //}
                 }
                 else if (sJigyoubuHeadCD_ori.Equals("T"))
                 {
@@ -12445,43 +12398,6 @@ namespace TokuchoBugyoK2
                 // No1560 1311　【備忘】現行の仕様では工期自を変更時に年度を変更し、案件番号が変更された際、フォルダ変更も行われる。
                 //    ※フォルダ変更ボタンで確認せずにホルダ変更が行われてしまう。
                 isRename = 5;
-                //folderTo = GlobalMethod.ChangeSqlText(base_tbl02_txtAnkenFolder.Text, 0, 0);
-                //// リネームボタン押下しない　AND　案件番号自動変更
-                //if (sJigyoubuHeadCD_ori.Equals("T") && sJigyoubuHeadCD.Equals("T"))
-                //{
-                //    // リネーム前後、すべて調査部の場合、リネームを実施する
-                //    isRename = 1;
-                //}
-                //else if (sJigyoubuHeadCD.Equals("T"))
-                //{
-                //    // リネーム後のみ調査部なら、新規作成する
-                //    isRename = 3;
-                //}
-                //else if (sJigyoubuHeadCD_ori.Equals("T"))
-                //{
-                //    // リネームボタン押下しない、契約部署のみ変更する場合
-                //    if (folderTo.Equals(sFolderRenameBef) == false)
-                //    {
-                //        isRename = 4;
-                //    }
-                //    else
-                //    {
-                //        base_tbl02_txtRenameFolder.Text = "";
-                //        ca_tbl01_hidResetAnkenno.Text = "";
-                //        isRename = 5;
-                //    }
-                //}
-                //else
-                //{
-                //    if (folderTo.Contains(ori_ankenNo))
-                //    {
-                //        isRename = 4;
-                //    }
-                //    else
-                //    {
-                //        isRename = 5;
-                //    }
-                //}
             }
             else
             {
