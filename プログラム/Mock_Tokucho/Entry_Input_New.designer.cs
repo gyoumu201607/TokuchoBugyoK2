@@ -2582,7 +2582,7 @@ namespace TokuchoBugyoK2
 			this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
 			this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
 			this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-			this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 564F));
+			this.base_tbl07_input4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 568F));
 			this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblTitle, 0, 0);
 			this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblTyosabu, 2, 1);
 			this.base_tbl07_input4.Controls.Add(this.base_tbl07_4_lblJgyobu, 3, 1);
@@ -2611,7 +2611,7 @@ namespace TokuchoBugyoK2
 			this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
 			this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
 			this.base_tbl07_input4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-			this.base_tbl07_input4.Size = new System.Drawing.Size(1213, 117);
+			this.base_tbl07_input4.Size = new System.Drawing.Size(1217, 117);
 			this.base_tbl07_input4.TabIndex = 3;
 			// 
 			// base_tbl07_4_lblTitle
@@ -2622,7 +2622,7 @@ namespace TokuchoBugyoK2
 			this.base_tbl07_4_lblTitle.Location = new System.Drawing.Point(5, 1);
 			this.base_tbl07_4_lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.base_tbl07_4_lblTitle.Name = "base_tbl07_4_lblTitle";
-			this.base_tbl07_4_lblTitle.Size = new System.Drawing.Size(1203, 28);
+			this.base_tbl07_4_lblTitle.Size = new System.Drawing.Size(1207, 28);
 			this.base_tbl07_4_lblTitle.TabIndex = 15;
 			this.base_tbl07_4_lblTitle.Text = "部門配分";
 			this.base_tbl07_4_lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2719,7 +2719,7 @@ namespace TokuchoBugyoK2
 			this.base_tbl07_4_lblGokei.Location = new System.Drawing.Point(648, 30);
 			this.base_tbl07_4_lblGokei.Margin = new System.Windows.Forms.Padding(0);
 			this.base_tbl07_4_lblGokei.Name = "base_tbl07_4_lblGokei";
-			this.base_tbl07_4_lblGokei.Size = new System.Drawing.Size(564, 28);
+			this.base_tbl07_4_lblGokei.Size = new System.Drawing.Size(568, 28);
 			this.base_tbl07_4_lblGokei.TabIndex = 15;
 			this.base_tbl07_4_lblGokei.Text = "合計";
 			this.base_tbl07_4_lblGokei.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2807,7 +2807,7 @@ namespace TokuchoBugyoK2
 			this.base_tbl07_4_lblRateAll.Margin = new System.Windows.Forms.Padding(0);
 			this.base_tbl07_4_lblRateAll.Name = "base_tbl07_4_lblRateAll";
 			this.base_tbl07_4_lblRateAll.Padding = new System.Windows.Forms.Padding(4);
-			this.base_tbl07_4_lblRateAll.Size = new System.Drawing.Size(564, 28);
+			this.base_tbl07_4_lblRateAll.Size = new System.Drawing.Size(568, 28);
 			this.base_tbl07_4_lblRateAll.TabIndex = 23;
 			this.base_tbl07_4_lblRateAll.Text = "0.00%";
 			this.base_tbl07_4_lblRateAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2872,7 +2872,7 @@ namespace TokuchoBugyoK2
 			this.base_tbl07_4_lblAmtAll.Location = new System.Drawing.Point(651, 88);
 			this.base_tbl07_4_lblAmtAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
 			this.base_tbl07_4_lblAmtAll.Name = "base_tbl07_4_lblAmtAll";
-			this.base_tbl07_4_lblAmtAll.Size = new System.Drawing.Size(558, 25);
+			this.base_tbl07_4_lblAmtAll.Size = new System.Drawing.Size(562, 25);
 			this.base_tbl07_4_lblAmtAll.TabIndex = 40;
 			this.base_tbl07_4_lblAmtAll.Text = "¥0";
 			this.base_tbl07_4_lblAmtAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -12799,7 +12799,7 @@ namespace TokuchoBugyoK2
 			// ca_tbl01_hidAkaden
 			// 
 			this.ca_tbl01_hidAkaden.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-			this.ca_tbl01_hidAkaden.Location = new System.Drawing.Point(1207, 59);
+			this.ca_tbl01_hidAkaden.Location = new System.Drawing.Point(1136, 59);
 			this.ca_tbl01_hidAkaden.Name = "ca_tbl01_hidAkaden";
 			this.ca_tbl01_hidAkaden.Size = new System.Drawing.Size(100, 21);
 			this.ca_tbl01_hidAkaden.TabIndex = 59;
@@ -12809,7 +12809,7 @@ namespace TokuchoBugyoK2
 			// ca_tbl01_hidKuroden
 			// 
 			this.ca_tbl01_hidKuroden.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-			this.ca_tbl01_hidKuroden.Location = new System.Drawing.Point(1207, 87);
+			this.ca_tbl01_hidKuroden.Location = new System.Drawing.Point(1136, 87);
 			this.ca_tbl01_hidKuroden.Name = "ca_tbl01_hidKuroden";
 			this.ca_tbl01_hidKuroden.Size = new System.Drawing.Size(100, 21);
 			this.ca_tbl01_hidKuroden.TabIndex = 60;
@@ -12819,7 +12819,7 @@ namespace TokuchoBugyoK2
 			// ca_tbl01_hidResetAnkenno
 			// 
 			this.ca_tbl01_hidResetAnkenno.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 10F);
-			this.ca_tbl01_hidResetAnkenno.Location = new System.Drawing.Point(1207, 115);
+			this.ca_tbl01_hidResetAnkenno.Location = new System.Drawing.Point(1136, 115);
 			this.ca_tbl01_hidResetAnkenno.Name = "ca_tbl01_hidResetAnkenno";
 			this.ca_tbl01_hidResetAnkenno.Size = new System.Drawing.Size(100, 21);
 			this.ca_tbl01_hidResetAnkenno.TabIndex = 59;
@@ -13026,7 +13026,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
 			this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-			this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
+			this.ca_tbl05_tblKanri.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 432F));
 			this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_picKanriDel, 2, 0);
 			this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_txtKanri, 0, 0);
 			this.ca_tbl05_tblKanri.Controls.Add(this.ca_tbl05_picKanri, 1, 0);
@@ -13037,7 +13037,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblKanri.Name = "ca_tbl05_tblKanri";
 			this.ca_tbl05_tblKanri.RowCount = 1;
 			this.ca_tbl05_tblKanri.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.ca_tbl05_tblKanri.Size = new System.Drawing.Size(753, 28);
+			this.ca_tbl05_tblKanri.Size = new System.Drawing.Size(757, 28);
 			this.ca_tbl05_tblKanri.TabIndex = 0;
 			// 
 			// ca_tbl05_picKanriDel
@@ -13099,7 +13099,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
 			this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-			this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
+			this.ca_tbl05_tblSyosa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 432F));
 			this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_picSyosaDel, 2, 0);
 			this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_txtSyosa, 0, 0);
 			this.ca_tbl05_tblSyosa.Controls.Add(this.ca_tbl05_picSyosa, 1, 0);
@@ -13110,7 +13110,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblSyosa.Name = "ca_tbl05_tblSyosa";
 			this.ca_tbl05_tblSyosa.RowCount = 1;
 			this.ca_tbl05_tblSyosa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.ca_tbl05_tblSyosa.Size = new System.Drawing.Size(753, 28);
+			this.ca_tbl05_tblSyosa.Size = new System.Drawing.Size(757, 28);
 			this.ca_tbl05_tblSyosa.TabIndex = 1;
 			// 
 			// ca_tbl05_picSyosaDel
@@ -13171,7 +13171,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81633F));
 			this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
 			this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 473F));
+			this.ca_tbl05_tblSinsa.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 477F));
 			this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_picSinsaDel, 2, 0);
 			this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_txtSinsa, 0, 0);
 			this.ca_tbl05_tblSinsa.Controls.Add(this.ca_tbl05_picSinsa, 1, 0);
@@ -13181,7 +13181,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblSinsa.Name = "ca_tbl05_tblSinsa";
 			this.ca_tbl05_tblSinsa.RowCount = 1;
 			this.ca_tbl05_tblSinsa.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.ca_tbl05_tblSinsa.Size = new System.Drawing.Size(733, 28);
+			this.ca_tbl05_tblSinsa.Size = new System.Drawing.Size(737, 28);
 			this.ca_tbl05_tblSinsa.TabIndex = 3;
 			// 
 			// ca_tbl05_picSinsaDel
@@ -13235,7 +13235,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.183674F));
 			this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 473F));
+			this.ca_tbl05_tblGyomu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 477F));
 			this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomuAlert, 1, 0);
 			this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_picGyomuDel, 3, 0);
 			this.ca_tbl05_tblGyomu.Controls.Add(this.ca_tbl05_txtGyomu, 0, 0);
@@ -13246,7 +13246,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblGyomu.Name = "ca_tbl05_tblGyomu";
 			this.ca_tbl05_tblGyomu.RowCount = 1;
 			this.ca_tbl05_tblGyomu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.ca_tbl05_tblGyomu.Size = new System.Drawing.Size(776, 28);
+			this.ca_tbl05_tblGyomu.Size = new System.Drawing.Size(780, 28);
 			this.ca_tbl05_tblGyomu.TabIndex = 4;
 			// 
 			// ca_tbl05_picGyomuAlert
@@ -13318,7 +13318,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 473F));
+			this.ca_tbl05_tblMadoguchi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 477F));
 			this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchiAlert, 1, 0);
 			this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_picMadoguchiDel, 3, 0);
 			this.ca_tbl05_tblMadoguchi.Controls.Add(this.ca_tbl05_txtMadoguchi, 0, 0);
@@ -13332,7 +13332,7 @@ namespace TokuchoBugyoK2
 			this.ca_tbl05_tblMadoguchi.Name = "ca_tbl05_tblMadoguchi";
 			this.ca_tbl05_tblMadoguchi.RowCount = 1;
 			this.ca_tbl05_tblMadoguchi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.ca_tbl05_tblMadoguchi.Size = new System.Drawing.Size(836, 28);
+			this.ca_tbl05_tblMadoguchi.Size = new System.Drawing.Size(840, 28);
 			this.ca_tbl05_tblMadoguchi.TabIndex = 5;
 			// 
 			// ca_tbl05_picMadoguchiAlert
@@ -15813,7 +15813,7 @@ namespace TokuchoBugyoK2
 			this.te_picKanriPointAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.te_picKanriPointAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.te_picKanriPointAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picKanriPointAlert.Image")));
-			this.te_picKanriPointAlert.Location = new System.Drawing.Point(586, 182);
+			this.te_picKanriPointAlert.Location = new System.Drawing.Point(586, 190);
 			this.te_picKanriPointAlert.Margin = new System.Windows.Forms.Padding(2);
 			this.te_picKanriPointAlert.Name = "te_picKanriPointAlert";
 			this.te_picKanriPointAlert.Size = new System.Drawing.Size(20, 20);
@@ -15828,7 +15828,7 @@ namespace TokuchoBugyoK2
 			this.te_picSyosaPointAlert.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.te_picSyosaPointAlert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.te_picSyosaPointAlert.Image = ((System.Drawing.Image)(resources.GetObject("te_picSyosaPointAlert.Image")));
-			this.te_picSyosaPointAlert.Location = new System.Drawing.Point(586, 213);
+			this.te_picSyosaPointAlert.Location = new System.Drawing.Point(586, 221);
 			this.te_picSyosaPointAlert.Margin = new System.Windows.Forms.Padding(2);
 			this.te_picSyosaPointAlert.Name = "te_picSyosaPointAlert";
 			this.te_picSyosaPointAlert.Size = new System.Drawing.Size(20, 20);

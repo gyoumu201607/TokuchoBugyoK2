@@ -228,6 +228,12 @@
     <Compile Include="PlaceholderTextBox.Designer.cs">
       <DependentUpon>PlaceholderTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popup_AnkenNoUpdateConfirmDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup_AnkenNoUpdateConfirmDialog.Designer.cs">
+      <DependentUpon>Popup_AnkenNoUpdateConfirmDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popup_Bunrui.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -558,6 +564,9 @@
     <EmbeddedResource Include="Madoguchi_Input.resx">
       <DependentUpon>Madoguchi_Input.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup_AnkenNoUpdateConfirmDialog.resx">
+      <DependentUpon>Popup_AnkenNoUpdateConfirmDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup_Bunrui.resx">
       <DependentUpon>Popup_Bunrui.cs</DependentUpon>
