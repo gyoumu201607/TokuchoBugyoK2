@@ -5666,7 +5666,11 @@ namespace TokuchoBugyoK2
 			{
                 ca_tbl01_hidResetAnkenno.Text = ankenNo;
             }
-            
+
+            //No1668 エクスプローラーで案件フォルダを開いている場合、フォルダの移動が出来ないので、「フォルダ変更」ボタン押下時に確認ダイアログを表示
+            MessageBox.Show(GlobalMethod.GetMessage("E20908", ""), "確認", MessageBoxButtons.OK);
+
+
         }
 
         /// <summary>
