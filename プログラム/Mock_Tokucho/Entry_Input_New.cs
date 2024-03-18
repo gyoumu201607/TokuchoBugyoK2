@@ -3431,13 +3431,23 @@ namespace TokuchoBugyoK2
                         if (mode != MODE.INSERT && mode != MODE.PLAN)
                         {
                             ca_tbl01_cmbStartYear.SelectedValue = dt.Rows[0][0].ToString();
+
+                            //No1698 工期開始年度が変わり案件番号が変更となる場合にダイアログを表示する
+                            if (sKokiStartYearOri != ca_tbl01_cmbStartYear.SelectedValue.ToString())
+                            {
+                                MessageBox.Show(GlobalMethod.GetMessage("E20909",""), "確認", MessageBoxButtons.OK);
+                            }
                         }
                         if (mode != MODE.CHANGE)
                         {
                             base_tbl03_cmbKokiStartYear.SelectedValue = dt.Rows[0][0].ToString();
+
                         }
+
+
                     }
                 }
+                
                 return;
             }
 
@@ -3531,6 +3541,7 @@ namespace TokuchoBugyoK2
                             base_tbl03_cmbKokiStartYear.SelectedValue = dt.Rows[0][0].ToString();
                         }
                     }
+
                 }
                 return;
             }
