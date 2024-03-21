@@ -29,55 +29,55 @@ namespace TokuchoBugyoK2
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
+			this.lbl1_title = new System.Windows.Forms.Label();
+			this.lbl1_body = new System.Windows.Forms.Label();
+			this.lbl2_title = new System.Windows.Forms.Label();
+			this.lbl2_body = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.lbl_FolderPath_BeforeUpdate = new System.Windows.Forms.Label();
 			this.lbl_FolderPath_AfterUpdate = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
+			this.lbl3_title = new System.Windows.Forms.Label();
+			this.lbl3_body = new System.Windows.Forms.Label();
 			this.btnOK = new System.Windows.Forms.Button();
 			this.BtnCancel = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// label1
+			// lbl1_title
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.label1.Location = new System.Drawing.Point(12, 21);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(339, 12);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "①「工期開始年度」が変更され「案件番号」が変更となりました。";
+			this.lbl1_title.AutoSize = true;
+			this.lbl1_title.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.lbl1_title.Location = new System.Drawing.Point(12, 21);
+			this.lbl1_title.Name = "lbl1_title";
+			this.lbl1_title.Size = new System.Drawing.Size(339, 12);
+			this.lbl1_title.TabIndex = 0;
+			this.lbl1_title.Text = "①「工期開始年度」が変更され「案件番号」が変更となりました。";
 			// 
-			// label2
+			// lbl1_body
 			// 
-			this.label2.Location = new System.Drawing.Point(34, 42);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(551, 33);
-			this.label2.TabIndex = 0;
-			this.label2.Text = "案件番号の変更を行わない場合、「キャンセル」を押下し「工期自」を変更して「工期開始年度」を修正してください。変更を行う場合、次の②を確認願います。";
+			this.lbl1_body.Location = new System.Drawing.Point(34, 42);
+			this.lbl1_body.Name = "lbl1_body";
+			this.lbl1_body.Size = new System.Drawing.Size(995, 33);
+			this.lbl1_body.TabIndex = 0;
+			this.lbl1_body.Text = "案件番号の変更を行わない場合、「キャンセル」を押下し「工期自」を変更して「工期開始年度」を修正してください。変更を行う場合、次の②を確認願います。";
 			// 
-			// label3
+			// lbl2_title
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.label3.Location = new System.Drawing.Point(12, 90);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(336, 12);
-			this.label3.TabIndex = 0;
-			this.label3.Text = "②案件番号が変更となった場合、案件フォルダを確認願います。";
+			this.lbl2_title.AutoSize = true;
+			this.lbl2_title.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.lbl2_title.Location = new System.Drawing.Point(12, 90);
+			this.lbl2_title.Name = "lbl2_title";
+			this.lbl2_title.Size = new System.Drawing.Size(336, 12);
+			this.lbl2_title.TabIndex = 0;
+			this.lbl2_title.Text = "②案件番号が変更となった場合、案件フォルダを確認願います。";
 			// 
-			// label4
+			// lbl2_body
 			// 
-			this.label4.Location = new System.Drawing.Point(34, 112);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(304, 20);
-			this.label4.TabIndex = 0;
-			this.label4.Text = "「変更後の案件フォルダ」のフォルダで変更します。";
+			this.lbl2_body.Location = new System.Drawing.Point(34, 112);
+			this.lbl2_body.Name = "lbl2_body";
+			this.lbl2_body.Size = new System.Drawing.Size(304, 20);
+			this.lbl2_body.TabIndex = 0;
+			this.lbl2_body.Text = "「変更後の案件フォルダ」のフォルダで変更します。";
 			// 
 			// label5
 			// 
@@ -117,23 +117,24 @@ namespace TokuchoBugyoK2
 			this.lbl_FolderPath_AfterUpdate.TabIndex = 0;
 			this.lbl_FolderPath_AfterUpdate.Text = "変更後";
 			// 
-			// label7
+			// lbl3_title
 			// 
-			this.label7.ForeColor = System.Drawing.Color.Red;
-			this.label7.Location = new System.Drawing.Point(12, 239);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(79, 20);
-			this.label7.TabIndex = 0;
-			this.label7.Text = "【注意事項】";
+			this.lbl3_title.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.lbl3_title.ForeColor = System.Drawing.Color.Red;
+			this.lbl3_title.Location = new System.Drawing.Point(12, 239);
+			this.lbl3_title.Name = "lbl3_title";
+			this.lbl3_title.Size = new System.Drawing.Size(79, 20);
+			this.lbl3_title.TabIndex = 0;
+			this.lbl3_title.Text = "【注意事項】";
 			// 
-			// label8
+			// lbl3_body
 			// 
-			this.label8.ForeColor = System.Drawing.Color.Red;
-			this.label8.Location = new System.Drawing.Point(34, 259);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(541, 33);
-			this.label8.TabIndex = 0;
-			this.label8.Text = "「フォルダ変更」を行う場合、現在の「案件フォルダ」をエクスプローラで開いている場合、閉じてから実行してください。開いている場合は、新規フォルダが作成されますが、元" +
+			this.lbl3_body.ForeColor = System.Drawing.Color.Red;
+			this.lbl3_body.Location = new System.Drawing.Point(34, 259);
+			this.lbl3_body.Name = "lbl3_body";
+			this.lbl3_body.Size = new System.Drawing.Size(541, 33);
+			this.lbl3_body.TabIndex = 0;
+			this.lbl3_body.Text = "「フォルダ変更」を行う場合、現在の「案件フォルダ」をエクスプローラで開いている場合、閉じてから実行してください。開いている場合は、新規フォルダが作成されますが、元" +
     "の案件フォルダが残ったままとなりますので、ご確認ください。";
 			// 
 			// btnOK
@@ -172,12 +173,12 @@ namespace TokuchoBugyoK2
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.lbl_FolderPath_AfterUpdate);
 			this.Controls.Add(this.lbl_FolderPath_BeforeUpdate);
-			this.Controls.Add(this.label8);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.lbl3_body);
+			this.Controls.Add(this.lbl3_title);
+			this.Controls.Add(this.lbl2_body);
+			this.Controls.Add(this.lbl1_body);
+			this.Controls.Add(this.lbl2_title);
+			this.Controls.Add(this.lbl1_title);
 			this.Name = "Popup_AnkenNoUpdateConfirmDialog";
 			this.Text = "案件番号変更　確認ダイアログ";
 			this.ResumeLayout(false);
@@ -187,16 +188,16 @@ namespace TokuchoBugyoK2
 
 		#endregion
 
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label lbl1_title;
+		private System.Windows.Forms.Label lbl1_body;
+		private System.Windows.Forms.Label lbl2_title;
+		private System.Windows.Forms.Label lbl2_body;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label lbl_FolderPath_BeforeUpdate;
 		private System.Windows.Forms.Label lbl_FolderPath_AfterUpdate;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label lbl3_title;
+		private System.Windows.Forms.Label lbl3_body;
 		private System.Windows.Forms.Button btnOK;
 		private System.Windows.Forms.Button BtnCancel;
 	}
