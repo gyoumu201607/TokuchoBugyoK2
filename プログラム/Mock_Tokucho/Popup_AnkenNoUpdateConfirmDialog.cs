@@ -17,6 +17,12 @@ namespace TokuchoBugyoK2
 		public string FolderPath_After;
 		const string HENKO_NASHI = "(変更なし)";
 
+		/// <summary>
+		/// 共通処理クラスオブジェクト
+		/// </summary>
+		private GlobalMethod GlobalMethod = new GlobalMethod();
+
+
 		public Popup_AnkenNoUpdateConfirmDialog(string folderPath_Before, string folderPath_After)
 		{
 			InitializeComponent();
@@ -32,6 +38,12 @@ namespace TokuchoBugyoK2
 			lbl_FolderPath_BeforeUpdate.Text = FolderPath_Before;
 			lbl_FolderPath_AfterUpdate.Text = FolderPath_After;
 
+			lbl1_title.Text = GlobalMethod.GetMessage("I60003", "");
+			lbl1_body.Text = GlobalMethod.GetMessage("I60004", "");
+			lbl2_title.Text = GlobalMethod.GetMessage("I60005", "");
+			lbl2_body.Text = GlobalMethod.GetMessage("I60006", "");
+			lbl3_title.Text = GlobalMethod.GetMessage("I60007", "");
+			lbl3_body.Text = GlobalMethod.GetMessage("I60008", "");
 		}
 
 		private void BtnCancel_Click(object sender, EventArgs e)
