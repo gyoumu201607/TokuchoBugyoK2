@@ -3432,8 +3432,9 @@ namespace TokuchoBugyoK2
                         {
                             ca_tbl01_cmbStartYear.SelectedValue = dt.Rows[0][0].ToString();
 
-                            //No1698 工期開始年度が変わり案件番号が変更となる場合にダイアログを表示する
-                            if (sKokiStartYearOri != ca_tbl01_cmbStartYear.SelectedValue.ToString())
+                            //No1698 工期開始年度が変わり案件番号が変更となる場合
+                            //かつフォルダ変更ボタンが押せる場合にダイアログを表示する
+                            if (sKokiStartYearOri != ca_tbl01_cmbStartYear.SelectedValue.ToString() && base_tbl02_btnRenameFolder.Visible)
                             {
                                 MessageBox.Show(GlobalMethod.GetMessage("E20909",""), "確認", MessageBoxButtons.OK);
                             }
@@ -5027,7 +5028,7 @@ namespace TokuchoBugyoK2
                     string folderFrom = base_tbl02_txtAnkenFolder.Text;
                     string folderTo = base_tbl02_txtRenameFolder.Text;
 
-                    // 1:更新 2:チェック用出力 3:起案のみ
+                    // フォルダ変更ボタンが押せる場合のみ確認ダイアログ表示
                     if(base_tbl02_btnRenameFolder.Visible)
 					{
 
