@@ -3431,13 +3431,23 @@ namespace TokuchoBugyoK2
                         if (mode != MODE.INSERT && mode != MODE.PLAN)
                         {
                             ca_tbl01_cmbStartYear.SelectedValue = dt.Rows[0][0].ToString();
+
+                            //No1698 工期開始年度が変わり案件番号が変更となる場合にダイアログを表示する
+                            if (sKokiStartYearOri != ca_tbl01_cmbStartYear.SelectedValue.ToString())
+                            {
+                                MessageBox.Show(GlobalMethod.GetMessage("E20909",""), "確認", MessageBoxButtons.OK);
+                            }
                         }
                         if (mode != MODE.CHANGE)
                         {
                             base_tbl03_cmbKokiStartYear.SelectedValue = dt.Rows[0][0].ToString();
+
                         }
+
+
                     }
                 }
+                
                 return;
             }
 
@@ -3531,6 +3541,7 @@ namespace TokuchoBugyoK2
                             base_tbl03_cmbKokiStartYear.SelectedValue = dt.Rows[0][0].ToString();
                         }
                     }
+
                 }
                 return;
             }
@@ -5008,21 +5019,46 @@ namespace TokuchoBugyoK2
             }
             else
             {
-                if (MessageBox.Show("更新を行いますが宜しいですか？", "確認", MessageBoxButtons.OKCancel) == DialogResult.OK)
+
+                DialogResult _ankenNoUpdateConfirmResult;
+                //No1668 工期自が変更されて案件番号が変更される場合、確認ダイアログを表示する
+                if (sKokiStartYearOri != base_tbl03_cmbKokiStartYear.SelectedValue.ToString())
                 {
-                    //担当者項目の必須チェックを追加
-                    bool isError = ErrorFLG(1);
-                    WarningCheck(1);
-                    if (!isError)
-                    {
-                        if (Execute_SQL(1))
-                        {
-                            sJyutakuKasyoSibuCdOri = base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString(); //受託課所支部（契約部所）DB値
-                            sKokiStartYearOri = base_tbl03_cmbKokiStartYear.SelectedValue.ToString(); //工期開始年度DB値
-                            sJigyoubuHeadCD_ori = getJigyoubuHeadCD();
-                            //受託番号が採番された場合、「この案件番号の枝番で受託番号を作成する」ボタンを表示 No.1484
-                            btnNewByBranchNo.Visible = (base_tbl02_txtJyutakuEdNo.Text != "");
+                    string folderFrom = base_tbl02_txtAnkenFolder.Text;
+                    string folderTo = base_tbl02_txtRenameFolder.Text;
+
+                    // 1:更新 2:チェック用出力 3:起案のみ
+                    if(base_tbl02_btnRenameFolder.Visible)
+					{
+
+                        Popup_AnkenNoUpdateConfirmDialog _ankenNoUpdateConfirmDialog = new Popup_AnkenNoUpdateConfirmDialog(folderFrom, folderTo);
+                        _ankenNoUpdateConfirmResult = _ankenNoUpdateConfirmDialog.ShowDialog();
+
+                        if (_ankenNoUpdateConfirmResult == DialogResult.Cancel)
+					    {
+                            return;
                         }
+                    }
+                }
+
+                if (MessageBox.Show("更新を行いますが宜しいですか？", "確認", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+				{
+                    //キャンセルの場合、即リターン
+                    return;
+				}
+
+                //担当者項目の必須チェックを追加
+                bool isError = ErrorFLG(1);
+                WarningCheck(1);
+                if (!isError)
+                {
+                    if (Execute_SQL(1))
+                    {
+                        sJyutakuKasyoSibuCdOri = base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString(); //受託課所支部（契約部所）DB値
+                        sKokiStartYearOri = base_tbl03_cmbKokiStartYear.SelectedValue.ToString(); //工期開始年度DB値
+                        sJigyoubuHeadCD_ori = getJigyoubuHeadCD();
+                        //受託番号が採番された場合、「この案件番号の枝番で受託番号を作成する」ボタンを表示 No.1484
+                        btnNewByBranchNo.Visible = (base_tbl02_txtJyutakuEdNo.Text != "");
                     }
                 }
 
@@ -5655,7 +5691,11 @@ namespace TokuchoBugyoK2
 			{
                 ca_tbl01_hidResetAnkenno.Text = ankenNo;
             }
-            
+
+            //No1668 エクスプローラーで案件フォルダを開いている場合、フォルダの移動が出来ないので、「フォルダ変更」ボタン押下時に確認ダイアログを表示
+            MessageBox.Show(GlobalMethod.GetMessage("E20908", ""), "確認", MessageBoxButtons.OK);
+
+
         }
 
         /// <summary>
@@ -9615,7 +9655,6 @@ namespace TokuchoBugyoK2
                     ankenFolder = ankenFolder.Substring(0, ankenFolder.Length - 1);
                 }
 
-
                 // 受託部所の所属長を取得する
                 string BushoShozokuChou = "";
                 DataTable dt = new System.Data.DataTable();
@@ -9794,6 +9833,7 @@ namespace TokuchoBugyoK2
                 {
                     if (sJyutakuKasyoSibuCdOri.Equals(base_tbl02_cmbJyutakuKasyoSibu.SelectedValue.ToString()) == false || sKokiStartYearOri.Equals(base_tbl03_cmbKokiStartYear.SelectedValue.ToString()) == false)
                     {
+                        //案件番号変更処理
                         ankenNo = changeAnkenNo(ori_ankenNo);
                         if (string.IsNullOrEmpty(ankenNo))
                         {
