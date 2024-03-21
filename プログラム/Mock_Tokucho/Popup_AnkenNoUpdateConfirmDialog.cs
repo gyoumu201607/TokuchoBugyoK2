@@ -15,6 +15,7 @@ namespace TokuchoBugyoK2
 
 		public string FolderPath_Before;
 		public string FolderPath_After;
+		const string HENKO_NASHI = "(変更なし)";
 
 		public Popup_AnkenNoUpdateConfirmDialog(string folderPath_Before, string folderPath_After)
 		{
@@ -22,8 +23,15 @@ namespace TokuchoBugyoK2
 			FolderPath_Before = folderPath_Before;
 			FolderPath_After = folderPath_After;
 
+			//変更後フォルダが空もしくは変更前と同じ場合、変更なしで表記
+			if(FolderPath_After.Length == 0 || FolderPath_Before == FolderPath_After)
+			{
+				FolderPath_After = HENKO_NASHI;
+			}
+
 			lbl_FolderPath_BeforeUpdate.Text = FolderPath_Before;
 			lbl_FolderPath_AfterUpdate.Text = FolderPath_After;
+
 		}
 
 		private void BtnCancel_Click(object sender, EventArgs e)

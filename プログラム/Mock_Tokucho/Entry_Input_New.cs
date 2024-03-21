@@ -5021,20 +5021,24 @@ namespace TokuchoBugyoK2
             {
 
                 DialogResult _ankenNoUpdateConfirmResult;
-                //No1668 工期自が変更されて案件番号がされる場合、確認ダイアログを表示する
+                //No1668 工期自が変更されて案件番号が変更される場合、確認ダイアログを表示する
                 if (sKokiStartYearOri != base_tbl03_cmbKokiStartYear.SelectedValue.ToString())
                 {
                     string folderFrom = base_tbl02_txtAnkenFolder.Text;
                     string folderTo = base_tbl02_txtRenameFolder.Text;
 
                     // 1:更新 2:チェック用出力 3:起案のみ
-                    Popup_AnkenNoUpdateConfirmDialog _ankenNoUpdateConfirmDialog = new Popup_AnkenNoUpdateConfirmDialog(folderFrom, folderTo);
-                    _ankenNoUpdateConfirmResult = _ankenNoUpdateConfirmDialog.ShowDialog();
-
-                    if (_ankenNoUpdateConfirmResult == DialogResult.Cancel)
+                    if(base_tbl02_btnRenameFolder.Visible)
 					{
-                        return;
-					}
+
+                        Popup_AnkenNoUpdateConfirmDialog _ankenNoUpdateConfirmDialog = new Popup_AnkenNoUpdateConfirmDialog(folderFrom, folderTo);
+                        _ankenNoUpdateConfirmResult = _ankenNoUpdateConfirmDialog.ShowDialog();
+
+                        if (_ankenNoUpdateConfirmResult == DialogResult.Cancel)
+					    {
+                            return;
+                        }
+                    }
                 }
 
                 if (MessageBox.Show("更新を行いますが宜しいですか？", "確認", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
