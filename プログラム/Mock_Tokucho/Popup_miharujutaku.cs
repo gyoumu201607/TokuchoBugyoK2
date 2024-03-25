@@ -120,8 +120,14 @@ namespace TokuchoBugyoK2
             if (int.TryParse(Nendo, out FromNendo))
             {
                 int ToNendo = int.Parse(Nendo) + 1;
-                where += "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
-                "AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
+
+                //No1702
+                //From年度は翌年の3/31以前の開始日
+                //To年月は当年の4/1以降の終了日
+                FromNendo += 1;
+                ToNendo -= 1;
+                where += "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/3/31' ) " +
+                "AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/4/1' )";
             }
 
             //コンボボックスデータ取得
