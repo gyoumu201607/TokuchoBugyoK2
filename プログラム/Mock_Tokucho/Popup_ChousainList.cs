@@ -185,12 +185,16 @@ namespace TokuchoBugyoK2
                         }
                         else
                         {
-                            cmd.CommandText += "AND Mst_Chousain.GyoumuBushoCD COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + GlobalMethod.ChangeSqlText(src_1.SelectedValue.ToString().TrimEnd('0'), 1) + "%' ESCAPE '\\' ";
+                            //No1702 業務部署コードの下1桁ゼロ切り捨ての前方一致を完全一致に変更
+                            //cmd.CommandText += "AND Mst_Chousain.GyoumuBushoCD COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + GlobalMethod.ChangeSqlText(src_1.SelectedValue.ToString().TrimEnd('0'), 1) + "%' ESCAPE '\\' ";
+                            cmd.CommandText += "AND Mst_Chousain.GyoumuBushoCD COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + GlobalMethod.ChangeSqlText(src_1.SelectedValue.ToString(), 1) + "' ESCAPE '\\' ";
                         }
                     }
                     else
                     {
-                        cmd.CommandText += "AND Mst_Chousain.GyoumuBushoCD COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + GlobalMethod.ChangeSqlText(src_1.SelectedValue.ToString().TrimEnd('0'), 1) + "%' ESCAPE '\\' ";
+                        //No1702 業務部署コードの下1桁ゼロ切り捨ての前方一致を完全一致に変更
+                        //cmd.CommandText += "AND Mst_Chousain.GyoumuBushoCD COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + GlobalMethod.ChangeSqlText(src_1.SelectedValue.ToString().TrimEnd('0'), 1) + "%' ESCAPE '\\' ";
+                        cmd.CommandText += "AND Mst_Chousain.GyoumuBushoCD COLLATE Japanese_XJIS_100_CI_AS_SC LIKE N'" + GlobalMethod.ChangeSqlText(src_1.SelectedValue.ToString(), 1) + "' ESCAPE '\\' ";
                     }
                 }
                 if (src_2.Text != "")
