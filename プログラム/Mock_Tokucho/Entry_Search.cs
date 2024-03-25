@@ -1032,8 +1032,9 @@ namespace TokuchoBugyoK2
                 int ToNendo = int.Parse(nendo) + 1;
                 if (src_3.Checked)
                 {
-                    //FromNendo -= 3;
-                    ToNendo -= 2;
+                    //No1701 
+                    FromNendo -= 3;
+                    //ToNendo -= 2;
                 }
                 //where += "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
                 //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
