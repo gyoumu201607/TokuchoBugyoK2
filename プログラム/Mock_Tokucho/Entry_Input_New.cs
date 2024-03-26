@@ -3343,6 +3343,11 @@ namespace TokuchoBugyoK2
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             ((DateTimePicker)sender).CustomFormat = "";
+
+
+            ca_tbl01_dtpKokiFrom.Text = base_tbl03_dtpKokiFrom.Text;
+
+            ca_tbl01_dtpKokiTo.Text = base_tbl03_dtpKokiTo.Text;
         }
 
         /// <summary>
