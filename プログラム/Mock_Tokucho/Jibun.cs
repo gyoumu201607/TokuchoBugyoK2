@@ -1775,7 +1775,12 @@ namespace TokuchoBugyoK2
             //調査員プロンプト　窓口ミハルと同じ？TODO
             Popup_ChousainList form = new Popup_ChousainList();
             form.program = "madoguchi";
-
+			//No1703
+			if (item_Nendo.Text.Length >= 1)
+			{
+                form.nendo = item_Nendo.SelectedValue.ToString();
+            }
+            
             if (!String.IsNullOrEmpty(item_ChousaTantouBusho.Text))
             {
                 form.Busho = item_ChousaTantouBusho.SelectedValue.ToString();
