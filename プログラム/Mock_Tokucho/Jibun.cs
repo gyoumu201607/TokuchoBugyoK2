@@ -152,7 +152,9 @@ namespace TokuchoBugyoK2
                     ToNendo = int.Parse(nendo) + 1;
                     if (item_NendoOption3Nen.Checked)
                     {
-                        ToNendo -= 2;
+                        //No1703
+                        //ToNendo -= 2;
+                        FromNendo -= 2;
                     }
                     //where += "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
                     //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
@@ -3163,6 +3165,27 @@ namespace TokuchoBugyoK2
         {
 
         }
+
+        //登録年度変更
+        #region 登録年度変更
+        private void item_Nendo_SelectedValueChanged(object sender, EventArgs e)
+		{
+            //登録年度変更
+            if (item_Nendo.Text.Length >= 1)
+            {
+                set_combo_shibu(item_Nendo.SelectedValue.ToString());
+            }
+		}
+
+		private void item_NendoOption3Nen_CheckedChanged(object sender, EventArgs e)
+		{
+            //登録年度変更
+            if (item_Nendo.Text.Length >= 1)
+            {
+                set_combo_shibu(item_Nendo.SelectedValue.ToString());
+            }
+        }
+        #endregion
     }
 }
 
