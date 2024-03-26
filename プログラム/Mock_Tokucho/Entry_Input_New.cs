@@ -4413,7 +4413,9 @@ namespace TokuchoBugyoK2
 
                 Popup_ChousainList form = new Popup_ChousainList();
                 //form.nendo = item3_1_5.SelectedValue.ToString();
-                form.nendo = DateTime.Today.Year.ToString();
+                //No1702 選択画面の年度を工期自に修正
+                //form.nendo = DateTime.Today.Year.ToString();
+                form.nendo = base_tbl03_cmbKokiStartYear.SelectedValue == null ? "" : base_tbl03_cmbKokiStartYear.SelectedValue.ToString();
                 form.Busho = BushoCD;
                 form.ShowDialog();
 
@@ -4823,7 +4825,11 @@ namespace TokuchoBugyoK2
             //ca_tbl05_picMadoguchi    契約：窓口担当者
             PictureBox pic = (PictureBox)sender;
             Popup_ChousainList form = new Popup_ChousainList();
-            string nendo = DateTime.Today.Year.ToString();
+            //No1702 選択画面の年度を工期自に修正
+            //string nendo = DateTime.Today.Year.ToString();
+            string nendo = base_tbl03_cmbKokiStartYear.SelectedValue == null ? DateTime.Today.Year.ToString() : base_tbl03_cmbKokiStartYear.SelectedValue.ToString();
+            
+
             string bsCD = BushoCD;
             if (pic.Name.Equals("base_tbl02_picKeiyakuTanto"))
             {
