@@ -454,7 +454,9 @@ namespace TokuchoBugyoK2
                     //FromNendo -= 3;
                     // 課題No1188　計画案件の検索を　３年⇒５年
                     //ToNendo -= 2;
-                    ToNendo -= 4;
+                    //No1703 
+                    //ToNendo -= 4;
+                    FromNendo -= 4;
                 }
                 //where += "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
                 //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
