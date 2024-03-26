@@ -3342,12 +3342,22 @@ namespace TokuchoBugyoK2
         /// <param name="e"></param>
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            ((DateTimePicker)sender).CustomFormat = "";
+            DateTimePicker control = (DateTimePicker)sender;
 
+            control.CustomFormat = "";
 
-            ca_tbl01_dtpKokiFrom.Text = base_tbl03_dtpKokiFrom.Text;
+            if (control.Name == "base_tbl03_dtpKokiFrom" 
+                && control.Text.Length != 0 )
+			{
+                ca_tbl01_dtpKokiFrom.Text = base_tbl03_dtpKokiFrom.Text;
+            }
 
-            ca_tbl01_dtpKokiTo.Text = base_tbl03_dtpKokiTo.Text;
+            if (control.Name == "base_tbl03_dtpKokiTo"
+                && control.Text.Length != 0)
+            {
+                ca_tbl01_dtpKokiTo.Text = base_tbl03_dtpKokiTo.Text;
+            }
+
         }
 
         /// <summary>
