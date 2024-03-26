@@ -1030,11 +1030,13 @@ namespace TokuchoBugyoK2
             if (int.TryParse(nendo, out FromNendo))
             {
                 int ToNendo = int.Parse(nendo) + 1;
+                //売上年度　３年以内
                 if (src_3.Checked)
                 {
-                    //No1701 
-                    FromNendo -= 3;
-                    //ToNendo -= 2;
+                    //FromNendo -= 3;
+                    //No.1703
+                    FromNendo -= 2;
+                  
                 }
                 //where += "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
                 //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
