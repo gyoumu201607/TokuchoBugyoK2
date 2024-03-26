@@ -148,21 +148,23 @@ namespace TokuchoBugyoK2
             item_Nendo.ValueMember = "Value";
             item_Nendo.DataSource = combodt;
 
-            // 調査担当所
-            discript = "Mst_Busho.BushokanriboKamei ";
-            value = "Mst_Busho.GyoumuBushoCD ";
-            table = "Mst_Busho";
-            where = "KashoShibuCD != '' AND GyoumuBushoCD != '999990' AND GyoumuBushoCD != '127900' AND BushoNewOld <= 1 AND BushoMadoguchiHyoujiFlg = 1 AND ISNULL(BushoDeleteFlag,0) = 0 " +
-                    " ORDER BY BushoMadoguchiNarabijun";
-            combodt = GlobalMethod.getData(discript, value, table, where);
-            dr = combodt.NewRow();
-            combodt.Rows.InsertAt(dr, 0);
+			// 調査担当所
+			discript = "Mst_Busho.BushokanriboKamei ";
+			value = "Mst_Busho.GyoumuBushoCD ";
+			table = "Mst_Busho";
+			where = "KashoShibuCD != '' AND GyoumuBushoCD != '999990' AND GyoumuBushoCD != '127900' AND BushoNewOld <= 1 AND BushoMadoguchiHyoujiFlg = 1 AND ISNULL(BushoDeleteFlag,0) = 0 " +
+					" ORDER BY BushoMadoguchiNarabijun";
+			combodt = GlobalMethod.getData(discript, value, table, where);
+			dr = combodt.NewRow();
+			combodt.Rows.InsertAt(dr, 0);
             //該当グリッドのセルにセット
             //c1FlexGrid1.Cols[20].DataMap = sl;
-            item_ChousaBusho.DisplayMember = "Discript";
-            item_ChousaBusho.ValueMember = "Value";
-            item_ChousaBusho.DataSource = combodt;
 
+            //No1703 部署コンボのセットを共通処理呼び出しに変更
+            //item_ChousaBusho.DisplayMember = "Discript";
+            //item_ChousaBusho.ValueMember = "Value";
+            //item_ChousaBusho.DataSource = combodt;
+            set_combo_shibu(item_Nendo.SelectedValue.ToString());
 
             DataTable combodt3 = GlobalMethod.getData(discript, value, table, where);
             dr = combodt3.NewRow();
@@ -329,7 +331,6 @@ namespace TokuchoBugyoK2
         {
             DataTable combodt;
             DataTable combodt2;
-            System.Data.DataTable tmpdt;
             DataRow dr;
             SortedList sl;
 
@@ -363,10 +364,13 @@ namespace TokuchoBugyoK2
 
             if (int.TryParse(nendo, out FromNendo))
             {
-                ToNendo = int.Parse(nendo) + 1;
+                //No1703 4行上で＋していて不要なので削除
+                //ToNendo = int.Parse(nendo) + 1;
                 if (item_NendoOption3Nen.Checked)
                 {
-                    ToNendo -= 2;
+                    //No1703 
+                    //ToNendo -= 2;
+                    FromNendo -= 2;
                 }
                 //where += "AND (BushoYukoukikanFrom IS NULL OR BushoYukoukikanFrom <= '" + FromNendo + "/4/1' ) " +
                 //"AND (BushoYukoukikanTo IS NULL OR BushoYukoukikanTo >= '" + ToNendo + "/3/31' )";
@@ -428,18 +432,18 @@ namespace TokuchoBugyoK2
                 combodt.Rows.InsertAt(dr, 0);
             }
 
-            // 値を戻す
-            // 調査担当部所
-            if (ChousaBusho_SelectedValue != "")
-            {
-                item_ChousaBusho.SelectedValue = ChousaBusho_SelectedValue;
-            }
-            // 窓口部所
-            if (MadoguchiBusho_SelectedValue != "")
-            {
-                item_MadoguchiBusho.SelectedValue = MadoguchiBusho_SelectedValue;
-            }
-        }
+			// 値を戻す
+			// 調査担当部所
+			if (ChousaBusho_SelectedValue != "")
+			{
+				item_ChousaBusho.SelectedValue = ChousaBusho_SelectedValue;
+			}
+			// 窓口部所
+			if (MadoguchiBusho_SelectedValue != "")
+			{
+				item_MadoguchiBusho.SelectedValue = MadoguchiBusho_SelectedValue;
+			}
+		}
 
         // 検索条件クリア
         private void ClearForm()
@@ -463,7 +467,8 @@ namespace TokuchoBugyoK2
             }
             */
             item_Nendo.SelectedValue = GlobalMethod.GetTodayNendo();
-            set_combo_shibu(item_Nendo.Text.ToString());
+            //No1703 検索年度の引数不正修正
+            set_combo_shibu(item_Nendo.SelectedValue.ToString());
 
             item_Hyoujikensuu.SelectedIndex = 1;
 
@@ -780,7 +785,6 @@ namespace TokuchoBugyoK2
                 // 締切日From,Toは後で計算値を設定
                 DateTime w_SimekiribiFrom = DateTime.Today;
                 DateTime w_SimekiribiTo = DateTime.Today;
-                DateTime dateTime;
 
                 w_Simekiribi6 = w_Simekiribi6.AddDays(6);
 
@@ -1533,11 +1537,6 @@ namespace TokuchoBugyoK2
                 e.Graphics.DrawString(((ComboBox)sender).Items[e.Index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
             }
             e.DrawFocusRectangle();
-        }
-
-        private void item_Nendo_Validated(object sender, EventArgs e)
-        {
-            set_combo_shibu(item_Nendo.SelectedValue.ToString());
         }
 
         private void item_MadoguchiTantousha_icon_Click(object sender, EventArgs e)
@@ -2422,5 +2421,21 @@ namespace TokuchoBugyoK2
                 c1FlexGrid1.Width = smallWidth;
             }
         }
-    }
+
+		private void item_Nendo_SelectedValueChanged(object sender, EventArgs e)
+		{
+            if(item_Nendo.Text.Length >= 1)
+            {
+                set_combo_shibu(item_Nendo.SelectedValue.ToString());
+            }
+        }
+
+		private void item_NendoOption3Nen_CheckedChanged(object sender, EventArgs e)
+        {
+            if (item_Nendo.Text.Length >= 1)
+            {
+                set_combo_shibu(item_Nendo.SelectedValue.ToString());
+            }
+        }
+	}
 }
