@@ -45,14 +45,14 @@ namespace TokuchoBugyoK2
             // ホイール制御
             this.comboBox1.MouseWheel += item_MouseWheel; // 年度
             this.comboBox2.MouseWheel += item_MouseWheel; // 起案状態
-            this.comboBox3.MouseWheel += item_MouseWheel; // 受託部所
-
+            this.cmb_JutakuBusho.MouseWheel += item_MouseWheel; // 受託部所
+            
             set_combo(Nendo);
             get_data();
 
             if (Busho != null && Busho != "")
             {
-                comboBox3.SelectedValue = Busho;
+                cmb_JutakuBusho.SelectedValue = Busho;
             }
         }
         private void set_nendo()
@@ -79,9 +79,9 @@ namespace TokuchoBugyoK2
             string where = "";
             //コンボボックスデータ取得
             DataTable tmpdt4 = GlobalMethod.getData(discript, value, table, where);
-            comboBox1.DataSource = tmpdt4;
             comboBox1.DisplayMember = "Discript";
             comboBox1.ValueMember = "Value";
+            comboBox1.DataSource = tmpdt4;
 
             //年度の値を持っていたら受け渡す
             if (Nendo != null)
@@ -109,6 +109,27 @@ namespace TokuchoBugyoK2
             comboBox2.SelectedValue = "1";
 
             //受託課所支部
+            set_combo_shibu();
+        }
+
+        /// <summary>
+        /// 受託課所支部
+        /// </summary>
+        private void set_combo_shibu()
+		{
+
+            string discript = "";
+            string value = "";
+            string table = "";
+            string where = "";
+
+            string SelectedValue = "";
+            //選択した値を退避
+            if (cmb_JutakuBusho.Text != "")
+            {
+                SelectedValue = cmb_JutakuBusho.SelectedValue.ToString();
+            }
+
             //SQL変数
             discript = "Mst_Busho.ShibuMei + ' ' + IsNull(Mst_Busho.KaMei,'') ";
             value = "Mst_Busho.GyoumuBushoCD ";
@@ -117,7 +138,7 @@ namespace TokuchoBugyoK2
                     //"AND NOT GyoumuBushoCD LIKE '1502%' AND NOT GyoumuBushoCD LIKE '1504%' AND NOT GyoumuBushoCD LIKE '121%' ";
                     "AND NOT GyoumuBushoCD LIKE '121%' ";
             int FromNendo;
-            if (int.TryParse(Nendo, out FromNendo))
+            if (int.TryParse(comboBox1.SelectedValue.ToString(), out FromNendo))
             {
                 int ToNendo = int.Parse(Nendo) + 1;
 
@@ -132,12 +153,16 @@ namespace TokuchoBugyoK2
 
             //コンボボックスデータ取得
             DataTable combodt = GlobalMethod.getData(discript, value, table, where);
-            comboBox3.DataSource = combodt;
-            comboBox3.DisplayMember = "Discript";
-            comboBox3.ValueMember = "Value";
+            cmb_JutakuBusho.DataSource = combodt;
+            cmb_JutakuBusho.DisplayMember = "Discript";
+            cmb_JutakuBusho.ValueMember = "Value";
 
+
+            if (SelectedValue != "")
+            {
+                cmb_JutakuBusho.SelectedValue = SelectedValue;
+            }
         }
-
 
         private void get_data()
         {
@@ -199,9 +224,9 @@ namespace TokuchoBugyoK2
                     "AND aj.AnkenDeleteFlag != 1 ";
 
                 //受託部所が入っているとき
-                if (comboBox3.SelectedValue != null)
+                if (cmb_JutakuBusho.SelectedValue != null)
                 {
-                    String jutakubusho = comboBox3.SelectedValue.ToString();
+                    String jutakubusho = cmb_JutakuBusho.SelectedValue.ToString();
 
                     ////受託部所が127900
                     //if ("127900".Equals(jutakubusho))
@@ -587,9 +612,13 @@ namespace TokuchoBugyoK2
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-            Nendo = comboBox1.SelectedValue.ToString();
+			if (comboBox1.SelectedIndex != 0)
+            {
+                Nendo = comboBox1.SelectedValue.ToString();
+                set_combo_shibu();
+                get_data();
+            }
             set_nendo();
-            get_data();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -651,6 +680,7 @@ namespace TokuchoBugyoK2
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            set_combo_shibu();
             get_data();
         }
 
@@ -663,5 +693,10 @@ namespace TokuchoBugyoK2
         {
             get_data();
         }
-    }
+
+		private void comboBox1_TextChanged_1(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
