@@ -555,6 +555,7 @@ namespace TokuchoBugyoK2
 
             if (errorFlg == false)
             {
+                InitGridHeader();
                 get_data();
             }
             //描画再開
@@ -576,6 +577,7 @@ namespace TokuchoBugyoK2
         {
             errorCheck_initialize();
 
+            InitGridHeader();
             ClearForm();
         }
 
@@ -1436,6 +1438,23 @@ namespace TokuchoBugyoK2
             c1FlexGrid1.AllowAddNew = false;
         }
 
+        private void InitGridHeader()
+		{
+            C1.Win.C1FlexGrid.CellRange cr;
+            c1FlexGrid1[0, 17] = string.Empty;
+            //c1FlexGrid1[0, 18] = "管理_";
+            //c1FlexGrid1[0, 19] = "部所_";
+            for(int colIdx = 17; colIdx < 45;colIdx++)
+			{
+				if (c1FlexGrid1[0, colIdx] != null)
+                {
+                    c1FlexGrid1[0, colIdx] = string.Empty;
+                    cr = c1FlexGrid1.GetCellRange(0, colIdx);
+                    cr.Image = new Bitmap("Resource/Image/header_blank.png");
+                }
+            }
+
+        }
 
         // エラーメッセージ表示
         private void set_error(string mes, int flg = 1)
