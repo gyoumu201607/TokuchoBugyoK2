@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\deploy_app\20240322\EntryStep3\ebatasan環境_デプロイモジュール\</PublishUrl>
+    <PublishUrl>C:\deploy_app\20240328\EntryStep3\ebatasan環境_デプロイモジュール\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -27,11 +27,11 @@
     <InstallUrl>http://PN0J3AKSC75241A/TokuchoBugyoK2/</InstallUrl>
     <ProductName>TokuchoBugyoK2</ProductName>
     <PublisherName>Construction Research Institute</PublisherName>
-    <MinimumRequiredVersion>2.0.0.115</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.0.0.116</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>app.htm</WebPage>
-    <ApplicationRevision>115</ApplicationRevision>
-    <ApplicationVersion>2.0.0.115</ApplicationVersion>
+    <ApplicationRevision>116</ApplicationRevision>
+    <ApplicationVersion>2.0.0.116</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
