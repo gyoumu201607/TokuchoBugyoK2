@@ -1205,7 +1205,9 @@ namespace TokuchoBugyoK2
                             ",ISNULL(KeiyakuZeikomiKingaku,0) " + // 契約金額（税込）
 
                             ",ISNULL(NyuusatsuMitsumorigaku,0) " +
-                            ",NyuusatsuKekkaMemo " +
+                            //No1713 入札結果の項目廃止、案件メモ（入札）に変更
+                            //",NyuusatsuKekkaMemo " +
+                            " , NyuusatsuAnkenMemoNuusatsu " +
                             ",ISNULL(KeiyakuHaibunJoZeinuki,0) " +     // 事業普及部配分額(税抜)
 
                             ",ISNULL(KeiyakuUriageHaibunJo,0) " +      // 事業普及部配分額(税込)
