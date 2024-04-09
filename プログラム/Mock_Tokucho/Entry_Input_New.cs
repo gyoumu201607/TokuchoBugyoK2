@@ -106,10 +106,12 @@ namespace TokuchoBugyoK2
             ED
         }
 
-        /// <summary>
-        /// 画面遷移モード
-        /// </summary>
-        public MODE mode = MODE.SPACE;
+		private const int GRIDCOL_KAKOANKEN_AnkenZenkaiRakusatsuID = 16;
+
+		/// <summary>
+		/// 画面遷移モード
+		/// </summary>
+		public MODE mode = MODE.SPACE;
         /// <summary>
         /// 新規登録時：コピーモード
         /// </summary>
@@ -458,7 +460,7 @@ namespace TokuchoBugyoK2
                         Resize_Grid("base_tbl08_c1FlexGrid");
 
                         // 過去案件情報のRakusatushaIDに1をセット
-                        base_tbl08_c1FlexGrid.Rows[1][16] = 1;
+                        base_tbl08_c1FlexGrid.Rows[1][GRIDCOL_KAKOANKEN_AnkenZenkaiRakusatsuID] = 1;
                     }
                     ////「この案件を元に新規登録」「この案件番号の枝番で受託番号を作成する」共通初期化
                     //base_tbl09_cmbSankomitumori.SelectedValue = "1"; //参考見積
@@ -467,7 +469,7 @@ namespace TokuchoBugyoK2
                 {
                     // 新規時
                     // 過去案件情報のRakusatushaIDに1をセット
-                    base_tbl08_c1FlexGrid.Rows[1][16] = 1;
+                    base_tbl08_c1FlexGrid.Rows[1][GRIDCOL_KAKOANKEN_AnkenZenkaiRakusatsuID] = 1;
                 }
                 //計画詳細の「新規案件」ボタン押下時
                 if (mode == MODE.PLAN)
@@ -1010,9 +1012,19 @@ namespace TokuchoBugyoK2
                 if (AnkenData_Grid1.Rows.Count == 0)
                 {
                     // 過去案件情報の前回受託番号IDに1を入れておく
-                    base_tbl08_c1FlexGrid.Rows[1][16] = 1;
+                    base_tbl08_c1FlexGrid.Rows[1][GRIDCOL_KAKOANKEN_AnkenZenkaiRakusatsuID] = 1;
                 }
                 Resize_Grid("base_tbl08_c1FlexGrid");
+            }
+			else
+			{
+                //No1715 HCの場合に過去案件GridのID列に１をセット
+                // 過去案件情報の前回受託番号IDに1を入れておく
+                if (base_tbl08_c1FlexGrid.Rows.Count >= 2)
+				{
+                    base_tbl08_c1FlexGrid.Rows[1][GRIDCOL_KAKOANKEN_AnkenZenkaiRakusatsuID] = 1;
+                    Resize_Grid("base_tbl08_c1FlexGrid");
+                }
             }
             // ９．事前打診・参考見積
             if (copy != COPY.GM && copy != COPY.HC)
@@ -5383,9 +5395,18 @@ namespace TokuchoBugyoK2
                     int maxNum = 0;
 
                     // ヘッダーを除いて回し、前回受託番号IDの最大値を取得する
-                    for (int i = 1; i < base_tbl08_c1FlexGrid.Rows.Count; i++)
+                    for (int kakoankenGridRowIdx = 1; kakoankenGridRowIdx < base_tbl08_c1FlexGrid.Rows.Count; kakoankenGridRowIdx++)
                     {
-                        AnkenZenkaiRakusatsuID = base_tbl08_c1FlexGrid.Rows[i][16].ToString();
+                        //No1715 ID列のNullチェック追加
+                        if (base_tbl08_c1FlexGrid.Rows[kakoankenGridRowIdx][GRIDCOL_KAKOANKEN_AnkenZenkaiRakusatsuID] != null)
+                        {
+                            AnkenZenkaiRakusatsuID = base_tbl08_c1FlexGrid.Rows[kakoankenGridRowIdx][GRIDCOL_KAKOANKEN_AnkenZenkaiRakusatsuID].ToString();
+                        }
+						else
+						{
+                            AnkenZenkaiRakusatsuID = kakoankenGridRowIdx.ToString();
+                        }
+
                         if (int.TryParse(AnkenZenkaiRakusatsuID, out num))
                         {
                             if (maxNum < num)
@@ -5399,7 +5420,7 @@ namespace TokuchoBugyoK2
 
                     base_tbl08_c1FlexGrid.Rows.Add();
                     // 追加した行にセット
-                    base_tbl08_c1FlexGrid.Rows[base_tbl08_c1FlexGrid.Rows.Count - 1][16] = maxNum;
+                    base_tbl08_c1FlexGrid.Rows[base_tbl08_c1FlexGrid.Rows.Count - 1][GRIDCOL_KAKOANKEN_AnkenZenkaiRakusatsuID] = maxNum;
                 }
                 Resize_Grid("base_tbl08_c1FlexGrid");
             }
