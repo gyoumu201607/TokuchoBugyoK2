@@ -5469,7 +5469,8 @@ namespace TokuchoBugyoK2
                 string HachuuKikanmei = "";
                 string Shimekiribi = "";
                 string Tourokubi = "";
-
+                string ShiryouHolder = "";
+                
                 //// 部所マスタ検索用
                 //string mb_discript_Kamei = "Mst_Busho.Kamei ";
                 //string mb_discript_kanriboKamei = "Mst_Busho.BushokanriboKamei ";
@@ -5527,6 +5528,8 @@ namespace TokuchoBugyoK2
                         ",MadoguchiHachuuKikanmei " +         // 4:発注者詳細名
                         ",MadoguchiShimekiribi " +            // 5:調査担当者への締切日
                         ",MadoguchiTourokubi " +              // 6:登録日
+                                                              // No1719 MadoguchiJouhouMadoguchiL1Chouの[MadoguchiL1SiryouHolder]が特調奉行、工程まもる側に登録されない。
+                        ",ISNULL(MadoguchiShiryouHolder,'') MadoguchiShiryouHolder " +          // 7:資料フォルダ
                         "FROM MadoguchiJouhou  mj " +
                         "WHERE MadoguchiID = '" + MadoguchiID + "' ";
 
@@ -5546,6 +5549,7 @@ namespace TokuchoBugyoK2
                         TokuchoBangou = UketsukeBangou + "-" + UketsukeBangouEdaban;
                         Shimekiribi = dtMadoguchiL1.Rows[0][5].ToString();
                         Tourokubi = dtMadoguchiL1.Rows[0][6].ToString();
+                        ShiryouHolder = dtMadoguchiL1.Rows[0][7].ToString();
                     }
 
                     // 調査担当者
@@ -6234,6 +6238,10 @@ namespace TokuchoBugyoK2
 
                                     ",MadoguchiL1AsteriaKoushinFlag = 1 " +  // Asteria更新フラグ 品目本数等の値が変わったら1にする
                                     ",MadoguchiL1TokuchoHaitaFlag = 1 " +  // 898 対応 品目数が変わったら排他フラグも1:ONにする
+
+                                    //No1719 ShiryouHolderも更新する
+                                    ",MadoguchiL1SiryouHolder = '" + ShiryouHolder + "' " +
+
                                     ",MadoguchiL1UpdateDate = SYSDATETIME() " +
                                     ",MadoguchiL1UpdateUser = N'" + UpdateKojinCD + "' " +
                                     ",MadoguchiL1UpdateProgram = '" + pgmName + methodName + "' " +
@@ -6355,6 +6363,8 @@ namespace TokuchoBugyoK2
                             ",MadoguchiL1HachushaMei " +
                             ",MadoguchiL1ChousaRyakumei " +
                             ",MadoguchiL1ChousaRyakumeiOld " +
+                            // No1719 MadoguchiJouhouMadoguchiL1Chouの[MadoguchiL1SiryouHolder]が特調奉行、工程まもる側に登録されない。
+                            ",MadoguchiL1SiryouHolder " +
                             ") VALUES ( " +
                             "'" + MadoguchiID + "' " +                              // MadoguchiID
                             ",'" + maxCD + "' " +                                   // MadoguchiL1ChousaCD
@@ -6396,6 +6406,8 @@ namespace TokuchoBugyoK2
                             ",N'" + HachuuKikanmei + "'" +                           // MadoguchiHachuuKikanmei
                             ",N'" + MadoguchiL1ChousaRyakumeiList[i] + "' " +        // MadoguchiL1ChousaRyakumei
                             ",N'" + MadoguchiL1ChousaRyakumeiList[i] + "' " +        // MadoguchiL1ChousaRyakumei
+                            //No1719 MadoguchiJouhouMadoguchiL1Chouの[MadoguchiL1SiryouHolder]が特調奉行、工程まもる側に登録されない。
+                            ",N'" + ShiryouHolder + "' " +                          // MadoguchiL1SiryouHolder
                             ") ";
                         cmd.ExecuteNonQuery();
 
